@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "cellPixels": 32,
+  "gapPixels": 0,
+  "rows": [
+    ".#.",
+    "###",
+    ".#."
+  ],
+  "columns": 3,
+  "rowCount": 3,
+  "canvas": {
+    "width": 96,
+    "height": 96
+  },
+  "occupiedCellCount": 5,
+  "cells": [
+    {
+      "x": 1,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 1
+    },
+    {
+      "x": 2,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 2
+    }
+  ],
+  "emptyCells": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 2,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 2
+    },
+    {
+      "x": 2,
+      "y": 2
+    }
+  ],
+  "connectedComponents": 1,
+  "backpackCellPixels": 32,
+  "targetViewEdge": 96,
+  "baseCanvas": {
+    "width": 96,
+    "height": 96
+  },
+  "reuseBase": true,
+  "validation": {
+    "paletteLimit": 32,
+    "opaqueColors": 24,
+    "binaryAlpha": true,
+    "pixelsOutsideFootprint": 0,
+    "visibleBounds": {
+      "x": 11,
+      "y": 11,
+      "width": 74,
+      "height": 74
+    },
+    "cellPixelCounts": [
+      {
+        "x": 1,
+        "y": 0,
+        "pixels": 407
+      },
+      {
+        "x": 0,
+        "y": 1,
+        "pixels": 404
+      },
+      {
+        "x": 1,
+        "y": 1,
+        "pixels": 879
+      },
+      {
+        "x": 2,
+        "y": 1,
+        "pixels": 405
+      },
+      {
+        "x": 1,
+        "y": 2,
+        "pixels": 406
+      }
+    ],
+    "warnings": [],
+    "svgPixelMatch": true
+  },
+  "sourcePng": "docs/art/concepts/warding-sigil-catalog-v1/native.png",
+  "sourceSha256": "cec232e8319c674b473dbe9aafd29a2f26394b304742d5eacd66a90bc3b0b685",
+  "svgEncoding": "Editable color-grouped integer pixel runs derived from source PNG"
+}

@@ -1,0 +1,41 @@
+{
+  "status": "accepted",
+  "version": 3,
+  "acceptedAt": "2026-10-16",
+  "acceptanceBasis": "User: \"yeah love that. install them in the game.\"",
+  "sourceReview": "docs/art/concepts/characters/ranger-v3/acceptance.json",
+  "runtimeAsset": "assets/characters/ranger.svg",
+  "sourceAsset": "assets/characters/ranger/art/v3/body.json",
+  "portrait": "assets/characters/portraits/ranger.png",
+  "portraitSource": "assets/characters/ranger/art/v3/portrait.json",
+  "outputs": {
+    "ranger.svg": {
+      "sha256": "b250a0bc14803b7c44be4adf51ca9b1e41336ada7ca40d0457427f09d23cf941",
+      "source": "assets/characters/ranger/art/v3/full-body.svg"
+    },
+    "ranger.png": {
+      "sha256": "106be95da286963821b588f00d4f5cbdcf9ca1e032229e5b4c2158e2bfc815fe",
+      "source": "assets/characters/ranger/art/v3/full-body.png"
+    },
+    "portraits/ranger.png": {
+      "sha256": "92d98ec75d911e4781587fa18397f202ee543def57694e8439966e98c6b6dda0",
+      "source": "assets/characters/ranger/art/v3/portrait.png"
+    }
+  },
+  "previousVersionArchive": "assets/characters/archive/2026-10-16-before-ranger-v3",
+  "portraitRelationship": "Concept-derived matching portrait; crop, cleanup and source hashes retained in the review directory.",
+  "sourceHashes": {
+    "body.json": "9a91c23addc3066f808759f5c60a9c732e918b5b73bb21bd88d8534393c57ea4",
+    "full-body.png": "106be95da286963821b588f00d4f5cbdcf9ca1e032229e5b4c2158e2bfc815fe",
+    "full-body.svg": "b250a0bc14803b7c44be4adf51ca9b1e41336ada7ca40d0457427f09d23cf941",
+    "portrait.json": "5dadd8bf624aee3cf010067014a00bd4792685b4b7f60f1fd4f8d021bd4b8312",
+    "portrait.png": "92d98ec75d911e4781587fa18397f202ee543def57694e8439966e98c6b6dda0",
+    "portrait.svg": "86e67476c236604015708c8fd081008ca756a9bcefa312b2707fafabd3da931c"
+  },
+  "portraitCorrection": {
+    "date": "2026-10-16",
+    "reason": "User reported missing viewer-left shoulder; overbroad quiver-removal mask clipped the shoulder.",
+    "change": "Restore original concept shoulder pixels below source y275; face and framing unchanged.",
+    "previousArchive": "assets/characters/archive/2026-10-16-before-ranger-portrait-shoulder-fix"
+  }
+}

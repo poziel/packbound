@@ -1,0 +1,4 @@
+interface:
+  display_name: "Packbound UI Icons"
+  short_description: "Readable pixel icons for menus and combat actions"
+  default_prompt: "Use $packbound-ui-icons to create a consistent set of readable pixel menu and action icons for Packbound. Use $spritex for editable layered JSON and CLI-generated PNG/SVG exports."

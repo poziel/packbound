@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="Theme" path="res://themes/gameplay/theme.tres" id="theme"]
+
+[node name="SimpleGameplayTooltip" type="PanelContainer"]
+theme = ExtResource("theme")
+theme_type_variation = &"TooltipPanel"
+mouse_filter = 2
+texture_filter = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"TooltipLabel"
+mouse_filter = 2

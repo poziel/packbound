@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "cellPixels": 32,
+  "gapPixels": 0,
+  "rows": [
+    "#",
+    "#"
+  ],
+  "columns": 1,
+  "rowCount": 2,
+  "canvas": {
+    "width": 32,
+    "height": 64
+  },
+  "occupiedCellCount": 2,
+  "cells": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    }
+  ],
+  "emptyCells": [],
+  "connectedComponents": 1,
+  "backpackCellPixels": 32,
+  "targetViewEdge": 64,
+  "baseCanvas": {
+    "width": 32,
+    "height": 64
+  },
+  "reuseBase": true,
+  "validation": {
+    "paletteLimit": 32,
+    "opaqueColors": 16,
+    "binaryAlpha": true,
+    "pixelsOutsideFootprint": 0,
+    "visibleBounds": {
+      "x": 9,
+      "y": 4,
+      "width": 19,
+      "height": 58
+    },
+    "cellPixelCounts": [
+      {
+        "x": 0,
+        "y": 0,
+        "pixels": 361
+      },
+      {
+        "x": 0,
+        "y": 1,
+        "pixels": 304
+      }
+    ],
+    "warnings": [],
+    "svgPixelMatch": true
+  },
+  "sourcePng": "docs/art/concepts/quiver-catalog-v1/native.png",
+  "sourceSha256": "80f424e27dcfa850b8a8b92b127ee41edd3d6365eb322a3e9baa9c3153e4b459",
+  "svgEncoding": "Editable color-grouped integer pixel runs derived from source PNG"
+}

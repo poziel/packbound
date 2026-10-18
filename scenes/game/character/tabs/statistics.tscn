@@ -1,0 +1,505 @@
+[gd_scene format=3 uid="uid://b8qcaek50jsg1"]
+
+[ext_resource type="Texture2D" uid="uid://deuv1h12prisv" path="res://components/pixel_search_field/clear.svg" id="3_2q8gm"]
+[ext_resource type="Script" uid="uid://dxp0wr47fepk2" path="res://components/runtime_pixel_style.gd" id="4_rddve"]
+[ext_resource type="PackedScene" path="res://components/pixel_scrollbar/pixel_scroll_container.tscn" id="scroll"]
+[ext_resource type="PackedScene" path="res://components/pixel_search_field/pixel_search_field.tscn" id="search"]
+[ext_resource type="Theme" uid="uid://b3k7avi5t7hlb" path="res://themes/gameplay/theme.tres" id="theme"]
+
+[ext_resource type="Script" path="res://components/surface_theme.gd" id="surface_theme"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dn063"]
+content_margin_left = 44.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+script = ExtResource("4_rddve")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ndl0"]
+content_margin_left = 44.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+script = ExtResource("4_rddve")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jirvi"]
+content_margin_left = 44.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+script = ExtResource("4_rddve")
+
+[sub_resource type="StyleBoxEmpty" id="SemanticTextEmpty"]
+
+[node name="Statistics" type="Control" unique_id=429638951]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 584.0
+offset_bottom = 688.0
+theme = ExtResource("theme")
+
+[node name="Search" parent="." unique_id=114026733 instance=ExtResource("search")]
+layout_mode = 0
+anchor_right = 1.0
+offset_left = 22.0
+offset_top = 22.0
+offset_right = -22.0
+offset_bottom = 71.0
+theme_override_colors/font_color = Color(0.933333, 0.933333, 0.858824, 1)
+theme_override_colors/font_uneditable_color = Color(0.46960765, 0.4847057, 0.474902, 1)
+theme_override_colors/font_selected_color = Color(0.933333, 0.933333, 0.858824, 1)
+theme_override_colors/font_placeholder_color = Color(0.63823503, 0.6478429, 0.61451, 1)
+theme_override_colors/caret_color = Color(0.8901959, 0.8105884, 0.6458826, 1)
+theme_override_colors/selection_color = Color(0.29509798, 0.25529423, 0.17294131, 1)
+theme_override_colors/clear_button_color = Color(0.7225487, 0.7294115, 0.684314, 1)
+theme_override_colors/clear_button_color_pressed = Color(0.843137, 0.729412, 0.494118, 1)
+theme_override_constants/caret_width = 2
+theme_override_constants/minimum_character_width = 8
+theme_override_icons/clear = ExtResource("3_2q8gm")
+theme_override_styles/normal = SubResource("StyleBoxTexture_dn063")
+theme_override_styles/read_only = SubResource("StyleBoxTexture_4ndl0")
+theme_override_styles/focus = SubResource("StyleBoxTexture_jirvi")
+placeholder_text = "Search statistics..."
+list_path = NodePath("../Scroll/Rows")
+empty_state_path = NodePath("../EmptyState")
+
+[node name="Scroll" parent="." unique_id=537039546 instance=ExtResource("scroll")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 90.0
+offset_right = -22.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/scrollbar_h_separation = 10
+scroll_horizontal_custom_step = 32.0
+scroll_vertical_custom_step = 32.0
+
+[node name="Rows" type="VBoxContainer" parent="Scroll" unique_id=1096308374]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Damage" type="HBoxContainer" parent="Scroll/Rows" unique_id=1919174762]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+metadata/search_text = "damage"
+
+[node name="DamageLabel" type="RichTextLabel" parent="Scroll/Rows/Damage" unique_id=71872812]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("SemanticTextEmpty")
+bbcode_enabled = true
+text = "Damage"
+fit_content = true
+scroll_active = false
+
+[node name="DamageValue" type="Label" parent="Scroll/Rows/Damage" unique_id=522565821]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Block" type="HBoxContainer" parent="Scroll/Rows" unique_id=345986827]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+metadata/search_text = "block"
+
+[node name="BlockLabel" type="RichTextLabel" parent="Scroll/Rows/Block" unique_id=920654695]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("SemanticTextEmpty")
+bbcode_enabled = true
+text = "Block"
+fit_content = true
+scroll_active = false
+
+[node name="BlockValue" type="Label" parent="Scroll/Rows/Block" unique_id=1509901447]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Healing" type="HBoxContainer" parent="Scroll/Rows" unique_id=80221014]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+metadata/search_text = "healing"
+
+[node name="HealingLabel" type="RichTextLabel" parent="Scroll/Rows/Healing" unique_id=851571822]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("SemanticTextEmpty")
+bbcode_enabled = true
+text = "Healing"
+fit_content = true
+scroll_active = false
+
+[node name="HealingValue" type="Label" parent="Scroll/Rows/Healing" unique_id=570797769]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Vampirism" type="HBoxContainer" parent="Scroll/Rows" unique_id=811466115]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+metadata/search_text = "vampirism"
+
+[node name="VampirismLabel" type="RichTextLabel" parent="Scroll/Rows/Vampirism" unique_id=478162758]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("SemanticTextEmpty")
+bbcode_enabled = true
+text = "Vampirism"
+fit_content = true
+scroll_active = false
+
+[node name="VampirismValue" type="Label" parent="Scroll/Rows/Vampirism" unique_id=2137186323]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Plating" type="HBoxContainer" parent="Scroll/Rows" unique_id=1301163893]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+metadata/search_text = "plating"
+
+[node name="PlatingLabel" type="RichTextLabel" parent="Scroll/Rows/Plating" unique_id=162125162]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("SemanticTextEmpty")
+bbcode_enabled = true
+text = "Plating"
+fit_content = true
+scroll_active = false
+
+[node name="PlatingValue" type="Label" parent="Scroll/Rows/Plating" unique_id=118631163]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Ward" type="HBoxContainer" parent="Scroll/Rows" unique_id=697172393]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+metadata/search_text = "ward"
+
+[node name="WardLabel" type="RichTextLabel" parent="Scroll/Rows/Ward" unique_id=1085153516]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("SemanticTextEmpty")
+bbcode_enabled = true
+text = "Ward"
+fit_content = true
+scroll_active = false
+
+[node name="WardValue" type="Label" parent="Scroll/Rows/Ward" unique_id=654958632]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Poison" type="HBoxContainer" parent="Scroll/Rows" unique_id=2021167758]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+metadata/search_text = "poison"
+
+[node name="PoisonLabel" type="RichTextLabel" parent="Scroll/Rows/Poison" unique_id=1886098174]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("SemanticTextEmpty")
+bbcode_enabled = true
+text = "Poison"
+fit_content = true
+scroll_active = false
+
+[node name="PoisonValue" type="Label" parent="Scroll/Rows/Poison" unique_id=671885483]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Burn" type="HBoxContainer" parent="Scroll/Rows" unique_id=1934675046]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+metadata/search_text = "burn"
+
+[node name="BurnLabel" type="RichTextLabel" parent="Scroll/Rows/Burn" unique_id=1117349267]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("SemanticTextEmpty")
+bbcode_enabled = true
+text = "Burn"
+fit_content = true
+scroll_active = false
+
+[node name="BurnValue" type="Label" parent="Scroll/Rows/Burn" unique_id=456039875]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Mana" type="HBoxContainer" parent="Scroll/Rows" unique_id=602031304]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+metadata/search_text = "mana"
+
+[node name="ManaLabel" type="RichTextLabel" parent="Scroll/Rows/Mana" unique_id=865843533]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("SemanticTextEmpty")
+bbcode_enabled = true
+text = "Mana"
+fit_content = true
+scroll_active = false
+
+[node name="ManaValue" type="Label" parent="Scroll/Rows/Mana" unique_id=681030148]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Stamina" type="HBoxContainer" parent="Scroll/Rows"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+metadata/search_text = "stamina"
+
+[node name="StaminaLabel" type="RichTextLabel" parent="Scroll/Rows/Stamina"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("SemanticTextEmpty")
+bbcode_enabled = true
+text = "Stamina"
+fit_content = true
+scroll_active = false
+
+[node name="StaminaValue" type="Label" parent="Scroll/Rows/Stamina"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Curse" type="HBoxContainer" parent="Scroll/Rows" unique_id=1679871664]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+metadata/search_text = "curse"
+
+[node name="CurseLabel" type="RichTextLabel" parent="Scroll/Rows/Curse" unique_id=1631636061]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("SemanticTextEmpty")
+bbcode_enabled = true
+text = "Curse"
+fit_content = true
+scroll_active = false
+
+[node name="CurseValue" type="Label" parent="Scroll/Rows/Curse" unique_id=163580236]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Thorns" type="HBoxContainer" parent="Scroll/Rows" unique_id=1820557403]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+metadata/search_text = "thorns"
+
+[node name="ThornsLabel" type="RichTextLabel" parent="Scroll/Rows/Thorns" unique_id=1979765667]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("SemanticTextEmpty")
+bbcode_enabled = true
+text = "Thorns"
+fit_content = true
+scroll_active = false
+
+[node name="ThornsValue" type="Label" parent="Scroll/Rows/Thorns" unique_id=1975230737]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Cleanse" type="HBoxContainer" parent="Scroll/Rows" unique_id=390625314]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+metadata/search_text = "cleanse"
+
+[node name="CleanseLabel" type="RichTextLabel" parent="Scroll/Rows/Cleanse" unique_id=1260878813]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("SemanticTextEmpty")
+bbcode_enabled = true
+text = "Cleanse"
+fit_content = true
+scroll_active = false
+
+[node name="CleanseValue" type="Label" parent="Scroll/Rows/Cleanse" unique_id=1455178076]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Slow" type="HBoxContainer" parent="Scroll/Rows" unique_id=370298055]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+metadata/search_text = "slow"
+
+[node name="SlowLabel" type="RichTextLabel" parent="Scroll/Rows/Slow" unique_id=2012749240]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("SemanticTextEmpty")
+bbcode_enabled = true
+text = "Slow"
+fit_content = true
+scroll_active = false
+
+[node name="SlowValue" type="Label" parent="Scroll/Rows/Slow" unique_id=766223961]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="EmptyState" type="Label" parent="." unique_id=1958325936]
+visible = false
+layout_mode = 0
+offset_left = 12.0
+offset_top = 96.0
+offset_right = 572.0
+offset_bottom = 144.0
+theme_override_colors/font_color = Color(0.52, 0.59, 0.69, 1)
+text = "No matching statistics."
+horizontal_alignment = 1
+
+[node name="SurfaceTheme" type="Node" parent="."]
+script = ExtResource("surface_theme")
+reference_padding = 22
+padding_bindings = {"Search": "left,top,right", "Scroll": "left,right,bottom"}

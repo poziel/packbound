@@ -1,0 +1,11 @@
+{
+  "key": "returning_guard",
+  "name": "Returning Guard",
+  "category": "relics",
+  "kind": "run-relic",
+  "detail": "Half of unused block carries into the next turn, up to 20. Stored block resets between floors.",
+  "iconItemKey": "tower_shield",
+  "iconMetadata": "res://assets/items/relics/shield-relic/metadata.json",
+  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "note": "Reuses an inventory item icon; no separate artwork exists."
+}

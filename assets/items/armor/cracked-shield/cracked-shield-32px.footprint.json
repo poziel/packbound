@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "cellPixels": 32,
+  "gapPixels": 0,
+  "rows": [
+    "#"
+  ],
+  "columns": 1,
+  "rowCount": 1,
+  "canvas": {
+	"width": 32,
+	"height": 32
+  },
+  "occupiedCellCount": 1,
+  "cells": [
+	{
+	  "x": 0,
+	  "y": 0
+	}
+  ],
+  "emptyCells": [],
+  "connectedComponents": 1,
+  "validation": {
+	"paletteLimit": 20,
+	"opaqueColors": 15,
+	"binaryAlpha": true,
+	"pixelsOutsideFootprint": 0,
+	"visibleBounds": {
+	  "x": 5,
+	  "y": 2,
+	  "width": 22,
+	  "height": 28
+	},
+	"cellPixelCounts": [
+	  {
+		"x": 0,
+		"y": 0,
+		"pixels": 403
+	  }
+	],
+	"warnings": [],
+	"svgPixelMatch": true
+  },
+  "sourcePng": "docs/art/concepts/cracked-shield-32px-v1/native.png",
+  "sourceSha256": "ec6f84cacaefc90344bcd85e141465b70aa5cbe97e1cc2d72a740d6973e2461b",
+  "svgEncoding": "Editable color-grouped integer pixel runs derived from source PNG"
+}

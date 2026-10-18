@@ -1,0 +1,15 @@
+{
+  "family": "adjacency-border-carets",
+  "source": "Original hand-authored spritex numeric grids",
+  "native_size": [
+    5,
+    5
+  ],
+  "display_size": [
+    10,
+    10
+  ],
+  "tint_mode": "White mask tinted with exact item rim color; no baked outline or shading",
+  "registration": "Edge caret base attaches to border; corner caret arms attach to bordering edges. Exact 2x nearest scaling and quarter turns. Priority corner moves adjacent to numeral.",
+  "status": "Integrated trial requested by user; arrows-v1 preserved as previous trial"
+}

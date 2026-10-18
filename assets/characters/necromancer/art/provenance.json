@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "delverId": "necromancer",
+  "operation": "Path-only consolidation; no artwork redrawn",
+  "priorFolderArchive": "characters-before-folder-consolidation-20261017T194737Z.zip",
+  "historicalAcceptance": {
+    "status": "accepted",
+    "version": 3,
+    "acceptedAt": "2026-10-16",
+    "sourceReview": "docs/art/concepts/characters/necromancer-v3/acceptance.json",
+    "runtimeAsset": "assets/characters/necromancer.svg",
+    "sourceAsset": "assets/characters/necromancer/art/v3/full-body.sprite.json",
+    "portrait": "assets/characters/portraits/necromancer.png",
+    "outputs": {
+      "necromancer.svg": {
+        "sha256": "285378f74cb4d0b1faba7ebde31d713959f3a5ff10e2e091d2de337e4b84a0d8",
+        "source": "assets/characters/necromancer/art/v3/full-body.svg"
+      },
+      "necromancer.png": {
+        "sha256": "7004a9c311b1b2d9741da7f5a64764c353f282af4be64a289980cada12b9cfde",
+        "source": "assets/characters/necromancer/art/v3/full-body.png"
+      },
+      "portraits/necromancer.png": {
+        "sha256": "e49532c7e0b33412fbcb85f44da5203ce31f10395bd87081e65d6f749a946cfe",
+        "source": "assets/characters/necromancer/art/v3/portrait.png"
+      }
+    }
+  },
+  "currentAssets": {
+    "full-body.sprite.json": {
+      "path": "assets/characters/necromancer/art/full-body.sprite.json",
+      "sha256": "9ab84e244a1b602e46df2188d2c4239918d39d3e777fa6a863467e52af8171b0",
+      "originalPath": "assets/characters/necromancer/art/v3/full-body.sprite.json"
+    },
+    "full-body.png": {
+      "path": "assets/characters/necromancer/art/full-body.png",
+      "sha256": "7004a9c311b1b2d9741da7f5a64764c353f282af4be64a289980cada12b9cfde",
+      "originalPath": "assets/characters/necromancer.png"
+    },
+    "full-body.svg": {
+      "path": "assets/characters/necromancer/art/full-body.svg",
+      "sha256": "285378f74cb4d0b1faba7ebde31d713959f3a5ff10e2e091d2de337e4b84a0d8",
+      "originalPath": "assets/characters/necromancer.svg"
+    },
+    "portrait.sprite.json": {
+      "path": "assets/characters/necromancer/art/portrait.sprite.json",
+      "sha256": "ccd247c35a82c02ef869b19ef257a9e186a4fed3dc619338828cd2970b0e0387",
+      "originalPath": "assets/characters/necromancer/art/v3/portrait.sprite.json"
+    },
+    "portrait.png": {
+      "path": "assets/characters/necromancer/art/portrait.png",
+      "sha256": "e49532c7e0b33412fbcb85f44da5203ce31f10395bd87081e65d6f749a946cfe",
+      "originalPath": "assets/characters/portraits/necromancer.png"
+    },
+    "portrait.svg": {
+      "path": "assets/characters/necromancer/art/portrait.svg",
+      "sha256": "25f026d89296fc13ba5b558196eef746741d9476e8441b3bda215ead46cb5972",
+      "originalPath": "assets/characters/necromancer/art/v3/portrait.svg"
+    }
+  },
+  "editability": "Original layered spritex JSON preserved byte-for-byte; no new layers or animation rig claimed."
+}

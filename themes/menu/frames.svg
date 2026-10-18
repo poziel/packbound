@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="48" viewBox="0 0 192 48" shape-rendering="crispEdges">
+  <defs>
+    <path id="outer" d="M8 0H40V4H44V8H48V40H44V44H40V48H8V44H4V40H0V8H4V4H8Z"/>
+    <path id="rim" d="M8 4H40V8H44V40H40V44H8V40H4V8H8Z"/>
+  </defs>
+  <g>
+    <use href="#outer" fill="#070a0d"/>
+    <use href="#rim" fill="#607f7c"/>
+    <path d="M8 8H40V40H8Z" fill="#223336"/>
+    <path d="M8 8H40V12H8Z" fill="#3b5354"/>
+    <path d="M8 36H40V40H8Z" fill="#152326"/>
+  </g>
+  <g transform="translate(48)">
+    <use href="#outer" fill="#070a0d"/>
+    <use href="#rim" fill="#b9d2bd"/>
+    <path d="M8 8H40V40H8Z" fill="#3c5a56"/>
+    <path d="M8 8H40V12H8Z" fill="#66877a"/>
+    <path d="M8 36H40V40H8Z" fill="#253e3c"/>
+  </g>
+  <g transform="translate(96)">
+    <use href="#outer" fill="#070a0d"/>
+    <use href="#rim" fill="#d9b66e"/>
+    <path d="M8 8H40V40H8Z" fill="#18282b"/>
+    <path d="M8 8H40V12H8Z" fill="#101b20"/>
+    <path d="M8 36H40V40H8Z" fill="#3b5354"/>
+  </g>
+  <g transform="translate(144)">
+    <path d="M8 0H40V4H44V8H48V40H44V44H40V48H8V44H4V40H0V8H4V4H8Z M8 4V8H4V40H8V44H40V40H44V8H40V4Z" fill="#efd28c" fill-rule="evenodd"/>
+  </g>
+</svg>

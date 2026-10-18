@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "delverId": "warrior",
+  "operation": "Path-only consolidation; no artwork redrawn",
+  "priorFolderArchive": "characters-before-folder-consolidation-20261017T194737Z.zip",
+  "historicalAcceptance": {
+    "status": "accepted",
+    "version": 3,
+    "acceptedAt": "2026-10-16",
+    "acceptanceBasis": "User authorized redraw with current character-art and spritex skills and direct installation; no separate visual approval claimed.",
+    "sourceReview": "docs/art/concepts/characters/warrior-v3/acceptance.json",
+    "runtimeAsset": "assets/characters/warrior.svg",
+    "sourceAsset": "assets/characters/warrior/art/v3/body.json",
+    "portrait": "assets/characters/portraits/warrior.png",
+    "portraitSource": "assets/characters/warrior/art/v3/portrait.json",
+    "outputs": {
+      "warrior.svg": {
+        "sha256": "6b6442fec9c717d81f9fd385306cb9cc1c1bb853b10312499ddc30b78f3b5a81",
+        "source": "assets/characters/warrior/art/v3/body.svg"
+      },
+      "warrior.png": {
+        "sha256": "320ae336061ffb6d22d428f17ccafb5f61f05fae94a8354295cf430086b6cf1d",
+        "source": "assets/characters/warrior/art/v3/body.png"
+      },
+      "portraits/warrior.png": {
+        "sha256": "98362ca5b7373da77cd05e380b974fcad87fcf40f64da62b134704621f118930",
+        "source": "assets/characters/warrior/art/v3/portrait.png"
+      }
+    }
+  },
+  "currentAssets": {
+    "full-body.sprite.json": {
+      "path": "assets/characters/warrior/art/full-body.sprite.json",
+      "sha256": "c583ffbb6422b9f8187db4b28367e54904d015586242199adde45b048647ae56",
+      "originalPath": "assets/characters/warrior/art/v3/body.json"
+    },
+    "full-body.png": {
+      "path": "assets/characters/warrior/art/full-body.png",
+      "sha256": "320ae336061ffb6d22d428f17ccafb5f61f05fae94a8354295cf430086b6cf1d",
+      "originalPath": "assets/characters/warrior.png"
+    },
+    "full-body.svg": {
+      "path": "assets/characters/warrior/art/full-body.svg",
+      "sha256": "6b6442fec9c717d81f9fd385306cb9cc1c1bb853b10312499ddc30b78f3b5a81",
+      "originalPath": "assets/characters/warrior.svg"
+    },
+    "portrait.sprite.json": {
+      "path": "assets/characters/warrior/art/portrait.sprite.json",
+      "sha256": "0a8aa0c029a7f7e0d882ad2a1f5a0756cc83f1cbb0e66e7435caf62f555e99bc",
+      "originalPath": "assets/characters/warrior/art/v3/portrait.json"
+    },
+    "portrait.png": {
+      "path": "assets/characters/warrior/art/portrait.png",
+      "sha256": "98362ca5b7373da77cd05e380b974fcad87fcf40f64da62b134704621f118930",
+      "originalPath": "assets/characters/portraits/warrior.png"
+    },
+    "portrait.svg": {
+      "path": "assets/characters/warrior/art/portrait.svg",
+      "sha256": "cc0f6903571035a1184095e5938ed95b198b814974e78d007cf770562f11f152",
+      "originalPath": "assets/characters/warrior/art/v3/portrait.svg"
+    }
+  },
+  "editability": "Original layered spritex JSON preserved byte-for-byte; no new layers or animation rig claimed."
+}

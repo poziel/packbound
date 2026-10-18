@@ -1,0 +1,139 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://corpsclfvc5wb"]
+
+[ext_resource type="Texture2D" uid="uid://dhdt5wu4s67ui" path="res://assets/backgrounds/main-menu/candlelight.png" id="1_sheet"]
+
+[sub_resource type="AtlasTexture" id="Atlas_0"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 0, 168, 168)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_1"]
+atlas = ExtResource("1_sheet")
+region = Rect2(168, 0, 168, 168)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_2"]
+atlas = ExtResource("1_sheet")
+region = Rect2(336, 0, 168, 168)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_3"]
+atlas = ExtResource("1_sheet")
+region = Rect2(504, 0, 168, 168)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_4"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 168, 168, 168)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_5"]
+atlas = ExtResource("1_sheet")
+region = Rect2(168, 168, 168, 168)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_6"]
+atlas = ExtResource("1_sheet")
+region = Rect2(336, 168, 168, 168)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_7"]
+atlas = ExtResource("1_sheet")
+region = Rect2(504, 168, 168, 168)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_8"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 336, 168, 168)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_9"]
+atlas = ExtResource("1_sheet")
+region = Rect2(168, 336, 168, 168)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_10"]
+atlas = ExtResource("1_sheet")
+region = Rect2(336, 336, 168, 168)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_11"]
+atlas = ExtResource("1_sheet")
+region = Rect2(504, 336, 168, 168)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_12"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 504, 168, 168)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_13"]
+atlas = ExtResource("1_sheet")
+region = Rect2(168, 504, 168, 168)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_14"]
+atlas = ExtResource("1_sheet")
+region = Rect2(336, 504, 168, 168)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_15"]
+atlas = ExtResource("1_sheet")
+region = Rect2(504, 504, 168, 168)
+filter_clip = true
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Atlas_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_9")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_10")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_11")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_12")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_13")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_14")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_15")
+}],
+"loop": 1,
+"name": &"warmth",
+"speed": 8.0
+}]

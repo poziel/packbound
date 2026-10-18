@@ -1,0 +1,333 @@
+{
+  "generatedFrom": "built-in image-generation tool, three delegated item artists",
+  "cellPixels": 96,
+  "layout": [
+	8,
+	1
+  ],
+  "paletteLimitPerIcon": 32,
+  "alphaThreshold": 128,
+  "resize": "nearest-neighbor, preserve aspect ratio",
+  "items": [
+	{
+	  "index": 0,
+	  "file": "01-dagger",
+	  "key": "rusty_knife",
+	  "title": "Rusty Knife",
+	  "fit": [
+		74,
+		74
+	  ],
+	  "inventoryCells": [
+		1,
+		1
+	  ],
+	  "cell": [
+		96,
+		96
+	  ],
+	  "source": "docs/art/concepts/items-2026-10-15/01-dagger.png",
+	  "sourceSha256": "600d1277b7d8a53c1d2ee8e58d15272aa656ebad688549f3419842f9826ec9be",
+	  "sourceBounds": {
+		"left": 219,
+		"top": 180,
+		"width": 853,
+		"height": 940,
+		"pixels": 206561
+	  },
+	  "bounds": {
+		"left": 14,
+		"top": 11,
+		"width": 67,
+		"height": 74,
+		"pixels": 1272
+	  },
+	  "paletteColors": 32,
+	  "alphaValues": [
+		0,
+		255
+	  ],
+	  "svgPixelMatch": true
+	},
+	{
+	  "index": 1,
+	  "file": "02-shield",
+	  "key": "cracked_shield",
+	  "title": "Cracked shield",
+	  "fit": [
+		76,
+		80
+	  ],
+	  "inventoryCells": [
+		1,
+		1
+	  ],
+	  "cell": [
+		96,
+		96
+	  ],
+	  "source": "docs/art/concepts/items-2026-10-15/02-shield.png",
+	  "sourceSha256": "be7194a98c2720aba667c136c172f79e4ba5d36b823c83a26993541f35cec53c",
+	  "sourceBounds": {
+		"left": 264,
+		"top": 89,
+		"width": 729,
+		"height": 1098,
+		"pixels": 529920
+	  },
+	  "bounds": {
+		"left": 21,
+		"top": 8,
+		"width": 53,
+		"height": 80,
+		"pixels": 2818
+	  },
+	  "paletteColors": 32,
+	  "alphaValues": [
+		0,
+		255
+	  ],
+	  "svgPixelMatch": true
+	},
+	{
+	  "index": 2,
+	  "file": "03-ruby",
+	  "key": "blood_gem",
+	  "title": "Ruby",
+	  "fit": [
+		58,
+		64
+	  ],
+	  "inventoryCells": [
+		1,
+		1
+	  ],
+	  "cell": [
+		96,
+		96
+	  ],
+	  "source": "docs/art/concepts/items-2026-10-15/03-ruby.png",
+	  "sourceSha256": "edac9f60d146bb09af0a31d936357fd57ef7ec99d8f296e3670b252870a61374",
+	  "sourceBounds": {
+		"left": 278,
+		"top": 228,
+		"width": 699,
+		"height": 814,
+		"pixels": 361406
+	  },
+	  "bounds": {
+		"left": 20,
+		"top": 16,
+		"width": 55,
+		"height": 64,
+		"pixels": 2246
+	  },
+	  "paletteColors": 32,
+	  "alphaValues": [
+		0,
+		255
+	  ],
+	  "svgPixelMatch": true
+	},
+	{
+	  "index": 3,
+	  "file": "04-bandage",
+	  "key": "bandage",
+	  "title": "Bandage roll",
+	  "fit": [
+		72,
+		58
+	  ],
+	  "inventoryCells": [
+		1,
+		1
+	  ],
+	  "cell": [
+		96,
+		96
+	  ],
+	  "source": "docs/art/concepts/items-2026-10-15/04-bandage.png",
+	  "sourceSha256": "f6d494a0f89656094a8adcf23bc0aef0952547be0da4283bb38632029152ac49",
+	  "sourceBounds": {
+		"left": 167,
+		"top": 243,
+		"width": 951,
+		"height": 826,
+		"pixels": 560644
+	  },
+	  "bounds": {
+		"left": 14,
+		"top": 19,
+		"width": 67,
+		"height": 58,
+		"pixels": 2785
+	  },
+	  "paletteColors": 32,
+	  "alphaValues": [
+		0,
+		255
+	  ],
+	  "svgPixelMatch": true
+	},
+	{
+	  "index": 4,
+	  "file": "05-dagger",
+	  "key": "longsword",
+	  "title": "Iron dagger",
+	  "fit": [
+		74,
+		74
+	  ],
+	  "inventoryCells": [
+		1,
+		1
+	  ],
+	  "cell": [
+		96,
+		96
+	  ],
+	  "source": "docs/art/concepts/items-2026-10-15/05-dagger.png",
+	  "sourceSha256": "ae5d447722fb345055700e5b876e3fd9ab46acd503a86cbb240fb5afa5a80b78",
+	  "sourceBounds": {
+		"left": 255,
+		"top": 186,
+		"width": 814,
+		"height": 930,
+		"pixels": 197026
+	  },
+	  "bounds": {
+		"left": 15,
+		"top": 11,
+		"width": 65,
+		"height": 74,
+		"pixels": 1260
+	  },
+	  "paletteColors": 32,
+	  "alphaValues": [
+		0,
+		255
+	  ],
+	  "svgPixelMatch": true
+	},
+	{
+	  "index": 5,
+	  "file": "06-shield-relic",
+	  "key": "tower_shield",
+	  "title": "Shield relic",
+	  "fit": [
+		64,
+		72
+	  ],
+	  "inventoryCells": [
+		1,
+		1
+	  ],
+	  "cell": [
+		96,
+		96
+	  ],
+	  "source": "docs/art/concepts/items-2026-10-15/06-shield-relic.png",
+	  "sourceSha256": "105ed0c8207c7c71207119078053360cddac552736451b1c44e1bcb1f30f21db",
+	  "sourceBounds": {
+		"left": 304,
+		"top": 169,
+		"width": 662,
+		"height": 923,
+		"pixels": 400176
+	  },
+	  "bounds": {
+		"left": 22,
+		"top": 12,
+		"width": 52,
+		"height": 72,
+		"pixels": 2455
+	  },
+	  "paletteColors": 32,
+	  "alphaValues": [
+		0,
+		255
+	  ],
+	  "svgPixelMatch": true
+	},
+	{
+	  "index": 6,
+	  "file": "07-cursed-idol",
+	  "key": "cursed_idol",
+	  "title": "Cursed idol",
+	  "fit": [
+		64,
+		76
+	  ],
+	  "inventoryCells": [
+		1,
+		1
+	  ],
+	  "cell": [
+		96,
+		96
+	  ],
+	  "source": "docs/art/concepts/items-2026-10-15/07-cursed-idol.png",
+	  "sourceSha256": "1c77cf575961e67c90b57067b17b5507720446693a36bb57a40bf3d0b266a1cb",
+	  "sourceBounds": {
+		"left": 319,
+		"top": 54,
+		"width": 646,
+		"height": 1150,
+		"pixels": 543756
+	  },
+	  "bounds": {
+		"left": 26,
+		"top": 10,
+		"width": 43,
+		"height": 76,
+		"pixels": 2393
+	  },
+	  "paletteColors": 32,
+	  "alphaValues": [
+		0,
+		255
+	  ],
+	  "svgPixelMatch": true
+	},
+	{
+	  "index": 7,
+	  "file": "08-pendant",
+	  "key": "iron_charm",
+	  "title": "Pendant",
+	  "fit": [
+		50,
+		70
+	  ],
+	  "inventoryCells": [
+		1,
+		1
+	  ],
+	  "cell": [
+		96,
+		96
+	  ],
+	  "source": "docs/art/concepts/items-2026-10-15/08-pendant.png",
+	  "sourceSha256": "7af0b0938422ec30f67b33fb9a5ef3aa98aaad761b27b9c778ef884f15fafe1c",
+	  "sourceBounds": {
+		"left": 347,
+		"top": 62,
+		"width": 564,
+		"height": 1118,
+		"pixels": 346631
+	  },
+	  "bounds": {
+		"left": 30,
+		"top": 13,
+		"width": 35,
+		"height": 70,
+		"pixels": 1326
+	  },
+	  "paletteColors": 32,
+	  "alphaValues": [
+		0,
+		255
+	  ],
+	  "svgPixelMatch": true
+	}
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "cellPixels": 32,
+  "gapPixels": 0,
+  "rows": [
+    "##",
+    ".#"
+  ],
+  "columns": 2,
+  "rowCount": 2,
+  "canvas": {
+    "width": 64,
+    "height": 64
+  },
+  "occupiedCellCount": 3,
+  "cells": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 1,
+      "y": 0
+    },
+    {
+      "x": 1,
+      "y": 1
+    }
+  ],
+  "emptyCells": [
+    {
+      "x": 0,
+      "y": 1
+    }
+  ],
+  "connectedComponents": 1,
+  "backpackCellPixels": 32,
+  "targetViewEdge": 64,
+  "baseCanvas": {
+    "width": 64,
+    "height": 64
+  },
+  "reuseBase": true,
+  "validation": {
+    "paletteLimit": 32,
+    "opaqueColors": 24,
+    "binaryAlpha": true,
+    "pixelsOutsideFootprint": 0,
+    "visibleBounds": {
+      "x": 4,
+      "y": 9,
+      "width": 58,
+      "height": 48
+    },
+    "cellPixelCounts": [
+      {
+        "x": 0,
+        "y": 0,
+        "pixels": 276
+      },
+      {
+        "x": 1,
+        "y": 0,
+        "pixels": 182
+      },
+      {
+        "x": 1,
+        "y": 1,
+        "pixels": 234
+      }
+    ],
+    "warnings": [],
+    "svgPixelMatch": true
+  },
+  "sourcePng": "docs/art/concepts/venom-dagger-catalog-v1/native.png",
+  "sourceSha256": "bdb2f2ec48d9e4f7b114ec81282404eb4a9f21fc0d0059aeb310e30f0f2592ed",
+  "svgEncoding": "Editable color-grouped integer pixel runs derived from source PNG"
+}

@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://ryxo84237hcq"]
+
+[ext_resource type="PackedScene" path="res://components/character_preview/character_preview.tscn" id="portrait"]
+[ext_resource type="PackedScene" uid="uid://b8pk2ue168bup" path="res://components/pixel_stat_bar/pixel_stat_bar.tscn" id="stat_bar"]
+[ext_resource type="Theme" uid="uid://b3k7avi5t7hlb" path="res://themes/gameplay/theme.tres" id="theme"]
+[ext_resource type="Script" path="res://components/character_resource_layout.gd" id="resources"]
+
+[node name="Player" type="Control" unique_id=1374515782]
+script = ExtResource("resources")
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 584.0
+offset_bottom = 96.0
+mouse_filter = 2
+theme = ExtResource("theme")
+
+[node name="Portrait" parent="." unique_id=2026719560 instance=ExtResource("portrait")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 4.0
+offset_right = 110.0
+offset_bottom = 92.0
+
+[node name="HpBar" parent="." unique_id=1746029677 instance=ExtResource("stat_bar")]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 8.0
+offset_right = 562.0
+offset_bottom = 56.0
+mouse_filter = 1
+max_value = 40.0
+value = 40.0
+
+[node name="ManaBar" parent="." unique_id=1907908691 instance=ExtResource("stat_bar")]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 346.0
+offset_bottom = 92.0
+number_mode = 3
+segmented = true
+max_value = 12.0
+value = 0.0
+accent_color = Color(0.3, 0.63, 0.94, 1)
+bar_height = 28
+number_size = 16
+_appearance_overrides = {
+"accent_color": Color(0.3, 0.63, 0.94, 1),
+"bar_height": 28,
+"number_size": 16
+}
+
+[node name="StaminaBar" parent="." instance=ExtResource("stat_bar")]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 64.0
+offset_right = 562.0
+offset_bottom = 92.0
+number_mode = 3
+segmented = true
+max_value = 3.0
+value = 3.0
+accent_color = Color(0.949, 0.808, 0.451, 1)
+bar_height = 28
+number_size = 16
+_appearance_overrides = {
+"accent_color": Color(0.949, 0.808, 0.451, 1),
+"bar_height": 28,
+"number_size": 16
+}
+

@@ -1,0 +1,35 @@
+{
+  "relic_id": "plague_seal",
+  "status": "superseded draft",
+  "footprint": null,
+  "occupies_backpack_cells": false,
+  "canvas": [
+    32,
+    32
+  ],
+  "helper_mask": [
+    "#"
+  ],
+  "helper_mask_role": "Canvas check only",
+  "checks": {
+    "paletteLimit": 32,
+    "opaqueColors": 16,
+    "binaryAlpha": true,
+    "pixelsOutsideFootprint": 0,
+    "visibleBounds": {
+      "x": 4,
+      "y": 3,
+      "width": 25,
+      "height": 27
+    },
+    "cellPixelCounts": [
+      {
+        "x": 0,
+        "y": 0,
+        "pixels": 503
+      }
+    ],
+    "warnings": [],
+    "svgPixelMatch": true
+  }
+}

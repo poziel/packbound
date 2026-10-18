@@ -1,0 +1,268 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="stone"]
+albedo_color = Color(0.286, 0.208, 0.157, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="edge"]
+albedo_color = Color(0.416, 0.314, 0.22, 1)
+roughness = 1.0
+
+[sub_resource type="BoxMesh" id="Tread00_mesh"]
+size = Vector3(4, 0.36, 0.85)
+
+[sub_resource type="BoxMesh" id="Nosing00_mesh"]
+size = Vector3(4, 0.03, 0.12)
+
+[sub_resource type="BoxMesh" id="Tread01_mesh"]
+size = Vector3(4, 0.36, 0.85)
+
+[sub_resource type="BoxMesh" id="Nosing01_mesh"]
+size = Vector3(4, 0.03, 0.12)
+
+[sub_resource type="BoxMesh" id="Tread02_mesh"]
+size = Vector3(4, 0.36, 0.85)
+
+[sub_resource type="BoxMesh" id="Nosing02_mesh"]
+size = Vector3(4, 0.03, 0.12)
+
+[sub_resource type="BoxMesh" id="Tread03_mesh"]
+size = Vector3(4, 0.36, 0.85)
+
+[sub_resource type="BoxMesh" id="Nosing03_mesh"]
+size = Vector3(4, 0.03, 0.12)
+
+[sub_resource type="BoxMesh" id="Tread04_mesh"]
+size = Vector3(4, 0.36, 0.85)
+
+[sub_resource type="BoxMesh" id="Nosing04_mesh"]
+size = Vector3(4, 0.03, 0.12)
+
+[sub_resource type="BoxMesh" id="Tread05_mesh"]
+size = Vector3(4, 0.36, 0.85)
+
+[sub_resource type="BoxMesh" id="Nosing05_mesh"]
+size = Vector3(4, 0.03, 0.12)
+
+[sub_resource type="BoxMesh" id="Tread06_mesh"]
+size = Vector3(4, 0.36, 0.85)
+
+[sub_resource type="BoxMesh" id="Nosing06_mesh"]
+size = Vector3(4, 0.03, 0.12)
+
+[sub_resource type="BoxMesh" id="Tread07_mesh"]
+size = Vector3(4, 0.36, 0.85)
+
+[sub_resource type="BoxMesh" id="Nosing07_mesh"]
+size = Vector3(4, 0.03, 0.12)
+
+[sub_resource type="BoxMesh" id="Tread08_mesh"]
+size = Vector3(4, 0.36, 0.85)
+
+[sub_resource type="BoxMesh" id="Nosing08_mesh"]
+size = Vector3(4, 0.03, 0.12)
+
+[sub_resource type="BoxMesh" id="Tread09_mesh"]
+size = Vector3(4, 0.36, 0.85)
+
+[sub_resource type="BoxMesh" id="Nosing09_mesh"]
+size = Vector3(4, 0.03, 0.12)
+
+[sub_resource type="BoxMesh" id="Tread10_mesh"]
+size = Vector3(4, 0.36, 0.85)
+
+[sub_resource type="BoxMesh" id="Nosing10_mesh"]
+size = Vector3(4, 0.03, 0.12)
+
+[sub_resource type="BoxMesh" id="Tread11_mesh"]
+size = Vector3(4, 0.36, 0.85)
+
+[sub_resource type="BoxMesh" id="Nosing11_mesh"]
+size = Vector3(4, 0.03, 0.12)
+
+[sub_resource type="BoxMesh" id="Tread12_mesh"]
+size = Vector3(4, 0.36, 0.85)
+
+[sub_resource type="BoxMesh" id="Nosing12_mesh"]
+size = Vector3(4, 0.03, 0.12)
+
+[sub_resource type="BoxMesh" id="Tread13_mesh"]
+size = Vector3(4, 0.36, 0.85)
+
+[sub_resource type="BoxMesh" id="Nosing13_mesh"]
+size = Vector3(4, 0.03, 0.12)
+
+[sub_resource type="BoxMesh" id="WestWall_mesh"]
+size = Vector3(0.4, 10, 13)
+
+[sub_resource type="BoxMesh" id="EastWall_mesh"]
+size = Vector3(0.4, 10, 13)
+
+[sub_resource type="BoxMesh" id="LowerLanding_mesh"]
+size = Vector3(4, 0.4, 2)
+
+[sub_resource type="BoxMesh" id="ceiling_mesh"]
+size = Vector3(4.4, 0.3, 12.8)
+
+[node name="TimberVisuals" type="Node3D"]
+
+[node name="Tread00" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.46, -0.425)
+mesh = SubResource("Tread00_mesh")
+material_override = SubResource("stone")
+
+[node name="Nosing00" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.27, 0)
+mesh = SubResource("Nosing00_mesh")
+material_override = SubResource("edge")
+
+[node name="Tread01" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.74, -1.275)
+mesh = SubResource("Tread01_mesh")
+material_override = SubResource("stone")
+
+[node name="Nosing01" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.55, -0.85)
+mesh = SubResource("Nosing01_mesh")
+material_override = SubResource("edge")
+
+[node name="Tread02" type="MeshInstance3D" parent="."]
+position = Vector3(0, -1.02, -2.125)
+mesh = SubResource("Tread02_mesh")
+material_override = SubResource("stone")
+
+[node name="Nosing02" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.8300000000000001, -1.7)
+mesh = SubResource("Nosing02_mesh")
+material_override = SubResource("edge")
+
+[node name="Tread03" type="MeshInstance3D" parent="."]
+position = Vector3(0, -1.3, -2.975)
+mesh = SubResource("Tread03_mesh")
+material_override = SubResource("stone")
+
+[node name="Nosing03" type="MeshInstance3D" parent="."]
+position = Vector3(0, -1.11, -2.55)
+mesh = SubResource("Nosing03_mesh")
+material_override = SubResource("edge")
+
+[node name="Tread04" type="MeshInstance3D" parent="."]
+position = Vector3(0, -1.58, -3.8249999999999997)
+mesh = SubResource("Tread04_mesh")
+material_override = SubResource("stone")
+
+[node name="Nosing04" type="MeshInstance3D" parent="."]
+position = Vector3(0, -1.3900000000000001, -3.4)
+mesh = SubResource("Nosing04_mesh")
+material_override = SubResource("edge")
+
+[node name="Tread05" type="MeshInstance3D" parent="."]
+position = Vector3(0, -1.86, -4.675)
+mesh = SubResource("Tread05_mesh")
+material_override = SubResource("stone")
+
+[node name="Nosing05" type="MeshInstance3D" parent="."]
+position = Vector3(0, -1.6700000000000002, -4.25)
+mesh = SubResource("Nosing05_mesh")
+material_override = SubResource("edge")
+
+[node name="Tread06" type="MeshInstance3D" parent="."]
+position = Vector3(0, -2.14, -5.5249999999999995)
+mesh = SubResource("Tread06_mesh")
+material_override = SubResource("stone")
+
+[node name="Nosing06" type="MeshInstance3D" parent="."]
+position = Vector3(0, -1.9500000000000002, -5.1)
+mesh = SubResource("Nosing06_mesh")
+material_override = SubResource("edge")
+
+[node name="Tread07" type="MeshInstance3D" parent="."]
+position = Vector3(0, -2.4200000000000004, -6.375)
+mesh = SubResource("Tread07_mesh")
+material_override = SubResource("stone")
+
+[node name="Nosing07" type="MeshInstance3D" parent="."]
+position = Vector3(0, -2.2300000000000004, -5.95)
+mesh = SubResource("Nosing07_mesh")
+material_override = SubResource("edge")
+
+[node name="Tread08" type="MeshInstance3D" parent="."]
+position = Vector3(0, -2.7000000000000006, -7.225)
+mesh = SubResource("Tread08_mesh")
+material_override = SubResource("stone")
+
+[node name="Nosing08" type="MeshInstance3D" parent="."]
+position = Vector3(0, -2.5100000000000007, -6.8)
+mesh = SubResource("Nosing08_mesh")
+material_override = SubResource("edge")
+
+[node name="Tread09" type="MeshInstance3D" parent="."]
+position = Vector3(0, -2.9800000000000004, -8.075)
+mesh = SubResource("Tread09_mesh")
+material_override = SubResource("stone")
+
+[node name="Nosing09" type="MeshInstance3D" parent="."]
+position = Vector3(0, -2.7900000000000005, -7.6499999999999995)
+mesh = SubResource("Nosing09_mesh")
+material_override = SubResource("edge")
+
+[node name="Tread10" type="MeshInstance3D" parent="."]
+position = Vector3(0, -3.2600000000000002, -8.924999999999999)
+mesh = SubResource("Tread10_mesh")
+material_override = SubResource("stone")
+
+[node name="Nosing10" type="MeshInstance3D" parent="."]
+position = Vector3(0, -3.0700000000000003, -8.5)
+mesh = SubResource("Nosing10_mesh")
+material_override = SubResource("edge")
+
+[node name="Tread11" type="MeshInstance3D" parent="."]
+position = Vector3(0, -3.5400000000000005, -9.775)
+mesh = SubResource("Tread11_mesh")
+material_override = SubResource("stone")
+
+[node name="Nosing11" type="MeshInstance3D" parent="."]
+position = Vector3(0, -3.3500000000000005, -9.35)
+mesh = SubResource("Nosing11_mesh")
+material_override = SubResource("edge")
+
+[node name="Tread12" type="MeshInstance3D" parent="."]
+position = Vector3(0, -3.8200000000000007, -10.625)
+mesh = SubResource("Tread12_mesh")
+material_override = SubResource("stone")
+
+[node name="Nosing12" type="MeshInstance3D" parent="."]
+position = Vector3(0, -3.630000000000001, -10.2)
+mesh = SubResource("Nosing12_mesh")
+material_override = SubResource("edge")
+
+[node name="Tread13" type="MeshInstance3D" parent="."]
+position = Vector3(0, -4.1000000000000005, -11.475)
+mesh = SubResource("Tread13_mesh")
+material_override = SubResource("stone")
+
+[node name="Nosing13" type="MeshInstance3D" parent="."]
+position = Vector3(0, -3.9100000000000006, -11.049999999999999)
+mesh = SubResource("Nosing13_mesh")
+material_override = SubResource("edge")
+
+[node name="WestWall" type="MeshInstance3D" parent="."]
+position = Vector3(-2.2, 0, -6)
+mesh = SubResource("WestWall_mesh")
+material_override = SubResource("stone")
+
+[node name="EastWall" type="MeshInstance3D" parent="."]
+position = Vector3(2.2, 0, -6)
+mesh = SubResource("EastWall_mesh")
+material_override = SubResource("stone")
+
+[node name="LowerLanding" type="MeshInstance3D" parent="."]
+position = Vector3(0, -4.13, -12.8)
+mesh = SubResource("LowerLanding_mesh")
+material_override = SubResource("stone")
+
+[node name="Ceiling" type="MeshInstance3D" parent="."]
+position = Vector3(0, 3.24, -5.95)
+rotation = Vector3(-0.3182, 0, 0)
+mesh = SubResource("ceiling_mesh")
+material_override = SubResource("stone")

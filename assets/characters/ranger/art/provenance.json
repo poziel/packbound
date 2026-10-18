@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "delverId": "ranger",
+  "operation": "Path-only consolidation; no artwork redrawn",
+  "priorFolderArchive": "characters-before-folder-consolidation-20261017T194737Z.zip",
+  "historicalAcceptance": {
+    "status": "accepted",
+    "version": 3,
+    "acceptedAt": "2026-10-16",
+    "acceptanceBasis": "User: \"yeah love that. install them in the game.\"",
+    "sourceReview": "docs/art/concepts/characters/ranger-v3/acceptance.json",
+    "runtimeAsset": "assets/characters/ranger.svg",
+    "sourceAsset": "assets/characters/ranger/art/v3/body.json",
+    "portrait": "assets/characters/portraits/ranger.png",
+    "portraitSource": "assets/characters/ranger/art/v3/portrait.json",
+    "outputs": {
+      "ranger.svg": {
+        "sha256": "b250a0bc14803b7c44be4adf51ca9b1e41336ada7ca40d0457427f09d23cf941",
+        "source": "assets/characters/ranger/art/v3/full-body.svg"
+      },
+      "ranger.png": {
+        "sha256": "106be95da286963821b588f00d4f5cbdcf9ca1e032229e5b4c2158e2bfc815fe",
+        "source": "assets/characters/ranger/art/v3/full-body.png"
+      },
+      "portraits/ranger.png": {
+        "sha256": "92d98ec75d911e4781587fa18397f202ee543def57694e8439966e98c6b6dda0",
+        "source": "assets/characters/ranger/art/v3/portrait.png"
+      }
+    }
+  },
+  "currentAssets": {
+    "full-body.sprite.json": {
+      "path": "assets/characters/ranger/art/full-body.sprite.json",
+      "sha256": "9a91c23addc3066f808759f5c60a9c732e918b5b73bb21bd88d8534393c57ea4",
+      "originalPath": "assets/characters/ranger/art/v3/body.json"
+    },
+    "full-body.png": {
+      "path": "assets/characters/ranger/art/full-body.png",
+      "sha256": "106be95da286963821b588f00d4f5cbdcf9ca1e032229e5b4c2158e2bfc815fe",
+      "originalPath": "assets/characters/ranger.png"
+    },
+    "full-body.svg": {
+      "path": "assets/characters/ranger/art/full-body.svg",
+      "sha256": "b250a0bc14803b7c44be4adf51ca9b1e41336ada7ca40d0457427f09d23cf941",
+      "originalPath": "assets/characters/ranger.svg"
+    },
+    "portrait.sprite.json": {
+      "path": "assets/characters/ranger/art/portrait.sprite.json",
+      "sha256": "5dadd8bf624aee3cf010067014a00bd4792685b4b7f60f1fd4f8d021bd4b8312",
+      "originalPath": "assets/characters/ranger/art/v3/portrait.json"
+    },
+    "portrait.png": {
+      "path": "assets/characters/ranger/art/portrait.png",
+      "sha256": "92d98ec75d911e4781587fa18397f202ee543def57694e8439966e98c6b6dda0",
+      "originalPath": "assets/characters/portraits/ranger.png"
+    },
+    "portrait.svg": {
+      "path": "assets/characters/ranger/art/portrait.svg",
+      "sha256": "86e67476c236604015708c8fd081008ca756a9bcefa312b2707fafabd3da931c",
+      "originalPath": "assets/characters/ranger/art/v3/portrait.svg"
+    }
+  },
+  "editability": "Original layered spritex JSON preserved byte-for-byte; no new layers or animation rig claimed."
+}

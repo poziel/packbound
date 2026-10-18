@@ -1,0 +1,337 @@
+[gd_scene format=3]
+
+[ext_resource type="Theme" path="res://themes/menu/theme.tres" id="theme"]
+[ext_resource type="PackedScene" path="res://components/menu_button/hold_menu_button.tscn" id="hold"]
+[ext_resource type="Script" path="res://components/menu_button/showcase.gd" id="showcase"]
+[ext_resource type="PackedScene" path="res://components/pixel_search_field/pixel_search_field.tscn" id="search"]
+[ext_resource type="PackedScene" path="res://components/pixel_scrollbar/pixel_scroll_container.tscn" id="scroll"]
+[ext_resource type="PackedScene" path="res://scenes/menus/delver_tile.tscn" id="tile"]
+[ext_resource type="Texture2D" path="res://assets/characters/mage/art/full-body.svg" id="portrait"]
+
+[sub_resource type="StyleBoxLine" id="thick_line"]
+color = Color(0.498, 0.537, 0.396, 1)
+thickness = 4
+
+[sub_resource type="StyleBoxLine" id="thin_line"]
+color = Color(0.498, 0.537, 0.396, 1)
+thickness = 1
+
+[node name="ThemeShowcase" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 800.0
+texture_filter = 1
+theme = ExtResource("theme")
+script = ExtResource("showcase")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.038, 0.048, 0.069, 1)
+
+[node name="Heading" type="Label" parent="."]
+offset_left = 36.0
+offset_top = 22.0
+offset_right = 1244.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 40
+text = "PACKBOUND / MENUS"
+
+[node name="Description" type="Label" parent="."]
+offset_left = 38.0
+offset_top = 84.0
+offset_right = 1244.0
+offset_bottom = 118.0
+theme_override_font_sizes/font_size = 20
+text = "Shared theme appearance. Hover, focus and type to try the controls."
+
+[node name="Frame" type="PanelContainer" parent="."]
+offset_left = 32.0
+offset_top = 136.0
+offset_right = 1248.0
+offset_bottom = 772.0
+
+[node name="Padding" type="MarginContainer" parent="Frame"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="Columns" type="HBoxContainer" parent="Frame/Padding"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Actions" type="VBoxContainer" parent="Frame/Padding/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.0
+theme_override_constants/separation = 10
+
+[node name="DividerBrowse" type="VSeparator" parent="Frame/Padding/Columns"]
+layout_mode = 2
+
+[node name="Browse" type="VBoxContainer" parent="Frame/Padding/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.0
+theme_override_constants/separation = 10
+
+[node name="DividerDetails" type="VSeparator" parent="Frame/Padding/Columns"]
+layout_mode = 2
+
+[node name="Details" type="VBoxContainer" parent="Frame/Padding/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.0
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Frame/Padding/Columns/Actions"]
+layout_mode = 2
+text = "BUTTONS & STATES"
+theme_override_font_sizes/font_size = 22
+
+[node name="Native" type="Button" parent="Frame/Padding/Columns/Actions"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 64)
+text = "BEGIN ADVENTURE"
+
+[node name="Paired" type="HBoxContainer" parent="Frame/Padding/Columns/Actions"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 64)
+theme_override_constants/separation = 6
+
+[node name="Left" type="Button" parent="Frame/Padding/Columns/Actions/Paired"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"LeftMenuButton"
+text = "RESTART"
+
+[node name="Plain" type="Button" parent="Frame/Padding/Columns/Actions/Paired"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"PlainMenuButton"
+text = "PLAIN"
+
+[node name="Right" type="Button" parent="Frame/Padding/Columns/Actions/Paired"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ResumeRightMenuButton"
+text = "RESUME"
+
+[node name="Disabled" type="Button" parent="Frame/Padding/Columns/Actions"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 64)
+text = "UNAVAILABLE"
+disabled = true
+
+[node name="Compact" type="Button" parent="Frame/Padding/Columns/Actions"]
+layout_mode = 2
+custom_minimum_size = Vector2(112, 56)
+size_flags_horizontal = 4
+theme_type_variation = &"CompactMenuButton"
+text = "BACK"
+
+[node name="Hold" parent="Frame/Padding/Columns/Actions" instance=ExtResource("hold")]
+layout_mode = 2
+
+[node name="HoldStatus" type="Label" parent="Frame/Padding/Columns/Actions"]
+layout_mode = 2
+text = "Release early to cancel."
+horizontal_alignment = 1
+
+[node name="Separator" type="HSeparator" parent="Frame/Padding/Columns/Actions"]
+layout_mode = 2
+
+[node name="TooltipTarget" type="Button" parent="Frame/Padding/Columns/Actions"]
+tooltip_text = "Use Tab to focus; Enter or Space to activate."
+layout_mode = 2
+custom_minimum_size = Vector2(0, 56)
+text = "HOVER OR FOCUS"
+
+[node name="Title" type="Label" parent="Frame/Padding/Columns/Browse"]
+layout_mode = 2
+text = "SEARCH & SCROLL"
+theme_override_font_sizes/font_size = 22
+
+[node name="Search" parent="Frame/Padding/Columns/Browse" instance=ExtResource("search")]
+layout_mode = 2
+list_path = NodePath("../List/Rows")
+placeholder_text = "Search supplies..."
+
+[node name="List" parent="Frame/Padding/Columns/Browse" instance=ExtResource("scroll")]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 300)
+size_flags_vertical = 3
+
+[node name="Rows" type="VBoxContainer" parent="Frame/Padding/Columns/Browse/List"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Supply0" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 56)
+text = "IRON CHARM"
+
+[node name="Supply1" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 56)
+text = "GRAVE BANDAGE"
+
+[node name="Supply2" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 56)
+text = "EMBER GRIMOIRE"
+
+[node name="Supply3" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 56)
+text = "CRACKED SHIELD"
+
+[node name="Supply4" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 56)
+text = "VENOM DAGGER"
+
+[node name="Supply5" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 56)
+text = "HEALING FLASK"
+
+[node name="Supply6" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 56)
+text = "STURDY BOOTS"
+
+[node name="Supply7" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 56)
+text = "SILVER RING"
+
+[node name="Supply8" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 56)
+text = "OAK WAND"
+
+[node name="Supply9" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 56)
+text = "TRAVELER CLOAK"
+
+[node name="HorizontalLabel" type="Label" parent="Frame/Padding/Columns/Browse"]
+layout_mode = 2
+text = "HORIZONTAL OVERFLOW"
+theme_override_font_sizes/font_size = 18
+
+[node name="Horizontal" parent="Frame/Padding/Columns/Browse" instance=ExtResource("scroll")]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 86)
+horizontal_scroll_mode = 1
+vertical_scroll_mode = 0
+
+[node name="Row" type="HBoxContainer" parent="Frame/Padding/Columns/Browse/Horizontal"]
+layout_mode = 2
+
+[node name="Page0" type="Button" parent="Frame/Padding/Columns/Browse/Horizontal/Row"]
+layout_mode = 2
+custom_minimum_size = Vector2(128, 50)
+text = "PAGE 1"
+
+[node name="Page1" type="Button" parent="Frame/Padding/Columns/Browse/Horizontal/Row"]
+layout_mode = 2
+custom_minimum_size = Vector2(128, 50)
+text = "PAGE 2"
+
+[node name="Page2" type="Button" parent="Frame/Padding/Columns/Browse/Horizontal/Row"]
+layout_mode = 2
+custom_minimum_size = Vector2(128, 50)
+text = "PAGE 3"
+
+[node name="Page3" type="Button" parent="Frame/Padding/Columns/Browse/Horizontal/Row"]
+layout_mode = 2
+custom_minimum_size = Vector2(128, 50)
+text = "PAGE 4"
+
+[node name="Page4" type="Button" parent="Frame/Padding/Columns/Browse/Horizontal/Row"]
+layout_mode = 2
+custom_minimum_size = Vector2(128, 50)
+text = "PAGE 5"
+
+[node name="Page5" type="Button" parent="Frame/Padding/Columns/Browse/Horizontal/Row"]
+layout_mode = 2
+custom_minimum_size = Vector2(128, 50)
+text = "PAGE 6"
+
+[node name="Page6" type="Button" parent="Frame/Padding/Columns/Browse/Horizontal/Row"]
+layout_mode = 2
+custom_minimum_size = Vector2(128, 50)
+text = "PAGE 7"
+
+[node name="Page7" type="Button" parent="Frame/Padding/Columns/Browse/Horizontal/Row"]
+layout_mode = 2
+custom_minimum_size = Vector2(128, 50)
+text = "PAGE 8"
+
+[node name="Title" type="Label" parent="Frame/Padding/Columns/Details"]
+layout_mode = 2
+text = "DELVER & TYPOGRAPHY"
+theme_override_font_sizes/font_size = 22
+
+[node name="Delver" parent="Frame/Padding/Columns/Details" instance=ExtResource("tile")]
+layout_mode = 2
+custom_minimum_size = Vector2(208, 208)
+size_flags_horizontal = 4
+class_key = "mage"
+
+[node name="Portrait" parent="Frame/Padding/Columns/Details/Delver"]
+texture = ExtResource("portrait")
+
+[node name="ClassName" parent="Frame/Padding/Columns/Details/Delver"]
+text = "Mage"
+
+[node name="Body" type="Label" parent="Frame/Padding/Columns/Details"]
+layout_mode = 2
+text = "Choose a delver. Begin a run."
+theme_override_font_sizes/font_size = 20
+
+[node name="Hint" type="Label" parent="Frame/Padding/Columns/Details"]
+layout_mode = 2
+text = "Menu controls inherit this palette."
+theme_override_font_sizes/font_size = 16
+
+[node name="SeparatorTitle" type="Label" parent="Frame/Padding/Columns/Details"]
+layout_mode = 2
+text = "SEPARATOR THICKNESS"
+theme_override_font_sizes/font_size = 18
+
+[node name="Thin" type="HSeparator" parent="Frame/Padding/Columns/Details"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("thin_line")
+
+[node name="Default" type="HSeparator" parent="Frame/Padding/Columns/Details"]
+layout_mode = 2
+
+[node name="Thick" type="HSeparator" parent="Frame/Padding/Columns/Details"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("thick_line")
+
+[node name="ThicknessHint" type="Label" parent="Frame/Padding/Columns/Details"]
+layout_mode = 2
+text = "1 / 2 / 4 px lines; 20 px spacing"
+theme_override_font_sizes/font_size = 16
+
+[node name="TooltipPanel" type="PanelContainer" parent="Frame/Padding/Columns/Details"]
+layout_mode = 2
+theme_type_variation = &"TooltipPanel"
+
+[node name="TooltipLabel" type="Label" parent="Frame/Padding/Columns/Details/TooltipPanel"]
+layout_mode = 2
+theme_type_variation = &"TooltipLabel"
+text = "Tooltip panel + label preview"

@@ -1,0 +1,67 @@
+{
+  "key": "bandage",
+  "name": "Grave Bandage",
+  "category": "healing",
+  "gameplayRole": "healer",
+  "inventoryMask": [
+    "#"
+  ],
+  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "exports": [
+    "bandage.png",
+    "bandage.svg",
+    "revisions/catalog-v1/grave-bandage-32px.png",
+    "revisions/catalog-v1/grave-bandage-32px.svg",
+    "revisions/catalog-v1/grave-bandage-32px.footprint.json"
+  ],
+  "editableSources": [
+    "revisions/catalog-v1/grave-bandage-32px.pxo",
+    "revisions/catalog-v1/grave-bandage-32px.svg"
+  ],
+  "runtime": {
+    "texture": "res://assets/items/healing/bandage/revisions/catalog-v1/grave-bandage-32px.svg",
+    "viewPolicy": "Reuse approved native sprite across display sizes with nearest filtering."
+  },
+  "atlasProvenance": {
+    "index": 3,
+    "file": "04-bandage",
+    "key": "bandage",
+    "title": "Bandage roll",
+    "fit": [
+      72,
+      58
+    ],
+    "inventoryCells": [
+      1,
+      1
+    ],
+    "cell": [
+      96,
+      96
+    ],
+    "source": "docs/art/concepts/items-2026-10-15/04-bandage.png",
+    "sourceSha256": "f6d494a0f89656094a8adcf23bc0aef0952547be0da4283bb38632029152ac49",
+    "sourceBounds": {
+      "left": 167,
+      "top": 243,
+      "width": 951,
+      "height": 826,
+      "pixels": 560644
+    },
+    "bounds": {
+      "left": 14,
+      "top": 19,
+      "width": 67,
+      "height": 58,
+      "pixels": 2785
+    },
+    "paletteColors": 32,
+    "alphaValues": [
+      0,
+      255
+    ],
+    "svgPixelMatch": true
+  },
+  "activeRevision": "catalog-v1",
+  "revisionProvenance": "res://docs/art/concepts/bandage-catalog-v1/provenance.json"
+}

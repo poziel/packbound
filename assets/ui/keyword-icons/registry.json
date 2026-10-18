@@ -1,0 +1,2009 @@
+{
+  "schema_version": 2,
+  "status": "user-requested revision; active for review",
+  "palette": {
+    "keyword.health": {
+      "default": "#F2868F",
+      "theme_overrides": {
+        "menu-hover": "#F7B9BE"
+      },
+      "status": "revision for review"
+    },
+    "keyword.stamina": {
+      "default": "#F2CE73",
+      "theme_overrides": {}
+    },
+    "keyword.mana": {
+      "default": "#86BCF2",
+      "theme_overrides": {
+        "menu-hover": "#A4CDF5"
+      },
+      "status": "revision for review"
+    },
+    "keyword.block": {
+      "default": "#85BAF0",
+      "theme_overrides": {
+        "menu-hover": "#A6CDF4"
+      },
+      "status": "revision for review"
+    },
+    "keyword.plating": {
+      "default": "#85BAF0",
+      "theme_overrides": {
+        "menu-hover": "#A6CDF4"
+      },
+      "status": "revision for review"
+    },
+    "keyword.slow": {
+      "default": "#A8D3EE",
+      "theme_overrides": {},
+      "status": "revision for review"
+    },
+    "keyword.healing": {
+      "default": "#A5C976",
+      "theme_overrides": {
+        "menu-hover": "#B5D38F"
+      },
+      "status": "revision for review"
+    },
+    "keyword.vampirism": {
+      "default": "#F2868F",
+      "theme_overrides": {
+        "menu-hover": "#F7B9BE"
+      },
+      "status": "revision for review"
+    },
+    "keyword.ward": {
+      "default": "#B99ADE",
+      "theme_overrides": {
+        "menu-hover": "#D4C1EB"
+      },
+      "status": "revision for review"
+    },
+    "keyword.poison": {
+      "default": "#A5C976",
+      "theme_overrides": {
+        "menu-hover": "#B5D38F"
+      },
+      "status": "revision for review"
+    },
+    "keyword.burn": {
+      "default": "#EDB172",
+      "theme_overrides": {
+        "menu-hover": "#F0C08D"
+      },
+      "status": "revision for review"
+    },
+    "keyword.curse": {
+      "default": "#B99ADE",
+      "theme_overrides": {
+        "menu-hover": "#D4C1EB"
+      },
+      "status": "revision for review"
+    },
+    "keyword.thorns": {
+      "default": "#A5C976",
+      "theme_overrides": {
+        "menu-hover": "#B5D38F"
+      },
+      "status": "revision for review"
+    },
+    "keyword.damage": {
+      "default": "#F2868F",
+      "theme_overrides": {
+        "menu-hover": "#F7B9BE"
+      },
+      "status": "revision for review"
+    },
+    "keyword.cleanse": {
+      "default": "#A8DED2",
+      "theme_overrides": {},
+      "status": "revision for review"
+    },
+    "keyword.crit_chance": {
+      "default": "#F0C875",
+      "theme_overrides": {},
+      "status": "revision for review"
+    },
+    "keyword.critical_damage": {
+      "default": "#F2868F",
+      "theme_overrides": {
+        "menu-hover": "#F7B9BE"
+      },
+      "status": "revision for review"
+    },
+    "keyword.magical_attack": {
+      "default": "#B99ADE",
+      "theme_overrides": {
+        "menu-hover": "#D4C1EB"
+      },
+      "status": "revision for review"
+    },
+    "keyword.total_attack": {
+      "default": "#F2BB8F",
+      "theme_overrides": {
+        "menu-hover": "#F3BE93"
+      },
+      "status": "revision for review"
+    },
+    "keyword.physical_attack": {
+      "default": "#EAB08C",
+      "theme_overrides": {
+        "menu-hover": "#EEBFA2"
+      },
+      "status": "revision for review"
+    },
+    "keyword.accuracy": {
+      "default": "#A8D3EE",
+      "theme_overrides": {},
+      "status": "revision for review"
+    },
+    "keyword.toughness": {
+      "default": "#B8C7D7",
+      "theme_overrides": {
+        "menu-hover": "#BCCAD9"
+      },
+      "status": "revision for review"
+    },
+    "keyword.luck": {
+      "default": "#A5C976",
+      "theme_overrides": {
+        "menu-hover": "#B5D38F"
+      },
+      "status": "revision for review"
+    },
+    "keyword.doom": {
+      "default": "#C5A5E8",
+      "theme_overrides": {
+        "menu-hover": "#D6BFEF"
+      },
+      "status": "revision for review"
+    }
+  },
+  "keywords": {
+    "health": {
+      "label": "Health",
+      "aliases": [
+        "health",
+        "HP"
+      ],
+      "icon_id": "stat.health",
+      "color_token": "keyword.health",
+      "placement": "before-keyword",
+      "meaning": "Current or maximum HP; reaching zero ends the descent unless saved.",
+      "mechanic_status": "existing"
+    },
+    "stamina": {
+      "label": "Stamina",
+      "color_token": "keyword.stamina",
+      "aliases": [
+        "stamina"
+      ],
+      "icon_id": "stat.stamina",
+      "meaning": "Physical activation budget; refills each round. A yellow AA battery represents stamina/energy, distinct from the blue mana gem.",
+      "mechanic_status": "existing"
+    },
+    "mana": {
+      "label": "Mana",
+      "aliases": [
+        "mana"
+      ],
+      "icon_id": "stat.mana",
+      "color_token": "keyword.mana",
+      "placement": "before-keyword",
+      "meaning": "Magical activation budget; refills each round. Costs allocate by explicit priority then backpack reading order; unused mana does not accumulate.",
+      "mechanic_status": "existing"
+    },
+    "block": {
+      "label": "Block",
+      "aliases": [
+        "block"
+      ],
+      "icon_id": "stat.block",
+      "color_token": "keyword.block",
+      "placement": "before-keyword",
+      "meaning": "Persistent protection pool used by players and enemies. Absorbed strikes spend it; excess hits health. Only explicit effects restore it.",
+      "mechanic_status": "existing"
+    },
+    "plating": {
+      "label": "Plating",
+      "aliases": [
+        "plating"
+      ],
+      "icon_id": "stat.plating",
+      "color_token": "keyword.plating",
+      "placement": "before-keyword",
+      "meaning": "Reduces every enemy strike before the shared Block pool is spent; the same Plating value protects every strike and strengthens Warrior Riposte.",
+      "mechanic_status": "existing"
+    },
+    "slow": {
+      "label": "Slow",
+      "aliases": [
+        "slow"
+      ],
+      "icon_id": "effect.slow",
+      "color_token": "keyword.slow",
+      "placement": "before-keyword",
+      "meaning": "Reduces every enemy strike this turn before spending block; combines with plating.",
+      "mechanic_status": "existing"
+    },
+    "healing": {
+      "label": "Healing",
+      "aliases": [
+        "healing",
+        "regeneration"
+      ],
+      "icon_id": "stat.healing",
+      "color_token": "keyword.healing",
+      "placement": "before-keyword",
+      "meaning": "Restores HP before attacks resolve, capped at maximum HP.",
+      "mechanic_status": "existing"
+    },
+    "vampirism": {
+      "label": "Vampirism",
+      "aliases": [
+        "vampirism"
+      ],
+      "icon_id": "effect.vampirism",
+      "color_token": "keyword.vampirism",
+      "placement": "before-keyword",
+      "meaning": "Restores HP from actual direct damage dealt, capped at the vampirism value; overkill adds no healing.",
+      "mechanic_status": "existing"
+    },
+    "ward": {
+      "label": "Ward",
+      "aliases": [
+        "ward"
+      ],
+      "icon_id": "stat.ward",
+      "color_token": "keyword.ward",
+      "placement": "before-keyword",
+      "meaning": "Shared pool absorbs curse, poison and reflected damage this turn, not ordinary strikes or Arcane Barter HP cost.",
+      "mechanic_status": "existing"
+    },
+    "poison": {
+      "label": "Poison",
+      "aliases": [
+        "poison"
+      ],
+      "icon_id": "effect.poison",
+      "color_token": "keyword.poison",
+      "placement": "before-keyword",
+      "meaning": "Stacks deal damage after direct attacks and normally decay by one each turn; bypass enemy shields.",
+      "mechanic_status": "existing"
+    },
+    "burn": {
+      "label": "Burn",
+      "aliases": [
+        "burn"
+      ],
+      "icon_id": "effect.burn",
+      "color_token": "keyword.burn",
+      "placement": "before-keyword",
+      "meaning": "Burning enemy stacks deal damage after direct attacks, bypass shields, decay by one each turn.",
+      "mechanic_status": "existing"
+    },
+    "curse": {
+      "label": "Curse",
+      "aliases": [
+        "curse"
+      ],
+      "icon_id": "effect.curse",
+      "color_token": "keyword.curse",
+      "placement": "before-keyword",
+      "meaning": "Per-turn HP cost from cursed items, absorbed by ward before health.",
+      "mechanic_status": "existing"
+    },
+    "thorns": {
+      "label": "Thorns",
+      "aliases": [
+        "thorns"
+      ],
+      "icon_id": "effect.thorns",
+      "color_token": "keyword.thorns",
+      "placement": "before-keyword",
+      "meaning": "Retaliation damage after every enemy strike, including blocked strikes; bypasses enemy shields and can stop remaining strikes by killing the attacker.",
+      "mechanic_status": "existing"
+    },
+    "damage": {
+      "label": "Damage",
+      "aliases": [
+        "damage",
+        "direct damage"
+      ],
+      "icon_id": "stat.damage",
+      "color_token": "keyword.damage",
+      "placement": "before-keyword",
+      "meaning": "Combined direct damage from weapons, bows, spells and bone thralls; enemy shield absorbs it first, excess reaches health; poison, burn and retaliation are separate.",
+      "mechanic_status": "existing"
+    },
+    "cleanse": {
+      "label": "Cleanse",
+      "aliases": [
+        "cleanse"
+      ],
+      "icon_id": "effect.cleanse",
+      "color_token": "keyword.cleanse",
+      "placement": "before-keyword",
+      "meaning": "Removes poison stacks from the player before poison deals damage; does not remove enemy poison.",
+      "mechanic_status": "existing"
+    },
+    "crit_chance": {
+      "label": "Crit chance",
+      "aliases": [
+        "crit chance",
+        "critical chance"
+      ],
+      "icon_id": "stat.crit_chance",
+      "color_token": "keyword.crit_chance",
+      "placement": "before-keyword",
+      "meaning": "Visual identity for crit chance only; no current combat definition or formula is assigned.",
+      "mechanic_status": "artwork-only"
+    },
+    "critical_damage": {
+      "label": "Critical damage",
+      "aliases": [
+        "critical damage",
+        "crit damage"
+      ],
+      "icon_id": "stat.critical_damage",
+      "color_token": "keyword.critical_damage",
+      "placement": "before-keyword",
+      "meaning": "Visual identity for critical damage only; no current combat definition or formula is assigned.",
+      "mechanic_status": "artwork-only"
+    },
+    "magical_attack": {
+      "label": "Magical attack",
+      "aliases": [
+        "magical attack",
+        "magic attack"
+      ],
+      "icon_id": "stat.magical_attack",
+      "color_token": "keyword.magical_attack",
+      "placement": "before-keyword",
+      "meaning": "Visual identity for magical attack only; no current combat definition or formula is assigned.",
+      "mechanic_status": "artwork-only"
+    },
+    "total_attack": {
+      "label": "Total attack",
+      "aliases": [
+        "total attack"
+      ],
+      "icon_id": "stat.total_attack",
+      "color_token": "keyword.total_attack",
+      "placement": "before-keyword",
+      "meaning": "Visual identity for total attack only; no current combat definition or formula is assigned.",
+      "mechanic_status": "artwork-only"
+    },
+    "physical_attack": {
+      "label": "Physical attack",
+      "aliases": [
+        "physical attack"
+      ],
+      "icon_id": "stat.physical_attack",
+      "color_token": "keyword.physical_attack",
+      "placement": "before-keyword",
+      "meaning": "Visual identity for physical attack only; no current combat definition or formula is assigned.",
+      "mechanic_status": "artwork-only"
+    },
+    "accuracy": {
+      "label": "Accuracy",
+      "aliases": [
+        "accuracy"
+      ],
+      "icon_id": "stat.accuracy",
+      "color_token": "keyword.accuracy",
+      "placement": "before-keyword",
+      "meaning": "Visual identity for accuracy only; no current combat definition or formula is assigned.",
+      "mechanic_status": "artwork-only"
+    },
+    "toughness": {
+      "label": "Toughness",
+      "aliases": [
+        "toughness"
+      ],
+      "icon_id": "stat.toughness",
+      "color_token": "keyword.toughness",
+      "placement": "before-keyword",
+      "meaning": "Visual identity for toughness only; no current combat definition or formula is assigned.",
+      "mechanic_status": "artwork-only"
+    },
+    "luck": {
+      "label": "Luck",
+      "aliases": [
+        "luck"
+      ],
+      "icon_id": "stat.luck",
+      "color_token": "keyword.luck",
+      "placement": "before-keyword",
+      "meaning": "Visual identity for luck only; no current combat definition or formula is assigned.",
+      "mechanic_status": "artwork-only"
+    },
+    "doom": {
+      "label": "Doom",
+      "aliases": [
+        "doom"
+      ],
+      "icon_id": "effect.doom",
+      "color_token": "keyword.doom",
+      "placement": "before-keyword",
+      "meaning": "Visual identity for doom only; no current combat definition or formula is assigned.",
+      "mechanic_status": "artwork-only"
+    }
+  },
+  "icons": {
+    "stat.health": {
+      "status": "revision for review",
+      "motif": "Full-height solid cleft heart with broad paired lobes and deliberately lengthened lower taper.",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/health-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/health-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/health-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/health-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "../effects-v1/concepts/health/concept.png",
+        "grid_source": "drafts/vital/masks.json",
+        "method": "native16x16 reauthor from accepted effects-v1 motif and retained original concept; no regeneration",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.5,
+          6.309
+        ],
+        "ink_pixels": 110,
+        "contrast": {
+          "gameplay": 7.47,
+          "menu": 5.38,
+          "menu-hover": 4.53,
+          "keyboard-selected": 5.08
+        },
+        "mask_sha256": "f7fc0950f2735d14dcd8456f772d2c8b84a32dafcdb12db507c6e8f9ebb61ce5"
+      }
+    },
+    "stat.mana": {
+      "status": "revision for review",
+      "motif": "Broad six-sided cut gem with a short flat crown and base, vertical side faces and a central diamond facet divided from surrounding facets by transparent seams.",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/mana-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/mana-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/mana-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/mana-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "drafts/vital/mana-concept.png",
+        "grid_source": "drafts/vital/masks.json",
+        "method": "original built-in imagegen concept; deliberately reauthored native16x16 integer mask",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas",
+        "restoration": {
+          "date": "2026-10-17",
+          "reason": "User requested the former simple blue mana gem",
+          "superseded_sources": "res://docs/art/concepts/semantic-icons/resources-v1/sources/mana-16.json"
+        }
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.5,
+          7.5
+        ],
+        "ink_pixels": 108,
+        "contrast": {
+          "gameplay": 9.13,
+          "menu": 6.58,
+          "menu-hover": 4.53,
+          "keyboard-selected": 6.21
+        },
+        "mask_sha256": "7c2dce70d85c792ee30aa57cf3db32a372f5c496d239b4627fc9967597f8e0ba"
+      }
+    },
+    "stat.stamina": {
+      "status": "user-requested integrated revision; visual acceptance pending",
+      "motif": "Partially charged upright yellow AA battery with a wider casing, raised terminal and clear empty upper charge window",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            3,
+            1,
+            13,
+            15
+          ],
+          "source_json": "res://docs/art/concepts/semantic-icons/resources-v6/sources/stamina-16.json",
+          "mask_source_json": "res://docs/art/concepts/semantic-icons/resources-v6/sources/stamina-16-mask.json",
+          "source_svg": "res://assets/ui/keyword-icons/resources-v6/stamina-16-mask.svg",
+          "mask_png": "res://assets/ui/keyword-icons/resources-v6/stamina-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/resources-v6/stamina-16-inline.png",
+          "colored_png": "res://assets/ui/keyword-icons/resources-v6/stamina-16.png",
+          "inline_bounds_exclusive": [
+            3,
+            2,
+            13,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "method": "Original exact-grid numeric spritex JSON, validated and CLI-exported; separate editable casing, remaining-charge and terminal layers",
+        "superseded_sources": "res://docs/art/concepts/semantic-icons/resources-v5/sources/stamina-16.json",
+        "user_brief": "Leave more space to show a small part of the AA battery charge missing"
+      }
+    },
+    "stat.block": {
+      "status": "revision for review",
+      "motif": "Broad solid heraldic shield with flat shoulder line, stepped tapered lower sides and pointed bottom. One large clear inset counter, 2-pixel solid rim. User explicitly changed Block to a shield.",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/block-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/block-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/block-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/block-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "drafts/defense/block-concept.png",
+        "grid_source": "drafts/defense/masks.json",
+        "method": "Original built-in imagegen concept followed by deliberate exact-grid redraw",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.5,
+          6.125
+        ],
+        "ink_pixels": 80,
+        "contrast": {
+          "gameplay": 8.95,
+          "menu": 6.45,
+          "menu-hover": 4.54,
+          "keyboard-selected": 6.09
+        },
+        "mask_sha256": "4fc2393063ea7fd211e31c4d8568f6e303612bd19660d0933b6687d25c0b4cc1"
+      }
+    },
+    "stat.plating": {
+      "status": "revision for review",
+      "motif": "Two broad overlapping, staggered armor plates with stepped slanted shoulders, clear inset counters and open seam.",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/plating-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/plating-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/plating-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/plating-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "../effects-v1/drafts/defense/plating-concept.png",
+        "grid_source": "drafts/defense/masks.json",
+        "method": "Native integer-grid redraw reusing retained v1 generated concept",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.68,
+          7.68
+        ],
+        "ink_pixels": 100,
+        "contrast": {
+          "gameplay": 8.95,
+          "menu": 6.45,
+          "menu-hover": 4.54,
+          "keyboard-selected": 6.09
+        },
+        "mask_sha256": "f48d8fe41963805c538ea83ba1b6c628c6fee97bdc82305fd77260e787f4adc6"
+      }
+    },
+    "effect.slow": {
+      "status": "revision for review",
+      "motif": "Immediately recognizable six-arm or eight-arm snowflake: central connected hub, thick straight radial stems, paired connected short branch clusters at ends. Snowflake, absolutely not an hourglass.",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/slow-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/slow-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/slow-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/slow-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "drafts/defense/slow-concept.png",
+        "grid_source": "drafts/defense/masks.json",
+        "method": "Original built-in imagegen concept followed by deliberate exact-grid redraw",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.5,
+          7.5
+        ],
+        "ink_pixels": 96,
+        "contrast": {
+          "gameplay": 11.5,
+          "menu": 8.29,
+          "menu-hover": 4.74,
+          "keyboard-selected": 7.83
+        },
+        "mask_sha256": "f3060bf8ca8ac4879f1dc7273f6774a1f842fce4164e90e86b3a66bf88081b6f"
+      }
+    },
+    "stat.healing": {
+      "status": "revision for review",
+      "motif": "Large balanced healing plus with a compact heart notch at the top of the stem.",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/healing-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/healing-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/healing-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/healing-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "../effects-v1/concepts/healing/concept.png",
+        "grid_source": "drafts/vital/masks.json",
+        "method": "native16x16 reauthor from accepted effects-v1 motif and retained original concept; no regeneration",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.5,
+          7.388
+        ],
+        "ink_pixels": 98,
+        "contrast": {
+          "gameplay": 9.76,
+          "menu": 7.03,
+          "menu-hover": 4.55,
+          "keyboard-selected": 6.64
+        },
+        "mask_sha256": "fe91f8961eb54529136c5bef76adafcfae696fb6892d2d4cb814407b3a32168d"
+      }
+    },
+    "effect.vampirism": {
+      "status": "revision for review",
+      "motif": "Tall paired tapering vampire fangs connected by a short jaw bridge; broad central opening.",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/vampirism-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/vampirism-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/vampirism-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/vampirism-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "../effects-v1/concepts/vampirism/concept.png",
+        "grid_source": "drafts/vital/masks.json",
+        "method": "native16x16 reauthor from accepted effects-v1 motif and retained original concept; no regeneration",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.5,
+          6.205
+        ],
+        "ink_pixels": 88,
+        "contrast": {
+          "gameplay": 7.47,
+          "menu": 5.38,
+          "menu-hover": 4.53,
+          "keyboard-selected": 5.08
+        },
+        "mask_sha256": "e69897a062c718045141d562728827d23efaa337dce85656b759c24484f3f559"
+      }
+    },
+    "stat.ward": {
+      "status": "revision for review",
+      "motif": "Centered hollow diamond with continuous stepped diagonal walls and one generous open center.",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/ward-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/ward-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/ward-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/ward-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "../effects-v1/drafts/defense/ward-concept.png",
+        "grid_source": "drafts/vital/masks.json",
+        "method": "native16x16 reauthor from accepted effects-v1 motif and retained original concept; no regeneration",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.5,
+          7.5
+        ],
+        "ink_pixels": 68,
+        "contrast": {
+          "gameplay": 7.61,
+          "menu": 5.48,
+          "menu-hover": 4.53,
+          "keyboard-selected": 5.18
+        },
+        "mask_sha256": "c124a8d8b8d20b1dfef11c4cc63d3744b759c9788e722414f19018c37982575e"
+      }
+    },
+    "effect.poison": {
+      "status": "revision for review",
+      "motif": "Full-scale skull droplet: narrow pointed crown opens into a broad skull body with paired square eye holes and a short jaw counter.",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/poison-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/poison-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/poison-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/poison-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "../effects-v1/drafts/affliction/poison-concept.png",
+        "grid_source": "drafts/vital/masks.json",
+        "method": "native16x16 reauthor from accepted effects-v1 motif and retained original concept; no regeneration",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.5,
+          8.537
+        ],
+        "ink_pixels": 108,
+        "contrast": {
+          "gameplay": 9.76,
+          "menu": 7.03,
+          "menu-hover": 4.55,
+          "keyboard-selected": 6.64
+        },
+        "mask_sha256": "8865ac099e5675f5f165f7ce8578a456d73356a5c521a4d7af363b0163ddbf58"
+      }
+    },
+    "effect.burn": {
+      "status": "revision for review",
+      "motif": "Broad asymmetric flame with a tall right tongue, short left tongue and one open stepped flame-shaped counter.",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/burn-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/burn-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/burn-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/burn-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "../effects-v1/drafts/affliction/burn-concept.png",
+        "grid_source": "drafts/vital/masks.json",
+        "method": "native16x16 reauthor from accepted effects-v1 motif and retained original concept; no regeneration",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.585,
+          8.764
+        ],
+        "ink_pixels": 106,
+        "contrast": {
+          "gameplay": 9.69,
+          "menu": 6.98,
+          "menu-hover": 4.53,
+          "keyboard-selected": 6.59
+        },
+        "mask_sha256": "07a49c2f7ca32db93f02953f77de7693f909325c0dbd9ca2f61f15afa02d671b"
+      }
+    },
+    "effect.curse": {
+      "status": "revision for review",
+      "motif": "Full-scale broken round hook ring with an upper-right opening and a curled lower-right hook; unlike ward's straight-sided diamond.",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/curse-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/curse-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/curse-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/curse-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "../effects-v1/drafts/affliction/curse-concept.png",
+        "grid_source": "drafts/vital/masks.json",
+        "method": "native16x16 reauthor from accepted effects-v1 motif and retained original concept; no regeneration",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.412,
+          8.059
+        ],
+        "ink_pixels": 85,
+        "contrast": {
+          "gameplay": 7.61,
+          "menu": 5.48,
+          "menu-hover": 4.53,
+          "keyboard-selected": 5.18
+        },
+        "mask_sha256": "b82a7d9451f5d78cbb5dad82c5a2e733929957d77021278428be81c5699436b6"
+      }
+    },
+    "effect.thorns": {
+      "status": "revision for review",
+      "motif": "Natural S-curved thorn stem with three alternating broad tapering thorns, spanning the complete visible footprint.",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/thorns-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/thorns-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/thorns-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/thorns-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "../effects-v1/drafts/affliction/thorns-concept.png",
+        "grid_source": "drafts/defense/masks.json",
+        "method": "Native integer-grid redraw reusing retained v1 generated concept",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.661,
+          8.177
+        ],
+        "ink_pixels": 62,
+        "contrast": {
+          "gameplay": 9.76,
+          "menu": 7.03,
+          "menu-hover": 4.55,
+          "keyboard-selected": 6.64
+        },
+        "mask_sha256": "aa635d94a6be4584e7e1a86fb1ce7c65722cbd83c1293e8f05ca0a5ff8d4773d"
+      }
+    },
+    "stat.damage": {
+      "status": "revision for review",
+      "motif": "Three deliberate staggered diagonal claw-rake slash clusters with broad 2-3 pixel cuts and clear negative-space channels; no sword, hilt, wand, star or snowflake.",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/damage-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/damage-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/damage-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/damage-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "drafts/defense/damage-concept.png",
+        "grid_source": "drafts/defense/masks.json",
+        "method": "Original built-in imagegen blade concept retained for provenance; deliberately revised on exact native grid to three claw-rake damage slashes after family comparison.",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.391,
+          7.449
+        ],
+        "ink_pixels": 69,
+        "contrast": {
+          "gameplay": 7.47,
+          "menu": 5.38,
+          "menu-hover": 4.53,
+          "keyboard-selected": 5.08
+        },
+        "mask_sha256": "3c8b77429964525d996d5f9b2e9ffa25b259a70da7cabfbcb627d9d65c71c462"
+      }
+    },
+    "effect.cleanse": {
+      "status": "revision for review",
+      "motif": "Purification symbol: a broad open cupped vessel with two rising sides and one clear four-point cleansing sparkle above its open center, connected coherent clusters, visually distinct from poison droplet and medical healing plus.",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/cleanse-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/cleanse-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/cleanse-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/cleanse-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "drafts/defense/cleanse-concept.png",
+        "grid_source": "drafts/defense/masks.json",
+        "method": "Original built-in imagegen concept followed by deliberate exact-grid redraw",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.5,
+          8.4
+        ],
+        "ink_pixels": 60,
+        "contrast": {
+          "gameplay": 12.22,
+          "menu": 8.81,
+          "menu-hover": 5.04,
+          "keyboard-selected": 8.32
+        },
+        "mask_sha256": "4c4e62c7ecb47420620d639994f885ec783380f0f46303d5586aeec48ae23047"
+      }
+    },
+    "stat.crit_chance": {
+      "status": "user-requested reference redraw; for review",
+      "motif": "Rising diagonal arrow aimed into an upper-right corner guide, drawn from the new user reference",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v3/sources/crit_chance-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v3/exports/crit_chance-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v3/masks/crit_chance-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v3/masks/crit_chance-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "method": "Native Pixelorama drawing from user-supplied reference",
+        "source_reference": "res://docs/art/concepts/semantic-icons/effects-v3/references/crit_chance.png",
+        "document_editability": "One named native ink layer, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          8.012,
+          6.138
+        ],
+        "ink_pixels": 80,
+        "contrast": {
+          "gameplay": 11.51,
+          "menu": 8.29,
+          "menu-hover": 4.74,
+          "keyboard-selected": 7.83
+        },
+        "mask_sha256": "1fd044188e9b03f4bc8d82cd8c7c8135738cfe69e794bbc5fad0215442a69a60"
+      }
+    },
+    "stat.critical_damage": {
+      "status": "revision for review",
+      "motif": "diagonal sword or blade slashing from lower left to upper right, with a prominent angular impact burst touching the upper right blade; only one blade and one impact",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/critical_damage-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/critical_damage-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/critical_damage-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/critical_damage-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "drafts/extensions/critical_damage-concept.png",
+        "grid_source": "drafts/extensions/masks.json",
+        "method": "Built-in image_gen original concept inspired by supplied motif reference; deliberately reauthored as an exact 16x16 binary pixel mask.",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.493,
+          7.642
+        ],
+        "ink_pixels": 67,
+        "contrast": {
+          "gameplay": 7.47,
+          "menu": 5.38,
+          "menu-hover": 4.53,
+          "keyboard-selected": 5.08
+        },
+        "mask_sha256": "269d6b8dd32024804add3269b16a30ebe429808a31080a81a869270a98756bfe"
+      }
+    },
+    "stat.magical_attack": {
+      "status": "revision for review",
+      "motif": "magic wand diagonally from lower left to upper right terminating in a compact four-point star; star is much larger than shaft and gives clear magical identity",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/magical_attack-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/magical_attack-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/magical_attack-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/magical_attack-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "drafts/extensions/magical_attack-concept.png",
+        "grid_source": "drafts/extensions/masks.json",
+        "method": "Built-in image_gen original concept inspired by supplied motif reference; deliberately reauthored as an exact 16x16 binary pixel mask.",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.5,
+          8.133
+        ],
+        "ink_pixels": 60,
+        "contrast": {
+          "gameplay": 7.61,
+          "menu": 5.48,
+          "menu-hover": 4.53,
+          "keyboard-selected": 5.18
+        },
+        "mask_sha256": "be614dc97ba9342f01246d816f9c363e9bd7e8cc96d5f62ebaf384e8ddf7eab8"
+      }
+    },
+    "stat.total_attack": {
+      "status": "revision for review",
+      "motif": "closed gauntleted fist angled diagonally upward right, knuckle row, large folded thumb and a short wrist cuff; broad hand silhouette, no weapon",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/total_attack-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/total_attack-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/total_attack-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/total_attack-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "drafts/extensions/total_attack-concept.png",
+        "grid_source": "drafts/extensions/masks.json",
+        "method": "Built-in image_gen original concept inspired by supplied motif reference; deliberately reauthored as an exact 16x16 binary pixel mask.",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.088,
+          6.775
+        ],
+        "ink_pixels": 102,
+        "contrast": {
+          "gameplay": 10.69,
+          "menu": 7.7,
+          "menu-hover": 4.52,
+          "keyboard-selected": 7.27
+        },
+        "mask_sha256": "4c7d7a6e4792f23bc296e0c90e5dc7ed6801c4637347cf847bc8b46dbfee163d"
+      }
+    },
+    "stat.physical_attack": {
+      "status": "revision for review",
+      "motif": "diagonal broad sword from lower left to upper right, obvious crossguard and short hilt, with two connected speed strokes at lower left; no star or impact burst",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/physical_attack-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/physical_attack-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/physical_attack-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/physical_attack-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "drafts/extensions/physical_attack-concept.png",
+        "grid_source": "drafts/extensions/masks.json",
+        "method": "Built-in image_gen original concept inspired by supplied motif reference; deliberately reauthored as an exact 16x16 binary pixel mask.",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.47,
+          7.53
+        ],
+        "ink_pixels": 66,
+        "contrast": {
+          "gameplay": 9.65,
+          "menu": 6.95,
+          "menu-hover": 4.52,
+          "keyboard-selected": 6.57
+        },
+        "mask_sha256": "ac17fe859df3002d7ba217d6ba9e7710187d7690dd898a71254819a9c68f42a3"
+      }
+    },
+    "stat.accuracy": {
+      "status": "user-selected bullseye reassignment",
+      "motif": "Concentric stepped bullseye, exactly reassigned from the previous Crit chance design",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v3/sources/accuracy-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v3/exports/accuracy-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v3/masks/accuracy-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v3/masks/accuracy-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "method": "Exact native pixel reassignment",
+        "source_reference": "res://docs/art/concepts/semantic-icons/effects-v2/sources/crit_chance-16.pxo",
+        "document_editability": "One named native ink layer, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.5,
+          7.5
+        ],
+        "ink_pixels": 100,
+        "contrast": {
+          "gameplay": 11.5,
+          "menu": 8.29,
+          "menu-hover": 4.74,
+          "keyboard-selected": 7.83
+        },
+        "mask_sha256": "86a8dacf345d6696bb065dc64b725f3f952519834ac630da68a4899d6543e926"
+      }
+    },
+    "stat.toughness": {
+      "status": "revision for review",
+      "motif": "broad worn breastplate with shoulder openings, neck notch, tapered sides and one horizontal waist seam; not a pointed shield or separated horizontal plates",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/toughness-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/toughness-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/toughness-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/toughness-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "drafts/extensions/toughness-concept.png",
+        "grid_source": "drafts/extensions/masks.json",
+        "method": "Built-in image_gen original concept inspired by supplied motif reference; deliberately reauthored as an exact 16x16 binary pixel mask.",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.5,
+          6.981
+        ],
+        "ink_pixels": 106,
+        "contrast": {
+          "gameplay": 10.61,
+          "menu": 7.64,
+          "menu-hover": 4.51,
+          "keyboard-selected": 7.22
+        },
+        "mask_sha256": "270b070fe42d8a963c805cbc7f72b9002e4e9d3e7e89851ec098f84efbcd03f3"
+      }
+    },
+    "stat.luck": {
+      "status": "revision for review",
+      "motif": "four-leaf clover with four rounded stepped lobes, diagonal transparent separations and short bent stem, not a healing cross",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/luck-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/luck-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/luck-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/luck-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "drafts/extensions/luck-concept.png",
+        "grid_source": "drafts/extensions/masks.json",
+        "method": "Built-in image_gen original concept inspired by supplied motif reference; deliberately reauthored as an exact 16x16 binary pixel mask.",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.537,
+          6.979
+        ],
+        "ink_pixels": 95,
+        "contrast": {
+          "gameplay": 9.76,
+          "menu": 7.03,
+          "menu-hover": 4.55,
+          "keyboard-selected": 6.64
+        },
+        "mask_sha256": "d1a9716b93a765ae41b9eeb49bb91f03576ab76c4f5b3adcdfc517c9692a5aa1"
+      }
+    },
+    "effect.doom": {
+      "status": "revision for review",
+      "motif": "compact frontal skull, broad domed cranium, square transparent eye sockets, nasal notch and three broad teeth; not poison droplet",
+      "variants": {
+        "16": {
+          "canvas": [
+            16,
+            16
+          ],
+          "alpha_bounds_exclusive": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "source_pxo": "res://docs/art/concepts/semantic-icons/effects-v2/sources/doom-16.pxo",
+          "source_svg": "res://docs/art/concepts/semantic-icons/effects-v2/exports/doom-16.svg",
+          "mask_png": "res://assets/ui/keyword-icons/v2/masks/doom-16-mask.png",
+          "inline_mask_png": "res://assets/ui/keyword-icons/v2/masks/doom-16-inline.png",
+          "inline_bounds_exclusive": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "baseline_offset_px": 1,
+          "gap_px_by_font_size": {
+            "16": 4,
+            "24": 6,
+            "32": 8
+          }
+        }
+      },
+      "provenance": {
+        "concept_path": "drafts/extensions/doom-concept.png",
+        "grid_source": "drafts/extensions/masks.json",
+        "method": "Built-in image_gen original concept inspired by supplied motif reference; deliberately reauthored as an exact 16x16 binary pixel mask.",
+        "document_editability": "One native white ink layer per glyph, 16x16 canvas"
+      },
+      "validation": {
+        "canvas": [
+          16,
+          16
+        ],
+        "bounds_exclusive": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "centroid": [
+          7.5,
+          7.055
+        ],
+        "ink_pixels": 110,
+        "contrast": {
+          "gameplay": 8.63,
+          "menu": 6.22,
+          "menu-hover": 4.5,
+          "keyboard-selected": 5.87
+        },
+        "mask_sha256": "9545eb20e5496a9257ee5345937f26a96d650293bbb77ebe45f965e930d9ee40"
+      }
+    }
+  },
+  "legacy_adapters": {
+    "glossary:armor": "block",
+    "enemy.armor": "block",
+    "glossary:health": "health",
+    "glossary:mana": "mana",
+    "glossary:block": "block",
+    "glossary:plating": "plating",
+    "glossary:slow": "slow",
+    "glossary:healing": "healing",
+    "glossary:vampirism": "vampirism",
+    "glossary:ward": "ward",
+    "glossary:poison": "poison",
+    "glossary:burn": "burn",
+    "glossary:curse": "curse",
+    "glossary:thorns": "thorns",
+    "glossary:damage": "damage",
+    "glossary:cleanse": "cleanse",
+    "glossary:crit_chance": "crit_chance",
+    "glossary:critical_damage": "critical_damage",
+    "glossary:magical_attack": "magical_attack",
+    "glossary:total_attack": "total_attack",
+    "glossary:physical_attack": "physical_attack",
+    "glossary:accuracy": "accuracy",
+    "glossary:toughness": "toughness",
+    "glossary:luck": "luck",
+    "glossary:doom": "doom"
+  },
+  "review": {
+    "source_canvas": [
+      16,
+      16
+    ],
+    "visible_envelope": [
+      14,
+      14
+    ],
+    "inline_render_size": [
+      16,
+      16
+    ],
+    "placement": "before-keyword",
+    "gap": "nonbreaking space",
+    "alignment": "identical fixed boxes; inline derivative moves ink down 1px to match Godot cap center",
+    "runtime_tested": true,
+    "user_accepted": false,
+    "source_provenance": "Preserved v1; native Pixelorama redraws and original generated concepts",
+    "future_mechanics": "Nine requested additional identities are artwork-only; no new stats or formulas.",
+    "alignment_verification": {
+      "font_24_offset_px": 0,
+      "font_32_offset_px": 0,
+      "renderer": "Godot 4.7.2 Compatibility",
+      "samples": 69,
+      "font_16_offset_px": 0.5,
+      "maximum_error_px": 0.5
+    },
+    "latest_correction": "v3: bullseye to Accuracy; new reference arrow for Crit chance"
+  }
+}

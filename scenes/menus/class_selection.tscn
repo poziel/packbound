@@ -1,0 +1,135 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/class_selection.gd" id="script"]
+[ext_resource type="Theme" path="res://themes/menu/theme.tres" id="menu_theme"]
+[ext_resource type="PackedScene" path="res://components/pixel_scrollbar/pixel_scroll_container.tscn" id="pixel_scroll"]
+[ext_resource type="Theme" path="res://themes/gameplay/theme.tres" id="theme"]
+[ext_resource type="FontFile" path="res://assets/fonts/ui_pixel.tres" id="title"]
+[ext_resource type="PackedScene" path="res://scenes/menus/delver_tile.tscn" id="tile"]
+[ext_resource type="PackedScene" path="res://scenes/shared/inspect_manager.tscn" id="inspector"]
+[ext_resource type="Script" path="res://components/surface_theme.gd" id="surface"]
+
+[node name="ClassSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_filter = 1
+theme = ExtResource("theme")
+script = ExtResource("script")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ChooseYourDelver" type="Label" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+offset_left = 22.0
+offset_top = 22.0
+offset_right = -22.0
+offset_bottom = 86.0
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("title")
+theme_override_font_sizes/font_size = 40
+text = "CHOOSE YOUR DELVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RosterScroll" parent="." instance=ExtResource("pixel_scroll")]
+layout_mode = 1
+anchor_right = 1.0
+offset_left = 22.0
+offset_top = 106.0
+offset_right = -22.0
+offset_bottom = -106.0
+follow_focus = true
+horizontal_scroll_mode = 0
+
+anchor_bottom = 1.0
+
+[node name="Margin" type="MarginContainer" parent="RosterScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="Characters" type="GridContainer" parent="RosterScroll/Margin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 12
+columns = 6
+
+[node name="Warrior" parent="RosterScroll/Margin/Characters" instance=ExtResource("tile")]
+layout_mode = 2
+class_key = "warrior"
+
+[node name="ClassName" parent="RosterScroll/Margin/Characters/Warrior" index="1"]
+text = "Warrior"
+
+[node name="Ranger" parent="RosterScroll/Margin/Characters" instance=ExtResource("tile")]
+layout_mode = 2
+class_key = "ranger"
+
+[node name="ClassName" parent="RosterScroll/Margin/Characters/Ranger" index="1"]
+text = "Ranger"
+
+[node name="Mage" parent="RosterScroll/Margin/Characters" instance=ExtResource("tile")]
+layout_mode = 2
+class_key = "mage"
+
+[node name="ClassName" parent="RosterScroll/Margin/Characters/Mage" index="1"]
+text = "Mage"
+
+[node name="Assassin" parent="RosterScroll/Margin/Characters" instance=ExtResource("tile")]
+layout_mode = 2
+class_key = "assassin"
+
+[node name="ClassName" parent="RosterScroll/Margin/Characters/Assassin" index="1"]
+text = "Assassin"
+
+[node name="Necromancer" parent="RosterScroll/Margin/Characters" instance=ExtResource("tile")]
+layout_mode = 2
+class_key = "necromancer"
+
+[node name="ClassName" parent="RosterScroll/Margin/Characters/Necromancer" index="1"]
+text = "Necromancer"
+
+[node name="Back" type="Button" parent="."]
+theme = ExtResource("menu_theme")
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -140.0
+offset_top = -86.0
+offset_right = 140.0
+offset_bottom = -22.0
+theme_override_font_sizes/font_size = 24
+text = "BACK"
+
+anchor_top = 1.0
+
+anchor_bottom = 1.0
+
+[node name="Inspector" parent="." instance=ExtResource("inspector")]
+
+[node name="SurfaceTheme" type="Node" parent="."]
+script = ExtResource("surface")
+reference_padding = 22
+padding_bindings = {"ChooseYourDelver": "left,right,move_down", "RosterScroll": "left,right,top,bottom", "Back": "bottom"}

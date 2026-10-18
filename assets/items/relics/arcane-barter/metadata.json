@@ -1,0 +1,11 @@
+{
+  "key": "arcane_barter",
+  "name": "Arcane Barter",
+  "category": "relics",
+  "kind": "run-relic",
+  "detail": "Spells with insufficient mana spend 1 HP per missing mana. This cost bypasses ward and can be lethal.",
+  "iconItemKey": "ember_tome",
+  "iconMetadata": "res://assets/items/spells/ember-tome/metadata.json",
+  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "note": "Reuses an inventory item icon; no separate artwork exists."
+}

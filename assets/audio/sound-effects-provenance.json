@@ -1,0 +1,22 @@
+[
+  {
+    "original_name": "FL_GFX_8Bit_Sfx_Shot_01 (enemy hit).wav",
+    "file": "enemy_hit.wav",
+    "sha256": "2D3D5D06B75697F49D47C1A3D4C0BE0D44C6D88D29B3531B7DAE91F354886C51"
+  },
+  {
+    "original_name": "FL_GFX_8Bit_Sfx_Explosion_01 (monster death sounds).wav",
+    "file": "enemy_death.wav",
+    "sha256": "5BB12C5495FE72601BB86215186B8ADC8B5F9CA537E43EDBC44FD0500D532DFC"
+  },
+  {
+    "original_name": "FL_GFX_UI_Click_14 (hover item).wav",
+    "file": "item_hover.wav",
+    "sha256": "5F6C474DC94ACD62AF3A52EFB40C184F6336BF5A8A6E9A65C5F4E1047F429DB8"
+  },
+  {
+    "original_name": "FL_GFX_UI_Click_27 (ui click).wav",
+    "file": "ui_click.wav",
+    "sha256": "5CB675B2D46077ED695146EF06BF46F74F1E313B51DDA1B7F2ABBBC9AF434BCA"
+  }
+]

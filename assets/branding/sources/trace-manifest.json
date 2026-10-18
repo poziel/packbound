@@ -1,0 +1,40 @@
+[
+  {
+    "name": "packbound-title",
+    "source": "title-isolated.png",
+    "grid": [
+      696,
+      163
+    ],
+    "visibleBounds": {
+      "left": 42,
+      "top": 121,
+      "width": 2088,
+      "height": 490
+    },
+    "colors": 55,
+    "sourcePixelGrid": [
+      696,
+      163
+    ]
+  },
+  {
+    "name": "packbound-satchel-detailed",
+    "source": "satchel-isolated.png",
+    "grid": [
+      128,
+      128
+    ],
+    "visibleBounds": {
+      "left": 21,
+      "top": 195,
+      "width": 1212,
+      "height": 874
+    },
+    "colors": 48,
+    "sourcePixelGrid": [
+      128,
+      92
+    ]
+  }
+]

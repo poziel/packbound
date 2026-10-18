@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "cellPixels": 32,
+  "gapPixels": 0,
+  "rows": [
+    "#"
+  ],
+  "columns": 1,
+  "rowCount": 1,
+  "canvas": {
+    "width": 32,
+    "height": 32
+  },
+  "occupiedCellCount": 1,
+  "cells": [
+    {
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "emptyCells": [],
+  "connectedComponents": 1,
+  "validation": {
+    "paletteLimit": 20,
+    "opaqueColors": 15,
+    "binaryAlpha": true,
+    "pixelsOutsideFootprint": 0,
+    "visibleBounds": {
+      "x": 8,
+      "y": 3,
+      "width": 16,
+      "height": 27
+    },
+    "cellPixelCounts": [
+      {
+        "x": 0,
+        "y": 0,
+        "pixels": 256
+      }
+    ],
+    "warnings": [],
+    "svgPixelMatch": true
+  },
+  "sourcePng": "docs/art/concepts/iron-charm-32px-v1/native.png",
+  "sourceSha256": "2a00d3ebe4dc97cad1761f651d90bbf85d15dbce2839e20ca218e1c3c81c2fca",
+  "svgEncoding": "Editable color-grouped integer pixel runs derived from source PNG"
+}

@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://t03gdrpaev8i"]
+
+[ext_resource type="Script" uid="uid://t4q1qb6e5ldq" path="res://scripts/main.gd" id="controller"]
+[ext_resource type="PackedScene" path="res://scenes/game/dialogs.tscn" id="dialogs"]
+[ext_resource type="PackedScene" uid="uid://cij6m3k064qra" path="res://scenes/gameplay/gameplay_background.tscn" id="gameplay_background"]
+[ext_resource type="PackedScene" uid="uid://cvvx4qm6mjnjc" path="res://scenes/shared/application_frame.tscn" id="frame"]
+[ext_resource type="PackedScene" path="res://scenes/menus/menu_flow.tscn" id="front"]
+[ext_resource type="PackedScene" uid="uid://7fnmbqaiilvt" path="res://scenes/game/game.tscn" id="game"]
+[ext_resource type="PackedScene" path="res://scenes/shared/inspect_manager.tscn" id="inspector"]
+[ext_resource type="Script" uid="uid://j8oxhaykooi4" path="res://scripts/combat_playback.gd" id="playback"]
+[ext_resource type="AudioStream" path="res://assets/audio/enemy_hit.wav" id="enemy_hit"]
+[ext_resource type="AudioStream" path="res://assets/audio/enemy_death.wav" id="enemy_death"]
+[ext_resource type="PackedScene" path="res://scenes/shared/loading_screen.tscn" id="loading_screen"]
+
+[ext_resource type="AudioStream" path="res://assets/audio/player_hit.wav" id="player_hit"]
+[ext_resource type="AudioStream" path="res://assets/audio/player_shield_hit.wav" id="player_shield_hit"]
+[ext_resource type="AudioStream" path="res://assets/audio/player_shield_break.wav" id="player_shield_break"]
+
+[node name="Main" type="Control" unique_id=2108320616]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("controller")
+
+[node name="CombatAudio" type="AudioStreamPlayer" parent="." unique_id=109185926]
+stream = ExtResource("enemy_hit")
+volume_db = -6.0
+max_polyphony = 4
+bus = &"FX"
+
+[node name="EnemyDeathAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("enemy_death")
+volume_db = -6.0
+max_polyphony = 4
+bus = &"FX"
+
+[node name="PlayerHitAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("player_hit")
+volume_db = -6.0
+bus = &"FX"
+
+[node name="PlayerShieldHitAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("player_shield_hit")
+volume_db = -6.0
+bus = &"FX"
+
+[node name="PlayerShieldBreakAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("player_shield_break")
+volume_db = -6.0
+bus = &"FX"
+
+[node name="GameplayBackground" parent="." unique_id=461556848 instance=ExtResource("gameplay_background")]
+layout_mode = 1
+
+[node name="Combat" parent="." unique_id=2137378921 instance=ExtResource("game")]
+visible = false
+layout_mode = 1
+
+[node name="EnemyHover" type="Control" parent="Combat"]
+layout_mode = 0
+mouse_filter = 2
+
+[node name="Overlay" parent="." unique_id=665691286 instance=ExtResource("dialogs")]
+visible = false
+layout_mode = 1
+
+[node name="MenuFlow" parent="." unique_id=738570284 instance=ExtResource("front")]
+layout_mode = 1
+
+[node name="ApplicationFrame" parent="." unique_id=760150325 instance=ExtResource("frame")]
+layout_mode = 1
+
+[node name="Inspector" parent="." unique_id=109565860 instance=ExtResource("inspector")]
+layout_mode = 1
+
+[node name="CombatPlayback" type="Node" parent="." unique_id=2001608618]
+script = ExtResource("playback")
+
+[node name="LoadingScreen" parent="." instance=ExtResource("loading_screen")]

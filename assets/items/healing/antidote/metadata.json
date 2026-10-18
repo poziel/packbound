@@ -1,0 +1,25 @@
+{
+  "key": "antidote",
+  "name": "Antidote Flask",
+  "category": "healing",
+  "gameplayRole": "healer",
+  "inventoryMask": [
+    "#"
+  ],
+  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "exports": [
+    "revisions/catalog-v1/antidote-32px.png",
+    "revisions/catalog-v1/antidote-32px.svg",
+    "revisions/catalog-v1/antidote-32px.footprint.json"
+  ],
+  "editableSources": [
+    "revisions/catalog-v1/antidote-32px.pxo",
+    "revisions/catalog-v1/antidote-32px.svg"
+  ],
+  "runtime": {
+    "texture": "res://assets/items/healing/antidote/revisions/catalog-v1/antidote-32px.svg",
+    "viewPolicy": "Reuse approved footprint-derived native sprite across display sizes with nearest filtering."
+  },
+  "activeRevision": "catalog-v1",
+  "revisionProvenance": "res://docs/art/concepts/antidote-catalog-v1/provenance.json"
+}

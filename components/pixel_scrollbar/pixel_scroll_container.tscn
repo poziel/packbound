@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+
+[node name="PixelScrollContainer" type="ScrollContainer"]
+offset_right = 320.0
+offset_bottom = 400.0
+texture_filter = 1
+follow_focus = true
+horizontal_scroll_mode = 0

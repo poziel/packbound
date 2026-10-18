@@ -1,0 +1,1685 @@
+{
+  "date": "2026-10-15",
+  "moves": [
+    {
+      "from": "assets/items.svg",
+      "to": "assets/items/atlases/basic-items.svg",
+      "originalSha256": "813f02b900d6e0b38321d62444cf2b2862b52d2c61aee7947492b3104ce04eff",
+      "finalSha256": "813f02b900d6e0b38321d62444cf2b2862b52d2c61aee7947492b3104ce04eff"
+    },
+    {
+      "from": "assets/items.svg.import",
+      "to": "assets/items/atlases/basic-items.svg.import",
+      "originalSha256": "334b3fdc079cd3a92973e29d5b00535d8e8bd1517ebeaf3bc469b6cac705ac61",
+      "finalSha256": "b1ec68ba12ff44a4dbd3f388a5bc1db4187933635e80d5057dd087b33c72cfb8"
+    },
+    {
+      "from": "assets/items_extra.svg",
+      "to": "assets/items/atlases/extra-items.svg",
+      "originalSha256": "988a65c9b4ee32bf828d7da621c69fdb3da3e2018544d9db47dcfb6371233ab3",
+      "finalSha256": "988a65c9b4ee32bf828d7da621c69fdb3da3e2018544d9db47dcfb6371233ab3"
+    },
+    {
+      "from": "assets/items_extra.svg.import",
+      "to": "assets/items/atlases/extra-items.svg.import",
+      "originalSha256": "79ddffb5af8d385fc0f187d14dbd44644751139063538fc113c85eb9a5d8a138",
+      "finalSha256": "e6a0ae7c3b4aaac4092ce5876c1686fa6b2b89ad519acfe7632b4a62de4e765f"
+    },
+    {
+      "from": "assets/items/items-atlas.png",
+      "to": "assets/items/atlases/basic-items.png",
+      "originalSha256": "c95c7a6ad91481ae67731fe3f4b84a6ced95103df42446e34522fb0fd53d6452",
+      "finalSha256": "c95c7a6ad91481ae67731fe3f4b84a6ced95103df42446e34522fb0fd53d6452"
+    },
+    {
+      "from": "assets/items/items-atlas.png.import",
+      "to": "assets/items/atlases/basic-items.png.import",
+      "originalSha256": "2da853d9ce0071113f87126ce287360f3da4ec65bb5a430777610aa6ecad1254",
+      "finalSha256": "0e3ee125c4c0fbda00354669e9e136e27a958f2d82afd476ceafdcfe70f7bdb2"
+    },
+    {
+      "from": "assets/items/sources/basic-items.pxo",
+      "to": "assets/items/atlases/sources/basic-items.pxo",
+      "originalSha256": "cc2e0979df06ddc912e866cae45c46cc48e6dcf3467d675d02f2ab87b8357124",
+      "finalSha256": "cc2e0979df06ddc912e866cae45c46cc48e6dcf3467d675d02f2ab87b8357124"
+    },
+    {
+      "from": "assets/items/manifest.json",
+      "to": "assets/items/atlases/manifest.json",
+      "originalSha256": "e6ab5c96026320fa608a80df0e18b28407fbee5a89d286334a16856ed8f63625",
+      "finalSha256": "e6ab5c96026320fa608a80df0e18b28407fbee5a89d286334a16856ed8f63625"
+    },
+    {
+      "from": "assets/enemies.svg",
+      "to": "assets/enemies/enemies.svg",
+      "originalSha256": "9e948fd58a743ad02256f41d06969c504d9593374ee48f8a48558359c7d30235",
+      "finalSha256": "9e948fd58a743ad02256f41d06969c504d9593374ee48f8a48558359c7d30235"
+    },
+    {
+      "from": "assets/enemies.svg.import",
+      "to": "assets/enemies/enemies.svg.import",
+      "originalSha256": "fdc6ebee34070b28d3b8a889fb3eaffbc18074a04ef1274ce893f56ca88e03a7",
+      "finalSha256": "ff24d1eb9bf18e381042df980c6d6c005983f5a56da89ba6f173c5f22f36d952"
+    },
+    {
+      "from": "assets/dungeon_backdrop.svg",
+      "to": "assets/backgrounds/dungeon/dungeon-backdrop.svg",
+      "originalSha256": "15b2f3865250f36f8bdf4c559fdb05d254a69ece3c4d78229fc9979efebc4dd8",
+      "finalSha256": "15b2f3865250f36f8bdf4c559fdb05d254a69ece3c4d78229fc9979efebc4dd8"
+    },
+    {
+      "from": "assets/dungeon_backdrop.svg.import",
+      "to": "assets/backgrounds/dungeon/dungeon-backdrop.svg.import",
+      "originalSha256": "ed9fda69643b1f8f1c25536df76fecbc9c34ee3fcd7c999900fe3901ec23ae32",
+      "finalSha256": "fdab4efd6b860ad16618d5858d555b9eeaeccbc0b3e98cd94802d62e8693b2ef"
+    },
+    {
+      "from": "assets/delvers.svg",
+      "to": "assets/characters/archive/legacy-portraits/delvers-revision-01.svg",
+      "originalSha256": "bfa239ae74447b60c3f87e59f637200a4e28df51d35e0c5b4d7a0e36307259a5",
+      "finalSha256": "bfa239ae74447b60c3f87e59f637200a4e28df51d35e0c5b4d7a0e36307259a5"
+    },
+    {
+      "from": "assets/delvers.svg.import",
+      "to": "assets/characters/archive/legacy-portraits/delvers-revision-01.svg.import",
+      "originalSha256": "576907bb23c9f522e9087104310142dfe2c9c3cfffd606ee5a55993d86435390",
+      "finalSha256": "78b51fd91354d5ad40ac6ed1db08bffa6411c1be969189a093292ee51229d2e4"
+    },
+    {
+      "from": "assets/controls.svg",
+      "to": "assets/themes/archive/legacy-controls/controls-revision-01.svg",
+      "originalSha256": "9eea5a03926efd27fa78b6a315a5cf0cd3ed1b1290f25b638ca3add5803ff01d",
+      "finalSha256": "9eea5a03926efd27fa78b6a315a5cf0cd3ed1b1290f25b638ca3add5803ff01d"
+    },
+    {
+      "from": "assets/controls.svg.import",
+      "to": "assets/themes/archive/legacy-controls/controls-revision-01.svg.import",
+      "originalSha256": "75bbcf56e90900fce07ef2e6f6776b542601ef8ab2f4782aef6ca540f53d3a3a",
+      "finalSha256": "33249a837d188ba2f33d22fd3c391ffa56c13119a60a0bb93aa3f448f05149d4"
+    },
+    {
+      "from": "assets/menu_theme.tres",
+      "to": "assets/themes/menu/theme.tres",
+      "originalSha256": "128bc2d54cc854e28da8853220c353e857109399ffc5dc4d067f442489b9f0b2",
+      "finalSha256": "609f13fb909439360daba5fb4cfa4e545fee1edece25608c819a313864cd6a18"
+    },
+    {
+      "from": "assets/menu_frames.svg",
+      "to": "assets/themes/menu/frames.svg",
+      "originalSha256": "99a4ca311d41bf6e5e03cc96e5be326a05bf968a8e6ed77683520ec3fdd75960",
+      "finalSha256": "99a4ca311d41bf6e5e03cc96e5be326a05bf968a8e6ed77683520ec3fdd75960"
+    },
+    {
+      "from": "assets/menu_frames.svg.import",
+      "to": "assets/themes/menu/frames.svg.import",
+      "originalSha256": "1d06ec051fae0b2c7427e54f6e5f0eb1a1def652d1da7087c82ea161c33a8f0a",
+      "finalSha256": "d44caf7e954996f18f4d787afc86d5695f7533c5a606bcdb7dbb62ebec97cff0"
+    },
+    {
+      "from": "assets/menu_controls.svg",
+      "to": "assets/themes/menu/controls.svg",
+      "originalSha256": "04d1e7f7d7479ef10e8223385d98db74bf0ebbfdfec410b6068beac399a6e2f0",
+      "finalSha256": "04d1e7f7d7479ef10e8223385d98db74bf0ebbfdfec410b6068beac399a6e2f0"
+    },
+    {
+      "from": "assets/menu_controls.svg.import",
+      "to": "assets/themes/menu/controls.svg.import",
+      "originalSha256": "4f3cf5dbb5b382d73c403a7ee90209a9840b4e6e56138f72db1ff8ef5c3318b8",
+      "finalSha256": "4a923d2d878dee6a6d6e06e6aef3e630bbb335748a29fabaca8d91a50aa23a1d"
+    },
+    {
+      "from": "assets/gameplay_theme.tres",
+      "to": "assets/themes/gameplay/theme.tres",
+      "originalSha256": "753aa6d1fbefdb695717c5f46bfd77b1c4b7f04a58a679d02d05edd98f31fc37",
+      "finalSha256": "ed6dd8f2434895c6c4eaa87fed07413c2bc5eec799b5235624925f48d46ec529"
+    },
+    {
+      "from": "assets/gameplay_frames.svg",
+      "to": "assets/themes/gameplay/frames.svg",
+      "originalSha256": "1e132d8e3bc61d73666cc58ea966a80105c966f1b8f9defc056e88c902127500",
+      "finalSha256": "1e132d8e3bc61d73666cc58ea966a80105c966f1b8f9defc056e88c902127500"
+    },
+    {
+      "from": "assets/gameplay_frames.svg.import",
+      "to": "assets/themes/gameplay/frames.svg.import",
+      "originalSha256": "85bb9c3f4905321ea9fc86f1bade01bbe1b669fbf2e14f374cc8907a9906b5ce",
+      "finalSha256": "9f3fc7d86848d42e43d093b37e27ea58227a754d66bbf97179bed2ab2dcdfa5d"
+    },
+    {
+      "from": "assets/gameplay_controls.svg",
+      "to": "assets/themes/gameplay/controls.svg",
+      "originalSha256": "965373c585f9c236dfab9e7d5c3d0eb20a9eea892bd84462328fc8078409f147",
+      "finalSha256": "965373c585f9c236dfab9e7d5c3d0eb20a9eea892bd84462328fc8078409f147"
+    },
+    {
+      "from": "assets/gameplay_controls.svg.import",
+      "to": "assets/themes/gameplay/controls.svg.import",
+      "originalSha256": "3a5cd66561b25b2a8993bbdb2c072c04347e60254b283bcbaa9b91ed25d5e62a",
+      "finalSha256": "b39eb68c61edf78e0aa05e3931234e7353a4b24ba26891531e813958e09560fc"
+    },
+    {
+      "from": "assets/delver_tile_theme.tres",
+      "to": "assets/themes/delver-tile/theme.tres",
+      "originalSha256": "3b2c74f927150d5ae5066466c50490790c2a0ef924cfc8922446ab2186e123d8",
+      "finalSha256": "357e969b3a7e83ecf05a318683a26ae265b3f624c5d42fd16e1a9d338531fea6"
+    },
+    {
+      "from": "assets/menu_popup_hover.tres",
+      "to": "assets/themes/menu/popup-hover.tres",
+      "originalSha256": "8bef54f863228436ff8e11750ad7717d6229a2abc1ee5a9c57498637ddd39d6d",
+      "finalSha256": "8bef54f863228436ff8e11750ad7717d6229a2abc1ee5a9c57498637ddd39d6d"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/animation.json",
+      "to": "assets/backgrounds/main-menu/animation.json",
+      "originalSha256": "3e357d3fb407252f7dc8592963e036e0f448f55da6d3a8bbab8d67bbbd39aa49",
+      "finalSha256": "d2f45dc361fa625c7aa07ec7fa657b0a779669948fb1e27953a908b05af03464"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/candle-flame.png",
+      "to": "assets/backgrounds/main-menu/candle-flame.png",
+      "originalSha256": "ec8edc2fbd99119db260584dd80ec1744e755adb374eebf1debae223ccd7db48",
+      "finalSha256": "ec8edc2fbd99119db260584dd80ec1744e755adb374eebf1debae223ccd7db48"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/candle-flame.png.import",
+      "to": "assets/backgrounds/main-menu/candle-flame.png.import",
+      "originalSha256": "e6d62e594d8895a4d5a0177f5f2e9c49e0739562fedb9e358715b649e1d0f48e",
+      "finalSha256": "4b73aeb099309e92a4a9ceeaa0d35ab348395a8a3daf58afcb00239debf77072"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/candle-flame.tres",
+      "to": "assets/backgrounds/main-menu/candle-flame.tres",
+      "originalSha256": "787937af4d32d41dd0a547001e570aaf1b5a29e4f243bf2012f9e5533f2a647e",
+      "finalSha256": "eeb5a5120fa93406070be3eede3b925d84e9fce81ad8fcd71aa3ceec100a4525"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/candlelight.png",
+      "to": "assets/backgrounds/main-menu/candlelight.png",
+      "originalSha256": "44336a9f4671281e2bd15a2c052e3f84a3018ee50daa76caf9df5819e62ab385",
+      "finalSha256": "44336a9f4671281e2bd15a2c052e3f84a3018ee50daa76caf9df5819e62ab385"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/candlelight.png.import",
+      "to": "assets/backgrounds/main-menu/candlelight.png.import",
+      "originalSha256": "b17a4dfb3f745d214fa262624903f1c08f70737f09be702165e252863b806210",
+      "finalSha256": "98ccf50193a8f95a30a25f69ab5f72508f5328c8a75fdeb069e73587277e4d63"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/candlelight.tres",
+      "to": "assets/backgrounds/main-menu/candlelight.tres",
+      "originalSha256": "66fbacca8d9e4a7a626b511bd74ae0c509dacf32b4ead113fcd06dd18beaf83c",
+      "finalSha256": "60333aa8a3d55944dbaad57ba2dcf58f85e0b33295562025f39b1aef9c6552d9"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/candlelit-dust.png",
+      "to": "assets/backgrounds/main-menu/candlelit-dust.png",
+      "originalSha256": "e0ba9bc9d08d213cf7ca5e27dff934404d1fa42ed3ce4280636c0adc53bae01c",
+      "finalSha256": "e0ba9bc9d08d213cf7ca5e27dff934404d1fa42ed3ce4280636c0adc53bae01c"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/candlelit-dust.png.import",
+      "to": "assets/backgrounds/main-menu/candlelit-dust.png.import",
+      "originalSha256": "a2ce03165751a4fc94b27e302ff002b11c4d0eb526e8dfb597bf567a588229bb",
+      "finalSha256": "5756cee8ebd3036ba8e3c1093a8f722b5cc9a0fcd158e708224493acd4ed21fd"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/candlelit-dust.tres",
+      "to": "assets/backgrounds/main-menu/candlelit-dust.tres",
+      "originalSha256": "3a5052cce06d337dc151ade81fb7c339dfb7d7ea29eace3f9f95530eb07170c5",
+      "finalSha256": "a7d15c6ff5b9ad19d8e411f764933412df888547f60e84c9da2ad8774a8411a4"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/curse-reflection.png",
+      "to": "assets/backgrounds/main-menu/curse-reflection.png",
+      "originalSha256": "d31e36869a868cdebdcb98f232d9809d869cbc7e4b1179a21a7f26954f41a6ee",
+      "finalSha256": "d31e36869a868cdebdcb98f232d9809d869cbc7e4b1179a21a7f26954f41a6ee"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/curse-reflection.png.import",
+      "to": "assets/backgrounds/main-menu/curse-reflection.png.import",
+      "originalSha256": "8a0d12cbb596e4c99414057a06bd091c5ddf6f957c6ac49fee6677c1cf27b2b5",
+      "finalSha256": "ad9e9ec9a3643c38382a8266bec225ee3db12c55b2022932548840a993a85d33"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/curse-reflection.tres",
+      "to": "assets/backgrounds/main-menu/curse-reflection.tres",
+      "originalSha256": "9be8cc61363f0c9e930e0bc9d61ba6098c64def40420ee626bd9f1ff6be04f5d",
+      "finalSha256": "9af54db8b198c035ae5db00675fd0b0593999f54c6a8d4927ee915bfda947305"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/packing-table-animation-preview.png",
+      "to": "assets/backgrounds/main-menu/packing-table-animation-preview.png",
+      "originalSha256": "9d2337657188455808fcac061017f80bfd21981e630e1d8bdf269413e49d1627",
+      "finalSha256": "9d2337657188455808fcac061017f80bfd21981e630e1d8bdf269413e49d1627"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/packing-table-animation-preview.png.import",
+      "to": "assets/backgrounds/main-menu/packing-table-animation-preview.png.import",
+      "originalSha256": "d07bca595cc9b687fd668562234e515ad4309751b4d30b4296c7c2f83dfc463f",
+      "finalSha256": "45b68ddba15b10bfb8206a8b4a5dbd1c86eedd78b201c981b1e008d90c29cd6a"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/packing-table-base.png",
+      "to": "assets/backgrounds/main-menu/packing-table-base.png",
+      "originalSha256": "cb873369af52f65993be10ff63f0d91eb23962acc4b56b8ca1a598efee6afa5d",
+      "finalSha256": "cb873369af52f65993be10ff63f0d91eb23962acc4b56b8ca1a598efee6afa5d"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/packing-table-base.png.import",
+      "to": "assets/backgrounds/main-menu/packing-table-base.png.import",
+      "originalSha256": "7227b64a8531195de597f59ab99fbc4d4b3ce8e9e2d9a248c3972491a81b5032",
+      "finalSha256": "46a59fc8d6076004f1b0ec2d1f9879f0119625ded12ad6295222fc1247db1746"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/packing-table-static.png",
+      "to": "assets/backgrounds/main-menu/packing-table-static.png",
+      "originalSha256": "a9a1a46e20b6f2095753d814d6610a621ba84eb7e8acbf91257d45d519ddfd1d",
+      "finalSha256": "a9a1a46e20b6f2095753d814d6610a621ba84eb7e8acbf91257d45d519ddfd1d"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/packing-table-static.png.import",
+      "to": "assets/backgrounds/main-menu/packing-table-static.png.import",
+      "originalSha256": "6c651fb7220bac370becf672e91712c1415a5db85c3033e32d5ec070f454578f",
+      "finalSha256": "521500a3c4f4376b690274114a8fc1f30ee67e769f8fd3a9bf50f50397b5aed6"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/packing-table-still-preview.png",
+      "to": "assets/backgrounds/main-menu/packing-table-still-preview.png",
+      "originalSha256": "c569d161cad13840afc7313fc711bc9f567c3599af3b02ee42f5ca35b0db4107",
+      "finalSha256": "c569d161cad13840afc7313fc711bc9f567c3599af3b02ee42f5ca35b0db4107"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/packing-table-still-preview.png.import",
+      "to": "assets/backgrounds/main-menu/packing-table-still-preview.png.import",
+      "originalSha256": "b369feb59ba24a0c0a1fb7fd86b1f7897181644090c6c7c9ba26e7be002cb0fb",
+      "finalSha256": "2dfe97f21d1f93c12d99db082143b875d3b4199704f0d7273267017fd980686e"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/playback-check.json",
+      "to": "assets/backgrounds/main-menu/playback-check.json",
+      "originalSha256": "29c4ebcefdd56639d76e8676d216cd51b2bb2055203dc6724e727ecf6b7a5d2c",
+      "finalSha256": "29c4ebcefdd56639d76e8676d216cd51b2bb2055203dc6724e727ecf6b7a5d2c"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/purple-smoke-billows.png",
+      "to": "assets/backgrounds/main-menu/purple-smoke-billows.png",
+      "originalSha256": "e915801d27ffb7c71fa494d38106e93bf8201f0174f1593368c31c302e0bf63f",
+      "finalSha256": "e915801d27ffb7c71fa494d38106e93bf8201f0174f1593368c31c302e0bf63f"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/purple-smoke-billows.png.import",
+      "to": "assets/backgrounds/main-menu/purple-smoke-billows.png.import",
+      "originalSha256": "9ee34bb5ba5fcfefd61289924fdbb2cf993addec72f3c02c91d597818de6c4d9",
+      "finalSha256": "bc522fa715cc3a2aed92a9a8ec1a62e634cfc62b71e9749204a887c275a03329"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/purple-smoke-billows.tres",
+      "to": "assets/backgrounds/main-menu/purple-smoke-billows.tres",
+      "originalSha256": "193296801715b7c01111c31fb99a3bcbfebe61067d4b28ada95e5b626d836a96",
+      "finalSha256": "9399745f454fdd0a6b45ccc095b960830d9458196519eb3108ee64ddc7198b53"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/purple-smoke-fragments.png",
+      "to": "assets/backgrounds/main-menu/purple-smoke-fragments.png",
+      "originalSha256": "9a17d3bac805628d6cc795a8b7ab58e5a1762cfdb157db5173bdc20ee3064ded",
+      "finalSha256": "9a17d3bac805628d6cc795a8b7ab58e5a1762cfdb157db5173bdc20ee3064ded"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/purple-smoke-fragments.png.import",
+      "to": "assets/backgrounds/main-menu/purple-smoke-fragments.png.import",
+      "originalSha256": "b76279471d2fbc6b620f5f1abd5b8c4faa4241fcd8e0c3288e2adb571bf504fa",
+      "finalSha256": "359b6c428e04f74142d229b2e82321ecf6ee4cf53f5cf0fb6278982118faa643"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/purple-smoke-fragments.tres",
+      "to": "assets/backgrounds/main-menu/purple-smoke-fragments.tres",
+      "originalSha256": "364e30a8173b0b18f5944bf3082c5f6d24ae4e165042a7ce465e87207fc640a6",
+      "finalSha256": "20faa605c41d5e563a05611f5e91b9bf37920ddf8717b7bc9b245a49c0334d6f"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/README.md",
+      "to": "assets/backgrounds/main-menu/README.md",
+      "originalSha256": "0d7d38bcf27703c714cea6ed59475db05474e7498dded52282deeaf41a76057c",
+      "finalSha256": "395dcb86edb1fec6518bbd75cc846a71f31d4d9cfa4ff8995a3f374888897e12"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/satchel-flap.png",
+      "to": "assets/backgrounds/main-menu/satchel-flap.png",
+      "originalSha256": "50122367d8d5fcb32ee14078b2049367399480dcb3cb5c3dd53cebe357184ef7",
+      "finalSha256": "50122367d8d5fcb32ee14078b2049367399480dcb3cb5c3dd53cebe357184ef7"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/satchel-flap.png.import",
+      "to": "assets/backgrounds/main-menu/satchel-flap.png.import",
+      "originalSha256": "6bb1586721b8600daf1be1dd7bff7b34b9b0e5157eac6786de3cc0fb2a4f6173",
+      "finalSha256": "74bb1dec260a8285dcb575c13c4930a363669e323cdaa74d4f34d73ed8acd113"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/satchel-flap.tres",
+      "to": "assets/backgrounds/main-menu/satchel-flap.tres",
+      "originalSha256": "cb922544c7a0a9377ae12888c3d3f7d6bf1a490dcc2390722e8e02f0e8afcf29",
+      "finalSha256": "042f21f0a0a0972f3920deea40b7815fc3ceb2edd851a5648ae562bbbb9f535a"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/storm-light-on-stone.png",
+      "to": "assets/backgrounds/main-menu/storm-light-on-stone.png",
+      "originalSha256": "5fce99c90d2cd1c56f246f83ae671966cd56148e9e9a170f0adc83a0e041afa1",
+      "finalSha256": "5fce99c90d2cd1c56f246f83ae671966cd56148e9e9a170f0adc83a0e041afa1"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/storm-light-on-stone.png.import",
+      "to": "assets/backgrounds/main-menu/storm-light-on-stone.png.import",
+      "originalSha256": "ccbd7e0079d3a6b029614d8cbebf0ad5eaac31d0bf5b73bbdd2ba98e3a1e6f96",
+      "finalSha256": "8ac3c662368704e81109afe07ccd5c0eb27c5b6946e74e35af3d86d4bb917648"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/storm-light-on-stone.tres",
+      "to": "assets/backgrounds/main-menu/storm-light-on-stone.tres",
+      "originalSha256": "989d68903e47f54f968615940dc1b0079a9e75a68bc95ed6664c9e58818fcbd9",
+      "finalSha256": "c2fbbd1b429a4e0aa7d6e2320adb02d37ae1c12a88333984728b4b538fb65057"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/window-lightning.png",
+      "to": "assets/backgrounds/main-menu/window-lightning.png",
+      "originalSha256": "610f3b071503e2702e6bf52c6515bff7943c016e86bcc3d94e51d50f65c9c2ad",
+      "finalSha256": "610f3b071503e2702e6bf52c6515bff7943c016e86bcc3d94e51d50f65c9c2ad"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/window-lightning.png.import",
+      "to": "assets/backgrounds/main-menu/window-lightning.png.import",
+      "originalSha256": "663993630a525eb3917db73536b7cfdaebac25a2af1f1687ee2b9adafc644006",
+      "finalSha256": "cbe943864c2185f0f29b4ebed13127175641469cac7ad25d8206c02639e3f050"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-03/window-lightning.tres",
+      "to": "assets/backgrounds/main-menu/window-lightning.tres",
+      "originalSha256": "8e109fec32ed389f7d02c0f54eb978b7cfecd99dfb6e62c4782140738808cc0d",
+      "finalSha256": "bcafdaf6a0f0f54f6b046888c10c04b8e7ed22aa37d4ab10d8b6fb86ef824f54"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-animation/animation.json",
+      "to": "assets/backgrounds/archive/main-menu/revision-01-animated/animation.json",
+      "originalSha256": "49b9949013d16bd8afb6974511b6e299f701573292d359ae65809b3ce0948bb4",
+      "finalSha256": "49b9949013d16bd8afb6974511b6e299f701573292d359ae65809b3ce0948bb4"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-animation/candle-flame.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-01-animated/candle-flame.png",
+      "originalSha256": "ec8edc2fbd99119db260584dd80ec1744e755adb374eebf1debae223ccd7db48",
+      "finalSha256": "ec8edc2fbd99119db260584dd80ec1744e755adb374eebf1debae223ccd7db48"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-animation/candle-flame.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-01-animated/candle-flame.png.import",
+      "originalSha256": "16073c9eef8d62d6f85e467b8b9b3c435f59cb1c0a7de998b265b97299030276",
+      "finalSha256": "9df39b2b1bef22ce8bb95ce155c9e5370aa1554cb7487900e5be9ea27f852775"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-animation/candle-flame.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-01-animated/candle-flame.tres",
+      "originalSha256": "2a43d23eb053b0e1873629dbebe98648753d03bcecbcbe6e0ba1417f6f2c891b",
+      "finalSha256": "2a43d23eb053b0e1873629dbebe98648753d03bcecbcbe6e0ba1417f6f2c891b"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-animation/candlelight.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-01-animated/candlelight.png",
+      "originalSha256": "44336a9f4671281e2bd15a2c052e3f84a3018ee50daa76caf9df5819e62ab385",
+      "finalSha256": "44336a9f4671281e2bd15a2c052e3f84a3018ee50daa76caf9df5819e62ab385"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-animation/candlelight.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-01-animated/candlelight.png.import",
+      "originalSha256": "f371c54e1095d895228ce652ead1f5360026488c1f7ec3c0b4c319f0ca4d81f6",
+      "finalSha256": "06eef1b5166c89898537959374f91a2d9b8dcd2154c133c3f24176d564220d5d"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-animation/candlelight.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-01-animated/candlelight.tres",
+      "originalSha256": "73b868841eddd146b761751a6baaa6d61d41113f43523ce4218db68b957aa9c8",
+      "finalSha256": "73b868841eddd146b761751a6baaa6d61d41113f43523ce4218db68b957aa9c8"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-animation/candlelit-dust.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-01-animated/candlelit-dust.png",
+      "originalSha256": "e0ba9bc9d08d213cf7ca5e27dff934404d1fa42ed3ce4280636c0adc53bae01c",
+      "finalSha256": "e0ba9bc9d08d213cf7ca5e27dff934404d1fa42ed3ce4280636c0adc53bae01c"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-animation/candlelit-dust.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-01-animated/candlelit-dust.png.import",
+      "originalSha256": "051c7720645c1af13ac295d5766dde5cc8fbafe70fba4f61ef53c3b5260f78cd",
+      "finalSha256": "8b6b734c6e441c643b9b746c14b43744c8fda8a9f8a8648c7fd36bf32eb1b9e2"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-animation/candlelit-dust.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-01-animated/candlelit-dust.tres",
+      "originalSha256": "c05d4b8fe1849bab8a6fdb013f3d65aed6f66635eb92feded542b403aaec2b56",
+      "finalSha256": "c05d4b8fe1849bab8a6fdb013f3d65aed6f66635eb92feded542b403aaec2b56"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-animation/packing-table-base.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-01-animated/packing-table-base.png",
+      "originalSha256": "463eaab53bcac06186f7fdc2d80c32643f97cbb1c514aa845453755fed30e5a0",
+      "finalSha256": "463eaab53bcac06186f7fdc2d80c32643f97cbb1c514aa845453755fed30e5a0"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-animation/packing-table-base.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-01-animated/packing-table-base.png.import",
+      "originalSha256": "c84e4c1ac58e8a6f73c5d1efe6d02bb84a51da2f495f0877521910ef0282d672",
+      "finalSha256": "4d9f533a316b896ea6f56a9e5fa59d9400eae5df138dff4dc2b96dd564cf3c17"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-animation/purple-curse-wisp.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-01-animated/purple-curse-wisp.png",
+      "originalSha256": "67ebaab9da16b76b84835ed7f3be714e1fa9cf2c0f07c31a83f69a58c13cd352",
+      "finalSha256": "67ebaab9da16b76b84835ed7f3be714e1fa9cf2c0f07c31a83f69a58c13cd352"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-animation/purple-curse-wisp.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-01-animated/purple-curse-wisp.png.import",
+      "originalSha256": "c0f6b5016d1a6b779116b025788c047792add3d8d71d011b5f027dd357f8b69e",
+      "finalSha256": "c4426046ccdb4511e509f855a0d9baef50126650c5528242d454874ec4dae4de"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-animation/purple-curse-wisp.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-01-animated/purple-curse-wisp.tres",
+      "originalSha256": "18584733e7889a7eb0ba0de19dabd7ef7b8dc2835efe16db953babb23a8140ac",
+      "finalSha256": "18584733e7889a7eb0ba0de19dabd7ef7b8dc2835efe16db953babb23a8140ac"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-animation/README.md",
+      "to": "assets/backgrounds/archive/main-menu/revision-01-animated/README.md",
+      "originalSha256": "b0d599c417bedac49e9e8d916e45b1c6e5ca9af2fe2f98b6f74158e9566022c2",
+      "finalSha256": "b0d599c417bedac49e9e8d916e45b1c6e5ca9af2fe2f98b6f74158e9566022c2"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/animation.json",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/animation.json",
+      "originalSha256": "f8cdcf1a44b92b60dde30675e94380864062c6ef31b3314ea072fbb6c8fc3eaf",
+      "finalSha256": "f8cdcf1a44b92b60dde30675e94380864062c6ef31b3314ea072fbb6c8fc3eaf"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/candle-flame.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/candle-flame.png",
+      "originalSha256": "ec8edc2fbd99119db260584dd80ec1744e755adb374eebf1debae223ccd7db48",
+      "finalSha256": "ec8edc2fbd99119db260584dd80ec1744e755adb374eebf1debae223ccd7db48"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/candle-flame.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/candle-flame.png.import",
+      "originalSha256": "b14df98e018092387b8eb0f35873bca3f537914e5a671076a7a8d1ac4d183fb2",
+      "finalSha256": "4804f68b037c676fe64a9af48e677276a442670cc2f0171562c4eaf1b0e229ea"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/candle-flame.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/candle-flame.tres",
+      "originalSha256": "72ff2f2bf0b0b92e80f64b6ee092b7b3cb1f616bb2a6491151c4e12ba0448874",
+      "finalSha256": "72ff2f2bf0b0b92e80f64b6ee092b7b3cb1f616bb2a6491151c4e12ba0448874"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/candlelight.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/candlelight.png",
+      "originalSha256": "44336a9f4671281e2bd15a2c052e3f84a3018ee50daa76caf9df5819e62ab385",
+      "finalSha256": "44336a9f4671281e2bd15a2c052e3f84a3018ee50daa76caf9df5819e62ab385"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/candlelight.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/candlelight.png.import",
+      "originalSha256": "78fdbdfc2b4f918fbd812ad73f966508285e0f326a6629eeb40a131dd62d5de5",
+      "finalSha256": "c48e269ab7eb87d8954709766f1ab04731cefaf5ca9d77ba888701dbb6160767"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/candlelight.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/candlelight.tres",
+      "originalSha256": "2bbe0b3a0376e97c76acd5a50a3343b81f157467a93dadb3c8b35197f33fc69f",
+      "finalSha256": "2bbe0b3a0376e97c76acd5a50a3343b81f157467a93dadb3c8b35197f33fc69f"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/candlelit-dust.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/candlelit-dust.png",
+      "originalSha256": "e0ba9bc9d08d213cf7ca5e27dff934404d1fa42ed3ce4280636c0adc53bae01c",
+      "finalSha256": "e0ba9bc9d08d213cf7ca5e27dff934404d1fa42ed3ce4280636c0adc53bae01c"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/candlelit-dust.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/candlelit-dust.png.import",
+      "originalSha256": "98aa327f09ddaac4a02bf03ca5cb5e1fee4c4680a43182432904c71e9f473e90",
+      "finalSha256": "abcda364a413f416f4c6ea4bbd1bf5514310e19bb5be875d4a6af78e171bddde"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/candlelit-dust.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/candlelit-dust.tres",
+      "originalSha256": "ed42a31611cfedfb587a96a24c27ab8274eb7ed4010e0cffeb2d8a30071c4d24",
+      "finalSha256": "ed42a31611cfedfb587a96a24c27ab8274eb7ed4010e0cffeb2d8a30071c4d24"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/curse-plume.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/curse-plume.png",
+      "originalSha256": "85c6d86b31beb54f8741c42201d340e308a6965ded63a1c3fbfb5e78c9e1af27",
+      "finalSha256": "85c6d86b31beb54f8741c42201d340e308a6965ded63a1c3fbfb5e78c9e1af27"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/curse-plume.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/curse-plume.png.import",
+      "originalSha256": "ec301916be1876c2cf70c5d3b1ecd1dcae8761571e441cdbe61b617711715812",
+      "finalSha256": "bdfd851bd432ed507d5e5ac6a859c58bef68800b9c219bbd4919d560e67cecae"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/curse-plume.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/curse-plume.tres",
+      "originalSha256": "31451a915267675836f6d5114cb53cf43cc8240a88a941fb7cac4de3f3e38314",
+      "finalSha256": "31451a915267675836f6d5114cb53cf43cc8240a88a941fb7cac4de3f3e38314"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/curse-reflection.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/curse-reflection.png",
+      "originalSha256": "d31e36869a868cdebdcb98f232d9809d869cbc7e4b1179a21a7f26954f41a6ee",
+      "finalSha256": "d31e36869a868cdebdcb98f232d9809d869cbc7e4b1179a21a7f26954f41a6ee"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/curse-reflection.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/curse-reflection.png.import",
+      "originalSha256": "82bc35f4bb9faff61821abb8aa62078e8156c821e3c2441801f1eea10ef4b5e2",
+      "finalSha256": "e615b70608f5794f27318ea50577532e831590157475a363df82de0a1bf316d7"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/curse-reflection.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/curse-reflection.tres",
+      "originalSha256": "b8127d232e61f90ded2789fd04a0bb7a2dea05265fb8a8e34227de2a8bdda94e",
+      "finalSha256": "b8127d232e61f90ded2789fd04a0bb7a2dea05265fb8a8e34227de2a8bdda94e"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/packing-table-animation-preview.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/packing-table-animation-preview.png",
+      "originalSha256": "8ed3393bcd505ffbdf5966ba2a8d07d911766b32707cb5f01451398e8fef7bd2",
+      "finalSha256": "8ed3393bcd505ffbdf5966ba2a8d07d911766b32707cb5f01451398e8fef7bd2"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/packing-table-animation-preview.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/packing-table-animation-preview.png.import",
+      "originalSha256": "5d7ca01e95a9e941ef2d9eba1ceb5b450c1f6fb1f94747e5c40831e547a83152",
+      "finalSha256": "fcade786c03657f0af7c11007b9eb8f769b710ffba11ed01672c0ce8576fe513"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/packing-table-base.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/packing-table-base.png",
+      "originalSha256": "8a4c93fa46e38143ca69fad38d9d87c0d9bee130d309caebf997feb8a0b49bfb",
+      "finalSha256": "8a4c93fa46e38143ca69fad38d9d87c0d9bee130d309caebf997feb8a0b49bfb"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/packing-table-base.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/packing-table-base.png.import",
+      "originalSha256": "b29a368a910d97bcf945cdec93440554a96bb95e301997b67ba8b04e53f354ba",
+      "finalSha256": "8f00a1721f0b84c279ddb1230af19be5002ed6107c33c366a1a6ea7a021d8d85"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/packing-table-static.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/packing-table-static.png",
+      "originalSha256": "ec71a41883afc69a65e7b846894f16f8d51a666d9450b6161b97b44da94f33dc",
+      "finalSha256": "ec71a41883afc69a65e7b846894f16f8d51a666d9450b6161b97b44da94f33dc"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/packing-table-static.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/packing-table-static.png.import",
+      "originalSha256": "56f963423d8aeea9615d408530971f051dddbf195fa3ac37f0cb16b0e4832d7b",
+      "finalSha256": "5631e2c9b9dc166860e00fb403e04ba5bc83eea55b6efeafe8027c54c43f6121"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/packing-table-still-preview.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/packing-table-still-preview.png",
+      "originalSha256": "fe8c40caee2cf86407c853874a72bdefae6902f5389e5a58058ba5944794e1ec",
+      "finalSha256": "fe8c40caee2cf86407c853874a72bdefae6902f5389e5a58058ba5944794e1ec"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/packing-table-still-preview.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/packing-table-still-preview.png.import",
+      "originalSha256": "2f951a973c874d83307cb63e23a2ecc090a0358889174622463eda45e0852a40",
+      "finalSha256": "a674ee91d78641bd0fea370073854fcc34f7ace5aba5abe96d5b7005efede86e"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/README.md",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/README.md",
+      "originalSha256": "571825f26909b0353037e359edf070152fa346b5803f5297d83c980b918e6704",
+      "finalSha256": "571825f26909b0353037e359edf070152fa346b5803f5297d83c980b918e6704"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/satchel-flap.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/satchel-flap.png",
+      "originalSha256": "6439153603758dcb39fa71e80d855151ee9eb5a05a1260236d6fa5e407c56cb6",
+      "finalSha256": "6439153603758dcb39fa71e80d855151ee9eb5a05a1260236d6fa5e407c56cb6"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/satchel-flap.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/satchel-flap.png.import",
+      "originalSha256": "36ab1f7cc4aebb50ef4a3b00f03d444b5fef539158d8fb234cd28539120278d6",
+      "finalSha256": "024e92941a1a73a21059cf18f4e7cef628bad4b010adf76b3be7a2d41c242a9b"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/satchel-flap.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/satchel-flap.tres",
+      "originalSha256": "cd2e74948c6baa57c08f46583067b0d0e0db7fd85ab34af3126af212dc6e9bc3",
+      "finalSha256": "cd2e74948c6baa57c08f46583067b0d0e0db7fd85ab34af3126af212dc6e9bc3"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/storm-light-on-stone.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/storm-light-on-stone.png",
+      "originalSha256": "5fce99c90d2cd1c56f246f83ae671966cd56148e9e9a170f0adc83a0e041afa1",
+      "finalSha256": "5fce99c90d2cd1c56f246f83ae671966cd56148e9e9a170f0adc83a0e041afa1"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/storm-light-on-stone.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/storm-light-on-stone.png.import",
+      "originalSha256": "89c9689d3726aab64c05efe9f250a41df24abc935d2fee8e6b61bd5afefab964",
+      "finalSha256": "2c181b6ad47a95f81fa002b120b51a2f52053c47e134e613e17c5bfd8ff412af"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/storm-light-on-stone.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/storm-light-on-stone.tres",
+      "originalSha256": "4f6231a41ddbffaebaea267dc3b5fb34a36f8f10047b7108fc3b2a10363be46c",
+      "finalSha256": "4f6231a41ddbffaebaea267dc3b5fb34a36f8f10047b7108fc3b2a10363be46c"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/window-lightning.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/window-lightning.png",
+      "originalSha256": "610f3b071503e2702e6bf52c6515bff7943c016e86bcc3d94e51d50f65c9c2ad",
+      "finalSha256": "610f3b071503e2702e6bf52c6515bff7943c016e86bcc3d94e51d50f65c9c2ad"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/window-lightning.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/window-lightning.png.import",
+      "originalSha256": "615011b2fb511c8de52485c9518af96c07015f931eedd35df6156fa1c43c0e27",
+      "finalSha256": "9d9c245abff2b2bc51c10bfce7a2867fe594b4e617aec1acaa9619b206dd5371"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision/window-lightning.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/window-lightning.tres",
+      "originalSha256": "fc609665a8f5dfc969fb575de0e9e53853d6f2126067d13e39238f2e6842c443",
+      "finalSha256": "fc609665a8f5dfc969fb575de0e9e53853d6f2126067d13e39238f2e6842c443"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/animation.json",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/animation.json",
+      "originalSha256": "cb3a6f592016ac3aaf5c4d8f42cc973a2da3b85d0748ffc2d1079c0563494cde",
+      "finalSha256": "cb3a6f592016ac3aaf5c4d8f42cc973a2da3b85d0748ffc2d1079c0563494cde"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/candle-flame.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/candle-flame.png",
+      "originalSha256": "ec8edc2fbd99119db260584dd80ec1744e755adb374eebf1debae223ccd7db48",
+      "finalSha256": "ec8edc2fbd99119db260584dd80ec1744e755adb374eebf1debae223ccd7db48"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/candle-flame.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/candle-flame.png.import",
+      "originalSha256": "c66d909ea1601c051d1e7c0c83051437a08f663fbb8b2683eb33f8b4ae386399",
+      "finalSha256": "2d939ac153dece72533ae2ca7ee1e0eaeef293da9e6eccf94924423884e03b4b"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/candle-flame.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/candle-flame.tres",
+      "originalSha256": "95f100b6394ee16ebac029a64f5d141e3c8914734bf3e70e11115829512711ef",
+      "finalSha256": "95f100b6394ee16ebac029a64f5d141e3c8914734bf3e70e11115829512711ef"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/candlelight.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/candlelight.png",
+      "originalSha256": "44336a9f4671281e2bd15a2c052e3f84a3018ee50daa76caf9df5819e62ab385",
+      "finalSha256": "44336a9f4671281e2bd15a2c052e3f84a3018ee50daa76caf9df5819e62ab385"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/candlelight.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/candlelight.png.import",
+      "originalSha256": "4ecd7735084c4de690f9c6aefcb84fb52c2606f633570ef21008cc989e9cbe78",
+      "finalSha256": "6aff6717272c8d9bb80237f8398e7bec3c9b3a970617cf9a8c7ed1a296bcbf2d"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/candlelight.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/candlelight.tres",
+      "originalSha256": "b52d34cd9e2c2df6d14beeb20bde681116752bcf52adf9553cd98695b14bd8e1",
+      "finalSha256": "b52d34cd9e2c2df6d14beeb20bde681116752bcf52adf9553cd98695b14bd8e1"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/candlelit-dust.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/candlelit-dust.png",
+      "originalSha256": "e0ba9bc9d08d213cf7ca5e27dff934404d1fa42ed3ce4280636c0adc53bae01c",
+      "finalSha256": "e0ba9bc9d08d213cf7ca5e27dff934404d1fa42ed3ce4280636c0adc53bae01c"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/candlelit-dust.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/candlelit-dust.png.import",
+      "originalSha256": "4fe7b40eb6c659d3ec1e6c4fa42ccf44c8fdf78599490ecf930b9be57385cacf",
+      "finalSha256": "8bce82a3efd30f7aaf410fcbedc9d7a633807772f3881920287a7c78f7b39882"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/candlelit-dust.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/candlelit-dust.tres",
+      "originalSha256": "52b4f780cd365450f4f52f9027736a5cab3d7aece8b53a8c910b259af883f641",
+      "finalSha256": "52b4f780cd365450f4f52f9027736a5cab3d7aece8b53a8c910b259af883f641"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/curse-plume.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/curse-plume.png",
+      "originalSha256": "db6226d24275166809ba683519c40ef3e70bd31581b410a98dc334d8fc5c2e3e",
+      "finalSha256": "db6226d24275166809ba683519c40ef3e70bd31581b410a98dc334d8fc5c2e3e"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/curse-plume.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/curse-plume.png.import",
+      "originalSha256": "0d0ff2f0765cec1410d42fab5c9b0de656b9a03e9966114cbe9c0d597c4ccf30",
+      "finalSha256": "429bb91fe88945a9739ce7982f2791b3fd01e4710d1d02965751b12023661948"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/curse-plume.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/curse-plume.tres",
+      "originalSha256": "0f538a8866ae8b77210ba3fa50c450a833a4d6a130cdf866cd1aeab19374a62a",
+      "finalSha256": "0f538a8866ae8b77210ba3fa50c450a833a4d6a130cdf866cd1aeab19374a62a"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/curse-reflection.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/curse-reflection.png",
+      "originalSha256": "d31e36869a868cdebdcb98f232d9809d869cbc7e4b1179a21a7f26954f41a6ee",
+      "finalSha256": "d31e36869a868cdebdcb98f232d9809d869cbc7e4b1179a21a7f26954f41a6ee"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/curse-reflection.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/curse-reflection.png.import",
+      "originalSha256": "41528950e9c6a233ea6757d99aedbe1d8bc4b145dd5b58633fc765cb3159e9dd",
+      "finalSha256": "957aaf9c47fb6e35c29cb9e2c3de858c43617fffd352a78db5fec5012e4edd55"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/curse-reflection.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/curse-reflection.tres",
+      "originalSha256": "b4bfc10266d6731a1f464bf0d9b200b276b8d5c33139243aa9ca15535e55c947",
+      "finalSha256": "b4bfc10266d6731a1f464bf0d9b200b276b8d5c33139243aa9ca15535e55c947"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/packing-table-animation-preview.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/packing-table-animation-preview.png",
+      "originalSha256": "22f7f19eec954b45f65e2bfdb78da31927c200129a44ecadbb7aa3e33b35865f",
+      "finalSha256": "22f7f19eec954b45f65e2bfdb78da31927c200129a44ecadbb7aa3e33b35865f"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/packing-table-animation-preview.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/packing-table-animation-preview.png.import",
+      "originalSha256": "06360db6d21e0310d7f3d81d54b0b42e790aaacf5be96d8e2470918dbd85cec0",
+      "finalSha256": "2ff92b33170dd63f19b36076779a3eaab0ae6d339f309dfb8846ff044e647523"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/packing-table-base.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/packing-table-base.png",
+      "originalSha256": "cec2a00fd7647529c8ce9bf63969f77b1b32d66dfc388631399f9087e49e3075",
+      "finalSha256": "cec2a00fd7647529c8ce9bf63969f77b1b32d66dfc388631399f9087e49e3075"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/packing-table-base.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/packing-table-base.png.import",
+      "originalSha256": "ede2fdd43b0964df7081af889780ed1d3b992e6ad0a9041b3ab86038acc4a109",
+      "finalSha256": "589b58cb15dd72de413f698823e2348fc0a6258c9d2c59097c9b72b899f00ef5"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/packing-table-static.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/packing-table-static.png",
+      "originalSha256": "55a96b3117d453d56bee72e09b37fef0fac2120b584d640fbae1a6d8cbd85a71",
+      "finalSha256": "55a96b3117d453d56bee72e09b37fef0fac2120b584d640fbae1a6d8cbd85a71"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/packing-table-static.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/packing-table-static.png.import",
+      "originalSha256": "263f24dcd597fe218b492622914f8af31a9a3f84e89167a981717ecb981da49f",
+      "finalSha256": "b316624aac43594efde933c78c319046c1d072a0dece6e273208630bc0488e91"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/packing-table-still-preview.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/packing-table-still-preview.png",
+      "originalSha256": "678fbc6a9d78c733a6d834ff96150f53e33a1b592507a5749c91283a9ad52425",
+      "finalSha256": "678fbc6a9d78c733a6d834ff96150f53e33a1b592507a5749c91283a9ad52425"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/packing-table-still-preview.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/packing-table-still-preview.png.import",
+      "originalSha256": "cc4d76507092bfa45b9c2845b0c6bd09f33d2fe7032a9e3483c7c8704f51406c",
+      "finalSha256": "86acbfa581a2df1128b5ff83ba29a7884447ccddc24be5e519e3211cc1331b5f"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/playback-check.json",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/playback-check.json",
+      "originalSha256": "f4a93b540a568c7da3e03b77cdd892add3d1c9faf9aeb47933a4163096fdfc3d",
+      "finalSha256": "f4a93b540a568c7da3e03b77cdd892add3d1c9faf9aeb47933a4163096fdfc3d"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/README.md",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/README.md",
+      "originalSha256": "040fddf67e8513b36aef2268e68f16d1cc98e19a1aac347d1911bbafec1271b6",
+      "finalSha256": "040fddf67e8513b36aef2268e68f16d1cc98e19a1aac347d1911bbafec1271b6"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/satchel-flap.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/satchel-flap.png",
+      "originalSha256": "6439153603758dcb39fa71e80d855151ee9eb5a05a1260236d6fa5e407c56cb6",
+      "finalSha256": "6439153603758dcb39fa71e80d855151ee9eb5a05a1260236d6fa5e407c56cb6"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/satchel-flap.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/satchel-flap.png.import",
+      "originalSha256": "b6e45bf343c870f7c7d676c1475be3bde0cfb43c7ce939dc031ea8e470ec297b",
+      "finalSha256": "b3940826b11308cf6fead4e386d0a6e154a685dc74cb23eab157b919ad8e9b07"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/satchel-flap.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/satchel-flap.tres",
+      "originalSha256": "95988d4624b205d664e562a9be70597608e60ea5bf8de27037580f1be25f470c",
+      "finalSha256": "95988d4624b205d664e562a9be70597608e60ea5bf8de27037580f1be25f470c"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/storm-light-on-stone.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/storm-light-on-stone.png",
+      "originalSha256": "5fce99c90d2cd1c56f246f83ae671966cd56148e9e9a170f0adc83a0e041afa1",
+      "finalSha256": "5fce99c90d2cd1c56f246f83ae671966cd56148e9e9a170f0adc83a0e041afa1"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/storm-light-on-stone.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/storm-light-on-stone.png.import",
+      "originalSha256": "d37c4f7059464f98f81e1791df195fb6aea9829d8774bc18375c37dbd38b7b7b",
+      "finalSha256": "1f5ed94dee8dbb4a2dde04f3a243245ab2dd6eeb682ef80a4472dc56af526c62"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/storm-light-on-stone.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/storm-light-on-stone.tres",
+      "originalSha256": "c7f0bb3bb17b0d952870b5c6a143e9b55a6f05df6313a8cde12dd99ff7dd5216",
+      "finalSha256": "c7f0bb3bb17b0d952870b5c6a143e9b55a6f05df6313a8cde12dd99ff7dd5216"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/window-lightning.png",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/window-lightning.png",
+      "originalSha256": "610f3b071503e2702e6bf52c6515bff7943c016e86bcc3d94e51d50f65c9c2ad",
+      "finalSha256": "610f3b071503e2702e6bf52c6515bff7943c016e86bcc3d94e51d50f65c9c2ad"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/window-lightning.png.import",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/window-lightning.png.import",
+      "originalSha256": "5c28101f067f4c871067a21ee36b350a1ed406ffc704a4beff6f071ed6b55b71",
+      "finalSha256": "7038a6836daaf60d5a65b316d90e8fc4707951645772db69170354fb25364a4e"
+    },
+    {
+      "from": "assets/backgrounds/packing-table-storm-revision-02/window-lightning.tres",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/window-lightning.tres",
+      "originalSha256": "d2d6d250264173c0f1b89c5822cf2f53d962dc3a6a83e8cedd6f3b0b32f4348f",
+      "finalSha256": "d2d6d250264173c0f1b89c5822cf2f53d962dc3a6a83e8cedd6f3b0b32f4348f"
+    },
+    {
+      "from": "assets/backgrounds/sources/Packbound - Packing Table - Animated.pxo",
+      "to": "assets/backgrounds/archive/main-menu/revision-01-animated/sources/packing-table.pxo",
+      "originalSha256": "7b14af4bb20fe9d62e52f95ad506d6ef84ec0b8c91954ed72843ce955eee4d60",
+      "finalSha256": "7b14af4bb20fe9d62e52f95ad506d6ef84ec0b8c91954ed72843ce955eee4d60"
+    },
+    {
+      "from": "assets/backgrounds/sources/Packbound - Packing Table - Storm Revision 02.pxo",
+      "to": "assets/backgrounds/archive/main-menu/revision-03-storm/sources/packing-table.pxo",
+      "originalSha256": "5919ee18924a1622699aaefb1f59d8a0bd1ee71cecb0d2919ef0f60d25af75dc",
+      "finalSha256": "5919ee18924a1622699aaefb1f59d8a0bd1ee71cecb0d2919ef0f60d25af75dc"
+    },
+    {
+      "from": "assets/backgrounds/sources/Packbound - Packing Table - Storm Revision 03.pxo",
+      "to": "assets/backgrounds/main-menu/sources/packing-table.pxo",
+      "originalSha256": "d4c745d8cc0881efd021beae5713fe99232545497126635e8373525fa4c49c9c",
+      "finalSha256": "d4c745d8cc0881efd021beae5713fe99232545497126635e8373525fa4c49c9c"
+    },
+    {
+      "from": "assets/backgrounds/sources/Packbound - Packing Table - Storm Revision.pxo",
+      "to": "assets/backgrounds/archive/main-menu/revision-02-storm/sources/packing-table.pxo",
+      "originalSha256": "bc23765df0960401bef03897daa21994c866cfed0f1107c6ad3bb86169215e45",
+      "finalSha256": "bc23765df0960401bef03897daa21994c866cfed0f1107c6ad3bb86169215e45"
+    },
+    {
+      "from": "assets/backgrounds/sources/Packbound - Packing Table.pxo",
+      "to": "assets/backgrounds/archive/main-menu/revision-00-static/sources/packing-table.pxo",
+      "originalSha256": "bb7a7f85de7593bfe0784373d4c03c94951004f3a1f2847013ad05721b4be8a4",
+      "finalSha256": "bb7a7f85de7593bfe0784373d4c03c94951004f3a1f2847013ad05721b4be8a4"
+    },
+    {
+      "from": "assets/items/rusty-knife-32px-v1.svg",
+      "to": "assets/items/weapons/rusty-knife/rusty-knife-32px.svg",
+      "originalSha256": "e2086d9b5a30392bfda64d066b1182f412ca4389cea422198b721141814a53dd",
+      "finalSha256": "e2086d9b5a30392bfda64d066b1182f412ca4389cea422198b721141814a53dd"
+    },
+    {
+      "from": "assets/items/rusty-knife-32px-v1.svg.import",
+      "to": "assets/items/weapons/rusty-knife/rusty-knife-32px.svg.import",
+      "originalSha256": "fb47bc3fb1e1322c578f923b5e60a83cdc7e4b1dd55da4675c3381fc5fbad98a",
+      "finalSha256": "f598aa2b1863e9da2111109a85a24bfaaad46d519d86cd78c9749ed6a5938176"
+    },
+    {
+      "from": "assets/items/rusty-knife-32px-v1.png",
+      "to": "assets/items/weapons/rusty-knife/rusty-knife-32px.png",
+      "originalSha256": "f7cc8583a22c9fa18867161eb869047d5b8ffaf5df40e79ed98db4eabc079283",
+      "finalSha256": "f7cc8583a22c9fa18867161eb869047d5b8ffaf5df40e79ed98db4eabc079283"
+    },
+    {
+      "from": "assets/items/rusty-knife-32px-v1.png.import",
+      "to": "assets/items/weapons/rusty-knife/rusty-knife-32px.png.import",
+      "originalSha256": "4124c974c510eb5d55b9741b5212dfc4fbdc92ebce24307fffb81898ab10c257",
+      "finalSha256": "a1d7ef04e6e7334198e4c04ce90f778ea283835116c4ae3276f0a4193b06b39a"
+    },
+    {
+      "from": "assets/items/rusty-knife-32px-v1.footprint.json",
+      "to": "assets/items/weapons/rusty-knife/rusty-knife-32px.footprint.json",
+      "originalSha256": "79d8e32fdae64ed095ac96210d0f4ebaca2cd26a282c63bcaed5972f680c47b9",
+      "finalSha256": "79d8e32fdae64ed095ac96210d0f4ebaca2cd26a282c63bcaed5972f680c47b9"
+    },
+    {
+      "from": "assets/items/sources/rusty-knife-32px-v1.pxo",
+      "to": "assets/items/weapons/rusty-knife/sources/rusty-knife-32px.pxo",
+      "originalSha256": "a4b0d5021552fc3f213106ae1f39bab904bff439b085bd320ab7a3aa40e21030",
+      "finalSha256": "a4b0d5021552fc3f213106ae1f39bab904bff439b085bd320ab7a3aa40e21030"
+    },
+    {
+      "from": "assets/items/rusty-knife-64px-v1.svg",
+      "to": "assets/items/weapons/rusty-knife/rusty-knife-64px.svg",
+      "originalSha256": "d72a26971ed28736719fc6bb7c1a7ba57511a0e11855d7ae9d5cb60b663f683b",
+      "finalSha256": "d72a26971ed28736719fc6bb7c1a7ba57511a0e11855d7ae9d5cb60b663f683b"
+    },
+    {
+      "from": "assets/items/rusty-knife-64px-v1.svg.import",
+      "to": "assets/items/weapons/rusty-knife/rusty-knife-64px.svg.import",
+      "originalSha256": "166a0ea734812d9538100dc39f2e305ad32f20624f6e23e38c5af1d4ead48463",
+      "finalSha256": "fe29ef82fb13d2bd66aa8870f628b683238e558e53f216497544a82d9edc6213"
+    },
+    {
+      "from": "assets/items/rusty-knife-64px-v1.png",
+      "to": "assets/items/weapons/rusty-knife/rusty-knife-64px.png",
+      "originalSha256": "a2135d42d25a4687601f3ea13e4bebea1753deb6bdde0effdb167328d245cd93",
+      "finalSha256": "a2135d42d25a4687601f3ea13e4bebea1753deb6bdde0effdb167328d245cd93"
+    },
+    {
+      "from": "assets/items/rusty-knife-64px-v1.png.import",
+      "to": "assets/items/weapons/rusty-knife/rusty-knife-64px.png.import",
+      "originalSha256": "f15728c095570a17aee2fb30b6188a67a7f2d8f4264fd46628680fbda14aadd1",
+      "finalSha256": "8cbc20a6209fa5a29904fac4b112bd0837b8aff08e312e695cb6ba5c4e5f8006"
+    },
+    {
+      "from": "assets/items/rusty-knife-64px-v1.footprint.json",
+      "to": "assets/items/weapons/rusty-knife/rusty-knife-64px.footprint.json",
+      "originalSha256": "08d8f65e800b4a31a2447169dad938617584c839b561105be2d5fbc3470b42a9",
+      "finalSha256": "08d8f65e800b4a31a2447169dad938617584c839b561105be2d5fbc3470b42a9"
+    },
+    {
+      "from": "assets/items/sources/rusty-knife-64px-v1.pxo",
+      "to": "assets/items/weapons/rusty-knife/sources/rusty-knife-64px.pxo",
+      "originalSha256": "5ae7ccbad6fd162f8f87acc9f8f6ce267b6e4cf3951439095daba949df36cb80",
+      "finalSha256": "5ae7ccbad6fd162f8f87acc9f8f6ce267b6e4cf3951439095daba949df36cb80"
+    },
+    {
+      "from": "assets/items/rusty-knife-128px-v1.svg",
+      "to": "assets/items/weapons/rusty-knife/rusty-knife-128px.svg",
+      "originalSha256": "0aa5683bbee79fea7747a74427af1b55cc0bf0cbf5a78e78b5826e1dc03345a7",
+      "finalSha256": "0aa5683bbee79fea7747a74427af1b55cc0bf0cbf5a78e78b5826e1dc03345a7"
+    },
+    {
+      "from": "assets/items/rusty-knife-128px-v1.svg.import",
+      "to": "assets/items/weapons/rusty-knife/rusty-knife-128px.svg.import",
+      "originalSha256": "f3985484b62c25040b8ae7b70a46519710959958f3ffdb181538e0ae006e6180",
+      "finalSha256": "2c2114468c22d0f883d2e590cd2c1f467ec456b3f1d2878472ef2fc10fe51489"
+    },
+    {
+      "from": "assets/items/rusty-knife-128px-v1.png",
+      "to": "assets/items/weapons/rusty-knife/rusty-knife-128px.png",
+      "originalSha256": "96a47ed30517c33c69b231aa67d12d2f4da3674b8b963f294c06468b306559d3",
+      "finalSha256": "96a47ed30517c33c69b231aa67d12d2f4da3674b8b963f294c06468b306559d3"
+    },
+    {
+      "from": "assets/items/rusty-knife-128px-v1.png.import",
+      "to": "assets/items/weapons/rusty-knife/rusty-knife-128px.png.import",
+      "originalSha256": "5e66c18779c47d87e1f53f4e6abb5bce7c1bb4838ff88b54266f2e3be487b722",
+      "finalSha256": "bb10570a27d16014f1f2285176ad5059ec7f45acba4b1130d304e733a28b3b8c"
+    },
+    {
+      "from": "assets/items/rusty-knife-128px-v1.footprint.json",
+      "to": "assets/items/weapons/rusty-knife/rusty-knife-128px.footprint.json",
+      "originalSha256": "af620edd2f9b6e2f31d24bf7f43ab51cc4ba178f300ac77bbbb6ccb8fe38a880",
+      "finalSha256": "af620edd2f9b6e2f31d24bf7f43ab51cc4ba178f300ac77bbbb6ccb8fe38a880"
+    },
+    {
+      "from": "assets/items/sources/rusty-knife-128px-v1.pxo",
+      "to": "assets/items/weapons/rusty-knife/sources/rusty-knife-128px.pxo",
+      "originalSha256": "0c0367bb48dc53c25e994263847ffe60e385d7ed22aded4143378781af042f19",
+      "finalSha256": "0c0367bb48dc53c25e994263847ffe60e385d7ed22aded4143378781af042f19"
+    },
+    {
+      "from": "assets/items/cracked-shield-32px-v1.svg",
+      "to": "assets/items/armor/cracked-shield/cracked-shield-32px.svg",
+      "originalSha256": "9030107ade264bb4b8408c261e56cf49be7739ca9b55fee884f2532634473145",
+      "finalSha256": "9030107ade264bb4b8408c261e56cf49be7739ca9b55fee884f2532634473145"
+    },
+    {
+      "from": "assets/items/cracked-shield-32px-v1.svg.import",
+      "to": "assets/items/armor/cracked-shield/cracked-shield-32px.svg.import",
+      "originalSha256": "c6491b5bd27c52ae4eb16dd5801709e2fb9caf13ae64086e0f5724728821ad97",
+      "finalSha256": "422c7dd8db4bb1ad2f6e0d804884f3cf460a86b87a76558cbb744f8f675d6ec0"
+    },
+    {
+      "from": "assets/items/cracked-shield-32px-v1.png",
+      "to": "assets/items/armor/cracked-shield/cracked-shield-32px.png",
+      "originalSha256": "ec6f84cacaefc90344bcd85e141465b70aa5cbe97e1cc2d72a740d6973e2461b",
+      "finalSha256": "ec6f84cacaefc90344bcd85e141465b70aa5cbe97e1cc2d72a740d6973e2461b"
+    },
+    {
+      "from": "assets/items/cracked-shield-32px-v1.png.import",
+      "to": "assets/items/armor/cracked-shield/cracked-shield-32px.png.import",
+      "originalSha256": "e340b3dbbd7331ebc2c93935f053bf4dddcdc95198befc56f36135c72d4f00c1",
+      "finalSha256": "a0a2f320b3c5c05ab2bebccf8db0ccb58802bca4d852536a789e123cc970ade3"
+    },
+    {
+      "from": "assets/items/cracked-shield-32px-v1.footprint.json",
+      "to": "assets/items/armor/cracked-shield/cracked-shield-32px.footprint.json",
+      "originalSha256": "8343c69ac96e6825a5f6c6f554c698d77e4d28308d8db0e840f89587f14a73f6",
+      "finalSha256": "8343c69ac96e6825a5f6c6f554c698d77e4d28308d8db0e840f89587f14a73f6"
+    },
+    {
+      "from": "assets/items/sources/cracked-shield-32px-v1.pxo",
+      "to": "assets/items/armor/cracked-shield/sources/cracked-shield-32px.pxo",
+      "originalSha256": "6bafc15c3af72f495c9e54cdc39f71077f979ec7501398f264ccbb77dbbb5343",
+      "finalSha256": "6bafc15c3af72f495c9e54cdc39f71077f979ec7501398f264ccbb77dbbb5343"
+    },
+    {
+      "from": "assets/items/cracked-shield-64px-v1.svg",
+      "to": "assets/items/armor/cracked-shield/cracked-shield-64px.svg",
+      "originalSha256": "36773c99d12368634e035e86bd965a035f39b76a27a6f87243a70fe0b84e8581",
+      "finalSha256": "36773c99d12368634e035e86bd965a035f39b76a27a6f87243a70fe0b84e8581"
+    },
+    {
+      "from": "assets/items/cracked-shield-64px-v1.svg.import",
+      "to": "assets/items/armor/cracked-shield/cracked-shield-64px.svg.import",
+      "originalSha256": "44f33ef7a2a59830f2122b08b922c9a38436e7cbc86757c90fd43c7377174ce7",
+      "finalSha256": "4833149d73291dac5a95ecc88544a60f0c3001fcbfb8c04664292261521f075d"
+    },
+    {
+      "from": "assets/items/cracked-shield-64px-v1.png",
+      "to": "assets/items/armor/cracked-shield/cracked-shield-64px.png",
+      "originalSha256": "ed546ab89d28441fc1bd2f4de473bf3c075fd8f675d845c5ed9f6d9045cfe874",
+      "finalSha256": "ed546ab89d28441fc1bd2f4de473bf3c075fd8f675d845c5ed9f6d9045cfe874"
+    },
+    {
+      "from": "assets/items/cracked-shield-64px-v1.png.import",
+      "to": "assets/items/armor/cracked-shield/cracked-shield-64px.png.import",
+      "originalSha256": "52332a5ee37de6865f6ec84ad7855000f2441b06403e5f4b7bdc4f5773ae9259",
+      "finalSha256": "d1a2ae05d4d9d6bc737aa39dc4006e7e499a51931f08e3168f5d05e555145ebe"
+    },
+    {
+      "from": "assets/items/cracked-shield-64px-v1.footprint.json",
+      "to": "assets/items/armor/cracked-shield/cracked-shield-64px.footprint.json",
+      "originalSha256": "134b2dfb16ee1fac2af6deffe2530cf386a0ad36d35695921d55fe114abd5a01",
+      "finalSha256": "134b2dfb16ee1fac2af6deffe2530cf386a0ad36d35695921d55fe114abd5a01"
+    },
+    {
+      "from": "assets/items/sources/cracked-shield-64px-v1.pxo",
+      "to": "assets/items/armor/cracked-shield/sources/cracked-shield-64px.pxo",
+      "originalSha256": "dd4c287accd031b04d3cb665e915387604be8fe4b2669c838d360459edafb813",
+      "finalSha256": "dd4c287accd031b04d3cb665e915387604be8fe4b2669c838d360459edafb813"
+    },
+    {
+      "from": "assets/items/cracked-shield-128px-v1.svg",
+      "to": "assets/items/armor/cracked-shield/cracked-shield-128px.svg",
+      "originalSha256": "0cf4aa7b9033b9ae67dc7a766a59be36a6698e1cb0e9261054d727cf092954b6",
+      "finalSha256": "0cf4aa7b9033b9ae67dc7a766a59be36a6698e1cb0e9261054d727cf092954b6"
+    },
+    {
+      "from": "assets/items/cracked-shield-128px-v1.svg.import",
+      "to": "assets/items/armor/cracked-shield/cracked-shield-128px.svg.import",
+      "originalSha256": "158a619644088cfcf6974adebf983ba19b1fdfd21bf263bfb7f08df483f30150",
+      "finalSha256": "08f279532201ba429a85ecb4db39acdfb416526e1cc00f458abe2026fd864f34"
+    },
+    {
+      "from": "assets/items/cracked-shield-128px-v1.png",
+      "to": "assets/items/armor/cracked-shield/cracked-shield-128px.png",
+      "originalSha256": "658e064aac26a1539a3ea767dc1e241327f31351c849da74b0c02d97f984ba99",
+      "finalSha256": "658e064aac26a1539a3ea767dc1e241327f31351c849da74b0c02d97f984ba99"
+    },
+    {
+      "from": "assets/items/cracked-shield-128px-v1.png.import",
+      "to": "assets/items/armor/cracked-shield/cracked-shield-128px.png.import",
+      "originalSha256": "52a9922d3959bbaf0147f75be2eaee137fabdd352583c668c65f7c6c5a11d846",
+      "finalSha256": "f3645ebae5150e7a028b043a88cec2e194e70e73a1d78df136cff44fd3b709bb"
+    },
+    {
+      "from": "assets/items/cracked-shield-128px-v1.footprint.json",
+      "to": "assets/items/armor/cracked-shield/cracked-shield-128px.footprint.json",
+      "originalSha256": "b802387cdbf7f8547c82db0325c1aa35e5520764a508bd929fce1a337f85cf37",
+      "finalSha256": "b802387cdbf7f8547c82db0325c1aa35e5520764a508bd929fce1a337f85cf37"
+    },
+    {
+      "from": "assets/items/sources/cracked-shield-128px-v1.pxo",
+      "to": "assets/items/armor/cracked-shield/sources/cracked-shield-128px.pxo",
+      "originalSha256": "0809998f2ce94b68f4bed79286bf5330d41441c8b7ac0302844f86adaa33b6bf",
+      "finalSha256": "0809998f2ce94b68f4bed79286bf5330d41441c8b7ac0302844f86adaa33b6bf"
+    },
+    {
+      "from": "assets/items/iron-charm-32px-v1.svg",
+      "to": "assets/items/charms/iron-charm/iron-charm-32px.svg",
+      "originalSha256": "c4d42fcce6f97a105d7102154a5fa309ffdbf5688837c4ed7c41b6bb1e729528",
+      "finalSha256": "c4d42fcce6f97a105d7102154a5fa309ffdbf5688837c4ed7c41b6bb1e729528"
+    },
+    {
+      "from": "assets/items/iron-charm-32px-v1.svg.import",
+      "to": "assets/items/charms/iron-charm/iron-charm-32px.svg.import",
+      "originalSha256": "55c4d184d66261cf19ceefa037e7dc92c7f4100eb5b046199ffcf917848bd7a2",
+      "finalSha256": "a096371743228e506005fb50afeda78f27098edde98925122164349db0d0bc3e"
+    },
+    {
+      "from": "assets/items/iron-charm-32px-v1.png",
+      "to": "assets/items/charms/iron-charm/iron-charm-32px.png",
+      "originalSha256": "2a00d3ebe4dc97cad1761f651d90bbf85d15dbce2839e20ca218e1c3c81c2fca",
+      "finalSha256": "2a00d3ebe4dc97cad1761f651d90bbf85d15dbce2839e20ca218e1c3c81c2fca"
+    },
+    {
+      "from": "assets/items/iron-charm-32px-v1.png.import",
+      "to": "assets/items/charms/iron-charm/iron-charm-32px.png.import",
+      "originalSha256": "34c9050a5b1cd751137adabc29f09da23f1ca9513b4c3a0fdd888d01940a7a9a",
+      "finalSha256": "6215e037191bc4bbc6db704967fb85596bbf202ceaba6fe50ab67f8ef122e747"
+    },
+    {
+      "from": "assets/items/iron-charm-32px-v1.footprint.json",
+      "to": "assets/items/charms/iron-charm/iron-charm-32px.footprint.json",
+      "originalSha256": "3d0827c839d18539baff62e258266b92e0e9798724d4daa1d33a0792561975dd",
+      "finalSha256": "3d0827c839d18539baff62e258266b92e0e9798724d4daa1d33a0792561975dd"
+    },
+    {
+      "from": "assets/items/sources/iron-charm-32px-v1.pxo",
+      "to": "assets/items/charms/iron-charm/sources/iron-charm-32px.pxo",
+      "originalSha256": "be4a1de8a6e871ec7c82cb7d5797f166a4492f8e277c503fb666afe051816484",
+      "finalSha256": "be4a1de8a6e871ec7c82cb7d5797f166a4492f8e277c503fb666afe051816484"
+    },
+    {
+      "from": "assets/items/iron-charm-64px-v1.svg",
+      "to": "assets/items/charms/iron-charm/iron-charm-64px.svg",
+      "originalSha256": "36ddaa94eabf47daa9d014760cbc34156972a97508b1820618812cb7eb5b7754",
+      "finalSha256": "36ddaa94eabf47daa9d014760cbc34156972a97508b1820618812cb7eb5b7754"
+    },
+    {
+      "from": "assets/items/iron-charm-64px-v1.svg.import",
+      "to": "assets/items/charms/iron-charm/iron-charm-64px.svg.import",
+      "originalSha256": "a463281223d36d5f50b14e3c391be1f6eb377aa103340fbe625e30bcb0047655",
+      "finalSha256": "fcab5c744c6a18985c70e1ee14b0a4289d36077d680ebe909f7a587ac2e7e26e"
+    },
+    {
+      "from": "assets/items/iron-charm-64px-v1.png",
+      "to": "assets/items/charms/iron-charm/iron-charm-64px.png",
+      "originalSha256": "aab9656f2be1af156c9aa1ca909abf369083094e4fd668c5c79868ce9668e103",
+      "finalSha256": "aab9656f2be1af156c9aa1ca909abf369083094e4fd668c5c79868ce9668e103"
+    },
+    {
+      "from": "assets/items/iron-charm-64px-v1.png.import",
+      "to": "assets/items/charms/iron-charm/iron-charm-64px.png.import",
+      "originalSha256": "507f95aac3f18b7c0e922d8f5a041f42d8121882a6022a4d94da71b8aeae6f2e",
+      "finalSha256": "91da93a01e27754f7cc0f5296a839a2feb45a0f02a7cd259933be55b0909006f"
+    },
+    {
+      "from": "assets/items/iron-charm-64px-v1.footprint.json",
+      "to": "assets/items/charms/iron-charm/iron-charm-64px.footprint.json",
+      "originalSha256": "703f242bf14af602de12833761e0449fbe13e0fa7695bff9cef5108b6e30bd2d",
+      "finalSha256": "703f242bf14af602de12833761e0449fbe13e0fa7695bff9cef5108b6e30bd2d"
+    },
+    {
+      "from": "assets/items/sources/iron-charm-64px-v1.pxo",
+      "to": "assets/items/charms/iron-charm/sources/iron-charm-64px.pxo",
+      "originalSha256": "7f1787de7b8813b59175b14ca66885927cfb897841d31adf05a1b1f2a491a47a",
+      "finalSha256": "7f1787de7b8813b59175b14ca66885927cfb897841d31adf05a1b1f2a491a47a"
+    },
+    {
+      "from": "assets/items/iron-charm-128px-v1.svg",
+      "to": "assets/items/charms/iron-charm/iron-charm-128px.svg",
+      "originalSha256": "d1fded2c7abe013ef40c96ebe483e088ad2f93eeaedd33a03b34729e0dac57b3",
+      "finalSha256": "d1fded2c7abe013ef40c96ebe483e088ad2f93eeaedd33a03b34729e0dac57b3"
+    },
+    {
+      "from": "assets/items/iron-charm-128px-v1.svg.import",
+      "to": "assets/items/charms/iron-charm/iron-charm-128px.svg.import",
+      "originalSha256": "2368d10d865b6f26378ddf117045717d941fd7f540915334a8e8aca52eafbf0d",
+      "finalSha256": "c1a0402d42fc2631a5d109f3e44e690f16e625ad8e850d1643cd0952a9246f72"
+    },
+    {
+      "from": "assets/items/iron-charm-128px-v1.png",
+      "to": "assets/items/charms/iron-charm/iron-charm-128px.png",
+      "originalSha256": "d9904ad5bc2f4267cc5745f8e3ca8afdd061c67848cbbf6c261f65a9da20ccc7",
+      "finalSha256": "d9904ad5bc2f4267cc5745f8e3ca8afdd061c67848cbbf6c261f65a9da20ccc7"
+    },
+    {
+      "from": "assets/items/iron-charm-128px-v1.png.import",
+      "to": "assets/items/charms/iron-charm/iron-charm-128px.png.import",
+      "originalSha256": "f9ee330ffdbc457cd88c036bced4e7f5b38cc5bf056063c0af4ae2f423ac2422",
+      "finalSha256": "a2aab723012711699c53d32b12a8db3afeb59cc78c99b6a10a10f79732051384"
+    },
+    {
+      "from": "assets/items/iron-charm-128px-v1.footprint.json",
+      "to": "assets/items/charms/iron-charm/iron-charm-128px.footprint.json",
+      "originalSha256": "af40affba4c17f67d7eca24b5fac0c6e029905a2783af69a7a9c88b2b5b826ed",
+      "finalSha256": "af40affba4c17f67d7eca24b5fac0c6e029905a2783af69a7a9c88b2b5b826ed"
+    },
+    {
+      "from": "assets/items/sources/iron-charm-128px-v1.pxo",
+      "to": "assets/items/charms/iron-charm/sources/iron-charm-128px.pxo",
+      "originalSha256": "303ed06f14a6f3172822b64303e68735cf4327d24fd9dfe181b13d982eb5f770",
+      "finalSha256": "303ed06f14a6f3172822b64303e68735cf4327d24fd9dfe181b13d982eb5f770"
+    },
+    {
+      "from": "assets/items/venom-dagger-64px-v1.svg",
+      "to": "assets/items/weapons/venom-dagger/venom-dagger-64px.svg",
+      "originalSha256": "390c64831027cc2e217cdefafb6a19568945181c582c0bd8462943d17a03e5b7",
+      "finalSha256": "390c64831027cc2e217cdefafb6a19568945181c582c0bd8462943d17a03e5b7"
+    },
+    {
+      "from": "assets/items/venom-dagger-64px-v1.svg.import",
+      "to": "assets/items/weapons/venom-dagger/venom-dagger-64px.svg.import",
+      "originalSha256": "837d3ff8be63ac90cdb0cc48cafc5b079dfce5d318a27b92f5ea65bd9132989c",
+      "finalSha256": "4f07697701861007050f7f8cc868bf715e3e89079e3c10d83c9b6fc79e4c483f"
+    },
+    {
+      "from": "assets/items/venom-dagger-64px-v1.png",
+      "to": "assets/items/weapons/venom-dagger/venom-dagger-64px.png",
+      "originalSha256": "2a65bf361b479170dbf2d7ca8ace3fa71cf3946fe87a1a6a4321e99bbc68288d",
+      "finalSha256": "2a65bf361b479170dbf2d7ca8ace3fa71cf3946fe87a1a6a4321e99bbc68288d"
+    },
+    {
+      "from": "assets/items/venom-dagger-64px-v1.png.import",
+      "to": "assets/items/weapons/venom-dagger/venom-dagger-64px.png.import",
+      "originalSha256": "cdded03647800582fb93e37c37f81984c8a13a923da17d355a068f1fc65ed897",
+      "finalSha256": "f818ff98d6e0712fbcf5a18788e3fd27ad4e6866fc6516af15c276383b1a31b6"
+    },
+    {
+      "from": "assets/items/venom-dagger-64px-v1.footprint.json",
+      "to": "assets/items/weapons/venom-dagger/venom-dagger-64px.footprint.json",
+      "originalSha256": "315f4093bf2e9688af9475f4e57fa4ada6ce68318e5c5d136e2f2212a9b3a5c7",
+      "finalSha256": "315f4093bf2e9688af9475f4e57fa4ada6ce68318e5c5d136e2f2212a9b3a5c7"
+    },
+    {
+      "from": "assets/items/sources/venom-dagger-64px-v1.pxo",
+      "to": "assets/items/weapons/venom-dagger/sources/venom-dagger-64px.pxo",
+      "originalSha256": "8928687ad658109c3199bbfc2dae319cc0deeb6f8e57acd4e2271e55e6c5c122",
+      "finalSha256": "8928687ad658109c3199bbfc2dae319cc0deeb6f8e57acd4e2271e55e6c5c122"
+    },
+    {
+      "from": "assets/items/01-dagger.png",
+      "to": "assets/items/archive/weapons/rusty-knife/revision-01-atlas/rusty-knife.png",
+      "originalSha256": "f241270978671ffdaa069385def9fc6eefe4934c568bac22005192d0bb6e12c3",
+      "finalSha256": "f241270978671ffdaa069385def9fc6eefe4934c568bac22005192d0bb6e12c3"
+    },
+    {
+      "from": "assets/items/01-dagger.png.import",
+      "to": "assets/items/archive/weapons/rusty-knife/revision-01-atlas/rusty-knife.png.import",
+      "originalSha256": "f87da0d3025d736eddcf18503e23bcaa9a02f97d963b696620d19214036dd2ee",
+      "finalSha256": "38f655a24242ad1fbdbc2a52f583704c43b902070a16b2bde47e2da4189f7a96"
+    },
+    {
+      "from": "assets/items/01-dagger.svg",
+      "to": "assets/items/archive/weapons/rusty-knife/revision-01-atlas/rusty-knife.svg",
+      "originalSha256": "06860a36197fd288a57d66f0671c9bdf73e0113d4e41de155dcb2ca88c0ba724",
+      "finalSha256": "06860a36197fd288a57d66f0671c9bdf73e0113d4e41de155dcb2ca88c0ba724"
+    },
+    {
+      "from": "assets/items/01-dagger.svg.import",
+      "to": "assets/items/archive/weapons/rusty-knife/revision-01-atlas/rusty-knife.svg.import",
+      "originalSha256": "4d8b95d0448af247ed71e109eeaef2cc41e2e680596aba3c6576e643e7832ac6",
+      "finalSha256": "4dbc05086863335ccbed6db8a38773dcf71f9bff1913a2ba6171f38cd4d50809"
+    },
+    {
+      "from": "assets/items/02-shield.png",
+      "to": "assets/items/archive/armor/cracked-shield/revision-01-atlas/cracked-shield.png",
+      "originalSha256": "3f1823758ecc13849ef53b1713767e9d1eb8fa6ba27668f4e738e6d371ba72d9",
+      "finalSha256": "3f1823758ecc13849ef53b1713767e9d1eb8fa6ba27668f4e738e6d371ba72d9"
+    },
+    {
+      "from": "assets/items/02-shield.png.import",
+      "to": "assets/items/archive/armor/cracked-shield/revision-01-atlas/cracked-shield.png.import",
+      "originalSha256": "6cdb66f7105fbd9b13e3bafe54a0fd6e5a14a00bf8f4e081b5c9324e382ab2f4",
+      "finalSha256": "e48f4fed7c4dd4028e2370a7dbba871f0d835c6815c89d458d3f81b26ed3a3d3"
+    },
+    {
+      "from": "assets/items/02-shield.svg",
+      "to": "assets/items/archive/armor/cracked-shield/revision-01-atlas/cracked-shield.svg",
+      "originalSha256": "f96d98d8cd87f1f09f3879794eb2381ef427117b461db72d2ebbfd2e3c3acf36",
+      "finalSha256": "f96d98d8cd87f1f09f3879794eb2381ef427117b461db72d2ebbfd2e3c3acf36"
+    },
+    {
+      "from": "assets/items/02-shield.svg.import",
+      "to": "assets/items/archive/armor/cracked-shield/revision-01-atlas/cracked-shield.svg.import",
+      "originalSha256": "ec8cf09384480b827d6ef7a324f977932c116458387e5c6152d20958c6b2fa57",
+      "finalSha256": "47bc67481c4177dc13ef1ae482ccb4ccd284491a213d780f47e0bfa8218a4bcb"
+    },
+    {
+      "from": "assets/items/03-ruby.png",
+      "to": "assets/items/charms/blood-gem/blood-gem.png",
+      "originalSha256": "5427f15c82c1cdacfb2197156442ea45e006aa2a0513cc3246799b39501b2c21",
+      "finalSha256": "5427f15c82c1cdacfb2197156442ea45e006aa2a0513cc3246799b39501b2c21"
+    },
+    {
+      "from": "assets/items/03-ruby.png.import",
+      "to": "assets/items/charms/blood-gem/blood-gem.png.import",
+      "originalSha256": "eab4b6b0e4cc8761fb2e26c0682da3d39baefd934514bb7fabe97fd385ad84bb",
+      "finalSha256": "b49342628db885daf97a1875751e2d0edc13fd2cdfff34ce697e074954501d91"
+    },
+    {
+      "from": "assets/items/03-ruby.svg",
+      "to": "assets/items/charms/blood-gem/blood-gem.svg",
+      "originalSha256": "90d72b00ab0d44b97bece28f7f72ab2e809e6f0a55c3401d511c934350ab49da",
+      "finalSha256": "90d72b00ab0d44b97bece28f7f72ab2e809e6f0a55c3401d511c934350ab49da"
+    },
+    {
+      "from": "assets/items/03-ruby.svg.import",
+      "to": "assets/items/charms/blood-gem/blood-gem.svg.import",
+      "originalSha256": "618e7a8db9b2b68e4b2c8ad9ad442174dacc1fdf641168528a47361b3684d73b",
+      "finalSha256": "9bf2c156c383ecbacfd5b7bf59ce03b6e9ccbf2a2093db57ecee6bc612da618a"
+    },
+    {
+      "from": "assets/items/04-bandage.png",
+      "to": "assets/items/healing/bandage/bandage.png",
+      "originalSha256": "3fca94e01718ea0a43a4430a150e1e72c77dc41d49666b9adf66cdf502c7539d",
+      "finalSha256": "3fca94e01718ea0a43a4430a150e1e72c77dc41d49666b9adf66cdf502c7539d"
+    },
+    {
+      "from": "assets/items/04-bandage.png.import",
+      "to": "assets/items/healing/bandage/bandage.png.import",
+      "originalSha256": "918569d45b211bfd9dfe5cfd381288be86e3bf33a63dac3990ce145a9251baa9",
+      "finalSha256": "38901cec2c30d31211813eb1cdc681e25e32d4ec14e7b9c40eb74e574c3ea1b2"
+    },
+    {
+      "from": "assets/items/04-bandage.svg",
+      "to": "assets/items/healing/bandage/bandage.svg",
+      "originalSha256": "a1a3302cc0c1354f4d096a3d6bcda9540a6dd0b56dcb63ee30f517e39c8b8256",
+      "finalSha256": "a1a3302cc0c1354f4d096a3d6bcda9540a6dd0b56dcb63ee30f517e39c8b8256"
+    },
+    {
+      "from": "assets/items/04-bandage.svg.import",
+      "to": "assets/items/healing/bandage/bandage.svg.import",
+      "originalSha256": "beeb32d9f7db6483c8eb5baa93bfd6d35f7b7347279207d752b401dfabb6c825",
+      "finalSha256": "588e47ed5c318df7d22b6d781b38f2e0db885046dff69df2ee7dfb5630a0a292"
+    },
+    {
+      "from": "assets/items/05-dagger.png",
+      "to": "assets/items/weapons/iron-dagger/iron-dagger.png",
+      "originalSha256": "0528be4445f96b4f45bae9aa25183b0d970c27aa5104cb1be5924caeb98d4a76",
+      "finalSha256": "0528be4445f96b4f45bae9aa25183b0d970c27aa5104cb1be5924caeb98d4a76"
+    },
+    {
+      "from": "assets/items/05-dagger.png.import",
+      "to": "assets/items/weapons/iron-dagger/iron-dagger.png.import",
+      "originalSha256": "8b5a5a4f5f20013c40af7245553fc2d4140c9a460a811b45dba86319e0652edd",
+      "finalSha256": "e7348673347c92742ba949d27b43aba9a24ec9dedd7f00a28610520b4a0190ef"
+    },
+    {
+      "from": "assets/items/05-dagger.svg",
+      "to": "assets/items/weapons/iron-dagger/iron-dagger.svg",
+      "originalSha256": "3201e79b833bab6b6820b64b83f612b746ee78617d76f966a876081333e7cb52",
+      "finalSha256": "3201e79b833bab6b6820b64b83f612b746ee78617d76f966a876081333e7cb52"
+    },
+    {
+      "from": "assets/items/05-dagger.svg.import",
+      "to": "assets/items/weapons/iron-dagger/iron-dagger.svg.import",
+      "originalSha256": "d663b1e84fa686455046ca6f3dddfa2081a7ed27ebaa1b05e3dabf7b4ecba9f9",
+      "finalSha256": "fd3ba1324512344ae73cb46eea53b4e1608fa54f70b02ba16bf06afc835a708f"
+    },
+    {
+      "from": "assets/items/06-shield-relic.png",
+      "to": "assets/items/relics/shield-relic/shield-relic.png",
+      "originalSha256": "9d3e06040118e44769b3252a883970fa855983fb9880bfe876ebbd25869cd63d",
+      "finalSha256": "9d3e06040118e44769b3252a883970fa855983fb9880bfe876ebbd25869cd63d"
+    },
+    {
+      "from": "assets/items/06-shield-relic.png.import",
+      "to": "assets/items/relics/shield-relic/shield-relic.png.import",
+      "originalSha256": "a1e2e255b40f8608979a788bfdd3c1c1436c306eb9ee9e660d96dbce6a43c8b8",
+      "finalSha256": "4bd712e559050ddbd279fe5b2a7e52902aed54c8b5a592558ddc914758fa0d76"
+    },
+    {
+      "from": "assets/items/06-shield-relic.svg",
+      "to": "assets/items/relics/shield-relic/shield-relic.svg",
+      "originalSha256": "673d975acc87b13081c70791ba1d588fc63ca98d8c3e5d509c66fce5be618bee",
+      "finalSha256": "673d975acc87b13081c70791ba1d588fc63ca98d8c3e5d509c66fce5be618bee"
+    },
+    {
+      "from": "assets/items/06-shield-relic.svg.import",
+      "to": "assets/items/relics/shield-relic/shield-relic.svg.import",
+      "originalSha256": "59389a8b77b56846555c5d5a881aba5d9c3959e18e09835586e06c0fcc6cf84a",
+      "finalSha256": "fea00012a9e8c36d81849507256b11031e196b77d368d7cce11959b9e1532ccd"
+    },
+    {
+      "from": "assets/items/07-cursed-idol.png",
+      "to": "assets/items/relics/cursed-idol/cursed-idol.png",
+      "originalSha256": "d58382418ea287efa6db93031b1e202bc2003e4482e9be74cf2dd49df6211391",
+      "finalSha256": "d58382418ea287efa6db93031b1e202bc2003e4482e9be74cf2dd49df6211391"
+    },
+    {
+      "from": "assets/items/07-cursed-idol.png.import",
+      "to": "assets/items/relics/cursed-idol/cursed-idol.png.import",
+      "originalSha256": "5047cb6ce8246b1c7294d5f64d991007df2f4a058c7910d2e129af10081d07f6",
+      "finalSha256": "d5afb2cfb3f92c3d3a092a7b486c733f73157bac1c06c7b25a89865247df18ca"
+    },
+    {
+      "from": "assets/items/07-cursed-idol.svg",
+      "to": "assets/items/relics/cursed-idol/cursed-idol.svg",
+      "originalSha256": "e8f3bcaf0b80872b72226802472add1904645814aaf115907ce9a72d56ef9f3c",
+      "finalSha256": "e8f3bcaf0b80872b72226802472add1904645814aaf115907ce9a72d56ef9f3c"
+    },
+    {
+      "from": "assets/items/07-cursed-idol.svg.import",
+      "to": "assets/items/relics/cursed-idol/cursed-idol.svg.import",
+      "originalSha256": "40474c5f6946a7d919889e77ad1ff65570a8d3b4529c24e0351461a3e3e31c6e",
+      "finalSha256": "f960a1a861e95e0c4965d6a10ade688be878688008433c9ba6520554cee81615"
+    },
+    {
+      "from": "assets/items/08-pendant.png",
+      "to": "assets/items/archive/charms/iron-charm/revision-01-atlas/iron-charm.png",
+      "originalSha256": "a99d75d2e73eccecaddce24f1d390283a918ee5e4c77fe4872a5721bfcf1507b",
+      "finalSha256": "a99d75d2e73eccecaddce24f1d390283a918ee5e4c77fe4872a5721bfcf1507b"
+    },
+    {
+      "from": "assets/items/08-pendant.png.import",
+      "to": "assets/items/archive/charms/iron-charm/revision-01-atlas/iron-charm.png.import",
+      "originalSha256": "59125501a03c3baed1f837154454b93108d8ba86cbb1c0301d7e2b3587f94974",
+      "finalSha256": "3c6309250f92b284d0079cc5d9c946bc84bc525261416cf0bf87a6a8969375ac"
+    },
+    {
+      "from": "assets/items/08-pendant.svg",
+      "to": "assets/items/archive/charms/iron-charm/revision-01-atlas/iron-charm.svg",
+      "originalSha256": "749e177c91c4dc1e171f0a4ba400110900604093304aaa2590358010987f8498",
+      "finalSha256": "749e177c91c4dc1e171f0a4ba400110900604093304aaa2590358010987f8498"
+    },
+    {
+      "from": "assets/items/08-pendant.svg.import",
+      "to": "assets/items/archive/charms/iron-charm/revision-01-atlas/iron-charm.svg.import",
+      "originalSha256": "3bcfb41626169d1eccc96c79e911365719741439a17438eb12b43fc49cecf10c",
+      "finalSha256": "d9ad7cc2899805cd1c32cfc61305a619e52be8a01e7ff0d724115ae0de96db60"
+    },
+    {
+      "from": "assets/items/iron-dagger-16px-v1.svg",
+      "to": "assets/items/archive/weapons/iron-dagger-16px/revision-01-unused/iron-dagger-16px.svg",
+      "originalSha256": "2776c506e0a438a9f7bf86c206e72e5ea969134f70d8421f478f56e8c2af9682",
+      "finalSha256": "2776c506e0a438a9f7bf86c206e72e5ea969134f70d8421f478f56e8c2af9682"
+    },
+    {
+      "from": "assets/items/iron-dagger-16px-v1.svg.import",
+      "to": "assets/items/archive/weapons/iron-dagger-16px/revision-01-unused/iron-dagger-16px.svg.import",
+      "originalSha256": "5cac489ef4211c6afc4285418bf1fdf67cc9f34f9c1802cd26f34553c408955d",
+      "finalSha256": "a2db50d5b591f8f7d5701e0157a5498c8dbf0d0e76a9e57e9a7a412e46d08a76"
+    },
+    {
+      "from": "assets/items/iron-dagger-16px-v1.png",
+      "to": "assets/items/archive/weapons/iron-dagger-16px/revision-01-unused/iron-dagger-16px.png",
+      "originalSha256": "b789373a6333a372bd907ca931896b29bb294a53ba26f3fca6f67298bb6a047f",
+      "finalSha256": "b789373a6333a372bd907ca931896b29bb294a53ba26f3fca6f67298bb6a047f"
+    },
+    {
+      "from": "assets/items/iron-dagger-16px-v1.png.import",
+      "to": "assets/items/archive/weapons/iron-dagger-16px/revision-01-unused/iron-dagger-16px.png.import",
+      "originalSha256": "1562ec63547c311810f199cf3bb83f9105b79721c7cc0ec913b79348dc15009d",
+      "finalSha256": "4c773d0d05c1570fed4239d046b2647964288fd1368024d6153764da1075366a"
+    },
+    {
+      "from": "assets/items/iron-dagger-16px-v1.footprint.json",
+      "to": "assets/items/archive/weapons/iron-dagger-16px/revision-01-unused/iron-dagger-16px.footprint.json",
+      "originalSha256": "010e7b82398cd0ebe290dfc986970a0d71286c3918eae492fca201bcb39b9f44",
+      "finalSha256": "010e7b82398cd0ebe290dfc986970a0d71286c3918eae492fca201bcb39b9f44"
+    },
+    {
+      "from": "assets/items/sources/iron-dagger-16px-v1.pxo",
+      "to": "assets/items/archive/weapons/iron-dagger-16px/revision-01-unused/sources/iron-dagger-16px.pxo",
+      "originalSha256": "9a8c01217727520d99ade705d20c5ac669721d73ee3e2a9d8ae1891707ce031e",
+      "finalSha256": "9a8c01217727520d99ade705d20c5ac669721d73ee3e2a9d8ae1891707ce031e"
+    },
+    {
+      "from": "assets/items/red-handle-katana-v1.svg",
+      "to": "assets/items/archive/weapons/red-handle-katana/revision-01-unused/red-handle-katana.svg",
+      "originalSha256": "f2f19edc0125dd0021779ab6bd762f48c2269906753d9e3e76d19923df76324c",
+      "finalSha256": "f2f19edc0125dd0021779ab6bd762f48c2269906753d9e3e76d19923df76324c"
+    },
+    {
+      "from": "assets/items/red-handle-katana-v1.svg.import",
+      "to": "assets/items/archive/weapons/red-handle-katana/revision-01-unused/red-handle-katana.svg.import",
+      "originalSha256": "11be96fe42825201a535b6d399ea298e790d886e5319b189c846d743d88f7ddc",
+      "finalSha256": "035b23d23653c3e628d116b0d3db1e4edbd3444a44eb2da241f28c00189044b2"
+    },
+    {
+      "from": "assets/items/red-handle-katana-v1.png",
+      "to": "assets/items/archive/weapons/red-handle-katana/revision-01-unused/red-handle-katana.png",
+      "originalSha256": "37de9640ee8dc61b6e60ddd334444abe694647d15cad946a8683505a23b85ac2",
+      "finalSha256": "37de9640ee8dc61b6e60ddd334444abe694647d15cad946a8683505a23b85ac2"
+    },
+    {
+      "from": "assets/items/red-handle-katana-v1.png.import",
+      "to": "assets/items/archive/weapons/red-handle-katana/revision-01-unused/red-handle-katana.png.import",
+      "originalSha256": "04fbe895176278bbde0754e90327b248ea47d9ffbdfe38be15e88c0acac4c6dd",
+      "finalSha256": "a38446552a1ed82d693d5992ce2d22c777485f5a83fdad3c683c93438c39cf17"
+    },
+    {
+      "from": "assets/items/red-handle-katana-v1.footprint.json",
+      "to": "assets/items/archive/weapons/red-handle-katana/revision-01-unused/red-handle-katana.footprint.json",
+      "originalSha256": "530f51c435f972a36b52dbe4b66f75813b57d483e5b1eb2e2f42061aa57e7a1a",
+      "finalSha256": "530f51c435f972a36b52dbe4b66f75813b57d483e5b1eb2e2f42061aa57e7a1a"
+    },
+    {
+      "from": "icon.svg",
+      "to": "assets/branding/archive/default-icon/icon-revision-01.svg",
+      "originalSha256": "6c80384360a5b269d1054bfb27241258154e2cc8167c522016fdc1820e84e0f8",
+      "finalSha256": "6c80384360a5b269d1054bfb27241258154e2cc8167c522016fdc1820e84e0f8"
+    },
+    {
+      "from": "icon.svg.import",
+      "to": "assets/branding/archive/default-icon/icon-revision-01.svg.import",
+      "originalSha256": "0b7df8ec416d81488e5f154da904f700e2a26062ccdd9c55ec27dbbe2b097b7e",
+      "finalSha256": "9d8677ccaa14eddfbcad69e2eee7ede09eee348e71b776c5422dca03fc95bdbe"
+    },
+    {
+      "from": "assets/items/sources/.gdignore",
+      "to": "assets/items/atlases/sources/.gdignore",
+      "originalSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "finalSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    }
+  ],
+  "referenceUpdates": [
+    "README.md",
+    "scripts/menu_flow.gd",
+    "scripts/pack_art.gd",
+    "tests/menu_test.gd",
+    "scripts/art/build_item_atlas.cjs",
+    "scenes/game/action_frame.tscn",
+    "scenes/game/battle_area.tscn",
+    "scenes/game/dialogs.tscn",
+    "scenes/game/enemy_card.tscn",
+    "scenes/game/game.tscn",
+    "scenes/menus/class_selection.tscn",
+    "scenes/menus/delver_tile.tscn",
+    "scenes/menus/delver_tooltip.tscn",
+    "scenes/menus/main_menu.tscn",
+    "scenes/menus/menu_flow.tscn",
+    "scenes/menus/options.tscn",
+    "scenes/menus/packing_table_background.tscn",
+    "scenes/shared/inspect_manager.tscn",
+    "scenes/shared/inspect_window.tscn",
+    "scenes/shared/item_tooltip.tscn",
+    "scenes/game/character/character_panel.tscn",
+    "scenes/game/character/player.tscn",
+    "scenes/game/inventory/backpack.tscn",
+    "scenes/game/inventory/storage_inventory.tscn",
+    "scenes/game/character/tabs/backpack.tscn",
+    "scenes/game/character/tabs/logs.tscn",
+    "scenes/game/character/tabs/relics.tscn",
+    "scenes/game/character/tabs/statistics.tscn",
+    "components/pixel_button/demo.tscn",
+    "components/pixel_button/README.md",
+    "components/pixel_scrollbar/demo.gd",
+    "components/pixel_search_field/demo.tscn",
+    "assets/enemies/enemies.svg.import",
+    "assets/items/README.md",
+    "assets/themes/delver-tile/theme.tres",
+    "assets/themes/gameplay/controls.svg.import",
+    "assets/themes/gameplay/frames.svg.import",
+    "assets/themes/gameplay/theme.tres",
+    "assets/themes/menu/controls.svg.import",
+    "assets/themes/menu/frames.svg.import",
+    "assets/themes/menu/theme.tres",
+    "assets/items/atlases/basic-items.png.import",
+    "assets/items/atlases/basic-items.svg.import",
+    "assets/items/atlases/extra-items.svg.import",
+    "assets/items/weapons/iron-dagger/iron-dagger.png.import",
+    "assets/items/weapons/iron-dagger/iron-dagger.svg.import",
+    "assets/items/weapons/rusty-knife/rusty-knife-128px.png.import",
+    "assets/items/weapons/rusty-knife/rusty-knife-128px.svg.import",
+    "assets/items/weapons/rusty-knife/rusty-knife-32px.png.import",
+    "assets/items/weapons/rusty-knife/rusty-knife-32px.svg.import",
+    "assets/items/weapons/rusty-knife/rusty-knife-64px.png.import",
+    "assets/items/weapons/rusty-knife/rusty-knife-64px.svg.import",
+    "assets/items/weapons/venom-dagger/venom-dagger-64px.png.import",
+    "assets/items/weapons/venom-dagger/venom-dagger-64px.svg.import",
+    "assets/items/relics/cursed-idol/cursed-idol.png.import",
+    "assets/items/relics/cursed-idol/cursed-idol.svg.import",
+    "assets/items/relics/shield-relic/shield-relic.png.import",
+    "assets/items/relics/shield-relic/shield-relic.svg.import",
+    "assets/items/healing/bandage/bandage.png.import",
+    "assets/items/healing/bandage/bandage.svg.import",
+    "assets/items/charms/blood-gem/blood-gem.png.import",
+    "assets/items/charms/blood-gem/blood-gem.svg.import",
+    "assets/items/charms/iron-charm/iron-charm-128px.png.import",
+    "assets/items/charms/iron-charm/iron-charm-128px.svg.import",
+    "assets/items/charms/iron-charm/iron-charm-32px.png.import",
+    "assets/items/charms/iron-charm/iron-charm-32px.svg.import",
+    "assets/items/charms/iron-charm/iron-charm-64px.png.import",
+    "assets/items/charms/iron-charm/iron-charm-64px.svg.import",
+    "assets/items/armor/cracked-shield/cracked-shield-128px.png.import",
+    "assets/items/armor/cracked-shield/cracked-shield-128px.svg.import",
+    "assets/items/armor/cracked-shield/cracked-shield-32px.png.import",
+    "assets/items/armor/cracked-shield/cracked-shield-32px.svg.import",
+    "assets/items/armor/cracked-shield/cracked-shield-64px.png.import",
+    "assets/items/armor/cracked-shield/cracked-shield-64px.svg.import",
+    "assets/backgrounds/dungeon/dungeon-backdrop.svg.import",
+    "assets/backgrounds/main-menu/candle-flame.png.import",
+    "assets/backgrounds/main-menu/candle-flame.tres",
+    "assets/backgrounds/main-menu/candlelight.png.import",
+    "assets/backgrounds/main-menu/candlelight.tres",
+    "assets/backgrounds/main-menu/candlelit-dust.png.import",
+    "assets/backgrounds/main-menu/candlelit-dust.tres",
+    "assets/backgrounds/main-menu/curse-reflection.png.import",
+    "assets/backgrounds/main-menu/curse-reflection.tres",
+    "assets/backgrounds/main-menu/packing-table-animation-preview.png.import",
+    "assets/backgrounds/main-menu/packing-table-base.png.import",
+    "assets/backgrounds/main-menu/packing-table-static.png.import",
+    "assets/backgrounds/main-menu/packing-table-still-preview.png.import",
+    "assets/backgrounds/main-menu/purple-smoke-billows.png.import",
+    "assets/backgrounds/main-menu/purple-smoke-billows.tres",
+    "assets/backgrounds/main-menu/purple-smoke-fragments.png.import",
+    "assets/backgrounds/main-menu/purple-smoke-fragments.tres",
+    "assets/backgrounds/main-menu/satchel-flap.png.import",
+    "assets/backgrounds/main-menu/satchel-flap.tres",
+    "assets/backgrounds/main-menu/storm-light-on-stone.png.import",
+    "assets/backgrounds/main-menu/storm-light-on-stone.tres",
+    "assets/backgrounds/main-menu/window-lightning.png.import",
+    "assets/backgrounds/main-menu/window-lightning.tres"
+  ],
+  "note": "Original hashes record pre-move bytes. Text resource paths and active metadata were updated; image and native artwork bytes are preserved. Historical concept provenance and test snapshots retain original paths.",
+  "followUpUpdates": [
+    "components/pixel_button/demo.tscn",
+    "tests/prototype_test.gd",
+    "scripts/art/build_item_atlas.cjs",
+    "assets/items/README.md",
+    "assets/README.md",
+    "assets/backgrounds/main-menu/README.md"
+  ]
+}

@@ -1,0 +1,33 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/menu_flow.gd" id="controller"]
+[ext_resource type="PackedScene" path="res://scenes/menus/run_selection.tscn" id="runs"]
+[ext_resource type="PackedScene" path="res://scenes/menus/main_menu.tscn" id="home"]
+[ext_resource type="PackedScene" path="res://scenes/menus/class_selection.tscn" id="classes"]
+[ext_resource type="PackedScene" path="res://scenes/menus/options.tscn" id="options"]
+[ext_resource type="Theme" path="res://themes/menu/theme.tres" id="theme"]
+[ext_resource type="PackedScene" path="res://scenes/menus/menu_audio.tscn" id="audio"]
+
+[node name="MenuFlow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_filter = 1
+theme = ExtResource("theme")
+script = ExtResource("controller")
+
+[node name="MainMenu" parent="." instance=ExtResource("home")]
+
+[node name="ClassSelection" parent="." instance=ExtResource("classes")]
+visible = false
+
+[node name="Options" parent="." instance=ExtResource("options")]
+visible = false
+
+[node name="Audio" parent="." instance=ExtResource("audio")]
+
+[node name="RunSelection" parent="." instance=ExtResource("runs")]
+visible = false

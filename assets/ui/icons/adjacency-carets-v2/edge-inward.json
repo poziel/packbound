@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "canvas": {
+    "width": 7,
+    "height": 7
+  },
+  "palette": [
+    "#00000000",
+    "#FFFFFFFF"
+  ],
+  "cels": [
+    {
+      "id": "caret",
+      "pixels": [
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  ],
+  "frames": [
+    {
+      "duration_ms": 125
+    }
+  ],
+  "layers": [
+    {
+      "id": "caret",
+      "name": "Thin border caret",
+      "timeline": [
+        {
+          "cel": "caret"
+        }
+      ]
+    }
+  ],
+  "annotations": {
+    "metadata": {
+      "source": "Original hand-authored numeric grid",
+      "purpose": "One extra step versus accepted v1, same one-source-pixel stroke",
+      "display_scale": 2,
+      "tint": "Exact runtime item border color"
+    }
+  }
+}

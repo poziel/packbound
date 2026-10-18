@@ -1,0 +1,11 @@
+{
+  "key": "plague_seal",
+  "name": "Plague Seal",
+  "category": "relics",
+  "kind": "run-relic",
+  "detail": "Poison on enemies no longer decays. Enemy cleansing can still remove it.",
+  "iconItemKey": "venom_dagger",
+  "iconMetadata": "res://assets/items/weapons/venom-dagger/metadata.json",
+  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "note": "Reuses an inventory item icon; no separate artwork exists."
+}

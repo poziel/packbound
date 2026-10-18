@@ -1,0 +1,13 @@
+{
+  "status": "accepted",
+  "acceptedBy": "user",
+  "date": "2026-10-16",
+  "statement": "import the assasin into the application",
+  "version": 2,
+  "integrated": true,
+  "runtimeAsset": "assets/characters/assassin.svg",
+  "sourceAsset": "assets/characters/assassin/art/spritex-v2/body.json",
+  "portraitSource": "assets/characters/assassin/art/spritex-v2/portrait.json",
+  "portrait": "assets/characters/portraits/assassin.png",
+  "conversion": "Lossless spritex unpack of the layered Pixelorama v2 sources; validate then export PNG/SVG."
+}

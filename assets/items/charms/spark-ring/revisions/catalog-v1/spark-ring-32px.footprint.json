@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "cellPixels": 32,
+  "gapPixels": 0,
+  "rows": [
+    "#"
+  ],
+  "columns": 1,
+  "rowCount": 1,
+  "canvas": {
+    "width": 32,
+    "height": 32
+  },
+  "occupiedCellCount": 1,
+  "cells": [
+    {
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "emptyCells": [],
+  "connectedComponents": 1,
+  "backpackCellPixels": 32,
+  "targetViewEdge": 32,
+  "baseCanvas": {
+    "width": 32,
+    "height": 32
+  },
+  "reuseBase": true,
+  "validation": {
+    "paletteLimit": 32,
+    "opaqueColors": 16,
+    "binaryAlpha": true,
+    "pixelsOutsideFootprint": 0,
+    "visibleBounds": {
+      "x": 8,
+      "y": 5,
+      "width": 19,
+      "height": 24
+    },
+    "cellPixelCounts": [
+      {
+        "x": 0,
+        "y": 0,
+        "pixels": 248
+      }
+    ],
+    "warnings": [],
+    "svgPixelMatch": true
+  },
+  "sourcePng": "docs/art/concepts/spark-ring-catalog-v1/native.png",
+  "sourceSha256": "6f4040c0033677bf69774f77550c926ac96d7b2f0b23bc4670a61817dbd8fad9",
+  "svgEncoding": "Editable color-grouped integer pixel runs derived from source PNG"
+}

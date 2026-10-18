@@ -1,0 +1,166 @@
+{
+  "id": "warrior",
+  "name": "Garran Vale",
+  "role": "Warrior",
+  "title": "The Last Watch",
+  "speciality": "Holding the line, protecting companions and turning a completely defended enemy action into a decisive counterattack.",
+  "specialPowers": [
+    {
+      "id": "riposte",
+      "name": "Riposte",
+      "kind": "class-mechanic",
+      "description": "When an enemy action is completely defended and the enemy remains alive, counterattack for 4 plus current plating damage. This retaliation bypasses enemy shield protection.",
+      "visualDirection": "A compact, precise sword counter following a planted shield guard. Communicate discipline and weight; no permanent magical aura."
+    }
+  ],
+  "weapons": [
+    {
+      "name": "Watchman's arming sword",
+      "type": "sword",
+      "gameItemId": null,
+      "relationship": "Signature visual equipment; not a separate implemented inventory item.",
+      "description": "A straight double-edged steel blade, simple antique-brass crossguard, dark leather grip and small pommel. Grip sits between guard and pommel. Nominal total length is 128 source pixels at the 256-pixel body target."
+    },
+    {
+      "name": "Scarlet kite shield",
+      "type": "shield",
+      "gameItemId": null,
+      "relationship": "Signature visual equipment; actual protection is determined by equipped inventory items.",
+      "description": "A tall tapering red shield with steel edging and a simple pale four-point emblem; worn finish in broad material clusters, supported by a hand grip and forearm straps."
+    }
+  ],
+  "gameplay": {
+    "startingHp": 40,
+    "startingItemIds": [
+      "longsword",
+      "cracked_shield",
+      "iron_charm"
+    ],
+    "itemAliasNotes": [
+      "The legacy longsword item ID is currently displayed as Iron Dagger. Garran's illustrated arming sword is costume equipment, not a promise about his starting item."
+    ]
+  },
+  "bio": {
+    "summary": "A former bridge-watch captain who keeps counting the people behind him, even when he travels alone.",
+    "origin": "Garran spent most of his adult life guarding a river crossing used by merchants and displaced families. When the watch was ordered to close the gates during an evacuation, he stayed outside with the final wagon. He survived; his command did not. He now takes dungeon contracts to buy safe passage and supplies for settlements that cannot pay for protection.",
+    "personality": [
+      "Patient and dryly funny",
+      "Protective without being patronizing",
+      "Careful with equipment and generous with food"
+    ],
+    "motivation": "Find the missing members of his watch and earn a future in which nobody is left outside a locked gate.",
+    "mannerisms": "Checks shield straps before answering a difficult question; quietly moves himself between danger and the least experienced person in the room.",
+    "voice": "Short, practical sentences with a calm, reassuring delivery.",
+    "quote": "Behind me. We can argue when everyone is home."
+  },
+  "physicalAppearance": {
+    "species": "Human",
+    "lifeStage": "Adult, approximately 38",
+    "genderPresentation": "Man",
+    "heightCm": 185,
+    "build": "Broad-shouldered, muscular and work-hardened, with a substantial chest, compact waist and strong legs. Armor follows believable joints rather than inflating the shoulders or boots.",
+    "silhouette": "A tall, grounded steel knight: narrow closed helmet, swept scarlet crest, substantial articulated shoulders, tapering shield on the viewer's right and lowered sword on the viewer's left.",
+    "headTreatment": "Fully closed steel helmet. The visor is intentionally dark; do not add a visible human face or two glowing eyes.",
+    "headShape": "Angular enclosed helm with a pronounced central brow ridge, narrow dark eye slit and long vertical faceplate opening. The helmet remains integrated with the neck and shoulders.",
+    "face": "Concealed in the standard design. For a separately requested unhelmeted variant only: square jaw, warm tan skin, hazel eyes and a short scar beneath the left side of the chin.",
+    "hair": "Concealed. Unhelmeted identity only: short dark-brown hair graying at the temples; never show it through the visor.",
+    "headwear": "Scarlet crest sweeping backward from the helmet crown; use broad connected red clusters and preserve its complete silhouette in portraits.",
+    "upperBody": "Cool steel breastplate with clear planar highlights, layered rounded pauldrons, articulated forearm plates and dark mail visible at the joints. Brown leather harness and a small brass cloak clasp.",
+    "lowerBody": "Layered steel hip plates over dark mail, fitted brown belt with brass buckle, red hanging cloth between the legs, articulated knee guards and practical steel sabatons.",
+    "hands": "Fully enclosed steel gauntlets. Sword fingers visibly close around the hilt; shield arm supports the shield's weight through a coherent forearm position.",
+    "cloak": "Deep scarlet cloak attached at the shoulders, falling behind the body with a broad asymmetric drape and a lightly weathered hem.",
+    "palette": [
+      {
+        "material": "Steel",
+        "colors": [
+          "#4e5965",
+          "#8795a2",
+          "#d9e1e4"
+        ]
+      },
+      {
+        "material": "Scarlet cloth",
+        "colors": [
+          "#4a172b",
+          "#8d293c",
+          "#bd4050"
+        ]
+      },
+      {
+        "material": "Leather and brass",
+        "colors": [
+          "#4b3028",
+          "#886046",
+          "#bf9b60"
+        ]
+      }
+    ],
+    "distinguishingFeatures": [
+      "Closed angular steel helm with backward red crest",
+      "Scarlet shoulder cloak and matching shield",
+      "Pale four-point shield emblem",
+      "A planted, reassuring stance rather than an aggressive lunge"
+    ],
+    "expressionAndBearing": "The face remains concealed; confidence comes from the helmet angle, relaxed shoulders and controlled equipment placement.",
+    "effects": "None in the default idle design.",
+    "portraitDirection": "Center the helmet and crest as the identity, preserve the entire crest and lower faceplate, and include a small amount of scarlet collar and steel shoulder. Exclude sword and shield; repair any overlaps from the concept.",
+    "avoid": [
+      "Exposed face through the visor",
+      "Huge pauldrons or swollen boots",
+      "A hand merely touching the sword edge",
+      "A permanent fire or cyan aura",
+      "Dense scratches or heraldic decoration"
+    ]
+  },
+  "assetReferences": {
+    "runtime": "assets/characters/warrior/art/full-body.svg",
+    "concept": "assets/characters/warrior/art/concept.png",
+    "nativeSource": "assets/characters/warrior/art/full-body.sprite.json",
+    "artStatus": "Warrior v3: 256 px body and 64 x 64 portrait; directly installed at user request",
+    "appearanceBasis": "Garran Vale identity and accepted warrior v2, redrawn with current art direction.",
+    "portrait": "assets/characters/warrior/art/portrait.png",
+    "portraitNativeSource": "assets/characters/warrior/art/portrait.sprite.json"
+  },
+  "schemaVersion": 1,
+  "identityStatus": "Newly authored character profile; names and lore have not yet been individually reviewed.",
+  "generation": {
+    "skill": "skills/packbound-character-art/SKILL.md",
+    "body": {
+      "visibleHeightPx": 256,
+      "canvasPx": [
+        384,
+        320
+      ],
+      "topY": 32,
+      "baselineY": 288,
+      "centerX": 192,
+      "measurement": "Head/headwear to soles; exclude held equipment, detached effects and transparent padding."
+    },
+    "portrait": {
+      "canvasPx": [
+        64,
+        64
+      ],
+      "source": "Original generated concept or another sufficiently detailed identity source, independently framed and cleaned.",
+      "framing": "Optically center the visible head; preserve complete hair/headwear and chin, with modest neck and shoulder context.",
+      "obstructions": "Remove incidental weapons, quivers, spell fragments and other obstructions; reconstruct hidden head details. Retain intentional helmets and masks."
+    },
+    "pose": "Upright, relaxed and alert, slight three-quarter turn toward the viewer's right, grounded feet and a natural weight shift.",
+    "rendering": "Original fantasy pixel art with cohesive adult proportions, deliberate connected clusters, sculpted material planes, selective highlights and restrained texture. Exposed faces use intentional anime-inspired eye/lid, nose and mouth shapes.",
+    "deliverables": [
+      "Layered full-body spritex authoring JSON",
+      "Transparent full-body PNG",
+      "Integer-grid editable full-body SVG",
+      "Separate 64 x 64 portrait spritex authoring JSON",
+      "Transparent 64 x 64 portrait PNG",
+      "Source prompt, references and provenance"
+    ],
+    "review": "Inspect body, grip and portrait at native/intended display size. Technical validation is separate from user approval."
+  },
+  "mechanicsSource": [
+    "scripts/pack_catalog.gd",
+    "scripts/run_state.gd"
+  ],
+  "profilePath": "assets/characters/warrior/character.json",
+  "biographyPath": "assets/characters/warrior/README.md"
+}

@@ -1,0 +1,200 @@
+{
+  "id": "mage",
+  "name": "Mira Vey",
+  "role": "Mage",
+  "title": "The Twin Ember",
+  "speciality": "Careful mana management and elemental spellcraft, visually expressed through simultaneous frost and fire.",
+  "specialPowers": [
+    {
+      "id": "spellweaving",
+      "name": "Spellweaving",
+      "kind": "class-mechanic",
+      "description": "Begin each fight with 3 additional mana. Spell items spend available mana in backpack reading order. Unused mana carries between turns within the fight without a cap; it is not passive regeneration.",
+      "visualDirection": "Two open palms supporting distinct elemental spells, with a restrained violet mana aura."
+    },
+    {
+      "id": "ember_spell",
+      "name": "Ember spell",
+      "kind": "equipment-effect",
+      "gameItemId": "ember_tome",
+      "description": "Ember Grimoire costs 3 mana to deal 10 direct damage and apply 2 burn. This is an equipped item's effect, not an additional innate class ability.",
+      "visualDirection": "A compact orange-red flame with a pale gold heart above the viewer-right palm."
+    },
+    {
+      "id": "frost_spell",
+      "name": "Frost spell",
+      "kind": "equipment-effect",
+      "gameItemId": "frost_wand",
+      "description": "Frost Wand costs 2 mana to deal 8 direct damage and reduce each enemy strike by 2 that turn. It is a possible acquired item, not part of the current starting loadout.",
+      "visualDirection": "A faceted icy core and small curl of frost above the viewer-left palm. The idle illustration can show this established elemental identity independently of the current equipped loadout."
+    }
+  ],
+  "weapons": [
+    {
+      "name": "Fire and frost manifestations",
+      "type": "spellcasting",
+      "gameItemId": null,
+      "relationship": "Signature visual expression of the approved direction; item effects depend on the equipped inventory.",
+      "description": "Both hands open, palms facing upward and gently forward. Each compact spell hovers just above its palm with a small air gap; fingers, wrists and face remain visible."
+    },
+    {
+      "name": "Ember Grimoire",
+      "type": "spellbook",
+      "gameItemId": "ember_tome",
+      "relationship": "Starting spell item; stowed rather than held in the default two-palm design.",
+      "description": "A small dark-bound book with a restrained ember seal, optionally attached at the belt. It must not compete with the hands or enter the head portrait."
+    },
+    {
+      "name": "Frost Wand",
+      "type": "wand",
+      "gameItemId": "frost_wand",
+      "relationship": "Optional acquired item; not held in the default idle illustration.",
+      "description": "When specifically requested in a variant, use a slender dark shaft with a clear ice-colored focus; preserve Mira's two-element identity."
+    }
+  ],
+  "gameplay": {
+    "startingHp": 28,
+    "startingItemIds": [
+      "spark_ring",
+      "ember_tome",
+      "buckler"
+    ],
+    "itemAliasNotes": [
+      "Frost Wand is not a starter item. The subtle aura is a visual identity feature and grants no separate buff."
+    ]
+  },
+  "bio": {
+    "summary": "A young spellwright who believes fire and frost are two ways of asking the same question.",
+    "origin": "Mira trained in a modest workshop that repaired enchanted lamps, cold-storage seals and unreliable household charms. During an experiment to make one focus handle both heat and cold, she discovered that the workshop's oldest crystal answered to a pulse deep beneath the city. She follows that pulse into the dungeon, recording what she learns rather than trusting the academy's old warnings.",
+    "personality": [
+      "Curious and precise",
+      "Warmly candid with friends",
+      "Impatient with needless ceremony"
+    ],
+    "motivation": "Understand the buried mana source and build magic that ordinary people can use safely.",
+    "mannerisms": "Tests an idea with one small flame and one tiny ice crystal; speaks her measurements under her breath when concentrating.",
+    "voice": "Clear and thoughtful, becoming quick and animated when a discovery surprises her.",
+    "quote": "A little heat. A little patience. Watch."
+  },
+  "physicalAppearance": {
+    "species": "Human",
+    "lifeStage": "Young adult, approximately 25",
+    "genderPresentation": "Woman",
+    "heightCm": 170,
+    "build": "Slender adult proportions with natural shoulders, waist, hips and limbs. Elegance comes from posture and cloth volume, not an oversized head, exaggerated curves or stretched legs.",
+    "silhouette": "Uncovered silver-haired head above a fitted indigo bodice, plum shoulder mantle and layered split robes; both forearms extend gently forward and outward to show the two spells.",
+    "headTreatment": "Clear exposed anime-inspired human face; no elf ears and no tall pointed hat.",
+    "headShape": "Softly angular oval face, gently defined cheekbones, a small proportionate chin and a visible neck above the high collar.",
+    "face": "Fair skin with warm peach undertones, clean simplified facial planes, small straight nose and a restrained closed mouth. Avoid cold gray skin caused by overusing the hair palette.",
+    "eyes": "Blue-violet irises, deliberate dark upper lids, coherent three-quarter gaze and expressive but proportionate anime eye shapes.",
+    "hair": "Silver, chin-to-shoulder-length layered hair with faint lavender shadows; a side-swept fringe frames the forehead, one side tucked back. Broad connected locks and a few purposeful light clusters preserve volume.",
+    "headwear": "No head covering in the default design. Any hood is folded behind the neck and must not obscure the face.",
+    "upperBody": "Fitted high-neck indigo bodice, shaped shoulders, plum short mantle, restrained antique-silver clasps and narrow pale trim. A small violet mana gem sits at the collar.",
+    "lowerBody": "Overlapping indigo and plum robe panels form an open asymmetric overskirt. Dark fitted leggings and practical dark calf-height boots remain visible beneath it; cloth folds are broad and readable.",
+    "hands": "Both bare hands are visible with clear wrists, thumbs and softly curved fingers. Palms turn upward at waist-to-lower-chest height; forearms are gently forward, not rigidly extended sideways.",
+    "cloak": "A short shoulder mantle above flowing split robe panels, avoiding a solid cone-shaped robe that hides all leg structure.",
+    "palette": [
+      {
+        "material": "Indigo cloth",
+        "colors": [
+          "#202032",
+          "#3b3d56",
+          "#686b86"
+        ]
+      },
+      {
+        "material": "Plum cloth",
+        "colors": [
+          "#302535",
+          "#584057",
+          "#936781"
+        ]
+      },
+      {
+        "material": "Silver hair",
+        "colors": [
+          "#7c708e",
+          "#bbb0c7",
+          "#e1d9e5"
+        ]
+      },
+      {
+        "material": "Frost/fire",
+        "colors": [
+          "#82bdff",
+          "#c2ebff",
+          "#ff7a2c",
+          "#ffe08a"
+        ]
+      }
+    ],
+    "distinguishingFeatures": [
+      "Silver hair with lavender shadow planes",
+      "Visible blue-violet anime-inspired eyes",
+      "Frost on the viewer's left and fire on the viewer's right",
+      "Small violet collar gem and subtle mana wisps"
+    ],
+    "expressionAndBearing": "Focused and self-assured, relaxed enough to suggest she controls both spells without strain.",
+    "effects": "Compact frost crystal/curl above the viewer-left palm and orange-red flame above the viewer-right palm. Two or three subdued blue-violet wisps near the outer lower torso; no enclosing bubble, huge halo or particle shower. Local light may touch the nearest hands and cuffs.",
+    "portraitDirection": "Center the silver-haired head with complete locks and chin; retain the indigo collar, plum mantle and small collar gem when space permits. Exclude hands, fire, ice, aura fragments and book/wand edges. Keep warm facial colors and readable eyes at 64 x 64.",
+    "avoid": [
+      "Childlike/chibi proportions",
+      "Pointed elf ears",
+      "Tall wizard hat hiding the hair",
+      "Spells obscuring her face or fingers",
+      "A staff occupying either open palm",
+      "A large aura ring or constant glitter"
+    ]
+  },
+  "assetReferences": {
+    "runtime": "assets/characters/mage/art/full-body.svg",
+    "concept": "assets/characters/mage/art/concept.png",
+    "nativeSource": "assets/characters/mage/art/full-body.sprite.json",
+    "artStatus": "mage v3 accepted and installed 2026-10-16; 256 px body and 64 x 64 portrait",
+    "appearanceBasis": "User-requested young woman with frost, fire and subtle mana aura, following mage v2. New name and biography are authored for this catalog.",
+    "portrait": "assets/characters/mage/art/portrait.png",
+    "portraitNativeSource": "assets/characters/mage/art/portrait.sprite.json"
+  },
+  "schemaVersion": 1,
+  "identityStatus": "Newly authored character profile; names and lore have not yet been individually reviewed.",
+  "generation": {
+    "skill": "skills/packbound-character-art/SKILL.md",
+    "body": {
+      "visibleHeightPx": 256,
+      "canvasPx": [
+        384,
+        320
+      ],
+      "topY": 32,
+      "baselineY": 288,
+      "centerX": 192,
+      "measurement": "Head/headwear to soles; exclude held equipment, detached effects and transparent padding."
+    },
+    "portrait": {
+      "canvasPx": [
+        64,
+        64
+      ],
+      "source": "Original generated concept or another sufficiently detailed identity source, independently framed and cleaned.",
+      "framing": "Optically center the visible head; preserve complete hair/headwear and chin, with modest neck and shoulder context.",
+      "obstructions": "Remove incidental weapons, quivers, spell fragments and other obstructions; reconstruct hidden head details. Retain intentional helmets and masks."
+    },
+    "pose": "Upright, relaxed and alert, slight three-quarter turn toward the viewer's right, grounded feet and a natural weight shift.",
+    "rendering": "Original fantasy pixel art with cohesive adult proportions, deliberate connected clusters, sculpted material planes, selective highlights and restrained texture. Exposed faces use intentional anime-inspired eye/lid, nose and mouth shapes.",
+    "deliverables": [
+      "Layered full-body spritex authoring JSON",
+      "Transparent full-body PNG",
+      "Integer-grid editable full-body SVG",
+      "Separate 64 x 64 portrait spritex authoring JSON",
+      "Transparent 64 x 64 portrait PNG",
+      "Source prompt, references and provenance"
+    ],
+    "review": "Inspect body, grip and portrait at native/intended display size. Technical validation is separate from user approval."
+  },
+  "mechanicsSource": [
+    "scripts/pack_catalog.gd",
+    "scripts/run_state.gd"
+  ],
+  "profilePath": "assets/characters/mage/character.json",
+  "biographyPath": "assets/characters/mage/README.md"
+}

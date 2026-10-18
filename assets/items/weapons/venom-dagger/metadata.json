@@ -1,0 +1,29 @@
+{
+  "key": "venom_dagger",
+  "name": "Venom Dagger",
+  "category": "weapons",
+  "gameplayRole": "weapon",
+  "inventoryMask": [
+    "##",
+    ".#"
+  ],
+  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "exports": [
+    "venom-dagger-64px.png",
+    "venom-dagger-64px.svg",
+    "revisions/catalog-v1/venom-dagger-64px.png",
+    "revisions/catalog-v1/venom-dagger-64px.svg",
+    "revisions/catalog-v1/venom-dagger-64px.footprint.json"
+  ],
+  "editableSources": [
+    "sources/venom-dagger-64px.pxo",
+    "revisions/catalog-v1/venom-dagger-64px.pxo",
+    "revisions/catalog-v1/venom-dagger-64px.svg"
+  ],
+  "runtime": {
+    "texture": "res://assets/items/weapons/venom-dagger/revisions/catalog-v1/venom-dagger-64px.svg",
+    "viewPolicy": "Reuse approved footprint-derived native sprite across display sizes with nearest filtering."
+  },
+  "activeRevision": "catalog-v1",
+  "revisionProvenance": "res://docs/art/concepts/venom-dagger-catalog-v1/provenance.json"
+}

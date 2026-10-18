@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" shape-rendering="crispEdges" role="img" aria-labelledby="title desc">
+  <title id="title">Packbound simplified skull satchel</title>
+  <desc id="desc">A plum backpack with brown straps, brass buckles, and an ivory skull seal. Hand-drawn on a 32-pixel integer grid for small application icons.</desc>
+  <g id="handle">
+    <path fill="#1b1420" d="M11 2h10v1h2v5H9V3h2z"/>
+    <path fill="#a75e39" d="M11 3h10v1h1v3h-2V5h-8v2h-2V4h1z"/>
+    <path fill="#db9660" d="M12 3h8v1h-8z"/>
+  </g>
+  <g id="body-outline">
+    <path fill="#1b1420" d="M7 6h18v1h2v3h2v5h2v11h-2v2h-2v2H5v-2H3v-2H1V15h2v-5h2V7h2z"/>
+  </g>
+  <g id="side-pockets">
+    <path fill="#4c2c49" d="M3 16h3v11H4v-2H3zm23 0h3v9h-1v2h-2z"/>
+    <path fill="#75506c" d="M3 16h2v4H3zm24 0h2v4h-2z"/>
+    <path fill="#a75e39" d="M2 19h3v4H2zm25 0h3v4h-3z"/>
+    <path fill="#dfb360" d="M2 19h3v3H2zm25 0h3v3h-3z"/>
+    <path fill="#54312a" d="M3 20h1v1H3zm25 0h1v1h-1z"/>
+  </g>
+  <g id="plum-leather">
+    <path fill="#63405e" d="M7 7h18v2h2v18h-2v2H7v-2H5V9h2z"/>
+    <path fill="#482e49" d="M5 13h2v14h18V13h2v14h-2v2H7v-2H5z"/>
+    <path fill="#79516d" d="M7 7h18v2h1v5h-2v2H8v-2H6V9h1z"/>
+    <path fill="#96667f" d="M8 7h16v1H8zM7 9h1v3H7zm17 0h1v3h-1z"/>
+    <path fill="#322335" d="M7 15h3v2H7zm15 0h3v2h-3zM11 23h10v2H11z"/>
+    <path fill="#79516d" d="M12 26h4v1h-4zM19 25h2v1h-2z"/>
+  </g>
+  <g id="leather-straps">
+    <path fill="#3c2427" d="M7 7h4v22H7zm14 0h4v22h-4z"/>
+    <path fill="#9c5034" d="M8 7h2v22H8zm14 0h2v22h-2z"/>
+    <path fill="#cd8050" d="M8 7h2v2H8zm14 0h2v2h-2zM8 20h1v6H8zm14 0h1v6h-1z"/>
+    <path fill="#6e372c" d="M9 11h1v3H9zm14 0h1v3h-1zM9 23h1v3H9zm14 0h1v3h-1z"/>
+  </g>
+  <g id="brass-buckles">
+    <path fill="#211923" d="M6 15h6v6H6zm14 0h6v6h-6z"/>
+    <path fill="#dca445" d="M7 16h4v4H7zm14 0h4v4h-4z"/>
+    <path fill="#f9d77e" d="M7 16h4v1H7zm14 0h4v1h-4zM7 17h1v1H7zm14 0h1v1h-1z"/>
+    <path fill="#593329" d="M8 17h2v2H8zm14 0h2v2h-2z"/>
+  </g>
+  <g id="skull-seal">
+    <path fill="#211923" d="M13 10h6v1h2v2h1v7h-2v4h-8v-4h-2v-7h1v-2h2z"/>
+    <path fill="#e9c894" d="M13 11h6v1h2v7h-2v4h-6v-4h-2v-7h2z"/>
+    <path fill="#ffe8b7" d="M13 11h6v1h1v3h-8v-3h1zM11 14h1v3h-1z"/>
+    <path fill="#c7996b" d="M20 14h1v5h-2v4h-1v-4h2zM12 19h1v3h-1z"/>
+    <path fill="#211923" d="M12 15h3v3h-3zm5 0h3v3h-3zM15 18h2v2h-2zM14 21h1v2h-1zm3 0h1v2h-1z"/>
+    <path fill="#fff3d0" d="M13 12h3v1h-3z"/>
+  </g>
+</svg>

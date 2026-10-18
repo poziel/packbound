@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://components/torch/torch.tscn" id="torch"]
+
+[node name="Candle" instance=ExtResource("torch")]
+handle_length = 0.36
+handle_width = 0.16
+handle_color = Color(0.8941, 0.8, 0.6275, 1)
+collar_enabled = false
+flame_size = Vector3(0.16, 0.22, 0.12)
+light_energy = 0.25
+light_range = 4.0

@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "canvas": {
+    "width": 5,
+    "height": 5
+  },
+  "palette": [
+    "#00000000",
+    "#FFFFFFFF"
+  ],
+  "cels": [
+    {
+      "id": "caret",
+      "pixels": [
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
+    }
+  ],
+  "frames": [
+    {
+      "duration_ms": 125
+    }
+  ],
+  "layers": [
+    {
+      "id": "caret",
+      "name": "Unshaded border caret",
+      "timeline": [
+        {
+          "cel": "caret"
+        }
+      ]
+    }
+  ],
+  "annotations": {
+    "metadata": {
+      "source": "Original hand-authored numeric grid",
+      "purpose": "Border-attached arrowhead without shaft or outline",
+      "display_scale": 2,
+      "tint": "Exact runtime item border color"
+    }
+  }
+}

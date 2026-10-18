@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "cellPixels": 32,
+  "gapPixels": 0,
+  "rows": [
+    "#",
+    "#"
+  ],
+  "columns": 1,
+  "rowCount": 2,
+  "canvas": {
+    "width": 32,
+    "height": 64
+  },
+  "occupiedCellCount": 2,
+  "cells": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    }
+  ],
+  "emptyCells": [],
+  "connectedComponents": 1,
+  "backpackCellPixels": 32,
+  "targetViewEdge": 64,
+  "baseCanvas": {
+    "width": 32,
+    "height": 64
+  },
+  "reuseBase": true,
+  "validation": {
+    "paletteLimit": 32,
+    "opaqueColors": 20,
+    "binaryAlpha": true,
+    "pixelsOutsideFootprint": 0,
+    "visibleBounds": {
+      "x": 8,
+      "y": 6,
+      "width": 16,
+      "height": 53
+    },
+    "cellPixelCounts": [
+      {
+        "x": 0,
+        "y": 0,
+        "pixels": 327
+      },
+      {
+        "x": 0,
+        "y": 1,
+        "pixels": 143
+      }
+    ],
+    "warnings": [],
+    "svgPixelMatch": true
+  },
+  "sourcePng": "docs/art/concepts/vampire-fang-catalog-v1/native.png",
+  "sourceSha256": "266136860673e1c06eaafac1a03425391266ea0b0bf96b2984e27923dd0a2fa3",
+  "svgEncoding": "Editable color-grouped integer pixel runs derived from source PNG"
+}

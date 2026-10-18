@@ -1,0 +1,27 @@
+{
+  "key": "warding_sigil",
+  "name": "Warding Sigil",
+  "category": "charms",
+  "gameplayRole": "focus",
+  "inventoryMask": [
+    ".#.",
+    "###",
+    ".#."
+  ],
+  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "exports": [
+    "revisions/catalog-v1/warding-sigil-96px.png",
+    "revisions/catalog-v1/warding-sigil-96px.svg",
+    "revisions/catalog-v1/warding-sigil-96px.footprint.json"
+  ],
+  "editableSources": [
+    "revisions/catalog-v1/warding-sigil-96px.pxo",
+    "revisions/catalog-v1/warding-sigil-96px.svg"
+  ],
+  "runtime": {
+    "texture": "res://assets/items/charms/warding-sigil/revisions/catalog-v1/warding-sigil-96px.svg",
+    "viewPolicy": "Reuse approved footprint-derived native sprite across display sizes with nearest filtering."
+  },
+  "activeRevision": "catalog-v1",
+  "revisionProvenance": "res://docs/art/concepts/warding-sigil-catalog-v1/provenance.json"
+}

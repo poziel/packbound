@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "delverId": "ranger",
+  "outputs": {
+    "spriteSource": "assets/characters/ranger/art/full-body.sprite.json",
+    "spritePng": "assets/characters/ranger/art/full-body.png",
+    "spriteSvg": "assets/characters/ranger/art/full-body.svg",
+    "portraitSource": "assets/characters/ranger/art/portrait.sprite.json",
+    "portraitPng": "assets/characters/ranger/art/portrait.png",
+    "portraitSvg": "assets/characters/ranger/art/portrait.svg",
+    "provenance": "assets/characters/ranger/art/provenance.json"
+  },
+  "checks": {
+    "sourceValidation": true,
+    "dimensions": true,
+    "transparency": true,
+    "registration": false,
+    "exportAgreement": true,
+    "visualReview": false
+  },
+  "reusedOutputs": [
+    "full-body.sprite.json",
+    "full-body.png",
+    "full-body.svg",
+    "portrait.sprite.json",
+    "portrait.png",
+    "portrait.svg"
+  ],
+  "approvalStatus": "accepted",
+  "notes": [
+    "Path-only migration; artwork and native sources verified against prior-file SHA256. Prior approval retained; technical checks will be updated after verification.",
+    "Both native documents validated with spritex 0.2.0; re-rendered PNG pixels match preserved exports; Godot migrated asset-path check passed. No new visual approval claimed."
+  ]
+}

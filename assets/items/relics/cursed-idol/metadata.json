@@ -1,0 +1,72 @@
+{
+  "key": "cursed_idol",
+  "name": "Cursed Idol",
+  "category": "relics",
+  "gameplayRole": "booster",
+  "inventoryMask": [
+    "#"
+  ],
+  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "exports": [
+    "cursed-idol.png",
+    "cursed-idol.svg",
+    "revisions/catalog-v2/cursed-idol-32px.png",
+    "revisions/catalog-v2/cursed-idol-32px.svg",
+    "revisions/catalog-v2/cursed-idol-32px.footprint.json",
+    "revisions/catalog-v3/cursed-idol-32px.png",
+    "revisions/catalog-v3/cursed-idol-32px.svg",
+    "revisions/catalog-v3/cursed-idol-32px.footprint.json"
+  ],
+  "editableSources": [
+    "revisions/catalog-v2/cursed-idol-32px.pxo",
+    "revisions/catalog-v2/cursed-idol-32px.svg",
+    "revisions/catalog-v3/cursed-idol-32px.pxo",
+    "revisions/catalog-v3/cursed-idol-32px.svg"
+  ],
+  "runtime": {
+    "texture": "res://assets/items/relics/cursed-idol/revisions/catalog-v3/cursed-idol-32px.svg",
+    "viewPolicy": "Reuse the accepted native 32px sprite with nearest filtering at all display sizes."
+  },
+  "atlasProvenance": {
+    "index": 6,
+    "file": "07-cursed-idol",
+    "key": "cursed_idol",
+    "title": "Cursed idol",
+    "fit": [
+      64,
+      76
+    ],
+    "inventoryCells": [
+      1,
+      1
+    ],
+    "cell": [
+      96,
+      96
+    ],
+    "source": "docs/art/concepts/items-2026-10-15/07-cursed-idol.png",
+    "sourceSha256": "1c77cf575961e67c90b57067b17b5507720446693a36bb57a40bf3d0b266a1cb",
+    "sourceBounds": {
+      "left": 319,
+      "top": 54,
+      "width": 646,
+      "height": 1150,
+      "pixels": 543756
+    },
+    "bounds": {
+      "left": 26,
+      "top": 10,
+      "width": 43,
+      "height": 76,
+      "pixels": 2393
+    },
+    "paletteColors": 32,
+    "alphaValues": [
+      0,
+      255
+    ],
+    "svgPixelMatch": true
+  },
+  "activeRevision": "catalog-v3",
+  "revisionProvenance": "res://docs/art/concepts/cursed-idol-catalog-v3/provenance.json"
+}

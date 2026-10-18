@@ -1,0 +1,130 @@
+[gd_resource type="Resource" format=3 uid="uid://dku7r71vd0j6i"]
+
+[ext_resource type="Script" uid="uid://dqwbwpe764iv" path="res://scripts/monster_presentation_library.gd" id="library"]
+[ext_resource type="Script" uid="uid://cawn5xxenalj2" path="res://scripts/monster_presentation.gd" id="profile"]
+
+[sub_resource type="Resource" id="ash_rat"]
+script = ExtResource("profile")
+monster_id = "ash_rat"
+shadow_size = Vector2(70, 28)
+shadow_offset = Vector2(10, 0)
+
+[sub_resource type="Resource" id="bone_thief"]
+script = ExtResource("profile")
+monster_id = "bone_thief"
+shadow_size = Vector2(100, 42)
+shadow_offset = Vector2(-6, 0)
+
+[sub_resource type="Resource" id="lantern_wretch"]
+script = ExtResource("profile")
+monster_id = "lantern_wretch"
+shadow_size = Vector2(72, 36)
+shadow_offset = Vector2(-16, 0)
+
+[sub_resource type="Resource" id="iron_mite"]
+script = ExtResource("profile")
+monster_id = "iron_mite"
+shadow_size = Vector2(80, 32)
+
+[sub_resource type="Resource" id="pack_leech"]
+script = ExtResource("profile")
+monster_id = "pack_leech"
+shadow_size = Vector2(76, 30)
+shadow_offset = Vector2(-2, 0)
+
+[sub_resource type="Resource" id="mire_viper"]
+script = ExtResource("profile")
+monster_id = "mire_viper"
+shadow_size = Vector2(120, 48)
+shadow_offset = Vector2(10, 0)
+
+[sub_resource type="Resource" id="bell_sentinel"]
+script = ExtResource("profile")
+monster_id = "bell_sentinel"
+shadow_size = Vector2(156, 60)
+shadow_offset = Vector2(4, 0)
+
+[sub_resource type="Resource" id="mirror_wisp"]
+script = ExtResource("profile")
+monster_id = "mirror_wisp"
+shadow_size = Vector2(90, 36)
+shadow_offset = Vector2(-8, 0)
+shadow_opacity = 0.35
+flying = true
+
+[sub_resource type="Resource" id="rust_knight"]
+script = ExtResource("profile")
+monster_id = "rust_knight"
+shadow_size = Vector2(100, 44)
+shadow_offset = Vector2(8, 0)
+
+[sub_resource type="Resource" id="crypt_butcher"]
+script = ExtResource("profile")
+monster_id = "crypt_butcher"
+shadow_size = Vector2(130, 52)
+shadow_offset = Vector2(12, 0)
+
+[sub_resource type="Resource" id="hollow_monk"]
+script = ExtResource("profile")
+monster_id = "hollow_monk"
+shadow_size = Vector2(70, 34)
+shadow_offset = Vector2(-12, 0)
+
+[sub_resource type="Resource" id="carrion_swarm"]
+script = ExtResource("profile")
+monster_id = "carrion_swarm"
+shadow_size = Vector2(136, 56)
+shadow_opacity = 0.35
+flying = true
+
+[sub_resource type="Resource" id="glass_duelist"]
+script = ExtResource("profile")
+monster_id = "glass_duelist"
+shadow_size = Vector2(106, 44)
+shadow_offset = Vector2(-16, 0)
+
+[sub_resource type="Resource" id="cinder_oracle"]
+script = ExtResource("profile")
+monster_id = "cinder_oracle"
+shadow_size = Vector2(72, 34)
+shadow_offset = Vector2(-12, 0)
+
+[sub_resource type="Resource" id="grave_keeper"]
+script = ExtResource("profile")
+monster_id = "grave_keeper"
+shadow_size = Vector2(140, 56)
+shadow_offset = Vector2(8, 0)
+
+[sub_resource type="Resource" id="iron_matron"]
+script = ExtResource("profile")
+monster_id = "iron_matron"
+shadow_size = Vector2(126, 50)
+shadow_offset = Vector2(4, 0)
+
+[sub_resource type="Resource" id="clockwork_warden"]
+script = ExtResource("profile")
+monster_id = "clockwork_warden"
+shadow_size = Vector2(104, 44)
+shadow_offset = Vector2(8, 0)
+
+[sub_resource type="Resource" id="blood_collector"]
+script = ExtResource("profile")
+monster_id = "blood_collector"
+shadow_size = Vector2(88, 38)
+shadow_offset = Vector2(-12, 0)
+
+[sub_resource type="Resource" id="oathbreaker"]
+script = ExtResource("profile")
+monster_id = "oathbreaker"
+shadow_size = Vector2(116, 48)
+shadow_offset = Vector2(10, 0)
+
+[sub_resource type="Resource" id="zippered_maw"]
+script = ExtResource("profile")
+monster_id = "zippered_maw"
+shadow_size = Vector2(188, 76)
+shadow_offset = Vector2(-6, 0)
+
+[resource]
+script = ExtResource("library")
+monsters = Array[Resource]([SubResource("ash_rat"), SubResource("bone_thief"), SubResource("lantern_wretch"), SubResource("iron_mite"), SubResource("pack_leech"), SubResource("mire_viper"), SubResource("bell_sentinel"), SubResource("mirror_wisp"), SubResource("rust_knight"), SubResource("crypt_butcher"), SubResource("hollow_monk"), SubResource("carrion_swarm"), SubResource("glass_duelist"), SubResource("cinder_oracle"), SubResource("grave_keeper"), SubResource("iron_matron"), SubResource("clockwork_warden"), SubResource("blood_collector"), SubResource("oathbreaker"), SubResource("zippered_maw")])

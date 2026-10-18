@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "cellPixels": 32,
+  "gapPixels": 0,
+  "rows": [
+    "#.",
+    "##"
+  ],
+  "columns": 2,
+  "rowCount": 2,
+  "canvas": {
+    "width": 64,
+    "height": 64
+  },
+  "occupiedCellCount": 3,
+  "cells": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 1
+    }
+  ],
+  "emptyCells": [
+    {
+      "x": 1,
+      "y": 0
+    }
+  ],
+  "connectedComponents": 1,
+  "backpackCellPixels": 32,
+  "targetViewEdge": 64,
+  "baseCanvas": {
+    "width": 64,
+    "height": 64
+  },
+  "reuseBase": true,
+  "validation": {
+    "paletteLimit": 32,
+    "opaqueColors": 24,
+    "binaryAlpha": true,
+    "pixelsOutsideFootprint": 0,
+    "visibleBounds": {
+      "x": 7,
+      "y": 7,
+      "width": 52,
+      "height": 52
+    },
+    "cellPixelCounts": [
+      {
+        "x": 0,
+        "y": 0,
+        "pixels": 259
+      },
+      {
+        "x": 0,
+        "y": 1,
+        "pixels": 400
+      },
+      {
+        "x": 1,
+        "y": 1,
+        "pixels": 356
+      }
+    ],
+    "warnings": [],
+    "svgPixelMatch": true
+  },
+  "sourcePng": "docs/art/concepts/healing-herbs-catalog-v2/native.png",
+  "sourceSha256": "7fe77e62db901045b066b5ec4ca3dcfaad51951891fffffc963ff4a29a0335db",
+  "svgEncoding": "Editable color-grouped integer pixel runs derived from source PNG"
+}

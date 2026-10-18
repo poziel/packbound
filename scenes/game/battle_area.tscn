@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cw6w300egtkdt"]
+
+[ext_resource type="PackedScene" uid="uid://dmeni5acmgrln" path="res://scenes/game/enemy_card.tscn" id="enemy"]
+[ext_resource type="PackedScene" path="res://scenes/game/inventory/storage_inventory.tscn" id="storage"]
+[ext_resource type="Theme" uid="uid://b3k7avi5t7hlb" path="res://themes/gameplay/theme.tres" id="theme"]
+
+[node name="BattleArea" type="Control" unique_id=1492080021]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 608.0
+offset_bottom = 642.0
+mouse_filter = 2
+theme = ExtResource("theme")
+
+[node name="EnemyScroll" type="ScrollContainer" parent="." unique_id=2046625472]
+layout_mode = 1
+offset_left = 80.0
+offset_top = 112.0
+offset_right = 592.0
+offset_bottom = -4.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
+
+anchor_bottom = 1.0
+
+[node name="EnemyRoster" type="HBoxContainer" parent="EnemyScroll" unique_id=748860977]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="EnemyCard" parent="EnemyScroll/EnemyRoster" unique_id=1310559111 instance=ExtResource("enemy")]
+layout_mode = 2
+
+[node name="Storage" parent="." unique_id=345573733 instance=ExtResource("storage")]
+visible = false
+layout_mode = 1
+offset_left = 0.0
+offset_top = 14.0
+offset_right = 624.0
+offset_bottom = 26.0
+anchor_bottom = 1.0

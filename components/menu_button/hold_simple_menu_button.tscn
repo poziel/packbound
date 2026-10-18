@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Theme" path="res://themes/menu/theme.tres" id="theme"]
+[ext_resource type="Script" path="res://components/menu_button/hold_menu_button.gd" id="hold"]
+
+[node name="HoldSimpleMenuButton" type="Button"]
+custom_minimum_size = Vector2(144, 48)
+theme = ExtResource("theme")
+theme_type_variation = &"HoldSimpleMenuButton"
+texture_filter = 1
+script = ExtResource("hold")
+text = "HOLD TO CONFIRM"
+tooltip_text = "Hold for 1.2 seconds. Release early to cancel."
+accessibility_name = "Hold to confirm"
+accessibility_description = "Hold the primary mouse button or accept key for 1.2 seconds. Release early to cancel."

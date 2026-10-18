@@ -1,0 +1,73 @@
+{
+  "key": "rusty_knife",
+  "name": "Rusty Knife",
+  "category": "weapons",
+  "gameplayRole": "weapon",
+  "inventoryMask": [
+    "#"
+  ],
+  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "exports": [
+    "rusty-knife-128px.png",
+    "rusty-knife-128px.svg",
+    "rusty-knife-32px.png",
+    "rusty-knife-32px.svg",
+    "rusty-knife-64px.png",
+    "rusty-knife-64px.svg",
+    "revisions/catalog-v1/rusty-knife-32px.png",
+    "revisions/catalog-v1/rusty-knife-32px.svg",
+    "revisions/catalog-v1/rusty-knife-32px.footprint.json"
+  ],
+  "editableSources": [
+    "sources/rusty-knife-128px.pxo",
+    "sources/rusty-knife-32px.pxo",
+    "sources/rusty-knife-64px.pxo",
+    "revisions/catalog-v1/rusty-knife-32px.svg"
+  ],
+  "runtime": {
+    "texture": "res://assets/items/weapons/rusty-knife/revisions/catalog-v1/rusty-knife-32px.svg",
+    "viewPolicy": "Reuse the approved 32px sprite for all display sizes with nearest-neighbor filtering."
+  },
+  "atlasProvenance": {
+    "index": 0,
+    "file": "01-dagger",
+    "key": "rusty_knife",
+    "title": "Rusty Knife",
+    "fit": [
+      74,
+      74
+    ],
+    "inventoryCells": [
+      1,
+      1
+    ],
+    "cell": [
+      96,
+      96
+    ],
+    "source": "docs/art/concepts/items-2026-10-15/01-dagger.png",
+    "sourceSha256": "600d1277b7d8a53c1d2ee8e58d15272aa656ebad688549f3419842f9826ec9be",
+    "sourceBounds": {
+      "left": 219,
+      "top": 180,
+      "width": 853,
+      "height": 940,
+      "pixels": 206561
+    },
+    "bounds": {
+      "left": 14,
+      "top": 11,
+      "width": 67,
+      "height": 74,
+      "pixels": 1272
+    },
+    "paletteColors": 32,
+    "alphaValues": [
+      0,
+      255
+    ],
+    "svgPixelMatch": true
+  },
+  "activeRevision": "catalog-v1",
+  "revisionProvenance": "res://docs/art/concepts/rusty-knife-catalog-v1/provenance.json"
+}

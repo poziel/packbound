@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "cellPixels": 32,
+  "gapPixels": 0,
+  "rows": [
+    "##",
+    "##"
+  ],
+  "columns": 2,
+  "rowCount": 2,
+  "canvas": {
+    "width": 64,
+    "height": 64
+  },
+  "occupiedCellCount": 4,
+  "cells": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 1,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 1
+    }
+  ],
+  "emptyCells": [],
+  "connectedComponents": 1,
+  "backpackCellPixels": 32,
+  "targetViewEdge": 64,
+  "baseCanvas": {
+    "width": 64,
+    "height": 64
+  },
+  "reuseBase": true,
+  "validation": {
+    "paletteLimit": 32,
+    "opaqueColors": 24,
+    "binaryAlpha": true,
+    "pixelsOutsideFootprint": 0,
+    "visibleBounds": {
+      "x": 8,
+      "y": 5,
+      "width": 49,
+      "height": 58
+    },
+    "cellPixelCounts": [
+      {
+        "x": 0,
+        "y": 0,
+        "pixels": 514
+      },
+      {
+        "x": 1,
+        "y": 0,
+        "pixels": 534
+      },
+      {
+        "x": 0,
+        "y": 1,
+        "pixels": 493
+      },
+      {
+        "x": 1,
+        "y": 1,
+        "pixels": 568
+      }
+    ],
+    "warnings": [],
+    "svgPixelMatch": true
+  },
+  "sourcePng": "docs/art/concepts/thorn-mail-catalog-v2/native.png",
+  "sourceSha256": "c5e43ddbda0d3d0143a4b1f9cb816a6c3b41f488aeb469c5b2e808d61016f7ed",
+  "svgEncoding": "Editable color-grouped integer pixel runs derived from source PNG"
+}

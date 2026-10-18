@@ -1,0 +1,26 @@
+{
+  "key": "plate_mail",
+  "name": "Iron Plate",
+  "category": "armor",
+  "gameplayRole": "armor",
+  "inventoryMask": [
+    "###",
+    ".#."
+  ],
+  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "exports": [
+    "revisions/catalog-v2/plate-mail-96x64.png",
+    "revisions/catalog-v2/plate-mail-96x64.svg",
+    "revisions/catalog-v2/plate-mail-96x64.footprint.json"
+  ],
+  "editableSources": [
+    "revisions/catalog-v2/plate-mail-96x64.pxo",
+    "revisions/catalog-v2/plate-mail-96x64.svg"
+  ],
+  "runtime": {
+    "texture": "res://assets/items/armor/plate-mail/revisions/catalog-v2/plate-mail-96x64.svg",
+    "viewPolicy": "Reuse approved footprint-derived native sprite across display sizes with nearest filtering."
+  },
+  "activeRevision": "catalog-v2",
+  "revisionProvenance": "res://docs/art/concepts/plate-mail-catalog-v2/provenance.json"
+}

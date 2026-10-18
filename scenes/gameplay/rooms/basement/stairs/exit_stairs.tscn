@@ -1,0 +1,7 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://components/staircase/exit_stairs.tscn" id="base"]
+[ext_resource type="PackedScene" path="res://scenes/gameplay/rooms/basement/stairs/exit_visuals.tscn" id="art"]
+[node name="ExitStairs" instance=ExtResource("base")]
+[node name="DefaultStone" parent="Visuals" index="0"]
+visible = false
+[node name="RoomDesign" parent="Visuals" instance=ExtResource("art")]

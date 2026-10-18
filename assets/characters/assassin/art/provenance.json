@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "delverId": "assassin",
+  "operation": "Path-only consolidation; no artwork redrawn",
+  "priorFolderArchive": "characters-before-folder-consolidation-20261017T194737Z.zip",
+  "historicalAcceptance": {
+    "status": "accepted",
+    "version": 2,
+    "acceptedAt": "2026-10-16",
+    "sourceReview": "docs/art/concepts/characters/assassin-v2/acceptance.json",
+    "runtimeAsset": "assets/characters/assassin.svg",
+    "sourceAsset": "assets/characters/assassin/art/spritex-v2/body.json",
+    "portrait": "assets/characters/portraits/assassin.png",
+    "outputs": {
+      "assassin.svg": {
+        "sha256": "6a2be185a7c9e85872f584e535305c8cf24b26c341cecb75cf1b630d337bb0fd",
+        "source": "assets/characters/assassin/art/spritex-v2/body.svg"
+      },
+      "assassin.png": {
+        "sha256": "14f08c3f24bf8d4c10c3b0f33549a8ce46ff0c46452b63a2079976c2f6f4a873",
+        "source": "assets/characters/assassin/art/spritex-v2/body.png"
+      },
+      "portraits/assassin.png": {
+        "sha256": "2eb9cbebd870b63228ca489284cb01f6ef29700ee98147fb62518cee945f7c63",
+        "source": "assets/characters/assassin/art/spritex-v2/portrait.png"
+      }
+    }
+  },
+  "currentAssets": {
+    "full-body.sprite.json": {
+      "path": "assets/characters/assassin/art/full-body.sprite.json",
+      "sha256": "7b402bf1dc1b4d5c4c503571da6dafe26838a546f47cf95fedca4aee7743065d",
+      "originalPath": "assets/characters/assassin/art/spritex-v2/body.spritex.json"
+    },
+    "full-body.png": {
+      "path": "assets/characters/assassin/art/full-body.png",
+      "sha256": "14f08c3f24bf8d4c10c3b0f33549a8ce46ff0c46452b63a2079976c2f6f4a873",
+      "originalPath": "assets/characters/assassin.png"
+    },
+    "full-body.svg": {
+      "path": "assets/characters/assassin/art/full-body.svg",
+      "sha256": "6a2be185a7c9e85872f584e535305c8cf24b26c341cecb75cf1b630d337bb0fd",
+      "originalPath": "assets/characters/assassin.svg"
+    },
+    "portrait.sprite.json": {
+      "path": "assets/characters/assassin/art/portrait.sprite.json",
+      "sha256": "261b20cd398073494ed3cc4872f1bb6571d87e47e86979aac36995ff80957349",
+      "originalPath": "assets/characters/assassin/art/spritex-v2/portrait.json"
+    },
+    "portrait.png": {
+      "path": "assets/characters/assassin/art/portrait.png",
+      "sha256": "2eb9cbebd870b63228ca489284cb01f6ef29700ee98147fb62518cee945f7c63",
+      "originalPath": "assets/characters/portraits/assassin.png"
+    },
+    "portrait.svg": {
+      "path": "assets/characters/assassin/art/portrait.svg",
+      "sha256": "d17bd00618f34e5dd5af0c069cc0792f16ccb9627ccfd8855f680142da299b83",
+      "originalPath": "assets/characters/assassin/art/spritex-v2/portrait.svg"
+    }
+  },
+  "editability": "Original layered spritex JSON preserved byte-for-byte; no new layers or animation rig claimed."
+}

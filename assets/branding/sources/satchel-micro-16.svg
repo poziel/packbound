@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" shape-rendering="crispEdges" role="img" aria-labelledby="title">
+  <title id="title">Packbound skull satchel, optically adjusted for 16 pixels</title>
+  <g id="outline" fill="#211923">
+    <path d="M5 1h6v1h1v2h1v2h1v2h1v6h-2v1H3v-1H1V8h1V6h1V4h1V2h1z"/>
+  </g>
+  <g id="leather">
+    <path fill="#a75e39" d="M5 2h6v1H5zM4 3h1v2H4zm7 0h1v2h-1z"/>
+    <path fill="#4c2c49" d="M2 8h12v5H2zM4 5h8v9H4z"/>
+    <path fill="#79516d" d="M4 5h8v3H4zM3 7h1v4H3zm9 0h1v4h-1z"/>
+    <path fill="#96667f" d="M5 5h6v1H5z"/>
+    <path fill="#a75e39" d="M3 6h2v8H3zm8 0h2v8h-2z"/>
+    <path fill="#cd8050" d="M3 6h1v2H3zm9 0h1v2h-1z"/>
+    <path fill="#dfb360" d="M2 9h2v2H2zm10 0h2v2h-2z"/>
+    <path fill="#211923" d="M5 6h6v1h1v4h-1v2H5v-2H4V7h1z"/>
+  </g>
+  <g id="skull">
+    <path fill="#e9c894" d="M6 6h4v1h1v3h-1v2H6v-2H5V7h1z"/>
+    <path fill="#ffe8b7" d="M6 6h4v1H6zM5 7h6v1H5z"/>
+    <path fill="#211923" d="M6 8h1v1H6zm3 0h1v1H9zM7 9h2v1H7zM7 11h2v1H7z"/>
+  </g>
+</svg>

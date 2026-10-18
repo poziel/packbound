@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="32" viewBox="0 0 192 32" shape-rendering="crispEdges">
+  <!-- Off/on switches, slider handles and dropdown arrow, all on a 2px grid. -->
+  <path d="M4 6H44V26H4Z" fill="#070a0d"/>
+  <path d="M6 8H42V24H6Z" fill="#607f7c"/>
+  <path d="M8 10H40V22H8Z" fill="#18282b"/>
+  <path d="M8 8H22V24H8Z" fill="#b6c5be"/>
+  <path d="M10 10H20V12H10Z" fill="#e0e5d4"/>
+  <path d="M52 6H92V26H52Z" fill="#070a0d"/>
+  <path d="M54 8H90V24H54Z" fill="#88ab93"/>
+  <path d="M56 10H88V22H56Z" fill="#3c5a56"/>
+  <path d="M74 8H88V24H74Z" fill="#efd28c"/>
+  <path d="M76 10H86V12H76Z" fill="#ffebba"/>
+  <g transform="translate(96)">
+    <path d="M4 2H20V6H24V26H20V30H4V26H0V6H4Z" fill="#070a0d"/>
+    <path d="M4 4H20V8H22V24H20V28H4V24H2V8H4Z" fill="#88ab93"/>
+    <path d="M6 6H18V26H6Z" fill="#c3d3ca"/>
+    <path d="M10 10H12V22H10Z M14 10H16V22H14Z" fill="#607f7c"/>
+  </g>
+  <g transform="translate(128)">
+    <path d="M4 2H20V6H24V26H20V30H4V26H0V6H4Z" fill="#070a0d"/>
+    <path d="M4 4H20V8H22V24H20V28H4V24H2V8H4Z" fill="#efd28c"/>
+    <path d="M6 6H18V26H6Z" fill="#ffebba"/>
+    <path d="M10 10H12V22H10Z M14 10H16V22H14Z" fill="#9c7b47"/>
+  </g>
+  <path d="M166 10H186V14H182V18H178V22H174V18H170V14H166Z" fill="#c3d3ca"/>
+</svg>

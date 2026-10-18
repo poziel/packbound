@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "canvas": {
+    "width": 7,
+    "height": 7
+  },
+  "palette": [
+    "#00000000",
+    "#FFFFFFFF"
+  ],
+  "cels": [
+    {
+      "id": "caret",
+      "pixels": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
+    }
+  ],
+  "frames": [
+    {
+      "duration_ms": 125
+    }
+  ],
+  "layers": [
+    {
+      "id": "caret",
+      "name": "Solid border caret",
+      "timeline": [
+        {
+          "cel": "caret"
+        }
+      ]
+    }
+  ],
+  "annotations": {
+    "metadata": {
+      "source": "Original hand-authored numeric grid",
+      "purpose": "Filled interior of v2 caret; identical silhouette, registration and dimensions",
+      "display_scale": 2,
+      "tint": "Exact runtime item border color"
+    }
+  }
+}

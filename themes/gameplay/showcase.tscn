@@ -1,0 +1,357 @@
+[gd_scene format=3 uid="uid://b16ywvt6ifli5"]
+
+[ext_resource type="PackedScene" uid="uid://iyhkxheqo6em" path="res://components/pixel_button/pixel_button.tscn" id="button"]
+[ext_resource type="PackedScene" path="res://components/pixel_scrollbar/pixel_scroll_container.tscn" id="scroll"]
+[ext_resource type="PackedScene" path="res://components/pixel_search_field/pixel_search_field.tscn" id="search"]
+[ext_resource type="PackedScene" path="res://components/item_slot/item_slot.tscn" id="slot"]
+[ext_resource type="PackedScene" uid="uid://b8pk2ue168bup" path="res://components/pixel_stat_bar/pixel_stat_bar.tscn" id="stat"]
+[ext_resource type="Theme" uid="uid://b3k7avi5t7hlb" path="res://themes/gameplay/theme.tres" id="theme"]
+
+[sub_resource type="StyleBoxLine" id="thin_line"]
+color = Color(0.349, 0.384, 0.451, 1)
+
+[sub_resource type="StyleBoxLine" id="thick_line"]
+color = Color(0.349, 0.384, 0.451, 1)
+thickness = 4
+
+[node name="ThemeShowcase" type="Control" unique_id=435828200]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 800.0
+theme = ExtResource("theme")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1629876917]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.038, 0.048, 0.069, 1)
+
+[node name="Heading" type="Label" parent="." unique_id=1696231691]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 22.0
+offset_right = 1244.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 40
+text = "PACKBOUND / GAMEPLAY"
+
+[node name="Description" type="Label" parent="." unique_id=154530574]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 84.0
+offset_right = 1244.0
+offset_bottom = 118.0
+theme_override_font_sizes/font_size = 20
+text = "Shared theme appearance. Hover, focus and type to try the controls."
+
+[node name="Frame" type="PanelContainer" parent="." unique_id=1179404873]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 136.0
+offset_right = 1248.0
+offset_bottom = 772.0
+
+[node name="Padding" type="MarginContainer" parent="Frame" unique_id=1516585373]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+layout_mode = 2
+
+[node name="Columns" type="HBoxContainer" parent="Frame/Padding" unique_id=1049793322]
+theme_override_constants/separation = 16
+layout_mode = 2
+
+[node name="Actions" type="VBoxContainer" parent="Frame/Padding/Columns" unique_id=874749084]
+theme_override_constants/separation = 10
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Frame/Padding/Columns/Actions" unique_id=793676133]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "BUTTONS & STATES"
+
+[node name="NativeVariants" type="HBoxContainer" parent="Frame/Padding/Columns/Actions"]
+layout_mode = 2
+
+[node name="Base" type="Button" parent="Frame/Padding/Columns/Actions/NativeVariants"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 56)
+size_flags_horizontal = 3
+text = "Base"
+
+[node name="Main" type="Button" parent="Frame/Padding/Columns/Actions/NativeVariants"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"PrimaryButton"
+text = "Main"
+
+[node name="Compact" type="Button" parent="Frame/Padding/Columns/Actions/NativeVariants"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"CompactButton"
+text = "Small"
+
+[node name="Primary" parent="Frame/Padding/Columns/Actions" unique_id=42912877 instance=ExtResource("button")]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Pixel action"
+
+[node name="Danger" parent="Frame/Padding/Columns/Actions" unique_id=355926492 instance=ExtResource("button")]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_type_variation = &"DangerPixelButton"
+text = "Danger variation"
+
+[node name="Quiet" parent="Frame/Padding/Columns/Actions" unique_id=1293799414 instance=ExtResource("button")]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_type_variation = &"QuietPixelButton"
+text = "Quiet variation"
+
+[node name="Disabled" parent="Frame/Padding/Columns/Actions" unique_id=342953967 instance=ExtResource("button")]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+disabled = true
+text = "Unavailable"
+
+[node name="Hexagon" parent="Frame/Padding/Columns/Actions" unique_id=1012781 instance=ExtResource("button")]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+text = "Custom silhouette"
+silhouette = 1
+
+[node name="Separator" type="HSeparator" parent="Frame/Padding/Columns/Actions" unique_id=903687857]
+layout_mode = 2
+
+[node name="TooltipTarget" type="Button" parent="Frame/Padding/Columns/Actions" unique_id=524196508]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+tooltip_text = "Theme controls the tooltip panel and label."
+text = "Hover for a tooltip"
+
+[node name="DividerBrowse" type="VSeparator" parent="Frame/Padding/Columns" unique_id=344068729]
+layout_mode = 2
+
+[node name="Browse" type="VBoxContainer" parent="Frame/Padding/Columns" unique_id=1388457017]
+theme_override_constants/separation = 10
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Frame/Padding/Columns/Browse" unique_id=789416270]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "SEARCH & SCROLL"
+
+[node name="Search" parent="Frame/Padding/Columns/Browse" unique_id=645200209 instance=ExtResource("search")]
+layout_mode = 2
+placeholder_text = "Search supplies..."
+list_path = NodePath("../List/Rows")
+
+[node name="List" parent="Frame/Padding/Columns/Browse" unique_id=1802024839 instance=ExtResource("scroll")]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Rows" type="VBoxContainer" parent="Frame/Padding/Columns/Browse/List" unique_id=1676722668]
+theme_override_constants/separation = 6
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Supply0" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows" unique_id=1146142943]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Iron Charm"
+
+[node name="Supply1" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows" unique_id=381084602]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Grave Bandage"
+
+[node name="Supply2" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows" unique_id=1987150641]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Ember Grimoire"
+
+[node name="Supply3" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows" unique_id=375612326]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Cracked Shield"
+
+[node name="Supply4" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows" unique_id=799858231]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Venom Dagger"
+
+[node name="Supply5" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows" unique_id=1979616452]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Healing Flask"
+
+[node name="Supply6" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows" unique_id=1225426659]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Sturdy Boots"
+
+[node name="Supply7" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows" unique_id=2005688021]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Silver Ring"
+
+[node name="Supply8" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows" unique_id=1557183317]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Oak Wand"
+
+[node name="Supply9" type="Button" parent="Frame/Padding/Columns/Browse/List/Rows" unique_id=1647916369]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Traveler Cloak"
+
+[node name="HorizontalLabel" type="Label" parent="Frame/Padding/Columns/Browse" unique_id=1488578287]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "HORIZONTAL OVERFLOW"
+
+[node name="Horizontal" parent="Frame/Padding/Columns/Browse" unique_id=1039001586 instance=ExtResource("scroll")]
+custom_minimum_size = Vector2(0, 86)
+layout_mode = 2
+horizontal_scroll_mode = 1
+vertical_scroll_mode = 0
+
+[node name="Row" type="HBoxContainer" parent="Frame/Padding/Columns/Browse/Horizontal" unique_id=1336783081]
+layout_mode = 2
+
+[node name="Page0" type="Button" parent="Frame/Padding/Columns/Browse/Horizontal/Row" unique_id=771257423]
+custom_minimum_size = Vector2(128, 50)
+layout_mode = 2
+text = "Page 1"
+
+[node name="Page1" type="Button" parent="Frame/Padding/Columns/Browse/Horizontal/Row" unique_id=729196508]
+custom_minimum_size = Vector2(128, 50)
+layout_mode = 2
+text = "Page 2"
+
+[node name="Page2" type="Button" parent="Frame/Padding/Columns/Browse/Horizontal/Row" unique_id=1855483457]
+custom_minimum_size = Vector2(128, 50)
+layout_mode = 2
+text = "Page 3"
+
+[node name="Page3" type="Button" parent="Frame/Padding/Columns/Browse/Horizontal/Row" unique_id=49028045]
+custom_minimum_size = Vector2(128, 50)
+layout_mode = 2
+text = "Page 4"
+
+[node name="Page4" type="Button" parent="Frame/Padding/Columns/Browse/Horizontal/Row" unique_id=1846397535]
+custom_minimum_size = Vector2(128, 50)
+layout_mode = 2
+text = "Page 5"
+
+[node name="Page5" type="Button" parent="Frame/Padding/Columns/Browse/Horizontal/Row" unique_id=264312879]
+custom_minimum_size = Vector2(128, 50)
+layout_mode = 2
+text = "Page 6"
+
+[node name="Page6" type="Button" parent="Frame/Padding/Columns/Browse/Horizontal/Row" unique_id=291139072]
+custom_minimum_size = Vector2(128, 50)
+layout_mode = 2
+text = "Page 7"
+
+[node name="Page7" type="Button" parent="Frame/Padding/Columns/Browse/Horizontal/Row" unique_id=1693115531]
+custom_minimum_size = Vector2(128, 50)
+layout_mode = 2
+text = "Page 8"
+
+[node name="DividerDetails" type="VSeparator" parent="Frame/Padding/Columns" unique_id=1248258644]
+layout_mode = 2
+
+[node name="Details" type="VBoxContainer" parent="Frame/Padding/Columns" unique_id=1732733798]
+theme_override_constants/separation = 10
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Frame/Padding/Columns/Details" unique_id=1960341224]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "RESOURCES & SOCKETS"
+
+[node name="HealthLabel" type="Label" parent="Frame/Padding/Columns/Details" unique_id=87909853]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "HEALTH"
+
+[node name="Health" parent="Frame/Padding/Columns/Details" unique_id=652527569 instance=ExtResource("stat")]
+layout_mode = 2
+value = 72.0
+
+[node name="ManaLabel" type="Label" parent="Frame/Padding/Columns/Details" unique_id=156153635]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "MANA"
+
+[node name="Mana" parent="Frame/Padding/Columns/Details" unique_id=94041952 instance=ExtResource("stat")]
+layout_mode = 2
+theme_type_variation = &"ManaStatBar"
+value = 48.0
+
+[node name="GuardLabel" type="Label" parent="Frame/Padding/Columns/Details" unique_id=1137280754]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "GUARD"
+
+[node name="Guard" parent="Frame/Padding/Columns/Details" unique_id=417158620 instance=ExtResource("stat")]
+layout_mode = 2
+theme_type_variation = &"GuardStatBar"
+value = 35.0
+
+[node name="Slots" type="HBoxContainer" parent="Frame/Padding/Columns/Details" unique_id=302641592]
+theme_override_constants/separation = 12
+layout_mode = 2
+
+[node name="Slot0" parent="Frame/Padding/Columns/Details/Slots" unique_id=218883150 instance=ExtResource("slot")]
+layout_mode = 2
+
+[node name="Slot1" parent="Frame/Padding/Columns/Details/Slots" unique_id=1183174120 instance=ExtResource("slot")]
+layout_mode = 2
+occupied = true
+
+[node name="Slot2" parent="Frame/Padding/Columns/Details/Slots" unique_id=909935994 instance=ExtResource("slot")]
+layout_mode = 2
+occupied = true
+
+[node name="SeparatorTitle" type="Label" parent="Frame/Padding/Columns/Details" unique_id=450430631]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "SEPARATOR THICKNESS"
+
+[node name="Thin" type="HSeparator" parent="Frame/Padding/Columns/Details" unique_id=2039040357]
+layout_mode = 2
+theme_override_styles/separator = SubResource("thin_line")
+
+[node name="Default" type="HSeparator" parent="Frame/Padding/Columns/Details" unique_id=338929796]
+layout_mode = 2
+
+[node name="Thick" type="HSeparator" parent="Frame/Padding/Columns/Details" unique_id=1866328600]
+layout_mode = 2
+theme_override_styles/separator = SubResource("thick_line")
+
+[node name="ThicknessHint" type="Label" parent="Frame/Padding/Columns/Details" unique_id=1993922045]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "1 / 2 / 4 px lines; 20 px spacing"
+
+[node name="TooltipPanel" type="PanelContainer" parent="Frame/Padding/Columns/Details" unique_id=773261272]
+layout_mode = 2
+theme_type_variation = &"TooltipPanel"
+
+[node name="TooltipLabel" type="Label" parent="Frame/Padding/Columns/Details/TooltipPanel" unique_id=753943360]
+layout_mode = 2
+theme_type_variation = &"TooltipLabel"
+text = "Tooltip panel + label preview"

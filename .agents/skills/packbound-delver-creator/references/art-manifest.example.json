@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "delverId": "example-delver",
+  "outputs": {
+    "spriteSource": "assets/characters/example-delver/art/full-body.sprite.json",
+    "spritePng": "assets/characters/example-delver/art/full-body.png",
+    "spriteSvg": "assets/characters/example-delver/art/full-body.svg",
+    "portraitSource": "assets/characters/example-delver/art/portrait.sprite.json",
+    "portraitPng": "assets/characters/example-delver/art/portrait.png",
+    "portraitSvg": "assets/characters/example-delver/art/portrait.svg",
+    "provenance": "assets/characters/example-delver/art/provenance.json"
+  },
+  "checks": {
+    "sourceValidation": false,
+    "dimensions": false,
+    "transparency": false,
+    "registration": false,
+    "exportAgreement": false,
+    "visualReview": false
+  },
+  "reusedOutputs": [],
+  "approvalStatus": "unreviewed",
+  "notes": []
+}

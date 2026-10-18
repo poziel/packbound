@@ -1,0 +1,42 @@
+[
+  {
+    "original_path": "loading_screen_on.wav",
+    "path": "sources/loading-screen/loading_screen_on.wav",
+    "sha256": "11612E8F0B513A8961904A745D356EF840E94C3C016D3DC91EF0FC201FB311B3"
+  },
+  {
+    "original_path": "loading_screen_off.wav",
+    "path": "sources/loading-screen/loading_screen_off.wav",
+    "sha256": "F4C419A604DD33F66D0B235A6A98EFD5BA89A904321A2922A06C46CCAC870385"
+  },
+  {
+    "original_path": "loading_screen_on.wav.import",
+    "path": "sources/loading-screen/loading_screen_on.wav.import",
+    "sha256": "CB5DB591822A879FC2F10DC8C6537BD5DC3F52A92145A01887A9F330AF05E081"
+  },
+  {
+    "original_path": "loading_screen_off.wav.import",
+    "path": "sources/loading-screen/loading_screen_off.wav.import",
+    "sha256": "BA6D1281DAB127843CFC2B2EDD40C3968A957A22BBC26817EA2090F09ECA1FCC"
+  },
+  {
+    "original_path": "loading_screen_on_playback.wav",
+    "path": "loading_screen_appear.wav",
+    "sha256": "616E51FAA8A2A71F3323868D56A9A76CE9EF89146CDD7B4C8F09BA6F10D21656"
+  },
+  {
+    "original_path": "loading_screen_off_playback.wav",
+    "path": "loading_screen_disappear.wav",
+    "sha256": "F9D2AB0D1F56182E5FCCEF7A68CFDFD084538F3411EE22C72B56EE0F34622E08"
+  },
+  {
+    "original_path": "loading_screen_on_playback.wav.import",
+    "path": "sources/loading-screen/loading_screen_on_playback.wav.import",
+    "sha256": "72A3F2C1685EDA42FB5B923B4660A1F64AE5321E085CF81CCEE67D7A392F5EDC"
+  },
+  {
+    "original_path": "loading_screen_off_playback.wav.import",
+    "path": "sources/loading-screen/loading_screen_off_playback.wav.import",
+    "sha256": "4ACB064149FE3826D6730E7CB0AC4EFE962EFECF66140E1C21D9E1AB2501DDA9"
+  }
+]

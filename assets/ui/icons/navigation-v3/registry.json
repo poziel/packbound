@@ -1,0 +1,204 @@
+{
+  "version": 3,
+  "skill": "skills/packbound-ui-icons/SKILL.md",
+  "user_override": "All canvases 32x32; target visible artwork height32. Overrides default24px menu canvas and padding.",
+  "status": "Integrated for review; not yet visually accepted",
+  "icons": [
+    {
+      "id": "menu.statistics",
+      "label": "Statistics",
+      "png": "statistics.png",
+      "svg": "statistics.svg",
+      "source": "sources/statistics-ui-v3.pxo",
+      "native_size": [
+        32,
+        32
+      ],
+      "alpha_bounds": [
+        1,
+        0,
+        31,
+        32
+      ],
+      "visible_height": 32,
+      "tint_mode": "white mask; existing theme",
+      "layers": [
+        "Ascending bars",
+        "Chart baseline"
+      ],
+      "provenance": "res://docs/art/concepts/ui-icons/navigation-v3/utility/provenance.json"
+    },
+    {
+      "id": "menu.logs",
+      "label": "Logs",
+      "png": "logs.png",
+      "svg": "logs.svg",
+      "source": "sources/logs-ui-v3.pxo",
+      "native_size": [
+        32,
+        32
+      ],
+      "alpha_bounds": [
+        2,
+        0,
+        30,
+        32
+      ],
+      "visible_height": 32,
+      "tint_mode": "white mask; existing theme",
+      "layers": [
+        "Bound ledger cover",
+        "Binding spine",
+        "Two log entries"
+      ],
+      "provenance": "res://docs/art/concepts/ui-icons/navigation-v3/utility/provenance.json"
+    },
+    {
+      "id": "menu.pause",
+      "label": "Pause menu",
+      "png": "pause.png",
+      "svg": "pause.svg",
+      "source": "sources/pause-ui-v3.pxo",
+      "native_size": [
+        32,
+        32
+      ],
+      "alpha_bounds": [
+        6,
+        0,
+        26,
+        32
+      ],
+      "visible_height": 32,
+      "tint_mode": "white mask; existing theme",
+      "layers": [
+        "Left pause bar",
+        "Right pause bar"
+      ],
+      "provenance": "res://docs/art/concepts/ui-icons/navigation-v3/utility/provenance.json"
+    },
+    {
+      "id": "menu.unused-items",
+      "label": "Unused items",
+      "png": "unused-items.png",
+      "svg": "unused-items.svg",
+      "source": "sources/unused-items-ui-v3.pxo",
+      "native_size": [
+        32,
+        32
+      ],
+      "alpha_bounds": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "visible_height": 32,
+      "tint_mode": "white mask; existing theme",
+      "layers": [
+        "Open crate",
+        "Offset stored parcel"
+      ],
+      "provenance": "res://docs/art/concepts/ui-icons/navigation-v3/inventory/provenance.json"
+    },
+    {
+      "id": "menu.backpack",
+      "label": "Character & Backpack",
+      "png": "backpack.png",
+      "svg": "backpack.svg",
+      "source": "sources/backpack-ui-v3.pxo",
+      "native_size": [
+        32,
+        32
+      ],
+      "alpha_bounds": [
+        2,
+        0,
+        30,
+        32
+      ],
+      "visible_height": 32,
+      "tint_mode": "white mask; existing theme",
+      "layers": [
+        "Satchel handle",
+        "Satchel silhouette",
+        "Single flap clasp"
+      ],
+      "provenance": "res://docs/art/concepts/ui-icons/navigation-v3/inventory/provenance.json"
+    },
+    {
+      "id": "menu.relics",
+      "label": "Relics",
+      "png": "relics.png",
+      "svg": "relics.svg",
+      "source": "sources/relics-ui-v3.pxo",
+      "native_size": [
+        32,
+        32
+      ],
+      "alpha_bounds": [
+        6,
+        0,
+        26,
+        32
+      ],
+      "visible_height": 32,
+      "tint_mode": "white mask; existing theme",
+      "layers": [
+        "Talisman cap",
+        "Elongated cut stone"
+      ],
+      "provenance": "res://docs/art/concepts/ui-icons/navigation-v3/inventory/provenance.json"
+    },
+    {
+      "id": "reward.items",
+      "label": "Item rewards",
+      "png": "reward-items.png",
+      "svg": "reward-items.svg",
+      "source": "sources/reward-items-ui-v3.pxo",
+      "native_size": [
+        32,
+        32
+      ],
+      "alpha_bounds": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "visible_height": 32,
+      "tint_mode": "white mask; existing theme",
+      "layers": [
+        "Connected raised lid and hinges",
+        "Coffer rim and body",
+        "Latch"
+      ],
+      "provenance": "res://docs/art/concepts/ui-icons/navigation-v3/rewards/provenance.json"
+    },
+    {
+      "id": "reward.relics",
+      "label": "Relic rewards",
+      "png": "reward-relics.png",
+      "svg": "reward-relics.svg",
+      "source": "sources/reward-relics-ui-v3.pxo",
+      "native_size": [
+        32,
+        32
+      ],
+      "alpha_bounds": [
+        0,
+        0,
+        31,
+        32
+      ],
+      "visible_height": 32,
+      "tint_mode": "white mask; existing theme",
+      "layers": [
+        "Faceted talisman",
+        "Binding",
+        "Offering hand and cuff"
+      ],
+      "provenance": "res://docs/art/concepts/ui-icons/navigation-v3/rewards/provenance.json"
+    }
+  ]
+}

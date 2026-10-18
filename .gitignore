@@ -1,0 +1,37 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+/tests/output/
+/*.log
+
+# Generated diagnostics
+/workspace/logs/
+
+# Local diagnostics and machine-specific agent configuration
+/.tmp/
+/.codex/
+**/__pycache__/
+**/.godot/
+**/tests/output/
+# External tool skill junction; project-owned skills remain included
+/.agents/skills/spritex/
+
+# Local research, retained material, and agent checkpoints
+/workspace/
+/.superpowers/
+/.superpower/
+/.temp/
+**/.tmp/
+**/.temp/
+
+# Logs and packaged archives
+*.log
+*.log.*
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+*.tar.bz2
+*.tar.xz

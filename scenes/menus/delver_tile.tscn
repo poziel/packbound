@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/delver_tile.gd" id="script"]
+[ext_resource type="Theme" path="res://themes/gameplay/theme.tres" id="theme"]
+[ext_resource type="PackedScene" path="res://components/character_preview/character_preview.tscn" id="portrait"]
+
+[sub_resource type="StyleBoxEmpty" id="empty"]
+
+[node name="DelverTile" type="Button"]
+custom_minimum_size = Vector2(144, 96)
+offset_right = 144.0
+offset_bottom = 104.0
+texture_filter = 1
+theme = ExtResource("theme")
+theme_override_styles/normal = SubResource("empty")
+theme_override_styles/hover = SubResource("empty")
+theme_override_styles/pressed = SubResource("empty")
+script = ExtResource("script")
+
+[node name="Portrait" parent="." instance=ExtResource("portrait")]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 0.0
+offset_right = 112.0
+offset_bottom = 80.0
+focus_mode = 0
+mouse_filter = 2
+texture_filter = 1
+
+[node name="ClassName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 84.0
+offset_right = 144.0
+offset_bottom = 104.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.85, 0.886, 0.82, 1)
+theme_override_font_sizes/font_size = 16
+text = "Delver"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3

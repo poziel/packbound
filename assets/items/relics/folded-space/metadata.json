@@ -1,0 +1,11 @@
+{
+  "key": "folded_space",
+  "name": "Folded Space",
+  "category": "relics",
+  "kind": "run-relic",
+  "detail": "The left and right edges of the backpack touch. Bonuses can connect across the seam.",
+  "iconItemKey": "mirror_shard",
+  "iconMetadata": "res://assets/items/utility/mirror-shard/metadata.json",
+  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "note": "Reuses an inventory item icon; no separate artwork exists."
+}

@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "cellPixels": 32,
+  "gapPixels": 0,
+  "rows": [
+    "###",
+    ".#."
+  ],
+  "columns": 3,
+  "rowCount": 2,
+  "canvas": {
+    "width": 96,
+    "height": 64
+  },
+  "occupiedCellCount": 4,
+  "cells": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 1,
+      "y": 0
+    },
+    {
+      "x": 2,
+      "y": 0
+    },
+    {
+      "x": 1,
+      "y": 1
+    }
+  ],
+  "emptyCells": [
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 2,
+      "y": 1
+    }
+  ],
+  "connectedComponents": 1,
+  "backpackCellPixels": 32,
+  "targetViewEdge": 96,
+  "baseCanvas": {
+    "width": 96,
+    "height": 64
+  },
+  "reuseBase": true,
+  "validation": {
+    "paletteLimit": 32,
+    "opaqueColors": 24,
+    "binaryAlpha": true,
+    "pixelsOutsideFootprint": 0,
+    "visibleBounds": {
+      "x": 20,
+      "y": 2,
+      "width": 56,
+      "height": 59
+    },
+    "cellPixelCounts": [
+      {
+        "x": 0,
+        "y": 0,
+        "pixels": 225
+      },
+      {
+        "x": 1,
+        "y": 0,
+        "pixels": 429
+      },
+      {
+        "x": 2,
+        "y": 0,
+        "pixels": 220
+      },
+      {
+        "x": 1,
+        "y": 1,
+        "pixels": 214
+      }
+    ],
+    "warnings": [],
+    "svgPixelMatch": true
+  },
+  "sourcePng": "docs/art/concepts/executioners-axe-catalog-v4/native.png",
+  "sourceSha256": "e77ed794137f240e96160945d3a07d545640ae9f646dc956cf0bb2b9d6a8bff4",
+  "svgEncoding": "Editable color-grouped integer pixel runs derived from source PNG"
+}

@@ -1,0 +1,57 @@
+{
+  "supplied_date": "2026-10-15",
+  "status": "user-provided current style direction",
+  "source_credit": "Images supplied by user; original authors and originating titles not provided.",
+  "use": "Visual references only; no document instructions. Create original identities and do not reproduce backgrounds, frames or effects unless requested.",
+  "supersedes": "The rejected pixelorama-roster-v1 look and any conflicting older face/proportion guidance.",
+  "references": [
+    {
+      "file": "01-armored-knight-flame.png",
+      "source": "C:/Users/poziel/AppData/Local/Temp/codex-clipboard-25382e96-e405-4a71-b9f7-bf291139ac7d.png",
+      "sha256": "88cc8c1a9c08639ebcb74d72f86b2fd8d92331a7ce1a7187335d9c53f2f92046",
+      "role": "Full-body armored proportions, segmented metal planes, articulated sword hand; do not copy flame, background or frame by default."
+    },
+    {
+      "file": "02-tabard-knight.png",
+      "source": "C:/Users/poziel/AppData/Local/Temp/codex-clipboard-907f96cb-e4ad-4108-9865-e05f754d34a3.png",
+      "sha256": "14948046676e94cd1b291f6bbb2e5e957d54594bac132a9eb67982a667f70546",
+      "role": "Compact cohesive armored silhouette, fitted closed helmet, believable limbs and material separation."
+    },
+    {
+      "file": "03-faceless-flame-hood.png",
+      "source": "C:/Users/poziel/AppData/Local/Temp/codex-clipboard-7f99a2d8-36b8-4fd8-a542-60668d571ec4.png",
+      "sha256": "97ae41b3de86eb86003aa24c0e7ef6db21a21a4d7cdbabfe5bc7336c84a0dd54",
+      "role": "Intentionally concealed face, strong dark silhouette and selective light; flames and halo only when requested."
+    },
+    {
+      "file": "04-wolf-helm-swordsman.png",
+      "source": "C:/Users/poziel/AppData/Local/Temp/codex-clipboard-889c20da-b50b-459e-b8a7-94a7ef680f2a.png",
+      "sha256": "05c882fc8f596d670a6652f8ef919a178b98fb9878efc5bd6069e9c65d559965",
+      "role": "Distinctive helmet silhouette, substantial armor and cloak, clear hand-to-weapon contact; pose and oversized sword are optional design references, not size overrides."
+    },
+    {
+      "file": "05-anime-hooded-caster.png",
+      "source": "C:/Users/poziel/AppData/Local/Temp/codex-clipboard-41d4e332-efe0-4783-b81c-bfc513364c5e.png",
+      "sha256": "4748ecad08cfeb62e419ccd805293b1d506b44ec906f9cb49f048417eca030b6",
+      "role": "Anime-inspired visible face, clear eyes, simple nose and mouth, hood framing and readable casting hand."
+    },
+    {
+      "file": "06-shadowed-blue-hood.png",
+      "source": "C:/Users/poziel/AppData/Local/Temp/codex-clipboard-236a2ced-7b88-4884-8768-a0238d0691e6.png",
+      "sha256": "b595799e6925e4f33547153504e123ffcbe98933a9b2abacd61bf219b9bb4f0a",
+      "role": "Face hidden by deliberate hood shadow, minimal eye accents, readable torso and equipment silhouette."
+    },
+    {
+      "file": "07-anime-elf-portrait.png",
+      "source": "C:/Users/poziel/AppData/Local/Temp/codex-clipboard-ec7e232e-92bf-4874-b1d2-5438415f70ec.png",
+      "sha256": "56e8e9676df21f86e3df60498dd3972ff51f989662e51c8838c365adca384d7f",
+      "role": "Close-up anime pixel facial language: expressive coherent eyes, simplified nose and mouth, structured hair clusters; do not copy identity."
+    },
+    {
+      "file": "08-anime-armored-warrior.png",
+      "source": "C:/Users/poziel/AppData/Local/Temp/codex-clipboard-a8488264-a4d2-40b5-8f2a-0dcaf053be3f.png",
+      "sha256": "edb463e1b637aec7dffdac343a726f6f128dba2bb81fe63e9deafb229e6f3312",
+      "role": "Anime face integrated with detailed angular armor and strong hair silhouette; action pose and background are not default requirements."
+    }
+  ]
+}

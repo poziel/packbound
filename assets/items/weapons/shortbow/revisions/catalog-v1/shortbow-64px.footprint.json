@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "cellPixels": 32,
+  "gapPixels": 0,
+  "rows": [
+    "#.",
+    "##"
+  ],
+  "columns": 2,
+  "rowCount": 2,
+  "canvas": {
+    "width": 64,
+    "height": 64
+  },
+  "occupiedCellCount": 3,
+  "cells": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 1
+    }
+  ],
+  "emptyCells": [
+    {
+      "x": 1,
+      "y": 0
+    }
+  ],
+  "connectedComponents": 1,
+  "backpackCellPixels": 32,
+  "targetViewEdge": 64,
+  "baseCanvas": {
+    "width": 64,
+    "height": 64
+  },
+  "reuseBase": true,
+  "validation": {
+    "paletteLimit": 32,
+    "opaqueColors": 24,
+    "binaryAlpha": true,
+    "pixelsOutsideFootprint": 0,
+    "visibleBounds": {
+      "x": 2,
+      "y": 6,
+      "width": 57,
+      "height": 56
+    },
+    "cellPixelCounts": [
+      {
+        "x": 0,
+        "y": 0,
+        "pixels": 147
+      },
+      {
+        "x": 0,
+        "y": 1,
+        "pixels": 203
+      },
+      {
+        "x": 1,
+        "y": 1,
+        "pixels": 145
+      }
+    ],
+    "warnings": [],
+    "svgPixelMatch": true
+  },
+  "sourcePng": "docs/art/concepts/shortbow-catalog-v1/native.png",
+  "sourceSha256": "cee16ff13e99fba173b7cdc16c260143b47fad89f7c57a9bc860fa07c8a3f1c1",
+  "svgEncoding": "Editable color-grouped integer pixel runs derived from source PNG"
+}

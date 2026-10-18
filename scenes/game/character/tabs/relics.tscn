@@ -1,0 +1,278 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://components/item_slot/item_slot.tscn" id="item_slot"]
+
+[ext_resource type="Theme" path="res://themes/gameplay/theme.tres" id="theme"]
+
+[ext_resource type="Script" uid="uid://fnclscdvmstq" path="res://scripts/relic_grid.gd" id="relic_grid"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3mdj2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p0d8a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ikcqp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xcd1a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kexx5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8fx2f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jjbsr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sdtr4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wetd0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_63502"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mdpww"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b326d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5cbb8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kx33s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c3sky"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nugsp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jqwkl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_08bsn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x5lod"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_02b0h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbcyt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h07km"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3v8p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xwjgl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3auio"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c6hd3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uknu3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kl2st"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_100j1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_btcm7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7tq8y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0u54a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bowtn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t7u46"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i7eua"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q7ljn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e2hos"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yjg7c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y4bov"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ff4p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jyatw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ofalg"]
+
+[node name="Relics" type="Control" unique_id=755812864]
+layout_mode = 0
+offset_right = 584.0
+offset_bottom = 688.0
+theme = ExtResource("theme")
+texture_filter = 1
+
+[node name="Grid" type="GridContainer" parent="." unique_id=603802831]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 22.0
+offset_right = 558.0
+offset_bottom = 638.0
+mouse_filter = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 6
+script = ExtResource("relic_grid")
+
+[node name="Slot1" parent="Grid" unique_id=1007598425 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3mdj2")
+
+[node name="Slot2" parent="Grid" unique_id=1653104913 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_p0d8a")
+
+[node name="Slot3" parent="Grid" unique_id=443156774 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ikcqp")
+
+[node name="Slot4" parent="Grid" unique_id=1905612145 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xcd1a")
+
+[node name="Slot5" parent="Grid" unique_id=695830619 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kexx5")
+
+[node name="Slot6" parent="Grid" unique_id=1005542686 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8fx2f")
+
+[node name="Slot7" parent="Grid" unique_id=1606653922 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jjbsr")
+
+[node name="Slot8" parent="Grid" unique_id=47605015 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_sdtr4")
+
+[node name="Slot9" parent="Grid" unique_id=248247520 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wetd0")
+
+[node name="Slot10" parent="Grid" unique_id=2128851133 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_63502")
+
+[node name="Slot11" parent="Grid" unique_id=1962099511 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mdpww")
+
+[node name="Slot12" parent="Grid" unique_id=1069218296 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_b326d")
+
+[node name="Slot13" parent="Grid" unique_id=1673583562 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5cbb8")
+
+[node name="Slot14" parent="Grid" unique_id=366777491 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kx33s")
+
+[node name="Slot15" parent="Grid" unique_id=12534471 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_c3sky")
+
+[node name="Slot16" parent="Grid" unique_id=893949734 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nugsp")
+
+[node name="Slot17" parent="Grid" unique_id=747381293 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jqwkl")
+
+[node name="Slot18" parent="Grid" unique_id=494493085 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_08bsn")
+
+[node name="Slot19" parent="Grid" unique_id=383317513 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_x5lod")
+
+[node name="Slot20" parent="Grid" unique_id=1695572442 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_02b0h")
+
+[node name="Slot21" parent="Grid" unique_id=1328848480 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pbcyt")
+
+[node name="Slot22" parent="Grid" unique_id=1680874301 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h07km")
+
+[node name="Slot23" parent="Grid" unique_id=102705419 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o3v8p")
+
+[node name="Slot24" parent="Grid" unique_id=751832259 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xwjgl")
+
+[node name="Slot25" parent="Grid" unique_id=1956395867 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3auio")
+
+[node name="Slot26" parent="Grid" unique_id=1807173691 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_c6hd3")
+
+[node name="Slot27" parent="Grid" unique_id=2108765466 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_uknu3")
+
+[node name="Slot28" parent="Grid" unique_id=685822953 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kl2st")
+
+[node name="Slot29" parent="Grid" unique_id=533644964 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_100j1")
+
+[node name="Slot30" parent="Grid" unique_id=404055060 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_btcm7")
+
+[node name="Slot31" parent="Grid" unique_id=1277797576 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7tq8y")
+
+[node name="Slot32" parent="Grid" unique_id=62037393 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0u54a")
+
+[node name="Slot33" parent="Grid" unique_id=1639928485 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bowtn")
+
+[node name="Slot34" parent="Grid" unique_id=1160847042 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_t7u46")
+
+[node name="Slot35" parent="Grid" unique_id=1977701983 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_i7eua")
+
+[node name="Slot36" parent="Grid" unique_id=1309966182 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_q7ljn")
+
+[node name="Slot37" parent="Grid" unique_id=1466749921 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_e2hos")
+
+[node name="Slot38" parent="Grid" unique_id=63026777 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yjg7c")
+
+[node name="Slot39" parent="Grid" unique_id=718670432 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y4bov")
+
+[node name="Slot40" parent="Grid" unique_id=1537669630 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2ff4p")
+
+[node name="Slot41" parent="Grid" unique_id=1195580868 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jyatw")
+
+[node name="Slot42" parent="Grid" unique_id=574428348 instance=ExtResource("item_slot")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ofalg")

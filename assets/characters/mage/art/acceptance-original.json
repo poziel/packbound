@@ -1,0 +1,35 @@
+{
+  "status": "accepted",
+  "version": 3,
+  "acceptedAt": "2026-10-16",
+  "acceptanceBasis": "User: \"yeah love that. install them in the game.\"",
+  "sourceReview": "docs/art/concepts/characters/mage-v3/acceptance.json",
+  "runtimeAsset": "assets/characters/mage.svg",
+  "sourceAsset": "assets/characters/mage/art/v3/body.json",
+  "portrait": "assets/characters/portraits/mage.png",
+  "portraitSource": "assets/characters/mage/art/v3/portrait.json",
+  "outputs": {
+    "mage.svg": {
+      "sha256": "1e4c110ff780a714ad77b428643760605cfc4c2893ad08b1dcf9c8a39366bdc2",
+      "source": "assets/characters/mage/art/v3/full-body.svg"
+    },
+    "mage.png": {
+      "sha256": "8ded79bdf194f8fe5ad277f7895a15f5b8ac14162c60195fe3b20aa5b622b12c",
+      "source": "assets/characters/mage/art/v3/full-body.png"
+    },
+    "portraits/mage.png": {
+      "sha256": "9f9e5474d0be99b9194b1f29926293e8522402102f2fe560ff03d45a8a28af15",
+      "source": "assets/characters/mage/art/v3/portrait.png"
+    }
+  },
+  "previousVersionArchive": "assets/characters/archive/2026-10-16-before-mage-v3",
+  "portraitRelationship": "Concept-derived matching portrait; crop, cleanup and source hashes retained in the review directory.",
+  "sourceHashes": {
+    "body.json": "5f6f5dba8621e164df98bf99f9364b8bfa27888d02ad97f042800fb1f6788114",
+    "full-body.png": "8ded79bdf194f8fe5ad277f7895a15f5b8ac14162c60195fe3b20aa5b622b12c",
+    "full-body.svg": "1e4c110ff780a714ad77b428643760605cfc4c2893ad08b1dcf9c8a39366bdc2",
+    "portrait.json": "5fcb8200e2b017e4cb1e3a16d0b334a8d3e85e2e68d4c725520944477aea1375",
+    "portrait.png": "9f9e5474d0be99b9194b1f29926293e8522402102f2fe560ff03d45a8a28af15",
+    "portrait.svg": "a92ed0be0aa7f9a8580bc65e5de47fdf91de53bb7c8374bf4fd2e16e913786ed"
+  }
+}

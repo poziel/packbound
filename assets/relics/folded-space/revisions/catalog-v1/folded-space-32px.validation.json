@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "relic_id": "folded_space",
+  "footprint": null,
+  "occupies_backpack_cells": false,
+  "canvas": [
+    32,
+    32
+  ],
+  "helper_mask": [
+    "#"
+  ],
+  "helper_mask_role": "Canvas validation only; this run relic occupies no backpack cells.",
+  "checks": {
+    "paletteLimit": 32,
+    "opaqueColors": 16,
+    "binaryAlpha": true,
+    "pixelsOutsideFootprint": 0,
+    "visibleBounds": {
+      "x": 2,
+      "y": 4,
+      "width": 29,
+      "height": 26
+    },
+    "cellPixelCounts": [
+      {
+        "x": 0,
+        "y": 0,
+        "pixels": 385
+      }
+    ],
+    "warnings": [],
+    "svgPixelMatch": true
+  },
+  "pixelorama_roundtrip_rgba_match": true
+}

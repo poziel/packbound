@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "cellPixels": 32,
+  "gapPixels": 0,
+  "rows": [
+    "##",
+    "#."
+  ],
+  "columns": 2,
+  "rowCount": 2,
+  "canvas": {
+    "width": 64,
+    "height": 64
+  },
+  "occupiedCellCount": 3,
+  "cells": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 1,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    }
+  ],
+  "emptyCells": [
+    {
+      "x": 1,
+      "y": 1
+    }
+  ],
+  "connectedComponents": 1,
+  "backpackCellPixels": 32,
+  "targetViewEdge": 64,
+  "baseCanvas": {
+    "width": 64,
+    "height": 64
+  },
+  "reuseBase": true,
+  "validation": {
+    "paletteLimit": 32,
+    "opaqueColors": 24,
+    "binaryAlpha": true,
+    "pixelsOutsideFootprint": 0,
+    "visibleBounds": {
+      "x": 6,
+      "y": 5,
+      "width": 57,
+      "height": 57
+    },
+    "cellPixelCounts": [
+      {
+        "x": 0,
+        "y": 0,
+        "pixels": 622
+      },
+      {
+        "x": 1,
+        "y": 0,
+        "pixels": 620
+      },
+      {
+        "x": 0,
+        "y": 1,
+        "pixels": 472
+      }
+    ],
+    "warnings": [],
+    "svgPixelMatch": true
+  },
+  "sourcePng": "docs/art/concepts/ember-tome-catalog-v1/native.png",
+  "sourceSha256": "223a1897d9b0f40adf14a57a517ad75334224492a87477b04c6409c4c469a836",
+  "svgEncoding": "Editable color-grouped integer pixel runs derived from source PNG"
+}

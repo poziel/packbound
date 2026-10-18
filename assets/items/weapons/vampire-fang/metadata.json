@@ -1,0 +1,26 @@
+{
+  "key": "vampire_fang",
+  "name": "Vampire Fang",
+  "category": "weapons",
+  "gameplayRole": "weapon",
+  "inventoryMask": [
+    "#",
+    "#"
+  ],
+  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "exports": [
+    "revisions/catalog-v1/vampire-fang-32x64.png",
+    "revisions/catalog-v1/vampire-fang-32x64.svg",
+    "revisions/catalog-v1/vampire-fang-32x64.footprint.json"
+  ],
+  "editableSources": [
+    "revisions/catalog-v1/vampire-fang-32x64.pxo",
+    "revisions/catalog-v1/vampire-fang-32x64.svg"
+  ],
+  "runtime": {
+    "texture": "res://assets/items/weapons/vampire-fang/revisions/catalog-v1/vampire-fang-32x64.svg",
+    "viewPolicy": "Reuse approved footprint-derived native sprite across display sizes with nearest filtering."
+  },
+  "activeRevision": "catalog-v1",
+  "revisionProvenance": "res://docs/art/concepts/vampire-fang-catalog-v1/provenance.json"
+}

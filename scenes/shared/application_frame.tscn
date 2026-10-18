@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cvvx4qm6mjnjc"]
+
+[ext_resource type="Script" uid="uid://bjmhnek3lbbgk" path="res://components/application_frame.gd" id="controller"]
+[ext_resource type="Texture2D" path="res://assets/ui/icons/settings/settings.png" id="settings_icon"]
+[ext_resource type="Script" uid="uid://dn3si2y2d45nd" path="res://components/application_frame_style.gd" id="frame_style"]
+[ext_resource type="Theme" uid="uid://b3k7avi5t7hlb" path="res://themes/gameplay/theme.tres" id="theme"]
+
+[ext_resource type="Script" path="res://components/surface_theme.gd" id="surface_theme"]
+
+[sub_resource type="StyleBox" id="frame"]
+resource_local_to_scene = true
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("frame_style")
+
+[node name="ApplicationFrame" type="Control" unique_id=2021038916]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("theme")
+script = ExtResource("controller")
+
+[node name="Border" type="Panel" parent="." unique_id=1225177192]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("frame")
+
+[node name="SettingsDock" type="Control" parent="." unique_id=288673261]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="SettingsButton" type="Button" parent="SettingsDock" unique_id=1094729663]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Open pause screen"
+accessibility_name = "Settings and pause menu"
+theme_type_variation = &"IconButton"
+expand_icon = true
+theme_override_constants/icon_max_width = 32
+icon = ExtResource("settings_icon")
+icon_alignment = 1
+
+[node name="SurfaceTheme" type="Node" parent="."]
+script = ExtResource("surface_theme")
+frame_nodes = Array[NodePath]([NodePath("Border")])

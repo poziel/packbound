@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="32" viewBox="0 0 256 32" shape-rendering="crispEdges">
+<path transform="translate(0)" d="M12 4H24V8H28V20H24V24H12V20H22V18H24V10H22V8H12V12H4V4H8V8H12Z" fill="#efd28c" fill-rule="evenodd"/>
+<path transform="translate(32)" d="M10 4H22V8H26V16H22V20H18V22H14V16H18V12H22V8H12V12H8V8H10Z M14 26H18V30H14Z" fill="#efd28c" fill-rule="evenodd"/>
+<path transform="translate(64)" d="M6 4H10V8H14V12H18V8H22V4H26V8H22V12H18V16H22V20H26V24H22V20H18V16H14V20H10V24H6V20H10V16H14V12H10V8H6Z" fill="#efd28c" fill-rule="evenodd"/>
+<path transform="translate(96)" d="M8 4H12V6H16V8H20V10H24V12H28V20H24V22H20V24H16V26H12V28H8Z" fill="#efd28c" fill-rule="evenodd"/>
+<path transform="translate(128)" d="M8 8H24V12H8Z M8 20H24V24H8Z M8 12H12V20H8Z M20 12H24V20H20Z M12 2H20V8H12Z M12 24H20V30H12Z M2 12H8V20H2Z M24 12H30V20H24Z M4 4H10V10H4Z M22 4H28V10H22Z M4 22H10V28H4Z M22 22H28V28H22Z" fill="#efd28c" fill-rule="evenodd"/>
+<path transform="translate(160)" d="M4 4H16V8H8V24H16V28H4Z M20 8H24V12H28V20H24V24H20V20H12V12H20Z" fill="#efd28c" fill-rule="evenodd"/>
+<path transform="translate(192)" d="M6 2H26V30H6Z M10 6V26H22V6Z M12 10H20V12H12Z M12 16H20V18H12Z M12 22H18V24H12Z" fill="#efd28c" fill-rule="evenodd"/>
+<path transform="translate(224)" d="M8 4H14V28H8Z M20 4H26V28H20Z" fill="#efd28c" fill-rule="evenodd"/>
+</svg>

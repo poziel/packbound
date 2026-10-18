@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://components/character_preview/character_preview.gd" id="script"]
+[ext_resource type="Texture2D" path="res://assets/characters/warrior/art/portrait.png" id="warrior"]
+
+[sub_resource type="AtlasTexture" id="head"]
+atlas = ExtResource("warrior")
+region = Rect2(4, 0, 28, 28)
+filter_clip = true
+
+[node name="CharacterPreview" type="Control"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+offset_right = 104.0
+offset_bottom = 104.0
+texture_filter = 1
+clip_contents = true
+focus_mode = 2
+script = ExtResource("script")
+texture = SubResource("head")
+
+[node name="Art" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 94.0
+offset_bottom = 94.0
+mouse_filter = 2
+texture = SubResource("head")
+expand_mode = 1

@@ -1,0 +1,16 @@
+{
+  "family": "adjacency-border-carets",
+  "source": "Hand-authored solid-fill revision of adjacency-carets-v2; earlier sources preserved",
+  "native_size": [
+    7,
+    7
+  ],
+  "display_size": [
+    14,
+    14
+  ],
+  "change": "Interior filled; unchanged outer silhouette and placement",
+  "tint_mode": "Exact receiving border color",
+  "registration": "Same border attachment, contact midpoint, integer 2x nearest scaling and quarter turns",
+  "status": "User-requested filled revision"
+}

@@ -1,0 +1,174 @@
+{
+  "id": "ranger",
+  "name": "Rowan Thorne",
+  "role": "Ranger",
+  "title": "The Wayfinder",
+  "speciality": "Accurate ranged attacks, rapid volleys and arranging bows beside quivers to make every shot count.",
+  "specialPowers": [
+    {
+      "id": "volley",
+      "name": "Volley",
+      "kind": "class-mechanic",
+      "description": "Every third turn, all equipped ranged items activate twice. Quiver adjacency strengthens applicable ranged activations.",
+      "visualDirection": "Quick, measured bow shots with a clear draw-and-release motion. Use ordinary arrows by default; magical trails are not an inherent class power."
+    }
+  ],
+  "weapons": [
+    {
+      "name": "Ashwood recurve bow",
+      "type": "bow",
+      "gameItemId": "shortbow",
+      "relationship": "Corresponds to the Ashwood Bow inventory item; the existing accepted design uses a tall recurved silhouette.",
+      "description": "Warm brown wooden limbs, a darker wrapped riser and one continuous taut string. At rest, the viewer-right hand wraps the riser with the thumb and fingers visibly overlapping it; do not draw the string across his face."
+    },
+    {
+      "name": "Hunting quiver",
+      "type": "ammunition",
+      "gameItemId": "quiver",
+      "relationship": "Starting inventory item and signature visual equipment.",
+      "description": "Worn brown leather shoulder quiver with a restrained group of cream-feathered arrows. It sits behind the viewer-left shoulder and remains separate from the head in a portrait."
+    },
+    {
+      "name": "Trail knife",
+      "type": "knife",
+      "gameItemId": null,
+      "relationship": "Optional sheathed costume tool; adds no inventory ability.",
+      "description": "A small plain utility knife on the belt, normally sheathed and visually secondary to the bow."
+    }
+  ],
+  "gameplay": {
+    "startingHp": 32,
+    "startingItemIds": [
+      "shortbow",
+      "quiver",
+      "buckler"
+    ],
+    "itemAliasNotes": [
+      "shortbow is displayed as Ashwood Bow; quiver is displayed as Hunting Quiver."
+    ]
+  },
+  "bio": {
+    "summary": "A wilderness courier who knows forgotten roads better than the people who drew the maps.",
+    "origin": "Rowan carried medicine and letters between isolated hill villages long before he became an archer for hire. After a familiar route vanished beneath a spreading sinkhole, he began tracing the old passages below it. He enters the dungeon to discover where those roads went, and to recover the people and supplies lost with them.",
+    "personality": [
+      "Observant and lightly mischievous",
+      "Patient with frightened animals",
+      "Distrustful of grand promises but loyal to practical kindness"
+    ],
+    "motivation": "Reopen a safe route between the scattered villages and bring back evidence of what is swallowing the old roads.",
+    "mannerisms": "Pauses to listen before opening a door, knots spare cord around an arrow shaft and remembers people by the routes they travel.",
+    "voice": "Easy, economical speech with a quiet joke at an unexpectedly tense moment.",
+    "quote": "There is a way through. There usually is."
+  },
+  "physicalAppearance": {
+    "species": "Human",
+    "lifeStage": "Adult, approximately 29",
+    "genderPresentation": "Man",
+    "heightCm": 179,
+    "build": "Lean and athletic, with flexible shoulders, a compact torso and strong but unexaggerated legs. His posture suggests stamina and easy movement rather than heavy lifting.",
+    "silhouette": "Forest-green hood framing a visible angled face, ochre scarf, fitted leather shoulder armor, a long split cloak and tall wooden bow on the viewer's right.",
+    "headTreatment": "Visible anime-inspired adult face within an open hood.",
+    "headShape": "Slightly angular oval face with a defined cheekbone, narrow jaw and proportionate chin.",
+    "face": "Warm light-to-medium skin, a straight simplified nose, small relaxed mouth and softly arched brows. Keep the three-quarter perspective coherent and give the far eye less visible width.",
+    "eyes": "Muted green eyes with deliberate dark upper lids and a focused, alert gaze toward the viewer's right.",
+    "hair": "Dark chestnut-brown hair swept diagonally across the forehead, with short pointed locks emerging from the hood. Keep hair as structured masses rather than many thin strands.",
+    "headwear": "An open forest-green hood with a soft pointed crown and broad shaded folds; it frames the face without casting it into unreadable darkness.",
+    "upperBody": "Green layered tunic beneath fitted brown leather shoulder and forearm armor; a warm ochre scarf around the neck; diagonal leather quiver strap and a small antique-brass clasp.",
+    "lowerBody": "Charcoal trousers, overlapping green tunic tails, brown belt and a small practical pouch. Wrapped leather knee and shin protection above sturdy walking boots.",
+    "hands": "Fingerless or open-finger leather bracers with visible warm skin. The bow hand encloses the riser; the resting hand hangs naturally with relaxed fingers.",
+    "cloak": "Long muted-green cloak hanging behind the viewer-left side, split enough to reveal both legs and grounded feet.",
+    "palette": [
+      {
+        "material": "Green cloth",
+        "colors": [
+          "#29362a",
+          "#536140",
+          "#87925c"
+        ]
+      },
+      {
+        "material": "Leather",
+        "colors": [
+          "#3d2924",
+          "#76503d",
+          "#b88b66"
+        ]
+      },
+      {
+        "material": "Ochre scarf",
+        "colors": [
+          "#8e5b29",
+          "#b27a36",
+          "#e6bd70"
+        ]
+      }
+    ],
+    "distinguishingFeatures": [
+      "Chestnut forelock inside an open green hood",
+      "Ochre scarf against muted green clothing",
+      "Quiver behind the viewer-left shoulder",
+      "Tall recurved bow with a readable wrapped grip"
+    ],
+    "expressionAndBearing": "Calm, watchful and approachable, with a slight suggestion of a smile rather than a broad grin.",
+    "effects": "None in the default idle design.",
+    "portraitDirection": "Optically center the hood-framed face, keep hair, hood crown and chin complete, and retain a little ochre scarf. Remove arrow fletching, quiver edges, bow/string and unrelated cloak fragments; reconstruct obscured hood or hair.",
+    "avoid": [
+      "A bowstring crossing the face",
+      "Quiver arrows filling the portrait margins",
+      "Bulbous mouth or nose clusters",
+      "A warrior's heavy plate silhouette",
+      "Mandatory orange/cyan rim lighting"
+    ]
+  },
+  "assetReferences": {
+    "runtime": "assets/characters/ranger/art/full-body.svg",
+    "concept": "assets/characters/ranger/art/concept.png",
+    "nativeSource": "assets/characters/ranger/art/full-body.sprite.json",
+    "artStatus": "ranger v3 accepted and installed 2026-10-16; 256 px body and 64 x 64 portrait",
+    "appearanceBasis": "Accepted ranger v2. New name and biography are authored for this catalog.",
+    "portrait": "assets/characters/ranger/art/portrait.png",
+    "portraitNativeSource": "assets/characters/ranger/art/portrait.sprite.json"
+  },
+  "schemaVersion": 1,
+  "identityStatus": "Newly authored character profile; names and lore have not yet been individually reviewed.",
+  "generation": {
+    "skill": "skills/packbound-character-art/SKILL.md",
+    "body": {
+      "visibleHeightPx": 256,
+      "canvasPx": [
+        384,
+        320
+      ],
+      "topY": 32,
+      "baselineY": 288,
+      "centerX": 192,
+      "measurement": "Head/headwear to soles; exclude held equipment, detached effects and transparent padding."
+    },
+    "portrait": {
+      "canvasPx": [
+        64,
+        64
+      ],
+      "source": "Original generated concept or another sufficiently detailed identity source, independently framed and cleaned.",
+      "framing": "Optically center the visible head; preserve complete hair/headwear and chin, with modest neck and shoulder context.",
+      "obstructions": "Remove incidental weapons, quivers, spell fragments and other obstructions; reconstruct hidden head details. Retain intentional helmets and masks."
+    },
+    "pose": "Upright, relaxed and alert, slight three-quarter turn toward the viewer's right, grounded feet and a natural weight shift.",
+    "rendering": "Original fantasy pixel art with cohesive adult proportions, deliberate connected clusters, sculpted material planes, selective highlights and restrained texture. Exposed faces use intentional anime-inspired eye/lid, nose and mouth shapes.",
+    "deliverables": [
+      "Layered full-body spritex authoring JSON",
+      "Transparent full-body PNG",
+      "Integer-grid editable full-body SVG",
+      "Separate 64 x 64 portrait spritex authoring JSON",
+      "Transparent 64 x 64 portrait PNG",
+      "Source prompt, references and provenance"
+    ],
+    "review": "Inspect body, grip and portrait at native/intended display size. Technical validation is separate from user approval."
+  },
+  "mechanicsSource": [
+    "scripts/pack_catalog.gd",
+    "scripts/run_state.gd"
+  ],
+  "profilePath": "assets/characters/ranger/character.json",
+  "biographyPath": "assets/characters/ranger/README.md"
+}

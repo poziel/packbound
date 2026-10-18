@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://dmeni5acmgrln"]
+
+[ext_resource type="Texture2D" path="res://assets/enemies/ash_rat.png" id="enemies"]
+
+[ext_resource type="PackedScene" uid="uid://b8pk2ue168bup" path="res://components/pixel_stat_bar/pixel_stat_bar.tscn" id="stat_bar"]
+
+[ext_resource type="Theme" uid="uid://b3k7avi5t7hlb" path="res://themes/gameplay/theme.tres" id="theme"]
+
+[ext_resource type="Script" path="res://scripts/enemy_card.gd" id="feedback"]
+
+[sub_resource type="AtlasTexture" id="rat"]
+atlas = ExtResource("enemies")
+region = Rect2(0, 0, 288, 320)
+
+[sub_resource type="Gradient" id="hit_fade"]
+offsets = PackedFloat32Array(0, 0.35, 1)
+colors = PackedColorArray(0.9, 0.82, 0.63, 1, 0.8, 0.68, 0.49, 1, 0.6, 0.48, 0.34, 0)
+
+[sub_resource type="StyleBoxEmpty" id="SemanticTextEmpty"]
+
+[node name="EnemyCard" type="Control" unique_id=1207032173]
+custom_minimum_size = Vector2(264, 440)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 264.0
+offset_bottom = 440.0
+mouse_filter = 2
+theme = ExtResource("theme")
+script = ExtResource("feedback")
+
+[node name="Vitals" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -8.0
+offset_right = 252.0
+offset_bottom = 96.0
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="EnemyShieldBar" parent="Vitals" unique_id=678658682 instance=ExtResource("stat_bar")]
+visible = false
+custom_minimum_size = Vector2(240, 36)
+layout_mode = 2
+size_flags_vertical = 0
+max_value = 0.0
+value = 0.0
+accent_color = Color(0.5686275, 0.7490196, 0.8117647, 1)
+bar_height = 20
+number_mode = 1
+number_size = 24
+
+[node name="EnemyBar" parent="Vitals" unique_id=636515429 instance=ExtResource("stat_bar")]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+size_flags_vertical = 0
+max_value = 28.0
+value = 28.0
+
+[node name="Statuses" type="Control" parent="Vitals"]
+visible = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+mouse_filter = 2
+clip_contents = false
+
+[node name="Content" type="RichTextLabel" parent="Vitals/Statuses"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -600.0
+offset_right = 600.0
+offset_bottom = 24.0
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+mouse_filter = 2
+texture_filter = 1
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/normal = SubResource("SemanticTextEmpty")
+
+[node name="EnemyArt" type="TextureRect" parent="." unique_id=392097032]
+texture_filter = 1
+layout_mode = 0
+offset_left = 12.0
+offset_top = 112.0
+offset_right = 252.0
+offset_bottom = 332.0
+texture = SubResource("rat")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HitParticles" type="CPUParticles2D" parent="."]
+position = Vector2(132, 240)
+texture_filter = 1
+emitting = false
+amount = 18
+lifetime = 0.18
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(24, 20)
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 180)
+initial_velocity_min = 180.0
+initial_velocity_max = 330.0
+damping_min = 80.0
+damping_max = 120.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color_ramp = SubResource("hit_fade")
+
+[node name="EnemyDetail" type="RichTextLabel" parent="." unique_id=1991559947]
+visible = false
+layout_mode = 0
+offset_right = 264.0
+offset_bottom = 48.0
+theme_override_font_sizes/normal_font_size = 24
+text = "A steady single strike."
+autowrap_mode = 2
+texture_filter = 1
+mouse_filter = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+theme_override_styles/normal = SubResource("SemanticTextEmpty")
+

@@ -1,0 +1,27 @@
+{
+  "status": "accepted",
+  "acceptedBy": "user",
+  "date": "2026-10-16",
+  "statement": "perfect, include him in the game now",
+  "version": 3,
+  "integrated": true,
+  "runtimeAsset": "assets/characters/necromancer.svg",
+  "sourceAsset": "assets/characters/necromancer/art/v3/full-body.sprite.json",
+  "portraitSource": "assets/characters/necromancer/art/v3/portrait.sprite.json",
+  "portrait": "assets/characters/portraits/necromancer.png",
+  "outputs": {
+    "necromancer.svg": {
+      "sha256": "285378f74cb4d0b1faba7ebde31d713959f3a5ff10e2e091d2de337e4b84a0d8",
+      "source": "assets/characters/necromancer/art/v3/full-body.svg"
+    },
+    "necromancer.png": {
+      "sha256": "7004a9c311b1b2d9741da7f5a64764c353f282af4be64a289980cada12b9cfde",
+      "source": "assets/characters/necromancer/art/v3/full-body.png"
+    },
+    "portraits/necromancer.png": {
+      "sha256": "e49532c7e0b33412fbcb85f44da5203ce31f10395bd87081e65d6f749a946cfe",
+      "source": "assets/characters/necromancer/art/v3/portrait.png"
+    }
+  },
+  "archive": "assets/characters/archive/2026-10-16-before-necromancer-v3"
+}

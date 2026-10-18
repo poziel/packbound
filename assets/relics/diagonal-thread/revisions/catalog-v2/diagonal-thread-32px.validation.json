@@ -1,0 +1,32 @@
+{
+  "paletteLimit": 32,
+  "opaqueColors": 16,
+  "binaryAlpha": true,
+  "pixelsOutsideFootprint": 0,
+  "visibleBounds": {
+    "x": 2,
+    "y": 2,
+    "width": 27,
+    "height": 28
+  },
+  "cellPixelCounts": [
+    {
+      "x": 0,
+      "y": 0,
+      "pixels": 558
+    }
+  ],
+  "warnings": [],
+  "svgPixelMatch": true,
+  "canvas": [
+    32,
+    32
+  ],
+  "footprint": null,
+  "occupies_backpack_cells": false,
+  "canvas_validation_mask": [
+    "#"
+  ],
+  "canvas_validation_note": "The helper mask validates image geometry only; it does not assign a gameplay footprint.",
+  "pixelorama_roundtrip_exact_rgba": true
+}

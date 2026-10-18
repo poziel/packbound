@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 2,
+  "id": "warrior",
+  "identity": {
+    "name": "Garran Vale",
+    "title": "The Last Watch",
+    "classId": "warrior",
+    "className": "Warrior",
+    "role": "Defender",
+    "speciality": "Defend and counterattack",
+    "description": "A disciplined knight who holds the line.",
+    "bio": "A former bridge-watch captain seeking his missing companions."
+  },
+  "selection": {
+    "iconItemId": "longsword",
+    "mechanicName": "Riposte",
+    "mechanicDescription": "Completely defend an enemy action to counterattack for 4 plus plating damage."
+  },
+  "gameplay": {
+    "health": {
+      "starting": 40,
+      "maximum": 40
+    },
+    "resources": {
+      "mana": {
+        "baseCapacity": 1,
+        "classBonus": 0,
+        "refill": "round-start"
+      },
+      "stamina": {
+        "baseCapacity": 3,
+        "classBonus": 0,
+        "refill": "round-start"
+      }
+    },
+    "protection": {
+      "startingBlock": 0,
+      "blockGainPerRound": 0,
+      "blockFloor": 0,
+      "blockRetention": "until-spent-or-fight-end",
+      "startingShield": 0,
+      "plating": 0,
+      "ward": 0
+    },
+    "startingItems": [
+      {
+        "itemId": "longsword",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0
+      },
+      {
+        "itemId": "cracked_shield",
+        "position": {
+          "x": 1,
+          "y": 0
+        },
+        "rotation": 0
+      },
+      {
+        "itemId": "iron_charm",
+        "position": {
+          "x": 2,
+          "y": 0
+        },
+        "rotation": 0
+      }
+    ],
+    "startingEffects": [],
+    "companions": {
+      "startingCount": 0,
+      "maximumCount": 0,
+      "damagePerRound": 0,
+      "persistBetweenFloors": false
+    },
+    "abilities": [
+      {
+        "id": "riposte",
+        "name": "Riposte",
+        "kind": "passive",
+        "description": "Counterattack after completely defending an enemy action.",
+        "trigger": "enemy-action-resolved",
+        "requirements": [
+          "no-hp-damage-taken",
+          "enemy-attack-positive",
+          "enemy-alive"
+        ],
+        "costs": [],
+        "effects": [
+          {
+            "stat": "damage",
+            "amount": 4,
+            "scalingStat": "plating",
+            "scalingMultiplier": 1,
+            "target": "enemy",
+            "damageType": "direct",
+            "bypassesShield": true,
+            "durationRounds": 0
+          }
+        ],
+        "cooldownRounds": 0,
+        "usesPerFight": null,
+        "parameters": []
+      }
+    ],
+    "innateEffects": []
+  },
+  "visual": {
+    "palette": [
+      {
+        "part": "armor",
+        "shadow": "#4e5965",
+        "base": "#8795a2",
+        "highlight": "#d9e1e4"
+      },
+      {
+        "part": "cloak",
+        "shadow": "#4a172b",
+        "base": "#8d293c",
+        "highlight": "#bd4050"
+      }
+    ],
+    "assets": {
+      "spritePng": null,
+      "spriteSvg": null,
+      "portraitPng": null
+    }
+  }
+}

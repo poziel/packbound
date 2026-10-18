@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "cellPixels": 64,
+  "gapPixels": 0,
+  "rows": [
+    "#"
+  ],
+  "columns": 1,
+  "rowCount": 1,
+  "canvas": {
+    "width": 64,
+    "height": 64
+  },
+  "occupiedCellCount": 1,
+  "cells": [
+    {
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "emptyCells": [],
+  "connectedComponents": 1,
+  "backpackCellPixels": 32,
+  "targetViewEdge": 64,
+  "baseCanvas": {
+    "width": 32,
+    "height": 32
+  },
+  "reuseBase": false,
+  "validation": {
+    "paletteLimit": 32,
+    "opaqueColors": 24,
+    "binaryAlpha": true,
+    "pixelsOutsideFootprint": 0,
+    "visibleBounds": {
+      "x": 7,
+      "y": 4,
+      "width": 51,
+      "height": 56
+    },
+    "cellPixelCounts": [
+      {
+        "x": 0,
+        "y": 0,
+        "pixels": 774
+      }
+    ],
+    "warnings": [],
+    "svgPixelMatch": true
+  },
+  "sourcePng": "docs/art/concepts/rusty-knife-large-v1/native-64.png",
+  "sourceSha256": "a2135d42d25a4687601f3ea13e4bebea1753deb6bdde0effdb167328d245cd93",
+  "svgEncoding": "Editable color-grouped integer pixel runs derived from source PNG"
+}

@@ -1,0 +1,101 @@
+{
+  "version": 4,
+  "status": "Integrated at user request; visual acceptance pending",
+  "icons": [
+    {
+      "id": "menu.backpack",
+      "label": "Inventory / character sheet",
+      "source": "backpack.json",
+      "png": "backpack.png",
+      "svg": "backpack.svg",
+      "native_size": [
+        32,
+        32
+      ],
+      "alpha_bounds_exclusive": [
+        3,
+        0,
+        29,
+        32
+      ],
+      "visible_height": 32,
+      "layers": [
+        "Bag shell and flap",
+        "Handle clasp and front pocket"
+      ],
+      "tint_mode": "white mask; existing tab theme"
+    },
+    {
+      "id": "menu.relics",
+      "label": "Relics",
+      "source": "relics.json",
+      "png": "relics.png",
+      "svg": "relics.svg",
+      "native_size": [
+        32,
+        32
+      ],
+      "alpha_bounds_exclusive": [
+        1,
+        0,
+        31,
+        32
+      ],
+      "visible_height": 32,
+      "layers": [
+        "Octagonal artifact setting",
+        "Faceted diamond"
+      ],
+      "tint_mode": "white mask; existing tab theme"
+    },
+    {
+      "id": "menu.statistics",
+      "label": "Statistics",
+      "source": "statistics.json",
+      "png": "statistics.png",
+      "svg": "statistics.svg",
+      "native_size": [
+        32,
+        32
+      ],
+      "alpha_bounds_exclusive": [
+        1,
+        0,
+        31,
+        32
+      ],
+      "visible_height": 32,
+      "layers": [
+        "Ascending statistic columns",
+        "Chart baseline"
+      ],
+      "tint_mode": "white mask; existing tab theme"
+    },
+    {
+      "id": "menu.logs",
+      "label": "Combat logs",
+      "source": "logs.json",
+      "png": "logs.png",
+      "svg": "logs.svg",
+      "native_size": [
+        32,
+        32
+      ],
+      "alpha_bounds_exclusive": [
+        3,
+        0,
+        29,
+        32
+      ],
+      "visible_height": 32,
+      "layers": [
+        "Bound journal cover and spine",
+        "Three log entries"
+      ],
+      "tint_mode": "white mask; existing tab theme"
+    }
+  ],
+  "provenance": "Original direct pixel-grid drawings, Packbound UI icon skill; spritex 0.2.0 schema 1 exports. Earlier navigation-v3 assets and sources preserved.",
+  "validation": "Godot rendered review: zero failures. Four selected tab states captured, SVG/PNG pixel equality verified, native sizes, tooltips, filtering, and attack refresh binding checked.",
+  "review": "res://docs/art/concepts/ui-icons/navigation-v4/tab-states.png"
+}

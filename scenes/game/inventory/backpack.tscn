@@ -1,0 +1,647 @@
+[gd_scene format=3]
+
+[ext_resource type="Theme" path="res://themes/gameplay/theme.tres" id="theme"]
+
+[ext_resource type="Script" path="res://scripts/backpack_board.gd" id="board"]
+
+[ext_resource type="Script" path="res://components/item_slot/item_slot.gd" id="item_slot"]
+
+[sub_resource type="StyleBoxEmpty" id="clear"]
+
+[node name="Backpack" type="Control"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 584.0
+offset_bottom = 486.0
+custom_minimum_size = Vector2(584, 486)
+texture_filter = 1
+theme = ExtResource("theme")
+script = ExtResource("board")
+tooltip_text = "Item"
+
+[node name="PackFrame" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 0.0
+offset_right = 572.0
+offset_bottom = 486.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+
+[node name="Cell1_1" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 14.0
+offset_right = 86.0
+offset_bottom = 78.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell2_1" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 14.0
+offset_right = 154.0
+offset_bottom = 78.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell3_1" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 14.0
+offset_right = 222.0
+offset_bottom = 78.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell4_1" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 14.0
+offset_right = 290.0
+offset_bottom = 78.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell5_1" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 14.0
+offset_right = 358.0
+offset_bottom = 78.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell6_1" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 14.0
+offset_right = 426.0
+offset_bottom = 78.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell7_1" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 14.0
+offset_right = 494.0
+offset_bottom = 78.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell8_1" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 14.0
+offset_right = 562.0
+offset_bottom = 78.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell1_2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 82.0
+offset_right = 86.0
+offset_bottom = 146.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell2_2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 82.0
+offset_right = 154.0
+offset_bottom = 146.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell3_2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 82.0
+offset_right = 222.0
+offset_bottom = 146.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell4_2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 82.0
+offset_right = 290.0
+offset_bottom = 146.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell5_2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 82.0
+offset_right = 358.0
+offset_bottom = 146.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell6_2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 82.0
+offset_right = 426.0
+offset_bottom = 146.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell7_2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 82.0
+offset_right = 494.0
+offset_bottom = 146.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell8_2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 82.0
+offset_right = 562.0
+offset_bottom = 146.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell1_3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 150.0
+offset_right = 86.0
+offset_bottom = 214.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell2_3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 150.0
+offset_right = 154.0
+offset_bottom = 214.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell3_3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 150.0
+offset_right = 222.0
+offset_bottom = 214.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell4_3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 150.0
+offset_right = 290.0
+offset_bottom = 214.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell5_3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 150.0
+offset_right = 358.0
+offset_bottom = 214.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell6_3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 150.0
+offset_right = 426.0
+offset_bottom = 214.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell7_3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 150.0
+offset_right = 494.0
+offset_bottom = 214.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell8_3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 150.0
+offset_right = 562.0
+offset_bottom = 214.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell1_4" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 218.0
+offset_right = 86.0
+offset_bottom = 282.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell2_4" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 218.0
+offset_right = 154.0
+offset_bottom = 282.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell3_4" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 218.0
+offset_right = 222.0
+offset_bottom = 282.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell4_4" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 218.0
+offset_right = 290.0
+offset_bottom = 282.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell5_4" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 218.0
+offset_right = 358.0
+offset_bottom = 282.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell6_4" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 218.0
+offset_right = 426.0
+offset_bottom = 282.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell7_4" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 218.0
+offset_right = 494.0
+offset_bottom = 282.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell8_4" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 218.0
+offset_right = 562.0
+offset_bottom = 282.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell1_5" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 286.0
+offset_right = 86.0
+offset_bottom = 350.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell2_5" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 286.0
+offset_right = 154.0
+offset_bottom = 350.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell3_5" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 286.0
+offset_right = 222.0
+offset_bottom = 350.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell4_5" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 286.0
+offset_right = 290.0
+offset_bottom = 350.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell5_5" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 286.0
+offset_right = 358.0
+offset_bottom = 350.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell6_5" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 286.0
+offset_right = 426.0
+offset_bottom = 350.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell7_5" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 286.0
+offset_right = 494.0
+offset_bottom = 350.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell8_5" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 286.0
+offset_right = 562.0
+offset_bottom = 350.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell1_6" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 354.0
+offset_right = 86.0
+offset_bottom = 418.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell2_6" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 354.0
+offset_right = 154.0
+offset_bottom = 418.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell3_6" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 354.0
+offset_right = 222.0
+offset_bottom = 418.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell4_6" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 354.0
+offset_right = 290.0
+offset_bottom = 418.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell5_6" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 354.0
+offset_right = 358.0
+offset_bottom = 418.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell6_6" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 354.0
+offset_right = 426.0
+offset_bottom = 418.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell7_6" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 354.0
+offset_right = 494.0
+offset_bottom = 418.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell8_6" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 354.0
+offset_right = 562.0
+offset_bottom = 418.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell1_7" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 422.0
+offset_right = 86.0
+offset_bottom = 486.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell2_7" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 422.0
+offset_right = 154.0
+offset_bottom = 486.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell3_7" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 422.0
+offset_right = 222.0
+offset_bottom = 486.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell4_7" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 422.0
+offset_right = 290.0
+offset_bottom = 486.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell5_7" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 422.0
+offset_right = 358.0
+offset_bottom = 486.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell6_7" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 422.0
+offset_right = 426.0
+offset_bottom = 486.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell7_7" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 422.0
+offset_right = 494.0
+offset_bottom = 486.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")
+
+[node name="Cell8_7" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 422.0
+offset_right = 562.0
+offset_bottom = 486.0
+show_behind_parent = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("clear")
+script = ExtResource("item_slot")

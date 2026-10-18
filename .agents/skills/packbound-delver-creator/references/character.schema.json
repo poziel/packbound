@@ -1,0 +1,565 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "identity",
+    "selection",
+    "gameplay",
+    "visual"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "title",
+        "classId",
+        "className",
+        "role",
+        "speciality",
+        "description",
+        "bio"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "classId": {
+          "type": "string"
+        },
+        "className": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "speciality": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "bio": {
+          "type": "string"
+        }
+      }
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "iconItemId",
+        "mechanicName",
+        "mechanicDescription"
+      ],
+      "properties": {
+        "iconItemId": {
+          "type": "string"
+        },
+        "mechanicName": {
+          "type": "string"
+        },
+        "mechanicDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "gameplay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "health",
+        "resources",
+        "protection",
+        "startingItems",
+        "startingEffects",
+        "companions",
+        "abilities",
+        "innateEffects"
+      ],
+      "properties": {
+        "health": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "starting",
+            "maximum"
+          ],
+          "properties": {
+            "starting": {
+              "type": "integer"
+            },
+            "maximum": {
+              "type": "integer"
+            }
+          }
+        },
+        "resources": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mana",
+            "stamina"
+          ],
+          "properties": {
+            "mana": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "baseCapacity",
+                "classBonus",
+                "refill"
+              ],
+              "properties": {
+                "baseCapacity": {
+                  "type": "integer"
+                },
+                "classBonus": {
+                  "type": "integer"
+                },
+                "refill": {
+                  "type": "string"
+                }
+              }
+            },
+            "stamina": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "baseCapacity",
+                "classBonus",
+                "refill"
+              ],
+              "properties": {
+                "baseCapacity": {
+                  "type": "integer"
+                },
+                "classBonus": {
+                  "type": "integer"
+                },
+                "refill": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "protection": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "startingBlock",
+            "blockGainPerRound",
+            "blockFloor",
+            "blockRetention",
+            "startingShield",
+            "plating",
+            "ward"
+          ],
+          "properties": {
+            "startingBlock": {
+              "type": "integer"
+            },
+            "blockGainPerRound": {
+              "type": "integer"
+            },
+            "blockFloor": {
+              "type": "integer"
+            },
+            "blockRetention": {
+              "type": "string"
+            },
+            "startingShield": {
+              "type": "integer"
+            },
+            "plating": {
+              "type": "integer"
+            },
+            "ward": {
+              "type": "integer"
+            }
+          }
+        },
+        "startingItems": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "itemId",
+              "position",
+              "rotation"
+            ],
+            "properties": {
+              "itemId": {
+                "type": "string"
+              },
+              "position": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "x",
+                  "y"
+                ],
+                "properties": {
+                  "x": {
+                    "type": "integer"
+                  },
+                  "y": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "rotation": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "startingEffects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "stat",
+              "amount",
+              "scalingStat",
+              "scalingMultiplier",
+              "target",
+              "damageType",
+              "bypassesShield",
+              "durationRounds"
+            ],
+            "properties": {
+              "stat": {
+                "type": "string"
+              },
+              "amount": {
+                "type": "integer"
+              },
+              "scalingStat": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "scalingMultiplier": {
+                "type": "integer"
+              },
+              "target": {
+                "type": "string"
+              },
+              "damageType": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "bypassesShield": {
+                "type": "boolean"
+              },
+              "durationRounds": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "companions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "startingCount",
+            "maximumCount",
+            "damagePerRound",
+            "persistBetweenFloors"
+          ],
+          "properties": {
+            "startingCount": {
+              "type": "integer"
+            },
+            "maximumCount": {
+              "type": "integer"
+            },
+            "damagePerRound": {
+              "type": "integer"
+            },
+            "persistBetweenFloors": {
+              "type": "boolean"
+            }
+          }
+        },
+        "abilities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "name",
+              "kind",
+              "description",
+              "trigger",
+              "requirements",
+              "costs",
+              "effects",
+              "cooldownRounds",
+              "usesPerFight",
+              "parameters"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "trigger": {
+                "type": "string"
+              },
+              "requirements": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "costs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "resource",
+                    "amount"
+                  ],
+                  "properties": {
+                    "resource": {
+                      "type": "string"
+                    },
+                    "amount": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              "effects": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "stat",
+                    "amount",
+                    "scalingStat",
+                    "scalingMultiplier",
+                    "target",
+                    "damageType",
+                    "bypassesShield",
+                    "durationRounds"
+                  ],
+                  "properties": {
+                    "stat": {
+                      "type": "string"
+                    },
+                    "amount": {
+                      "type": "integer"
+                    },
+                    "scalingStat": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "scalingMultiplier": {
+                      "type": "integer"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "damageType": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "bypassesShield": {
+                      "type": "boolean"
+                    },
+                    "durationRounds": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              "cooldownRounds": {
+                "type": "integer"
+              },
+              "usesPerFight": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "parameters": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "key",
+                    "value"
+                  ],
+                  "properties": {
+                    "key": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "innateEffects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "stat",
+              "amount",
+              "scalingStat",
+              "scalingMultiplier",
+              "target",
+              "damageType",
+              "bypassesShield",
+              "durationRounds"
+            ],
+            "properties": {
+              "stat": {
+                "type": "string"
+              },
+              "amount": {
+                "type": "integer"
+              },
+              "scalingStat": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "scalingMultiplier": {
+                "type": "integer"
+              },
+              "target": {
+                "type": "string"
+              },
+              "damageType": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "bypassesShield": {
+                "type": "boolean"
+              },
+              "durationRounds": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "visual": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "palette",
+        "assets"
+      ],
+      "properties": {
+        "palette": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "part",
+              "shadow",
+              "base",
+              "highlight"
+            ],
+            "properties": {
+              "part": {
+                "type": "string"
+              },
+              "shadow": {
+                "type": "string"
+              },
+              "base": {
+                "type": "string"
+              },
+              "highlight": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "assets": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "spritePng",
+            "spriteSvg",
+            "portraitPng"
+          ],
+          "properties": {
+            "spritePng": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "spriteSvg": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "portraitPng": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Packbound Delver proposed import contract v2"
+}

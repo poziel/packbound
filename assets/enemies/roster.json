@@ -1,0 +1,351 @@
+{
+  "schema_version": 1,
+  "canvas": [
+    288,
+    320
+  ],
+  "baseline": 288,
+  "legacy_atlas_sha256": "9e948fd58a743ad02256f41d06969c504d9593374ee48f8a48558359c7d30235",
+  "monsters": {
+    "ash_rat": {
+      "name": "Ash Rat",
+      "source_directory": "docs/art/concepts/monsters/ash-rat-v1",
+      "source": "docs/art/concepts/monsters/ash-rat-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/ash-rat-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/ash_rat.png",
+          "sha256": "7c354220c413241a1265196672b9d112797f1812623573c13b7a65049f84d46f"
+        },
+        "svg": {
+          "path": "assets/enemies/ash_rat.svg",
+          "sha256": "3872418bb2aa6e92fc4d81d46685ea81fcb09ab6b38a097ded4cc7af31aea1ef"
+        }
+      }
+    },
+    "bone_thief": {
+      "name": "Bone Thief",
+      "source_directory": "docs/art/concepts/monsters/bone-thief-v1",
+      "source": "docs/art/concepts/monsters/bone-thief-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/bone-thief-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/bone_thief.png",
+          "sha256": "6375a2e15bcf2134d9b47407b26a13776da8e650f1560d57a29a6cb3a8789aea"
+        },
+        "svg": {
+          "path": "assets/enemies/bone_thief.svg",
+          "sha256": "704531d5ad6c36ba88aab19ab30e84b52d67b8b3245759b3a5b52d761212cc2e"
+        }
+      }
+    },
+    "lantern_wretch": {
+      "name": "Lantern Wretch",
+      "source_directory": "docs/art/concepts/monsters/lantern-wretch-v1",
+      "source": "docs/art/concepts/monsters/lantern-wretch-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/lantern-wretch-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/lantern_wretch.png",
+          "sha256": "9df06986354283270e2230e9b74bad4f6cc614d59e12d9fbcff62d60e3b07083"
+        },
+        "svg": {
+          "path": "assets/enemies/lantern_wretch.svg",
+          "sha256": "afd5aab5ede9b5d19ce49b4fff09168eac7a2431ff4fcb38e7603e9ae86a3d6e"
+        }
+      }
+    },
+    "iron_mite": {
+      "name": "Iron Mite",
+      "source_directory": "docs/art/concepts/monsters/iron-mite-v1",
+      "source": "docs/art/concepts/monsters/iron-mite-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/iron-mite-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/iron_mite.png",
+          "sha256": "2a5059020cc83cb9d055b22aff3ac631c345b6ab5d3abdf537497c09491ad819"
+        },
+        "svg": {
+          "path": "assets/enemies/iron_mite.svg",
+          "sha256": "3e018b02425c94ad5275aa4b50038d36ff5222e747f6f2d1ea6c580408acfd12"
+        }
+      }
+    },
+    "pack_leech": {
+      "name": "Pack Leech",
+      "source_directory": "docs/art/concepts/monsters/pack-leech-v1",
+      "source": "docs/art/concepts/monsters/pack-leech-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/pack-leech-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/pack_leech.png",
+          "sha256": "24ddc62eef80c62dc4dc0c85dee28823c24e88abc8c9537dc573f3fe5e940cde"
+        },
+        "svg": {
+          "path": "assets/enemies/pack_leech.svg",
+          "sha256": "8737b97d79af2853e635a04388607c5ede87c4f98cb437c40e0e6ec2f74acdb6"
+        }
+      }
+    },
+    "mire_viper": {
+      "name": "Mire Viper",
+      "source_directory": "docs/art/concepts/monsters/mire-viper-v1",
+      "source": "docs/art/concepts/monsters/mire-viper-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/mire-viper-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/mire_viper.png",
+          "sha256": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7"
+        },
+        "svg": {
+          "path": "assets/enemies/mire_viper.svg",
+          "sha256": "5b1d8905134df42427cd6acbb6ad8ded4a1d3b5107264f84cb6c55f594ab5491"
+        }
+      }
+    },
+    "bell_sentinel": {
+      "name": "Bell Sentinel",
+      "source_directory": "docs/art/concepts/monsters/bell-sentinel-v1",
+      "source": "docs/art/concepts/monsters/bell-sentinel-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/bell-sentinel-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/bell_sentinel.png",
+          "sha256": "cf0809484da5643f81f4817dd41127403f8d187a17d2f670a8536f0139c45a8e"
+        },
+        "svg": {
+          "path": "assets/enemies/bell_sentinel.svg",
+          "sha256": "8b8510645cc9f5a9db55ee978a79c7dfd91fa7d77a8e6982ff7b5629c473f252"
+        }
+      }
+    },
+    "mirror_wisp": {
+      "name": "Mirror Wisp",
+      "source_directory": "docs/art/concepts/monsters/mirror-wisp-v1",
+      "source": "docs/art/concepts/monsters/mirror-wisp-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/mirror-wisp-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/mirror_wisp.png",
+          "sha256": "0089a3c00e4fee283e6517e3e1f407757c516fe9ff5fc93fe1f380680964da3f"
+        },
+        "svg": {
+          "path": "assets/enemies/mirror_wisp.svg",
+          "sha256": "c523cdc415387577c68941e20b3fa9ce7dddabe28f756a7ff7f53c48336879cb"
+        }
+      }
+    },
+    "rust_knight": {
+      "name": "Rust Knight",
+      "source_directory": "docs/art/concepts/monsters/rust-knight-v1",
+      "source": "docs/art/concepts/monsters/rust-knight-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/rust-knight-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/rust_knight.png",
+          "sha256": "b5c6f89e2e7c3b0c5f49c03e4dc9943ce8c161a7028572d815cc5d9292392d6b"
+        },
+        "svg": {
+          "path": "assets/enemies/rust_knight.svg",
+          "sha256": "22cb605443e8e0647ea1a10b77ea3266d6ec8728310acb258c55841557f6a37a"
+        }
+      }
+    },
+    "crypt_butcher": {
+      "name": "Crypt Butcher",
+      "source_directory": "docs/art/concepts/monsters/crypt-butcher-v1",
+      "source": "docs/art/concepts/monsters/crypt-butcher-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/crypt-butcher-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/crypt_butcher.png",
+          "sha256": "ea7e97642eb14d841a0f1b045305c29f1ed088b9390a2b3160e98d0a0061d611"
+        },
+        "svg": {
+          "path": "assets/enemies/crypt_butcher.svg",
+          "sha256": "3c23e338154373b71d807a770aac80c962a7bf659fa09a69e45da5f7505da64a"
+        }
+      }
+    },
+    "hollow_monk": {
+      "name": "Hollow Monk",
+      "source_directory": "docs/art/concepts/monsters/hollow-monk-v1",
+      "source": "docs/art/concepts/monsters/hollow-monk-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/hollow-monk-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/hollow_monk.png",
+          "sha256": "6832e7adf7f048e5cf49955ac0d9154a0d72d5670ebb299d5b6d10f3337ec5b9"
+        },
+        "svg": {
+          "path": "assets/enemies/hollow_monk.svg",
+          "sha256": "bd840e865f5109b37dabeaf33fa0e0b48a4fd0e04a723d71ceb38b495a7d500b"
+        }
+      }
+    },
+    "carrion_swarm": {
+      "name": "Carrion Swarm",
+      "source_directory": "docs/art/concepts/monsters/carrion-swarm-v1",
+      "source": "docs/art/concepts/monsters/carrion-swarm-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/carrion-swarm-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/carrion_swarm.png",
+          "sha256": "6d93e6da174fdd316f7d3304dd1957f0e4b7f9fa67f95b7065a7f88f74ddb732"
+        },
+        "svg": {
+          "path": "assets/enemies/carrion_swarm.svg",
+          "sha256": "ccb76ec5680f8ec69a224b3a92eeb75f334a2d100ccbd7d74bea7371ae0fc695"
+        }
+      }
+    },
+    "glass_duelist": {
+      "name": "Glass Duelist",
+      "source_directory": "docs/art/concepts/monsters/glass-duelist-v1",
+      "source": "docs/art/concepts/monsters/glass-duelist-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/glass-duelist-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/glass_duelist.png",
+          "sha256": "b0bdf45d7d1d7a8d1265cc014c7b3cf0076fc3b4b42a0f79d16f864932a67c89"
+        },
+        "svg": {
+          "path": "assets/enemies/glass_duelist.svg",
+          "sha256": "3d8d930cb28d74d87f047a1c068c45811629bc22539f62ab93dea584efce542f"
+        }
+      }
+    },
+    "cinder_oracle": {
+      "name": "Cinder Oracle",
+      "source_directory": "docs/art/concepts/monsters/cinder-oracle-v1",
+      "source": "docs/art/concepts/monsters/cinder-oracle-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/cinder-oracle-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/cinder_oracle.png",
+          "sha256": "4b406cff5b1a56a843a782023763dec0b3a2e9de5fe7432ac6b5bb2cdb3a37ff"
+        },
+        "svg": {
+          "path": "assets/enemies/cinder_oracle.svg",
+          "sha256": "91f178a5f1fc9959910e66ea4c065d0a8f690aa3d520c158d71ef73dc2c57fbe"
+        }
+      }
+    },
+    "grave_keeper": {
+      "name": "Grave Keeper",
+      "source_directory": "docs/art/concepts/monsters/grave-keeper-v1",
+      "source": "docs/art/concepts/monsters/grave-keeper-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/grave-keeper-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/grave_keeper.png",
+          "sha256": "aa53ea42c49e8667073abe18a48b8ff073e3fc6ba0254f3a333b8c0cc38a30be"
+        },
+        "svg": {
+          "path": "assets/enemies/grave_keeper.svg",
+          "sha256": "6eb29746acc753ff982682c33c81856715fa7807b76fd60b16c005d7b5b49527"
+        }
+      }
+    },
+    "iron_matron": {
+      "name": "Iron Matron",
+      "source_directory": "docs/art/concepts/monsters/iron-matron-v1",
+      "source": "docs/art/concepts/monsters/iron-matron-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/iron-matron-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/iron_matron.png",
+          "sha256": "9ee90c9b4bb73150fc09adbe72e70b886c75845bc6de95c6298805497ede657f"
+        },
+        "svg": {
+          "path": "assets/enemies/iron_matron.svg",
+          "sha256": "0da2b850eebef35f1ed39c9e5fad4351e8849880a2f85113243dea99c16a225b"
+        }
+      }
+    },
+    "clockwork_warden": {
+      "name": "Clockwork Warden",
+      "source_directory": "docs/art/concepts/monsters/clockwork-warden-v1",
+      "source": "docs/art/concepts/monsters/clockwork-warden-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/clockwork-warden-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/clockwork_warden.png",
+          "sha256": "07f4ef244fe73092c2261cc53ec144b041a63d4c6fdcc85f84d22bc92c494231"
+        },
+        "svg": {
+          "path": "assets/enemies/clockwork_warden.svg",
+          "sha256": "fa93a6f326babb1db99dc1960b32c6599e54b1ee213a03e659ef42979ba4acbc"
+        }
+      }
+    },
+    "blood_collector": {
+      "name": "Blood Collector",
+      "source_directory": "docs/art/concepts/monsters/blood-collector-v1",
+      "source": "docs/art/concepts/monsters/blood-collector-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/blood-collector-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/blood_collector.png",
+          "sha256": "130431c64d9a3ca409041b55a46ca2e98d5f4d23c7cf91da7c09813d53a65b6c"
+        },
+        "svg": {
+          "path": "assets/enemies/blood_collector.svg",
+          "sha256": "67b0a9530d21069cf60a57f1c9e41a11f22159bb07d8ca1e8dd9a41f79bc0952"
+        }
+      }
+    },
+    "oathbreaker": {
+      "name": "Oathbreaker",
+      "source_directory": "docs/art/concepts/monsters/oathbreaker-v1",
+      "source": "docs/art/concepts/monsters/oathbreaker-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/oathbreaker-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/oathbreaker.png",
+          "sha256": "281fc9d7c37b44fa8f8c43a9a7bbdc161a01fe4536af9ffb96774f88e1f95ddb"
+        },
+        "svg": {
+          "path": "assets/enemies/oathbreaker.svg",
+          "sha256": "1946041eaddae8b2c6cae132c5a2961896a0152075b9e47c6d54767c62a481d8"
+        }
+      }
+    },
+    "zippered_maw": {
+      "name": "The Zippered Maw",
+      "source_directory": "docs/art/concepts/monsters/zippered-maw-v1",
+      "source": "docs/art/concepts/monsters/zippered-maw-v1/sprite.json",
+      "pixelorama": "docs/art/concepts/monsters/zippered-maw-v1/sprite.pxo",
+      "status": "integrated at user request; self-reviewed; awaiting artistic acceptance",
+      "outputs": {
+        "png": {
+          "path": "assets/enemies/zippered_maw.png",
+          "sha256": "1351a05df87364ffee615110b0d321a91193a2dd31050dba8d791f787bd2ca6e"
+        },
+        "svg": {
+          "path": "assets/enemies/zippered_maw.svg",
+          "sha256": "6118b2f44d731304783b9914a2eaa74609df38d4d7d659ba5145bd444a7f3973"
+        }
+      }
+    }
+  }
+}
