@@ -97,7 +97,7 @@ static func advance(board, seconds: float) -> void:
 		target["tint"] = Color("67dff2")
 		target["strength"] = 0.0
 		wanted[target["key"]] = target
-	if board.run != null and board.run.combat_state == board.run.CombatState.PREPARING:
+	if board.run != null and board.run.can_edit_inventory():
 		for attempt: Dictionary in board._crafting_plans:
 			var locked: bool = attempt["components"].any(func(component: Dictionary) -> bool: return component.has("craft_lock"))
 			if locked:

@@ -19,7 +19,7 @@ func _run() -> void:
 	var life: Node3D = room.get_node("CorridorLife")
 	life.set_process(false)
 	life.rng.seed = 42
-	check(life.flames.size() == 3, "All three torches retain animated fire")
+	check(life.flames.size() == 4, "Room torches and both designed dungeon stair torches retain animated fire")
 	for path: String in ["Sconce", "@MeshInstance3D@513", "ExitStairs/Visuals/RoomDesign/@MeshInstance3D@516"]:
 		var torch: Node3D = room.get_node(path)
 		check(is_equal_approx(rad_to_deg(torch.basis.y.angle_to(Vector3.UP)), 25.0), "Torch leans 25 degrees: " + path)

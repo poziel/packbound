@@ -1,7 +1,7 @@
 class_name PackRunSaves
 extends RefCounted
 
-const VERSION: int = 1
+const VERSION: int = 2
 var directory: String = "user://runs"
 var last_error: Error = OK
 
@@ -24,6 +24,7 @@ func restore(run: PackRun, data: Dictionary) -> void:
 			run.set(property.name, state[property.name])
 	run.rng.seed = state["rng_seed"]
 	run.rng.state = state["rng_state"]
+	run.normalize_room_state(state)
 	if not state.has("momentum"):
 		run.momentum = 0
 		run.momentum_gain_bonus = 0
@@ -86,7 +87,7 @@ func read(id: String) -> Dictionary:
 	if file == null:
 		return {}
 	var data: Variant = file.get_var(false)
-	if not data is Dictionary or data.get("version") != VERSION or not data.get("state") is Dictionary:
+	if not data is Dictionary or data.get("version") not in [1, VERSION] or not data.get("state") is Dictionary:
 		return {}
 	var state: Dictionary = data.state
 	for key: String in ["phase", "fight", "hp", "max_hp", "combat_state", "rng_seed", "rng_state", "pending_turn", "items", "enemy"]:
@@ -94,6 +95,18 @@ func read(id: String) -> Dictionary:
 			return {}
 	if not data.get("playback", {}) is Dictionary:
 		return {}
+	if state.has("floor_index"):
+		if not state.floor_index is int or state.floor_index < 0 or state.floor_index >= PackRun.FLOORS or state.floor_index != state.fight:
+			return {}
+		if state.get("room_kind", "") not in ["combat", "rest", "relic", "encounter"] or not state.get("door_choices", []) is Array:
+			return {}
+		var ids: Array[String] = []
+		for door: Variant in state.get("door_choices", []):
+			if not door is Dictionary or door.get("kind", "") not in ["combat", "rest", "relic", "encounter"] or door.get("id") != door.get("kind") or ids.has(door.get("id", "")):
+				return {}
+			ids.append(door.id)
+		if state.phase == PackRun.Phase.SELECTOR and ids.is_empty():
+			return {}
 	if not PackCatalog.classes().has(state.get("class_key", "")) or not state.get("items") is Array or not state.get("enemy") is Dictionary or not state.has("rng_state"):
 		return {}
 	for item: Variant in state.items:

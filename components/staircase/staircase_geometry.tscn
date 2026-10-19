@@ -104,7 +104,7 @@ size = Vector3(4, 0.4, 2)
 [sub_resource type="BoxMesh" id="ceiling_mesh"]
 size = Vector3(4.4, 0.3, 12.8)
 
-[node name="StoneVisuals" type="Node3D"]
+[node name="StaircaseGeometry" type="Node3D"]
 
 [node name="Tread00" type="MeshInstance3D" parent="."]
 position = Vector3(0, -0.46, -0.425)

@@ -1,5 +1,11 @@
 # Pixel stat bar
 
+Combat health bars opt into `animate_damage`: values update immediately while
+the fill drops over 0.12 seconds. Lost health stays as a darker segment for one
+second, then fades over 0.2 seconds. Repeated hits restart the hold; healing,
+capacity changes, hiding and `clear_damage_feedback()` reset the trail.
+`set_glow_paused()` pauses both the glow and health feedback.
+
 Shared appearance comes from the active theme. Inspector appearance values become
 explicit per-instance overrides when set. **Reset Appearance to Theme** restores
 inheritance. Behavior/content properties remain on the node. See
@@ -116,4 +122,6 @@ The cutout test requires a graphics display. It checks actual rendered alpha,
 compositing over different backgrounds, unchanged meter pixels beside the
 notch, hidden-number mode and semantic resource-caption layout.
 
-Health bars enable side_boxes: a small centered dark plaque overlaps the top border, showing health / maximum and optional protection with keyword-colored icons and values. The fill spans the full bar and uses a grey brick pattern while protected. Other meters retain their existing layout.
+Health bars enable side_boxes: health / maximum is printed at the meter center, with optional protection anchored inside the right end. Both use keyword colors and black outlines; there is no plaque or reserved fill area. The fill spans the full bar and retains its health color with an added brick pattern while protected. Other meters retain their existing layout.
+
+Health overlay borders use the same pale muted red as the health caption; health and shield text each retain a one-pixel black outline. Shield protection never recolors the health fill.

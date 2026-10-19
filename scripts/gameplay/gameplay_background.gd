@@ -23,6 +23,11 @@ var generation: int = 0
 func _ready() -> void:
 	# Project hover bounds after the actor's idle/reaction pose has updated.
 	process_priority = 10
+	world.room_changed.connect(_sync_pixel_downscale)
+	_sync_pixel_downscale()
+
+func _sync_pixel_downscale() -> void:
+	$Render.stretch_shrink = world.active_room.pixel_downscale
 
 func is_at_entrance() -> bool:
 	return world.active_room.scene_file_path == entrance_room.resource_path
@@ -63,11 +68,25 @@ func prepare_entrance() -> void:
 	fade.modulate.a = 0.0
 
 func descend(covered: Callable, speed: float = 1.0) -> void:
+	await travel_to(room_for_floor(encounter_floor), covered, speed)
+
+func scene_for_state(run: PackRun) -> PackedScene:
+	if run.phase == PackRun.Phase.SELECTOR:
+		var biome: String = "cursed" if run.display_floor() + 1 >= 11 else "dungeon"
+		return load("res://scenes/gameplay/rooms/%s/floor_selector.tscn" % biome)
+	if run.room_kind == "combat":
+		return room_for_floor(run.display_floor())
+	if run.display_floor() <= 10 and run.room_kind in ["encounter", "relic", "rest"]:
+		return load("res://scenes/gameplay/rooms/dungeon/%s_room.tscn" % run.room_kind)
+	return load("res://scenes/gameplay/rooms/%s/%s_room.tscn" % [run.room_kind, run.room_kind])
+
+func travel_to(destination: PackedScene, covered: Callable, speed: float = 1.0) -> void:
 	if transitioning:
+		return
+	if destination == null:
 		return
 	transitioning = true
 	var current: int = generation
-	var destination: PackedScene = room_for_floor(encounter_floor)
 	var from_entrance: bool = is_at_entrance()
 	fade.show()
 	active_tween = create_tween().set_speed_scale(speed)
@@ -77,7 +96,10 @@ func descend(covered: Callable, speed: float = 1.0) -> void:
 	await active_tween.finished
 	if current != generation:
 		return
-	world.set_room(destination)
+	if not world.set_room(destination):
+		fade.hide()
+		transitioning = false
+		return
 	reveal_changed.emit(0.0)
 	covered.call()
 	# Reveal the room early, then visibly walk down the approach to the encounter.

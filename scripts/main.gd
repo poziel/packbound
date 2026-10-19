@@ -75,6 +75,7 @@ var log_stage_index: int = -1
 @onready var storage_button: Button = combat.get_node("ActionFrame").get_node("%StorageButton")
 @onready var item_reward_button: Button = combat.get_node("ActionFrame").get_node("%ItemRewardButton")
 @onready var relic_reward_button: Button = combat.get_node("ActionFrame").get_node("%RelicRewardButton")
+@onready var floor_flow: Control = $FloorFlow
 
 var elapsed: float = 0.0
 var busy: bool = false
@@ -90,6 +91,8 @@ func _ready() -> void:
 	transition_popups.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	transition_popups.z_index = 100
 	combat.add_child(transition_popups)
+	hp_bar.animate_damage = true
+	enemy_bar.animate_damage = true
 	get_window().min_size = Vector2i(800, 450)
 	# Standalone cards retain their preview bars; gameplay projects the HUD.
 	enemy_vitals.reparent(combat.get_node("BattleArea"), false)
@@ -103,6 +106,12 @@ func _ready() -> void:
 	gameplay_background.transition_changed.connect(_sync_enemy_vitals)
 	enemy_card.visibility_changed.connect(_sync_enemy_vitals)
 	_bind_gameplay()
+	floor_flow.door_chosen.connect(_door_chosen)
+	floor_flow.activity_chosen.connect(_room_action)
+	floor_flow.inspection_target.connect(func(target: Control, data: Dictionary) -> void:
+		inspector.register(target, func() -> Dictionary: return data)
+		target.tree_exiting.connect(func() -> void:
+			inspector.sources = inspector.sources.filter(func(entry: Dictionary) -> bool: return entry.target != target)))
 	enemy_card.hit_started.connect(combat_audio.play)
 	enemy_card.death_started.connect(enemy_death_audio.play)
 	_bind_dialogs()
@@ -127,12 +136,16 @@ func _ready() -> void:
 	_settings_changed()
 
 func _process(delta: float) -> void:
+	if combat.visible:
+		floor_flow.refresh(run, gameplay_background, busy or modal.visible or front.visible or not board.dragging.is_empty() or storage.visible)
+	else:
+		floor_flow.hide()
 	if combat.visible and not active_run_id.is_empty():
 		autosave_seconds += delta
 		if autosave_seconds >= 5.0:
 			_save_run()
 	_sync_settings_dock()
-	inspector.enabled = not loading_screen.active and (not busy or playback.paused) and combat.visible and (not modal.visible or modal_kind in ["reward", "result_log"]) and board.dragging.is_empty() and bool(front.settings["tooltips"])
+	inspector.enabled = not loading_screen.active and not gameplay_background.transitioning and combat.visible and (not modal.visible or modal_kind in ["reward", "result_log"]) and board.dragging.is_empty() and bool(front.settings["tooltips"])
 	board.craft_inspection_active = not inspector.windows.is_empty() and inspector.windows[0].key.begins_with("crafts_")
 	if combat.visible and not waiting_at_entrance and not playback.paused and modal_kind != "pause" and run.phase not in [PackRun.Phase.VICTORY, PackRun.Phase.DEFEAT]:
 		elapsed += delta
@@ -183,7 +196,7 @@ func _bind_gameplay() -> void:
 		bar.protection_icon = PackKeywords.icon("block", true)
 		bar.protection_color = PackKeywords.color("block")
 		bar.badge_icon = PackKeywords.icon("health", true)
-		bar.badge_icon_color = PackKeywords.color("health")
+		bar.badge_icon_color = Color("d2b0b3")
 		bar.accent_color = PackKeywords.color("health")
 	hp_bar.badge_icon = PackKeywords.icon("health", true)
 	hp_bar.accessibility_name = "Health"
@@ -322,6 +335,8 @@ func start_run(chosen_class: String = "warrior", seed_value: int = -1, saved: Di
 	if not saved.is_empty():
 		run_saves.restore(run, saved)
 	gameplay_background.reset(run.fight + 1)
+	gameplay_background.world.set_room(gameplay_background.scene_for_state(run))
+	_configure_floor_scene()
 	log_stage_index = -1
 	board.selected_id = -1
 	elapsed = 0
@@ -346,6 +361,7 @@ func start_run(chosen_class: String = "warrior", seed_value: int = -1, saved: Di
 			board.show_crafting_merges(run.crafting_events, maxf(0.0, PackRun.CRAFTING.ANIMATION_SECONDS - playback.remaining_seconds))
 		busy = playback.active
 		_refresh()
+	floor_flow.focus_first()
 	_save_run()
 
 func _save_run() -> bool:
@@ -395,6 +411,7 @@ func show_menu() -> void:
 	modal.hide()
 	modal_kind = ""
 	combat.hide()
+	floor_flow.hide()
 	front.show_home()
 
 func _new_descent() -> void:
@@ -468,6 +485,9 @@ func _act() -> void:
 	if waiting_at_entrance:
 		_enter_dungeon()
 		return
+	if run.phase in [PackRun.Phase.ROOM, PackRun.Phase.ROOM_COMPLETE]:
+		await _room_action("leave" if run.phase == PackRun.Phase.ROOM else "continue")
+		return
 	if run.phase == PackRun.Phase.FIGHT:
 		busy = true
 		combat_sequence += 1
@@ -492,6 +512,7 @@ func _player_resolved(result: Dictionary) -> void:
 
 func _monster_resolved(result: Dictionary) -> void:
 	var speed: float = playback_speed
+	transition_popups.show_player_hit(result, str(run.enemy.get("damage_type", "physical")), speed)
 	if result.get("player_hit_shielded", false):
 		player_shield_hit_audio.play()
 	if result.get("player_hit_unshielded", false):
@@ -549,23 +570,29 @@ func _cancel_combat() -> void:
 func _clear_health_glow() -> void:
 	hp_bar.clear_glow()
 	enemy_bar.clear_glow()
+	hp_bar.clear_damage_feedback()
+	enemy_bar.clear_damage_feedback()
 
 func _refresh() -> void:
-	inspector.clear()
+	# Live combat updates vitals twice per turn. Keep passive inspection open.
+	if not playback.active:
+		inspector.clear()
 	_refresh_history()
 	board.refresh()
 	enemy_art.texture = PackArt.enemy(run.enemy["key"])
 	gameplay_background.enemy.set_art(enemy_art.texture)
 	enemy_card.set_monster(run.enemy["key"])
+	enemy_card.visible = run.has_combat_room() and not waiting_at_entrance
 	var protection: int = run.enemy_block()
 	_set_health_block(enemy_bar, run.enemy["hp"], run.enemy["max_hp"], protection)
 	enemy_shield_bar.hide()
 	_update_status_rows()
 	enemy_detail.text = PackKeywordLinks.rich(_enemy_rules(), "", false)
 	hp_bar.set_amount(run.hp, run.max_hp)
-	encounter_label.text = "%02d / 20" % (run.fight + 1)
+	encounter_label.text = "%02d / 20" % run.display_floor()
 	_update_preview()
 	_refresh_relics()
+	floor_flow.refresh(run, gameplay_background, busy or modal.visible or front.visible)
 
 func _relic_slots_changed() -> void:
 	var grid: GridContainer = combat.get_node("CharacterPanel/Tabs/Relics/Grid")
@@ -652,14 +679,14 @@ func _update_preview() -> void:
 		"necromancer": class_summary = "%d/%d bone thralls / +%d damage" % [run.undead_companions, PackRun.NECROMANCER_COMPANION_CAP, stats["companion_damage"]]
 	var unused_count: int = board.unpacked().size()
 	storage_button.accessibility_name = "Stash (%d)" % unused_count
-	var resources: Dictionary = board.preview_starting_resources() if run.combat_state == PackRun.CombatState.PREPARING else {"mana": run.mana, "stamina": run.stamina, "block": run.block}
+	var preparing: bool = run.can_edit_inventory()
+	var resources: Dictionary = board.preview_starting_resources() if preparing else {"mana": run.mana, "stamina": run.stamina, "block": run.block}
 	for resource: String in ["mana", "stamina", "block"]:
 		values[resource].text = str(resources[resource])
 	class_status = class_summary
 	var volley_badge: Label = character_portrait.get_node("VolleyCountdown")
 	volley_badge.visible = run.class_key == "ranger" and not run.needs_arrows()
 	volley_badge.text = str(run.volley_remaining)
-	var preparing: bool = run.combat_state == PackRun.CombatState.PREPARING
 	momentum_bar.visible = run.class_key == "warrior"
 	momentum_bar.accessibility_name = "Momentum"
 	momentum_bar.number_mode = PixelStatBar.NumberMode.HIDDEN
@@ -686,16 +713,22 @@ func _update_action_control() -> void:
 	var label: String = "Resume combat" if playback.active and playback.paused else ("Pause combat" if playback.active else "Attack")
 	if in_basement:
 		label = "Enter dungeon"
+	var activity: bool = run.phase in [PackRun.Phase.ROOM, PackRun.Phase.ROOM_COMPLETE]
+	if activity:
+		label = "Leave without claiming" if run.room_reward_pending else ("Leave without resting" if run.room_kind == "rest" and run.phase == PackRun.Phase.ROOM else "Continue to the doors")
 	action.text = ""
 	action.accessibility_name = label
 	action.tooltip_text = "Enter dungeon" if in_basement else ""
 	action.icon = load("res://assets/ui/icons/combat-v1/resume.svg") if playback.active and playback.paused else (load("res://assets/ui/icons/navigation-v3/pause.png") if playback.active else load("res://assets/ui/icons/attack/attack.png"))
 	if in_basement:
 		action.icon = load("res://assets/ui/icons/enter-dungeon/enter-dungeon.svg")
+	if activity:
+		action.icon = load("res://assets/ui/icons/enter-dungeon/enter-dungeon.svg")
+		action.tooltip_text = label
 	action.expand_icon = true
 	action.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	action.add_theme_constant_override("icon_max_width", 64 if in_basement else (48 if playback.active else 32))
-	action.disabled = not playback.active and (busy or not board.dragging.is_empty() or run.phase != PackRun.Phase.FIGHT)
+	action.disabled = not playback.active and (busy or not board.dragging.is_empty() or (run.phase != PackRun.Phase.FIGHT and not activity))
 
 func _clear_modal(kind: String) -> void:
 	_close_storage()
@@ -812,7 +845,7 @@ func _show_result_log() -> void:
 	close_button.grab_focus()
 
 func _open_reward(is_relic: bool) -> void:
-	if not run.can_claim_rewards() or busy or (modal.visible and modal_kind != "reward") or not combat.visible or not board.dragging.is_empty() or run.phase not in [PackRun.Phase.FIGHT, PackRun.Phase.VICTORY]:
+	if not run.can_claim_rewards() or busy or (modal.visible and modal_kind != "reward") or not combat.visible or not board.dragging.is_empty():
 		return
 	if modal.visible and reward_is_relic == is_relic:
 		_close_modal()
@@ -865,30 +898,83 @@ func _preserve_transition_popups() -> void:
 	transition_popups.take_from(enemy_card, enemy_card.effect_popups)
 
 func _advance_encounter() -> void:
+	if busy:
+		return
 	_preserve_transition_popups()
-	var cleared_floor: int = run.fight
 	run.advance_encounter()
 	board.clear_activation_feedback()
 	_clear_health_glow()
-	if run.fight > cleared_floor:
-		gameplay_background.select_floor(run.fight + 1)
-		busy = true
-		board.cancel_drag()
-		board.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		enemy_card.hide()
-		_update_preview()
-		var sequence: int = combat_sequence
-		await gameplay_background.descend(func() -> void:
-			if sequence == combat_sequence:
-				enemy_card.show()
-				_refresh()
-		, clampf(float(front.settings["combat_speed"]), 0.5, 10.0))
-		if sequence != combat_sequence:
-			return
-		busy = false
-	board.mouse_filter = Control.MOUSE_FILTER_STOP
+	if run.phase == PackRun.Phase.SELECTOR:
+		await _travel_floor_scene()
+		return
 	_refresh()
 	_show_phase_modal()
+
+func _configure_floor_scene() -> void:
+	var room: Node3D = gameplay_background.world.active_room
+	if run.phase == PackRun.Phase.SELECTOR and room.has_method("configure"):
+		room.configure(run.door_choices)
+	if room.get_script() == preload("res://scripts/gameplay/rooms/encounter_room.gd"):
+		room.combat_active = run.has_combat_room()
+		gameplay_background.world.place_enemy_at_slot()
+
+func _door_chosen(id: String) -> void:
+	if busy or modal.visible or front.visible or not board.dragging.is_empty() or storage.visible or run.phase != PackRun.Phase.SELECTOR:
+		return
+	var room: Node3D = gameplay_background.world.active_room
+	if not room.has_method("select_exit") or not room.select_exit(id):
+		return
+	if run.choose_destination(id):
+		await _travel_floor_scene()
+
+func _room_action(action_id: String) -> void:
+	if busy or modal.visible or front.visible or not board.dragging.is_empty() or storage.visible:
+		return
+	if action_id == "continue":
+		if run.enter_selector():
+			await _travel_floor_scene()
+		return
+	if run.resolve_room(action_id):
+		var activity_room: Node3D = gameplay_background.world.active_room
+		if activity_room.has_method("retire_activity") and run.phase == PackRun.Phase.ROOM_COMPLETE:
+			var sequence: int = combat_sequence
+			busy = true
+			inspector.clear()
+			_save_run()
+			await activity_room.retire_activity()
+			if sequence != combat_sequence:
+				return
+			busy = false
+		_configure_floor_scene()
+		if run.phase == PackRun.Phase.FIGHT:
+			enemy_card.reset_feedback()
+		_refresh()
+		_save_run()
+		floor_flow.focus_first()
+		if action_id == "leave" and run.enter_selector():
+			await _travel_floor_scene()
+
+func _travel_floor_scene() -> void:
+	busy = true
+	board.cancel_drag()
+	board.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	inspector.clear()
+	enemy_card.hide()
+	floor_flow.hide()
+	_save_run()
+	var sequence: int = combat_sequence
+	await gameplay_background.travel_to(gameplay_background.scene_for_state(run), func() -> void:
+		if sequence == combat_sequence:
+			_configure_floor_scene()
+			_refresh()
+	, clampf(float(front.settings["combat_speed"]), 0.5, 10.0))
+	if sequence != combat_sequence:
+		return
+	busy = false
+	board.mouse_filter = Control.MOUSE_FILTER_STOP
+	_refresh()
+	floor_flow.focus_first()
+	_save_run()
 
 func _character_tab_changed(_index: int) -> void:
 	board.cancel_drag()
@@ -959,8 +1045,7 @@ func _stat_inspection(stat: String) -> Dictionary:
 	return PackKeywordLinks.entry({"physical_damage": "physical_attack", "magical_damage": "magical_attack"}.get(stat, stat))
 
 func _set_health_block(bar: PixelStatBar, health: int, maximum: int, block: int) -> void:
-	var grey: float = PackKeywords.color("block").get_luminance()
-	bar.accent_color = Color(grey, grey, grey) if block > 0 else PackKeywords.color("health")
+	bar.accent_color = PackKeywords.color("health")
 	bar.set_protected_amount(health, maximum, block)
 	bar.accessibility_name = "Health %d of %d, block %d" % [health, maximum, block]
 
@@ -1036,7 +1121,7 @@ func _character_inspection() -> Dictionary:
 	return {"key": "class_" + run.class_key, "title": front.player_name(run.class_key) + " / " + data["mechanic"], "keyword_stats": PackCatalog.innate_stats(run.class_key), "body": data["detail"] + "\n\n" + class_status}
 
 func _enemy_inspection() -> Dictionary:
-	if run.enemy.is_empty():
+	if run.enemy.is_empty() or not run.has_combat_room():
 		return {}
 	return preload("res://scripts/enemy_presentation.gd").inspection(run)
 

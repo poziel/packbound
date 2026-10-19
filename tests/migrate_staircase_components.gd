@@ -63,10 +63,18 @@ func _migrate() -> void:
 			entry_position = old_entry.position
 			old_entry.free()
 		for role: String in ["entrance", "exit"]:
-			var rig_path: String = "res://components/staircase/entrance_stairs.tscn"
-			if role == "exit" or kind == "basement":
-				rig_path = "res://scenes/gameplay/rooms/%s/stairs/%s_stairs.tscn" % [kind, role]
+			var rig_path: String = "res://components/staircase/staircase.tscn"
+			if kind == "dungeon":
+				rig_path = "res://scenes/gameplay/rooms/dungeon/shared/staircase.tscn"
 			var rig: Node3D = load(rig_path).instantiate()
+			rig.role = 0 if role == "entrance" else 1
+			if kind != "dungeon" and (role == "exit" or kind == "basement"):
+				rig.get_node("Visuals/DefaultStone").hide()
+				var art_path: String = "res://scenes/gameplay/rooms/%s/stairs/%s_visuals.tscn" % [kind, role]
+				var design: Node3D = load(art_path).instantiate()
+				design.name = "RoomDesign"
+				rig.get_node("Visuals").add_child(design)
+				design.owner = rig
 			rig.name = "EntryStairs" if role == "entrance" else "ExitStairs"
 			rig.position = entry_position if role == "entrance" else exit_origin
 			room.add_child(rig)

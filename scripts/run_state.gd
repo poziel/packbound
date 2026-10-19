@@ -11,7 +11,7 @@ const ROSTER: Array[String] = PackCatalog.ROSTER
 const NECROMANCER_COMPANION_CAP: int = 3
 const NECROMANCER_COMPANION_DAMAGE: int = 2
 const MAX_ITEM_PRIORITY: int = 9
-enum Phase { RELIC, FIGHT, LOOT, VICTORY, DEFEAT }
+enum Phase { RELIC, FIGHT, LOOT, VICTORY, DEFEAT, SELECTOR, ROOM, ROOM_COMPLETE }
 enum CombatState { PREPARING, RUNNING, PAUSED, FINISHED }
 
 var combat_state: CombatState = CombatState.PREPARING
@@ -61,6 +61,15 @@ var next_id: int = 0
 var pending_turn: Dictionary = {}
 var volley_remaining: int = 3
 var crafting_events: Array[Dictionary] = []
+var floor_index: int = 0
+var room_kind: String = "combat"
+var door_choices: Array[Dictionary] = []
+var noncombat_streak: int = 0
+var room_resolved: bool = false
+var room_event: String = ""
+var room_relic_offers: Array[String] = []
+var room_reward_pending: bool = false
+var room_flow_version: int = 1
 
 static func definition(key: String) -> Dictionary:
 	return PackCatalog.item(key)
@@ -94,6 +103,15 @@ func reset(seed_value: int = -1, chosen_class: String = "warrior") -> void:
 	max_hp = int(character["hp"])
 	hp = max_hp
 	fight = 0
+	floor_index = 0
+	room_kind = "combat"
+	door_choices.clear()
+	noncombat_streak = 0
+	room_resolved = false
+	room_event = ""
+	room_relic_offers.clear()
+	room_reward_pending = false
+	room_flow_version = 1
 	total_turns = 0
 	last_thread_used = false
 	for index in range(3):
@@ -150,6 +168,7 @@ func auto_place(item: Dictionary) -> bool:
 	return false
 
 func prepare_enemy() -> void:
+	floor_index = fight
 	crafting_events.clear()
 	combat_state = CombatState.PREPARING
 	pending_turn.clear()
@@ -176,7 +195,7 @@ func prepare_enemy() -> void:
 	elemental_traces.clear()
 	enemy_shield_spent = 0
 	phase = Phase.FIGHT
-	if RELIC_FLOORS.has(fight + 1) and not relic_floors_claimed.has(fight + 1) and not relic_rewards.has(fight + 1):
+	if (fight == 0 or room_flow_version == 0) and RELIC_FLOORS.has(fight + 1) and not relic_floors_claimed.has(fight + 1) and not relic_rewards.has(fight + 1):
 		relic_rewards.append(fight + 1)
 		roll_relics()
 
@@ -200,13 +219,13 @@ func roll_relics() -> void:
 		return
 	var available: Array[String] = []
 	for key in PackCatalog.RELICS:
-		if not relics.has(key):
+		if not relics.has(key) and not room_relic_offers.has(key):
 			available.append(key)
 	for index in range(mini(3, available.size())):
 		relic_offers.append(available.pop_at(rng.randi_range(0, available.size() - 1)))
 
 func choose_relic(key: String) -> void:
-	if not can_claim_rewards() or phase not in [Phase.FIGHT, Phase.VICTORY] or not pending_turn.is_empty() or relic_rewards.is_empty() or not relic_offers.has(key):
+	if not can_claim_rewards() or not pending_turn.is_empty() or relic_rewards.is_empty() or not relic_offers.has(key) or relics.has(key):
 		return
 	relics.append(key)
 	relic_floors_claimed.append(relic_rewards.pop_front())
@@ -411,10 +430,10 @@ func set_item_priority(item_id: int, priority: int) -> bool:
 	return false
 
 func can_edit_inventory() -> bool:
-	return (combat_state == CombatState.PREPARING and phase == Phase.FIGHT) or (combat_state == CombatState.FINISHED and phase == Phase.VICTORY)
+	return pending_turn.is_empty() and combat_state not in [CombatState.RUNNING, CombatState.PAUSED] and phase != Phase.DEFEAT
 
 func can_claim_rewards() -> bool:
-	return combat_state == CombatState.PREPARING or (combat_state == CombatState.FINISHED and phase == Phase.VICTORY)
+	return can_edit_inventory()
 
 func set_combat_paused(value: bool) -> void:
 	if value and combat_state == CombatState.RUNNING:
@@ -507,7 +526,7 @@ func effects() -> Dictionary:
 	var equipped: Array[Dictionary] = packed()
 	var has_hourglass: bool = false
 	var resources: Dictionary = round_resources()
-	if combat_state != CombatState.PREPARING:
+	if not can_edit_inventory():
 		resources["block"] = block
 	result["mana"] = int(resources["mana"])
 	result["stamina"] = int(resources["stamina"])
@@ -516,7 +535,9 @@ func effects() -> Dictionary:
 	var regenerated_stamina: int = 0
 	var regenerated_block: int = 0
 	var innate: Dictionary = PackCatalog.base_resources(class_key)
-	activation_events.append("Round %d: refill %d innate mana and %d innate stamina." % [turn, innate["mana"], innate["stamina"]])
+	for resource: String in ["mana", "stamina"]:
+		if int(innate[resource]) > 0:
+			activation_events.append("Refilled %d %s." % [innate[resource], resource])
 	if class_key == "mage":
 		var cleanses_traces: bool = int(enemy["cleanse"]) > 0 and turn % int(enemy["cleanse"]) == 0
 		for trace: String in elemental_traces:
@@ -532,6 +553,7 @@ func effects() -> Dictionary:
 			if not cleanses_traces and expired > 0:
 				activation_events.append("%d %s trace(s) expire on %s." % [expired, trace, enemy["name"]])
 	for item in equipped:
+		var grants: Array[String] = []
 		for resource: String in ["mana", "stamina", "block"]:
 			var gain: int = int(item.get(resource + "_per_round", 0)) + (int(item.get(resource, 0)) if resource != "block" or turn == 1 else 0)
 			if resource == "block" and turn == 1 and item["role"] == "shield":
@@ -540,9 +562,17 @@ func effects() -> Dictionary:
 				var target: Dictionary = _mirror_target(item, equipped)
 				if not target.is_empty():
 					gain += int(target["block"]) / 2
+					if int(target["block"]) / 2 > 0:
+						grants.append("Copies %d block from %s." % [int(target["block"]) / 2, _log_item(target)])
 			if gain > 0:
 				result["item_effects"].append({"id": item["id"], "key": resource, "amount": gain})
-				activation_events.append("%s grants %d %s%s." % [_log_item(item), gain, resource, " at combat start" if turn == 1 else " before activations"])
+				if resource == "block" and turn == 1 and item["role"] == "shield":
+					grants.append_array(_log_bonus_sources(item, equipped))
+				grants.append("Granted %d %s%s." % [gain, resource, " at combat start" if turn == 1 else " before activations"])
+		if not grants.is_empty():
+			activation_events.append(_log_item(item) + " activation")
+			for grant: String in grants:
+				activation_events.append(_log_effect(grant))
 		regenerated_mana += int(item.get("mana_per_round", 0))
 		regenerated_stamina += int(item.get("stamina_per_round", 0))
 		regenerated_block += int(item.get("block_per_round", 0))
@@ -608,11 +638,9 @@ func effects() -> Dictionary:
 			var paid: int = int(activation_costs[item["id"]][resource])
 			if paid > 0:
 				payments.append("%d %s" % [paid, resource])
-		activation_events.append("I spend %s to activate %s." % [" and ".join(payments), source] if not payments.is_empty() else "I activate %s." % source)
-		for booster: Dictionary in equipped:
-			var amount: int = bonus(booster, item)
-			if amount > 0:
-				activation_events.append("%s receives +%d %s from touching %s." % [source, amount, "block" if item["role"] == "shield" else "damage", _log_item(booster)])
+		activation_events.append(source + " activation" + (" (cost: %s)" % " and ".join(payments) if not payments.is_empty() else ""))
+		for received: String in _log_bonus_sources(item, equipped):
+			activation_events.append(_log_effect(received))
 		var is_attack: bool = item["role"] in ["weapon", "ranged", "spell"]
 		var copies: int = 1
 		if has_hourglass and item["role"] == "weapon" and turn % 4 == 0:
@@ -621,7 +649,7 @@ func effects() -> Dictionary:
 			copies += 1
 		result["repeats"] += copies - 1
 		if copies > 1:
-			activation_events.append("%s repeats %d extra time(s)%s%s." % [source, copies - 1, " from Hourglass" if has_hourglass and item["role"] == "weapon" and turn % 4 == 0 else "", " from Echo Clock" if item["id"] == result["echo_item_id"] else ""])
+			activation_events.append(_log_effect("Repeated %d extra time(s)%s%s." % [copies - 1, " from Hourglass" if has_hourglass and item["role"] == "weapon" and turn % 4 == 0 else "", " from Echo Clock" if item["id"] == result["echo_item_id"] else ""]))
 		for stat in PackCatalog.STATS:
 			if stat not in ["mana", "stamina", "block"]:
 				result[stat] += int(item[stat]) * copies
@@ -646,9 +674,9 @@ func effects() -> Dictionary:
 			if contribution > 0:
 				var icon_key: String = ("magical_attack" if item["role"] == "spell" else "physical_attack") if stat == "damage" else ("piercing" if stat == "pierce" else stat)
 				result["item_effects"].append({"id": item["id"], "key": icon_key, "amount": contribution})
-				activation_events.append("%s contributes %d %s%s." % [source, contribution, typed_damage.replace("_", " ") if stat == "damage" else stat.replace("_", " "), " to the combined attack" if stat == "damage" else ""])
+				activation_events.append(_log_effect("Contributes %d %s%s." % [contribution, typed_damage.replace("_", " ") if stat == "damage" else stat.replace("_", " "), " to the combined attack" if stat == "damage" else ""]))
 		if class_key == "mage" and ELEMENTS.ELEMENTS.has(element):
-			activation_events.append("%s places %d %s trace%s on %s." % [source, copies, element.capitalize(), "s" if copies != 1 else "", enemy["name"]])
+			activation_events.append(_log_effect("Places %d %s trace%s on %s." % [copies, element.capitalize(), "s" if copies != 1 else "", enemy["name"]]))
 		for resource: String in ["mana", "stamina"]:
 			var spent: int = int(item.get("cost" if resource == "mana" else "stamina_cost", 0))
 			if spent > 0:
@@ -672,7 +700,11 @@ func effects() -> Dictionary:
 	if class_key == "ranger" and not special.is_empty() and special.get("cell") != null and not needs_arrows() and volley_remaining <= 1:
 		var volley: Dictionary = QUIVER.stats(special, item_bonus(special))
 		result["volley_damage"] = volley["damage"]
-		activation_events.append("%s unleashes Volley: %d physical damage, %d piercing, %d poison and %d burn." % [_log_item(special), volley["damage"], volley["pierce"], volley["poison"], volley["burn"]])
+		activation_events.append(_log_item(special) + " activation")
+		activation_events.append(_log_effect("Unleashes Volley."))
+		for stat: String in ["damage", "pierce", "poison", "burn"]:
+			if int(volley[stat]) > 0:
+				activation_events.append(_log_effect("Contributes %d %s." % [volley[stat], "physical damage to the combined attack" if stat == "damage" else ("piercing" if stat == "pierce" else stat)]))
 		result["physical_damage"] += int(volley["damage"])
 		for stat: String in ["damage", "pierce", "poison", "burn"]:
 			result[stat] += int(volley[stat])
@@ -707,6 +739,17 @@ func _item_by_id(item_id: int) -> Dictionary:
 
 func _log_item(item: Dictionary) -> String:
 	return "[url=catalog_item_%s]%s[/url]" % [item["key"], preload("res://scripts/item_presentation.gd").display_name(item)]
+
+func _log_bonus_sources(item: Dictionary, equipped: Array[Dictionary]) -> Array[String]:
+	var lines: Array[String] = []
+	for booster: Dictionary in equipped:
+		var amount: int = bonus(booster, item)
+		if amount > 0:
+			lines.append("Receives +%d %s from touching %s." % [amount, "block" if item["role"] == "shield" else "damage", _log_item(booster)])
+	return lines
+
+func _log_effect(message: String) -> String:
+	return "[indent]– " + message + "[/indent]"
 
 func _record_amount(events: Array[String], message: String, amount: int) -> void:
 	if amount > 0:
@@ -1042,7 +1085,7 @@ func roll_loot() -> void:
 		offers.assign(rolled)
 
 func choose_loot(key: String) -> void:
-	if not can_claim_rewards() or phase not in [Phase.FIGHT, Phase.VICTORY] or not pending_turn.is_empty() or item_rewards.is_empty() or not offers.has(key):
+	if not can_claim_rewards() or not pending_turn.is_empty() or item_rewards.is_empty() or not offers.has(key):
 		return
 	if QUIVER.OPTIONS.has(key):
 		var special: Dictionary = quiver()
@@ -1073,13 +1116,125 @@ func choose_loot(key: String) -> void:
 		offers.assign(item_rewards[0]["offers"])
 
 func advance_encounter() -> void:
-	if phase != Phase.LOOT:
-		return
-	if fight == FLOORS - 1:
+	enter_selector()
+
+func display_floor() -> int:
+	return floor_index + 1
+
+func has_combat_room() -> bool:
+	return phase in [Phase.FIGHT, Phase.LOOT, Phase.DEFEAT, Phase.VICTORY]
+
+func available_room_relics() -> Array[String]:
+	var available: Array[String] = []
+	for key: String in PackCatalog.RELICS:
+		if not relics.has(key) and not relic_offers.has(key):
+			available.append(key)
+	return available
+
+func enter_selector() -> bool:
+	if phase not in [Phase.LOOT, Phase.ROOM_COMPLETE] or not pending_turn.is_empty():
+		return false
+	if floor_index >= FLOORS - 1:
 		phase = Phase.VICTORY
-		return
-	fight += 1
-	prepare_enemy()
+		return true
+	phase = Phase.SELECTOR
+	combat_state = CombatState.FINISHED
+	room_resolved = true
+	door_choices = preload("res://scripts/room_routes.gd").choices(floor_index + 2, hp, max_hp, not available_room_relics().is_empty(), noncombat_streak, rng)
+	return true
+
+func choose_destination(id: String) -> bool:
+	if phase != Phase.SELECTOR:
+		return false
+	var kind: String = ""
+	for door: Dictionary in door_choices:
+		if door.id == id:
+			kind = door.kind
+	if kind not in ["combat", "rest", "relic", "encounter"]:
+		return false
+	floor_index += 1
+	fight = floor_index
+	room_kind = kind
+	door_choices.clear()
+	room_resolved = false
+	room_reward_pending = false
+	room_relic_offers.clear()
+	room_event = ""
+	noncombat_streak = 0 if kind == "combat" else noncombat_streak + 1
+	if kind == "combat":
+		prepare_enemy()
+	else:
+		phase = Phase.ROOM
+		combat_state = CombatState.FINISHED
+		begin_stage(display_floor(), {"rest": "Rest area", "relic": "Relic chamber", "encounter": "Encounter"}[kind])
+		if kind == "relic":
+			_roll_room_relics()
+		elif kind == "encounter":
+			room_event = "interrogation" if rng.randi_range(0, 1) == 0 or available_room_relics().is_empty() else "blood_offering"
+	return true
+
+func _roll_room_relics() -> void:
+	var available: Array[String] = available_room_relics()
+	for index in range(mini(3, available.size())):
+		room_relic_offers.append(available.pop_at(rng.randi_range(0, available.size() - 1)))
+	room_reward_pending = not room_relic_offers.is_empty()
+
+func offering_cost() -> int:
+	return maxi(1, ceili(max_hp * 0.20))
+
+func resolve_room(action: String) -> bool:
+	if phase != Phase.ROOM or room_resolved:
+		return false
+	if action == "leave":
+		pass
+	elif room_reward_pending and action.begins_with("relic:"):
+		var key: String = action.trim_prefix("relic:")
+		if not room_relic_offers.has(key) or relics.has(key):
+			return false
+		relics.append(key)
+		log_line("Claimed %s." % PackCatalog.relic(key)["name"])
+	elif room_kind == "rest" and action == "rest" and hp < max_hp:
+		var amount: int = mini(max_hp - hp, ceili(max_hp * 0.30))
+		hp += amount
+		log_line("Rest restored %d health." % amount)
+	elif room_kind == "encounter" and not room_reward_pending:
+		if room_event == "blood_offering" and action == "offer" and hp > offering_cost():
+			if available_room_relics().is_empty():
+				return false
+			hp -= offering_cost()
+			log_line("Paid %d health to the blood altar." % offering_cost())
+			_roll_room_relics()
+			return true
+		elif room_event == "interrogation" and action == "answer":
+			roll_loot()
+			log_line("The keeper granted an item choice.")
+		elif room_event == "interrogation" and action == "refuse":
+			noncombat_streak = 0
+			prepare_enemy()
+			return true
+		else:
+			return false
+	else:
+		return false
+	room_resolved = true
+	room_reward_pending = false
+	room_relic_offers.clear()
+	phase = Phase.ROOM_COMPLETE
+	roll_relics()
+	return true
+
+func normalize_room_state(saved_state: Dictionary) -> void:
+	if not saved_state.has("floor_index"):
+		floor_index = fight
+		room_kind = "combat"
+		door_choices.clear()
+		room_relic_offers.clear()
+		room_reward_pending = false
+		room_resolved = false
+		room_event = ""
+		noncombat_streak = 0
+		# Preserve old queued entitlements; all subsequent floors use room choices.
+		room_flow_version = 1
 
 func log_action(events: Array) -> void:
 	if events.is_empty():

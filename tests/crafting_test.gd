@@ -112,6 +112,8 @@ func _run() -> void:
 	run.phase = PackRun.Phase.LOOT
 	run.combat_state = PackRun.CombatState.FINISHED
 	run.advance_encounter()
+	check(run.phase == PackRun.Phase.SELECTOR and run.items.size() == 2, "Entering the selector preserves prepared ingredients")
+	check(run.choose_destination("combat"), "Choose the next combat before starting its crafting")
 	check(run.fight == 1 and run.items.size() == 2, "Advancing encounters preserves ingredients for preparation")
 	run.start_combat()
 	check(run.items.size() == 1, "Next battle start crafts the prepared recipe")

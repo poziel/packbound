@@ -1,7 +1,7 @@
 [gd_scene format=3]
 [ext_resource type="Script" path="res://components/staircase/demo.gd" id="demo"]
-[ext_resource type="PackedScene" path="res://components/staircase/entrance_stairs.tscn" id="entrance"]
-[ext_resource type="PackedScene" path="res://components/staircase/exit_stairs.tscn" id="exit"]
+[ext_resource type="PackedScene" path="res://components/staircase/staircase.tscn" id="entrance"]
+[ext_resource type="PackedScene" path="res://components/staircase/staircase.tscn" id="exit"]
 [ext_resource type="PackedScene" path="res://components/free_camera/free_camera.tscn" id="camera"]
 [sub_resource type="Environment" id="environment"]
 background_mode = 1
@@ -17,9 +17,15 @@ environment = SubResource("environment")
 rotation = Vector3(-0.8, -0.4, 0)
 light_energy = 0.8
 [node name="EntranceStairs" parent="." instance=ExtResource("entrance")]
+role = 0
 position = Vector3(-3, 0, 0)
+
+
 [node name="ExitStairs" parent="." instance=ExtResource("exit")]
+role = 1
 position = Vector3(3, 0, 0)
+
+
 [node name="Camera" parent="." instance=ExtResource("camera")]
 position = Vector3(12, 11, 18)
 rotation = Vector3(-0.42, 0.588, 0)

@@ -13,7 +13,7 @@ func check(condition: bool, message: String) -> void:
 		printerr("FAIL: " + message)
 
 func _run() -> void:
-	var paths: Array[String] = ["res://components/staircase/entrance_stairs.tscn", "res://components/staircase/exit_stairs.tscn"]
+	var paths: Array[String] = ["res://components/staircase/staircase.tscn", "res://components/staircase/staircase.tscn"]
 	for path: String in paths:
 		check(ResourceLoader.exists(path), "Reusable staircase exists: " + path)
 	if failures:
@@ -21,6 +21,7 @@ func _run() -> void:
 		quit(1)
 		return
 	var entrance: Node3D = load(paths[0]).instantiate()
+	entrance.role = 0
 	var exit: Node3D = load(paths[1]).instantiate()
 	var surface_material := StandardMaterial3D.new()
 	surface_material.albedo_color = Color("664c3b")
@@ -32,6 +33,63 @@ func _run() -> void:
 	root.add_child(exit)
 	await process_frame
 	check(custom_art.get_active_material(0).next_pass == exit.shadow, "Artist-assigned surface materials receive the shared darkness")
+	exit.wall_color = Color(0.5, 0.8, 1.0)
+	exit.step_color = Color(0.8, 0.3, 0.1)
+	exit.ceiling_color = Color(0.1, 0.2, 0.7)
+	exit.depth_color = Color(0.2, 0.05, 0.1)
+	exit.glow_color = Color(1.0, 0.4, 0.1)
+	exit.glow_intensity = 0.6
+	check(custom_art.get_active_material(0).albedo_color.is_equal_approx(exit.wall_color), "Wall color applies directly without multiplying the source gray")
+	check(exit.get_node("Visuals/DefaultStone/Tread00").material_override.albedo_color.is_equal_approx(exit.step_color), "Step color applies directly")
+	check(exit.get_node("Visuals/DefaultStone/Ceiling").material_override.albedo_color.is_equal_approx(exit.ceiling_color), "Ceiling has an independent direct color")
+	check(entrance.depth_color == Color.BLACK and entrance.get_node("EndWall").material_override.albedo_color == Color.BLACK, "Instance appearance changes do not affect other staircases")
+	check(exit.shadow.get_shader_parameter("depth_color").is_equal_approx(exit.depth_color), "Depth shader receives the selected passage color")
+	check(exit.get_node("EndWall").material_override.albedo_color.is_equal_approx(exit.depth_color), "End cap matches the selected passage color")
+	check(is_equal_approx(exit.get_node("Visuals/InteriorLight").light_energy, 120.0), "Normalized glow maps to the expanded light-energy range")
+	exit.glow_intensity = 1.0
+	check(is_equal_approx(exit.get_node("Visuals/InteriorLight").light_energy, 200.0), "Maximum glow is twice the former 100-energy maximum")
+	exit.depth_strength = 0.5
+	check(is_equal_approx(exit.shadow.get_shader_parameter("depth_strength"), 1.0), "Half depth strength matches the former full strength")
+	exit.depth_strength = 1.0
+	check(is_equal_approx(exit.shadow.get_shader_parameter("depth_strength"), 2.0), "Full depth strength has twice the former shader strength")
+	check(is_equal_approx(exit.shadow_amount(exit.to_global(Vector3(0, 0, -exit.run_length * 0.475))), 1.0), "Doubled depth reaches full opacity halfway along the fade")
+	check(entrance.to_local(entrance.get_node("Visuals/InteriorLight").global_position).is_equal_approx(Vector3(0, 1.8, 3)), "Entrance light sits near the bottom landing on the room side")
+	check(exit.to_local(exit.get_node("Visuals/InteriorLight").global_position).is_equal_approx(Vector3(0, 1.8, -3)), "Exit light sits near the top landing on the room side")
+	entrance.role = 1
+	check(entrance.to_local(entrance.get_node("Visuals/InteriorLight").global_position).is_equal_approx(Vector3(0, 1.8, -3)), "Switching roles repositions the light to the new room-side landing")
+	entrance.role = 0
+	var door: Node3D = load("res://scenes/gameplay/rooms/dungeon/shared/selector_door.tscn").instantiate()
+	root.add_child(door)
+	door.hover_glow_color = Color(0.9, 0.2, 0.5)
+	door.hover_glow_intensity = 0.025
+	var door_stairs: Node3D = door.get_node("ExitStairs")
+	var idle_depth: Color = door_stairs.depth_color
+	var idle_depth_strength: float = door_stairs.depth_strength
+	var idle_text: Color = door.get_node("Sign").modulate
+	var idle_outline: Color = door.get_node("Sign").outline_modulate
+	check(not door.has_node("Glow") and not door.has_node("InnerGlow"), "Dungeon hover glow comes exclusively from the staircase component")
+	check(is_zero_approx(door_stairs.glow_intensity), "Selector stairs have no glow while idle")
+	door.set_highlight(true)
+	await create_timer(0.3).timeout
+	check(is_equal_approx(door_stairs.glow_intensity, 0.025) and is_equal_approx(door_stairs.get_node("Visuals/InteriorLight").light_energy, 5.0) and door_stairs.glow_color == door.hover_glow_color, "Selector uses normalized glow intensity on hover")
+	check(door_stairs.depth_strength < idle_depth_strength and door_stairs.depth_strength > 0.0, "Hover softens the depth fade while preserving passage depth")
+	check(door_stairs.depth_color.r > idle_depth.r and door_stairs.depth_color.b > idle_depth.b, "Hover gives the passage a subtle hue from its glow")
+	check(door_stairs.get_node("EndWall").material_override.albedo_color.is_equal_approx(door_stairs.depth_color), "Passage end cap follows the hover tint")
+	check(door.get_node("Sign").modulate.is_equal_approx(door_stairs.glow_color) and door.get_node("Sign").outline_modulate.is_equal_approx(door_stairs.glow_color), "Entire sign including its outline matches the staircase glow color")
+	check(not door.get_node("Sign").shaded, "Sign remains uniformly luminous regardless of local lighting")
+	door.set_highlight(false)
+	await create_timer(0.3).timeout
+	check(is_zero_approx(door_stairs.glow_intensity) and is_zero_approx(door_stairs.get_node("Visuals/InteriorLight").light_energy), "Leaving the door switches its glow off")
+	check(door.get_node("Sign").modulate.is_equal_approx(idle_text) and door.get_node("Sign").outline_modulate.is_equal_approx(idle_outline), "Hover exit restores the complete original sign appearance")
+	check(door_stairs.depth_color.is_equal_approx(idle_depth) and is_equal_approx(door_stairs.depth_strength, idle_depth_strength), "Hover exit restores the configured passage color and darkening")
+	door.set_highlight(true)
+	await create_timer(0.05).timeout
+	door.set_highlight(false)
+	await create_timer(0.3).timeout
+	check(door_stairs.depth_color.is_equal_approx(idle_depth) and is_equal_approx(door_stairs.depth_strength, idle_depth_strength), "Interrupted hover restores the original depth without accumulating changes")
+	door.queue_free()
+	exit.depth_color = Color.BLACK
+	exit.glow_intensity = 0.0
 	check(surface_material.next_pass == null, "Instance shadows do not modify the artist's shared material resource")
 	check(entrance.get_node("Visuals").get_child_count() > 0 and exit.get_node("Visuals").get_child_count() > 0, "Both scenes contain saved editable artwork")
 	check(is_equal_approx(entrance.width, exit.width) and is_equal_approx(entrance.rise, exit.rise) and is_equal_approx(entrance.run_length, exit.run_length), "Entrance and exit share physical dimensions")

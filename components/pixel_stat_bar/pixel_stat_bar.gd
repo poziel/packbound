@@ -1,7 +1,7 @@
 @tool
 class_name PixelStatBar
 extends Range
-## Pixel meter with optional compact health and protection boxes.
+## Pixel meter with centered health and right-anchored protection overlays.
 ## Instance pixel_stat_bar.tscn; use Range.value/max_value or set_amount().
 
 const TILE_FRAME = preload("res://components/item_slot/item_frame.gd")
@@ -53,6 +53,53 @@ enum NumberMode { FRACTION, VALUE, PERCENTAGE, HIDDEN }
 
 var protection_amount: float = 0.0
 
+## Opt in for health meters; resource bars retain their immediate fill.
+@export var animate_damage: bool = false
+var display_health_ratio: float = 0.0
+var damage_trail_ratio: float = 0.0
+var _damage_target: float = 0.0
+var _damage_start: float = 0.0
+var _damage_age: float = 0.0
+var _damage_capacity: float = -1.0
+var _damage_initialized: bool = false
+var _damage_paused: bool = false
+
+func clear_damage_feedback() -> void:
+	display_health_ratio = _fill_ratio()
+	damage_trail_ratio = display_health_ratio
+	_damage_target = display_health_ratio
+	_damage_start = display_health_ratio
+	_damage_age = 0.0
+	_damage_capacity = max_value
+	_damage_initialized = false
+	_damage_paused = false
+	queue_redraw()
+
+func _update_damage_target() -> void:
+	var target: float = _fill_ratio()
+	if not animate_damage or Engine.is_editor_hint() or not _damage_initialized or max_value != _damage_capacity or target > _damage_target or not is_visible_in_tree():
+		clear_damage_feedback()
+		_damage_initialized = true
+	elif target < _damage_target:
+		_damage_start = display_health_ratio
+		damage_trail_ratio = maxf(damage_trail_ratio, display_health_ratio)
+		_damage_target = target
+		_damage_age = 0.0
+
+func advance_damage(delta: float) -> void:
+	if not animate_damage or _damage_paused or not _damage_initialized:
+		return
+	_damage_age += delta
+	display_health_ratio = lerpf(_damage_start, _damage_target, ease(minf(_damage_age / 0.12, 1.0), 0.5))
+	# Hold for one second, then fade the darker lost-health segment.
+	if _damage_age >= 1.2:
+		damage_trail_ratio = _damage_target
+	queue_redraw()
+
+func _process(delta: float) -> void:
+	if display_health_ratio != _damage_target or damage_trail_ratio > _damage_target:
+		advance_damage(delta)
+
 ## Protection changes the badge and pattern, never the health fill or maximum.
 func set_protected_amount(health: float, maximum: float, protection: float) -> void:
 	allow_greater = false
@@ -89,12 +136,12 @@ func segment_rects(well: Rect2) -> Array[Rect2]:
 ## Duration of an explicitly requested damage pulse.
 @export_range(0.05, 2.0, 0.05) var glow_duration: float = 0.4
 
-## Full-width health fill with current value left and optional protection right.
+## Health overlay layout. Serialized name retained for existing scenes.
 @export var side_boxes: bool = false:
 	set(next):
 		side_boxes = next
 		_refresh()
-@export_range(8, 24, 1) var side_number_size: int = 16:
+@export_range(8, 24, 1) var side_number_size: int = 20:
 	set(next):
 		side_number_size = next
 		_refresh()
@@ -104,34 +151,32 @@ func segment_rects(well: Rect2) -> Array[Rect2]:
 func _side_width(amount: float, with_icon: bool = false) -> float:
 	var digits: int = maxi(2, str(roundi(amount)).length())
 	var width: float = _font().get_string_size("8".repeat(digits), HORIZONTAL_ALIGNMENT_LEFT, -1, side_number_size).x
-	return ceilf(width / pixel_size) * pixel_size + pixel_size * 4 + (14 if with_icon and protection_icon != null else 0)
+	return ceilf(width / pixel_size) * pixel_size + pixel_size * 4 + (18 if with_icon and protection_icon != null else 0)
 
 func _side_height() -> float:
 	return maxf(_meter_height(), ceilf(_font().get_height(side_number_size)) + pixel_size * 4)
 
 func _draw_side_box(rect: Rect2, amount: float, color: Color, icon: Texture2D = null, caption: String = "") -> void:
-	var span: float = 14 if icon != null else 0
+	var span: float = 18 if icon != null else 0
 	var text: String = caption if not caption.is_empty() else _number(amount)
-	var width: float = _font().get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, side_number_size).x
+	var width: float = _font().get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, side_number_size).x + 1
 	var x: float = floorf(rect.position.x + (rect.size.x - width - span) * 0.5)
 	if icon != null:
-		var icon_rect: Rect2 = Rect2(Vector2(x, floorf(rect.position.y + (rect.size.y - 12) * 0.5)), Vector2(12, 12))
+		var icon_rect: Rect2 = Rect2(Vector2(x, floorf(rect.position.y + (rect.size.y - 16) * 0.5)), Vector2(16, 16))
 		for offset: Vector2 in [Vector2(-1, -1), Vector2(0, -1), Vector2(1, -1), Vector2(-1, 0), Vector2(1, 0), Vector2(-1, 1), Vector2(0, 1), Vector2(1, 1)]:
 			draw_texture_rect(icon, Rect2(icon_rect.position + offset, icon_rect.size), false, Color.BLACK)
 		draw_texture_rect(icon, icon_rect, false, color)
 	var baseline: float = floorf(rect.position.y + (rect.size.y - _font().get_height(side_number_size)) * 0.5 + _font().get_ascent(side_number_size))
-	draw_string_outline(_font(), Vector2(x + span, baseline), text, HORIZONTAL_ALIGNMENT_LEFT, -1, side_number_size, 1, Color.BLACK)
-	draw_string(_font(), Vector2(x + span, baseline), text, HORIZONTAL_ALIGNMENT_LEFT, -1, side_number_size, color)
+	# Explicit pixel dilation also outlines bitmap fonts that ignore font stroking.
+	for offset: Vector2 in [Vector2(-1, -1), Vector2(0, -1), Vector2(1, -1), Vector2(-1, 0), Vector2(1, 0), Vector2(-1, 1), Vector2(0, 1), Vector2(1, 1)]:
+		for weight_offset in [0, 1]:
+			draw_string(_font(), Vector2(x + span + weight_offset, baseline) + offset, text, HORIZONTAL_ALIGNMENT_LEFT, -1, side_number_size, Color.BLACK)
+	for weight_offset in [0, 1]:
+		draw_string(_font(), Vector2(x + span + weight_offset, baseline), text, HORIZONTAL_ALIGNMENT_LEFT, -1, side_number_size, color)
 
-func _plaque_health_width() -> float:
+func _health_caption_width() -> float:
 	var text: String = _number(max_value) + " / " + _number(max_value)
 	return ceilf(_font().get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, side_number_size).x) + pixel_size * 16
-
-func _plaque_width() -> float:
-	return _plaque_health_width() + (_side_width(protection_amount, true) + pixel_size * 6 if protection_amount > 0 else 0.0)
-
-func _plaque_height() -> float:
-	return ceilf(_font().get_height(side_number_size)) + pixel_size * 8
 
 @export_group("Numbers")
 ## Optional semantic glyph before the numeric badge. The caller owns meaning
@@ -220,6 +265,7 @@ func is_glowing() -> bool:
 func _on_visibility_changed() -> void:
 	if not is_visible_in_tree():
 		clear_glow()
+		clear_damage_feedback()
 
 
 ## Convenience for health/mana/etc. A zero capacity displays 0 / 0, empty.
@@ -227,6 +273,7 @@ func set_amount(current: float, maximum: float) -> void:
 	min_value = 0.0
 	max_value = maxf(0.0, maximum)
 	value = current
+	_update_damage_target()
 	_refresh()
 
 
@@ -292,7 +339,7 @@ func _icon_span() -> float:
 
 func _get_minimum_size() -> Vector2:
 	if side_boxes:
-		return Vector2(_plaque_width() + pixel_size * 8, _plaque_height() + ceilf(_meter_height() * 0.5))
+		return Vector2(_health_caption_width() + 2.0 * (_side_width(protection_amount, true) + pixel_size * 4), _side_height())
 	if number_mode == NumberMode.HIDDEN:
 		return Vector2(minf(pixel_size * 16, resource_width()) if segmented else pixel_size * 16, _meter_height())
 	return Vector2(_badge_width() + pixel_size * 16, _label_height() - _overlap() + _meter_height())
@@ -309,6 +356,7 @@ func _fill_ratio() -> float:
 
 
 func _on_value_changed(_amount: float) -> void:
+	_update_damage_target()
 	_refresh()
 
 
@@ -331,7 +379,8 @@ func _refresh() -> void:
 
 func _draw() -> void:
 	var p: float = pixel_size
-	var meter: Rect2 = Rect2(0, floorf(size.y - _meter_height()), floorf(size.x), _meter_height())
+	var height: float = _side_height() if side_boxes else _meter_height()
+	var meter: Rect2 = Rect2(0, floorf(size.y - height), floorf(size.x), height)
 	var badge: Rect2
 	var cutouts: Array[Rect2] = []
 	if not side_boxes and number_mode != NumberMode.HIDDEN and value_label != null:
@@ -348,18 +397,25 @@ func _draw() -> void:
 	var frame_masks: Dictionary = TILE_FRAME.skin([Vector2i.ZERO], meter.size, 0.0, [], true, self)
 	var frame_origin: Vector2 = meter.position + frame_masks.origin
 	var face_color: Color = accent_color.darkened(0.84)
-	var border_color: Color = TILE_FRAME.rim_color(accent_color).lerp(TILE_FRAME.rim_color(accent_color).darkened(0.55), glow)
+	var idle_border: Color = Color("bdbdbd") if side_boxes else TILE_FRAME.rim_color(accent_color)
+	var border_color: Color = idle_border.lerp(idle_border.darkened(0.55), glow)
 	draw_texture(frame_masks.fill, frame_origin, face_color)
 	draw_texture(frame_masks.border, frame_origin, border_color)
 	var well: Rect2 = meter.grow(-3)
 	# Clip the resource fill to the exact inset mask, including stepped corners.
 	for hole: Rect2 in _fill_holes(frame_masks, meter.size):
 		cutouts.append(Rect2(hole.position + meter.position, hole.size))
-	var fill_width: float = floorf(well.size.x * _fill_ratio() / p) * p
-	if _fill_ratio() >= 1.0:
+	var visual_ratio: float = display_health_ratio if animate_damage and _damage_initialized else _fill_ratio()
+	var fill_width: float = floorf(well.size.x * visual_ratio / p) * p
+	if visual_ratio >= 1.0:
 		fill_width = well.size.x
-	elif _fill_ratio() > 0.0:
+	elif visual_ratio > 0.0:
 		fill_width = maxf(p, fill_width)
+	if animate_damage and not segmented and damage_trail_ratio > visual_ratio:
+		var trail_end: float = minf(well.size.x, ceilf(well.size.x * damage_trail_ratio / p) * p)
+		var trail_color: Color = accent_color.darkened(0.62)
+		trail_color.a *= 1.0 - clampf((_damage_age - 1.0) / 0.2, 0.0, 1.0)
+		_meter_rect(Rect2(well.position + Vector2(fill_width, 0), Vector2(maxf(0.0, trail_end - fill_width), well.size.y)), trail_color, cutouts)
 	var segments: Array[Rect2] = []
 	if segmented:
 		segments = segment_rects(well)
@@ -377,30 +433,23 @@ func _draw() -> void:
 	if protection_pattern and fill_width > 0.0:
 		# Staggered mortar joints read as a protective brick wall.
 		var filled: Rect2 = Rect2(well.position, Vector2(fill_width, well.size.y))
-		for y in range(int(well.position.y), int(well.end.y), int(p * 4)):
-			if y > well.position.y:
-				_meter_rect(Rect2(well.position.x, y, fill_width, p), accent_color.darkened(0.58), cutouts)
-			var stagger: int = int(p * 4) if int((y - well.position.y) / (p * 4)) % 2 else 0
+		# Fit complete, equal-height brick courses between the top and bottom.
+		# Mortar consumes the same space on each side of the vertical center.
+		var rows: int = maxi(1, roundi((well.size.y + p) / (p * 4)))
+		for row in range(rows):
+			var y: float = well.position.y + floorf(row * (well.size.y + p) / rows)
+			var bottom: float = well.end.y if row == rows - 1 else well.position.y + floorf((row + 1) * (well.size.y + p) / rows) - p
+			if row > 0:
+				_meter_rect(Rect2(well.position.x, y - p, fill_width, p), accent_color.darkened(0.58), cutouts)
+			var stagger: int = int(p * 4) if row % 2 else 0
 			for x in range(int(well.position.x) + stagger, int(well.position.x + fill_width), int(p * 8)):
-				_meter_rect(Rect2(x, y, p, p * 4).intersection(filled), accent_color.darkened(0.58), cutouts)
+				_meter_rect(Rect2(x, y, p, bottom - y).intersection(filled), accent_color.darkened(0.58), cutouts)
 	if side_boxes:
-		var plaque: Rect2 = Rect2(floorf((size.x - _plaque_width()) * 0.5), meter.position.y - _plaque_height() + floorf(meter.size.y * 0.5), _plaque_width(), _plaque_height())
-		# The plaque is an opaque foreground panel: its inset gap must not
-		# reveal the health fill through the lower half of the panel.
-		for outline: PackedVector2Array in TILE_FRAME.polygons([Vector2i.ZERO], plaque.size, 0.0):
-			var positioned: PackedVector2Array = PackedVector2Array()
-			for point: Vector2 in outline:
-				positioned.append(point + plaque.position)
-			draw_colored_polygon(positioned, Color("141514"))
-		var plaque_masks: Dictionary = TILE_FRAME.skin([Vector2i.ZERO], plaque.size, 0.0, [], true, self)
-		var plaque_origin: Vector2 = plaque.position + plaque_masks.origin
-		draw_texture(plaque_masks.fill, plaque_origin, Color("242622"))
-		draw_texture(plaque_masks.border, plaque_origin, Color("74766b"))
-		var health_width: float = _plaque_health_width()
-		_draw_side_box(Rect2(plaque.position, Vector2(health_width, plaque.size.y)), value, badge_icon_color, null, _number(value) + " / " + _number(max_value))
+		# Health stays centered on the complete meter, independent of shield.
+		_draw_side_box(meter, value, badge_icon_color, null, _number(value) + " / " + _number(max_value))
 		if protection_amount > 0:
-			draw_rect(Rect2(plaque.position.x + health_width, plaque.position.y + p * 3, 1, plaque.size.y - p * 6), Color("505249"))
-			_draw_side_box(Rect2(plaque.position.x + health_width, plaque.position.y, plaque.size.x - health_width, plaque.size.y), protection_amount, protection_color, protection_icon)
+			var shield_width: float = _side_width(protection_amount, true)
+			_draw_side_box(Rect2(meter.end.x - shield_width - p * 3, meter.position.y, shield_width, meter.size.y), protection_amount, protection_color, protection_icon)
 	if not side_boxes and number_mode != NumberMode.HIDDEN and badge_icon != null:
 		var at: Vector2 = (badge.position + Vector2(p * 4, (badge.size.y - 16) * 0.5)).floor()
 		draw_texture_rect(badge_icon, Rect2(at, Vector2(16, 16)), false, badge_icon_color)
@@ -495,6 +544,7 @@ func _notification(what: int) -> void:
 var _glow_was_paused: bool = false
 
 func set_glow_paused(value: bool) -> void:
+	_damage_paused = value
 	if _glow_tween == null or not _glow_tween.is_valid():
 		_glow_was_paused = false
 		return

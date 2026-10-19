@@ -1,0 +1,124 @@
+{
+  "parts": {
+	"column": {
+	  "count": 11,
+	  "origin": [
+		-10.3000001907349,
+		0.0,
+		-7.59999990463257
+	  ],
+	  "source_nodes": [
+		"PillarBase",
+		"Pillar",
+		"@MeshInstance3D@474",
+		"@MeshInstance3D@475",
+		"@MeshInstance3D@476",
+		"@MeshInstance3D@477",
+		"@MeshInstance3D@478",
+		"@MeshInstance3D@479",
+		"@MeshInstance3D@480",
+		"@MeshInstance3D@481",
+        "@MeshInstance3D@482"
+	  ]
+	},
+	"door_frame": {
+	  "count": 22,
+	  "origin": [
+		-6.40000009536743,
+		0.0,
+		-7.5
+	  ],
+	  "source_nodes": [
+		"StairJamb",
+		"@MeshInstance3D@494",
+		"@MeshInstance3D@495",
+		"@MeshInstance3D@496",
+		"@MeshInstance3D@497",
+		"_MeshInstance3D_497",
+		"@MeshInstance3D@498",
+		"@MeshInstance3D@499",
+		"SteppedArch",
+		"@MeshInstance3D@500",
+		"@MeshInstance3D@501",
+		"@MeshInstance3D@502",
+		"@MeshInstance3D@503",
+		"@MeshInstance3D@504",
+		"@MeshInstance3D@505",
+		"@MeshInstance3D@506",
+		"@MeshInstance3D@507",
+		"@MeshInstance3D@508",
+		"@MeshInstance3D@509",
+		"@MeshInstance3D@510",
+		"@MeshInstance3D@511",
+        "Keystone"
+	  ]
+	},
+	"floor_chunk": {
+	  "count": 4,
+	  "origin": [
+		-14.9750003814697,
+		0.0,
+		-8.05000019073486
+	  ],
+	  "source_nodes": [
+		"Flagstone",
+		"@MeshInstance3D@387",
+		"@MeshInstance3D@394",
+        "@MeshInstance3D@395"
+	  ]
+	},
+	"roof_chunk": {
+	  "count": 4,
+	  "origin": [
+		-11.1999998092651,
+		7.11999988555908,
+		-8.32499980926514
+	  ],
+	  "source_nodes": [
+		"CorridorDetails/CeilingStone",
+		"CorridorDetails/CeilingStone2",
+		"CorridorDetails/CeilingStone7",
+        "CorridorDetails/CeilingStone8"
+	  ]
+	},
+	"wall_chunk": {
+	  "count": 25,
+	  "origin": [
+		-20.3999996185303,
+		0.0,
+		-7.94999980926514
+	  ],
+	  "source_nodes": [
+		"BackWallStone",
+		"@MeshInstance3D@3",
+		"@MeshInstance3D@4",
+		"@MeshInstance3D@5",
+		"@MeshInstance3D@6",
+		"@MeshInstance3D@17",
+		"@MeshInstance3D@18",
+		"@MeshInstance3D@19",
+		"@MeshInstance3D@20",
+		"@MeshInstance3D@21",
+		"@MeshInstance3D@33",
+		"@MeshInstance3D@34",
+		"@MeshInstance3D@35",
+		"@MeshInstance3D@36",
+		"@MeshInstance3D@37",
+		"@MeshInstance3D@48",
+		"@MeshInstance3D@49",
+		"@MeshInstance3D@50",
+		"@MeshInstance3D@51",
+		"@MeshInstance3D@52",
+		"@MeshInstance3D@64",
+		"@MeshInstance3D@65",
+		"@MeshInstance3D@66",
+		"@MeshInstance3D@67",
+        "@MeshInstance3D@68"
+	  ]
+	}
+  },
+  "source": "res://scenes/gameplay/rooms/dungeon/dungeon_room.tscn",
+  "source_sha256_before": "d6a2aedad819b3cb00be723400c33f46c11bf2f84c3668f1a08825ee5302eac8",
+  "source_sha256_after": "32360a4ab014598917f4b625f14b99cfed511e7739822743398f9b37ab4a9b64",
+  "hash_format": "SHA-256 of UTF-8 scene text with LF line endings"
+}

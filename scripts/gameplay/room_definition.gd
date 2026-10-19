@@ -4,6 +4,7 @@ extends Node3D
 
 @export_group("Environment")
 @export var environment: Environment
+@export_range(1, 4, 1) var pixel_downscale: int = 3
 @export_group("Camera lens")
 @export var camera_size: float = 0.115
 @export var camera_frustum_offset := Vector2(0.046, 0)

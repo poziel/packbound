@@ -1,0 +1,86 @@
+[gd_scene format=3]
+
+[sub_resource type="Shader" id="Shader_hw220"]
+code = "shader_type spatial;
+render_mode unshaded, blend_mix, depth_draw_never, cull_back, shadows_disabled, fog_disabled;
+varying vec3 world_position;
+void vertex() {
+    world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+}
+void fragment() {
+    float depth = smoothstep(7.0, 19.0, -world_position.z);
+    ALBEDO = vec3(0.0);
+    ALPHA = depth;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ts4ox"]
+render_priority = 0
+shader = SubResource("Shader_hw220")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qoh4r"]
+next_pass = SubResource("ShaderMaterial_ts4ox")
+albedo_color = Color(0.20784314, 0.2509804, 0.3137255, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vhgeg"]
+size = Vector3(1.53, 0.08, 1.77)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5cvo"]
+next_pass = SubResource("ShaderMaterial_ts4ox")
+albedo_color = Color(0.23921569, 0.28235295, 0.34509805, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aysgh"]
+size = Vector3(1.53, 0.08, 1.77)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2uch7"]
+next_pass = SubResource("ShaderMaterial_ts4ox")
+albedo_color = Color(0.2, 0.24313726, 0.3019608, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vd2lv"]
+size = Vector3(1.53, 0.08, 1.77)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5j2w"]
+next_pass = SubResource("ShaderMaterial_ts4ox")
+albedo_color = Color(0.27450982, 0.3137255, 0.3764706, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u2rsr"]
+size = Vector3(1.53, 0.08, 1.77)
+
+[sub_resource type="StandardMaterial3D" id="CoreMortar"]
+next_pass = SubResource("ShaderMaterial_ts4ox")
+albedo_color = Color(0.09803922, 0.12941177, 0.18039216, 1)
+roughness = 1.0
+
+[sub_resource type="BoxMesh" id="Core_Backing"]
+size = Vector3(3.2, 0.2, 3.7)
+
+[node name="RoofChunk" type="Node3D" unique_id=1188928820]
+
+[node name="Piece00" type="MeshInstance3D" parent="." unique_id=1920112620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8000002, 0, 0.9249997)
+material_override = SubResource("StandardMaterial3D_qoh4r")
+mesh = SubResource("BoxMesh_vhgeg")
+metadata/source_node = "CorridorDetails/CeilingStone"
+
+[node name="Piece01" type="MeshInstance3D" parent="." unique_id=2027553566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3999996, 0, 0.9249997)
+material_override = SubResource("StandardMaterial3D_t5cvo")
+mesh = SubResource("BoxMesh_aysgh")
+metadata/source_node = "CorridorDetails/CeilingStone2"
+
+[node name="Piece02" type="MeshInstance3D" parent="." unique_id=1131378501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8000002, 0, 2.7749996)
+material_override = SubResource("StandardMaterial3D_2uch7")
+mesh = SubResource("BoxMesh_vd2lv")
+metadata/source_node = "CorridorDetails/CeilingStone7"
+
+[node name="Piece03" type="MeshInstance3D" parent="." unique_id=1670355631]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3999996, 0, 2.7749996)
+material_override = SubResource("StandardMaterial3D_u5j2w")
+mesh = SubResource("BoxMesh_u2rsr")
+metadata/source_node = "CorridorDetails/CeilingStone8"
+
+[node name="Backing" type="MeshInstance3D" parent="."]
+position = Vector3(1.6, 0.12, 1.85)
+mesh = SubResource("Core_Backing")
+material_override = SubResource("CoreMortar")

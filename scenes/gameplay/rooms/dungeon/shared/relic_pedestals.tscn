@@ -1,0 +1,148 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="stone"]
+albedo_color = Color(0.22, 0.26, 0.32, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="edge"]
+albedo_color = Color(0.32, 0.36, 0.41, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="iron"]
+albedo_color = Color(0.10, 0.12, 0.15, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="relic_gold"]
+albedo_color = Color(0.55, 0.40, 0.16, 1)
+roughness = 0.9
+emission_enabled = true
+emission = Color(0.55, 0.40, 0.16, 1)
+emission_energy_multiplier = 1.8
+
+[sub_resource type="BoxMesh" id="Base0_mesh"]
+size = Vector3(1.65, 0.26, 1.65)
+
+[sub_resource type="BoxMesh" id="Shaft0_mesh"]
+size = Vector3(1.1, 1.08, 1.1)
+
+[sub_resource type="BoxMesh" id="Cap0_mesh"]
+size = Vector3(1.6, 0.22, 1.6)
+
+[sub_resource type="BoxMesh" id="Reliquary0_mesh"]
+size = Vector3(0.65, 0.72, 0.65)
+
+[sub_resource type="BoxMesh" id="Base1_mesh"]
+size = Vector3(1.65, 0.26, 1.65)
+
+[sub_resource type="BoxMesh" id="Shaft1_mesh"]
+size = Vector3(1.1, 1.08, 1.1)
+
+[sub_resource type="BoxMesh" id="Cap1_mesh"]
+size = Vector3(1.6, 0.22, 1.6)
+
+[sub_resource type="BoxMesh" id="Reliquary1_mesh"]
+size = Vector3(0.65, 0.72, 0.65)
+
+[sub_resource type="BoxMesh" id="Base2_mesh"]
+size = Vector3(1.65, 0.26, 1.65)
+
+[sub_resource type="BoxMesh" id="Shaft2_mesh"]
+size = Vector3(1.1, 1.08, 1.1)
+
+[sub_resource type="BoxMesh" id="Cap2_mesh"]
+size = Vector3(1.6, 0.22, 1.6)
+
+[sub_resource type="BoxMesh" id="Reliquary2_mesh"]
+size = Vector3(0.65, 0.72, 0.65)
+
+[node name="Pedestals" type="Node3D"]
+
+[node name="Pedestal0" parent="." type="Node3D"]
+position = Vector3(-3.6, 0, 2)
+metadata/offer_index = 0
+
+[node name="Base0" parent="Pedestal0" type="MeshInstance3D"]
+position = Vector3(0, 0.13, 0)
+mesh = SubResource("Base0_mesh")
+material_override = SubResource("edge")
+
+[node name="Shaft0" parent="Pedestal0" type="MeshInstance3D"]
+position = Vector3(0, 0.8, 0)
+mesh = SubResource("Shaft0_mesh")
+material_override = SubResource("stone")
+
+[node name="Cap0" parent="Pedestal0" type="MeshInstance3D"]
+position = Vector3(0, 1.45, 0)
+mesh = SubResource("Cap0_mesh")
+material_override = SubResource("edge")
+
+[node name="Pedestal1" parent="." type="Node3D"]
+position = Vector3(0, 0, 2)
+metadata/offer_index = 1
+
+[node name="Base1" parent="Pedestal1" type="MeshInstance3D"]
+position = Vector3(0, 0.13, 0)
+mesh = SubResource("Base1_mesh")
+material_override = SubResource("edge")
+
+[node name="Shaft1" parent="Pedestal1" type="MeshInstance3D"]
+position = Vector3(0, 0.8, 0)
+mesh = SubResource("Shaft1_mesh")
+material_override = SubResource("stone")
+
+[node name="Cap1" parent="Pedestal1" type="MeshInstance3D"]
+position = Vector3(0, 1.45, 0)
+mesh = SubResource("Cap1_mesh")
+material_override = SubResource("edge")
+
+[node name="Pedestal2" parent="." type="Node3D"]
+position = Vector3(3.6, 0, 2)
+metadata/offer_index = 2
+
+[node name="Base2" parent="Pedestal2" type="MeshInstance3D"]
+position = Vector3(0, 0.13, 0)
+mesh = SubResource("Base2_mesh")
+material_override = SubResource("edge")
+
+[node name="Shaft2" parent="Pedestal2" type="MeshInstance3D"]
+position = Vector3(0, 0.8, 0)
+mesh = SubResource("Shaft2_mesh")
+material_override = SubResource("stone")
+
+[node name="Cap2" parent="Pedestal2" type="MeshInstance3D"]
+position = Vector3(0, 1.45, 0)
+mesh = SubResource("Cap2_mesh")
+material_override = SubResource("edge")
+
+[node name="Relic" parent="Pedestal0" type="Sprite3D"]
+position = Vector3(0, 2, 0)
+pixel_size = 0.025
+billboard = 1
+texture_filter = 0
+[node name="Glow" parent="Pedestal0" type="OmniLight3D"]
+position = Vector3(0, 1.8, 0.6)
+light_color = Color(0.62, 0.78, 1, 1)
+light_energy = 0.15
+omni_range = 3.0
+
+[node name="Relic" parent="Pedestal1" type="Sprite3D"]
+position = Vector3(0, 2, 0)
+pixel_size = 0.025
+billboard = 1
+texture_filter = 0
+[node name="Glow" parent="Pedestal1" type="OmniLight3D"]
+position = Vector3(0, 1.8, 0.6)
+light_color = Color(0.62, 0.78, 1, 1)
+light_energy = 0.15
+omni_range = 3.0
+
+[node name="Relic" parent="Pedestal2" type="Sprite3D"]
+position = Vector3(0, 2, 0)
+pixel_size = 0.025
+billboard = 1
+texture_filter = 0
+[node name="Glow" parent="Pedestal2" type="OmniLight3D"]
+position = Vector3(0, 1.8, 0.6)
+light_color = Color(0.62, 0.78, 1, 1)
+light_energy = 0.15
+omni_range = 3.0

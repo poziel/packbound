@@ -10,15 +10,17 @@ func _run() -> void:
 	state.enemy["hp"] = 1000
 	var stats: Dictionary = state.effects()
 	var lines: String = "\n".join(state.outcome(stats)["player_events"])
-	check(lines.find("Spark Ring") >= 0 and lines.find("Spark Ring") < lines.find("activate"), "Resource sources precede paid activations")
-	check(lines.find("activate [url=catalog_item_frost_wand]") < lines.find("activate [url=catalog_item_ember_tome]"), "Activation log follows priority before reading order")
-	check(lines.contains("2 mana to activate"), "Costs identify the activated item")
+	check(lines.find("Spark Ring") >= 0 and lines.find("Spark Ring") < lines.find("cost:"), "Resource sources precede paid activations")
+	check(lines.find("Frost Wand[/url] activation") < lines.find("Ember Grimoire[/url] activation"), "Activation log follows priority before reading order")
+	check(lines.contains("activation (cost: 2 mana)"), "Costs identify the activated item")
+	check(not lines.contains("Round 1:") and not lines.contains("0 stamina"), "Refill logs omit round narration and zero resources")
+	check(lines.contains("[indent]– Contributes") and not lines.contains("[/url] contributes"), "Item effects are indented without repeating their source")
 	check(lines.find("Fire trace") < lines.find("cause Thermal Shock"), "Traces appear before the reaction consuming them")
 	check(lines.contains("1 fire + 1 frost cause Thermal Shock"), "Reaction names exact consumed quantities")
 	check(not lines.contains("mana on items"), "Aggregate spending does not duplicate individual costs")
 	frost["priority"] = 0
 	var reading_lines: String = "\n".join(state.outcome(state.effects())["player_events"])
-	check(reading_lines.find("activate [url=catalog_item_ember_tome]") < reading_lines.find("activate [url=catalog_item_frost_wand]"), "Equal priorities use backpack reading order")
+	check(reading_lines.find("Ember Grimoire[/url] activation") < reading_lines.find("Frost Wand[/url] activation"), "Equal priorities use backpack reading order")
 	frost["priority"] = 1
 	for recipe: Dictionary in preload("res://scripts/elemental_combat.gd").REACTIONS:
 		check(not PackKeywordLinks.entry("reaction_" + str(recipe["id"])).get("body", "").is_empty(), "Reaction definition exists: " + str(recipe["name"]))
@@ -35,9 +37,21 @@ func _run() -> void:
 	check(state.effects()["reactions"] == ["thermal_shock"], "A surviving enemy trace reacts with the next cast")
 	state.elemental_traces = {"fire": [1]}
 	check(state.effects()["reactions"].is_empty(), "Expired traces cannot trigger reactions")
+	_shield_bonus_checks()
 	await _ui_checks(state)
 	print("Causal combat log: %d checks, %d failures" % [checks, failures])
 	quit(1 if failures else 0)
+
+func _shield_bonus_checks() -> void:
+	var state: PackRun = fixture()
+	state.items.clear()
+	state.add_item("cracked_shield", Vector2i.ZERO)
+	state.add_item("iron_charm", Vector2i.RIGHT)
+	var lines: String = "\n".join(state.outcome(state.effects())["player_events"])
+	check(lines.contains("Cracked Shield[/url] activation"), "Starting shield grant has an item heading")
+	check(lines.contains("[indent]– Receives +3 block from touching [url=catalog_item_iron_charm]"), "Shield grant identifies the booster")
+	check(lines.find("Receives +3 block") < lines.find("Granted 8 block at combat start"), "Bonus precedes the boosted shield total")
+	check(lines.contains("[indent]– Granted 1 stamina at combat start"), "Passive resource grants use the same grouped format")
 
 func _ui_checks(state: PackRun) -> void:
 	game = load("res://scenes/main.tscn").instantiate()

@@ -81,7 +81,7 @@ func notify_craft_placement(before: Array[String], placed_ids: Array[int] = []) 
 
 func crafting_attempts() -> Array[Dictionary]:
 	var result: Array[Dictionary] = []
-	if run == null or run.combat_state != PackRun.CombatState.PREPARING:
+	if run == null or not run.can_edit_inventory():
 		return result
 	var signature: Array = [run.get_instance_id(), run.phase]
 	for item in run.items:
@@ -267,6 +267,11 @@ func bonus_markers(target: Dictionary) -> Array[Dictionary]:
 				contacts.append({"cell": receiver - Vector2i(target["cell"]), "direction": direction, "source_id": int(source["id"])})
 		# A long shared edge must not also advertise spurious corner contacts
 		# from neighboring cells of the same supplier.
+		contacts.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+			if a.cell.y != b.cell.y: return a.cell.y < b.cell.y
+			if a.cell.x != b.cell.x: return a.cell.x < b.cell.x
+			if a.direction.y != b.direction.y: return a.direction.y < b.direction.y
+			return a.direction.x < b.direction.x)
 		for contact in contacts:
 			var direction: Vector2i = contact.direction
 			if has_edge and direction.x != 0 and direction.y != 0:
@@ -281,6 +286,8 @@ func bonus_markers(target: Dictionary) -> Array[Dictionary]:
 					span += 1
 				contact["span"] = span
 			result.append(contact)
+			# One marker per source/recipient pair, at its first reading-order edge.
+			break
 	return result
 
 func bonus_related_ids() -> Array[int]:
@@ -344,7 +351,7 @@ func _draw_bonus_markers(item: Dictionary, at: Vector2, color: Color, opacity: f
 	draw_set_transform(Vector2.ZERO)
 
 func _get_tooltip(at_position: Vector2) -> String:
-	if managed_inspection or not tooltips_enabled or run == null or not dragging.is_empty() or run.phase != PackRun.Phase.FIGHT:
+	if managed_inspection or not tooltips_enabled or run == null or not dragging.is_empty():
 		return ""
 	var item: Dictionary = hit_item(at_position)
 	return str(item["id"]) if not item.is_empty() else ""
@@ -575,7 +582,7 @@ func _gui_input(event: InputEvent) -> void:
 			return
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			var item: Dictionary = hit_item(pointer)
-			if not item.is_empty() and run.phase == PackRun.Phase.FIGHT:
+			if not item.is_empty() and run.can_edit_inventory():
 				if event.shift_pressed and storage != null:
 					storage.quick_transfer(item)
 				else:

@@ -1,11 +1,15 @@
 [gd_scene format=3]
 [ext_resource type="Script" path="res://scripts/gameplay/rooms/cursed_room.gd" id="room"]
 [ext_resource type="Environment" path="res://scenes/gameplay/rooms/cursed/cursed_environment.tres" id="environment"]
-[ext_resource type="PackedScene" path="res://scenes/gameplay/rooms/cursed/stairs/entrance_stairs.tscn" id="entry"]
-[ext_resource type="PackedScene" path="res://scenes/gameplay/rooms/cursed/stairs/exit_stairs.tscn" id="exit"]
+[ext_resource type="PackedScene" path="res://components/staircase/staircase.tscn" id="entry"]
+[ext_resource type="PackedScene" path="res://components/staircase/staircase.tscn" id="exit"]
 [ext_resource type="PackedScene" path="res://components/torch/torch.tscn" id="torch"]
 [ext_resource type="Shader" path="res://scenes/gameplay/rooms/cursed/curse.gdshader" id="curse_shader"]
 [ext_resource type="Shader" path="res://scenes/gameplay/rooms/cursed/dust.gdshader" id="dust_shader"]
+
+[ext_resource type="PackedScene" path="res://scenes/gameplay/rooms/cursed/stairs/visuals.tscn" id="stair_art_entry"]
+
+[ext_resource type="PackedScene" path="res://scenes/gameplay/rooms/cursed/stairs/visuals.tscn" id="stair_art_exit"]
 
 [sub_resource type="StandardMaterial3D" id="stone0"]
 albedo_color = Color(0.20392, 0.18824, 0.24706, 1)
@@ -4941,10 +4945,24 @@ rotation = Vector3(-0.093477,0,0)
 position = Vector3(-6.4,0.06,-2)
 
 [node name="EntryStairs" parent="." instance=ExtResource("entry")]
+role = 0
 position = Vector3(-5.8607135,0,10.8)
 
+[node name="DefaultStone" parent="EntryStairs/Visuals" index="0"]
+visible = false
+
+[node name="RoomDesign" parent="EntryStairs/Visuals" instance=ExtResource("stair_art_entry")]
+
+
 [node name="ExitStairs" parent="." instance=ExtResource("exit")]
+role = 1
 position = Vector3(-6.4,0,-8)
+
+[node name="DefaultStone" parent="ExitStairs/Visuals" index="0"]
+visible = false
+
+[node name="RoomDesign" parent="ExitStairs/Visuals" instance=ExtResource("stair_art_exit")]
+
 
 [node name="MonsterFill" type="OmniLight3D" parent="CurseLights"]
 position = Vector3(-6.4, 4, 2)

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bdgnu6bvr72li" path="res://scripts/gameplay/gameplay_background.gd" id="background"]
 [ext_resource type="Shader" uid="uid://bbwq1bjuua7jx" path="res://assets/shaders/gameplay_pixel.gdshader" id="pixel_shader"]
-
 [ext_resource type="PackedScene" path="res://scenes/gameplay/gameplay_world.tscn" id="world"]
 
 [sub_resource type="ShaderMaterial" id="pixel_material"]
@@ -42,7 +41,7 @@ handle_input_locally = false
 size = Vector2i(426, 240)
 render_target_update_mode = 4
 
-[node name="GameplayWorld" parent="Render/Viewport" instance=ExtResource("world")]
+[node name="GameplayWorld" parent="Render/Viewport" unique_id=1495499046 instance=ExtResource("world")]
 
 [node name="Fade" type="ColorRect" parent="." unique_id=528935534]
 visible = false

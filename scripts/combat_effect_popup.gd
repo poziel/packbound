@@ -39,6 +39,7 @@ static func draw(target: Control, popups: Array[Dictionary]) -> void:
 		var scale: float = lerpf(0.35, 1.4, smoothstep(0.0, 0.18, t))
 		if t > 0.62:
 			scale = lerpf(1.4, 0.0, smoothstep(0.62, 1.0, t))
+		scale *= float(popup.get("size_multiplier", 1.0))
 		var at: Vector2 = popup["anchor"] + Vector2(float(popup["drift"]) * t, -float(popup["height"]) * t)
 		var label: String = str(popup["amount"])
 		var width: float = font.get_string_size(label, HORIZONTAL_ALIGNMENT_LEFT, -1, 18).x

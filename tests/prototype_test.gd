@@ -337,7 +337,7 @@ func _progression_checks() -> void:
 	var milestone_count: int = 0
 	for floor_index in range(20):
 		check(state.fight == floor_index, "Floor advancement %d" % (floor_index + 1))
-		if PackRun.RELIC_FLOORS.has(floor_index + 1):
+		if floor_index == 0:
 			check(state.phase == PackRun.Phase.FIGHT and state.relic_offers.size() == 3, "Relic choices at floor %d" % (floor_index + 1))
 			state.choose_relic(state.relic_offers[0])
 			milestone_count += 1
@@ -348,8 +348,11 @@ func _progression_checks() -> void:
 		state.end_turn()
 		check(state.phase == PackRun.Phase.LOOT and state.offers.size() == 3, "Every floor awards an item, including floor20")
 		state.advance_encounter()
+		if state.phase == PackRun.Phase.SELECTOR:
+			check(state.display_floor() == floor_index + 1, "Selector preserves completed depth")
+			state.choose_destination("combat")
 		state.choose_loot(state.offers[0])
-	check(state.phase == PackRun.Phase.VICTORY and state.items.size() == 23 and milestone_count == 4, "Twenty rewards, four relics and victory")
+	check(state.phase == PackRun.Phase.VICTORY and state.items.size() == 23 and milestone_count == 1, "Twenty combat rewards, starting relic and victory")
 	for index in range(20):
 		state = fixture()
 		state.fight = index

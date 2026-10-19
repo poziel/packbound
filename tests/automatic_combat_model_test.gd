@@ -86,6 +86,7 @@ func _finite_resource_checks() -> void:
 	state.hp = 10
 	state.phase = PackRun.Phase.LOOT
 	state.advance_encounter()
+	state.choose_destination("combat")
 	check(state.hp == 10 and state.mana == 0 and state.block == 0, "Floor entry clears temporary resources without healing")
 	if state.has_method("start_combat"):
 		state.items[0]["mana"] = 7
@@ -141,6 +142,7 @@ func _terminal_checks() -> void:
 	check(not result["has_response"] and state.block == 5, "Lethal champion action preserves block without enemy sunder")
 	check(state.begin_turn().is_empty() and state.complete_turn().is_empty(), "Finished fight rejects further checkpoints")
 	state.fight = 19
+	state.floor_index = 19
 	state.advance_encounter()
 	var count: int = state.items.size()
 	state.choose_loot(state.offers[0])

@@ -172,21 +172,26 @@ for i in range(45):
 node("CameraStart",kind="Marker3D",extra='position = Vector3(-5.8607135,3,8)\nrotation = Vector3(-0.093477,0,0)\n')
 slots = node("EnemySlots")
 node("Slot1",slots,"Marker3D",'position = Vector3(-6.4,0.06,-2)\n')
-node("EntryStairs",extra='position = Vector3(-5.8607135,0,10.8)\n',instance="entry")
+node("EntryStairs",extra='role = 0\nposition = Vector3(-5.8607135,0,10.8)\n',instance="entry")
+node("DefaultStone", "EntryStairs/Visuals", extra='visible = false\n')
+node("RoomDesign", "EntryStairs/Visuals", instance="stair_art")
 node("ExitStairs",extra='position = Vector3(-6.4,0,-8)\n',instance="exit")
+node("DefaultStone", "ExitStairs/Visuals", extra='visible = false\n')
+node("RoomDesign", "ExitStairs/Visuals", instance="stair_art")
 
 header = '''[gd_scene format=3]
 [ext_resource type="Script" path="res://scripts/gameplay/rooms/cursed_room.gd" id="room"]
 [ext_resource type="Environment" path="res://scenes/gameplay/rooms/cursed/cursed_environment.tres" id="environment"]
-[ext_resource type="PackedScene" path="res://scenes/gameplay/rooms/cursed/stairs/entrance_stairs.tscn" id="entry"]
-[ext_resource type="PackedScene" path="res://scenes/gameplay/rooms/cursed/stairs/exit_stairs.tscn" id="exit"]
+[ext_resource type="PackedScene" path="res://components/staircase/staircase.tscn" id="entry"]
+[ext_resource type="PackedScene" path="res://components/staircase/staircase.tscn" id="exit"]
+[ext_resource type="PackedScene" path="res://scenes/gameplay/rooms/cursed/stairs/visuals.tscn" id="stair_art"]
 [ext_resource type="PackedScene" path="res://components/torch/torch.tscn" id="torch"]
 [ext_resource type="Shader" path="res://scenes/gameplay/rooms/cursed/curse.gdshader" id="curse_shader"]
 [ext_resource type="Shader" path="res://scenes/gameplay/rooms/cursed/dust.gdshader" id="dust_shader"]
 '''
 root = '[node name="CursedDepths" type="Node3D"]\nscript = ExtResource("room")\nenvironment = ExtResource("environment")\n'
 (OUT/'cursed_room.tscn').write_text(header+'\n'+'\n'.join(resources)+'\n'+root+'\n'+'\n'.join(nodes),encoding='utf-8')
-source = (ROOT/'components/staircase/stone_visuals.tscn').read_text(encoding='utf-8')
+source = (ROOT/'components/staircase/staircase_geometry.tscn').read_text(encoding='utf-8')
 source = source.replace('Color(0.22, 0.26, 0.32, 1)','Color(0.19, 0.16, 0.24, 1)').replace('Color(0.32, 0.36, 0.41, 1)','Color(0.32, 0.27, 0.38, 1)')
 (OUT/'stair_visuals.tscn').write_text(source,encoding='utf-8')
 print(f'Cursed room candidate: {len(nodes)} saved nodes, {len(meshes)} shared mesh sizes')

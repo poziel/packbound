@@ -130,6 +130,108 @@ script = ExtResource("menu_button_style")
 palette = SubResource("button_palette")
 compact = true
 
+[sub_resource type="Resource" id="danger_palette"]
+script = ExtResource("menu_button_palette")
+outline = Color(0.16, 0.07, 0.1, 1)
+face = Color(0.57, 0.24, 0.29, 1)
+hover_face = Color(0.71, 0.32, 0.36, 1)
+pressed_face = Color(0.42, 0.16, 0.21, 1)
+disabled_face = Color(0.36, 0.29, 0.32, 1)
+
+[sub_resource type="StyleBox" id="danger_right_disabled"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 40.0
+content_margin_bottom = 12.0
+script = ExtResource("menu_button_style")
+ends = 2
+palette = SubResource("danger_palette")
+state = 3
+
+[sub_resource type="StyleBox" id="danger_right_focus"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 40.0
+content_margin_bottom = 12.0
+script = ExtResource("menu_button_style")
+ends = 2
+palette = SubResource("danger_palette")
+state = 4
+
+[sub_resource type="StyleBox" id="danger_right_hover"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 40.0
+content_margin_bottom = 12.0
+script = ExtResource("menu_button_style")
+ends = 2
+palette = SubResource("danger_palette")
+state = 1
+
+[sub_resource type="StyleBox" id="danger_right_pressed"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 16.0
+content_margin_top = 14.0
+content_margin_right = 40.0
+content_margin_bottom = 10.0
+script = ExtResource("menu_button_style")
+ends = 2
+palette = SubResource("danger_palette")
+state = 2
+
+[sub_resource type="StyleBox" id="danger_right_normal"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 40.0
+content_margin_bottom = 12.0
+script = ExtResource("menu_button_style")
+ends = 2
+palette = SubResource("danger_palette")
+
+[sub_resource type="StyleBox" id="simple_danger_hover"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+script = ExtResource("menu_button_style")
+ends = 3
+palette = SubResource("danger_palette")
+state = 1
+
+[sub_resource type="StyleBox" id="simple_danger_pressed"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+script = ExtResource("menu_button_style")
+ends = 3
+palette = SubResource("danger_palette")
+state = 2
+
+[sub_resource type="StyleBox" id="simple_danger_normal"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+script = ExtResource("menu_button_style")
+ends = 3
+palette = SubResource("danger_palette")
+
 [sub_resource type="AtlasTexture" id="delver_normal_texture"]
 atlas = ExtResource("menu_frames")
 region = Rect2(0, 0, 48, 48)
@@ -650,6 +752,100 @@ script = ExtResource("menu_button_style")
 ends = 2
 palette = SubResource("button_palette")
 
+[sub_resource type="StyleBox" id="simple_button_disabled"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+script = ExtResource("menu_button_style")
+ends = 3
+palette = SubResource("button_palette")
+state = 3
+
+[sub_resource type="StyleBox" id="simple_button_focus"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 11.0
+content_margin_top = 7.0
+content_margin_right = 11.0
+content_margin_bottom = 7.0
+script = ExtResource("menu_button_style")
+ends = 3
+palette = SubResource("button_palette")
+state = 4
+
+[sub_resource type="StyleBox" id="simple_button_hover"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+script = ExtResource("menu_button_style")
+ends = 3
+palette = SubResource("button_palette")
+state = 1
+
+[sub_resource type="StyleBox" id="simple_button_pressed"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+script = ExtResource("menu_button_style")
+ends = 3
+palette = SubResource("button_palette")
+state = 2
+
+[sub_resource type="StyleBox" id="simple_button_normal"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+script = ExtResource("menu_button_style")
+ends = 3
+palette = SubResource("button_palette")
+
+[sub_resource type="StyleBox" id="simple_success_hover"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+script = ExtResource("menu_button_style")
+ends = 3
+palette = SubResource("resume_palette")
+state = 1
+
+[sub_resource type="StyleBox" id="simple_success_pressed"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+script = ExtResource("menu_button_style")
+ends = 3
+palette = SubResource("resume_palette")
+state = 2
+
+[sub_resource type="StyleBox" id="simple_success_normal"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+script = ExtResource("menu_button_style")
+ends = 3
+palette = SubResource("resume_palette")
+
 [sub_resource type="StyleBox" id="v_thumb"]
 resource_local_to_scene = false
 resource_name = ""
@@ -731,184 +927,6 @@ color = Color(0.498039, 0.537255, 0.396078, 1)
 thickness = 2
 vertical = true
 
-[sub_resource type="Resource" id="danger_palette"]
-script = ExtResource("menu_button_palette")
-outline = Color(0.16, 0.07, 0.10, 1)
-face = Color(0.57, 0.24, 0.29, 1)
-hover_face = Color(0.71, 0.32, 0.36, 1)
-pressed_face = Color(0.42, 0.16, 0.21, 1)
-disabled_face = Color(0.36, 0.29, 0.32, 1)
-
-[sub_resource type="StyleBox" id="danger_right_normal"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = 16.0
-content_margin_top = 12.0
-content_margin_right = 40.0
-content_margin_bottom = 12.0
-script = ExtResource("menu_button_style")
-ends = 2
-palette = SubResource("danger_palette")
-
-[sub_resource type="StyleBox" id="danger_right_hover"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = 16.0
-content_margin_top = 12.0
-content_margin_right = 40.0
-content_margin_bottom = 12.0
-script = ExtResource("menu_button_style")
-ends = 2
-palette = SubResource("danger_palette")
-state = 1
-
-[sub_resource type="StyleBox" id="danger_right_pressed"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = 16.0
-content_margin_top = 14.0
-content_margin_right = 40.0
-content_margin_bottom = 10.0
-script = ExtResource("menu_button_style")
-ends = 2
-palette = SubResource("danger_palette")
-state = 2
-
-[sub_resource type="StyleBox" id="danger_right_disabled"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = 16.0
-content_margin_top = 12.0
-content_margin_right = 40.0
-content_margin_bottom = 12.0
-script = ExtResource("menu_button_style")
-ends = 2
-palette = SubResource("danger_palette")
-state = 3
-
-[sub_resource type="StyleBox" id="danger_right_focus"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = 16.0
-content_margin_top = 12.0
-content_margin_right = 40.0
-content_margin_bottom = 12.0
-script = ExtResource("menu_button_style")
-ends = 2
-palette = SubResource("danger_palette")
-state = 4
-
-
-[sub_resource type="StyleBox" id="simple_button_normal"]
-script = ExtResource("menu_button_style")
-ends = 3
-palette = SubResource("button_palette")
-state = 0
-content_margin_left = 12.0
-content_margin_top = 8.0
-content_margin_right = 12.0
-content_margin_bottom = 8.0
-
-[sub_resource type="StyleBox" id="simple_button_hover"]
-script = ExtResource("menu_button_style")
-ends = 3
-palette = SubResource("button_palette")
-state = 1
-content_margin_left = 12.0
-content_margin_top = 8.0
-content_margin_right = 12.0
-content_margin_bottom = 8.0
-
-[sub_resource type="StyleBox" id="simple_button_pressed"]
-script = ExtResource("menu_button_style")
-ends = 3
-palette = SubResource("button_palette")
-state = 2
-content_margin_left = 12.0
-content_margin_top = 10.0
-content_margin_right = 12.0
-content_margin_bottom = 6.0
-
-[sub_resource type="StyleBox" id="simple_button_disabled"]
-script = ExtResource("menu_button_style")
-ends = 3
-palette = SubResource("button_palette")
-state = 3
-content_margin_left = 12.0
-content_margin_top = 8.0
-content_margin_right = 12.0
-content_margin_bottom = 8.0
-
-[sub_resource type="StyleBox" id="simple_button_focus"]
-script = ExtResource("menu_button_style")
-ends = 3
-palette = SubResource("button_palette")
-state = 4
-content_margin_left = 11.0
-content_margin_top = 7.0
-content_margin_right = 11.0
-content_margin_bottom = 7.0
-
-[sub_resource type="StyleBox" id="simple_danger_normal"]
-script = ExtResource("menu_button_style")
-ends = 3
-palette = SubResource("danger_palette")
-state = 0
-content_margin_left = 12.0
-content_margin_top = 8.0
-content_margin_right = 12.0
-content_margin_bottom = 8.0
-
-[sub_resource type="StyleBox" id="simple_danger_hover"]
-script = ExtResource("menu_button_style")
-ends = 3
-palette = SubResource("danger_palette")
-state = 1
-content_margin_left = 12.0
-content_margin_top = 8.0
-content_margin_right = 12.0
-content_margin_bottom = 8.0
-
-[sub_resource type="StyleBox" id="simple_danger_pressed"]
-script = ExtResource("menu_button_style")
-ends = 3
-palette = SubResource("danger_palette")
-state = 2
-content_margin_left = 12.0
-content_margin_top = 10.0
-content_margin_right = 12.0
-content_margin_bottom = 6.0
-
-[sub_resource type="StyleBox" id="simple_success_normal"]
-script = ExtResource("menu_button_style")
-ends = 3
-palette = SubResource("resume_palette")
-state = 0
-content_margin_left = 12.0
-content_margin_top = 8.0
-content_margin_right = 12.0
-content_margin_bottom = 8.0
-
-[sub_resource type="StyleBox" id="simple_success_hover"]
-script = ExtResource("menu_button_style")
-ends = 3
-palette = SubResource("resume_palette")
-state = 1
-content_margin_left = 12.0
-content_margin_top = 8.0
-content_margin_right = 12.0
-content_margin_bottom = 8.0
-
-[sub_resource type="StyleBox" id="simple_success_pressed"]
-script = ExtResource("menu_button_style")
-ends = 3
-palette = SubResource("resume_palette")
-state = 2
-content_margin_left = 12.0
-content_margin_top = 10.0
-content_margin_right = 12.0
-content_margin_bottom = 6.0
-
 [resource]
 default_font = ExtResource("menu_body")
 default_font_size = 16
@@ -925,32 +943,6 @@ Button/styles/hover = SubResource("ornate_hover")
 Button/styles/hover_pressed = SubResource("ornate_pressed")
 Button/styles/normal = SubResource("ornate_normal")
 Button/styles/pressed = SubResource("ornate_pressed")
-SimpleMenuButton/base_type = &"Button"
-SimpleMenuButton/styles/normal = SubResource("simple_button_normal")
-SimpleMenuButton/styles/hover = SubResource("simple_button_hover")
-SimpleMenuButton/styles/pressed = SubResource("simple_button_pressed")
-SimpleMenuButton/styles/hover_pressed = SubResource("simple_button_pressed")
-SimpleMenuButton/styles/focus = SubResource("simple_button_focus")
-SimpleMenuButton/styles/disabled = SubResource("simple_button_disabled")
-SimpleMenuButton/colors/font_color = Color(0.91, 0.94, 0.91, 1)
-SimpleMenuButton/colors/font_hover_color = Color(0.945, 0.945, 0.851, 1)
-SimpleMenuButton/colors/font_pressed_color = Color(0.91, 0.94, 0.91, 1)
-SimpleMenuButton/colors/font_focus_color = Color(0.945, 0.945, 0.851, 1)
-SimpleMenuButton/colors/font_disabled_color = Color(0.62, 0.65, 0.66, 1)
-SimpleMenuIconButton/base_type = &"SimpleMenuButton"
-SimpleMenuIconButton/constants/icon_max_width = 20
-HoldSimpleMenuButton/base_type = &"SimpleMenuButton"
-HoldSimpleMenuIconButton/base_type = &"SimpleMenuIconButton"
-DangerSimpleMenuIconButton/base_type = &"SimpleMenuIconButton"
-DangerSimpleMenuIconButton/styles/normal = SubResource("simple_danger_normal")
-DangerSimpleMenuIconButton/styles/hover = SubResource("simple_danger_hover")
-DangerSimpleMenuIconButton/styles/pressed = SubResource("simple_danger_pressed")
-DangerSimpleMenuIconButton/styles/hover_pressed = SubResource("simple_danger_pressed")
-SuccessSimpleMenuIconButton/base_type = &"SimpleMenuIconButton"
-SuccessSimpleMenuIconButton/styles/normal = SubResource("simple_success_normal")
-SuccessSimpleMenuIconButton/styles/hover = SubResource("simple_success_hover")
-SuccessSimpleMenuIconButton/styles/pressed = SubResource("simple_success_pressed")
-SuccessSimpleMenuIconButton/styles/hover_pressed = SubResource("simple_success_pressed")
 CompactMenuButton/base_type = &"Button"
 CompactMenuButton/styles/disabled = SubResource("compact_disabled")
 CompactMenuButton/styles/focus = SubResource("compact_focus")
@@ -960,6 +952,18 @@ CompactMenuButton/styles/normal = SubResource("compact_normal")
 CompactMenuButton/styles/pressed = SubResource("compact_pressed")
 DangerPixelButton/base_type = &"PackPixelButton"
 DangerPixelButton/colors/face_color = Color(0.568627, 0.262745, 0.329412, 1)
+DangerRightMenuButton/base_type = &"RightMenuButton"
+DangerRightMenuButton/styles/disabled = SubResource("danger_right_disabled")
+DangerRightMenuButton/styles/focus = SubResource("danger_right_focus")
+DangerRightMenuButton/styles/hover = SubResource("danger_right_hover")
+DangerRightMenuButton/styles/hover_pressed = SubResource("danger_right_pressed")
+DangerRightMenuButton/styles/normal = SubResource("danger_right_normal")
+DangerRightMenuButton/styles/pressed = SubResource("danger_right_pressed")
+DangerSimpleMenuIconButton/base_type = &"SimpleMenuIconButton"
+DangerSimpleMenuIconButton/styles/hover = SubResource("simple_danger_hover")
+DangerSimpleMenuIconButton/styles/hover_pressed = SubResource("simple_danger_pressed")
+DangerSimpleMenuIconButton/styles/normal = SubResource("simple_danger_normal")
+DangerSimpleMenuIconButton/styles/pressed = SubResource("simple_danger_pressed")
 DelverTileButton/base_type = &"Button"
 DelverTileButton/colors/font_color = Color(0.85, 0.886, 0.82, 1)
 DelverTileButton/colors/font_focus_color = Color(0.945, 0.945, 0.851, 1)
@@ -984,6 +988,8 @@ HScrollBar/styles/scroll = SubResource("h_track")
 HScrollBar/styles/scroll_focus = SubResource("h_focus")
 HSeparator/constants/separation = 20
 HSeparator/styles/separator = SubResource("h_separator")
+HoldSimpleMenuButton/base_type = &"SimpleMenuButton"
+HoldSimpleMenuIconButton/base_type = &"SimpleMenuIconButton"
 Label/colors/font_color = Color(0.933333, 0.933333, 0.858824, 1)
 LeftMenuButton/base_type = &"Button"
 LeftMenuButton/styles/disabled = SubResource("left_disabled")
@@ -1056,7 +1062,26 @@ RightMenuButton/styles/hover = SubResource("right_hover")
 RightMenuButton/styles/hover_pressed = SubResource("right_pressed")
 RightMenuButton/styles/normal = SubResource("right_normal")
 RightMenuButton/styles/pressed = SubResource("right_pressed")
+SimpleMenuButton/base_type = &"Button"
+SimpleMenuButton/colors/font_color = Color(0.91, 0.94, 0.91, 1)
+SimpleMenuButton/colors/font_disabled_color = Color(0.62, 0.65, 0.66, 1)
+SimpleMenuButton/colors/font_focus_color = Color(0.945, 0.945, 0.851, 1)
+SimpleMenuButton/colors/font_hover_color = Color(0.945, 0.945, 0.851, 1)
+SimpleMenuButton/colors/font_pressed_color = Color(0.91, 0.94, 0.91, 1)
+SimpleMenuButton/styles/disabled = SubResource("simple_button_disabled")
+SimpleMenuButton/styles/focus = SubResource("simple_button_focus")
+SimpleMenuButton/styles/hover = SubResource("simple_button_hover")
+SimpleMenuButton/styles/hover_pressed = SubResource("simple_button_pressed")
+SimpleMenuButton/styles/normal = SubResource("simple_button_normal")
+SimpleMenuButton/styles/pressed = SubResource("simple_button_pressed")
+SimpleMenuIconButton/base_type = &"SimpleMenuButton"
+SimpleMenuIconButton/constants/icon_max_width = 20
 StartMenuButton/base_type = &"ResumeMenuButton"
+SuccessSimpleMenuIconButton/base_type = &"SimpleMenuIconButton"
+SuccessSimpleMenuIconButton/styles/hover = SubResource("simple_success_hover")
+SuccessSimpleMenuIconButton/styles/hover_pressed = SubResource("simple_success_pressed")
+SuccessSimpleMenuIconButton/styles/normal = SubResource("simple_success_normal")
+SuccessSimpleMenuIconButton/styles/pressed = SubResource("simple_success_pressed")
 TooltipLabel/font_sizes/font_size = 16
 TooltipLabel/fonts/font = ExtResource("menu_body")
 TooltipPanel/styles/panel = SubResource("StyleBoxTexture_m72v5")
@@ -1073,11 +1098,3 @@ VScrollBar/styles/scroll = SubResource("v_track")
 VScrollBar/styles/scroll_focus = SubResource("v_focus")
 VSeparator/constants/separation = 20
 VSeparator/styles/separator = SubResource("v_separator")
-
-DangerRightMenuButton/base_type = &"RightMenuButton"
-DangerRightMenuButton/styles/normal = SubResource("danger_right_normal")
-DangerRightMenuButton/styles/hover = SubResource("danger_right_hover")
-DangerRightMenuButton/styles/pressed = SubResource("danger_right_pressed")
-DangerRightMenuButton/styles/disabled = SubResource("danger_right_disabled")
-DangerRightMenuButton/styles/focus = SubResource("danger_right_focus")
-DangerRightMenuButton/styles/hover_pressed = SubResource("danger_right_pressed")

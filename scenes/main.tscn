@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" path="res://assets/audio/combat/enemy_hit.wav" id="enemy_hit"]
 [ext_resource type="AudioStream" path="res://assets/audio/combat/enemy_death.wav" id="enemy_death"]
 [ext_resource type="PackedScene" path="res://scenes/shared/loading_screen.tscn" id="loading_screen"]
+[ext_resource type="PackedScene" path="res://scenes/game/floor_flow.tscn" id="floor_flow"]
 
 [ext_resource type="AudioStream" path="res://assets/audio/combat/player_damage.wav" id="player_hit"]
 [ext_resource type="AudioStream" path="res://assets/audio/combat/player_shield_hit.wav" id="player_shield_hit"]
@@ -62,6 +63,10 @@ layout_mode = 1
 [node name="EnemyHover" type="Control" parent="Combat"]
 layout_mode = 0
 mouse_filter = 2
+
+[node name="FloorFlow" parent="." instance=ExtResource("floor_flow")]
+visible = false
+layout_mode = 1
 
 [node name="Overlay" parent="." unique_id=665691286 instance=ExtResource("dialogs")]
 visible = false

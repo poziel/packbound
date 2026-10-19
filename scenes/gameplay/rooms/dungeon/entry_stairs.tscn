@@ -1,5 +1,0 @@
-[gd_scene format=3]
-
-[ext_resource type="PackedScene" path="res://components/staircase/entrance_stairs.tscn" id="stairs"]
-
-[node name="EntryStairs" instance=ExtResource("stairs")]

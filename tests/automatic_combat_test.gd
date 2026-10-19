@@ -9,6 +9,7 @@ func _run() -> void:
 	test_viewport.add_child(game)
 	await process_frame
 	await process_frame
+	game.run_saves.directory = "res://workspace/logs/automatic-combat-saves"
 	for speed: int in [1, 2, 3, 4]:
 		_fixture(speed)
 		game._act()
@@ -93,10 +94,11 @@ func _run() -> void:
 	game.run.enemy["hp"] = 1
 	game._act()
 	check(game.run.hp == 30, "Lethal champion hit has no monster response")
-	await create_timer(0.1).timeout
+	while not game.enemy_card.defeated and game.playback.active:
+		await process_frame
 	check(game.enemy_card.defeated and not game.gameplay_background.enemy.visible and not game.enemy_card.death_pixels.pieces.is_empty(), "Lethal hit disperses before descent")
-	await create_timer(0.12).timeout
-	check(not game.playback.active and game.run.fight == 1 and game.run.hp == 30, "Lethal impact settles and descends automatically")
+	await create_timer(0.22).timeout
+	check(not game.playback.active and game.run.phase == PackRun.Phase.SELECTOR and game.run.fight == 0 and game.run.hp == 30, "Lethal impact settles and travels toward the selector")
 	_fixture(4)
 	game.run.hp = 1
 	game._act()
@@ -130,10 +132,13 @@ func _run() -> void:
 	quit(1 if failures else 0)
 
 func _fixture(speed: int) -> void:
-	game.start_run("ranger", 42)
+	# Generic playback timing does not depend on the ranger's required quiver.
+	game.start_run("warrior", 42)
 	game._open_reward(true)
 	game._choose(0)
 	game.front.settings["combat_speed"] = speed
+	game.front.settings["player_response_delay"] = 1.5
+	game.front.settings["enemy_response_delay"] = 1.5
 	game.run.relics.clear()
 	game.run.items.clear()
 	game.run.hp = 30
@@ -148,6 +153,7 @@ func _freed_scene_checks() -> void:
 		var disposable: Control = load("res://scenes/main.tscn").instantiate()
 		test_viewport.add_child(disposable)
 		await process_frame
+		disposable.run_saves.directory = "res://workspace/logs/automatic-combat-saves"
 		disposable.start_run("warrior", 42)
 		disposable.run.enemy["hp"] = 1000
 		disposable.run.enemy["max_hp"] = 1000

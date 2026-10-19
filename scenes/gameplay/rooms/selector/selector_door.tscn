@@ -1,0 +1,273 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://scripts/gameplay/selector_door.gd" id="controller"]
+[ext_resource type="Shader" path="res://scenes/gameplay/rooms/selector/masonry.gdshader" id="masonry"]
+[ext_resource type="Shader" path="res://scenes/gameplay/rooms/selector/door_glow.gdshader" id="glow"]
+[ext_resource type="FontFile" path="res://assets/fonts/PixelOperator.ttf" id="font"]
+[ext_resource type="PackedScene" path="res://components/torch/torch.tscn" id="torch"]
+[sub_resource type="ShaderMaterial" id="stone"]
+shader = ExtResource("masonry")
+shader_parameter/stone_color = Color(0.37, 0.40, 0.42, 1)
+[sub_resource type="StandardMaterial3D" id="iron"]
+albedo_color = Color(0.085, 0.105, 0.125, 1)
+metallic = 0.65
+roughness = 0.76
+[sub_resource type="StandardMaterial3D" id="plaque"]
+albedo_color = Color(0.13, 0.15, 0.17, 1)
+roughness = 0.9
+[sub_resource type="StandardMaterial3D" id="dark"]
+albedo_color = Color(0.006, 0.009, 0.015, 1)
+shading_mode = 0
+[sub_resource type="ShaderMaterial" id="glow_material"]
+resource_local_to_scene = true
+shader = ExtResource("glow")
+shader_parameter/strength = 0.015
+[sub_resource type="QuadMesh" id="glow_plane"]
+size = Vector2(1.35, 2.35)
+[sub_resource type="BoxMesh" id="LeftMesh"]
+size = Vector3(0.26, 2.4, 0.75)
+
+[sub_resource type="BoxMesh" id="RightMesh"]
+size = Vector3(0.26, 2.4, 0.75)
+
+[sub_resource type="BoxMesh" id="ArchLeftMesh"]
+size = Vector3(0.35, 0.3, 0.85)
+
+[sub_resource type="BoxMesh" id="ArchRightMesh"]
+size = Vector3(0.35, 0.3, 0.85)
+
+[sub_resource type="BoxMesh" id="ArchShoulderLeftMesh"]
+size = Vector3(0.34, 0.33, 0.85)
+
+[sub_resource type="BoxMesh" id="ArchShoulderRightMesh"]
+size = Vector3(0.34, 0.33, 0.85)
+
+[sub_resource type="BoxMesh" id="KeystoneMesh"]
+size = Vector3(0.33, 0.4, 0.85)
+
+[sub_resource type="BoxMesh" id="PlaqueRimMesh"]
+size = Vector3(1.65, 0.52, 0.20)
+
+[sub_resource type="BoxMesh" id="PlaqueMesh"]
+size = Vector3(1.48, 0.39, 0.08)
+
+[sub_resource type="BoxMesh" id="Pin9Mesh"]
+size = Vector3(0.045, 0.045, 0.035)
+
+[sub_resource type="BoxMesh" id="Pin10Mesh"]
+size = Vector3(0.045, 0.045, 0.035)
+
+[sub_resource type="BoxMesh" id="Pin11Mesh"]
+size = Vector3(0.045, 0.045, 0.035)
+
+[sub_resource type="BoxMesh" id="Pin12Mesh"]
+size = Vector3(0.045, 0.045, 0.035)
+
+[sub_resource type="BoxMesh" id="DarknessMesh"]
+size = Vector3(1.4, 2.6, 0.1)
+
+[sub_resource type="BoxMesh" id="Step0Mesh"]
+size = Vector3(1.38, 0.22, 0.39)
+
+[sub_resource type="BoxMesh" id="Step1Mesh"]
+size = Vector3(1.38, 0.22, 0.39)
+
+[sub_resource type="BoxMesh" id="Step2Mesh"]
+size = Vector3(1.38, 0.22, 0.39)
+
+[sub_resource type="BoxMesh" id="Step3Mesh"]
+size = Vector3(1.38, 0.22, 0.39)
+
+[sub_resource type="BoxMesh" id="Step4Mesh"]
+size = Vector3(1.38, 0.22, 0.39)
+
+[sub_resource type="BoxMesh" id="Step5Mesh"]
+size = Vector3(1.38, 0.22, 0.39)
+
+[sub_resource type="BoxMesh" id="Step6Mesh"]
+size = Vector3(1.38, 0.22, 0.39)
+
+[sub_resource type="BoxMesh" id="GateBar0Mesh"]
+size = Vector3(0.045, 0.40, 0.07)
+
+[sub_resource type="BoxMesh" id="GateBar1Mesh"]
+size = Vector3(0.045, 0.40, 0.07)
+
+[sub_resource type="BoxMesh" id="GateBar2Mesh"]
+size = Vector3(0.045, 0.40, 0.07)
+
+[sub_resource type="BoxMesh" id="GateBar3Mesh"]
+size = Vector3(0.045, 0.40, 0.07)
+
+[sub_resource type="BoxMesh" id="GateBar4Mesh"]
+size = Vector3(0.045, 0.40, 0.07)
+
+[sub_resource type="BoxMesh" id="GateBraceMesh"]
+size = Vector3(1.30, 0.09, 0.09)
+
+[node name="Door" type="Node3D"]
+script = ExtResource("controller")
+[node name="Left" type="MeshInstance3D" parent="."]
+position = Vector3(-0.76, 1.2, 0)
+mesh = SubResource("LeftMesh")
+material_override = SubResource("stone")
+
+[node name="Right" type="MeshInstance3D" parent="."]
+position = Vector3(0.76, 1.2, 0)
+mesh = SubResource("RightMesh")
+material_override = SubResource("stone")
+
+[node name="ArchLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-0.61, 2.37, 0)
+mesh = SubResource("ArchLeftMesh")
+material_override = SubResource("stone")
+
+[node name="ArchRight" type="MeshInstance3D" parent="."]
+position = Vector3(0.61, 2.37, 0)
+mesh = SubResource("ArchRightMesh")
+material_override = SubResource("stone")
+
+[node name="ArchShoulderLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-0.33, 2.54, 0)
+mesh = SubResource("ArchShoulderLeftMesh")
+material_override = SubResource("stone")
+
+[node name="ArchShoulderRight" type="MeshInstance3D" parent="."]
+position = Vector3(0.33, 2.54, 0)
+mesh = SubResource("ArchShoulderRightMesh")
+material_override = SubResource("stone")
+
+[node name="Keystone" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.64, 0)
+mesh = SubResource("KeystoneMesh")
+material_override = SubResource("stone")
+
+[node name="PlaqueRim" type="MeshInstance3D" parent="."]
+position = Vector3(0, 3.03, 0.06)
+mesh = SubResource("PlaqueRimMesh")
+material_override = SubResource("iron")
+
+[node name="Plaque" type="MeshInstance3D" parent="."]
+position = Vector3(0, 3.03, 0.18)
+mesh = SubResource("PlaqueMesh")
+material_override = SubResource("plaque")
+
+[node name="Pin9" type="MeshInstance3D" parent="."]
+position = Vector3(-0.68, 2.9, 0.235)
+mesh = SubResource("Pin9Mesh")
+material_override = SubResource("iron")
+
+[node name="Pin10" type="MeshInstance3D" parent="."]
+position = Vector3(-0.68, 3.16, 0.235)
+mesh = SubResource("Pin10Mesh")
+material_override = SubResource("iron")
+
+[node name="Pin11" type="MeshInstance3D" parent="."]
+position = Vector3(0.68, 2.9, 0.235)
+mesh = SubResource("Pin11Mesh")
+material_override = SubResource("iron")
+
+[node name="Pin12" type="MeshInstance3D" parent="."]
+position = Vector3(0.68, 3.16, 0.235)
+mesh = SubResource("Pin12Mesh")
+material_override = SubResource("iron")
+
+[node name="Darkness" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.1, -2.5)
+mesh = SubResource("DarknessMesh")
+material_override = SubResource("dark")
+
+[node name="Step0" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.12, -0.20)
+mesh = SubResource("Step0Mesh")
+material_override = SubResource("stone")
+
+[node name="Step1" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.30, -0.56)
+mesh = SubResource("Step1Mesh")
+material_override = SubResource("stone")
+
+[node name="Step2" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.48, -0.92)
+mesh = SubResource("Step2Mesh")
+material_override = SubResource("stone")
+
+[node name="Step3" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.66, -1.28)
+mesh = SubResource("Step3Mesh")
+material_override = SubResource("stone")
+
+[node name="Step4" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.84, -1.64)
+mesh = SubResource("Step4Mesh")
+material_override = SubResource("stone")
+
+[node name="Step5" type="MeshInstance3D" parent="."]
+position = Vector3(0, -1.02, -2.00)
+mesh = SubResource("Step5Mesh")
+material_override = SubResource("stone")
+
+[node name="Step6" type="MeshInstance3D" parent="."]
+position = Vector3(0, -1.20, -2.36)
+mesh = SubResource("Step6Mesh")
+material_override = SubResource("stone")
+
+[node name="GateBar0" type="MeshInstance3D" parent="."]
+position = Vector3(-0.48, 2.21, -0.22)
+mesh = SubResource("GateBar0Mesh")
+material_override = SubResource("iron")
+
+[node name="GateBar1" type="MeshInstance3D" parent="."]
+position = Vector3(-0.24, 2.21, -0.22)
+mesh = SubResource("GateBar1Mesh")
+material_override = SubResource("iron")
+
+[node name="GateBar2" type="MeshInstance3D" parent="."]
+position = Vector3(0.00, 2.21, -0.22)
+mesh = SubResource("GateBar2Mesh")
+material_override = SubResource("iron")
+
+[node name="GateBar3" type="MeshInstance3D" parent="."]
+position = Vector3(0.24, 2.21, -0.22)
+mesh = SubResource("GateBar3Mesh")
+material_override = SubResource("iron")
+
+[node name="GateBar4" type="MeshInstance3D" parent="."]
+position = Vector3(0.48, 2.21, -0.22)
+mesh = SubResource("GateBar4Mesh")
+material_override = SubResource("iron")
+
+[node name="GateBrace" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.36, -0.22)
+mesh = SubResource("GateBraceMesh")
+material_override = SubResource("iron")
+[node name="Glow" type="OmniLight3D" parent="."]
+position = Vector3(0, 1.1, -0.55)
+light_color = Color(0.58, 0.76, 1, 1)
+light_energy = 0.12
+omni_range = 3.8
+[node name="InnerGlow" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.12, -0.50)
+mesh = SubResource("glow_plane")
+material_override = SubResource("glow_material")
+cast_shadow = 0
+[node name="Sign" type="Label3D" parent="."]
+position = Vector3(0, 3.03, 0.30)
+pixel_size = 0.007
+font = ExtResource("font")
+font_size = 48
+text = "EXIT"
+modulate = Color(0.70, 0.74, 0.77, 1)
+outline_size = 3
+outline_modulate = Color(0.70, 0.74, 0.77, 1)
+texture_filter = 0
+no_depth_test = false
+[node name="Interaction" type="Marker3D" parent="."]
+position = Vector3(0, 1.25, 0.35)
+[node name="ExitApproach" type="Marker3D" parent="."]
+position = Vector3(0, 1.65, 0.65)
+[node name="ExitEnd" type="Marker3D" parent="."]
+position = Vector3(0, 0.5, -2.2)
+[node name="Torch" parent="." instance=ExtResource("torch")]
+position = Vector3(-0.76, 1.2, 0.5)
+scale = Vector3(0.34, 0.34, 0.34)
+light_enabled = false

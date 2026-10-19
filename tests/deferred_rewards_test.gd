@@ -5,6 +5,7 @@ func _run() -> void:
 	game = load("res://scenes/main.tscn").instantiate()
 	root.add_child(game)
 	await process_frame
+	game.run_saves.directory = "res://workspace/logs/deferred-reward-saves"
 	game.start_run("warrior", 42)
 	check(game.run.phase == PackRun.Phase.FIGHT and not game.modal.visible, "Starting relic does not block combat")
 	check(game.run.relic_rewards == [1] and not game.relic_reward_button.disabled, "Starting relic remains claimable from its icon")
@@ -19,7 +20,9 @@ func _run() -> void:
 	game._open_reward(true)
 	check(not game.modal.visible, "Reward selection cannot interrupt an attack or descent")
 	await _wait_for_action()
-	check(game.run.fight == 1 and not game.modal.visible, "Winning advances without choosing an item")
+	check(game.run.fight == 0 and game.run.phase == PackRun.Phase.SELECTOR and not game.modal.visible, "Winning enters the selector without choosing an item")
+	game._door_chosen("combat")
+	await _wait_for_action()
 	check(game.run.hp == 30 and game.run.items.size() == 3, "Combat does not recover health when winning or claiming an item")
 	var first_items: Array = game.run.offers.duplicate()
 	_click(game.item_reward_button)
@@ -32,7 +35,9 @@ func _run() -> void:
 		game.run.hp = game.run.max_hp
 		game._act()
 		await _wait_for_action()
-	check(game.run.fight == 4 and game.run.item_rewards.size() == 4 and game.run.relic_rewards == [1, 5], "Four unclaimed items and two relics accumulate across encounters")
+		game._door_chosen("combat")
+		await _wait_for_action()
+	check(game.run.fight == 4 and game.run.item_rewards.size() == 4 and game.run.relic_rewards == [1], "Four unclaimed items accumulate; future relics come from rooms")
 	check(game.run.offers == first_items and game.run.relic_offers == first_relics, "Later fights do not reroll deferred choices")
 	check(game.item_reward_button.get_node("Badge") is TextureRect and game.item_reward_button.get_node("Badge").visible, "Item alert uses custom artwork without a numeric counter")
 	check(game.relic_reward_button.get_node("Badge") is TextureRect and game.relic_reward_button.get_node("Badge").visible, "Relic alert uses custom artwork without a numeric counter")
@@ -59,10 +64,10 @@ func _run() -> void:
 	check(game.run.enemy == old_enemy and game.run.hp == old_hp and game.run.turn == 1 and not game.busy, "Claims do not reset combat, heal, or replay descent")
 	check(game.item_reward_button.disabled and not game.item_reward_button.get_node("Badge").visible, "Empty item claims disable their icon and clear its badge")
 	game._open_reward(true)
-	for index in range(2):
+	for index in range(1):
 		check(game.modal.visible, "Next relic choice remains open until the queue is exhausted")
 		_click(game.choice_buttons[0])
-	check(game.run.relics.size() == 2 and game.run.relics[0] != game.run.relics[1] and game.run.relic_floors_claimed == [1, 5], "Deferred relics bind once each and retain their earning floors")
+	check(game.run.relics.size() == 1 and game.run.relic_floors_claimed == [1], "Deferred starting relic binds once and retains its earning floor")
 	game.run.prepare_enemy()
 	check(game.run.relic_rewards.is_empty(), "Preparing the same milestone does not award another relic")
 	game.run.fight = 19
@@ -87,12 +92,14 @@ func _run() -> void:
 		state.hp = state.max_hp
 		state.end_turn()
 		state.advance_encounter()
-	check(state.phase == PackRun.Phase.VICTORY and state.item_rewards.size() == 20 and state.relic_rewards == [1, 5, 10, 15], "Entire descent can defer all twenty items and all four relics")
+		if state.phase == PackRun.Phase.SELECTOR:
+			state.choose_destination("combat")
+	check(state.phase == PackRun.Phase.VICTORY and state.item_rewards.size() == 20 and state.relic_rewards == [1], "Entire combat descent can defer twenty items and its starting relic")
 	for index in range(20):
 		state.choose_loot(state.offers[0])
-	for index in range(4):
+	for index in range(1):
 		state.choose_relic(state.relic_offers[0])
-	check(state.items.size() == 23 and state.relics.size() == 4 and state.item_rewards.is_empty() and state.relic_rewards.is_empty(), "All deferred rewards can be claimed consecutively after the final fight")
+	check(state.items.size() == 23 and state.relics.size() == 1 and state.item_rewards.is_empty() and state.relic_rewards.is_empty(), "All deferred rewards can be claimed consecutively after the final fight")
 	print("DEFERRED REWARDS RESULT: %d checks, %d failures" % [checks, failures])
 	await preload("res://tests/automatic_combat_cleanup.gd").release(self, game)
 	quit(1 if failures else 0)

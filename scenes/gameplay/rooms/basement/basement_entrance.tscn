@@ -4,9 +4,13 @@
 [ext_resource type="Shader" path="res://assets/shaders/basement_stair_shadow.gdshader" id="2_hqijb"]
 [ext_resource type="PackedScene" path="res://components/torch/candle.tscn" id="3_j4ija"]
 [ext_resource type="Script" path="res://components/torch/torch.gd" id="4_iy8mv"]
-[ext_resource type="PackedScene" path="res://scenes/gameplay/rooms/basement/stairs/entrance_stairs.tscn" id="5_nfb3i"]
+[ext_resource type="PackedScene" path="res://components/staircase/staircase.tscn" id="5_nfb3i"]
 [ext_resource type="Script" path="res://components/staircase/staircase.gd" id="6_ubjjy"]
-[ext_resource type="PackedScene" path="res://scenes/gameplay/rooms/basement/stairs/exit_stairs.tscn" id="7_4yiqi"]
+[ext_resource type="PackedScene" path="res://components/staircase/staircase.tscn" id="7_4yiqi"]
+
+[ext_resource type="PackedScene" path="res://scenes/gameplay/rooms/basement/stairs/entrance_visuals.tscn" id="stair_art_5_nfb3i"]
+
+[ext_resource type="PackedScene" path="res://scenes/gameplay/rooms/basement/stairs/exit_visuals.tscn" id="stair_art_7_4yiqi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jhve7"]
 render_priority = 0
@@ -1439,7 +1443,19 @@ script = ExtResource("6_ubjjy")
 role = 0
 metadata/staircase = true
 
+[node name="DefaultStone" parent="EntryStairs/Visuals" index="0"]
+visible = false
+
+[node name="RoomDesign" parent="EntryStairs/Visuals" instance=ExtResource("stair_art_5_nfb3i")]
+
+
 [node name="ExitStairs" type="Node3D" parent="." unique_id=236629980 instance=ExtResource("7_4yiqi")]
+role = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4, 0, -8)
 script = ExtResource("6_ubjjy")
 metadata/staircase = true
+
+[node name="DefaultStone" parent="ExitStairs/Visuals" index="0"]
+visible = false
+
+[node name="RoomDesign" parent="ExitStairs/Visuals" instance=ExtResource("stair_art_7_4yiqi")]
