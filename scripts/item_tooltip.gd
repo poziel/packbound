@@ -5,13 +5,14 @@ func _ready() -> void:
 	minimum_size_changed.connect(reset_size)
 
 func set_item(item: Dictionary, adjacency_bonus: int = 0) -> void:
-	$Header/Icon.texture = PackArt.item(item["key"])
-	$Header/Name.text = item["name"]
+	$Header/Icon.hide()
+	$Header/BoundStatus.visible = item.get("key") == PackCatalog.QUIVER.KEY
+	$Header/Name.text = preload("res://scripts/item_presentation.gd").display_name(item)
 	$KeywordList.text = PackKeywords.list_markup(PackKeywords.item_stats(item, adjacency_bonus), false, $KeywordList.get_theme_color("default_color"))
 	$KeywordList.visible = not $KeywordList.text.is_empty()
 	$Description.text = PackKeywordLinks.rich(PackKeywords.item_description(item), "", false)
 	$Description.visible = not $Description.text.is_empty()
-	$Bonus.text = PackKeywordLinks.rich("+%d from adjacent items" % adjacency_bonus, "", false)
+	$Bonus.text = PackKeywordLinks.rich("Bonuses\n• +%d from adjacent items" % adjacency_bonus, "", false)
 	$Bonus.visible = adjacency_bonus > 0
 	var costs: Array[Dictionary] = PackKeywords.item_resource_costs(item)
 	$Cost.text = PackKeywords.item_footer_markup(costs, "" if costs.is_empty() else PackKeywords.item_priority_label(item), false)

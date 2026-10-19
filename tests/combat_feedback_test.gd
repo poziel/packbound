@@ -14,7 +14,7 @@ func _run() -> void:
 	await process_frame
 	var sound: AudioStreamPlayer = game.combat_audio
 	var sample: AudioStreamWAV = sound.stream
-	check(sample.loop_mode == AudioStreamWAV.LOOP_DISABLED and sample.resource_path == "res://assets/audio/enemy_hit.wav", "Impact uses the new non-looping supplied WAV")
+	check(sample.loop_mode == AudioStreamWAV.LOOP_DISABLED and sample.resource_path == "res://assets/audio/combat/enemy_hit.wav", "Impact uses the new non-looping supplied WAV")
 	var decoder: AudioStreamPlayback = sample.instantiate_playback()
 	decoder.start()
 	var peak: float = 0.0
@@ -27,6 +27,10 @@ func _run() -> void:
 
 	for class_key: String in PackCatalog.classes():
 		game.start_run(class_key, 42)
+		if game.run.needs_arrows():
+			game._choose(0)
+		game.run.enemy["hp"] = 100
+		game.run.enemy["max_hp"] = 100
 		game.front.settings["combat_speed"] = 1
 		game.run.relic_rewards.append(1)
 		game.run.roll_relics()

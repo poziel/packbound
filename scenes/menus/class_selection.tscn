@@ -81,21 +81,21 @@ layout_mode = 2
 class_key = "warrior"
 
 [node name="ClassName" parent="RosterScroll/Margin/Characters/Warrior" index="1"]
-text = "Warrior"
+text = "Warmonger"
 
 [node name="Ranger" parent="RosterScroll/Margin/Characters" instance=ExtResource("tile")]
 layout_mode = 2
 class_key = "ranger"
 
 [node name="ClassName" parent="RosterScroll/Margin/Characters/Ranger" index="1"]
-text = "Ranger"
+text = "Bowmaster"
 
 [node name="Mage" parent="RosterScroll/Margin/Characters" instance=ExtResource("tile")]
 layout_mode = 2
 class_key = "mage"
 
 [node name="ClassName" parent="RosterScroll/Margin/Characters/Mage" index="1"]
-text = "Mage"
+text = "Elementalist"
 
 [node name="Assassin" parent="RosterScroll/Margin/Characters" instance=ExtResource("tile")]
 layout_mode = 2

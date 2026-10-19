@@ -24,12 +24,30 @@ func restore(run: PackRun, data: Dictionary) -> void:
 			run.set(property.name, state[property.name])
 	run.rng.seed = state["rng_seed"]
 	run.rng.state = state["rng_state"]
+	if not state.has("momentum"):
+		run.momentum = 0
+		run.momentum_gain_bonus = 0
+		run.momentum_cost_reduction = 0
+	if not state.has("volley_remaining"):
+		_migrate_archer(run)
+	for key: String in ["enemy_slow", "enemy_spark", "enemy_doom", "enemy_doom_turns"]:
+		if not state.has(key):
+			run.set(key, 0)
+	if not state.has("elemental_traces"):
+		run.elemental_traces = {}
+	for key: String in ["physical_resistance", "magical_resistance"]:
+		if not run.enemy.has(key):
+			run.enemy[key] = 0
 	# Fill only newly introduced fields; preserve saved rolls and existing art/layout.
 	for item: Dictionary in run.items:
 		var defaults: Dictionary = PackCatalog.item(item["key"])
-		for key: String in ["priority", "stamina_cost", "stamina", "stamina_per_round"]:
+		if item["key"] == PackCatalog.QUIVER.KEY:
+			item["name"] = defaults["name"]
+		var migration_keys: Array[String] = ["priority", "stamina_cost", "stamina", "stamina_per_round", "element", "damage_type"]
+		migration_keys.append_array(PackCatalog.STATS)
+		for key: String in migration_keys:
 			if not item.has(key):
-				item[key] = defaults[key]
+				item[key] = defaults.get(key, "" if key in ["element", "damage_type"] else 0)
 	if not state.has("stamina"):
 		run.stamina = 0 if not run.pending_turn.is_empty() else int(run.round_resources()["stamina"])
 		run.stamina_capacity = int(run.round_resources()["stamina"])
@@ -78,9 +96,48 @@ func read(id: String) -> Dictionary:
 	if not PackCatalog.classes().has(state.get("class_key", "")) or not state.get("items") is Array or not state.get("enemy") is Dictionary or not state.has("rng_state"):
 		return {}
 	for item: Variant in state.items:
-		if not item is Dictionary or not PackCatalog.ROSTER.has(item.get("key", "")):
+		if not item is Dictionary or (not PackCatalog.ROSTER.has(item.get("key", "")) and item.get("key", "") != PackCatalog.QUIVER.KEY):
 			return {}
 	return data
+
+func _migrate_archer(run: PackRun) -> void:
+	run.volley_remaining = 3 - posmod(run.turn - 1, 3)
+	if run.class_key != "ranger" or not run.quiver().is_empty():
+		return
+	var special: Dictionary = PackCatalog.item(PackCatalog.QUIVER.KEY)
+	special["arrow_type"] = "broadhead"
+	var old: Dictionary = {}
+	for item: Dictionary in run.items:
+		if item["key"] == "quiver":
+			old = item
+			break
+	if not old.is_empty():
+		for key: String in ["id", "cell", "rotation", "shape"]:
+			special[key] = old[key]
+		old.merge(special, true)
+		special = old
+	else:
+		special["id"] = run.next_id
+		run.next_id += 1
+		special["cell"] = null
+		run.items.append(special)
+	if special["cell"] == null:
+		for y in range(run.GRID.y):
+			for x in range(run.GRID.x):
+				if run.can_place(special, Vector2i(x, y)):
+					special["cell"] = Vector2i(x, y)
+					return
+		# Preserve all carried items when an old full backpack needs room.
+		for item: Dictionary in run.items:
+			if item == special:
+				continue
+			for cell: Vector2i in run.cells(item):
+				if cell in [Vector2i(0, 0), Vector2i(0, 1)]:
+					item["cell"] = null
+					break
+		special["rotation"] = 0
+		special["shape"] = Vector2i(1, 2)
+		special["cell"] = Vector2i.ZERO
 
 func remove(id: String) -> bool:
 	if id.is_empty() or id.get_file() != id or id.contains(".."):

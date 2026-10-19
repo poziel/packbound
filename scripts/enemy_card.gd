@@ -56,8 +56,13 @@ static func monster_effect_entries(result: Dictionary) -> Array[Dictionary]:
 	var entries: Array[Dictionary] = []
 	var damage: int = int(result.get("direct_damage_actual", result.get("dealt", 0)))
 	if damage > 0:
-		entries.append({"key": "physical_attack", "amount": damage})
-	for key: String in ["poison", "burn"]:
+		var magical: int = int(result.get("direct_magical_actual", 0))
+		var physical: int = int(result.get("direct_physical_actual", damage - magical))
+		if physical > 0:
+			entries.append({"key": "physical_attack", "amount": physical})
+		if magical > 0:
+			entries.append({"key": "magical_attack", "amount": magical})
+	for key: String in ["poison", "burn", "doom", "spark"]:
 		var applied: int = 0
 		for effect: Dictionary in result.get("item_effects", []):
 			if effect["key"] == key:

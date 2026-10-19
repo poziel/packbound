@@ -29,7 +29,7 @@ func _run() -> void:
 		check(PackKeywordLinks.rich(markup, "", false) == markup, "Stable formatting: " + key)
 		if not PackKeywordLinks.ENTRIES.has(key):
 			check(not PackKeywordLinks.rich(label).contains("[url="), "No keyword link for an undefined future mechanic: " + key)
-	check(PackKeywords.resolve("armor") == "shield", "Shield compatibility keeps its mechanic identity")
+	check(PackKeywords.resolve("armor") == "block", "Legacy armor resolves to current Block protection")
 	check(PackKeywords.resolve("critical chance") == "crit_chance", "Critical chance alias resolves")
 	check(PackKeywords.resolve("crit damage") == "critical_damage", "Critical damage alias resolves")
 	var rich := RichTextLabel.new()

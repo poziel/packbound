@@ -199,4 +199,8 @@ func draw_art(canvas: CanvasItem, base: Transform2D = Transform2D.IDENTITY) -> v
 				uv = Vector2(uv.y, 1.0 - uv.x)
 			uvs.append((region.position + uv * region.size) / texture.get_size())
 		canvas.draw_polygon(polygon, PackedColorArray([Color.WHITE]), uvs, texture)
+	if item.has("craft_lock"):
+		var badge := Rect2(Vector2(BackpackBoard.craft_lock_corner(points)) * BackpackBoard.STEP + Vector2(tile - 22, 6), Vector2(16, 18))
+		var ink: Color = preload("res://themes/gameplay/theme.tres").get_color("icon_normal_color", "IconButton")
+		BackpackBoard.draw_craft_lock(canvas, badge, ink)
 	canvas.draw_set_transform(Vector2.ZERO)

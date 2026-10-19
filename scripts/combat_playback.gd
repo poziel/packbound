@@ -17,6 +17,7 @@ var _death: float = 0.0
 var _player_delay: float = 1.5
 var _enemy_delay: float = 1.5
 var _response_wait: bool = false
+var _crafting_wait: bool = false
 var _result: Dictionary = {}
 
 func start(state: PackRun, speed: float, impact_seconds: float, strike_seconds: float, death_seconds: float = 0.0, player_delay: float = 1.5, enemy_delay: float = 1.5) -> bool:
@@ -31,7 +32,11 @@ func start(state: PackRun, speed: float, impact_seconds: float, strike_seconds: 
 	_death = maxf(0.0, death_seconds)
 	active = true
 	paused = false
-	_begin_player()
+	_crafting_wait = not state.crafting_events.is_empty()
+	if _crafting_wait:
+		remaining_seconds = PackRun.CRAFTING.ANIMATION_SECONDS
+	else:
+		_begin_player()
 	return true
 
 func _begin_player() -> void:
@@ -48,6 +53,10 @@ func _process(delta: float) -> void:
 		return
 	remaining_seconds = maxf(0.0, remaining_seconds - delta)
 	if remaining_seconds > 0.0:
+		return
+	if _crafting_wait:
+		_crafting_wait = false
+		_begin_player()
 		return
 	if _response_wait:
 		var strikes: bool = _result["has_response"] and _state.attack() > 0 and int(_state.enemy["hits"]) > 0 and not _result.get("invisible", false)
@@ -77,6 +86,7 @@ func set_paused(value: bool) -> void:
 	pause_changed.emit(value)
 
 func cancel() -> void:
+	_crafting_wait = false
 	active = false
 	paused = false
 	remaining_seconds = 0.0
@@ -84,7 +94,7 @@ func cancel() -> void:
 	_state = null
 
 func snapshot() -> Dictionary:
-	return {"active": active, "paused": paused, "remaining": remaining_seconds, "response_wait": _response_wait, "result": _result.duplicate(true), "speed": _speed, "impact": _impact, "strike": _strike, "death": _death, "player_delay": _player_delay, "enemy_delay": _enemy_delay}
+	return {"active": active, "paused": paused, "remaining": remaining_seconds, "response_wait": _response_wait, "crafting_wait": _crafting_wait, "result": _result.duplicate(true), "speed": _speed, "impact": _impact, "strike": _strike, "death": _death, "player_delay": _player_delay, "enemy_delay": _enemy_delay}
 
 func restore(state: PackRun, data: Dictionary) -> void:
 	cancel()
@@ -94,6 +104,7 @@ func restore(state: PackRun, data: Dictionary) -> void:
 	active = true
 	paused = true
 	remaining_seconds = data.get("remaining", 0.0)
+	_crafting_wait = data.get("crafting_wait", false)
 	_response_wait = data.get("response_wait", false)
 	_result = data.get("result", {}).duplicate(true)
 	_speed = data.get("speed", 1.0)

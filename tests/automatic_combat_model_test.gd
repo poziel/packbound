@@ -15,7 +15,7 @@ func _run() -> void:
 	quit(1 if failures else 0)
 
 func _starting_resources_checks() -> void:
-	var state: PackRun = fixture("ranger")
+	var state: PackRun = fixture("warrior")
 	state.items.clear()
 	for index in range(4):
 		state.add_item("spark_ring", Vector2i(index, 0))["mana"] = 6
@@ -56,7 +56,7 @@ func _harmless_enemy(state: PackRun, damage: int = 0) -> void:
 	state.enemy["hits"] = 1
 
 func _finite_resource_checks() -> void:
-	var state: PackRun = fixture("ranger")
+	var state: PackRun = fixture("warrior")
 	state.items.clear()
 	state.add_item("cracked_shield", Vector2i.ZERO)
 	_harmless_enemy(state, 3)
@@ -65,7 +65,7 @@ func _finite_resource_checks() -> void:
 	check(state.block == 2 and state.hp == initial_hp, "Starting shield retains two after first three damage")
 	state.end_turn()
 	check(state.block == 0 and state.hp == initial_hp - 1, "Second strike spends remaining shield and loses one HP")
-	state = fixture("ranger")
+	state = fixture("warrior")
 	state.items.clear()
 	var ring: Dictionary = state.add_item("spark_ring", Vector2i.ZERO)
 	ring["mana"] = 24
@@ -76,7 +76,7 @@ func _finite_resource_checks() -> void:
 	check(state.mana == 27 and state.block == 1, "Round one includes base, equipment and explicit regeneration")
 	state.end_turn()
 	check(state.mana == 27 and state.block == 2, "Round two refills mana without accumulation; block retains explicit gains")
-	state = fixture("ranger")
+	state = fixture("warrior")
 	state.items.clear()
 	state.add_item("spark_ring", Vector2i.ZERO)["mana"] = 3
 	var spell: Dictionary = state.add_item("ember_tome", Vector2i(1, 0))
@@ -120,7 +120,7 @@ func _lifecycle_checks() -> void:
 	check(not state.relics.has("echo_clock") and not state.call("start_combat"), "Paused rejects relic selection and resource restart")
 	state.call("set_combat_paused", false)
 	check(not state.complete_turn().is_empty(), "Resume completes original checkpoint")
-	state = fixture("ranger")
+	state = fixture("warrior")
 	state.hp = 1
 	state.items.clear()
 	state.add_item("longsword", Vector2i.ZERO)
@@ -131,7 +131,7 @@ func _lifecycle_checks() -> void:
 	check(not state.call("can_edit_inventory"), "Revival does not unlock user edits")
 
 func _terminal_checks() -> void:
-	var state: PackRun = fixture("ranger")
+	var state: PackRun = fixture("warrior")
 	state.items.clear()
 	state.add_item("longsword", Vector2i.ZERO)
 	state.add_item("cracked_shield", Vector2i(1, 0))
@@ -208,7 +208,7 @@ func _echo_checks() -> void:
 	early["role"] = "ranged"
 	early["damage"] = 6
 	stats = state.effects()
-	check(stats.get("echo_item_id", -1) == strong["id"] and stats["damage"] == 34 and stats["repeats"] == 2, "Volley copies cannot change strongest selection or recurse Echo")
+	check(stats.get("echo_item_id", -1) == strong["id"] and stats["damage"] == 28 and stats["repeats"] == 1, "Archer does not copy ranged weapons; Echo remains independent")
 	state.class_key = "warrior"
 	state.turn = 12
 	early["role"] = "weapon"

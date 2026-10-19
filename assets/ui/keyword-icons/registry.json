@@ -361,7 +361,7 @@
       "icon_id": "stat.magical_attack",
       "color_token": "keyword.magical_attack",
       "placement": "before-keyword",
-      "meaning": "Visual identity for magical attack only; no current combat definition or formula is assigned.",
+      "meaning": "Magical damage from spells and elemental weapons; magical resistance reduces it before block.",
       "mechanic_status": "artwork-only"
     },
     "total_attack": {
@@ -383,7 +383,7 @@
       "icon_id": "stat.physical_attack",
       "color_token": "keyword.physical_attack",
       "placement": "before-keyword",
-      "meaning": "Visual identity for physical attack only; no current combat definition or formula is assigned.",
+      "meaning": "Physical damage from ordinary weapons, bows, thralls and thorns; physical resistance reduces it before block.",
       "mechanic_status": "artwork-only"
     },
     "accuracy": {
@@ -427,7 +427,7 @@
       "icon_id": "effect.doom",
       "color_token": "keyword.doom",
       "placement": "before-keyword",
-      "meaning": "Visual identity for doom only; no current combat definition or formula is assigned.",
+      "meaning": "Doom stacks detonate for two magical damage each on the third round. New stacks do not reset the countdown.",
       "mechanic_status": "artwork-only"
     }
   },

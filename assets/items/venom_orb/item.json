@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "venom_orb",
+  "kind": "item",
+  "identity": {
+    "name": "Venom Codex",
+    "category": "spell",
+    "rarity": "common",
+    "tags": [
+      "magical",
+      "venom"
+    ],
+    "summary": "venom spell applying poison",
+    "description": "A venom spell that deals 3 magical damage and applies 2 poison for 2 mana and no stamina. It activates each round when both resource costs can be paid, in priority and backpack reading order. Echo repeats its damage, condition and elemental trace contribution. Magical resistance reduces its damage; block absorbs direct damage after resistance. Conditions bypass block.",
+    "lore": "An experimental focus recovered from the lower archives."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "#."
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 3,
+    "poison": 2
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "mana",
+        "amount": 2
+      },
+      {
+        "resource": "stamina",
+        "amount": 0
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "elemental_cast",
+      "description": "Deal magical damage and apply poison.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy",
+      "condition": "All costs paid",
+      "parameters": {
+        "damage": 3,
+        "damageType": "magical",
+        "element": "venom",
+        "condition": "poison",
+        "stacks": 2,
+        "decayPerRound": 1
+      },
+      "implementation": "supported"
+    },
+    {
+      "id": "trace",
+      "description": "Elementalist casts leave a trace.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy",
+      "condition": "Caster is Elementalist",
+      "parameters": {
+        "element": "venom",
+        "durationRounds": 2,
+        "charges": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [],
+  "acquisition": {
+    "sources": [
+      "elementalist-offense-rewards",
+      "necromancer-offense-rewards"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A restrained venom focus with one readable elemental motif.",
+    "materials": [
+      "leather",
+      "metal"
+    ],
+    "paletteIntent": "Broad material shading; elemental accents only where intentional.",
+    "definingFeatures": [
+      "venom motif"
+    ],
+    "assets": {
+      "icon": null,
+      "svg": null,
+      "source": null,
+      "footprint": null,
+      "provenance": null,
+      "manifest": null,
+      "variants": [],
+      "placeholderSvg": "assets/items/spells/ember-tome/revisions/catalog-v1/ember-tome-64px.svg"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": [
+    "Dedicated artwork and balance acceptance"
+  ]
+}

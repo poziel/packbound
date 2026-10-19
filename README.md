@@ -20,7 +20,7 @@ Packbound is being developed in Godot. This repository contains the game project
 ## Pack for the descent
 
 - **Build inside the bag.** Arrange and rotate items on the satchel grid. Place boosters beside compatible equipment to strengthen your build, and keep spare items in your stash.
-- **Choose your Delver.** Warrior, Ranger, Mage, Assassin, and Necromancer each bring their own ability and starting equipment, from counterattacks to persistent undead companions.
+- **Choose your Delver.** Warmonger, Bowmaster, Elementalist, Assassin, and Necromancer each bring their own ability and starting equipment, from Momentum and an upgradeable Volley quiver to chained elemental reactions and persistent undead companions.
 - **Make resources count.** Set item priorities to control which attacks spend mana and stamina first. Both refill each round; health and protection follow their own rules.
 - **Change the rules with relics.** Collect effects that alter adjacency, resource costs, repeated attacks, and survival. Relics have their own slots outside the satchel.
 - **Prepare, fight, adapt.** Claim rewards, rearrange your inventory, and take on the next encounter. Pause combat or adjust its playback speed to follow your build in action.

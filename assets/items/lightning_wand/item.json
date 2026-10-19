@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "lightning_wand",
+  "kind": "item",
+  "identity": {
+    "name": "Storm Wand",
+    "category": "spell",
+    "rarity": "common",
+    "tags": [
+      "magical",
+      "lightning"
+    ],
+    "summary": "lightning spell applying spark",
+    "description": "A lightning spell that deals 4 magical damage and applies 1 spark for 2 mana and no stamina. It activates each round when both resource costs can be paid, in priority and backpack reading order. Echo repeats its damage, condition and elemental trace contribution. Magical resistance reduces its damage; block absorbs direct damage after resistance. Conditions bypass block.",
+    "lore": "An experimental focus recovered from the lower archives."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 4,
+    "spark": 1
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "mana",
+        "amount": 2
+      },
+      {
+        "resource": "stamina",
+        "amount": 0
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "elemental_cast",
+      "description": "Deal magical damage and apply spark.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy",
+      "condition": "All costs paid",
+      "parameters": {
+        "damage": 4,
+        "damageType": "magical",
+        "element": "lightning",
+        "condition": "spark",
+        "stacks": 1,
+        "damagePerStack": 2,
+        "stacksConsumed": 1
+      },
+      "implementation": "supported"
+    },
+    {
+      "id": "trace",
+      "description": "Elementalist casts leave a trace.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy",
+      "condition": "Caster is Elementalist",
+      "parameters": {
+        "element": "lightning",
+        "durationRounds": 2,
+        "charges": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [],
+  "acquisition": {
+    "sources": [
+      "elementalist-offense-rewards",
+      "necromancer-offense-rewards"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A restrained lightning focus with one readable elemental motif.",
+    "materials": [
+      "leather",
+      "metal"
+    ],
+    "paletteIntent": "Broad material shading; elemental accents only where intentional.",
+    "definingFeatures": [
+      "lightning motif"
+    ],
+    "assets": {
+      "icon": null,
+      "svg": null,
+      "source": null,
+      "footprint": null,
+      "provenance": null,
+      "manifest": null,
+      "variants": [],
+      "placeholderSvg": "assets/items/spells/frost-wand/revisions/catalog-v2/frost-wand-32x96.svg"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": [
+    "Dedicated artwork and balance acceptance"
+  ]
+}

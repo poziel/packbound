@@ -7,14 +7,16 @@ signal item_hovered
 signal priority_edit_started
 signal feedback(message: String, valid: bool)
 
-const SOURCE_CELL: int = 32
-const DISPLAY_SCALE: int = 2
+const ITEM_ART = preload("res://scripts/item_art_renderer.gd")
+const SOURCE_CELL: int = ITEM_ART.SOURCE_CELL
+const DISPLAY_SCALE: int = ITEM_ART.DISPLAY_SCALE
 const CELL: float = SOURCE_CELL * DISPLAY_SCALE
 const STEP: float = CELL + 4.0
 const ORIGIN: Vector2 = Vector2(22, 14)
 const GRID_RECT: Rect2 = Rect2(ORIGIN, Vector2(PackRun.GRID) * STEP - Vector2.ONE * (STEP - CELL))
 const ITEM_TOOLTIP: PackedScene = preload("res://scenes/shared/item_tooltip.tscn")
 const ITEM_FRAME = preload("res://components/item_slot/item_frame.gd")
+const CRAFTING_PRESENTATION = preload("res://scripts/crafting_presentation.gd")
 const BONUS_EDGE = preload("res://assets/ui/icons/adjacency-carets-v3/edge-inward.png")
 const BONUS_CORNER = preload("res://assets/ui/icons/adjacency-carets-v3/corner-inward.png")
 
@@ -39,12 +41,14 @@ var _rotation_anim_time: float = 0.16
 var _drawing_held: bool = false
 var _rotation_pivot := Vector2.ZERO
 var hovered_id: int = -1
+var _hover_pointer_valid: bool = false
 var selected_id: int = -1
 var storage: Control
 var storage_button: Control
 var icons: Dictionary = {}
 var tooltips_enabled: bool = true
 var managed_inspection: bool = false
+var craft_inspection_active: bool = false
 var draw_effects: Dictionary = {}
 var _bonus_related: Array[int] = []
 const FAILED_ACTIVATION_SECONDS: float = 0.65
@@ -53,6 +57,76 @@ var activation_feedback_paused: bool = false
 var effect_popups: Array[Dictionary] = []
 const EFFECT_POPUP = preload("res://scripts/combat_effect_popup.gd")
 var _popup_rng := RandomNumberGenerator.new()
+var _crafting_clock: float = 0.0
+var _crafting_signature: String = ""
+var _crafting_plans: Array[Dictionary] = []
+var _crafting_bursts: Array[Dictionary] = []
+var _crafting_label_times: Dictionary = {}
+var _crafting_hover: Dictionary = {}
+var _crafting_tooltips: Dictionary = {}
+var _crafting_pending_notifications: Dictionary = {}
+
+func crafting_opportunity_keys() -> Array[String]:
+	var keys: Array[String] = []
+	for attempt: Dictionary in PackRun.CRAFTING.attempts(run):
+		keys.append(CRAFTING_PRESENTATION.attempt_key(attempt))
+	return keys
+
+func notify_craft_placement(before: Array[String], placed_ids: Array[int] = []) -> void:
+	for attempt: Dictionary in PackRun.CRAFTING.attempts(run):
+		var key: String = CRAFTING_PRESENTATION.attempt_key(attempt)
+		var involved: bool = placed_ids.is_empty() or attempt["components"].any(func(item: Dictionary) -> bool: return placed_ids.has(int(item["id"])))
+		if involved and not before.has(key):
+			_crafting_pending_notifications[key] = true
+
+func crafting_attempts() -> Array[Dictionary]:
+	var result: Array[Dictionary] = []
+	if run == null or run.combat_state != PackRun.CombatState.PREPARING:
+		return result
+	var signature: Array = [run.get_instance_id(), run.phase]
+	for item in run.items:
+		signature.append([item["id"], item["key"], item["cell"], item["rotation"], item.get("priority", 0), item.has("craft_lock")])
+	var key: String = str(signature)
+	if key != _crafting_signature:
+		_crafting_signature = key
+		_crafting_plans = PackRun.CRAFTING.attempts(run)
+	for attempt in _crafting_plans:
+		var settled: bool = true
+		for component: Dictionary in attempt["components"]:
+			if component == dragging or item_motions.has(component["id"]):
+				settled = false
+		if settled:
+			result.append(attempt)
+	return result
+
+func crafting_links() -> Array[Dictionary]:
+	var result: Array[Dictionary] = []
+	for attempt in crafting_attempts():
+		result.append_array(attempt["links"])
+	return result
+
+func is_crafting_hidden(item_id: int) -> bool:
+	for burst in _crafting_bursts:
+		if int(burst["output"]["id"]) == item_id:
+			return true
+	return false
+
+func show_crafting_merges(plans: Array[Dictionary], elapsed: float = 0.0) -> void:
+	CRAFTING_PRESENTATION.clear_tooltips(self)
+	_crafting_bursts.clear()
+	for plan in plans:
+		var starts: Array[Vector2] = []
+		var center := Vector2.ZERO
+		for component: Dictionary in plan["components"]:
+			var at: Vector2 = item_rect(component).get_center()
+			starts.append(at)
+			center += at
+		center /= starts.size()
+		_crafting_bursts.append({"elapsed": elapsed, "components": plan["components"].duplicate(true), "output": plan["output"], "starts": starts, "center": center})
+	queue_redraw()
+
+func _draw_crafting() -> void:
+	CRAFTING_PRESENTATION.draw(self)
 
 func show_item_effects(result: Dictionary, speed: float = 1.0, response: bool = false) -> void:
 	var lanes: Dictionary = {}
@@ -86,7 +160,12 @@ func flash_failed_activations(ids: Array, speed: float = 1.0) -> void:
 	queue_redraw()
 
 func clear_activation_feedback() -> void:
+	CRAFTING_PRESENTATION.clear_tooltips(self)
+	_crafting_label_times.clear()
+	_crafting_pending_notifications.clear()
+	_crafting_hover.clear()
 	effect_popups.clear()
+	_crafting_bursts.clear()
 	failed_activations.clear()
 	activation_feedback_paused = false
 	queue_redraw()
@@ -109,8 +188,20 @@ func _process(delta: float) -> void:
 		if dragging.is_empty() and item_motions.is_empty():
 			z_index = 0
 		refresh()
+	_refresh_hover_at_pointer()
 	if activation_feedback_paused:
 		return
+	_crafting_clock += delta
+	CRAFTING_PRESENTATION.advance(self, delta)
+	for burst in _crafting_bursts:
+		burst["elapsed"] += delta
+	var finished: Array[Dictionary] = _crafting_bursts.filter(func(burst: Dictionary) -> bool: return float(burst["elapsed"]) >= PackRun.CRAFTING.ANIMATION_SECONDS)
+	_crafting_bursts = _crafting_bursts.filter(func(burst: Dictionary) -> bool: return float(burst["elapsed"]) < PackRun.CRAFTING.ANIMATION_SECONDS)
+	for burst in finished:
+		if burst["output"]["cell"] == null and storage != null:
+			storage.toss(burst["output"], get_global_transform_with_canvas() * CRAFTING_PRESENTATION.destination(self, burst), Vector2.ZERO)
+	if not finished.is_empty():
+		refresh()
 	if not effect_popups.is_empty():
 		EFFECT_POPUP.advance(effect_popups, delta)
 		queue_redraw()
@@ -148,6 +239,7 @@ func _adjust_priority(item: Dictionary, direction: int) -> void:
 		refresh()
 
 func _clear_hover() -> void:
+	_hover_pointer_valid = false
 	hovered_id = -1
 	queue_redraw()
 
@@ -230,11 +322,25 @@ func _draw_bonus_markers(item: Dictionary, at: Vector2, color: Color, opacity: f
 			center += along * STEP * (int(marker.get("span", 1)) - 1) / 2.0
 			center += Vector2(direction) * CELL / 2
 			angle = Vector2(-direction).angle()
-		# Only exact quarter-turns and integer 2x pixels; no diagonal resampling.
+		# Exact quarter-turns and pixel-aligned placement with nearest filtering.
 		var display_center: Vector2 = (_art_origin + (at + center - _art_origin) * _art_scale).round()
 		draw_set_transform(display_center, angle, Vector2.ONE * _art_scale)
-		var caret_rect := Rect2(Vector2.ZERO if diagonal else Vector2(0, -7), Vector2(14, 14))
-		draw_texture_rect(texture, caret_rect, false, color)
+		# Grow diagonal triangles one pixel on every side to cover the border gap.
+		# Edge carets retain their existing 2x size.
+		var caret_size: Vector2 = Vector2(texture.get_size()) if diagonal else Vector2(14, 14)
+		var caret_rect := Rect2(Vector2.ZERO if diagonal else Vector2(0, -7), caret_size)
+		if diagonal:
+			caret_rect = caret_rect.grow(1.0)
+			# Crop the enlarged sprite at the tile boundary without rescaling it.
+			var tile_rect := Rect2(Vector2(marker.cell) * STEP, Vector2.ONE * CELL)
+			var local_tile: Rect2 = Transform2D(angle, center).affine_inverse() * tile_rect
+			local_tile = Rect2(local_tile.position.round(), local_tile.size.round())
+			var clipped: Rect2 = caret_rect.intersection(local_tile)
+			var uv_scale: Vector2 = Vector2(texture.get_size()) / caret_rect.size
+			var source := Rect2((clipped.position - caret_rect.position) * uv_scale, clipped.size * uv_scale)
+			draw_texture_rect_region(texture, clipped, source, color)
+		else:
+			draw_texture_rect(texture, caret_rect, false, color)
 	draw_set_transform(Vector2.ZERO)
 
 func _get_tooltip(at_position: Vector2) -> String:
@@ -263,7 +369,7 @@ func refresh() -> void:
 func unpacked() -> Array[Dictionary]:
 	var result: Array[Dictionary] = []
 	for item in run.items:
-		if item["cell"] == null and not (cursor_held and item == dragging):
+		if item["cell"] == null and not is_crafting_hidden(int(item["id"])) and not (cursor_held and item == dragging):
 			result.append(item)
 	return result
 
@@ -323,24 +429,8 @@ func _draw_footprint(at: Vector2, points: Array[Vector2i], accent: Color, highli
 
 func _draw_item_art(item: Dictionary, rect: Rect2, points: Array[Vector2i], rotation: int, alpha: Color) -> void:
 	var texture: Texture2D = icon(item["key"])
-	var region: Rect2 = Rect2(Vector2.ZERO, texture.get_size())
-	# Polygon UVs refer to the underlying atlas, not the AtlasTexture region.
-	if texture is AtlasTexture:
-		region = texture.region
-		texture = texture.atlas
-	var art_rect: Rect2 = Rect2(Vector2.ZERO, rect.size).grow(-4)
-	if region.size == Vector2(32, 32) and item["shape"] == Vector2i.ONE:
-		# Native sprites already contain padding: map 32 px to the full 64 px cell.
-		art_rect = Rect2(Vector2.ZERO, rect.size)
 	_item_transform(rect.position)
-	for polygon in _footprint_polygons(points, 4.0):
-		var uvs: PackedVector2Array = PackedVector2Array()
-		for vertex in polygon:
-			var uv: Vector2 = (vertex - art_rect.position) / art_rect.size
-			for quarter in range(posmod(rotation, 4)):
-				uv = Vector2(uv.y, 1.0 - uv.x)
-			uvs.append((region.position + uv * region.size) / texture.get_size())
-		draw_polygon(polygon, PackedColorArray([alpha]), uvs, texture)
+	ITEM_ART.draw(self, item, rect.size, texture, points, rotation, alpha)
 	draw_set_transform(Vector2.ZERO)
 
 func _draw() -> void:
@@ -353,7 +443,7 @@ func _draw() -> void:
 	_bonus_related = bonus_related_ids()
 	# Empty sockets live in backpack.tscn and use the same shared item frame.
 	for item in run.items:
-		if item["cell"] != null and item != dragging and not item_motions.has(item["id"]):
+		if item["cell"] != null and item != dragging and not is_crafting_hidden(int(item["id"])) and not item_motions.has(item["id"]):
 			# Only settled items replace the sockets they actually occupy.
 			_cover_empty_cells(item_rect(item).position, PackRun.offsets(item))
 			_draw_item(item, item_rect(item))
@@ -380,6 +470,7 @@ func _draw() -> void:
 			_draw_item(dragging, Rect2(pointer - grab, footprint(drag_shape)), true)
 			_drawing_held = false
 	_sync_empty_cells()
+	_draw_crafting()
 	_draw_effect_popups()
 
 func _item_transform(at: Vector2) -> void:
@@ -389,11 +480,35 @@ func _item_transform(at: Vector2) -> void:
 	else:
 		draw_set_transform(position, 0.0, Vector2.ONE * _art_scale)
 
+static func craft_lock_corner(points: Array[Vector2i]) -> Vector2i:
+	var corner: Vector2i = points[0]
+	for point in points:
+		if point.y < corner.y or (point.y == corner.y and point.x > corner.x):
+			corner = point
+	return corner
+
+func craft_lock_rect(item: Dictionary) -> Rect2:
+	return Rect2(item_rect(item).position + Vector2(craft_lock_corner(PackRun.offsets(item))) * STEP + Vector2(CELL - 22, 6), Vector2(16, 18))
+
+func _draw_craft_lock(badge: Rect2, opacity: float) -> void:
+	var ink: Color = get_theme_color("icon_normal_color", "IconButton")
+	draw_craft_lock(self, badge, ink, opacity)
+
+static func draw_craft_lock(canvas: CanvasItem, badge: Rect2, ink: Color, opacity: float = 1.0) -> void:
+	ink.a *= opacity
+	var outline := Color(0.04, 0.04, 0.05, opacity)
+	canvas.draw_rect(Rect2(badge.position + Vector2(2, 0), Vector2(12, 12)), outline)
+	canvas.draw_rect(Rect2(badge.position + Vector2(4, 2), Vector2(8, 8)), ink)
+	canvas.draw_rect(Rect2(badge.position + Vector2(6, 4), Vector2(4, 5)), outline)
+	canvas.draw_rect(Rect2(badge.position + Vector2(0, 7), Vector2(16, 11)), outline)
+	canvas.draw_rect(Rect2(badge.position + Vector2(2, 9), Vector2(12, 7)), ink)
+	canvas.draw_rect(Rect2(badge.position + Vector2(7, 11), Vector2(2, 3)), outline)
+
 func _draw_item(item: Dictionary, rect: Rect2, ghost: bool = false, opacity: float = 1.0, art_scale: float = 1.0) -> void:
 	_art_origin = rect.position
 	_art_scale = art_scale
 	var tint: Color = PackArt.color(item["key"])
-	var highlighted: bool = int(item["id"]) in [hovered_id, selected_id] or ghost
+	var highlighted: bool = int(item["id"]) == hovered_id or ghost
 	var related: bool = not ghost and _bonus_related.has(int(item["id"]))
 	var rotation: int = drag_rotation if ghost else int(item["rotation"])
 	var points: Array[Vector2i] = PackRun.offsets(item, rotation)
@@ -401,6 +516,11 @@ func _draw_item(item: Dictionary, rect: Rect2, ghost: bool = false, opacity: flo
 	var alpha: Color = Color(1, 1, 1, 0.35) if draw_effects.get("dormant_ids", []).has(item["id"]) else Color.WHITE
 	alpha.a *= opacity
 	_draw_item_art(item, rect, points, rotation, alpha)
+	if item.has("craft_lock"):
+		_item_transform(rect.position)
+		var badge := Rect2(Vector2(craft_lock_corner(points)) * STEP + Vector2(CELL - 22, 6), Vector2(16, 18))
+		_draw_craft_lock(badge, opacity)
+		draw_set_transform(Vector2.ZERO)
 	if related:
 		_item_transform(rect.position)
 		var masks: Dictionary = ITEM_FRAME.skin(points, Vector2.ONE * CELL, STEP - CELL)
@@ -409,7 +529,8 @@ func _draw_item(item: Dictionary, rect: Rect2, ghost: bool = false, opacity: flo
 		draw_set_transform(Vector2.ZERO)
 	if has_activation_priority(item):
 		_item_transform(rect.position)
-		ITEM_FRAME.draw_priority_corner(self, Vector2(priority_corner(points)) * STEP, get_theme_default_font(), int(item.get("priority", 0)), tint, highlighted, opacity)
+		var priority_at: Vector2 = Vector2(priority_corner(points)) * STEP
+		ITEM_FRAME.draw_priority_corner(self, priority_at, get_theme_default_font(), int(item.get("priority", 0)), tint, highlighted, opacity)
 		draw_set_transform(Vector2.ZERO)
 	if not ghost:
 		var marker_color: Color = Color(1.0, 0.85, 0.55) if related else ITEM_FRAME.rim_color(tint, highlighted)
@@ -426,6 +547,7 @@ func _draw_item(item: Dictionary, rect: Rect2, ghost: bool = false, opacity: flo
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and dragging.is_empty():
+		_hover_pointer_valid = true
 		pointer = event.position
 		var item: Dictionary = hit_item(pointer)
 		var next_id: int = int(item.get("id", -1))
@@ -444,6 +566,13 @@ func _gui_input(event: InputEvent) -> void:
 				_adjust_priority(item, 1 if event.button_index == MOUSE_BUTTON_LEFT else -1)
 			accept_event()
 			return
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			var item: Dictionary = hit_item(pointer)
+			if not item.is_empty() and PackRun.CRAFTING.toggle_lock(run, item):
+				changed.emit()
+				queue_redraw()
+			accept_event()
+			return
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			var item: Dictionary = hit_item(pointer)
 			if not item.is_empty() and run.phase == PackRun.Phase.FIGHT:
@@ -453,9 +582,61 @@ func _gui_input(event: InputEvent) -> void:
 					begin_drag(item, pointer)
 			accept_event()
 
+func visual_item_cells(item: Dictionary) -> Array[Vector2]:
+	var result: Array[Vector2] = []
+	if is_crafting_hidden(int(item["id"])):
+		return result
+	if item == dragging:
+		var pivot: Vector2 = pointer
+		var square: bool = drag_shape.x == drag_shape.y and item["mask"].size() == drag_shape.x * drag_shape.y
+		if square:
+			pivot = pointer - grab + footprint(drag_shape) * 0.5
+		for cell in PackRun.offsets(item, drag_rotation):
+			var center: Vector2 = pointer - grab + Vector2(cell) * STEP + Vector2.ONE * CELL * 0.5
+			result.append(pivot + (center - pivot).rotated(held_rotation_offset))
+	elif item_motions.has(item["id"]):
+		var motion: Dictionary = item_motions[item["id"]]
+		var at: Vector2 = _motion_position(motion)
+		for cell in PackRun.offsets(motion["item"]):
+			result.append(at + Vector2(cell) * STEP + Vector2.ONE * CELL * 0.5)
+	elif item["cell"] != null:
+		for cell in run.cells(item):
+			result.append(ORIGIN + Vector2(cell) * STEP + Vector2.ONE * CELL * 0.5)
+	elif storage != null and storage.is_visible_in_tree() and storage.bodies.has(item["id"]):
+		var body: RigidBody2D = storage.bodies[item["id"]]
+		if body.visible or body == storage.grabbed:
+			var to_board: Transform2D = get_global_transform_with_canvas().affine_inverse() * storage.pile.get_global_transform_with_canvas() * body.transform
+			for cell: Vector2i in body.points:
+				result.append(to_board * (body.origin + Vector2(cell) * STEP + Vector2.ONE * CELL * 0.5))
+	return result
+
+func _refresh_hover_at_pointer() -> void:
+	if not _hover_pointer_valid or run == null or not dragging.is_empty():
+		return
+	var item: Dictionary = hit_item(pointer)
+	var next_id: int = int(item.get("id", -1))
+	if next_id != hovered_id:
+		hovered_id = next_id
+		if next_id >= 0:
+			item_hovered.emit()
+		queue_redraw()
+
 func hit_item(at: Vector2) -> Dictionary:
+	# Sliding items are drawn above settled items. Hit the same moving footprint
+	# so both inspection and a quick re-grab agree with what is on screen.
+	var motion_ids: Array = item_motions.keys()
+	motion_ids.reverse()
+	for id: int in motion_ids:
+		var motion: Dictionary = item_motions[id]
+		for item in run.items:
+			if item["id"] != id or item["cell"] == null or item == dragging:
+				continue
+			var local: Vector2 = at - _motion_position(motion)
+			for polygon in _footprint_polygons(PackRun.offsets(motion["item"])):
+				if Geometry2D.is_point_in_polygon(local, polygon):
+					return item
 	for item in run.items:
-		if item["cell"] == null or item_motions.has(item["id"]):
+		if item["cell"] == null or item_motions.has(item["id"]) or item == dragging:
 			continue
 		var local: Vector2 = at - item_rect(item).position
 		for polygon in _footprint_polygons(PackRun.offsets(item)):
@@ -481,13 +662,16 @@ func begin_drag(item: Dictionary, at: Vector2) -> void:
 	throw_time_msec = 0
 	if not run.can_edit_inventory():
 		return
+	var displayed_position: Vector2 = _motion_position(item_motions[item["id"]]) if item_motions.has(item["id"]) else item_rect(item).position
+	item_motions.erase(item["id"])
+	_hover_pointer_valid = true
 	dragging = item
 	cursor_held = false
 	z_index = 50
 	drag_shape = item["shape"]
 	drag_rotation = int(item["rotation"])
 	pointer = at
-	grab = _nearest_grab_center(item, at - item_rect(item).position) if item["cell"] != null else Vector2(PackRun.offsets(item)[0]) * STEP + Vector2.ONE * CELL * 0.5
+	grab = _nearest_grab_center(item, at - displayed_position) if item["cell"] != null else Vector2(PackRun.offsets(item)[0]) * STEP + Vector2.ONE * CELL * 0.5
 	selected_id = int(item["id"])
 	selected.emit(item)
 	changed.emit()
@@ -501,6 +685,9 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		return
 	if dragging.is_empty():
+		if event is InputEventMouseMotion or event is InputEventMouseButton:
+			pointer = get_global_transform_with_canvas().affine_inverse() * event.position
+			_hover_pointer_valid = true
 		return
 	var previous_pointer: Vector2 = pointer
 	if event is InputEventMouseMotion or event is InputEventMouseButton:
@@ -508,7 +695,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		throw_velocity = event.velocity
 		throw_time_msec = Time.get_ticks_msec()
-		if storage != null and storage.is_visible_in_tree() and storage.get_global_rect().has_point(global_position + pointer):
+		if not run.is_permanent(dragging) and storage != null and storage.is_visible_in_tree() and storage.get_global_rect().has_point(global_position + pointer):
 			var item: Dictionary = dragging
 			item["cell"] = null
 			item["rotation"] = drag_rotation
@@ -597,7 +784,7 @@ func _preview_read(reader: Callable) -> Dictionary:
 	if dragging.is_empty() or not run.can_edit_inventory():
 		return reader.call()
 	var moves: Array[Dictionary] = candidate_plan()
-	if over_storage(pointer):
+	if over_storage(pointer) and not run.is_permanent(dragging):
 		moves = [{"item": dragging, "cell": null, "shape": dragging["shape"], "rotation": dragging["rotation"]}]
 	elif moves.size() > 1:
 		# A swap is only proposed until drop. Displaced items still occupy the
@@ -613,6 +800,7 @@ func _preview_read(reader: Callable) -> Dictionary:
 	return result
 
 func drop_at(at: Vector2) -> void:
+	_hover_pointer_valid = true
 	if not run.can_edit_inventory():
 		cancel_drag()
 		return
@@ -624,6 +812,7 @@ func drop_at(at: Vector2) -> void:
 		stash_held()
 		return
 	elif not moves.is_empty():
+		var before_crafts: Array[String] = crafting_opportunity_keys()
 		var starts: Dictionary = {}
 		for move in moves:
 			var id: int = move["item"]["id"]
@@ -631,6 +820,10 @@ func drop_at(at: Vector2) -> void:
 		starts[dragging["id"]] = pointer - grab
 		var placed_name: String = dragging["name"]
 		_apply_moves(moves)
+		var placed_ids: Array[int] = []
+		for move in moves:
+			placed_ids.append(int(move["item"]["id"]))
+		notify_craft_placement(before_crafts, placed_ids)
 		dragging = {}
 		cursor_held = false
 		for move in moves:
@@ -685,6 +878,10 @@ func _start_motion(item: Dictionary, from: Vector2, to_stash: bool) -> void:
 
 func stash_held() -> void:
 	if dragging.is_empty():
+		return
+	if run.is_permanent(dragging):
+		feedback.emit("The Bowmaster's quiver must stay in the backpack.", false)
+		cancel_drag()
 		return
 	var item: Dictionary = dragging
 	item["cell"] = null

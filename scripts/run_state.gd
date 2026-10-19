@@ -1,6 +1,9 @@
 class_name PackRun
 extends RefCounted
 
+const CRAFTING = preload("res://scripts/pack_crafting.gd")
+const QUIVER = preload("res://scripts/archer_quiver.gd")
+const ELEMENTS = preload("res://scripts/elemental_combat.gd")
 const GRID: Vector2i = Vector2i(8, 7)
 const FLOORS: int = 20
 const RELIC_FLOORS: Array[int] = [1, 5, 10, 15]
@@ -22,6 +25,10 @@ var block: int = 0
 var carry_block: int = 0
 var mana: int = 0
 var stamina: int = 0
+var momentum: int = 0
+# Modifier hooks for future equipment/effects; Momentum has no gameplay cap.
+var momentum_gain_bonus: int = 0
+var momentum_cost_reduction: int = 0
 # Mana/stamina capacities are the current round budgets; block retains its peak.
 var mana_capacity: int = 0
 var stamina_capacity: int = 0
@@ -29,6 +36,11 @@ var block_capacity: int = 0
 var player_poison: int = 0
 var enemy_poison: int = 0
 var enemy_burn: int = 0
+var enemy_slow: int = 0
+var enemy_spark: int = 0
+var enemy_doom: int = 0
+var enemy_doom_turns: int = 0
+var elemental_traces: Dictionary = {}
 var enemy_shield_spent: int = 0
 var fight: int = 0
 var turn: int = 1
@@ -47,6 +59,8 @@ var stage_history: Array[Dictionary] = []
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var next_id: int = 0
 var pending_turn: Dictionary = {}
+var volley_remaining: int = 3
+var crafting_events: Array[Dictionary] = []
 
 static func definition(key: String) -> Dictionary:
 	return PackCatalog.item(key)
@@ -62,6 +76,7 @@ func reset(seed_value: int = -1, chosen_class: String = "warrior") -> void:
 	combat_state = CombatState.PREPARING
 	phase = Phase.FIGHT
 	items.clear()
+	crafting_events.clear()
 	history.clear()
 	stage_history.clear()
 	offers.clear()
@@ -72,6 +87,8 @@ func reset(seed_value: int = -1, chosen_class: String = "warrior") -> void:
 	relic_rewards.clear()
 	next_id = 0
 	class_key = chosen_class
+	momentum_gain_bonus = 0
+	momentum_cost_reduction = 0
 	undead_companions = 1 if class_key == "necromancer" else 0
 	var character: Dictionary = PackCatalog.classes()[class_key]
 	max_hp = int(character["hp"])
@@ -82,10 +99,32 @@ func reset(seed_value: int = -1, chosen_class: String = "warrior") -> void:
 	for index in range(3):
 		add_item(character["starters"][index], character["positions"][index])
 	prepare_enemy()
+	if class_key == "ranger":
+		item_rewards.push_front({"floor": 0, "offers": QUIVER.INITIAL.duplicate()})
+		offers.assign(QUIVER.INITIAL)
 	log_line("%s enters the cursed descent." % character["name"])
+
+func quiver() -> Dictionary:
+	for item in items:
+		if item["key"] == QUIVER.KEY:
+			return item
+	return {}
+
+func is_permanent(item: Dictionary) -> bool:
+	return item.get("key", "") == QUIVER.KEY
+
+func needs_arrows() -> bool:
+	return class_key == "ranger" and not quiver().is_empty() and str(quiver().get("arrow_type", "")).is_empty()
+
+func quiver_description() -> String:
+	return QUIVER.describe(quiver(), volley_remaining, item_bonus(quiver())) if not quiver().is_empty() else ""
 
 func add_item(key: String, cell: Variant = null) -> Dictionary:
 	if not can_edit_inventory():
+		return {}
+	if key == QUIVER.KEY and (class_key != "ranger" or not quiver().is_empty()):
+		return {}
+	if QUIVER.OPTIONS.has(key):
 		return {}
 	var item: Dictionary = definition(key)
 	item["id"] = next_id
@@ -111,12 +150,15 @@ func auto_place(item: Dictionary) -> bool:
 	return false
 
 func prepare_enemy() -> void:
+	crafting_events.clear()
 	combat_state = CombatState.PREPARING
 	pending_turn.clear()
 	enemy = enemies()[fight].duplicate(true)
 	enemy["max_hp"] = enemy["hp"]
 	begin_stage(fight + 1, enemy["name"])
 	turn = 1
+	volley_remaining = int(QUIVER.stats(quiver())["interval"]) if not quiver().is_empty() else 3
+	momentum = 0
 	block = 0
 	carry_block = 0
 	mana = 0
@@ -127,11 +169,31 @@ func prepare_enemy() -> void:
 	player_poison = 0
 	enemy_poison = 0
 	enemy_burn = 0
+	enemy_slow = 0
+	enemy_spark = 0
+	enemy_doom = 0
+	enemy_doom_turns = 0
+	elemental_traces.clear()
 	enemy_shield_spent = 0
 	phase = Phase.FIGHT
 	if RELIC_FLOORS.has(fight + 1) and not relic_floors_claimed.has(fight + 1) and not relic_rewards.has(fight + 1):
 		relic_rewards.append(fight + 1)
 		roll_relics()
+
+func momentum_gain() -> int:
+	return maxi(0, 1 + momentum_gain_bonus) if class_key == "warrior" else 0
+
+func momentum_cost(amount: int) -> int:
+	return maxi(0, amount - momentum_cost_reduction)
+
+func spend_momentum(amount: int) -> bool:
+	if class_key != "warrior" or amount < 0 or combat_state != CombatState.RUNNING or not pending_turn.is_empty():
+		return false
+	var cost: int = momentum_cost(amount)
+	if momentum < cost:
+		return false
+	momentum -= cost
+	return true
 
 func roll_relics() -> void:
 	if relic_rewards.is_empty() or not relic_offers.is_empty():
@@ -172,6 +234,9 @@ func enemy_block_capacity(at_turn: int = -1) -> int:
 
 func is_invisible() -> bool:
 	return class_key == "assassin" and (turn - 1) % 3 == 0
+
+func enemy_conditions() -> Dictionary:
+	return {"poison": enemy_poison, "burn": enemy_burn, "slow": enemy_slow, "spark": enemy_spark, "doom": enemy_doom}
 
 static func offsets(item: Dictionary, rotation: int = -1) -> Array[Vector2i]:
 	var result: Array[Vector2i] = []
@@ -244,6 +309,8 @@ func placement_plan(item: Dictionary, cell: Vector2i, rotation: int = -1) -> Arr
 			return a["mask"].size() > b["mask"].size()
 		return reading_rank(a) < reading_rank(b))
 	for other in displaced:
+		if is_permanent(other):
+			return []
 		for point in cells(other):
 			occupied.erase(point)
 	for point in proposed:
@@ -290,13 +357,13 @@ func touches(a: Dictionary, b: Dictionary) -> bool:
 func bonus(source: Dictionary, target: Dictionary) -> int:
 	if source["id"] == target["id"] or not touches(source, target):
 		return 0
-	if source["key"] == "blood_gem" and target["role"] in ["weapon", "ranged", "spell"]:
+	if source["key"] == "blood_gem" and target["role"] in ["weapon", "ranged", "spell", "quiver"]:
 		return 2
 	if source["key"] == "iron_charm" and target["role"] == "shield":
 		return 3
-	if source["key"] == "quiver" and target["role"] == "ranged":
+	if source["key"] in ["quiver", QUIVER.KEY] and target["role"] == "ranged":
 		return 2
-	if source["key"] == "cursed_idol" and target["role"] in ["weapon", "ranged", "spell", "shield"]:
+	if source["key"] == "cursed_idol" and target["role"] in ["weapon", "ranged", "spell", "shield", "quiver"]:
 		return 3
 	return 0
 
@@ -357,7 +424,7 @@ func set_combat_paused(value: bool) -> void:
 		combat_state = CombatState.RUNNING
 
 func starting_resources() -> Dictionary:
-	var resources: Dictionary = {"mana": PackCatalog.BASE_MANA + (PackCatalog.MAGE_MANA_BONUS if class_key == "mage" else 0), "stamina": PackCatalog.BASE_STAMINA, "block": 0}
+	var resources: Dictionary = PackCatalog.base_resources(class_key)
 	var equipped: Array[Dictionary] = packed()
 	for item in equipped:
 		resources["mana"] += int(item["mana"])
@@ -402,6 +469,9 @@ func _mirror_target(item: Dictionary, equipped: Array[Dictionary]) -> Dictionary
 func start_combat() -> bool:
 	if combat_state != CombatState.PREPARING or phase != Phase.FIGHT:
 		return false
+	if needs_arrows() or (class_key == "ranger" and (quiver().is_empty() or quiver().get("cell") == null)):
+		return false
+	crafting_events = CRAFTING.resolve(self)
 	var resources: Dictionary = starting_resources()
 	_refill_round_resources()
 	block = int(resources["block"])
@@ -411,6 +481,7 @@ func start_combat() -> bool:
 
 func effects() -> Dictionary:
 	var result: Dictionary = {"item_effects": [], "active_ids": [], "dormant_ids": [], "mana_after": 0, "blood_cost": 0, "repeats": 0, "echo_item_id": -1}
+	result.merge({"physical_damage": 0, "magical_damage": 0, "elemental_inputs": [], "reactions": [], "traces_after": elemental_traces.duplicate(true)})
 	for stat in PackCatalog.STATS:
 		result[stat] = 0
 	var equipped: Array[Dictionary] = packed()
@@ -486,8 +557,6 @@ func effects() -> Dictionary:
 		var before: Dictionary = result.duplicate()
 		var is_attack: bool = item["role"] in ["weapon", "ranged", "spell"]
 		var copies: int = 1
-		if class_key == "ranger" and item["role"] == "ranged" and turn % 3 == 0:
-			copies += 1
 		if has_hourglass and item["role"] == "weapon" and turn % 4 == 0:
 			copies += 1
 		if item["id"] == result["echo_item_id"]:
@@ -502,6 +571,16 @@ func effects() -> Dictionary:
 			var best: Dictionary = _mirror_target(item, equipped)
 			if not best.is_empty():
 				result["damage"] += floori(float(best["damage"]) / 2.0)
+		var typed_damage: String = ELEMENTS.damage_type(item) + "_damage"
+		if item["key"] == "mirror_shard":
+			var reflected: Dictionary = _mirror_target(item, equipped)
+			if not reflected.is_empty():
+				typed_damage = ELEMENTS.damage_type(reflected) + "_damage"
+		result[typed_damage] += int(result["damage"]) - int(before["damage"])
+		var element: String = str(item.get("element", ""))
+		if ELEMENTS.ELEMENTS.has(element):
+			for copy in range(copies):
+				result["elemental_inputs"].append(element)
 		for stat: String in PackCatalog.STATS:
 			var contribution: int = int(result[stat]) - int(before[stat])
 			if contribution > 0:
@@ -521,6 +600,25 @@ func effects() -> Dictionary:
 	# Thralls join the direct attack, sharing its shield absorption and overflow.
 	result["companion_damage"] = undead_companions * NECROMANCER_COMPANION_DAMAGE if class_key == "necromancer" else 0
 	result["damage"] += int(result["companion_damage"])
+	result["physical_damage"] += int(result["companion_damage"])
+	result["volley_damage"] = 0
+	var special: Dictionary = quiver()
+	if class_key == "ranger" and not special.is_empty() and special.get("cell") != null and not needs_arrows() and volley_remaining <= 1:
+		var volley: Dictionary = QUIVER.stats(special, item_bonus(special))
+		result["volley_damage"] = volley["damage"]
+		result["physical_damage"] += int(volley["damage"])
+		for stat: String in ["damage", "pierce", "poison", "burn"]:
+			result[stat] += int(volley[stat])
+			if int(volley[stat]) > 0:
+				result["item_effects"].append({"id": special["id"], "key": "physical_attack" if stat == "damage" else ("piercing" if stat == "pierce" else stat), "amount": volley[stat]})
+	if class_key == "mage":
+		var cleanses_now: bool = int(enemy["cleanse"]) > 0 and turn % int(enemy["cleanse"]) == 0
+		var reaction: Dictionary = ELEMENTS.react({} if cleanses_now else elemental_traces, result["elemental_inputs"])
+		result["reactions"] = reaction["reactions"]
+		result["traces_after"] = reaction["traces"]
+		for stat: String in ["damage", "burn", "slow", "spark", "doom", "poison", "pierce"]:
+			result[stat] += int(reaction[stat])
+		result["magical_damage"] += int(reaction["damage"])
 	return result
 
 func _record_amount(events: Array[String], message: String, amount: int) -> void:
@@ -533,6 +631,13 @@ func outcome(stats: Dictionary) -> Dictionary:
 	var my_events: Array[String] = []
 	var monster_events: Array[String] = []
 	var foe: String = enemy["name"]
+	for reaction_id: String in stats.get("reactions", []):
+		my_events.append("Elemental reaction: %s." % ELEMENTS.reaction(reaction_id)["name"])
+	if int(stats.get("volley_damage", 0)) > 0:
+		my_events.append("My quiver unleashed a Volley.")
+	result["volley_after"] = volley_remaining
+	if class_key == "ranger" and not quiver().is_empty() and not needs_arrows():
+		result["volley_after"] = int(QUIVER.stats(quiver())["interval"]) if volley_remaining <= 1 else volley_remaining - 1
 	_record_amount(my_events, "I gained %d mana.", int(stats.get("mana_gained", 0)))
 	_record_amount(my_events, "I gained %d stamina.", int(stats.get("stamina_gained", 0)))
 	_record_amount(my_events, "I spent %d mana on items.", int(stats.get("mana_spent", 0)))
@@ -542,14 +647,22 @@ func outcome(stats: Dictionary) -> Dictionary:
 	var health: int = mini(max_hp, hp + int(stats["healing"]))
 	var healed: int = health - hp
 	_record_amount(my_events, "I healed %d HP.", healed)
-	var direct: int = int(stats["damage"])
+	var physical: int = int(stats.get("physical_damage", stats["damage"]))
+	var magical: int = int(stats.get("magical_damage", 0))
 	if relics.has("blood_pact"):
-		direct += maxi(0, int(stats["healing"]) - healed)
+		physical += maxi(0, int(stats["healing"]) - healed)
+	var physical_after: int = ELEMENTS.resist(physical, int(enemy.get("physical_resistance", 0)))
+	var magical_after: int = ELEMENTS.resist(magical, int(enemy.get("magical_resistance", 0)))
+	_record_amount(my_events, foe + " resisted %d physical damage.", physical - physical_after)
+	_record_amount(my_events, foe + " resisted %d magical damage.", magical - magical_after)
+	var direct: int = physical_after + magical_after
 	var shield_before: int = shield()
 	var shield_absorbed: int = mini(shield_before, maxi(0, direct - int(stats["pierce"])))
 	var shield_spent: int = enemy_shield_spent + shield_absorbed
 	var dealt: int = direct - shield_absorbed
 	result["direct_damage_actual"] = mini(maxi(0, dealt), int(enemy["hp"]))
+	result["direct_physical_actual"] = mini(int(result["direct_damage_actual"]), maxi(0, physical_after - shield_absorbed))
+	result["direct_magical_actual"] = int(result["direct_damage_actual"]) - int(result["direct_physical_actual"])
 	var foe_hp: int = maxi(0, int(enemy["hp"]) - dealt)
 	_record_amount(my_events, foe + "'s block absorbed %d damage.", shield_absorbed)
 	if shield_before > 0 and shield_absorbed == shield_before:
@@ -561,32 +674,72 @@ func outcome(stats: Dictionary) -> Dictionary:
 	_record_amount(my_events, "Vampirism restored %d HP to me.", leech_heal)
 	var poison: int = enemy_poison
 	var burn: int = enemy_burn
+	var doom: int = enemy_doom
+	var doom_turns: int = enemy_doom_turns
+	var spark: int = enemy_spark
+	var slow: int = enemy_slow
 	if int(enemy["cleanse"]) > 0 and turn % int(enemy["cleanse"]) == 0:
 		if foe_hp > 0:
 			_record_amount(my_events, foe + " cleansed %d poison.", poison)
 			_record_amount(my_events, foe + " cleansed %d burn.", burn)
+			_record_amount(my_events, foe + " cleansed %d Doom.", doom)
+			_record_amount(my_events, foe + " cleansed %d Spark.", spark)
+			_record_amount(my_events, foe + " cleansed %d Slow.", slow)
 		poison = 0
 		burn = 0
+		doom = 0
+		doom_turns = 0
+		spark = 0
+		slow = 0
 	if foe_hp > 0:
 		_record_amount(my_events, "I applied %d poison to " + foe + ".", int(stats["poison"]))
 		_record_amount(my_events, "I applied %d burn to " + foe + ".", int(stats["burn"]))
+		for key: String in ["doom", "spark", "slow"]:
+			_record_amount(my_events, "I applied %d " + key.capitalize() + " to " + foe + ".", int(stats.get(key, 0)))
 	poison += int(stats["poison"])
 	burn += int(stats["burn"])
-	_record_amount(my_events, "Poison dealt %d damage to " + foe + ".", mini(poison, foe_hp))
-	result["poison_damage_actual"] = mini(poison, foe_hp)
-	foe_hp = maxi(0, foe_hp - poison)
-	_record_amount(my_events, "Burn dealt %d damage to " + foe + ".", mini(burn, foe_hp))
-	result["burn_damage_actual"] = mini(burn, foe_hp)
-	foe_hp = maxi(0, foe_hp - burn)
+	var poison_damage: int = ELEMENTS.resist(poison, int(enemy.get("magical_resistance", 0)))
+	_record_amount(my_events, "Poison dealt %d damage to " + foe + ".", mini(poison_damage, foe_hp))
+	result["poison_damage_actual"] = mini(poison_damage, foe_hp)
+	foe_hp = maxi(0, foe_hp - poison_damage)
+	var burn_damage: int = ELEMENTS.resist(burn, int(enemy.get("magical_resistance", 0)))
+	_record_amount(my_events, "Burn dealt %d damage to " + foe + ".", mini(burn_damage, foe_hp))
+	result["burn_damage_actual"] = mini(burn_damage, foe_hp)
+	foe_hp = maxi(0, foe_hp - burn_damage)
+	var spark_damage: int = ELEMENTS.resist(spark * ELEMENTS.SPARK_DAMAGE, int(enemy.get("magical_resistance", 0))) if magical_after > 0 else 0
+	result["spark_damage_actual"] = mini(spark_damage, foe_hp)
+	_record_amount(my_events, "Spark dealt %d damage to " + foe + ".", int(result["spark_damage_actual"]))
+	foe_hp = maxi(0, foe_hp - spark_damage)
+	if magical_after > 0:
+		spark = maxi(0, spark - 1)
+	spark += int(stats.get("spark", 0))
+	doom += int(stats.get("doom", 0))
+	if doom > 0 and doom_turns == 0:
+		doom_turns = ELEMENTS.DOOM_ROUNDS
+	doom_turns = maxi(0, doom_turns - 1)
+	var doom_damage: int = ELEMENTS.resist(doom * ELEMENTS.DOOM_DAMAGE, int(enemy.get("magical_resistance", 0))) if doom > 0 and doom_turns == 0 else 0
+	result["doom_damage_actual"] = mini(doom_damage, foe_hp)
+	_record_amount(my_events, "Doom dealt %d damage to " + foe + ".", int(result["doom_damage_actual"]))
+	foe_hp = maxi(0, foe_hp - doom_damage)
+	if doom_turns == 0:
+		doom = 0
+	slow += int(stats["slow"])
+	result["slow"] = slow
+	result["enemy_slow_after"] = maxi(0, slow - 1)
+	result["enemy_spark_after"] = spark
+	result["enemy_doom_after"] = doom
+	result["enemy_doom_turns_after"] = doom_turns
 	var cleansed: int = mini(player_poison, int(stats["cleanse"]))
 	_record_amount(my_events, "I cleansed %d poison.", cleansed)
 	var toxin: int = player_poison - cleansed
 	var reflection: int = int(enemy["reflect"]) if dealt > 0 else 0
-	var special: int = toxin + int(stats["curse"]) + reflection
+	var toxin_damage: int = ELEMENTS.resist(toxin, int(stats.get("magical_resistance", 0)))
+	reflection = ELEMENTS.resist(reflection, int(stats.get("magical_resistance", 0)))
+	var special: int = toxin_damage + int(stats["curse"]) + reflection
 	var ward_absorbed: int = mini(int(stats["ward"]), special)
 	var ward_left: int = int(stats["ward"])
 	# Attribute the shared ward pool to each source without changing its total.
-	for source: Dictionary in [{"amount": toxin, "name": "Poison"}, {"amount": int(stats["curse"]), "name": "Curse"}, {"amount": reflection, "name": foe + "'s reflection"}]:
+	for source: Dictionary in [{"amount": toxin_damage, "name": "Poison"}, {"amount": int(stats["curse"]), "name": "Curse"}, {"amount": reflection, "name": foe + "'s reflection"}]:
 		var absorbed: int = mini(ward_left, int(source["amount"]))
 		ward_left -= absorbed
 		_record_amount(my_events, "My ward blocked %d damage from " + str(source["name"]).to_lower() + ".", absorbed)
@@ -622,11 +775,15 @@ func outcome(stats: Dictionary) -> Dictionary:
 		for hit in range(0 if is_invisible() else int(enemy["hits"])):
 			if health <= 0 or foe_hp <= 0:
 				break
-			var slowed: int = mini(attack(), int(stats["slow"]))
+			var slowed: int = mini(attack(), int(result["slow"]))
 			var plated: int = mini(maxi(0, attack() - slowed), int(stats["plating"]))
 			reactive_amounts["slow"] += slowed
 			reactive_amounts["plating"] += plated
 			var threat: int = maxi(0, attack() - slowed - plated)
+			var incoming_type: String = str(enemy.get("damage_type", "physical"))
+			var incoming_after: int = ELEMENTS.resist(threat, int(stats.get(incoming_type + "_resistance", 0)))
+			_record_amount(monster_events, "My resistance prevented %d damage.", threat - incoming_after)
+			threat = incoming_after
 			_record_amount(monster_events, "My slow effect prevented %d damage.", slowed)
 			_record_amount(monster_events, "My plating prevented %d damage.", plated)
 			var piercing: int = mini(threat, int(enemy["pierce"]))
@@ -646,15 +803,11 @@ func outcome(stats: Dictionary) -> Dictionary:
 				_record_amount(monster_events, foe + " applied %d poison to me.", int(enemy["poison"]))
 				poison_logged = true
 			if attack() > 0:
-				retaliation += int(stats["thorns"])
-				reactive_amounts["thorns"] += mini(int(stats["thorns"]), foe_hp)
-				_record_amount(monster_events, "My thorns dealt %d damage to " + foe + ".", mini(int(stats["thorns"]), foe_hp))
-				foe_hp = maxi(0, foe_hp - int(stats["thorns"]))
-		if class_key == "warrior" and taken == 0 and attack() > 0 and foe_hp > 0:
-			var riposte: int = 4 + int(stats["plating"])
-			retaliation += riposte
-			_record_amount(monster_events, "My Riposte dealt %d damage to " + foe + ".", mini(riposte, foe_hp))
-			foe_hp = maxi(0, foe_hp - riposte)
+				var thorns: int = ELEMENTS.resist(int(stats["thorns"]), int(enemy.get("physical_resistance", 0)))
+				retaliation += thorns
+				reactive_amounts["thorns"] += mini(thorns, foe_hp)
+				_record_amount(monster_events, "My thorns dealt %d damage to " + foe + ".", mini(thorns, foe_hp))
+				foe_hp = maxi(0, foe_hp - thorns)
 		if taken > 0:
 			toxin += int(enemy["poison"])
 		if foe_hp > 0:
@@ -678,6 +831,10 @@ func outcome(stats: Dictionary) -> Dictionary:
 		_record_amount(monster_events, foe + " lost %d temporary block.", -shield_change)
 	result["enemy_shield_spent_after"] = shield_spent
 	result["enemy_shield_after"] = maxi(0, shield_capacity(turn + 1) - shield_spent)
+	# Award only after a full exchange, never on previews or a killing opening action.
+	result["momentum_gained"] = momentum_gain() if result["has_response"] and int(result["hp_after"]) > 0 else 0
+	result["momentum_after"] = momentum + int(result["momentum_gained"])
+	_record_amount(monster_events, "I gained %d Momentum.", int(result["momentum_gained"]))
 	result["player_events"] = my_events
 	# Limit conditional feedback to effects that actually resolved. Allocation
 	# follows the same deterministic source order as backpack aggregation.
@@ -724,6 +881,12 @@ func begin_turn() -> Dictionary:
 	stamina_capacity = int(pending_turn["stamina"])
 	block_capacity = maxi(block_capacity, int(checkpoint["block"]))
 	hp = int(checkpoint["hp"])
+	enemy_slow = int(pending_turn["enemy_slow_after"])
+	enemy_spark = int(pending_turn["enemy_spark_after"])
+	enemy_doom = int(pending_turn["enemy_doom_after"])
+	enemy_doom_turns = int(pending_turn["enemy_doom_turns_after"])
+	elemental_traces = pending_turn.get("traces_after", {}).duplicate(true)
+	volley_remaining = int(pending_turn.get("volley_after", volley_remaining))
 	enemy["hp"] = checkpoint["enemy_hp"]
 	for property: String in ["mana", "stamina", "block", "player_poison", "enemy_poison", "enemy_burn", "enemy_shield_spent"]:
 		set(property, int(checkpoint[property]))
@@ -736,6 +899,7 @@ func complete_turn() -> Dictionary:
 		return {}
 	var result: Dictionary = pending_turn
 	pending_turn = {}
+	momentum = int(result.get("momentum_after", momentum))
 	hp = int(result["hp_after"])
 	enemy["hp"] = result["enemy_hp_after"]
 	mana = int(result["mana_after"])
@@ -752,6 +916,8 @@ func complete_turn() -> Dictionary:
 		log_line("Last Thread saved me with %d HP." % hp)
 		var largest: Dictionary = {}
 		for item in packed():
+			if is_permanent(item):
+				continue
 			if largest.is_empty() or item["mask"].size() > largest["mask"].size():
 				largest = item
 		if not largest.is_empty():
@@ -776,10 +942,16 @@ func complete_turn() -> Dictionary:
 
 func roll_loot() -> void:
 	var offense: Dictionary = {"warrior": ["longsword", "battle_axe", "venom_dagger", "vampire_fang", "rusty_knife"], "ranger": ["shortbow", "hunting_trap", "venom_dagger", "vampire_fang"], "mage": ["ember_tome", "frost_wand", "venom_dagger", "vampire_fang"], "assassin": ["venom_dagger", "vampire_fang", "rusty_knife", "hunting_trap"], "necromancer": ["ember_tome", "frost_wand", "vampire_fang", "venom_dagger"]}
+	offense["mage"] = ["ember_tome", "frost_wand", "lightning_wand", "void_tome", "venom_orb"]
+	offense["necromancer"].append_array(["lightning_wand", "void_tome", "venom_orb"])
 	var groups: Array = [offense[class_key], ["cracked_shield", "tower_shield", "buckler", "plate_mail", "thorn_mail", "healing_herbs", "bandage", "warding_sigil"], ["blood_gem", "iron_charm", "quiver", "spark_ring", "hourglass", "mirror_shard", "antidote", "cursed_idol"]]
 	var rolled: Array[String] = []
 	for group in groups:
 		rolled.append(group[rng.randi_range(0, group.size() - 1)])
+	if class_key == "ranger" and (fight + 1) % 3 == 0 and not quiver().is_empty():
+		var upgrades: Array[String] = QUIVER.available(quiver())
+		if not upgrades.is_empty():
+			rolled[2] = upgrades[rng.randi_range(0, upgrades.size() - 1)]
 	item_rewards.append({"floor": fight + 1, "offers": rolled})
 	if offers.is_empty():
 		offers.assign(rolled)
@@ -787,10 +959,31 @@ func roll_loot() -> void:
 func choose_loot(key: String) -> void:
 	if not can_claim_rewards() or phase not in [Phase.FIGHT, Phase.VICTORY] or not pending_turn.is_empty() or item_rewards.is_empty() or not offers.has(key):
 		return
-	var item: Dictionary = add_item(key)
-	auto_place(item)
+	if QUIVER.OPTIONS.has(key):
+		var special: Dictionary = quiver()
+		if special.is_empty():
+			return
+		if QUIVER.INITIAL.has(key):
+			if not needs_arrows():
+				return
+			special["arrow_type"] = QUIVER.OPTIONS[key]["type"]
+		else:
+			if not QUIVER.available(special).has(key):
+				return
+			special["upgrades"][key] = int(special["upgrades"].get(key, 0)) + 1
+			if key == "quiver_loader":
+				volley_remaining = mini(volley_remaining, int(QUIVER.stats(special)["interval"]))
+	else:
+		var item: Dictionary = add_item(key)
+		auto_place(item)
 	log_line("Claimed %s." % definition(key)["name"])
 	item_rewards.pop_front()
+	# Deferred choices must not retain an upgrade that is now capped.
+	for reward: Dictionary in item_rewards:
+		for index in range(reward["offers"].size()):
+			var offered: String = reward["offers"][index]
+			if offered.begins_with("quiver_") and not QUIVER.available(quiver()).has(offered):
+				reward["offers"][index] = "blood_gem"
 	offers.clear()
 	if not item_rewards.is_empty():
 		offers.assign(item_rewards[0]["offers"])

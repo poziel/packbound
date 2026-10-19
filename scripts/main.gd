@@ -31,6 +31,7 @@ var transition_popups: Control
 @onready var mana_bar: PixelStatBar = $Combat/CharacterPanel/Tabs/Backpack/Player/ManaBar
 @onready var stamina_bar: PixelStatBar = $Combat/CharacterPanel/Tabs/Backpack/Player/StaminaBar
 var class_status: String = ""
+@onready var momentum_bar: PixelStatBar = $Combat/CharacterPanel/Tabs/Backpack/Player/MomentumBar
 var hovered_enemy_status: String = ""
 var updating_enemy_status_hover: bool = false
 @onready var encounter_label: Label = $Combat/CharacterPanel/EncounterLabel
@@ -132,6 +133,7 @@ func _process(delta: float) -> void:
 			_save_run()
 	_sync_settings_dock()
 	inspector.enabled = not loading_screen.active and (not busy or playback.paused) and combat.visible and (not modal.visible or modal_kind == "reward") and board.dragging.is_empty() and bool(front.settings["tooltips"])
+	board.craft_inspection_active = not inspector.windows.is_empty() and inspector.windows[0].key.begins_with("crafts_")
 	if combat.visible and not waiting_at_entrance and not playback.paused and modal_kind != "pause" and run.phase not in [PackRun.Phase.VICTORY, PackRun.Phase.DEFEAT]:
 		elapsed += delta
 	timer_label.text = "%02d:%02d" % [floori(elapsed / 60.0), int(elapsed) % 60]
@@ -220,6 +222,20 @@ func _bind_gameplay() -> void:
 		var label: RichTextLabel = combat.get_node("CharacterPanel/Tabs/Statistics/Scroll/Rows/%s/%sLabel" % [row, row])
 		label.text = PackKeywordLinks.rich(stat.capitalize(), "", false)
 		values[stat].add_theme_color_override("font_color", PackKeywords.color(stat))
+	# Reuse the existing editable row for newly supported combat values.
+	var stat_rows: Node = combat.get_node("CharacterPanel/Tabs/Statistics/Scroll/Rows")
+	for stat: String in ["physical_damage", "magical_damage", "doom", "spark", "physical_resistance", "magical_resistance"]:
+		var row: Control = stat_rows.get_node("Damage").duplicate()
+		row.name = stat.to_pascal_case()
+		stat_rows.add_child(row)
+		var label: RichTextLabel = row.get_node("DamageLabel")
+		var value: Label = row.get_node("DamageValue")
+		label.name = stat.to_pascal_case() + "Label"
+		value.name = stat.to_pascal_case() + "Value"
+		label.text = PackKeywordLinks.rich(stat.replace("_", " ").capitalize(), "", false)
+		value.text = "0"
+		value.add_theme_color_override("font_color", PackKeywords.color(stat))
+		values[stat] = value
 
 func _bind_dialogs() -> void:
 	for index in range(3):
@@ -326,6 +342,8 @@ func start_run(chosen_class: String = "warrior", seed_value: int = -1, saved: Di
 	_show_phase_modal()
 	if not saved.is_empty():
 		playback.restore(run, saved.get("playback", {}))
+		if playback.snapshot().get("crafting_wait", false):
+			board.show_crafting_merges(run.crafting_events, maxf(0.0, PackRun.CRAFTING.ANIMATION_SECONDS - playback.remaining_seconds))
 		busy = playback.active
 		_refresh()
 	_save_run()
@@ -434,6 +452,10 @@ func _input(event: InputEvent) -> void:
 func _act() -> void:
 	if loading_screen.active:
 		return
+	if run.needs_arrows():
+		if not modal.visible:
+			_open_reward(false)
+		return
 	if modal_kind == "reward":
 		_close_modal()
 	if playback.active:
@@ -451,7 +473,8 @@ func _act() -> void:
 		combat_sequence += 1
 		board.mouse_filter = Control.MOUSE_FILTER_STOP
 		playback_speed = clampf(float(front.settings["combat_speed"]), 0.5, 10.0)
-		playback.start(run, playback_speed, enemy_card.hit_rise_seconds + enemy_card.hit_settle_seconds, PackEnemyCard.STRIKE_SECONDS, PackEnemyCard.DEATH_SECONDS, float(front.settings["player_response_delay"]), float(front.settings["enemy_response_delay"]))
+		if playback.start(run, playback_speed, enemy_card.hit_rise_seconds + enemy_card.hit_settle_seconds, PackEnemyCard.STRIKE_SECONDS, PackEnemyCard.DEATH_SECONDS, float(front.settings["player_response_delay"]), float(front.settings["enemy_response_delay"])):
+			board.show_crafting_merges(run.crafting_events)
 
 func _player_resolved(result: Dictionary) -> void:
 	var speed: float = playback_speed
@@ -460,11 +483,11 @@ func _player_resolved(result: Dictionary) -> void:
 	enemy_card.show_combat_effects(result, speed)
 	if bool(front.settings["flash"]):
 		board.flash_failed_activations(result.get("dormant_ids", []), speed)
-		if int(result["dealt"]) + int(result["poison_tick"]) + int(result["burn_tick"]) > 0:
+		if _actual_enemy_damage(result) > 0:
 			enemy_bar.flash_glow(speed)
 		if int(result["special_taken"]) > 0:
 			hp_bar.flash_glow(speed)
-	if int(result["dealt"]) + int(result["poison_tick"]) + int(result["burn_tick"]) > 0:
+	if _actual_enemy_damage(result) > 0:
 		enemy_card.play_hit(bool(front.settings["flash"]), speed, run.enemy["hp"] <= 0)
 
 func _monster_resolved(result: Dictionary) -> void:
@@ -615,11 +638,12 @@ func _update_preview() -> void:
 		return
 	var stats: Dictionary = run.pending_turn if not run.pending_turn.is_empty() else board.preview_effects()
 	for stat in values:
-		values[stat].text = str(stats[stat])
+		values[stat].text = str(stats.get(stat, 0)) + ("%" if stat.ends_with("_resistance") else "")
 	var class_summary: String = "%d item(s) waiting for resources" % stats["dormant_ids"].size()
 	match run.class_key:
-		"warrior": class_summary = "Riposte on full block"
-		"ranger": class_summary = "Volley active" if run.turn % 3 == 0 else "Volley in %d turn(s)" % (3 - run.turn % 3)
+		"warrior": class_summary = "Momentum %d / +%d per round" % [run.momentum, run.momentum_gain()]
+		"ranger": class_summary = "Choose starting arrows" if run.needs_arrows() else "Volley in %d round(s)" % run.volley_remaining
+		"mage": class_summary = "%d reaction(s) ready" % stats.get("reactions", []).size()
 		"assassin": class_summary = "Invisible: cannot be targeted" if run.is_invisible() else "Shadowstep in %d turn(s)" % (3 - (run.turn - 1) % 3)
 		"necromancer": class_summary = "%d/%d bone thralls / +%d damage" % [run.undead_companions, PackRun.NECROMANCER_COMPANION_CAP, stats["companion_damage"]]
 	var unused_count: int = board.unpacked().size()
@@ -627,8 +651,16 @@ func _update_preview() -> void:
 	var resources: Dictionary = board.preview_starting_resources() if run.combat_state == PackRun.CombatState.PREPARING else {"mana": run.mana, "stamina": run.stamina, "block": run.block}
 	for resource: String in ["mana", "stamina", "block"]:
 		values[resource].text = str(resources[resource])
-	class_status = "%s\nMana %d   Stamina %d\nBlock %d   Poison %d" % [class_summary, resources["mana"], resources["stamina"], resources["block"], run.player_poison]
+	class_status = class_summary
+	var volley_badge: Label = character_portrait.get_node("VolleyCountdown")
+	volley_badge.visible = run.class_key == "ranger" and not run.needs_arrows()
+	volley_badge.text = str(run.volley_remaining)
 	var preparing: bool = run.combat_state == PackRun.CombatState.PREPARING
+	momentum_bar.visible = run.class_key == "warrior"
+	momentum_bar.accessibility_name = "Momentum"
+	momentum_bar.number_mode = PixelStatBar.NumberMode.HIDDEN
+	# Expanding display scale, not a cap on the resource.
+	momentum_bar.set_amount(run.momentum, maxi(5, ceili((run.momentum + 1) / 5.0) * 5))
 	mana_bar.number_mode = PixelStatBar.NumberMode.HIDDEN
 	stamina_bar.number_mode = PixelStatBar.NumberMode.HIDDEN
 	mana_bar.set_amount(resources["mana"], resources["mana"] if preparing else run.mana_capacity)
@@ -741,6 +773,9 @@ func show_record() -> void:
 	character_tabs.current_tab = character_tabs.get_tab_idx_from_control(history_view.get_parent())
 
 func _show_phase_modal() -> void:
+	if run.needs_arrows() and run.can_claim_rewards():
+		_open_reward(false)
+		return
 	if run.phase == PackRun.Phase.LOOT:
 		_advance_encounter()
 		return
@@ -786,13 +821,20 @@ func _open_reward(is_relic: bool) -> void:
 	var floor_number: int = run.relic_rewards[0] if is_relic else int(run.item_rewards[0]["floor"])
 	reward_title.text = "CHOOSE A RELIC / %02d" % floor_number if is_relic else "CHOOSE AN ITEM / %02d" % floor_number
 	reward_body.text = "Choose one. Close to save this choice for later."
+	if not is_relic and run.needs_arrows():
+		reward_title.text = "CHOOSE YOUR ARROWS"
+		reward_body.text = "Choose the starting arrows for your Bowmaster's Quiver."
+	elif not is_relic:
+		reward_title.text = "CHOOSE A REWARD / %02d" % floor_number
+	for button: Button in choice_buttons:
+		button.hide()
 	for index in range(keys.size()):
 		var item: Dictionary = PackCatalog.relic(keys[index]) if is_relic else PackCatalog.item(keys[index])
 		choice_buttons[index].show()
 		choice_art[index].texture = PackArt.relic(item["key"]) if is_relic else PackArt.item(item["key"], 64)
 		choice_names[index].text = item["name"]
 		choice_details[index].set_description(item["detail"])
-		choice_shapes[index].visible = not is_relic
+		choice_shapes[index].visible = not is_relic and not PackCatalog.QUIVER.OPTIONS.has(keys[index])
 		choice_shapes[index].set_meta("cells", [] if is_relic else PackRun.offsets(item))
 		choice_shapes[index].position.x = 64 if is_relic else 64 - PackRun.dimensions(item).x * 3
 		choice_shapes[index].queue_redraw()
@@ -876,6 +918,7 @@ func _bind_inspection() -> void:
 		inspector.register(control.get_parent().get_node(stat.to_pascal_case() + "Label"), _stat_inspection.bind(stat))
 	inspector.register(hp_bar, func() -> Dictionary: return _explanation("health", "%d / %d HP\n%d block: absorbs incoming strikes." % [run.hp, run.max_hp, roundi(hp_bar.protection_amount)]))
 	inspector.register(mana_bar, func() -> Dictionary: return PackKeywordLinks.entry("mana"))
+	inspector.register(momentum_bar, func() -> Dictionary: return PackKeywordLinks.entry("momentum"))
 	inspector.register(stamina_bar, func() -> Dictionary: return PackKeywordLinks.entry("stamina"))
 	inspector.register(character_portrait, _character_inspection)
 	inspector.register(gameplay_background.enemy_hover, _enemy_inspection)
@@ -906,7 +949,7 @@ func _explanation(key: String, context: String) -> Dictionary:
 	return data
 
 func _stat_inspection(stat: String) -> Dictionary:
-	return PackKeywordLinks.entry(stat)
+	return PackKeywordLinks.entry({"physical_damage": "physical_attack", "magical_damage": "magical_attack"}.get(stat, stat))
 
 func _set_health_block(bar: PixelStatBar, health: int, maximum: int, block: int) -> void:
 	var grey: float = PackKeywords.color("block").get_luminance()
@@ -914,13 +957,28 @@ func _set_health_block(bar: PixelStatBar, health: int, maximum: int, block: int)
 	bar.set_protected_amount(health, maximum, block)
 	bar.accessibility_name = "Health %d of %d, block %d" % [health, maximum, block]
 
+func _actual_enemy_damage(result: Dictionary) -> int:
+	var total: int = 0
+	for key: String in ["direct_damage_actual", "poison_damage_actual", "burn_damage_actual", "doom_damage_actual", "spark_damage_actual"]:
+		total += int(result.get(key, 0))
+	return total
+
 func _update_status_rows() -> void:
 	var enemy_status: RichTextLabel = enemy_vitals.get_node("Statuses/Content")
 	var parts: PackedStringArray = []
-	if run.enemy_poison > 0:
-		parts.append("[url=poison][color=#%s]%d[/color] %s[/url]" % [PackKeywords.color("poison").to_html(false), run.enemy_poison, PackKeywords.image_markup("poison")])
-	if run.enemy_burn > 0:
-		parts.append("[url=burn][color=#%s]%d[/color] %s[/url]" % [PackKeywords.color("burn").to_html(false), run.enemy_burn, PackKeywords.image_markup("burn")])
+	for key: String in run.enemy_conditions():
+		var amount: int = int(run.enemy_conditions()[key])
+		if amount <= 0:
+			continue
+		var glyph: String = PackKeywords.image_markup(key)
+		if glyph.is_empty():
+			glyph = key.capitalize()
+		var fuse: String = " (%d)" % run.enemy_doom_turns if key == "doom" else ""
+		parts.append("[url=%s][color=#%s]%d %s%s[/color][/url]" % [key, PackKeywords.color(key).to_html(false), amount, glyph, fuse])
+	for element: String in run.elemental_traces:
+		var count: int = run.elemental_traces[element].size()
+		if count > 0:
+			parts.append("[url=%s][color=#%s]%s ×%d[/color][/url]" % [element, PackKeywords.color(element).to_html(false), element.capitalize(), count])
 	var markup: String = "[center]" + "    ".join(parts) + "[/center]"
 	var appearance: String = PackKeywordLinks.hover_markup(markup, hovered_enemy_status, enemy_status.get_theme_color("default_color"))
 	if enemy_status.text != appearance:
@@ -932,7 +990,7 @@ func _update_status_rows() -> void:
 	player_status.text = PackKeywordLinks.rich("Poison %d" % run.player_poison, "", false) if run.player_poison > 0 else ""
 
 func _enemy_status_inspection() -> Dictionary:
-	if not ((hovered_enemy_status == "poison" and run.enemy_poison > 0) or (hovered_enemy_status == "burn" and run.enemy_burn > 0)):
+	if int(run.enemy_conditions().get(hovered_enemy_status, 0)) <= 0 and run.elemental_traces.get(hovered_enemy_status, []).is_empty():
 		return {}
 	var data: Dictionary = PackKeywordLinks.entry(hovered_enemy_status)
 	# Anchor to the hovered pair, not the wide centered text control.
@@ -953,20 +1011,22 @@ func _storage_inspection() -> Dictionary:
 	return _describe_item(item, storage.item_rect(item)) if not item.is_empty() else {}
 
 func _describe_item(item: Dictionary, rect: Rect2) -> Dictionary:
+	if Input.is_key_pressed(KEY_ALT):
+		var recipes: Dictionary = PackRun.CRAFTING.recipe_inspection(run, item)
+		if not recipes.is_empty():
+			recipes["rect"] = rect
+			return recipes
 	var body: String = PackKeywords.item_description(item)
+	if run.is_permanent(item):
+		body = run.quiver_description()
 	var costs: Array[Dictionary] = PackKeywords.item_resource_costs(item)
 	var bonus: int = run.item_bonus(item)
-	if bonus > 0:
-		var bonus_keyword: String = "block" if item["role"] == "shield" else "damage"
-		for source_item: Dictionary in run.items:
-			var contribution: int = run.bonus(source_item, item)
-			if contribution > 0:
-				body += ("\n" if not body.is_empty() else "") + "+%d %s from %s." % [contribution, bonus_keyword, source_item["name"]]
-	return {"key": "item_%d" % item["id"], "title": item["name"], "body": body, "keyword_list": PackKeywords.item_stats(item, bonus), "resource_costs": costs, "priority_label": "" if costs.is_empty() else PackKeywords.item_priority_label(item), "icon": PackArt.item(item["key"]), "rect": rect}
+	var presentation = preload("res://scripts/item_presentation.gd")
+	return {"key": "item_%d" % item["id"], "title": presentation.display_name(item), "body": body, "keyword_list": [] if run.is_permanent(item) else PackKeywords.item_stats(item, bonus), "keyword_stats": presentation.volley_stats(run, item), "bonuses": presentation.bonuses(run, item), "resource_costs": costs, "priority_label": "" if costs.is_empty() else PackKeywords.item_priority_label(item), "bound": run.is_permanent(item), "rect": rect}
 
 func _character_inspection() -> Dictionary:
 	var data: Dictionary = PackCatalog.classes()[run.class_key]
-	return {"key": "class_" + run.class_key, "title": front.player_name(run.class_key) + " / " + data["mechanic"], "body": data["detail"] + "\n\n" + class_status}
+	return {"key": "class_" + run.class_key, "title": front.player_name(run.class_key) + " / " + data["mechanic"], "keyword_stats": PackCatalog.innate_stats(run.class_key), "body": data["detail"] + "\n\n" + class_status}
 
 func _enemy_inspection() -> Dictionary:
 	if run.enemy.is_empty():
@@ -976,7 +1036,11 @@ func _enemy_inspection() -> Dictionary:
 
 func _enemy_rules() -> String:
 	# Old saves may contain the previous terminology in their copied enemy brief.
-	return str(run.enemy["detail"]).replace("shields", "block").replace("shield", "block").replace("Shield", "Block")
+	var rules: String = str(run.enemy["detail"]).replace("shields", "block").replace("shield", "block").replace("Shield", "Block")
+	for key: String in ["physical_resistance", "magical_resistance"]:
+		if int(run.enemy.get(key, 0)) > 0:
+			rules += "\n%s %d%%" % [key.replace("_", " ").capitalize(), run.enemy[key]]
+	return rules
 
 func _relic_inspection(index: int) -> Dictionary:
 	if index >= run.relics.size():
@@ -1008,5 +1072,5 @@ func _reward_inspection(index: int) -> Dictionary:
 		var item: Dictionary = PackCatalog.item(run.offers[index])
 		var body: String = PackKeywords.item_description(item)
 		var costs: Array[Dictionary] = PackKeywords.item_resource_costs(item)
-		return {"key": "reward_" + item["key"], "title": item["name"], "body": body, "keyword_list": PackKeywords.item_stats(item), "resource_costs": costs, "priority_label": "" if costs.is_empty() else PackKeywords.item_priority_label(item), "icon": PackArt.item(item["key"])}
+		return {"key": "reward_" + item["key"], "title": item["name"], "body": body, "keyword_list": PackKeywords.item_stats(item), "resource_costs": costs, "priority_label": "" if costs.is_empty() else PackKeywords.item_priority_label(item)}
 	return {}

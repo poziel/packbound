@@ -19,6 +19,8 @@ func fixture(character: String = "warrior") -> PackRun:
 	state.reset(42, character)
 	state.choose_relic(state.relic_offers[0])
 	state.relics.clear()
+	if state.needs_arrows():
+		state.choose_loot("arrow_broadhead")
 	return state
 
 func _wait_for_action() -> void:
@@ -108,7 +110,7 @@ func _run() -> void:
 	quit(1 if failures else 0)
 
 func _catalog_checks() -> void:
-	check(PackCatalog.ROSTER.size() == 25, "Exactly25 item types")
+	check(PackCatalog.ROSTER.size() == 28, "Twenty-eight item types including three elemental spells")
 	check(PackCatalog.enemies().size() == 20, "Twenty enemies")
 	var names: Dictionary = {}
 	for enemy in PackCatalog.enemies():
@@ -132,6 +134,8 @@ func _catalog_checks() -> void:
 		if key in ["venom_dagger", "shortbow", "ember_tome", "thorn_mail", "healing_herbs", "mirror_shard"]: native_size = Vector2(64, 64)
 		if key in ["quiver", "vampire_fang"]: native_size = Vector2(32, 64)
 		if key == "frost_wand": native_size = Vector2(32, 96)
+		if key == "lightning_wand": native_size = Vector2(32, 96)
+		if key in ["void_tome", "venom_orb"]: native_size = Vector2(64, 64)
 		if key in ["battle_axe", "plate_mail", "hunting_trap", "hourglass"]: native_size = Vector2(96, 64)
 		check(art.get_size() == native_size, key + " has art at its source resolution")
 	var axe_art: Texture2D = PackArt.item("battle_axe").atlas
@@ -210,16 +214,17 @@ func _mechanics_checks() -> void:
 	var state: PackRun = fixture()
 	check(state.max_hp == 40 and state.items[0]["key"] == "longsword", "Warrior loadout")
 	var result: Dictionary = state.end_turn()
-	check(result["retaliation"] == 4 and result["taken"] == 0, "Warrior counterattacks after full block")
+	check(result["retaliation"] == 0 and result["taken"] == 0 and state.momentum == 1, "Warrior builds Momentum after a fully blocked exchange without Riposte")
 	state = fixture("ranger")
 	var normal: int = state.effects()["damage"]
-	state.turn = 3
-	check(state.effects()["damage"] == normal * 2 and normal > 0, "Ranger volleys every third turn")
+	state.volley_remaining = 1
+	check(state.effects()["damage"] == normal + 8 and normal > 0, "Archer quiver launches an independent two-arrow Volley")
 	state = fixture("mage")
-	check(state.effects()["mana"] == 6 and state.effects()["mana_after"] == 3, "Mage gains base and bonus mana and spends it on starter spell")
+	check(state.effects()["mana"] == 6 and state.effects()["mana_after"] == 1 and state.effects()["stamina"] == 0, "Elementalist funds both starting spells with innate mana and no stamina")
 	state.items.clear()
 	var ember: Dictionary = state.add_item("ember_tome", Vector2i(0, 0))
 	var frost: Dictionary = state.add_item("frost_wand", Vector2i(4, 0))
+	ember["cost"] = 5
 	check(state.effects()["active_ids"].has(ember["id"]) and state.effects()["dormant_ids"].has(frost["id"]), "Insufficient mana leaves later spell dormant")
 	ember["cell"] = Vector2i(2, 0)
 	frost["cell"] = Vector2i(0, 0)
@@ -229,7 +234,7 @@ func _mechanics_checks() -> void:
 	state.relics = ["mana_furnace"]
 	state.items.clear()
 	state.add_item("spark_ring", Vector2i.ZERO)
-	check(state.effects()["block"] == 12 and state.effects()["mana_after"] == 0, "Mana Furnace converts and consumes mana")
+	check(state.effects()["block"] == 16 and state.effects()["mana_after"] == 0, "Mana Furnace converts and consumes mana")
 	state = fixture()
 	state.items.clear()
 	var gem: Dictionary = state.add_item("blood_gem", Vector2i.ZERO)

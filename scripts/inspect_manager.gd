@@ -18,6 +18,9 @@ var active_keyword_link: String = ""
 var active_parent: int = -1
 var keyword_link_age: float = 0.0
 var keyboard_active: bool = false
+var root_requires_alt: bool = false
+var root_lock_delay: float = 1.0
+var _alt_pressed: bool = false
 
 func register(target: Control, provider: Callable) -> void:
 	target.tooltip_text = ""
@@ -43,6 +46,12 @@ func _trim(count: int) -> void:
 		window.queue_free()
 
 func _process(delta: float) -> void:
+	var alt: bool = Input.is_key_pressed(KEY_ALT)
+	if alt != _alt_pressed:
+		_alt_pressed = alt
+		if not windows.is_empty():
+			if (alt and windows[0].key.begins_with("item_")) or (not alt and root_requires_alt and not windows[0].locked):
+				clear()
 	if not enabled:
 		if not windows.is_empty() or not pending.is_empty():
 			clear()
@@ -76,7 +85,7 @@ func _process(delta: float) -> void:
 				if held:
 					window.away_age = 0.0
 					window.age += delta
-					window.progress(window.age / lock_delay)
+					window.progress(window.age / (root_lock_delay if i == 0 else lock_delay))
 				elif i > 0:
 					window.away_age += delta
 					if window.away_age > 0.15:
@@ -116,6 +125,9 @@ func _candidate(hovered: Control) -> Dictionary:
 	return {}
 
 func _spawn(data: Dictionary, anchor: Rect2, parent_index: int) -> void:
+	if parent_index < 0:
+		root_requires_alt = data.get("requires_alt", false)
+		root_lock_delay = float(data.get("lock_delay", lock_delay))
 	var window: PackInspectWindow = WINDOW.instantiate()
 	add_child(window)
 	windows.append(window)
@@ -130,6 +142,8 @@ func _spawn(data: Dictionary, anchor: Rect2, parent_index: int) -> void:
 			active_keyword_link = "")
 	window.keyword_link_pressed.connect(func(key: String) -> void:
 		_open_keyword_link(key, index, true))
+	window.item_recipe_requested.connect(func(item_key: String) -> void:
+		_open_item_recipe(item_key, index))
 	_place_after_layout(window, anchor, parent_index)
 
 func _place_after_layout(window: PackInspectWindow, anchor: Rect2, parent_index: int) -> void:
@@ -156,16 +170,34 @@ func _place_after_layout(window: PackInspectWindow, anchor: Rect2, parent_index:
 func _open_keyword_link(key: String, parent_index: int, keyboard: bool = false) -> void:
 	if parent_index < 0 or parent_index >= 7 or parent_index >= windows.size() or not windows[parent_index].locked:
 		return
+	var data: Dictionary = windows[parent_index].bonus_definitions.get(key, PackKeywordLinks.entry(key))
+	_open_definition(data, parent_index, keyboard)
+
+func _open_item_recipe(item_key: String, parent_index: int) -> void:
+	var data: Dictionary = PackRun.CRAFTING.recipe_inspection(null, PackCatalog.item(item_key))
+	if data.is_empty():
+		data = {"key": "crafts_" + item_key, "title": "Possible crafts", "body": "No recipes use %s as an ingredient." % PackCatalog.item(item_key)["name"]}
+	_open_definition(data, parent_index, true)
+
+func _open_definition(data: Dictionary, parent_index: int, keyboard: bool = false) -> void:
+	if data.is_empty() or parent_index < 0 or parent_index >= 7 or parent_index >= windows.size() or not windows[parent_index].locked:
+		return
+	var key: String = data["key"]
 	# A keyword link already in this branch is reused, preventing cyclic popup chains.
 	for i in range(parent_index + 1):
 		if windows[i].key == key:
 			_trim(i + 1)
 			active_keyword_link = ""
+			if keyboard:
+				keyboard_active = true
+				windows[i].set_locked(true)
+				windows[i].focus_body()
 			return
 	if windows.size() > parent_index + 1 and windows[parent_index + 1].key == key:
-		return
-	var data: Dictionary = PackKeywordLinks.entry(key)
-	if data.is_empty():
+		if keyboard:
+			keyboard_active = true
+			windows[parent_index + 1].set_locked(true)
+			windows[parent_index + 1].focus_body()
 		return
 	_trim(parent_index + 1)
 	_spawn(data, windows[parent_index].get_global_rect(), parent_index)

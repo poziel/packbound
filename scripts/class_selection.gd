@@ -75,12 +75,7 @@ func _process(_delta: float) -> void:
 
 func _character_inspection(key: String) -> Dictionary:
 	var character: Dictionary = PackCatalog.classes()[key]
-	var starting := PackRun.new()
-	starting.reset(0, key)
-	var stats: String = "%d HP / %d mana" % [starting.max_hp, starting.starting_resources()["mana"]]
-	if starting.undead_companions > 0:
-		stats += " / %d thrall" % starting.undead_companions
 	var loadout := PackedStringArray()
 	for item: String in character["starters"]:
 		loadout.append(PackCatalog.item(item)["name"])
-	return {"key": "class_" + key, "title": character["name"] + " / " + character["mechanic"], "icon": PackArt.character_head(key), "body": character["detail"] + "\n\n" + stats + "\n\nStarting items\n" + "\n".join(loadout)}
+	return {"key": "class_" + key, "title": character["name"] + " / " + character["mechanic"], "icon": PackArt.character_head(key), "keyword_stats": PackCatalog.innate_stats(key), "body": character["detail"] + "\n\nStarting items\n" + "\n".join(loadout)}

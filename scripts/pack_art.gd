@@ -76,6 +76,10 @@ static func character_head(key: String) -> AtlasTexture:
 	return texture
 
 static func item(key: String, view_edge: int = 0) -> AtlasTexture:
+	if PackCatalog.ELEMENTAL_ITEMS.has(key):
+		key = PackCatalog.ELEMENTAL_ITEMS[key]["template"]
+	if key == PackCatalog.QUIVER.KEY or PackCatalog.QUIVER.OPTIONS.has(key):
+		key = "quiver"
 	var texture: AtlasTexture = AtlasTexture.new()
 	# Individual native-size exports coexist with the earlier atlas during migration.
 	if ITEM_TEXTURES.has(key):

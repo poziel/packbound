@@ -146,7 +146,7 @@ func _ui_checks() -> void:
 		var corner: Vector2i = board.call("priority_corner", PackRun.offsets(irregular, 2))
 		check(corner == Vector2i(1, 0), "Rotated irregular items use the leftmost occupied cell in the top row")
 	check(game.get("stamina_bar") != null, "Gameplay includes a stamina bar")
-	check(game.stamina_bar.value == 4 and game.stamina_bar.value_label.text == "4 / 4", "Stamina bar includes Iron Charm maximum bonus")
+	check(game.stamina_bar.value == 4 and game.stamina_bar.max_value == 4 and game.stamina_bar.number_mode == PixelStatBar.NumberMode.HIDDEN, "Stamina bar includes Iron Charm maximum bonus without a visible number")
 	game.run.start_combat()
 	board._gui_input(click)
 	check(item["priority"] == 9, "Combat prevents incrementing priority")

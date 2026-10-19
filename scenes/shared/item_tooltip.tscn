@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/item_tooltip.gd" id="script"]
 [ext_resource type="Theme" path="res://themes/gameplay/theme.tres" id="theme"]
 [ext_resource type="FontFile" path="res://assets/fonts/ui_pixel.tres" id="title"]
+[ext_resource type="Script" path="res://components/bound_equipment_indicator.gd" id="bound"]
 
 [sub_resource type="StyleBoxEmpty" id="rich_empty"]
 
@@ -25,6 +26,15 @@ layout_mode = 2
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
+
+[node name="BoundStatus" type="Control" parent="Header"]
+visible = false
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 0
+tooltip_text = "Bound equipment: cannot be put in the stash"
+script = ExtResource("bound")
 
 [node name="Name" type="Label" parent="Header"]
 custom_minimum_size = Vector2(260, 0)

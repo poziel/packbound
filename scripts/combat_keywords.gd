@@ -6,12 +6,21 @@ extends RefCounted
 
 static var _registry: Dictionary = {}
 static var _textures: Dictionary = {}
+const ELEMENT_TERMS: Dictionary = {
+	"spark": ["Spark", "#E6CA65"], "physical_resistance": ["Physical resistance", "#ABB7C5"], "magical_resistance": ["Magical resistance", "#B59ADE"],
+	"fire": ["Fire", "#E8A055"], "frost": ["Frost", "#8DBFDA"], "lightning": ["Lightning", "#E6CA65"], "void": ["Void", "#B59ADE"], "venom": ["Venom", "#A9CD65"]
+}
 
 static func registry() -> Dictionary:
 	if _registry.is_empty():
 		var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://assets/ui/keyword-icons/registry.json"))
 		if parsed is Dictionary:
 			_registry = parsed
+			for key: String in ELEMENT_TERMS:
+				if not _registry["keywords"].has(key):
+					_registry["keywords"][key] = {"label": ELEMENT_TERMS[key][0], "aliases": [key.replace("_", " ")], "color_token": "keyword." + key, "icon_id": ""}
+				if not _registry["palette"].has("keyword." + key):
+					_registry["palette"]["keyword." + key] = {"default": ELEMENT_TERMS[key][1]}
 	return _registry
 
 static func resolve(key: String) -> String:
@@ -80,7 +89,7 @@ static func item_stats(item: Dictionary, adjacency_bonus: int = 0) -> Array[Dict
 		var key: String = "piercing" if stat == "pierce" else stat
 		var icon_key: String = key
 		if stat == "damage":
-			icon_key = "magical_attack" if item.get("role", "") == "spell" else "physical_attack"
+			icon_key = "magical_attack" if preload("res://scripts/elemental_combat.gd").damage_type(item) == "magical" else "physical_attack"
 		result.append({"key": key, "icon": icon_key, "value": amount, "qualifier": "maximum" if stat in ["mana", "stamina"] else ""})
 	return result
 
@@ -125,8 +134,13 @@ static func relic_stats(relic: Dictionary) -> Array[Dictionary]:
 static func item_description(item: Dictionary) -> String:
 	# Existing saved items predate tooltip_detail; resolve their current catalog rules.
 	var item_key: String = str(item.get("key", ""))
+	if item_key == PackCatalog.QUIVER.KEY:
+		return PackCatalog.QUIVER.describe(item, 0)
 	if item_key in PackCatalog.ROSTER:
-		return str(PackCatalog.item(item_key).get("tooltip_detail", item.get("detail", "")))
+		var definition: Dictionary = PackCatalog.item(item_key)
+		var detail: String = str(definition.get("tooltip_detail", item.get("detail", "")))
+		var element: String = str(item.get("element", definition.get("element", "")))
+		return element.capitalize() + ("\n" + detail if not detail.is_empty() else "") if not element.is_empty() else detail
 	return str(item.get("tooltip_detail", item.get("detail", "")))
 
 static func list_markup(stats: Array, links: bool = true, default_color: Color = Color.TRANSPARENT) -> String:

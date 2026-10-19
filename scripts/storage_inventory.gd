@@ -446,6 +446,13 @@ func item_rect(item: Dictionary) -> Rect2:
 func _panel_input(event: InputEvent) -> void:
 	if board == null or not board.dragging.is_empty() or not board.run.can_edit_inventory():
 		return
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and grabbed == null:
+		var picked: RigidBody2D = hit_body(event.position - pile.position)
+		if picked != null and PackRun.CRAFTING.toggle_lock(board.run, picked.item):
+			picked.queue_redraw()
+			board.changed.emit()
+		accept_event()
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var at: Vector2 = event.position - pile.position
 		var picked: RigidBody2D = hit_body(at)
@@ -537,6 +544,9 @@ func _physics_process(delta: float) -> void:
 func quick_transfer(item: Dictionary) -> bool:
 	if board == null or not board.run.can_edit_inventory() or not board.dragging.is_empty() or grabbed != null:
 		return false
+	if board.run.is_permanent(item):
+		board.feedback.emit("The Bowmaster's quiver must stay in the backpack.", false)
+		return false
 	var from: Rect2 = board.item_rect(item)
 	if item["cell"] != null:
 		var center: Vector2 = board.get_global_transform_with_canvas() * from.get_center()
@@ -544,9 +554,11 @@ func quick_transfer(item: Dictionary) -> bool:
 		toss(item, center, Vector2.ZERO)
 		board.feedback.emit("%s moved to stash" % item["name"], true)
 	else:
+		var before_crafts: Array[String] = board.crafting_opportunity_keys()
 		if not board.run.auto_place(item):
 			board.feedback.emit("No room in your backpack.", false)
 			return false
+		board.notify_craft_placement(before_crafts, [int(item["id"])])
 		refresh()
 		board._start_motion(item, from.get_center() - board.footprint(item["shape"]) * 0.5, false)
 		board.feedback.emit("%s packed" % item["name"], true)
