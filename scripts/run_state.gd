@@ -212,7 +212,6 @@ func choose_relic(key: String) -> void:
 	relic_floors_claimed.append(relic_rewards.pop_front())
 	relic_offers.clear()
 	roll_relics()
-	log_line("Relic bound: %s." % PackCatalog.relic(key)["name"])
 
 func attack() -> int:
 	var pattern: Array = enemy["attacks"]
@@ -481,6 +480,8 @@ func start_combat() -> bool:
 
 func effects() -> Dictionary:
 	var result: Dictionary = {"item_effects": [], "active_ids": [], "dormant_ids": [], "mana_after": 0, "blood_cost": 0, "repeats": 0, "echo_item_id": -1}
+	var activation_events: Array[String] = []
+	result["activation_events"] = activation_events
 	result.merge({"physical_damage": 0, "magical_damage": 0, "elemental_inputs": [], "reactions": [], "traces_after": elemental_traces.duplicate(true)})
 	for stat in PackCatalog.STATS:
 		result[stat] = 0
@@ -495,6 +496,22 @@ func effects() -> Dictionary:
 	var regenerated_mana: int = 0
 	var regenerated_stamina: int = 0
 	var regenerated_block: int = 0
+	var innate: Dictionary = PackCatalog.base_resources(class_key)
+	activation_events.append("Round %d: refill %d innate mana and %d innate stamina." % [turn, innate["mana"], innate["stamina"]])
+	if class_key == "mage":
+		var cleanses_traces: bool = int(enemy["cleanse"]) > 0 and turn % int(enemy["cleanse"]) == 0
+		for trace: String in elemental_traces:
+			var remaining: int = 0
+			for life: int in elemental_traces[trace]:
+				if life > 1:
+					remaining += 1
+			if cleanses_traces and not elemental_traces[trace].is_empty():
+				activation_events.append("%s cleanses %d %s traces before casts." % [enemy["name"], elemental_traces[trace].size(), trace])
+			elif remaining > 0:
+				activation_events.append("%s already carries %d %s trace(s)." % [enemy["name"], remaining, trace])
+			var expired: int = elemental_traces[trace].size() - remaining
+			if not cleanses_traces and expired > 0:
+				activation_events.append("%d %s trace(s) expire on %s." % [expired, trace, enemy["name"]])
 	for item in equipped:
 		for resource: String in ["mana", "stamina", "block"]:
 			var gain: int = int(item.get(resource + "_per_round", 0)) + (int(item.get(resource, 0)) if resource != "block" or turn == 1 else 0)
@@ -506,6 +523,7 @@ func effects() -> Dictionary:
 					gain += int(target["block"]) / 2
 			if gain > 0:
 				result["item_effects"].append({"id": item["id"], "key": resource, "amount": gain})
+				activation_events.append("%s grants %d %s%s." % [_log_item(item), gain, resource, " at combat start" if turn == 1 else " before activations"])
 		regenerated_mana += int(item.get("mana_per_round", 0))
 		regenerated_stamina += int(item.get("stamina_per_round", 0))
 		regenerated_block += int(item.get("block_per_round", 0))
@@ -520,10 +538,12 @@ func effects() -> Dictionary:
 	result["stamina_spent"] = 0
 	result["mana_converted"] = 0
 	var eligible: Array[Dictionary] = []
+	var activation_costs: Dictionary = {}
 	# Reserve both costs atomically in priority/reading order. Skip failures.
 	for item in activation_order():
 		var cost: int = maxi(0, int(item["cost"]))
 		var stamina_cost: int = maxi(0, int(item.get("stamina_cost", 0)))
+		var paid_mana: int = mini(cost, available_mana)
 		if stamina_cost > available_stamina:
 			result["dormant_ids"].append(item["id"])
 			continue
@@ -541,20 +561,39 @@ func effects() -> Dictionary:
 		available_stamina -= stamina_cost
 		result["stamina_spent"] += stamina_cost
 		result["active_ids"].append(item["id"])
+		activation_costs[item["id"]] = {"mana": paid_mana, "stamina": stamina_cost, "health": cost - paid_mana}
 		eligible.append(item)
-	eligible.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return reading_rank(a) < reading_rank(b) if reading_rank(a) != reading_rank(b) else int(a["id"]) < int(b["id"]))
 	# Select from one normal activation before Hourglass, Volley or Echo copies.
 	var strongest_damage: int = -1
 	if relics.has("echo_clock") and turn % 3 == 0:
 		for item in eligible:
 			if item["role"] in ["weapon", "ranged", "spell"]:
 				var strength: int = int(item["damage"]) + item_bonus(item)
-				if strength > strongest_damage:
+				if strength > strongest_damage or (strength == strongest_damage and reading_rank(item) < reading_rank(_item_by_id(int(result["echo_item_id"])))):
 					strongest_damage = strength
 					result["echo_item_id"] = item["id"]
 	# Aggregate all contributions atomically; copied activations pay no extra cost.
-	for item in eligible:
+	for item in activation_order():
+		if not activation_costs.has(item["id"]):
+			activation_events.append("%s skips activation: insufficient mana or stamina; neither cost is spent." % _log_item(item))
+			continue
+		var activates: bool = item["role"] in ["weapon", "ranged", "spell"] or item["key"] == "mirror_shard"
+		for stat: String in PackCatalog.STATS:
+			activates = activates or (stat not in ["mana", "stamina", "block"] and int(item[stat]) != 0)
+		if not activates:
+			continue
 		var before: Dictionary = result.duplicate()
+		var source: String = _log_item(item)
+		var payments: PackedStringArray = []
+		for resource: String in ["mana", "stamina", "health"]:
+			var paid: int = int(activation_costs[item["id"]][resource])
+			if paid > 0:
+				payments.append("%d %s" % [paid, resource])
+		activation_events.append("I spend %s to activate %s." % [" and ".join(payments), source] if not payments.is_empty() else "I activate %s." % source)
+		for booster: Dictionary in equipped:
+			var amount: int = bonus(booster, item)
+			if amount > 0:
+				activation_events.append("%s receives +%d %s from touching %s." % [source, amount, "block" if item["role"] == "shield" else "damage", _log_item(booster)])
 		var is_attack: bool = item["role"] in ["weapon", "ranged", "spell"]
 		var copies: int = 1
 		if has_hourglass and item["role"] == "weapon" and turn % 4 == 0:
@@ -562,6 +601,8 @@ func effects() -> Dictionary:
 		if item["id"] == result["echo_item_id"]:
 			copies += 1
 		result["repeats"] += copies - 1
+		if copies > 1:
+			activation_events.append("%s repeats %d extra time(s)%s%s." % [source, copies - 1, " from Hourglass" if has_hourglass and item["role"] == "weapon" and turn % 4 == 0 else "", " from Echo Clock" if item["id"] == result["echo_item_id"] else ""])
 		for stat in PackCatalog.STATS:
 			if stat not in ["mana", "stamina", "block"]:
 				result[stat] += int(item[stat]) * copies
@@ -586,6 +627,9 @@ func effects() -> Dictionary:
 			if contribution > 0:
 				var icon_key: String = ("magical_attack" if item["role"] == "spell" else "physical_attack") if stat == "damage" else ("piercing" if stat == "pierce" else stat)
 				result["item_effects"].append({"id": item["id"], "key": icon_key, "amount": contribution})
+				activation_events.append("%s contributes %d %s%s." % [source, contribution, typed_damage.replace("_", " ") if stat == "damage" else stat.replace("_", " "), " to the combined attack" if stat == "damage" else ""])
+		if class_key == "mage" and ELEMENTS.ELEMENTS.has(element):
+			activation_events.append("%s places %d %s trace%s on %s." % [source, copies, element.capitalize(), "s" if copies != 1 else "", enemy["name"]])
 		for resource: String in ["mana", "stamina"]:
 			var spent: int = int(item.get("cost" if resource == "mana" else "stamina_cost", 0))
 			if spent > 0:
@@ -597,15 +641,19 @@ func effects() -> Dictionary:
 		result["block"] += available_mana * 2
 		result["block_gained"] += available_mana * 2
 		result["mana_after"] = 0
+		activation_events.append("Mana Furnace converts %d unused mana into %d block." % [available_mana, available_mana * 2])
 	# Thralls join the direct attack, sharing its shield absorption and overflow.
 	result["companion_damage"] = undead_companions * NECROMANCER_COMPANION_DAMAGE if class_key == "necromancer" else 0
 	result["damage"] += int(result["companion_damage"])
 	result["physical_damage"] += int(result["companion_damage"])
+	if int(result["companion_damage"]) > 0:
+		activation_events.append("Bone thralls contribute %d physical damage to the combined attack." % result["companion_damage"])
 	result["volley_damage"] = 0
 	var special: Dictionary = quiver()
 	if class_key == "ranger" and not special.is_empty() and special.get("cell") != null and not needs_arrows() and volley_remaining <= 1:
 		var volley: Dictionary = QUIVER.stats(special, item_bonus(special))
 		result["volley_damage"] = volley["damage"]
+		activation_events.append("%s unleashes Volley: %d physical damage, %d piercing, %d poison and %d burn." % [_log_item(special), volley["damage"], volley["pierce"], volley["poison"], volley["burn"]])
 		result["physical_damage"] += int(volley["damage"])
 		for stat: String in ["damage", "pierce", "poison", "burn"]:
 			result[stat] += int(volley[stat])
@@ -616,10 +664,30 @@ func effects() -> Dictionary:
 		var reaction: Dictionary = ELEMENTS.react({} if cleanses_now else elemental_traces, result["elemental_inputs"])
 		result["reactions"] = reaction["reactions"]
 		result["traces_after"] = reaction["traces"]
+		for reaction_id: String in reaction["reactions"]:
+			var recipe: Dictionary = ELEMENTS.reaction(reaction_id)
+			var ingredients: PackedStringArray = []
+			for trace: String in recipe["needs"]:
+				ingredients.append("1 " + trace)
+			activation_events.append("%s cause %s on %s; consumed these traces." % [" + ".join(ingredients), recipe["name"], enemy["name"]])
+			for stat: String in ["damage", "burn", "slow", "spark", "doom", "poison", "pierce"]:
+				if int(recipe.get(stat, 0)) > 0:
+					activation_events.append("%s contributes %d %s." % [recipe["name"], recipe[stat], "magical damage to the combined attack" if stat == "damage" else stat])
+			for trace: String in recipe["produces"]:
+				activation_events.append("%s places 1 %s trace on %s." % [recipe["name"], trace.capitalize(), enemy["name"]])
 		for stat: String in ["damage", "burn", "slow", "spark", "doom", "poison", "pierce"]:
 			result[stat] += int(reaction[stat])
 		result["magical_damage"] += int(reaction["damage"])
 	return result
+
+func _item_by_id(item_id: int) -> Dictionary:
+	for item: Dictionary in items:
+		if int(item["id"]) == item_id:
+			return item
+	return {}
+
+func _log_item(item: Dictionary) -> String:
+	return "[url=catalog_item_%s]%s[/url]" % [item["key"], preload("res://scripts/item_presentation.gd").display_name(item)]
 
 func _record_amount(events: Array[String], message: String, amount: int) -> void:
 	if amount > 0:
@@ -631,19 +699,10 @@ func outcome(stats: Dictionary) -> Dictionary:
 	var my_events: Array[String] = []
 	var monster_events: Array[String] = []
 	var foe: String = enemy["name"]
-	for reaction_id: String in stats.get("reactions", []):
-		my_events.append("Elemental reaction: %s." % ELEMENTS.reaction(reaction_id)["name"])
-	if int(stats.get("volley_damage", 0)) > 0:
-		my_events.append("My quiver unleashed a Volley.")
+	my_events.assign(stats.get("activation_events", []))
 	result["volley_after"] = volley_remaining
 	if class_key == "ranger" and not quiver().is_empty() and not needs_arrows():
 		result["volley_after"] = int(QUIVER.stats(quiver())["interval"]) if volley_remaining <= 1 else volley_remaining - 1
-	_record_amount(my_events, "I gained %d mana.", int(stats.get("mana_gained", 0)))
-	_record_amount(my_events, "I gained %d stamina.", int(stats.get("stamina_gained", 0)))
-	_record_amount(my_events, "I spent %d mana on items.", int(stats.get("mana_spent", 0)))
-	_record_amount(my_events, "I spent %d stamina on items.", int(stats.get("stamina_spent", 0)))
-	_record_amount(my_events, "Mana Furnace converted %d mana into block.", int(stats.get("mana_converted", 0)))
-	_record_amount(my_events, "I gained %d block.", int(stats.get("block_gained", 0)))
 	var health: int = mini(max_hp, hp + int(stats["healing"]))
 	var healed: int = health - hp
 	_record_amount(my_events, "I healed %d HP.", healed)
@@ -922,7 +981,7 @@ func complete_turn() -> Dictionary:
 				largest = item
 		if not largest.is_empty():
 			largest["cell"] = null
-			log_line("Last Thread unpacked my %s." % largest["name"])
+			log_line("Last Thread unpacked my %s." % _log_item(largest))
 	if hp <= 0:
 		log_line("I was defeated.")
 		phase = Phase.DEFEAT
@@ -931,7 +990,7 @@ func complete_turn() -> Dictionary:
 		if result["raised_companion"]:
 			undead_companions += 1
 			log_line("Raise Dead: I raised %s as a bone thrall." % enemy["name"])
-		log_line("%s defeated. An item choice is available whenever I am ready." % enemy["name"])
+		log_line("%s defeated." % enemy["name"])
 		phase = Phase.LOOT
 		combat_state = CombatState.FINISHED
 		roll_loot()
@@ -976,7 +1035,6 @@ func choose_loot(key: String) -> void:
 	else:
 		var item: Dictionary = add_item(key)
 		auto_place(item)
-	log_line("Claimed %s." % definition(key)["name"])
 	item_rewards.pop_front()
 	# Deferred choices must not retain an upgrade that is now capped.
 	for reward: Dictionary in item_rewards:

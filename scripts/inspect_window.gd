@@ -50,7 +50,7 @@ func setup(data: Dictionary) -> void:
 	_rich_text = PackKeywordLinks.rich(data.get("body", ""), key)
 	var keyword_stats: String = PackKeywords.stats_markup(data.get("keyword_stats", []), true, body.get_theme_color("default_color"))
 	if not keyword_stats.is_empty():
-		_rich_text = keyword_stats + "\n\n" + _rich_text
+		_rich_text = keyword_stats + ("\n\n" + _rich_text if not _rich_text.is_empty() else "")
 	var keyword_list: String = PackKeywords.list_markup(data.get("keyword_list", []), true, body.get_theme_color("default_color"))
 	if not keyword_list.is_empty():
 		_rich_text = keyword_list + ("\n\n" + _rich_text if not _rich_text.is_empty() else "")
@@ -92,7 +92,7 @@ func setup(data: Dictionary) -> void:
 		else:
 			bonus_lines.append("• " + str(bonus.get("markup", PackKeywordLinks.rich(str(bonus["label"])))))
 	if not bonus_lines.is_empty():
-		_rich_text += ("\n\n" if not _rich_text.is_empty() else "") + "Bonuses\n" + "\n".join(bonus_lines)
+		_rich_text += ("\n\n" if not _rich_text.is_empty() else "") + str(data.get("bonus_heading", "Bonuses")) + "\n" + "\n".join(bonus_lines)
 	if not footer.is_empty():
 		_rich_text += ("\n\n" if not _rich_text.is_empty() else "") + footer
 	body.text = _rich_text

@@ -7,6 +7,7 @@ extends RefCounted
 static var _registry: Dictionary = {}
 static var _textures: Dictionary = {}
 const ELEMENT_TERMS: Dictionary = {
+	"multi_attack": ["Multi-attack", "#ABB7C5"],
 	"spark": ["Spark", "#E6CA65"], "physical_resistance": ["Physical resistance", "#ABB7C5"], "magical_resistance": ["Magical resistance", "#B59ADE"],
 	"fire": ["Fire", "#E8A055"], "frost": ["Frost", "#8DBFDA"], "lightning": ["Lightning", "#E6CA65"], "void": ["Void", "#B59ADE"], "venom": ["Venom", "#A9CD65"]
 }

@@ -29,6 +29,24 @@ func register(target: Control, provider: Callable) -> void:
 		target.focus_mode = Control.FOCUS_ALL
 	sources.append({"target": target, "provider": provider})
 
+func register_links(target: RichTextLabel) -> void:
+	var hovered: Dictionary = {"key": ""}
+	target.meta_hover_started.connect(func(meta: Variant) -> void:
+		hovered["key"] = str(meta)
+		target.set_meta("hovered_link", str(meta)))
+	target.meta_hover_ended.connect(func(meta: Variant) -> void:
+		if hovered["key"] == str(meta):
+			hovered["key"] = ""
+			target.set_meta("hovered_link", ""))
+	target.mouse_exited.connect(func() -> void:
+		hovered["key"] = ""
+		target.set_meta("hovered_link", ""))
+	register(target, func() -> Dictionary:
+		var data: Dictionary = PackKeywordLinks.entry(hovered["key"])
+		if not data.is_empty():
+			data["rect"] = Rect2(pointer - Vector2(6, 6), Vector2(12, 12))
+		return data)
+
 func clear() -> void:
 	_trim(0)
 	pending.clear()

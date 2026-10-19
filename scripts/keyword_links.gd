@@ -3,6 +3,7 @@ class_name PackKeywordLinks
 extends RefCounted
 
 const ENTRIES: Dictionary = {
+	"multi_attack": ["Multi-attack", "Number of separate strikes in each enemy response. The attack stat is damage per strike. Slow and plating reduce every strike; block is one shared pool that each strike spends."],
 	"damage": ["Damage", "Weapons, bows, spells and bone thralls contribute to direct damage. Enemy block absorbs damage until depleted; excess damage hits health. Poison, burn and retaliation are resolved separately."],
 	"piercing": ["Block piercing", "This much direct damage bypasses the enemy's block; the rest depletes it before reaching health. An enemy's piercing strikes instead bypass part of your block; plating still applies."],
 	"block": ["Block", "A protection pool shared by all incoming strikes. Absorbed damage spends block; excess damage hits health. Your plating and slow apply first. Player block comes from the prepared backpack; enemy block comes from its abilities. Spent block stays depleted unless an explicit effect restores it."],
@@ -53,6 +54,8 @@ const META_ENTRIES: Dictionary = {
 static var ALIASES: Dictionary = _build_aliases()
 
 static func entry(key: String) -> Dictionary:
+	if key.begins_with("catalog_item_"):
+		return preload("res://scripts/item_presentation.gd").catalog_inspection(key.trim_prefix("catalog_item_"))
 	var elements = preload("res://scripts/elemental_combat.gd")
 	if key.begins_with("reaction_"):
 		var recipe: Dictionary = elements.reaction(key.trim_prefix("reaction_"))

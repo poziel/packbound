@@ -212,14 +212,14 @@ static func resolve(run) -> Array[Dictionary]:
 	for plan in prepared:
 		var names := PackedStringArray()
 		for component: Dictionary in plan["components"]:
-			names.append(component["name"])
+			names.append(run._log_item(component))
 		var output: Dictionary = plan["output"]
 		output["id"] = run.next_id
 		run.next_id += 1
 		_place_result(run, output, plan["components"])
 		run.items.append(output)
 		var destination: String = " Sent to stash: no room in the grid." if output["cell"] == null else ""
-		run.log_line("Crafted %s from %s.%s" % [output["name"], " + ".join(names), destination])
+		run.log_line("Crafted %s from %s.%s" % [run._log_item(output), " + ".join(names), destination])
 	return prepared
 
 static func hint(run, item: Dictionary) -> String:

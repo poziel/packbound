@@ -132,7 +132,7 @@ func _process(delta: float) -> void:
 		if autosave_seconds >= 5.0:
 			_save_run()
 	_sync_settings_dock()
-	inspector.enabled = not loading_screen.active and (not busy or playback.paused) and combat.visible and (not modal.visible or modal_kind == "reward") and board.dragging.is_empty() and bool(front.settings["tooltips"])
+	inspector.enabled = not loading_screen.active and (not busy or playback.paused) and combat.visible and (not modal.visible or modal_kind in ["reward", "result_log"]) and board.dragging.is_empty() and bool(front.settings["tooltips"])
 	board.craft_inspection_active = not inspector.windows.is_empty() and inspector.windows[0].key.begins_with("crafts_")
 	if combat.visible and not waiting_at_entrance and not playback.paused and modal_kind != "pause" and run.phase not in [PackRun.Phase.VICTORY, PackRun.Phase.DEFEAT]:
 		elapsed += delta
@@ -603,16 +603,20 @@ func _refresh_history() -> void:
 		var lines: Array[String] = []
 		var action_starts: Array = stage.get("action_starts", [])
 		for index in range(stage["lines"].size()):
+			if str(stage["lines"][index]).begins_with("Claimed ") or str(stage["lines"][index]).begins_with("Relic bound: "):
+				continue
 			if action_starts.find(index) > 0:
 				lines.append("[hr width=100% height=2 color=#394855]")
-			lines.append(stage["lines"][index])
+			lines.append(str(stage["lines"][index]).replace(" An item choice is available whenever I am ready.", ""))
 		log_text = "\n".join(lines) if not lines.is_empty() else "No events yet."
 	history_view.scroll_following = selected == latest and run.combat_state != PackRun.CombatState.PAUSED
-	var formatted: String = PackKeywordLinks.rich(log_text, "", false)
-	if history_view.text != formatted:
-		history_view.text = formatted
+	var formatted: String = PackKeywordLinks.rich(log_text)
+	var appearance: String = PackKeywordLinks.hover_markup(formatted, str(history_view.get_meta("hovered_link", "")), history_view.get_theme_color("default_color"))
+	if history_view.text != appearance:
+		history_view.text = appearance
 	if is_instance_valid(result_log):
-		result_log.get_node("History").text = formatted
+		var result_history: RichTextLabel = result_log.get_node("History")
+		result_history.text = PackKeywordLinks.hover_markup(formatted, str(result_history.get_meta("hovered_link", "")), result_history.get_theme_color("default_color"))
 		result_log.get_node("Navigation/StageNumber").text = stage_number.text
 		result_log.get_node("Navigation/StageMonster").text = stage_monster.text
 		result_log.get_node("Navigation/Previous").disabled = previous_stage.disabled
@@ -908,6 +912,8 @@ func _close_storage() -> void:
 	inspector.clear()
 
 func _bind_inspection() -> void:
+	inspector.register_links(history_view)
+	inspector.register_links(result_log.get_node("History"))
 	for index in range(3):
 		inspector.register(choice_buttons[index], _reward_inspection.bind(index))
 	board.managed_inspection = true
@@ -1031,8 +1037,7 @@ func _character_inspection() -> Dictionary:
 func _enemy_inspection() -> Dictionary:
 	if run.enemy.is_empty():
 		return {}
-	var intent_text: String = "%s\n%d x %d incoming" % [run.enemy["intent"], run.attack(), run.enemy["hits"]]
-	return {"key": "enemy_" + run.enemy["key"], "title": run.enemy["name"], "body": "%s\n\n%s\n%d / %d HP\nBlock %d / poison %d / burn %d" % [intent_text, _enemy_rules(), run.enemy["hp"], run.enemy["max_hp"], run.enemy_block(), run.enemy_poison, run.enemy_burn]}
+	return preload("res://scripts/enemy_presentation.gd").inspection(run)
 
 func _enemy_rules() -> String:
 	# Old saves may contain the previous terminology in their copied enemy brief.
