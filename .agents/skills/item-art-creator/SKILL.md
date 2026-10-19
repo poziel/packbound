@@ -1,9 +1,9 @@
 ---
-name: packbound-item-art
+name: item-art-creator
 description: Create and redraw readable Packbound inventory item pixel art with clear silhouettes, convincing material thickness, restrained shading, and explicit 32 px cell footprints. Use for item concepts, native sprites, and optional larger UI variants; characters and monsters follow their own art skills.
 ---
 
-# Packbound item art
+# Item Art Creator
 
 ## spritex authoring and exports
 
@@ -243,17 +243,17 @@ files and accepted originals.
 ## Helper
 
 `scripts/item-grid.cjs` below means this skill's script, not the game's script folder.
-From the project root use `.agents/skills/packbound-item-art/scripts/item-grid.cjs`.
+From the project root use `.agents/skills/item-art-creator/scripts/item-grid.cjs`.
 `layout` requires Node only. `check` and the legacy `export` require `sharp`; use the
 available bundled workspace runtime/dependencies instead of installing packages
 or embedding a workstation-specific path in this skill.
 
 ```powershell
 # Plan an L: writes a mask JSON and a transparent SVG geometry guide.
-node .agents/skills/packbound-item-art/scripts/item-grid.cjs layout --shape '#./##' --out workspace/docs/art/concepts/bent-tool-v1/layout
+node .agents/skills/item-art-creator/scripts/item-grid.cjs layout --shape '#./##' --out workspace/docs/art/concepts/bent-tool-v1/layout
 
 # Check an already prepared native PNG. Does not modify it.
-node .agents/skills/packbound-item-art/scripts/item-grid.cjs check --shape '#./##' --image workspace/docs/art/concepts/bent-tool-v1/native.png
+node .agents/skills/item-art-creator/scripts/item-grid.cjs check --shape '#./##' --image workspace/docs/art/concepts/bent-tool-v1/native.png
 
 # Final art exports come from the separately authored sprite JSON.
 # Create the output parent first and use a fresh stem for revisions.
@@ -298,3 +298,13 @@ skills; they do not set inventory cell density.
 Earlier 16 px experiments and exports with colored reflection accents keep their
 original dimensions and metadata until explicitly redrawn. The 32 px cell and
 material-based shading rules apply to new or explicitly redrawn inventory art.
+
+## Item Creator handoff
+
+When [Item Creator](../item-creator/SKILL.md) requests item or relic art, read its
+[art handoff contract](../item-creator/references/art-handoff.md). Use the supplied
+README, ID/kind, output folder and placement/UI-slot brief. Write sources, exports,
+provenance and `art-manifest.json` to that folder and return actual paths and checks.
+For relics, inspect the actual control slot rather than imposing a backpack mask.
+Do not edit gameplay records, accept art or register textures as part of this handoff.
+Standalone art requests keep their requested locations.

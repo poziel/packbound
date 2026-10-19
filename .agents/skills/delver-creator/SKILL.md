@@ -1,9 +1,9 @@
 ---
-name: packbound-delver-creator
-description: Create or modify Packbound Delvers, including identity, biography, appearance, class gameplay, structured character records, and coordinated pixel artwork. Use for complete Delver development or profile changes; standalone sprite work uses packbound-character-art.
+name: delver-creator
+description: Create or modify Packbound Delvers, including identity, biography, appearance, class gameplay, structured character records, and coordinated pixel artwork. Use for complete Delver development or profile changes; standalone sprite work uses delver-art-creator.
 ---
 
-# Packbound Delver creator
+# Delver Creator
 
 Develop a complete Delver, not just a sprite. Use the game's term **Delver** in prose; retain `assets/characters` and `character.json` as technical names. Keep a stable lowercase kebab-case ID independent of name, title or class.
 
@@ -51,7 +51,7 @@ Read the [assassin](references/examples/assassin.md), [mage](references/examples
 
 Read [the art handoff contract](references/art-handoff.md) before selecting generate, revise, reuse or no-art mode. It defines the exact required files for generated sets, allows additional art files, and specifies the art skill’s manifest return and mapping into character.json. Missing art triggers the art skill during full creation; profile-only edits reuse art. An explicit no-art request skips generation and reports missing assets as deferred.
 
-By default a full Delver creation includes artwork: invoke [packbound-character-art](../packbound-character-art/SKILL.md), which uses [spritex](D:/Dev/5-tools/spritex/skills/spritex/SKILL.md). Create the README before artwork and supply it together with concept references as the identity, appearance and equipment brief. Use the current project density, layered numeric JSON, transparent PNG/integer-grid SVG and separate detailed 64 × 64 portrait contract. Route requested item, UI or keyword art to their corresponding project skills.
+By default a full Delver creation includes artwork: invoke [delver-art-creator](../delver-art-creator/SKILL.md), which uses [spritex](D:/Dev/5-tools/spritex/skills/spritex/SKILL.md). Create the README before artwork and supply it together with concept references as the identity, appearance and equipment brief. Use the current project density, layered numeric JSON, transparent PNG/integer-grid SVG and separate detailed 64 × 64 portrait contract. Route requested item, UI or keyword art to their corresponding project skills.
 
 For profile-only edits, preserve existing art. For visual changes, redraw only affected assets, preserving identity unless the request changes it. Stage work in a separate temporary directory so a failed generation cannot damage current files. Inspect native/UI-size pixels and provenance as well as technical validation; never call self-reviewed art accepted. Runtime installation requires existing authorization for that installation or explicit acceptance.
 
@@ -60,7 +60,7 @@ For profile-only edits, preserve existing art. For visual changes, redraw only a
 Before the first mutation to an existing Delver folder, create a verified ZIP snapshot of the **entire folder**, including README, JSON, hidden files, concept references, art and provenance:
 
 ```powershell
-python .agents/skills/packbound-delver-creator/scripts/archive_delver.py --root . --id warrior
+python .agents/skills/delver-creator/scripts/archive_delver.py --root . --id warrior
 ```
 
 The helper creates a timestamped archive under `workspace/archives/characters`, hashes and verifies every file, and maintains `workspace/.gdignore`. It never deletes or changes the original folder. Stop on failure; never overwrite without a verified snapshot. Compression savings vary, especially for PNG and other compressed files.
@@ -69,6 +69,6 @@ Prepare and validate the updated folder separately, then update the canonical fo
 
 ## Deliver and verify
 
-Check JSON parsing, ID uniqueness, relative asset links, starter item IDs, supported versus proposed mechanics, agreement of overlapping README/JSON facts, native source validation and rendered art. Inspect catalog consumers before updating them. The existing `.agents/skills/packbound-character-art/scripts/build-character-catalog.cjs` supports the five legacy v1 profiles and writes only `workspace/docs/art/characters/catalog.json`; design READMEs remain independently authored. Do not run it blindly over v2 records or claim it registers a new Delver. The acceptance registry lives at `workspace/docs/art/characters/accepted.json`, outside the character asset root.
+Check JSON parsing, ID uniqueness, relative asset links, starter item IDs, supported versus proposed mechanics, agreement of overlapping README/JSON facts, native source validation and rendered art. Inspect catalog consumers before updating them. The existing `.agents/skills/delver-art-creator/scripts/build-character-catalog.cjs` supports the five legacy v1 profiles and writes only `workspace/docs/art/characters/catalog.json`; design READMEs remain independently authored. Do not run it blindly over v2 records or claim it registers a new Delver. The acceptance registry lives at `workspace/docs/art/characters/accepted.json`, outside the character asset root.
 
 Report the Delver folder, changes, archive path, verification performed, proposal/approval state and whether the game actually consumes the new data. File creation alone does not add a playable class.

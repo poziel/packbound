@@ -1,0 +1,4 @@
+interface:
+  display_name: "Item Creator"
+  short_description: "Design items and relics with data and art handoffs"
+  default_prompt: "Use $item-creator to develop an item or relic with a stable ID, design README, numerical JSON record, crafting and merge rules, and assets coordinated through Item Art Creator."

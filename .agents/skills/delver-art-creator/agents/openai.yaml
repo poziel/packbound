@@ -1,0 +1,4 @@
+interface:
+  display_name: "Delver Art Creator"
+  short_description: "256px fantasy characters and clear 64px portraits"
+  default_prompt: "Use $delver-art-creator to create a distinct 256px-body fantasy character with convincing proportions and equipment grips, plus a centered, unobstructed 64x64 portrait derived from its detailed original concept. Use $spritex for layered authoring JSON and CLI-generated PNG/SVG exports; verify actual dimensions."

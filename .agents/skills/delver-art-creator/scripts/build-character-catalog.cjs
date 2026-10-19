@@ -110,7 +110,7 @@ ${bullets(a.avoid)}
 - Portrait: separate **64 × 64** native document.
 - Rendering: ${c.generation.rendering}
 - Save editable spritex authoring JSON with meaningful layers and generate PNG/SVG exports through the CLI. A larger source must contain resolved detail, not doubled legacy pixels.
-- Use [packbound-character-art](../../../skills/packbound-character-art/SKILL.md), the linked spritex skill, this profile and the current visual references. Validate JSON before rendering production art.
+- Use [delver-art-creator](../../../.agents/skills/delver-art-creator/SKILL.md), the linked spritex skill, this profile and the current visual references. Validate JSON before rendering production art.
 
 ${c.generation.review}
 
@@ -128,7 +128,7 @@ Accepted legacy sprites retain their existing source resolution and approval. Th
 
 ---
 
-Programmatic source: [character.json](character.json). This Markdown profile is derived from that record; edit the JSON and run <code>node skills/packbound-character-art/scripts/build-character-catalog.cjs</code> from the project root to rebuild it and the full catalog.
+Programmatic source: [character.json](character.json). This Markdown profile is derived from that record; edit the JSON and run <code>node .agents/skills/delver-art-creator/scripts/build-character-catalog.cjs</code> from the project root to rebuild it and the full catalog.
 `;
 }
 (async()=>{

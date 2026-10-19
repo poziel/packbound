@@ -24,8 +24,8 @@
 
 ## Character sprites and portraits
 
-- Use the project skill [packbound-character-art](.agents/skills/packbound-character-art/SKILL.md) for new or explicitly redrawn characters and matching portraits.
-- Follow the character skill's [current visual references](.agents/skills/packbound-character-art/references/visual-direction.md): cohesive fantasy proportions, convincing weapon grips, and an upright, relaxed, slight three-quarter pose. The latest user references supersede conflicting older proportion and face guidance; the first Pixelorama roster was rejected.
+- Use the project skill [delver-art-creator](.agents/skills/delver-art-creator/SKILL.md) for new or explicitly redrawn characters and matching portraits.
+- Follow the character skill's [current visual references](.agents/skills/delver-art-creator/references/visual-direction.md): cohesive fantasy proportions, convincing weapon grips, and an upright, relaxed, slight three-quarter pose. The latest user references supersede conflicting older proportion and face guidance; the first Pixelorama roster was rejected.
 - Closed helmets, masks, shadowed hoods and nonhuman heads are valid character identities. For exposed faces and detailed close-ups, use deliberate anime-inspired pixel facial design. Do not force a realistic human face onto every class.
 - Generate the complete head-to-toe character. Prepare a separate **64 × 64** detailed face portrait from the original generated concept or other sufficiently detailed identity source. Center the head/face optically, preserve hair/headwear and chin, and remove incidental full-body equipment, effects and distracting fragments from the close-up. If equipment overlaps the head, remove it and reconstruct the hidden head details so the portrait is unobstructed. Retain defining costume and identity features, including intentional helmets and masks.
 - Inspect the portrait at its intended UI size. Do not enlarge a tiny sprite-face crop and claim added detail. Label an untouched crop as an exact crop, a resized or cleaned concept crop as a concept-derived matching portrait, and independently drawn/generated artwork as a separately drawn matching portrait. Record the source, framing and edits.
@@ -33,7 +33,7 @@
 
 ## Inventory item art
 
-- Use the project skill [packbound-item-art](.agents/skills/packbound-item-art/SKILL.md) for new or explicitly redrawn inventory items.
+- Use the project skill [item-art-creator](.agents/skills/item-art-creator/SKILL.md) for new or explicitly redrawn inventory items.
 - Each occupied inventory cell is **32 x 32 source pixels**, with **no artwork gap**. A two-cell-tall canvas is 64 px, a 2 x 2 canvas is 64 x 64 px, and a four-cell-tall canvas is 128 px tall.
 - Define placement with equal-width `#`/`.` mask rows. Canvas dimensions are the mask's bounding width and height multiplied by 32. Empty mask cells stay fully transparent; adjacent occupied cells form a continuous art surface.
 - Inventory items use restrained shading within their material colors. Avoid colored reflection accents, cyan/blue rim pixels, orange edge lighting and isolated specular glints. Deliberate blue materials or magical effects require them in the item brief.
@@ -43,15 +43,20 @@
 
 ## Monster art
 
-- Use [packbound-monster-art](.agents/skills/packbound-monster-art/SKILL.md) for whole-body monsters and enemies. Share the character rendering style while preserving species-specific anatomy, proportions and poses. No portrait is required by default.
+- Use [monster-art-creator](.agents/skills/monster-art-creator/SKILL.md) for whole-body monsters and enemies. Share the character rendering style while preserving species-specific anatomy, proportions and poses. No portrait is required by default.
 - Monster body width and height are each **at most 256 source pixels**, including anatomical appendages but excluding detached effects, held equipment and transparent padding. This is a maximum, not a target: rats, slimes and other small creatures use smaller bodies. Preserve natural proportions and record dimensions and anchor. Canvas padding may extend beyond the body limit. Keep a consistent display scale across monsters so small creatures stay visibly smaller; do not auto-fit every monster to fill the battle area.
 - Preserve the complete silhouette, native editable sources and transparent PNG/integer-grid SVG exports. Judge appearance beside accepted characters at intended display size; source dimensions alone do not establish style consistency or acceptance.
 
 ## UI and keyword icons
 
-- Use [packbound-ui-icons](.agents/skills/packbound-ui-icons/SKILL.md) for menu/navigation icons and the single block, spell and attack button glyphs. Keep the symbol separate from button backgrounds, borders, labels and notification badges. Match the actual control slot; current menu slots use 24 px and action/reward slots commonly use 32 px.
-- Use [packbound-keyword-icons](.agents/skills/packbound-keyword-icons/SKILL.md) for small inline stat, status and effect symbols, including health, armor, block, shield, poison and burn. These have their own native size and text-alignment rules; the inventory item footprint contract does not apply.
+- Use [ui-icons-art-creator](.agents/skills/ui-icons-art-creator/SKILL.md) for menu/navigation icons and the single block, spell and attack button glyphs. Keep the symbol separate from button backgrounds, borders, labels and notification badges. Match the actual control slot; current menu slots use 24 px and action/reward slots commonly use 32 px.
+- Use [keyword-icon-art-creator](.agents/skills/keyword-icon-art-creator/SKILL.md) for small inline stat, status and effect symbols, including health, armor, block, shield, poison and burn. These have their own native size and text-alignment rules; the inventory item footprint contract does not apply.
 - **Keyword links** are hoverable words with nested definitions; **keyword stats** are compact icon-and-value pairs, used by relic tooltips. **Keyword lists** show an item's attributes one per line as value, icon, keyword name. Item tooltips use keyword lists instead of compact keyword stats or duplicate numeric sentences. Preserve explicit booster and special-rule descriptions; affected items identify adjacency bonus sources. Keyword lists color the icon and keyword name with the keyword color; numbers and signs use the default font color. Every positive value has a + sign; negatives and costs keep a minus sign. List entries have no underline and retain the same darker hover behavior. Use these names consistently.
 - Resolve keyword labels, aliases, icon IDs and colors from one shared mapping when implementing them. Keyword links use the same keyword color for text and icon; surrounding prose stays neutral. Keyword stats use the consuming label's default color for both icon and value, with no underline, including on hover. Both keyword links and keyword stats darken their icon and text on hover and restore on exit. Preserve distinct recognizable silhouettes; do not rely on color alone to communicate meaning.
 - Inspect current keyword/combat definitions before assigning mechanics: the legacy `armor` key currently represents shield protection, while `plating` and `block` have different rules. Keep visual armor/equipment identity distinct from shield protection without silently changing mechanics or aliases.
 - Preserve the supplied [UI icon references](workspace/docs/art/references/ui-icons/provenance.json) as visual examples, not accepted production assets or a requirement to copy their low-contrast colors. Judge new glyphs at actual UI size and in context; enlarged previews alone do not establish readability.
+
+## Content creators
+
+- Use [Delver Creator](.agents/skills/delver-creator/SKILL.md) for complete Delver identities, gameplay profiles and coordinated art.
+- Use [Item Creator](.agents/skills/item-creator/SKILL.md) for complete item and relic designs, stable IDs, design READMEs, numerical JSON records, crafting/merge rules and coordinated Item Art Creator assets. New definitions use an `icons/art/` folder; existing layouts remain until deliberately migrated.

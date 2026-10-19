@@ -1,9 +1,9 @@
 ---
-name: packbound-keyword-icons
-description: Create Packbound's small inline stat, status-effect, and tooltip pixel icons with shared keyword colors, readable keyword-and-icon pairs, and distinct armor, shield, and block identities. Use for keyword icon catalogs and their text/color integration; menu and action buttons use packbound-ui-icons.
+name: keyword-icon-art-creator
+description: Create Packbound's small inline stat, status-effect, and tooltip pixel icons with shared keyword colors, readable keyword-and-icon pairs, and distinct armor, shield, and block identities. Use for keyword icon catalogs and their text/color integration; menu and action buttons use ui-icons-art-creator.
 ---
 
-# Packbound keyword icons
+# Keyword Icon Art Creator
 
 ## spritex authoring and exports
 
@@ -175,7 +175,7 @@ cue; adding this skill does not implement FX or new status effects.
    from an exported PNG or a standalone preview.
 
 Menu tabs, reward choices and action buttons use
-[packbound-ui-icons](../packbound-ui-icons/SKILL.md). A button such as `action.block`
+[ui-icons-art-creator](../ui-icons-art-creator/SKILL.md). A button such as `action.block`
 may share a recognizable motif with `stat.block`, but its action meaning, size
 and state treatment remain distinct. Do not downsample detailed inventory item
 art to stand in for keyword glyphs.

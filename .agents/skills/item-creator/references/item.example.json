@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "id": "tempered_needle",
+  "kind": "item",
+  "identity": {
+    "name": "Tempered Needle",
+    "category": "weapon",
+    "rarity": "common",
+    "tags": [
+      "weapon"
+    ],
+    "summary": "A narrow close-combat blade.",
+    "description": "Deals 3 damage on each affordable activation, costing 1 stamina.",
+    "lore": "Forged from a locksmith’s discarded tools."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "not-integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 3
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 1
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "strike",
+      "description": "Deal base damage to the current enemy when the activation cost is paid.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy",
+      "condition": "All activation costs can be paid together.",
+      "parameters": {
+        "damageMultiplier": 1
+      },
+      "implementation": "proposed"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [],
+  "acquisition": {
+    "sources": [
+      "proposed-item-reward-pool"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A narrow iron blade with a short wrapped grip and readable blade thickness.",
+    "materials": [
+      "neutral iron",
+      "brown leather"
+    ],
+    "paletteIntent": "Restrained gray and brown material ramps; no colored rim light.",
+    "definingFeatures": [
+      "needle-shaped blade",
+      "short wrapped grip"
+    ],
+    "assets": {
+      "icon": null,
+      "svg": null,
+      "source": null,
+      "footprint": null,
+      "provenance": null,
+      "manifest": null,
+      "variants": []
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

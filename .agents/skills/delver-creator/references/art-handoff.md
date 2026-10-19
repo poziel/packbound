@@ -2,7 +2,7 @@
 
 ## Select the mode
 
-- Full new Delver: generate missing art by invoking `packbound-character-art`, unless the user requests design/data only.
+- Full new Delver: generate missing art by invoking `delver-art-creator`, unless the user requests design/data only.
 - Profile/gameplay-only edit: reuse existing art and retain its verified references. Do not invoke generation simply because a new canonical filename is absent in a legacy folder.
 - Requested visual revision: invoke the art skill for the affected outputs, reusing unchanged files. Archive the prior Delver folder before replacement.
 - Explicit no-art request: complete README/JSON without generation. Keep existing valid paths, otherwise null. Report the missing art as deferred; do not claim an art-complete delivery.

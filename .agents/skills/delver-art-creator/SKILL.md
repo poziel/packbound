@@ -1,9 +1,9 @@
 ---
-name: packbound-character-art
-description: Create distinct Packbound pixel-art characters and matching portraits with cohesive fantasy proportions, convincing equipment grips, helmeted or concealed-face designs, and anime-inspired visible faces. Use for character concepts, layered spritex JSON sprites, roster variations and portraits; inventory items use packbound-item-art.
+name: delver-art-creator
+description: Create distinct Packbound pixel-art characters and matching portraits with cohesive fantasy proportions, convincing equipment grips, helmeted or concealed-face designs, and anime-inspired visible faces. Use for character concepts, layered spritex JSON sprites, roster variations and portraits; inventory items use item-art-creator.
 ---
 
-# Packbound character art
+# Delver Art Creator
 
 ## spritex authoring and exports
 
@@ -233,7 +233,7 @@ document, validate it, and export the final PNG/SVG through spritex. The helper'
 PNG is an intermediate, not the final production rendering authority.
 
 ~~~powershell
-node .agents/skills/packbound-character-art/scripts/portrait.cjs --source PATH/concept.png --rect X,Y,SIZE,SIZE --out PATH/portrait --stage concept
+node .agents/skills/delver-art-creator/scripts/portrait.cjs --source PATH/concept.png --rect X,Y,SIZE,SIZE --out PATH/portrait --stage concept
 ~~~
 
 Use --stage concept for original generated concepts and --stage production for
@@ -247,7 +247,7 @@ Keep its metadata as an intermediate record and document subsequent cleanup.
 Validate the actual production exports, not only the generation prompt:
 
 ~~~powershell
-node .agents/skills/packbound-character-art/scripts/validate-character.cjs --sprite PATH/full-body.png --body PATH/body-without-gear-and-effects.png --portrait PATH/portrait.png
+node .agents/skills/delver-art-creator/scripts/validate-character.cjs --sprite PATH/full-body.png --body PATH/body-without-gear-and-effects.png --portrait PATH/portrait.png
 ~~~
 
 Export `--body` through spritex from a temporary copy of the same registered JSON
@@ -278,4 +278,4 @@ rejected work as rejected and use it only to understand the failure.
 
 ## Handoff when invoked by the Delver creator
 
-When `packbound-delver-creator` requests art, read its [art handoff contract](../packbound-delver-creator/references/art-handoff.md). Use the supplied README, concept references, requested output directory and revision scope. Deliver the exact required canonical files plus any useful additional production files; preserve untouched outputs on partial revisions. Return `art-manifest.json` using the linked example, with actual project-relative paths, performed checks, reused outputs and honest approval status. The Delver skill uses that return to populate game-facing asset references. Do not edit gameplay JSON or regenerate unrelated art as part of the art handoff. This conditional contract does not migrate existing assets or change standalone art-request output locations.
+When `delver-creator` requests art, read its [art handoff contract](../delver-creator/references/art-handoff.md). Use the supplied README, concept references, requested output directory and revision scope. Deliver the exact required canonical files plus any useful additional production files; preserve untouched outputs on partial revisions. Return `art-manifest.json` using the linked example, with actual project-relative paths, performed checks, reused outputs and honest approval status. The Delver skill uses that return to populate game-facing asset references. Do not edit gameplay JSON or regenerate unrelated art as part of the art handoff. This conditional contract does not migrate existing assets or change standalone art-request output locations.

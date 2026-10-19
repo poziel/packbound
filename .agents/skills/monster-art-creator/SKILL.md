@@ -1,9 +1,9 @@
 ---
-name: packbound-monster-art
+name: monster-art-creator
 description: Create or explicitly redraw Packbound whole-body monsters, enemies and bosses as detailed fantasy pixel art with readable creature anatomy, layered spritex JSON sources and transparent CLI exports. Use for creature concepts, production sprites and variants; character portraits and inventory items use their respective Packbound skills.
 ---
 
-# Packbound monster art
+# Monster Art Creator
 
 ## spritex authoring and exports
 
@@ -54,7 +54,7 @@ part of the default monster workflow. Work from the game's repository root.
 
 ## Shared rendering direction
 
-Read the character skill's [current visual references](../packbound-character-art/references/visual-direction.md)
+Read the character skill's [current visual references](../delver-art-creator/references/visual-direction.md)
 and inspect the relevant actual images. The accepted
 [warrior](../../../workspace/docs/art/concepts/characters/warrior-v2/full-body@4x.png) and
 [ranger](../../../workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png) establish

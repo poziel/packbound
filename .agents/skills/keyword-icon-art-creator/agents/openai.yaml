@@ -1,0 +1,4 @@
+interface:
+  display_name: "Keyword Icon Art Creator"
+  short_description: "Inline stat icons with matching tooltip colors"
+  default_prompt: "Use $keyword-icon-art-creator to create readable inline stat and effect icons with matching keyword text colors. Use $spritex for editable layered JSON and CLI-generated PNG/SVG exports."

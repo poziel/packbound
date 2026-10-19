@@ -1,4 +1,0 @@
-interface:
-  display_name: "Packbound Monster Art"
-  short_description: "Detailed whole-body fantasy pixel monsters"
-  default_prompt: "Use $packbound-monster-art to create an original whole-body monster with readable anatomy, controlled pixel shading, body width and height capped at 256 source pixels, smaller bodies for small creatures, consistent relative battle scale, and editable production assets. Use $spritex for editable layered JSON and CLI-generated PNG/SVG exports."

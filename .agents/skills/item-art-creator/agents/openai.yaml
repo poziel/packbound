@@ -1,0 +1,4 @@
+interface:
+  display_name: "Item Art Creator"
+  short_description: "Readable item silhouettes, materials and 32 px cells"
+  default_prompt: "Use $item-art-creator to create a clear inventory item on its 32 px cell footprint, with readable thickness, broad material shading, one or two defining details, and a review at actual UI size. Use $spritex for editable layered JSON and CLI-generated PNG/SVG exports."

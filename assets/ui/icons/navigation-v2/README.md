@@ -1,6 +1,6 @@
 # UI navigation icons v2
 
-Fresh native redraw of all eight requested controls using `skills/packbound-ui-icons/SKILL.md`, authored in Pixelorama with two or three meaningful layers per document. White masks use the existing theme tints. Tabs, unused items and pause are 24 px; the two reward controls are 32 px. The earlier v1 set is preserved.
+Fresh native redraw of all eight requested controls using `.agents/skills/ui-icons-art-creator/SKILL.md`, authored in Pixelorama with two or three meaningful layers per document. White masks use the existing theme tints. Tabs, unused items and pause are 24 px; the two reward controls are 32 px. The earlier v1 set is preserved.
 
 The registry maps IDs to PNG, integer-grid SVG, layered `.pxo`, alpha bounds and provenance. Subagent drawing specifications and review images are under `workspace/docs/art/concepts/ui-icons/navigation-v2/`. These are newly drawn native designs, not resized v1 images. No image-generation concept pass was used for v2.
 

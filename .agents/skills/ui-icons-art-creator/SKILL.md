@@ -1,9 +1,9 @@
 ---
-name: packbound-ui-icons
+name: ui-icons-art-creator
 description: Create readable Packbound pixel icons for the UI.
 ---
 
-# Packbound UI icons
+# UI Icons Art Creator
 
 ## spritex authoring and exports
 
@@ -69,7 +69,7 @@ for the requested control, existing slot evidence, and supplied visual reference
   versions retain their motif but are resolved on each native grid. Reuse one
   source for exact integer enlargements with nearest-neighbor filtering.
 - These sizes are independent of inventory's 32 px cells, character bodies, and
-  [inline keyword symbols](../packbound-keyword-icons/SKILL.md). Do not enlarge
+  [inline keyword symbols](../keyword-icon-art-creator/SKILL.md). Do not enlarge
   a tiny inline symbol to create a detailed action glyph automatically.
 
 ## Drawing language
@@ -115,7 +115,7 @@ retain comfortable existing button areas and keyboard behavior during integratio
 
 Neutral navigation uses theme ink/state tokens. If a UI glyph communicates a
 specific stat or effect, reuse the companion skill's
-[keyword catalog](../packbound-keyword-icons/references/keyword-catalog.md)
+[keyword catalog](../keyword-icon-art-creator/references/keyword-catalog.md)
 instead of inventing another health/block/poison palette. A Block action key is
 still separate from the inline block statistic; their motifs can share a family.
 Reward navigation may retain its documented blue/plum control surfaces without
