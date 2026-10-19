@@ -94,7 +94,7 @@ static var _skins: Dictionary = {}
 
 ## Rasterize the union before insetting: shared edges disappear, holes remain open.
 ## White masks are tinted at draw time; the gap contains actual transparent pixels.
-static func skin(points: Array[Vector2i], cell_size: Vector2, gap: float, replacements: Array[Dictionary] = [], continuous: bool = false) -> Dictionary:
+static func skin(points: Array[Vector2i], cell_size: Vector2, gap: float, replacements: Array[Dictionary] = [], continuous: bool = false, owner: CanvasItem = null) -> Dictionary:
 	var cuts: Array[Rect2] = []
 	var sockets: Array[Dictionary] = segments(points, cell_size, gap)
 	if not continuous:
@@ -107,7 +107,7 @@ static func skin(points: Array[Vector2i], cell_size: Vector2, gap: float, replac
 				if socket.cells.has(replacement.get("cell", Vector2i.ZERO)) and replacement.get("side", "bottom") == socket.side:
 					cuts.append(replacement_rect(socket, replacement))
 	var key: String = str([points, cell_size, gap, cuts, continuous])
-	if _skins.has(key): return _skins[key]
+	if _skins.has(key): return _retain_skin(owner, _skins[key])
 	var shapes := polygons(points, cell_size, gap)
 	var bounds := Rect2()
 	for polygon in shapes:
@@ -151,7 +151,19 @@ static func skin(points: Array[Vector2i], cell_size: Vector2, gap: float, replac
 	var result := {"origin": origin, "border": ImageTexture.create_from_image(border), "fill": ImageTexture.create_from_image(fill)}
 	if _skins.size() >= 128: _skins.clear()
 	_skins[key] = result
-	return result
+	return _retain_skin(owner, result)
+
+static func _retain_skin(owner: CanvasItem, masks: Dictionary) -> Dictionary:
+	if owner != null:
+		# Canvas draw commands retain texture RIDs, not the ImageTexture resources.
+		# Keep the masks from this owner's latest draw alive even after cache eviction.
+		var frame: int = Engine.get_process_frames()
+		var retained: Dictionary = owner.get_meta("_frame_skin_resources", {})
+		if retained.get("frame", -1) != frame:
+			retained = {"frame": frame, "masks": []}
+		retained["masks"].append(masks)
+		owner.set_meta("_frame_skin_resources", retained)
+	return masks
 
 static func replacement_rect(socket: Dictionary, replacement: Dictionary) -> Rect2:
 	var rect: Rect2 = socket.rect
@@ -183,7 +195,7 @@ static func draw_frame(canvas: CanvasItem, points: Array[Vector2i], cell_size: V
 	var face: Color = Color("162129").lerp(accent, 0.10) if occupied else Color("121b24")
 	var rim: Color = rim_color(accent, highlighted) if occupied else Color("46515b")
 	if highlighted: rim = accent.lightened(0.18)
-	var masks := skin(points, cell_size, gap, replacements)
+	var masks := skin(points, cell_size, gap, replacements, false, canvas)
 	canvas.draw_texture(masks.fill, masks.origin, face)
 	canvas.draw_texture(masks.border, masks.origin, rim)
 	for socket in segments(points, cell_size, gap):

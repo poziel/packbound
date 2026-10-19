@@ -461,7 +461,7 @@ func _draw() -> void:
 		if GRID_RECT.grow(12).has_point(pointer):
 			# Preview is an outline, not committed occupancy. Keep all empty
 			# sockets beneath it visible as the pointer moves between snap cells.
-			var masks: Dictionary = ITEM_FRAME.skin(PackRun.offsets(dragging, drag_rotation), Vector2.ONE * CELL, STEP - CELL)
+			var masks: Dictionary = ITEM_FRAME.skin(PackRun.offsets(dragging, drag_rotation), Vector2.ONE * CELL, STEP - CELL, [], false, self)
 			draw_texture(masks.border, ORIGIN + Vector2(target) * STEP + masks.origin, Color("9cdbaf") if valid else Color("f08086"))
 		if storage == null or storage.grabbed == null:
 			_drawing_held = true
@@ -523,7 +523,7 @@ func _draw_item(item: Dictionary, rect: Rect2, ghost: bool = false, opacity: flo
 		draw_set_transform(Vector2.ZERO)
 	if related:
 		_item_transform(rect.position)
-		var masks: Dictionary = ITEM_FRAME.skin(points, Vector2.ONE * CELL, STEP - CELL)
+		var masks: Dictionary = ITEM_FRAME.skin(points, Vector2.ONE * CELL, STEP - CELL, [], false, self)
 		draw_texture(masks.fill, masks.origin, Color(1.0, 0.78, 0.38, 0.10 * opacity))
 		draw_texture(masks.border, masks.origin, Color(1.0, 0.85, 0.55, opacity))
 		draw_set_transform(Vector2.ZERO)

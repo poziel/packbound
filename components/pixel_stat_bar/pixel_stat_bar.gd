@@ -345,7 +345,7 @@ func _draw() -> void:
 		cutouts.append(Rect2(badge.position + Vector2(0, p), badge.size - Vector2(0, p * 2)))
 	var glow: float = 1.0 if glow_enabled else _glow_amount
 	# Tile corner shape with a continuous 2px rim and a 1px transparent inner gap.
-	var frame_masks: Dictionary = TILE_FRAME.skin([Vector2i.ZERO], meter.size, 0.0, [], true)
+	var frame_masks: Dictionary = TILE_FRAME.skin([Vector2i.ZERO], meter.size, 0.0, [], true, self)
 	var frame_origin: Vector2 = meter.position + frame_masks.origin
 	var face_color: Color = accent_color.darkened(0.84)
 	var border_color: Color = TILE_FRAME.rim_color(accent_color).lerp(TILE_FRAME.rim_color(accent_color).darkened(0.55), glow)
@@ -392,7 +392,7 @@ func _draw() -> void:
 			for point: Vector2 in outline:
 				positioned.append(point + plaque.position)
 			draw_colored_polygon(positioned, Color("141514"))
-		var plaque_masks: Dictionary = TILE_FRAME.skin([Vector2i.ZERO], plaque.size, 0.0, [], true)
+		var plaque_masks: Dictionary = TILE_FRAME.skin([Vector2i.ZERO], plaque.size, 0.0, [], true, self)
 		var plaque_origin: Vector2 = plaque.position + plaque_masks.origin
 		draw_texture(plaque_masks.fill, plaque_origin, Color("242622"))
 		draw_texture(plaque_masks.border, plaque_origin, Color("74766b"))
