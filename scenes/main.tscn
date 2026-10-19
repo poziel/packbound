@@ -1,21 +1,23 @@
 [gd_scene format=3 uid="uid://t03gdrpaev8i"]
 
-[ext_resource type="Script" uid="uid://t4q1qb6e5ldq" path="res://scripts/main.gd" id="controller"]
-[ext_resource type="PackedScene" path="res://scenes/game/dialogs.tscn" id="dialogs"]
-[ext_resource type="PackedScene" uid="uid://cij6m3k064qra" path="res://scenes/gameplay/gameplay_background.tscn" id="gameplay_background"]
-[ext_resource type="PackedScene" uid="uid://cvvx4qm6mjnjc" path="res://scenes/shared/application_frame.tscn" id="frame"]
-[ext_resource type="PackedScene" path="res://scenes/menus/menu_flow.tscn" id="front"]
-[ext_resource type="PackedScene" uid="uid://7fnmbqaiilvt" path="res://scenes/game/game.tscn" id="game"]
-[ext_resource type="PackedScene" path="res://scenes/shared/inspect_manager.tscn" id="inspector"]
-[ext_resource type="Script" uid="uid://j8oxhaykooi4" path="res://scripts/combat_playback.gd" id="playback"]
+[ext_resource type="Script" uid="uid://t4q1qb6e5ldq" path="res://scenes/main.gd" id="controller"]
+[ext_resource type="PackedScene" path="res://scenes/run/dialogs/dialogs.tscn" id="dialogs"]
+[ext_resource type="PackedScene" uid="uid://cij6m3k064qra" path="res://scenes/world/gameplay_background/gameplay_background.tscn" id="gameplay_background"]
+[ext_resource type="PackedScene" uid="uid://cvvx4qm6mjnjc" path="res://scenes/shared/application_frame/application_frame.tscn" id="frame"]
+[ext_resource type="PackedScene" path="res://scenes/menus/menu_flow/menu_flow.tscn" id="front"]
+[ext_resource type="PackedScene" uid="uid://7fnmbqaiilvt" path="res://scenes/run/game/game.tscn" id="game"]
+[ext_resource type="PackedScene" path="res://scenes/shared/inspect_manager/inspect_manager.tscn" id="inspector"]
+[ext_resource type="Script" uid="uid://j8oxhaykooi4" path="res://systems/combat/combat_playback.gd" id="playback"]
 [ext_resource type="AudioStream" path="res://assets/audio/combat/enemy_hit.wav" id="enemy_hit"]
 [ext_resource type="AudioStream" path="res://assets/audio/combat/enemy_death.wav" id="enemy_death"]
-[ext_resource type="PackedScene" path="res://scenes/shared/loading_screen.tscn" id="loading_screen"]
-[ext_resource type="PackedScene" path="res://scenes/game/floor_flow.tscn" id="floor_flow"]
+[ext_resource type="PackedScene" path="res://scenes/shared/loading_screen/loading_screen.tscn" id="loading_screen"]
+[ext_resource type="PackedScene" path="res://scenes/run/floor_flow/floor_flow.tscn" id="floor_flow"]
 
 [ext_resource type="AudioStream" path="res://assets/audio/combat/player_damage.wav" id="player_hit"]
 [ext_resource type="AudioStream" path="res://assets/audio/combat/player_shield_hit.wav" id="player_shield_hit"]
 [ext_resource type="AudioStream" path="res://assets/audio/combat/player_shield_break.wav" id="player_shield_break"]
+
+[ext_resource type="PackedScene" path="res://scenes/shared/dev_menu/dev_menu.tscn" id="dev_menu"]
 
 [node name="Main" type="Control" unique_id=2108320616]
 layout_mode = 3
@@ -85,3 +87,5 @@ layout_mode = 1
 script = ExtResource("playback")
 
 [node name="LoadingScreen" parent="." instance=ExtResource("loading_screen")]
+
+[node name="DevMenu" parent="." instance=ExtResource("dev_menu")]

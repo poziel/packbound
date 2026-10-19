@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "unspent_thunder",
+  "kind": "relic",
+  "identity": {
+    "name": "Unspent Thunder",
+    "category": "relic",
+    "rarity": "rare",
+    "tags": [
+      "relic",
+      "unused_stamina"
+    ],
+    "summary": "When stamina remains after activations: gain +2 block per unused stamina (up to 4 counted).",
+    "description": "When stamina remains after activations: gain +2 block per unused stamina (up to 4 counted). Block is added each round.",
+    "lore": "The storm merchant charged extra for silence. Break the seal only when you are certain you have finished speaking."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When stamina remains after activations: gain +2 block per unused stamina (up to 4 counted). Block is added each round.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "When stamina remains after activations",
+      "parameters": {
+        "amount": 2,
+        "scaleCap": 4,
+        "condition": "unused_stamina",
+        "stat": "block",
+        "metric": "unused_stamina"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "unused_stamina"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A sealed brown jar containing a jagged yellow stone",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A sealed brown jar containing a jagged yellow stone"
+    ],
+    "assets": {
+      "icon": "assets/relics/unspent_thunder/icons/art/icon.png",
+      "svg": "assets/relics/unspent_thunder/icons/art/icon.svg",
+      "source": "assets/relics/unspent_thunder/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/unspent_thunder/icons/art/provenance.json",
+      "manifest": "assets/relics/unspent_thunder/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/unspent_thunder/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

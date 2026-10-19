@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "bog_stalker",
+  "name": "Bog Stalker",
+  "species": "lizard",
+  "age": "12 years",
+  "role": "venom",
+  "description": "A long-bodied ambush reptile that uses drowned roots as cover. It raises its throat crest only after a victim steps into reach.",
+  "encounter_floor": 8,
+  "starting_stats": {
+    "hp": 51,
+    "attacks": [
+      7
+    ],
+    "hits": 1,
+    "armor": 0,
+    "pierce": 0,
+    "poison": 2,
+    "drain": 0,
+    "reflect": 0,
+    "sunder": 0,
+    "enrage": 0,
+    "regen": 0,
+    "parry": 0,
+    "opening_armor": 0,
+    "cycle_armor": 0,
+    "cleanse": 0,
+    "physical_resistance": 0,
+    "magical_resistance": 0,
+    "damage_type": "physical"
+  },
+  "abilities": [
+    {
+      "id": "poison",
+      "amount": 2,
+      "description": "Applies 2 poison once per response only if a strike damages player health."
+    }
+  ],
+  "intent": "Venom",
+  "detail": "Applies 2 poison once per response only if a strike damages player health.",
+  "art": {
+    "source": "art/bog_stalker.pixloom.json",
+    "project": "art/bog_stalker.pixloom",
+    "png": "art/bog_stalker.png",
+    "svg": "art/bog_stalker.svg"
+  }
+}

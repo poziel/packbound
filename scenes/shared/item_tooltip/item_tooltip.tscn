@@ -1,0 +1,100 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/shared/item_tooltip/item_tooltip.gd" id="script"]
+[ext_resource type="Theme" path="res://themes/gameplay/theme.tres" id="theme"]
+[ext_resource type="FontFile" path="res://assets/fonts/ui_pixel.tres" id="title"]
+[ext_resource type="Script" path="res://components/ui/indicators/bound_equipment_indicator/bound_equipment_indicator.gd" id="bound"]
+
+[sub_resource type="StyleBoxEmpty" id="rich_empty"]
+
+[node name="ItemTooltip" type="VBoxContainer"]
+custom_minimum_size = Vector2(320, 0)
+mouse_filter = 2
+texture_filter = 1
+theme = ExtResource("theme")
+theme_override_constants/separation = 10
+script = ExtResource("script")
+
+[node name="Header" type="HBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="Header"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BoundStatus" type="Control" parent="Header"]
+visible = false
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 0
+tooltip_text = "Bound equipment: cannot be put in the stash"
+script = ExtResource("bound")
+
+[node name="Name" type="Label" parent="Header"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("title")
+theme_override_font_sizes/font_size = 24
+text = "Item name"
+autowrap_mode = 3
+
+[node name="Rarity" type="Label" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="KeywordList" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("rich_empty")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 3
+
+[node name="Description" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_constants/line_separation = 2
+theme_override_styles/normal = SubResource("rich_empty")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+text = "The item's effect appears here."
+autowrap_mode = 3
+
+[node name="Cost" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_constants/line_separation = 2
+theme_override_styles/normal = SubResource("rich_empty")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+text = "0 mana per activation"
+
+[node name="Bonus" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_constants/line_separation = 2
+theme_override_styles/normal = SubResource("rich_empty")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+text = "+0 from adjacent items"
+

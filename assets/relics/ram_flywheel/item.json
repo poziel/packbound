@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "ram_flywheel",
+  "kind": "relic",
+  "identity": {
+    "name": "Ram Flywheel",
+    "category": "relic",
+    "rarity": "uncommon",
+    "tags": [
+      "relic",
+      "warrior"
+    ],
+    "summary": "For the Warmonger: gain +1 physical damage per momentum (up to 6 counted).",
+    "description": "For the Warmonger: gain +1 physical damage per momentum (up to 6 counted).",
+    "lore": "The foundry ram would never charge twice at a cold gate. Its keeper built this wheel so the first charge could keep turning."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "For the Warmonger: gain +1 physical damage per momentum (up to 6 counted).",
+      "trigger": "after-item-aggregation",
+      "target": "current-enemy",
+      "condition": "For the Warmonger",
+      "parameters": {
+        "amount": 1,
+        "scaleCap": 6,
+        "condition": "warrior",
+        "stat": "physical_damage",
+        "metric": "momentum"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "warrior"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A brass flywheel with a ram head hub",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A brass flywheel with a ram head hub"
+    ],
+    "assets": {
+      "icon": "assets/relics/ram_flywheel/icons/art/icon.png",
+      "svg": "assets/relics/ram_flywheel/icons/art/icon.svg",
+      "source": "assets/relics/ram_flywheel/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/ram_flywheel/icons/art/provenance.json",
+      "manifest": "assets/relics/ram_flywheel/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/ram_flywheel/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

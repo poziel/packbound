@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "venom_thesis",
+  "kind": "relic",
+  "identity": {
+    "name": "Venom Thesis",
+    "category": "relic",
+    "rarity": "uncommon",
+    "tags": [
+      "relic",
+      "poisoned"
+    ],
+    "summary": "When the enemy already has Poison before activations: gain +2 magical damage.",
+    "description": "When the enemy already has Poison before activations: gain +2 magical damage.",
+    "lore": "The scholar submitted her work in a language only snakes could read. Her examiners have not yet finished hissing."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When the enemy already has Poison before activations: gain +2 magical damage.",
+      "trigger": "after-item-aggregation",
+      "target": "current-enemy",
+      "condition": "When the enemy already has Poison before activations",
+      "parameters": {
+        "amount": 2,
+        "scaleCap": 1,
+        "condition": "poisoned",
+        "stat": "magical_damage",
+        "metric": "one"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "poisoned"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A rolled green vellum thesis sealed with a fang",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A rolled green vellum thesis sealed with a fang"
+    ],
+    "assets": {
+      "icon": "assets/relics/venom_thesis/icons/art/icon.png",
+      "svg": "assets/relics/venom_thesis/icons/art/icon.svg",
+      "source": "assets/relics/venom_thesis/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/venom_thesis/icons/art/provenance.json",
+      "manifest": "assets/relics/venom_thesis/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/venom_thesis/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

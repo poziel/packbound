@@ -1,0 +1,61 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/wall_span/wall_span.tscn" id="wall"]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/floor_chunk/floor_chunk.tscn" id="floor"]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/column/column.tscn" id="column"]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/door_frame/door_frame.tscn" id="frame"]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/roof_chunk/roof_chunk.tscn" id="roof"]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/staircase/staircase.tscn" id="entry"]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/staircase/staircase.tscn" id="exit"]
+
+
+[sub_resource type="Environment" id="environment"]
+background_mode = 1
+background_color = Color(0.035, 0.05, 0.08, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.65, 0.72, 0.82, 1)
+ambient_light_energy = 0.8
+
+[node name="DungeonKitDemo" type="Node3D"]
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("environment")
+
+[node name="Camera" type="Camera3D" parent="."]
+position = Vector3(10, 9, 18)
+rotation = Vector3(-0.32, 0.5, 0)
+current = true
+
+[node name="Light" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.75, -0.6, 0)
+light_energy = 1.2
+
+[node name="WallSpan" parent="." instance=ExtResource("wall")]
+position = Vector3(-12, 0, -4)
+span_width = 8.0
+
+[node name="Column" parent="." instance=ExtResource("column")]
+position = Vector3(5, 0, -3.5)
+
+[node name="DoorFrame" parent="." instance=ExtResource("frame")]
+position = Vector3(0, 0, -3)
+
+[node name="ExitStairs" parent="." instance=ExtResource("exit")]
+role = 1
+position = Vector3(0, 0, -3.5)
+metadata/staircase = true
+
+[node name="EntryStairs" parent="." instance=ExtResource("entry")]
+role = 0
+position = Vector3(-8, 0, 6)
+metadata/staircase = true
+
+
+[node name="FloorPatch0" parent="." instance=ExtResource("floor")]
+position = Vector3(-4, 0, -3)
+
+[node name="FloorPatch1" parent="." instance=ExtResource("floor")]
+position = Vector3(-0.1, 0, -3)
+
+[node name="RoofPatch" parent="." instance=ExtResource("roof")]
+position = Vector3(-4, 7.12, -3)

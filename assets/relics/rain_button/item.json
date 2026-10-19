@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "rain_button",
+  "kind": "relic",
+  "identity": {
+    "name": "Rain Button",
+    "category": "relic",
+    "rarity": "common",
+    "tags": [
+      "relic",
+      "has_spell"
+    ],
+    "summary": "With at least one packed spell: gain +1 ward per spell count (up to 3 counted).",
+    "description": "With at least one packed spell: gain +1 ward per spell count (up to 3 counted).",
+    "lore": "Sewn onto the raincoat of a hedge magician, this button caught every spell that slipped through a careless seam."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "With at least one packed spell: gain +1 ward per spell count (up to 3 counted).",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "With at least one packed spell",
+      "parameters": {
+        "amount": 1,
+        "scaleCap": 3,
+        "condition": "has_spell",
+        "stat": "ward",
+        "metric": "spell_count"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "has_spell"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A mother of pearl coat button shaped like a rain cloud",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A mother of pearl coat button shaped like a rain cloud"
+    ],
+    "assets": {
+      "icon": "assets/relics/rain_button/icons/art/icon.png",
+      "svg": "assets/relics/rain_button/icons/art/icon.svg",
+      "source": "assets/relics/rain_button/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/rain_button/icons/art/provenance.json",
+      "manifest": "assets/relics/rain_button/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/rain_button/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

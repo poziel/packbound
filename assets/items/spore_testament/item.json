@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "spore_testament",
+  "kind": "item",
+  "identity": {
+    "name": "Spore Testament",
+    "category": "spell",
+    "rarity": "common",
+    "tags": [
+      "spell",
+      "mage",
+      "venom"
+    ],
+    "summary": "A green scroll with mushroom gills along its curled edge.",
+    "description": "Costs 1 mana per activation. Deals 2 magical damage per affordable activation. Applies 2 poison through the existing combat keyword rules per affordable activation.",
+    "lore": "The forest signed its will in spores."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 2,
+    "poison": 2
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "mana",
+        "amount": 1
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 1 mana per activation. Deals 2 magical damage per affordable activation. Applies 2 poison through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 2,
+        "poison": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "different-element-spell"
+      ],
+      "description": "Its venom trace participates in the Elementalist's existing reaction system; arrange it with spells of another element. No extra reaction beyond the shared rules is added.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "common-item-reward-pool"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "assemble_foxglove_formula",
+        "resultId": "foxglove_formula"
+      }
+    ],
+    "mergeTargets": [
+      "foxglove_formula"
+    ]
+  },
+  "visual": {
+    "brief": "A green scroll with mushroom gills along its curled edge.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A green scroll with mushroom gills along its curled edge."
+    ],
+    "assets": {
+      "icon": "assets/items/spore_testament/icons/art/icon.png",
+      "svg": "assets/items/spore_testament/icons/art/icon.svg",
+      "source": "assets/items/spore_testament/icons/art/icon.sprite.json",
+      "footprint": "assets/items/spore_testament/icons/art/footprint.json",
+      "provenance": "assets/items/spore_testament/icons/art/provenance.json",
+      "manifest": "assets/items/spore_testament/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/spore_testament/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

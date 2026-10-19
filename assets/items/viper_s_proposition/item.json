@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "id": "viper_s_proposition",
+  "kind": "item",
+  "identity": {
+    "name": "Viper's Proposition",
+    "category": "spell",
+    "rarity": "rare",
+    "tags": [
+      "spell",
+      "mage",
+      "venom"
+    ],
+    "summary": "A serpentine green scroll wound around an ivory rod.",
+    "description": "Costs 3 mana per activation. Deals 7 magical damage per affordable activation. Applies 6 poison through the existing combat keyword rules per affordable activation.",
+    "lore": "It offers the reader exactly enough time to regret agreeing."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "#."
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 7,
+    "poison": 6
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "mana",
+        "amount": 3
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 3 mana per activation. Deals 7 magical damage per affordable activation. Applies 6 poison through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 7,
+        "poison": 6
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "different-element-spell"
+      ],
+      "description": "Its venom trace participates in the Elementalist's existing reaction system; arrange it with spells of another element. No extra reaction beyond the shared rules is added.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "rare-item-reward-pool"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_viper_s_proposition",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "antidote",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "existing"
+          },
+          {
+            "id": "foxglove_formula",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "thorn_whetstone",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "viper_s_proposition",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Antidote Flask, Foxglove Formula, Thorn Whetstone into Viper's Proposition."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_orchid_eclipse",
+        "resultId": "orchid_eclipse"
+      }
+    ],
+    "mergeTargets": [
+      "orchid_eclipse"
+    ]
+  },
+  "visual": {
+    "brief": "A serpentine green scroll wound around an ivory rod.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A serpentine green scroll wound around an ivory rod."
+    ],
+    "assets": {
+      "icon": "assets/items/viper_s_proposition/icons/art/icon.png",
+      "svg": "assets/items/viper_s_proposition/icons/art/icon.svg",
+      "source": "assets/items/viper_s_proposition/icons/art/icon.sprite.json",
+      "footprint": "assets/items/viper_s_proposition/icons/art/footprint.json",
+      "provenance": "assets/items/viper_s_proposition/icons/art/provenance.json",
+      "manifest": "assets/items/viper_s_proposition/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/viper_s_proposition/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

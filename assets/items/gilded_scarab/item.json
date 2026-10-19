@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "id": "gilded_scarab",
+  "kind": "item",
+  "identity": {
+    "name": "Gilded Scarab",
+    "category": "booster",
+    "rarity": "rare",
+    "tags": [
+      "booster"
+    ],
+    "summary": "A gold shelled beetle with a broad dark seam down its back.",
+    "description": "Supplies 2 ward each round against poison, curse and reflected damage. Each orthogonally touching spell gains +2 damage. Each source applies once per target, regardless of shared edges; distinct sources stack.",
+    "lore": "The tomb builders hid the real treasury in its shadow."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "ward": 2
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Supplies 2 ward each round against poison, curse and reflected damage. Each orthogonally touching spell gains +2 damage. Each source applies once per target, regardless of shared edges; distinct sources stack.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "ward": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [
+    {
+      "id": "adjacency_bonus",
+      "targetIds": [],
+      "targetTags": [
+        "spell"
+      ],
+      "geometry": "orthogonal occupied-cell contact",
+      "stacking": "once per distinct source and target; different sources add",
+      "trigger": "while-equipped",
+      "bonuses": {
+        "damage": 2
+      },
+      "conditions": [
+        "Both source and target are equipped."
+      ],
+      "implementation": "supported"
+    }
+  ],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "rare-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_gilded_scarab",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "hedgehog_charm",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "tin_beetle",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "wax_ear_trumpet",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "gilded_scarab",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Hedgehog Charm, Tin Beetle, Wax Ear Trumpet into Gilded Scarab."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_choir_eel",
+        "resultId": "choir_eel"
+      },
+      {
+        "recipeId": "assemble_thunder_yew",
+        "resultId": "thunder_yew"
+      },
+      {
+        "recipeId": "assemble_scorpion_magazine",
+        "resultId": "scorpion_magazine"
+      }
+    ],
+    "mergeTargets": [
+      "choir_eel",
+      "thunder_yew",
+      "scorpion_magazine"
+    ]
+  },
+  "visual": {
+    "brief": "A gold shelled beetle with a broad dark seam down its back.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A gold shelled beetle with a broad dark seam down its back."
+    ],
+    "assets": {
+      "icon": "assets/items/gilded_scarab/icons/art/icon.png",
+      "svg": "assets/items/gilded_scarab/icons/art/icon.svg",
+      "source": "assets/items/gilded_scarab/icons/art/icon.sprite.json",
+      "footprint": "assets/items/gilded_scarab/icons/art/footprint.json",
+      "provenance": "assets/items/gilded_scarab/icons/art/provenance.json",
+      "manifest": "assets/items/gilded_scarab/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/gilded_scarab/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

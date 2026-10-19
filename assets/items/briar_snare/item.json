@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "briar_snare",
+  "kind": "item",
+  "identity": {
+    "name": "Briar Snare",
+    "category": "ranged",
+    "rarity": "common",
+    "tags": [
+      "ranged",
+      "ranger"
+    ],
+    "summary": "A loop of thorny vine around a wide wooden trigger.",
+    "description": "Costs 1 stamina per activation. Applies 2 poison through the existing combat keyword rules per affordable activation. Reduces each enemy strike this round by 1.",
+    "lore": "Hunters learned to leave the green thorns facing outward."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "poison": 2,
+    "slow": 1
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 1
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 1 stamina per activation. Applies 2 poison through the existing combat keyword rules per affordable activation. Reduces each enemy strike this round by 1.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "poison": 2,
+        "slow": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "common-item-reward-pool"
+    ],
+    "classes": [
+      "ranger"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "assemble_scorpion_magazine",
+        "resultId": "scorpion_magazine"
+      },
+      {
+        "recipeId": "assemble_adder_sheath",
+        "resultId": "adder_sheath"
+      }
+    ],
+    "mergeTargets": [
+      "scorpion_magazine",
+      "adder_sheath"
+    ]
+  },
+  "visual": {
+    "brief": "A loop of thorny vine around a wide wooden trigger.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A loop of thorny vine around a wide wooden trigger."
+    ],
+    "assets": {
+      "icon": "assets/items/briar_snare/icons/art/icon.png",
+      "svg": "assets/items/briar_snare/icons/art/icon.svg",
+      "source": "assets/items/briar_snare/icons/art/icon.sprite.json",
+      "footprint": "assets/items/briar_snare/icons/art/footprint.json",
+      "provenance": "assets/items/briar_snare/icons/art/provenance.json",
+      "manifest": "assets/items/briar_snare/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/briar_snare/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

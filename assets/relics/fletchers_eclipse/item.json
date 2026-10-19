@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "fletchers_eclipse",
+  "kind": "relic",
+  "identity": {
+    "name": "Fletchers Eclipse",
+    "category": "relic",
+    "rarity": "rare",
+    "tags": [
+      "relic",
+      "volley"
+    ],
+    "summary": "When Volley fires this round: gain +5 physical damage.",
+    "description": "When Volley fires this round: gain +5 physical damage.",
+    "lore": "The fletcher finished his greatest arrow during an eclipse. Its shadow arrived at the target before dawn returned."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When Volley fires this round: gain +5 physical damage.",
+      "trigger": "after-item-aggregation",
+      "target": "current-enemy",
+      "condition": "When Volley fires this round",
+      "parameters": {
+        "amount": 5,
+        "scaleCap": 1,
+        "condition": "volley",
+        "stat": "physical_damage",
+        "metric": "one"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "volley"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A black sun disk crossed by a white feather",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A black sun disk crossed by a white feather"
+    ],
+    "assets": {
+      "icon": "assets/relics/fletchers_eclipse/icons/art/icon.png",
+      "svg": "assets/relics/fletchers_eclipse/icons/art/icon.svg",
+      "source": "assets/relics/fletchers_eclipse/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/fletchers_eclipse/icons/art/provenance.json",
+      "manifest": "assets/relics/fletchers_eclipse/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/fletchers_eclipse/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

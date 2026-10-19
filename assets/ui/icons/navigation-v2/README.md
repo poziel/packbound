@@ -4,7 +4,7 @@ Fresh native redraw of all eight requested controls using `.agents/skills/ui-ico
 
 The registry maps IDs to PNG, integer-grid SVG, layered `.pxo`, alpha bounds and provenance. Subagent drawing specifications and review images are under `workspace/docs/art/concepts/ui-icons/navigation-v2/`. These are newly drawn native designs, not resized v1 images. No image-generation concept pass was used for v2.
 
-Integration changes only the eight icon resource paths in `scenes/game/battle_area.tscn` and `scenes/game/character/character_panel.tscn`. Existing labels, signals, badges, layout and control state behavior remain in place.
+Integration changes only the eight icon resource paths in `scenes/run/battle_area/battle_area.tscn` and `scenes/run/character/character_panel/character_panel.tscn`. Existing labels, signals, badges, layout and control state behavior remain in place.
 
 Verified:
 
@@ -14,6 +14,6 @@ Verified:
 - In-game inspection includes selected/unselected tabs, enabled relic rewards with their separate badge, disabled item rewards, unused items, and pause.
 - Battle UI regression: 288 checks, zero failures.
 
-The separate deferred-rewards test could not complete: current `scripts/main.gd:232` accesses a missing `has_response` dictionary key during combat. Its log is retained in `workspace/docs/art/concepts/ui-icons/navigation-v2/review/rewards-test.log`. No combat code was changed in this icon revision. The live editor also reports existing scrollbar-style errors; this is not a claim that the whole editor is error-free.
+The separate deferred-rewards test could not complete: current `scenes/main.gd:232` accesses a missing `has_response` dictionary key during combat. Its log is retained in `workspace/docs/art/concepts/ui-icons/navigation-v2/review/rewards-test.log`. No combat code was changed in this icon revision. The live editor also reports existing scrollbar-style errors; this is not a claim that the whole editor is error-free.
 
 Status: integrated for user review, not yet visually accepted. See the contact sheet and in-game screenshot in the review folder.

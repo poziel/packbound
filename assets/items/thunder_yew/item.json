@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "thunder_yew",
+  "kind": "item",
+  "identity": {
+    "name": "Thunder Yew",
+    "category": "ranged",
+    "rarity": "epic",
+    "tags": [
+      "ranged",
+      "ranger"
+    ],
+    "summary": "A dark yew longbow with a forked gold branch grip.",
+    "description": "Costs 3 stamina per activation. Deals 16 physical damage per affordable activation. Applies 2 spark through the existing combat keyword rules per affordable activation.",
+    "lore": "Its tree was struck by lightning on a cloudless day."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#.",
+      "##",
+      "#.",
+      "#."
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 16,
+    "spark": 2
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 3
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 3 stamina per activation. Deals 16 physical damage per affordable activation. Applies 2 spark through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 16,
+        "spark": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "epic-item-reward-pool"
+    ],
+    "classes": [
+      "ranger"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_thunder_yew",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "barbed_tip_roll",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "gilded_scarab",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "glass_reed_bow",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "thunder_yew",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Barbed Tip Roll, Gilded Scarab, Glass Reed Bow into Thunder Yew."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_horizon_harp",
+        "resultId": "horizon_harp"
+      }
+    ],
+    "mergeTargets": [
+      "horizon_harp"
+    ]
+  },
+  "visual": {
+    "brief": "A dark yew longbow with a forked gold branch grip.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A dark yew longbow with a forked gold branch grip."
+    ],
+    "assets": {
+      "icon": "assets/items/thunder_yew/icons/art/icon.png",
+      "svg": "assets/items/thunder_yew/icons/art/icon.svg",
+      "source": "assets/items/thunder_yew/icons/art/icon.sprite.json",
+      "footprint": "assets/items/thunder_yew/icons/art/footprint.json",
+      "provenance": "assets/items/thunder_yew/icons/art/provenance.json",
+      "manifest": "assets/items/thunder_yew/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/thunder_yew/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

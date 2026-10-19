@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "id": "horizon_harp",
+  "kind": "item",
+  "identity": {
+    "name": "Horizon Harp",
+    "category": "ranged",
+    "rarity": "legendary",
+    "tags": [
+      "ranged",
+      "ranger"
+    ],
+    "summary": "A golden asymmetrical bow with three parallel support strings.",
+    "description": "Costs 3 stamina per activation. Deals 21 physical damage per affordable activation. Bypasses up to 6 enemy block per activation.",
+    "lore": "An archer asked a luthier for a song that could cross a kingdom."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "#.",
+      "##",
+      "#."
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 21,
+    "pierce": 6
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 3
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 3 stamina per activation. Deals 21 physical damage per affordable activation. Bypasses up to 6 enemy block per activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 21,
+        "pierce": 6
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "legendary-item-reward-pool"
+    ],
+    "classes": [
+      "ranger"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_horizon_harp",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "glass_reed_bow",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "gloam_lynx",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "scorpion_magazine",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "seamfinder_lens",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "thunder_yew",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "horizon_harp",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 5,
+          "priorityIngredientCount": 5
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Glass Reed Bow, Gloam Lynx, Scorpion Magazine, Seamfinder Lens, Thunder Yew into Horizon Harp."
+      }
+    ],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A golden asymmetrical bow with three parallel support strings.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A golden asymmetrical bow with three parallel support strings."
+    ],
+    "assets": {
+      "icon": "assets/items/horizon_harp/icons/art/icon.png",
+      "svg": "assets/items/horizon_harp/icons/art/icon.svg",
+      "source": "assets/items/horizon_harp/icons/art/icon.sprite.json",
+      "footprint": "assets/items/horizon_harp/icons/art/footprint.json",
+      "provenance": "assets/items/horizon_harp/icons/art/provenance.json",
+      "manifest": "assets/items/horizon_harp/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/horizon_harp/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

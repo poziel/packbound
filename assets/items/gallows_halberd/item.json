@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "id": "gallows_halberd",
+  "kind": "item",
+  "identity": {
+    "name": "Gallows Halberd",
+    "category": "weapon",
+    "rarity": "epic",
+    "tags": [
+      "weapon",
+      "warrior"
+    ],
+    "summary": "A crescent axe and spear mounted on a dark long shaft.",
+    "description": "Costs 3 stamina per activation. Deals 15 physical damage per affordable activation. Bypasses up to 5 enemy block per activation. Warrior only: gains 1 Momentum after an affordable activation.",
+    "lore": "Hung above an empty scaffold after the tyrant fled."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      ".#",
+      ".#",
+      ".#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 15,
+    "pierce": 5
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 3
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 3 stamina per activation. Deals 15 physical damage per affordable activation. Bypasses up to 5 enemy block per activation. Warrior only: gains 1 Momentum after an affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 15,
+        "pierce": 5,
+        "momentum_gain": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Feeds Momentum-spending Warrior weapons; ordinary completed exchanges remain another Momentum source.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "epic-item-reward-pool"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_gallows_halberd",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "marching_pike",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "oathbreaker_flail",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "thorn_whetstone",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "gallows_halberd",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Marching Pike, Oathbreaker Flail, Thorn Whetstone into Gallows Halberd."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_mountain_s_verdict",
+        "resultId": "mountain_s_verdict"
+      }
+    ],
+    "mergeTargets": [
+      "mountain_s_verdict"
+    ]
+  },
+  "visual": {
+    "brief": "A crescent axe and spear mounted on a dark long shaft.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A crescent axe and spear mounted on a dark long shaft."
+    ],
+    "assets": {
+      "icon": "assets/items/gallows_halberd/icons/art/icon.png",
+      "svg": "assets/items/gallows_halberd/icons/art/icon.svg",
+      "source": "assets/items/gallows_halberd/icons/art/icon.sprite.json",
+      "footprint": "assets/items/gallows_halberd/icons/art/footprint.json",
+      "provenance": "assets/items/gallows_halberd/icons/art/provenance.json",
+      "manifest": "assets/items/gallows_halberd/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/gallows_halberd/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

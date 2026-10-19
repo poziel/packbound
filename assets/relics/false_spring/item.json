@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "false_spring",
+  "kind": "relic",
+  "identity": {
+    "name": "False Spring",
+    "category": "relic",
+    "rarity": "legendary",
+    "tags": [
+      "relic",
+      "odd"
+    ],
+    "summary": "On odd numbered rounds: gain +5 healing.",
+    "description": "On odd numbered rounds: gain +5 healing.",
+    "lore": "The gardener trapped a thaw inside glass. The branch blooms beautifully, then remembers the snow."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "On odd numbered rounds: gain +5 healing.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "On odd numbered rounds",
+      "parameters": {
+        "amount": 5,
+        "scaleCap": 1,
+        "condition": "odd",
+        "stat": "healing",
+        "metric": "one",
+        "periodRounds": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "odd"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A flowering branch emerging from a cracked snow globe",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A flowering branch emerging from a cracked snow globe"
+    ],
+    "assets": {
+      "icon": "assets/relics/false_spring/icons/art/icon.png",
+      "svg": "assets/relics/false_spring/icons/art/icon.svg",
+      "source": "assets/relics/false_spring/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/false_spring/icons/art/provenance.json",
+      "manifest": "assets/relics/false_spring/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/false_spring/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

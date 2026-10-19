@@ -42,9 +42,9 @@ Lightning starts at 6.000 seconds with a bolt, quick fade, and weaker restrike. 
 
 ## Main menu integration
 
-The game uses `res://scenes/menus/packing_table_background.tscn` as the first child of `main_menu.tscn`, behind the existing logo and buttons. Its native sprites retain the positions and compositing order above, with nearest filtering and a 2× scale into the 1280 × 800 menu canvas. The source `.pxo` and exports remain unchanged.
+The game uses `res://scenes/menus/packing_table_background/packing_table_background.tscn` as the first child of `main_menu.tscn`, behind the existing logo and buttons. Its native sprites retain the positions and compositing order above, with nearest filtering and a 2× scale into the 1280 × 800 menu canvas. The source `.pxo` and exports remain unchanged.
 
-`res://scripts/packing_table_background.gd` advances all nine tracks from one 8 FPS clock. The complete timeline repeats every 16 seconds, retaining the authored quiet intervals. Playback pauses while the main menu is hidden and resumes at the same phase when it returns. Existing menu music remains in use; no thunder sound is added.
+`res://scenes/menus/packing_table_background/packing_table_background.gd` advances all nine tracks from one 8 FPS clock. The complete timeline repeats every 16 seconds, retaining the authored quiet intervals. Playback pauses while the main menu is hidden and resumes at the same phase when it returns. Existing menu music remains in use; no thunder sound is added.
 
 ## Thunder cues
 

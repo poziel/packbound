@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "worldroot_sandals",
+  "kind": "item",
+  "identity": {
+    "name": "Worldroot Sandals",
+    "category": "boots",
+    "rarity": "legendary",
+    "tags": [
+      "boots"
+    ],
+    "summary": "Wide bark sandals with green root straps and thick ivory soles.",
+    "description": "Adds 3 maximum stamina, refreshed each round. Restores up to 3 HP each round.",
+    "lore": "They were cut from a root that reached beneath every road."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "stamina": 3,
+    "healing": 3
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Adds 3 maximum stamina, refreshed each round. Restores up to 3 HP each round.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "stamina": 3,
+        "healing": 3
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "legendary-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "Wide bark sandals with green root straps and thick ivory soles.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "Wide bark sandals with green root straps and thick ivory soles."
+    ],
+    "assets": {
+      "icon": "assets/items/worldroot_sandals/icons/art/icon.png",
+      "svg": "assets/items/worldroot_sandals/icons/art/icon.svg",
+      "source": "assets/items/worldroot_sandals/icons/art/icon.sprite.json",
+      "footprint": "assets/items/worldroot_sandals/icons/art/footprint.json",
+      "provenance": "assets/items/worldroot_sandals/icons/art/provenance.json",
+      "manifest": "assets/items/worldroot_sandals/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/worldroot_sandals/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

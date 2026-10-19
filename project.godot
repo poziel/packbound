@@ -43,7 +43,7 @@ folder_colors={
 "res://assets/": "red",
 "res://components/": "purple",
 "res://scenes/": "green",
-"res://scripts/": "blue",
+"res://systems/": "blue",
 "res://tests/": "gray",
 "res://themes/": "pink"
 }

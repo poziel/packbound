@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "id": "cathedral_of_sparks",
+  "kind": "item",
+  "identity": {
+    "name": "Cathedral of Sparks",
+    "category": "spell",
+    "rarity": "legendary",
+    "tags": [
+      "spell",
+      "mage",
+      "lightning"
+    ],
+    "summary": "A miniature copper cathedral with two jagged gold towers.",
+    "description": "Costs 5 mana per activation. Deals 22 magical damage per affordable activation. Applies 5 spark through the existing combat keyword rules per affordable activation.",
+    "lore": "Every bell inside rings once for the same bolt of lightning."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "###",
+      ".#.",
+      ".#."
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 22,
+    "spark": 5
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "mana",
+        "amount": 5
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 5 mana per activation. Deals 22 magical damage per affordable activation. Applies 5 spark through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 22,
+        "spark": 5
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "different-element-spell"
+      ],
+      "description": "Its lightning trace participates in the Elementalist's existing reaction system; arrange it with spells of another element. No extra reaction beyond the shared rules is added.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "legendary-item-reward-pool"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_cathedral_of_sparks",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "black_rain_theorem",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "solar_crucible",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "storm_abacus",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "winter_orrery",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "cathedral_of_sparks",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 4,
+          "priorityIngredientCount": 4
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Black Rain Theorem, Solar Crucible, Storm Abacus, Winter Orrery into Cathedral of Sparks."
+      }
+    ],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A miniature copper cathedral with two jagged gold towers.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A miniature copper cathedral with two jagged gold towers."
+    ],
+    "assets": {
+      "icon": "assets/items/cathedral_of_sparks/icons/art/icon.png",
+      "svg": "assets/items/cathedral_of_sparks/icons/art/icon.svg",
+      "source": "assets/items/cathedral_of_sparks/icons/art/icon.sprite.json",
+      "footprint": "assets/items/cathedral_of_sparks/icons/art/footprint.json",
+      "provenance": "assets/items/cathedral_of_sparks/icons/art/provenance.json",
+      "manifest": "assets/items/cathedral_of_sparks/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/cathedral_of_sparks/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

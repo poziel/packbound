@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "id": "lantern_moth_familiar",
+  "kind": "item",
+  "identity": {
+    "name": "Lantern Moth",
+    "category": "companion",
+    "rarity": "uncommon",
+    "tags": [
+      "companion"
+    ],
+    "summary": "A broad amber moth with a tiny glowing belly.",
+    "description": "Deals 2 physical damage per affordable activation. Applies 1 burn through the existing combat keyword rules per affordable activation.",
+    "lore": "It followed the campfire long after the fire went out."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 2,
+    "burn": 1
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Deals 2 physical damage per affordable activation. Applies 1 burn through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 2,
+        "burn": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_lantern_moth_familiar",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "salt_lantern",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "tin_beetle",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "lantern_moth_familiar",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Salt Lantern, Tin Beetle into Lantern Moth."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_furnace_toad",
+        "resultId": "furnace_toad"
+      },
+      {
+        "recipeId": "assemble_blacksmith_s_apron",
+        "resultId": "blacksmith_s_apron"
+      },
+      {
+        "recipeId": "assemble_cinder_nock_rack",
+        "resultId": "cinder_nock_rack"
+      },
+      {
+        "recipeId": "assemble_salamander_contract",
+        "resultId": "salamander_contract"
+      }
+    ],
+    "mergeTargets": [
+      "furnace_toad",
+      "blacksmith_s_apron",
+      "cinder_nock_rack",
+      "salamander_contract"
+    ]
+  },
+  "visual": {
+    "brief": "A broad amber moth with a tiny glowing belly.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A broad amber moth with a tiny glowing belly."
+    ],
+    "assets": {
+      "icon": "assets/items/lantern_moth_familiar/icons/art/icon.png",
+      "svg": "assets/items/lantern_moth_familiar/icons/art/icon.svg",
+      "source": "assets/items/lantern_moth_familiar/icons/art/icon.sprite.json",
+      "footprint": "assets/items/lantern_moth_familiar/icons/art/footprint.json",
+      "provenance": "assets/items/lantern_moth_familiar/icons/art/provenance.json",
+      "manifest": "assets/items/lantern_moth_familiar/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/lantern_moth_familiar/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

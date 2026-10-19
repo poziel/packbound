@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "tin_beetle",
+  "kind": "item",
+  "identity": {
+    "name": "Tin Beetle",
+    "category": "companion",
+    "rarity": "common",
+    "tags": [
+      "companion"
+    ],
+    "summary": "A rounded tin beetle with six thick dark legs.",
+    "description": "Deals 2 physical damage per affordable activation.",
+    "lore": "A clockmaker built it to keep lonely apprentices company."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 2
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Deals 2 physical damage per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "common-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "assemble_pilgrim_crab",
+        "resultId": "pilgrim_crab"
+      },
+      {
+        "recipeId": "assemble_gilded_scarab",
+        "resultId": "gilded_scarab"
+      },
+      {
+        "recipeId": "assemble_copper_cicada",
+        "resultId": "copper_cicada"
+      },
+      {
+        "recipeId": "assemble_lantern_moth_familiar",
+        "resultId": "lantern_moth_familiar"
+      },
+      {
+        "recipeId": "assemble_marrow_sparrow",
+        "resultId": "marrow_sparrow"
+      }
+    ],
+    "mergeTargets": [
+      "pilgrim_crab",
+      "gilded_scarab",
+      "copper_cicada",
+      "lantern_moth_familiar",
+      "marrow_sparrow"
+    ]
+  },
+  "visual": {
+    "brief": "A rounded tin beetle with six thick dark legs.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A rounded tin beetle with six thick dark legs."
+    ],
+    "assets": {
+      "icon": "assets/items/tin_beetle/icons/art/icon.png",
+      "svg": "assets/items/tin_beetle/icons/art/icon.svg",
+      "source": "assets/items/tin_beetle/icons/art/icon.sprite.json",
+      "footprint": "assets/items/tin_beetle/icons/art/footprint.json",
+      "provenance": "assets/items/tin_beetle/icons/art/provenance.json",
+      "manifest": "assets/items/tin_beetle/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/tin_beetle/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

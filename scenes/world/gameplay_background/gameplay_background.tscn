@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cij6m3k064qra"]
+
+[ext_resource type="Script" uid="uid://bdgnu6bvr72li" path="res://scenes/world/gameplay_background/gameplay_background.gd" id="background"]
+[ext_resource type="Shader" uid="uid://bbwq1bjuua7jx" path="res://assets/shaders/gameplay_pixel.gdshader" id="pixel_shader"]
+[ext_resource type="PackedScene" path="res://scenes/world/gameplay_world/gameplay_world.tscn" id="world"]
+
+[sub_resource type="ShaderMaterial" id="pixel_material"]
+shader = ExtResource("pixel_shader")
+shader_parameter/color_steps = 22.0
+shader_parameter/dither_strength = 0.0800000038
+shader_parameter/enabled = true
+
+[node name="GameplayBackground" type="Control" unique_id=1948329352]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("background")
+
+[node name="Render" type="SubViewportContainer" parent="." unique_id=739237550]
+modulate = Color(0.8156863, 0.7764706, 0.75686276, 1)
+material = SubResource("pixel_material")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+stretch_shrink = 3
+mouse_target = true
+
+[node name="Viewport" type="SubViewport" parent="Render" unique_id=1257955456]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(426, 240)
+render_target_update_mode = 4
+
+[node name="GameplayWorld" parent="Render/Viewport" unique_id=1495499046 instance=ExtResource("world")]
+
+[node name="Fade" type="ColorRect" parent="." unique_id=528935534]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

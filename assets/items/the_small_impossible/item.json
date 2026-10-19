@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "the_small_impossible",
+  "kind": "item",
+  "identity": {
+    "name": "The Small Impossible",
+    "category": "companion",
+    "rarity": "legendary",
+    "tags": [
+      "companion"
+    ],
+    "summary": "A pale cubic creature balanced on three dark curved feet.",
+    "description": "Deals 12 physical damage per affordable activation. Applies 3 doom through the existing combat keyword rules per affordable activation.",
+    "lore": "It insists it is an ordinary dog; no one has proved otherwise."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 12,
+    "doom": 3
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Deals 12 physical damage per affordable activation. Applies 3 doom through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 12,
+        "doom": 3
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "legendary-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A pale cubic creature balanced on three dark curved feet.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A pale cubic creature balanced on three dark curved feet."
+    ],
+    "assets": {
+      "icon": "assets/items/the_small_impossible/icons/art/icon.png",
+      "svg": "assets/items/the_small_impossible/icons/art/icon.svg",
+      "source": "assets/items/the_small_impossible/icons/art/icon.sprite.json",
+      "footprint": "assets/items/the_small_impossible/icons/art/footprint.json",
+      "provenance": "assets/items/the_small_impossible/icons/art/provenance.json",
+      "manifest": "assets/items/the_small_impossible/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/the_small_impossible/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

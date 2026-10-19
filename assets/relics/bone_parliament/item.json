@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "bone_parliament",
+  "kind": "relic",
+  "identity": {
+    "name": "Bone Parliament",
+    "category": "relic",
+    "rarity": "epic",
+    "tags": [
+      "relic",
+      "companions"
+    ],
+    "summary": "With at least one companion (bone thralls and packed companion items count): gain +3 physical damage per companion count (up to 4 counted).",
+    "description": "With at least one companion (bone thralls and packed companion items count): gain +3 physical damage per companion count (up to 4 counted).",
+    "lore": "The little skulls vote by rattling their teeth. They have never agreed to remain silent."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "With at least one companion (bone thralls and packed companion items count): gain +3 physical damage per companion count (up to 4 counted).",
+      "trigger": "after-item-aggregation",
+      "target": "current-enemy",
+      "condition": "With at least one companion (bone thralls and packed companion items count)",
+      "parameters": {
+        "amount": 3,
+        "scaleCap": 4,
+        "condition": "companions",
+        "stat": "physical_damage",
+        "metric": "companion_count"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "companions"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "Three tiny skulls seated around a round dark table",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "Three tiny skulls seated around a round dark table"
+    ],
+    "assets": {
+      "icon": "assets/relics/bone_parliament/icons/art/icon.png",
+      "svg": "assets/relics/bone_parliament/icons/art/icon.svg",
+      "source": "assets/relics/bone_parliament/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/bone_parliament/icons/art/provenance.json",
+      "manifest": "assets/relics/bone_parliament/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/bone_parliament/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

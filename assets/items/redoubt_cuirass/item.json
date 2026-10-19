@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "redoubt_cuirass",
+  "kind": "item",
+  "identity": {
+    "name": "Redoubt Cuirass",
+    "category": "armor",
+    "rarity": "rare",
+    "tags": [
+      "armor",
+      "warrior"
+    ],
+    "summary": "A thick brown cuirass with overlapping iron ribs.",
+    "description": "Reduces each enemy strike by 2 before block. Starts combat with 5 block; spent block does not refill.",
+    "lore": "Each repaired seam marks a siege survived."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "###",
+      ".#."
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "plating": 2,
+    "block": 5
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Reduces each enemy strike by 2 before block. Starts combat with 5 block; spent block does not refill.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "plating": 2,
+        "block": 5
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "rare-item-reward-pool"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_redoubt_cuirass",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "barricade_board",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "ironroot_boots",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "redoubt_cuirass",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Barricade Board, Ironroot Boots into Redoubt Cuirass."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_last_legion_aegis",
+        "resultId": "last_legion_aegis"
+      },
+      {
+        "recipeId": "assemble_siegebell_plate",
+        "resultId": "siegebell_plate"
+      }
+    ],
+    "mergeTargets": [
+      "last_legion_aegis",
+      "siegebell_plate"
+    ]
+  },
+  "visual": {
+    "brief": "A thick brown cuirass with overlapping iron ribs.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A thick brown cuirass with overlapping iron ribs."
+    ],
+    "assets": {
+      "icon": "assets/items/redoubt_cuirass/icons/art/icon.png",
+      "svg": "assets/items/redoubt_cuirass/icons/art/icon.svg",
+      "source": "assets/items/redoubt_cuirass/icons/art/icon.sprite.json",
+      "footprint": "assets/items/redoubt_cuirass/icons/art/footprint.json",
+      "provenance": "assets/items/redoubt_cuirass/icons/art/provenance.json",
+      "manifest": "assets/items/redoubt_cuirass/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/redoubt_cuirass/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

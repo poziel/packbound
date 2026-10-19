@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "id": "war_council_seal",
+  "kind": "item",
+  "identity": {
+    "name": "War Council Seal",
+    "category": "booster",
+    "rarity": "epic",
+    "tags": [
+      "booster",
+      "warrior"
+    ],
+    "summary": "A wax red seal held in a scalloped iron frame.",
+    "description": "Adds 2 maximum stamina, refreshed each round. Each orthogonally touching weapon gains +3 damage. Each source applies once per target, regardless of shared edges; distinct sources stack.",
+    "lore": "The signature was erased; the promise was kept."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "stamina": 2
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Adds 2 maximum stamina, refreshed each round. Each orthogonally touching weapon gains +3 damage. Each source applies once per target, regardless of shared edges; distinct sources stack.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "stamina": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [
+    {
+      "id": "adjacency_bonus",
+      "targetIds": [],
+      "targetTags": [
+        "weapon"
+      ],
+      "geometry": "orthogonal occupied-cell contact",
+      "stacking": "once per distinct source and target; different sources add",
+      "trigger": "while-equipped",
+      "bonuses": {
+        "damage": 3
+      },
+      "conditions": [
+        "Both source and target are equipped."
+      ],
+      "implementation": "supported"
+    }
+  ],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "epic-item-reward-pool"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_war_council_seal",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "cadence_spurs",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "captain_s_baton",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "roseglass_brooch",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "war_council_seal",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Cadence Spurs, Captain's Baton, Roseglass Brooch into War Council Seal."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_mountain_s_verdict",
+        "resultId": "mountain_s_verdict"
+      }
+    ],
+    "mergeTargets": [
+      "mountain_s_verdict"
+    ]
+  },
+  "visual": {
+    "brief": "A wax red seal held in a scalloped iron frame.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A wax red seal held in a scalloped iron frame."
+    ],
+    "assets": {
+      "icon": "assets/items/war_council_seal/icons/art/icon.png",
+      "svg": "assets/items/war_council_seal/icons/art/icon.svg",
+      "source": "assets/items/war_council_seal/icons/art/icon.sprite.json",
+      "footprint": "assets/items/war_council_seal/icons/art/footprint.json",
+      "provenance": "assets/items/war_council_seal/icons/art/provenance.json",
+      "manifest": "assets/items/war_council_seal/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/war_council_seal/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

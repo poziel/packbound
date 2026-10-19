@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "broken_metronome",
+  "kind": "relic",
+  "identity": {
+    "name": "Broken Metronome",
+    "category": "relic",
+    "rarity": "uncommon",
+    "tags": [
+      "relic",
+      "even"
+    ],
+    "summary": "On even numbered rounds: gain +3 block.",
+    "description": "On even numbered rounds: gain +3 block. Block is added each round.",
+    "lore": "The drummer who owned it could march an army across a sleeping giant. He never trusted the beat between two ticks."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "On even numbered rounds: gain +3 block. Block is added each round.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "On even numbered rounds",
+      "parameters": {
+        "amount": 3,
+        "scaleCap": 1,
+        "condition": "even",
+        "stat": "block",
+        "metric": "one",
+        "periodRounds": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "even"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A dark wooden metronome with a visibly bent pendulum",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A dark wooden metronome with a visibly bent pendulum"
+    ],
+    "assets": {
+      "icon": "assets/relics/broken_metronome/icons/art/icon.png",
+      "svg": "assets/relics/broken_metronome/icons/art/icon.svg",
+      "source": "assets/relics/broken_metronome/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/broken_metronome/icons/art/provenance.json",
+      "manifest": "assets/relics/broken_metronome/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/broken_metronome/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

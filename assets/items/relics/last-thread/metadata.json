@@ -6,6 +6,6 @@
   "detail": "Once per run, lethal damage instead restores 8 HP and unpacks your largest item. It can be packed again.",
   "iconItemKey": "bandage",
   "iconMetadata": "res://assets/items/healing/bandage/metadata.json",
-  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
   "note": "Reuses an inventory item icon; no separate artwork exists."
 }

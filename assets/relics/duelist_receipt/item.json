@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "duelist_receipt",
+  "kind": "relic",
+  "identity": {
+    "name": "Duelist Receipt",
+    "category": "relic",
+    "rarity": "uncommon",
+    "tags": [
+      "relic",
+      "crafting",
+      "opening"
+    ],
+    "summary": "On the opening round, gain +4 physical damage per recipe completed at this fight start, counting at most 3 recipes.",
+    "description": "On the opening round, gain +4 physical damage per recipe completed at this fight start, counting at most 3 recipes.",
+    "lore": "The quartermaster signs each assembly receipt in red. The duelists insist the signature is a promise that every newly joined edge will find its mark."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "On the opening round, gain +4 physical damage per recipe completed at this fight start, counting at most 3 recipes.",
+      "trigger": "after-item-aggregation",
+      "target": "current-enemy",
+      "condition": "Opening round after at least one recipe completed at this fight start",
+      "parameters": {
+        "amount": 4,
+        "scaleCap": 3,
+        "condition": "crafted_opening",
+        "stat": "physical_damage",
+        "metric": "crafted_count"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "crafting"
+      ],
+      "rationale": "Complete connected ingredient recipes before combat to strengthen the opening attack; there is no extra adjacency bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "An ivory receipt pierced by a fencing foil seal",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "An ivory receipt pierced by a fencing foil seal"
+    ],
+    "assets": {
+      "icon": "assets/relics/duelist_receipt/icons/art/icon.png",
+      "svg": "assets/relics/duelist_receipt/icons/art/icon.svg",
+      "source": "assets/relics/duelist_receipt/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/duelist_receipt/icons/art/provenance.json",
+      "manifest": "assets/relics/duelist_receipt/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/duelist_receipt/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

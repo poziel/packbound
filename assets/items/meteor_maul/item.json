@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "id": "meteor_maul",
+  "kind": "item",
+  "identity": {
+    "name": "Meteor Maul",
+    "category": "weapon",
+    "rarity": "epic",
+    "tags": [
+      "weapon",
+      "warrior"
+    ],
+    "summary": "A black cratered stone hammer in a steel cage.",
+    "description": "Costs 3 stamina per activation. Deals 17 physical damage per affordable activation. Warrior only: requires and spends 3 Momentum; adds 4 damage for each Momentum spent. No cost is spent if activation is unaffordable.",
+    "lore": "The crater cooled before anyone dared touch the stone."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "##",
+      ".#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 17
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 3
+      },
+      {
+        "resource": "momentum",
+        "amount": 3
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 3 stamina per activation. Deals 17 physical damage per affordable activation. Warrior only: requires and spends 3 Momentum; adds 4 damage for each Momentum spent. No cost is spent if activation is unaffordable.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 17,
+        "momentum_cost": 3,
+        "momentum_damage": 4
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "epic-item-reward-pool"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_meteor_maul",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "amber_heart_pendant",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "anchor_cleaver",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "boiler_hammer",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "meteor_maul",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Amber Heart Pendant, Anchor Cleaver, Boiler Hammer into Meteor Maul."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_mountain_s_verdict",
+        "resultId": "mountain_s_verdict"
+      }
+    ],
+    "mergeTargets": [
+      "mountain_s_verdict"
+    ]
+  },
+  "visual": {
+    "brief": "A black cratered stone hammer in a steel cage.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A black cratered stone hammer in a steel cage."
+    ],
+    "assets": {
+      "icon": "assets/items/meteor_maul/icons/art/icon.png",
+      "svg": "assets/items/meteor_maul/icons/art/icon.svg",
+      "source": "assets/items/meteor_maul/icons/art/icon.sprite.json",
+      "footprint": "assets/items/meteor_maul/icons/art/footprint.json",
+      "provenance": "assets/items/meteor_maul/icons/art/provenance.json",
+      "manifest": "assets/items/meteor_maul/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/meteor_maul/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

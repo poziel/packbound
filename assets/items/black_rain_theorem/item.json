@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "id": "black_rain_theorem",
+  "kind": "item",
+  "identity": {
+    "name": "Black Rain Theorem",
+    "category": "spell",
+    "rarity": "epic",
+    "tags": [
+      "spell",
+      "mage",
+      "void"
+    ],
+    "summary": "A black folded umbrella diagram on ivory parchment.",
+    "description": "Costs 4 mana per activation. Deals 15 magical damage per affordable activation. Applies 4 doom through the existing combat keyword rules per affordable activation.",
+    "lore": "The theorem proves that some rain falls upward."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 15,
+    "doom": 4
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "mana",
+        "amount": 4
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 4 mana per activation. Deals 15 magical damage per affordable activation. Applies 4 doom through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 15,
+        "doom": 4
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "different-element-spell"
+      ],
+      "description": "Its void trace participates in the Elementalist's existing reaction system; arrange it with spells of another element. No extra reaction beyond the shared rules is added.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "epic-item-reward-pool"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_black_rain_theorem",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "absent_atlas",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "amber_heart_pendant",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "hollow_bookmark",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "black_rain_theorem",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Absent Atlas, Amber Heart Pendant, Hollow Bookmark into Black Rain Theorem."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_the_unwritten_sun",
+        "resultId": "the_unwritten_sun"
+      },
+      {
+        "recipeId": "assemble_cathedral_of_sparks",
+        "resultId": "cathedral_of_sparks"
+      }
+    ],
+    "mergeTargets": [
+      "the_unwritten_sun",
+      "cathedral_of_sparks"
+    ]
+  },
+  "visual": {
+    "brief": "A black folded umbrella diagram on ivory parchment.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A black folded umbrella diagram on ivory parchment."
+    ],
+    "assets": {
+      "icon": "assets/items/black_rain_theorem/icons/art/icon.png",
+      "svg": "assets/items/black_rain_theorem/icons/art/icon.svg",
+      "source": "assets/items/black_rain_theorem/icons/art/icon.sprite.json",
+      "footprint": "assets/items/black_rain_theorem/icons/art/footprint.json",
+      "provenance": "assets/items/black_rain_theorem/icons/art/provenance.json",
+      "manifest": "assets/items/black_rain_theorem/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/black_rain_theorem/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

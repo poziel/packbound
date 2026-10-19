@@ -1,0 +1,37 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/world/gameplay_world/gameplay_world.gd" id="world"]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/rooms/dungeon_room/dungeon_room.tscn" id="room"]
+[ext_resource type="PackedScene" path="res://scenes/world/actors/enemy_actor/enemy_actor.tscn" id="enemy"]
+[ext_resource type="PackedScene" path="res://components/world/lighting/player_lantern/player_lantern.tscn" id="lantern"]
+
+[sub_resource type="Environment" id="environment"]
+background_mode = 1
+background_color = Color(0.03529412, 0.050980393, 0.08235294, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.5372549, 0.5921569, 0.6901961, 1)
+ambient_light_energy = 0.7
+
+[node name="GameplayWorld" type="Node3D"]
+script = ExtResource("world")
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("environment")
+
+[node name="Camera" type="Camera3D" parent="."]
+projection = 2
+current = true
+size = 0.115
+frustum_offset = Vector2(0.046, 0)
+near = 0.1
+far = 80.0
+
+[node name="PlayerLantern" parent="Camera" instance=ExtResource("lantern")]
+
+[node name="RoomSlot" type="Node3D" parent="."]
+
+[node name="CurrentRoom" parent="RoomSlot" instance=ExtResource("room")]
+
+[node name="Actors" type="Node3D" parent="."]
+
+[node name="Enemy" parent="Actors" instance=ExtResource("enemy")]

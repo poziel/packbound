@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "anchor_feather",
+  "kind": "relic",
+  "identity": {
+    "name": "Anchor Feather",
+    "category": "relic",
+    "rarity": "uncommon",
+    "tags": [
+      "relic",
+      "no_stamina_spent"
+    ],
+    "summary": "When no stamina was spent on activations: gain +1 plating.",
+    "description": "When no stamina was spent on activations: gain +1 plating.",
+    "lore": "The harbor witch tethered a gull with this charm. The gull escaped; the harbor has not moved since."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When no stamina was spent on activations: gain +1 plating.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "When no stamina was spent on activations",
+      "parameters": {
+        "amount": 1,
+        "scaleCap": 1,
+        "condition": "no_stamina_spent",
+        "stat": "plating",
+        "metric": "one"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "no_stamina_spent"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A broad gray feather tied to a lead anchor",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A broad gray feather tied to a lead anchor"
+    ],
+    "assets": {
+      "icon": "assets/relics/anchor_feather/icons/art/icon.png",
+      "svg": "assets/relics/anchor_feather/icons/art/icon.svg",
+      "source": "assets/relics/anchor_feather/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/anchor_feather/icons/art/provenance.json",
+      "manifest": "assets/relics/anchor_feather/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/anchor_feather/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

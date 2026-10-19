@@ -1,0 +1,58 @@
+{
+  "authoring": "Original explicit integer pixel geometry; no generated concept or external artwork copied.",
+  "tools": [
+    "Pixloom 0.2.0 CLI",
+    "Pixloom MCP (draft authoring review and final representative review)",
+    "Pixel Art skill",
+    "Monster Art Creator skill"
+  ],
+  "references": [
+    ".agents/skills/delver-art-creator/references/visual-direction.md",
+    "assets/enemies/mire_viper.png",
+    "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png"
+  ],
+  "canvas": [
+    288,
+    320
+  ],
+  "body_bounds": [
+    95,
+    40,
+    202,
+    288
+  ],
+  "body_size": [
+    107,
+    248
+  ],
+  "anchor": [
+    144,
+    288
+  ],
+  "flying": false,
+  "layers": [
+    "far_limbs",
+    "far_cloth",
+    "legs",
+    "torso",
+    "arms",
+    "head",
+    "equipment",
+    "anatomy_and_material_details"
+  ],
+  "editability": "Named layers contain visible surfaces only; hidden anatomy is not reconstructed.",
+  "animation": "One static pose; existing runtime motion handles idle, attack, hit and death.",
+  "approval": "Integrated at user request; awaiting artistic acceptance.",
+  "review": "All 36 exports inspected in native-scale roster sheets. All 36 rendered in the actual dungeon; 144 projection/texture/vitals checks passed. Final Shroud Moth additionally inspected through Pixloom MCP at native and 2x scales, in color and silhouette. Awaiting user artistic acceptance.",
+  "sha256": {
+    "pale_huntsman.pixloom.json": "5f2a370cf30cfdc5f9b8ad75367ac3f182155c0d3179603102617750333283d1",
+    "pale_huntsman.pixloom": "3f5522aab4b16a1a61f5cc347c1da7353a10e9b52cfddfc21cd504f8985b669d",
+    "pale_huntsman.png": "3d161ccff4778eb3693c8a63b640bafc573effe88e73d70663dfdcfe8eed911f",
+    "pale_huntsman.svg": "de43baf165518102a8f8ac0d830affefff37bd388eb58b44d89b1bf62e123633"
+  },
+  "reference_sha256": {
+    ".agents/skills/delver-art-creator/references/visual-direction.md": "5cadc4ef72c5db7bbec05c9504920e5abfd9ca4b33add8d2af9f98c610ada0df",
+    "assets/enemies/mire_viper.png": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7",
+    "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png": "3bcd9705f35494a28a94b3d1ecce67f657308bc4e952afe2ad7339864e140edf"
+  }
+}

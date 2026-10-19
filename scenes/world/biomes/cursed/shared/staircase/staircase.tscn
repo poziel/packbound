@@ -1,0 +1,443 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/staircase/staircase.tscn" id="base"]
+[ext_resource type="Material" path="res://scenes/world/biomes/cursed/shared/stone.tres" id="stone"]
+[ext_resource type="Material" path="res://scenes/world/biomes/cursed/shared/edge.tres" id="edge"]
+[ext_resource type="Material" path="res://scenes/world/biomes/cursed/shared/dark.tres" id="dark"]
+[ext_resource type="Material" path="res://scenes/world/biomes/cursed/shared/pale.tres" id="pale"]
+
+[node name="DungeonStaircase" instance=ExtResource("base")]
+
+[node name="Tread00" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("stone")
+
+[node name="Nosing00" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Tread01" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Nosing01" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Tread02" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("stone")
+
+[node name="Nosing02" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Tread03" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Nosing03" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Tread04" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("stone")
+
+[node name="Nosing04" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Tread05" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Nosing05" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Tread06" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("stone")
+
+[node name="Nosing06" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Tread07" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Nosing07" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Tread08" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("stone")
+
+[node name="Nosing08" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Tread09" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Nosing09" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Tread10" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("stone")
+
+[node name="Nosing10" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Tread11" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Nosing11" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Tread12" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("stone")
+
+[node name="Nosing12" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Tread13" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="Nosing13" parent="Visuals/RoomDesign/DescendingStairs"]
+material_override = ExtResource("edge")
+
+[node name="StairwellWest" parent="Visuals/RoomDesign"]
+material_override = ExtResource("dark")
+
+[node name="StairwellEast" parent="Visuals/RoomDesign"]
+material_override = ExtResource("dark")
+
+[node name="FarLanding" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="@MeshInstance3D@516" parent="Visuals/RoomDesign"]
+material_override = ExtResource("dark")
+
+[node name="@MeshInstance3D@517" parent="Visuals/RoomDesign"]
+material_override = ExtResource("pale")
+
+[node name="StairwellBrick" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick2" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick3" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick4" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick5" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick6" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick7" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick8" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick9" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick10" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick11" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick12" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick13" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick14" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick15" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick16" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick17" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick18" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick19" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick20" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick21" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick22" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick23" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick24" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick25" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick26" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick27" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick28" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick29" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick30" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick31" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick32" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick33" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick34" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick35" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick36" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick37" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick38" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick39" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick40" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick41" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick42" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick43" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick44" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick45" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick46" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick47" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick48" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick49" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick50" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick51" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick52" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick53" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick54" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick55" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick56" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick57" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick58" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick59" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick60" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick61" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick62" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick63" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick64" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick65" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick66" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick67" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick68" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick69" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick70" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick71" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick72" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick73" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick74" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick75" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick76" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick77" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick78" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick79" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick80" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick81" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick82" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick83" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick84" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick85" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick86" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick87" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick88" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick89" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick90" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick91" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick92" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick93" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick94" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick95" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick96" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick97" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick98" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick99" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick100" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick101" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick102" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick103" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick104" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick105" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick106" parent="Visuals/RoomDesign"]
+material_override = ExtResource("edge")
+
+[node name="StairwellBrick107" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="StairwellBrick108" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="WestWall" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="EastWall" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="LowerLanding" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")
+
+[node name="Ceiling" parent="Visuals/RoomDesign"]
+material_override = ExtResource("stone")

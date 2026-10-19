@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "apiary_crown",
+  "kind": "relic",
+  "identity": {
+    "name": "Apiary Crown",
+    "category": "relic",
+    "rarity": "rare",
+    "tags": [
+      "relic",
+      "companions"
+    ],
+    "summary": "With at least one companion (bone thralls and packed companion items count): gain +2 thorns per companion count (up to 4 counted).",
+    "description": "With at least one companion (bone thralls and packed companion items count): gain +2 thorns per companion count (up to 4 counted).",
+    "lore": "The queen of the orchard ruled by listening to wings. Her crown still makes room for a smaller court."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "With at least one companion (bone thralls and packed companion items count): gain +2 thorns per companion count (up to 4 counted).",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "With at least one companion (bone thralls and packed companion items count)",
+      "parameters": {
+        "amount": 2,
+        "scaleCap": 4,
+        "condition": "companions",
+        "stat": "thorns",
+        "metric": "companion_count"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "companions"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A woven straw crown with a single dark honeycomb",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A woven straw crown with a single dark honeycomb"
+    ],
+    "assets": {
+      "icon": "assets/relics/apiary_crown/icons/art/icon.png",
+      "svg": "assets/relics/apiary_crown/icons/art/icon.svg",
+      "source": "assets/relics/apiary_crown/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/apiary_crown/icons/art/provenance.json",
+      "manifest": "assets/relics/apiary_crown/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/apiary_crown/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

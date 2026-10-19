@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "thousand_arrow_funeral",
+  "kind": "relic",
+  "identity": {
+    "name": "Thousand Arrow Funeral",
+    "category": "relic",
+    "rarity": "legendary",
+    "tags": [
+      "relic",
+      "volley"
+    ],
+    "summary": "When Volley fires this round: gain +9 poison.",
+    "description": "When Volley fires this round: gain +9 poison.",
+    "lore": "The company buried its captain with a single empty quiver. By morning the ground was white with feathers."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When Volley fires this round: gain +9 poison.",
+      "trigger": "after-item-aggregation",
+      "target": "current-enemy",
+      "condition": "When Volley fires this round",
+      "parameters": {
+        "amount": 9,
+        "scaleCap": 1,
+        "condition": "volley",
+        "stat": "poison",
+        "metric": "one"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "volley"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A dark funeral urn ringed by pale arrow fletchings",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A dark funeral urn ringed by pale arrow fletchings"
+    ],
+    "assets": {
+      "icon": "assets/relics/thousand_arrow_funeral/icons/art/icon.png",
+      "svg": "assets/relics/thousand_arrow_funeral/icons/art/icon.svg",
+      "source": "assets/relics/thousand_arrow_funeral/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/thousand_arrow_funeral/icons/art/provenance.json",
+      "manifest": "assets/relics/thousand_arrow_funeral/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/thousand_arrow_funeral/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

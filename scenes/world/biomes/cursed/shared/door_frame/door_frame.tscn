@@ -1,0 +1,98 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/door_frame/door_frame.tscn" id="base"]
+[ext_resource type="Material" path="res://scenes/world/biomes/cursed/shared/stone.tres" id="stone"]
+[ext_resource type="Material" path="res://scenes/world/biomes/cursed/shared/edge.tres" id="edge"]
+[ext_resource type="Material" path="res://scenes/world/biomes/cursed/shared/dark.tres" id="dark"]
+[ext_resource type="Material" path="res://scenes/world/biomes/cursed/shared/pale.tres" id="pale"]
+
+[node name="DoorFrame" instance=ExtResource("base")]
+
+[node name="Piece00" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece01" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece02" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece03" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece04" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece06" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece07" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece08" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece09" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece10" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece11" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece12" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece13" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece14" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece15" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece16" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece17" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece18" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece19" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece20" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece21" parent="."]
+material_override = ExtResource("edge")
+
+[node name="LeftCore" parent="."]
+material_override = ExtResource("dark")
+
+[node name="RightCore" parent="."]
+material_override = ExtResource("dark")
+
+[node name="LeftArchCore0" parent="."]
+material_override = ExtResource("dark")
+
+[node name="LeftArchCore1" parent="."]
+material_override = ExtResource("dark")
+
+[node name="LeftArchCore2" parent="."]
+material_override = ExtResource("dark")
+
+[node name="RightArchCore0" parent="."]
+material_override = ExtResource("dark")
+
+[node name="RightArchCore1" parent="."]
+material_override = ExtResource("dark")
+
+[node name="RightArchCore2" parent="."]
+material_override = ExtResource("dark")
+
+[node name="KeystoneCore" parent="."]
+material_override = ExtResource("dark")

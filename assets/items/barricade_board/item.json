@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "barricade_board",
+  "kind": "item",
+  "identity": {
+    "name": "Barricade Board",
+    "category": "shield",
+    "rarity": "common",
+    "tags": [
+      "shield",
+      "warrior"
+    ],
+    "summary": "A broken oak barricade with an iron cross strap.",
+    "description": "Starts combat with 6 block; spent block does not refill.",
+    "lore": "The gate fell; its keeper carried the last plank onward."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "#."
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "block": 6
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Starts combat with 6 block; spent block does not refill.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "block": 6
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "common-item-reward-pool"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "assemble_vanguard_sabaton",
+        "resultId": "vanguard_sabaton"
+      },
+      {
+        "recipeId": "assemble_redoubt_cuirass",
+        "resultId": "redoubt_cuirass"
+      }
+    ],
+    "mergeTargets": [
+      "vanguard_sabaton",
+      "redoubt_cuirass"
+    ]
+  },
+  "visual": {
+    "brief": "A broken oak barricade with an iron cross strap.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A broken oak barricade with an iron cross strap."
+    ],
+    "assets": {
+      "icon": "assets/items/barricade_board/icons/art/icon.png",
+      "svg": "assets/items/barricade_board/icons/art/icon.svg",
+      "source": "assets/items/barricade_board/icons/art/icon.sprite.json",
+      "footprint": "assets/items/barricade_board/icons/art/footprint.json",
+      "provenance": "assets/items/barricade_board/icons/art/provenance.json",
+      "manifest": "assets/items/barricade_board/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/barricade_board/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

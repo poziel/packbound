@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "id": "hollow_bookmark",
+  "kind": "item",
+  "identity": {
+    "name": "Hollow Bookmark",
+    "category": "spell",
+    "rarity": "uncommon",
+    "tags": [
+      "spell",
+      "mage",
+      "void"
+    ],
+    "summary": "A black ribbon ending in an open rectangular silver frame.",
+    "description": "Costs 2 mana per activation. Deals 7 magical damage per affordable activation. Applies 1 doom through the existing combat keyword rules per affordable activation.",
+    "lore": "No page touched by the frame can be remembered afterward."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 7,
+    "doom": 1
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "mana",
+        "amount": 2
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 2 mana per activation. Deals 7 magical damage per affordable activation. Applies 1 doom through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 7,
+        "doom": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "different-element-spell"
+      ],
+      "description": "Its void trace participates in the Elementalist's existing reaction system; arrange it with spells of another element. No extra reaction beyond the shared rules is added.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_hollow_bookmark",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "salt_lantern",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "traveler_s_kettle",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "hollow_bookmark",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Salt Lantern, Traveler's Kettle into Hollow Bookmark."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_absent_atlas",
+        "resultId": "absent_atlas"
+      },
+      {
+        "recipeId": "assemble_black_rain_theorem",
+        "resultId": "black_rain_theorem"
+      }
+    ],
+    "mergeTargets": [
+      "absent_atlas",
+      "black_rain_theorem"
+    ]
+  },
+  "visual": {
+    "brief": "A black ribbon ending in an open rectangular silver frame.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A black ribbon ending in an open rectangular silver frame."
+    ],
+    "assets": {
+      "icon": "assets/items/hollow_bookmark/icons/art/icon.png",
+      "svg": "assets/items/hollow_bookmark/icons/art/icon.svg",
+      "source": "assets/items/hollow_bookmark/icons/art/icon.sprite.json",
+      "footprint": "assets/items/hollow_bookmark/icons/art/footprint.json",
+      "provenance": "assets/items/hollow_bookmark/icons/art/provenance.json",
+      "manifest": "assets/items/hollow_bookmark/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/hollow_bookmark/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "id": "waxed_fletching",
+  "kind": "item",
+  "identity": {
+    "name": "Waxed Fletching",
+    "category": "booster",
+    "rarity": "uncommon",
+    "tags": [
+      "booster",
+      "ranger"
+    ],
+    "summary": "Ochre feathers stacked beneath a dark beeswax cake.",
+    "description": "While orthogonally touching the permanent Bowmaster quiver, adds 2 damage to Volley; this equipment remains in the backpack and is not consumed.",
+    "lore": "Rain stopped spoiling the hunt after this small invention."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "While orthogonally touching the permanent Bowmaster quiver, adds 2 damage to Volley; this equipment remains in the backpack and is not consumed.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [
+    {
+      "id": "quiver_bonus",
+      "targetIds": [
+        "magnificent_quiver"
+      ],
+      "targetTags": [
+        "quiver"
+      ],
+      "geometry": "orthogonal occupied-cell contact",
+      "stacking": "once per distinct source and target; different sources add",
+      "trigger": "while-equipped",
+      "bonuses": {
+        "damage": 2
+      },
+      "conditions": [
+        "Both source and target are equipped."
+      ],
+      "implementation": "supported"
+    }
+  ],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Pairs with the permanent Bowmaster quiver and other different quiver attachments; normal bows receive no implicit bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [
+      "ranger"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_waxed_fletching",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "bandage",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "existing"
+          },
+          {
+            "id": "feather_keeper",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "waxed_fletching",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Grave Bandage, Feather Keeper into Waxed Fletching."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_glass_reed_bow",
+        "resultId": "glass_reed_bow"
+      },
+      {
+        "recipeId": "assemble_winterflight_rack",
+        "resultId": "winterflight_rack"
+      },
+      {
+        "recipeId": "assemble_burrow_falcon",
+        "resultId": "burrow_falcon"
+      }
+    ],
+    "mergeTargets": [
+      "glass_reed_bow",
+      "winterflight_rack",
+      "burrow_falcon"
+    ]
+  },
+  "visual": {
+    "brief": "Ochre feathers stacked beneath a dark beeswax cake.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "Ochre feathers stacked beneath a dark beeswax cake."
+    ],
+    "assets": {
+      "icon": "assets/items/waxed_fletching/icons/art/icon.png",
+      "svg": "assets/items/waxed_fletching/icons/art/icon.svg",
+      "source": "assets/items/waxed_fletching/icons/art/icon.sprite.json",
+      "footprint": "assets/items/waxed_fletching/icons/art/footprint.json",
+      "provenance": "assets/items/waxed_fletching/icons/art/provenance.json",
+      "manifest": "assets/items/waxed_fletching/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/waxed_fletching/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

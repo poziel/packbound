@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "pilgrim_sock",
+  "kind": "relic",
+  "identity": {
+    "name": "Pilgrim Sock",
+    "category": "relic",
+    "rarity": "common",
+    "tags": [
+      "relic",
+      "late"
+    ],
+    "summary": "From round four onward: gain +1 stamina.",
+    "description": "From round four onward: gain +1 stamina. Increases the round refill budget.",
+    "lore": "The heel was darned at every shrine along the impossible road. There is more thread than sock now."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "round-resource-refill",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "From round four onward: gain +1 stamina. Increases the round refill budget.",
+      "trigger": "round-resource-refill",
+      "target": "player",
+      "condition": "From round four onward",
+      "parameters": {
+        "amount": 1,
+        "scaleCap": 1,
+        "condition": "late",
+        "stat": "stamina_resource",
+        "metric": "one",
+        "lateRoundMinimum": 4
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "late"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A darned wool sock folded around a walking pebble",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A darned wool sock folded around a walking pebble"
+    ],
+    "assets": {
+      "icon": "assets/relics/pilgrim_sock/icons/art/icon.png",
+      "svg": "assets/relics/pilgrim_sock/icons/art/icon.svg",
+      "source": "assets/relics/pilgrim_sock/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/pilgrim_sock/icons/art/provenance.json",
+      "manifest": "assets/relics/pilgrim_sock/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/pilgrim_sock/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

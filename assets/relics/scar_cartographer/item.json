@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "scar_cartographer",
+  "kind": "relic",
+  "identity": {
+    "name": "Scar Cartographer",
+    "category": "relic",
+    "rarity": "rare",
+    "tags": [
+      "relic",
+      "low_hp"
+    ],
+    "summary": "When current HP is at most half maximum HP before activations: gain +6 physical damage.",
+    "description": "When current HP is at most half maximum HP before activations: gain +6 physical damage.",
+    "lore": "The map was inked on healed wounds. Its compass always turns toward the road that hurt the most."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When current HP is at most half maximum HP before activations: gain +6 physical damage.",
+      "trigger": "after-item-aggregation",
+      "target": "current-enemy",
+      "condition": "When current HP is at most half maximum HP before activations",
+      "parameters": {
+        "amount": 6,
+        "scaleCap": 1,
+        "condition": "low_hp",
+        "stat": "physical_damage",
+        "metric": "one",
+        "lowHealthFraction": 0.5
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "low_hp"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A brass compass on a scarred leather map",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A brass compass on a scarred leather map"
+    ],
+    "assets": {
+      "icon": "assets/relics/scar_cartographer/icons/art/icon.png",
+      "svg": "assets/relics/scar_cartographer/icons/art/icon.svg",
+      "source": "assets/relics/scar_cartographer/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/scar_cartographer/icons/art/provenance.json",
+      "manifest": "assets/relics/scar_cartographer/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/scar_cartographer/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

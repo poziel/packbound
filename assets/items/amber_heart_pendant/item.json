@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "id": "amber_heart_pendant",
+  "kind": "item",
+  "identity": {
+    "name": "Amber Heart Pendant",
+    "category": "pendant",
+    "rarity": "rare",
+    "tags": [
+      "pendant"
+    ],
+    "summary": "A warm amber heart enclosing a single dark fern.",
+    "description": "Restores up to 3 HP each round. Supplies 1 ward each round against poison, curse and reflected damage.",
+    "lore": "The fern is older than the mountains around its mine."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "healing": 3,
+    "ward": 1
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Restores up to 3 HP each round. Supplies 1 ward each round against poison, curse and reflected damage.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "healing": 3,
+        "ward": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "rare-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_amber_heart_pendant",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "acorn_pendant",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "pearl_of_brine",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "roseglass_brooch",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "amber_heart_pendant",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Acorn Pendant, Pearl of Brine, Roseglass Brooch into Amber Heart Pendant."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_cathedral_carapace",
+        "resultId": "cathedral_carapace"
+      },
+      {
+        "recipeId": "assemble_captive_aurora",
+        "resultId": "captive_aurora"
+      },
+      {
+        "recipeId": "assemble_furnace_toad",
+        "resultId": "furnace_toad"
+      },
+      {
+        "recipeId": "assemble_meteor_maul",
+        "resultId": "meteor_maul"
+      },
+      {
+        "recipeId": "assemble_black_rain_theorem",
+        "resultId": "black_rain_theorem"
+      }
+    ],
+    "mergeTargets": [
+      "cathedral_carapace",
+      "captive_aurora",
+      "furnace_toad",
+      "meteor_maul",
+      "black_rain_theorem"
+    ]
+  },
+  "visual": {
+    "brief": "A warm amber heart enclosing a single dark fern.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A warm amber heart enclosing a single dark fern."
+    ],
+    "assets": {
+      "icon": "assets/items/amber_heart_pendant/icons/art/icon.png",
+      "svg": "assets/items/amber_heart_pendant/icons/art/icon.svg",
+      "source": "assets/items/amber_heart_pendant/icons/art/icon.sprite.json",
+      "footprint": "assets/items/amber_heart_pendant/icons/art/footprint.json",
+      "provenance": "assets/items/amber_heart_pendant/icons/art/provenance.json",
+      "manifest": "assets/items/amber_heart_pendant/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/amber_heart_pendant/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

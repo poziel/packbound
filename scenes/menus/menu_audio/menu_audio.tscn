@@ -1,0 +1,39 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/menus/menu_audio/menu_audio.gd" id="controller"]
+[ext_resource type="AudioStream" path="res://assets/musics/menu/shadows_in_the_backpack.mp3" id="song"]
+[ext_resource type="AudioStream" path="res://assets/audio/ui/button_activate.wav" id="click"]
+[ext_resource type="AudioStream" path="res://assets/audio/ui/item_hover.wav" id="item_hover"]
+[ext_resource type="AudioStream" path="res://assets/musics/ambience/Dungeon_Ambience_1.ogg" id="ambience_one"]
+[ext_resource type="AudioStream" path="res://assets/musics/ambience/Dungeon_Ambience_2.ogg" id="ambience_two"]
+
+[node name="Audio" type="Node"]
+process_mode = 3
+script = ExtResource("controller")
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("song")
+bus = &"Music"
+
+[node name="GameplayMusic" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="NextTrackTimer" type="Timer" parent="."]
+one_shot = true
+ignore_time_scale = true
+
+[node name="AmbienceOne" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("ambience_one")
+bus = &"Ambience"
+
+[node name="AmbienceTwo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("ambience_two")
+bus = &"Ambience"
+
+[node name="MenuFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("click")
+bus = &"FX"
+
+[node name="ItemHoverFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("item_hover")
+bus = &"FX"

@@ -1,0 +1,100 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://scenes/shared/inspect_window/inspect_window.gd" id="script"]
+[ext_resource type="Theme" path="res://themes/gameplay/theme.tres" id="theme"]
+[ext_resource type="Script" path="res://scenes/shared/inspect_window/tooltip_timer.gd" id="timer"]
+[ext_resource type="Script" path="res://components/ui/indicators/bound_equipment_indicator/bound_equipment_indicator.gd" id="bound"]
+[ext_resource type="Texture2D" path="res://assets/ui/icons/navigation-v4/logs.png" id="recipe_icon"]
+[sub_resource type="StyleBoxFlat" id="frame"]
+bg_color = Color(0.075, 0.06, 0.07, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.55, 0.48, 0.30, 1)
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 4
+anti_aliasing = false
+[sub_resource type="StyleBoxEmpty" id="empty"]
+[node name="InspectWindow" type="PanelContainer"]
+custom_minimum_size = Vector2(400, 0)
+mouse_filter = 2
+texture_filter = 1
+theme = ExtResource("theme")
+theme_override_styles/panel = SubResource("frame")
+script = ExtResource("script")
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+[node name="Header" type="HBoxContainer" parent="Content"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+[node name="Icon" type="TextureRect" parent="Content/Header"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+[node name="BoundStatus" type="Control" parent="Content/Header"]
+visible = false
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+accessibility_name = "Bound equipment"
+script = ExtResource("bound")
+[node name="Title" type="RichTextLabel" parent="Content/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+theme_override_colors/default_color = Color(0.91, 0.81, 0.56, 1)
+theme_override_constants/line_separation = 2
+theme_override_styles/normal = SubResource("empty")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+[node name="TimerSlot" type="Control" parent="Content/Header"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+[node name="Timer" type="Control" parent="Content/Header/TimerSlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("timer")
+[node name="Body" type="RichTextLabel" parent="Content"]
+custom_minimum_size = Vector2(368, 0)
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+theme_override_font_sizes/normal_font_size = 24
+theme_override_constants/line_separation = 2
+theme_override_styles/normal = SubResource("empty")
+
+[node name="RecipeShortcut" type="TextureRect" parent="Content/Header/TimerSlot"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("recipe_icon")
+expand_mode = 1
+stretch_mode = 5
+accessibility_name = "View crafting recipes"

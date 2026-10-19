@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "atlas_of_missing_roads",
+  "kind": "relic",
+  "identity": {
+    "name": "Atlas Of Missing Roads",
+    "category": "relic",
+    "rarity": "legendary",
+    "tags": [
+      "relic",
+      "sparse"
+    ],
+    "summary": "With at most four packed items: gain +14 physical damage.",
+    "description": "With at most four packed items: gain +14 physical damage.",
+    "lore": "The explorer cut away every road she regretted taking. What remains is a map of the places she still hopes to find."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "With at most four packed items: gain +14 physical damage.",
+      "trigger": "after-item-aggregation",
+      "target": "current-enemy",
+      "condition": "With at most four packed items",
+      "parameters": {
+        "amount": 14,
+        "scaleCap": 1,
+        "condition": "sparse",
+        "stat": "physical_damage",
+        "metric": "one",
+        "sparseItemMaximum": 4
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "sparse"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A folded atlas with a conspicuous road shaped hole",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A folded atlas with a conspicuous road shaped hole"
+    ],
+    "assets": {
+      "icon": "assets/relics/atlas_of_missing_roads/icons/art/icon.png",
+      "svg": "assets/relics/atlas_of_missing_roads/icons/art/icon.svg",
+      "source": "assets/relics/atlas_of_missing_roads/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/atlas_of_missing_roads/icons/art/provenance.json",
+      "manifest": "assets/relics/atlas_of_missing_roads/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/atlas_of_missing_roads/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

@@ -10,5 +10,5 @@ one static frame. `settings.png` and `settings.svg` are spritex 0.2.0 exports.
 The glyph is a single editable shape, not a reconstruction of separate parts.
 
 The application frame uses the PNG with nearest-neighbor filtering. The rendered
-`tests/ui_polish_test.gd` review verifies exact alpha equality with the original
+`tests/integration/ui_polish_test.gd` review verifies exact alpha equality with the original
 gear and white RGB for every opaque pixel.

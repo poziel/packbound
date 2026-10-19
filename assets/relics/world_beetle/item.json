@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "world_beetle",
+  "kind": "relic",
+  "identity": {
+    "name": "World Beetle",
+    "category": "relic",
+    "rarity": "epic",
+    "tags": [
+      "relic",
+      "dense"
+    ],
+    "summary": "With at least twenty occupied backpack cells: gain +2 plating.",
+    "description": "With at least twenty occupied backpack cells: gain +2 plating.",
+    "lore": "The beetle was found beneath a fallen boundary stone, still trying to lift it. The stone has grown lighter; the beetle has not grown tired."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "With at least twenty occupied backpack cells: gain +2 plating.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "With at least twenty occupied backpack cells",
+      "parameters": {
+        "amount": 2,
+        "scaleCap": 1,
+        "condition": "dense",
+        "stat": "plating",
+        "metric": "one",
+        "denseCellMinimum": 20
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "dense"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A broad bronze beetle carrying a square stone world",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A broad bronze beetle carrying a square stone world"
+    ],
+    "assets": {
+      "icon": "assets/relics/world_beetle/icons/art/icon.png",
+      "svg": "assets/relics/world_beetle/icons/art/icon.svg",
+      "source": "assets/relics/world_beetle/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/world_beetle/icons/art/provenance.json",
+      "manifest": "assets/relics/world_beetle/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/world_beetle/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

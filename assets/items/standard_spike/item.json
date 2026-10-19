@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "id": "standard_spike",
+  "kind": "item",
+  "identity": {
+    "name": "Standard Spike",
+    "category": "weapon",
+    "rarity": "uncommon",
+    "tags": [
+      "weapon",
+      "warrior"
+    ],
+    "summary": "A spear carrying a narrow torn ivory pennant.",
+    "description": "Costs 2 stamina per activation. Deals 6 physical damage per affordable activation. Warrior only: gains 2 Momentum after an affordable activation.",
+    "lore": "No name remains on the cloth, only the direction forward."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 6
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 2
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 2 stamina per activation. Deals 6 physical damage per affordable activation. Warrior only: gains 2 Momentum after an affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 6,
+        "momentum_gain": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Feeds Momentum-spending Warrior weapons; ordinary completed exchanges remain another Momentum source.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_standard_spike",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "drummer_s_mallet",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "marching_pike",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "standard_spike",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Drummer's Mallet, Marching Pike into Standard Spike."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_oathbreaker_flail",
+        "resultId": "oathbreaker_flail"
+      },
+      {
+        "recipeId": "assemble_captain_s_baton",
+        "resultId": "captain_s_baton"
+      }
+    ],
+    "mergeTargets": [
+      "oathbreaker_flail",
+      "captain_s_baton"
+    ]
+  },
+  "visual": {
+    "brief": "A spear carrying a narrow torn ivory pennant.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A spear carrying a narrow torn ivory pennant."
+    ],
+    "assets": {
+      "icon": "assets/items/standard_spike/icons/art/icon.png",
+      "svg": "assets/items/standard_spike/icons/art/icon.svg",
+      "source": "assets/items/standard_spike/icons/art/icon.sprite.json",
+      "footprint": "assets/items/standard_spike/icons/art/footprint.json",
+      "provenance": "assets/items/standard_spike/icons/art/provenance.json",
+      "manifest": "assets/items/standard_spike/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/standard_spike/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

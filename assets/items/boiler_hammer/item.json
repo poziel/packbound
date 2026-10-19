@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "boiler_hammer",
+  "kind": "item",
+  "identity": {
+    "name": "Boiler Hammer",
+    "category": "weapon",
+    "rarity": "uncommon",
+    "tags": [
+      "weapon",
+      "warrior"
+    ],
+    "summary": "A soot black hammer head with a small copper vent.",
+    "description": "Costs 2 stamina per activation. Deals 9 physical damage per affordable activation. Applies 1 burn through the existing combat keyword rules per affordable activation.",
+    "lore": "A dismantled foundry still remembers its heat."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      ".#",
+      ".#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 9,
+    "burn": 1
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 2
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 2 stamina per activation. Deals 9 physical damage per affordable activation. Applies 1 burn through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 9,
+        "burn": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_boiler_hammer",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "drummer_s_mallet",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "salt_lantern",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "boiler_hammer",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Drummer's Mallet, Salt Lantern into Boiler Hammer."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_meteor_maul",
+        "resultId": "meteor_maul"
+      }
+    ],
+    "mergeTargets": [
+      "meteor_maul"
+    ]
+  },
+  "visual": {
+    "brief": "A soot black hammer head with a small copper vent.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A soot black hammer head with a small copper vent."
+    ],
+    "assets": {
+      "icon": "assets/items/boiler_hammer/icons/art/icon.png",
+      "svg": "assets/items/boiler_hammer/icons/art/icon.svg",
+      "source": "assets/items/boiler_hammer/icons/art/icon.sprite.json",
+      "footprint": "assets/items/boiler_hammer/icons/art/footprint.json",
+      "provenance": "assets/items/boiler_hammer/icons/art/provenance.json",
+      "manifest": "assets/items/boiler_hammer/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/boiler_hammer/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

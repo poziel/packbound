@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "last_seat",
+  "kind": "relic",
+  "identity": {
+    "name": "Last Seat",
+    "category": "relic",
+    "rarity": "common",
+    "tags": [
+      "relic",
+      "sparse"
+    ],
+    "summary": "With at most four packed items: gain +2 block.",
+    "description": "With at most four packed items: gain +2 block. Block is added each round.",
+    "lore": "Four entered the inn and five chairs were laid. The smallest chair followed them when they left."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "With at most four packed items: gain +2 block. Block is added each round.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "With at most four packed items",
+      "parameters": {
+        "amount": 2,
+        "scaleCap": 1,
+        "condition": "sparse",
+        "stat": "block",
+        "metric": "one",
+        "sparseItemMaximum": 4
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "sparse"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A tiny empty wooden stool with three splayed legs",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A tiny empty wooden stool with three splayed legs"
+    ],
+    "assets": {
+      "icon": "assets/relics/last_seat/icons/art/icon.png",
+      "svg": "assets/relics/last_seat/icons/art/icon.svg",
+      "source": "assets/relics/last_seat/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/last_seat/icons/art/provenance.json",
+      "manifest": "assets/relics/last_seat/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/last_seat/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

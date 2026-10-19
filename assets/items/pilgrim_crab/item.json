@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "pilgrim_crab",
+  "kind": "item",
+  "identity": {
+    "name": "Pilgrim Crab",
+    "category": "companion",
+    "rarity": "rare",
+    "tags": [
+      "companion"
+    ],
+    "summary": "A rust red crab carrying a tiny cream roadside shrine.",
+    "description": "Deals 3 physical damage per affordable activation. Starts combat with 5 block; spent block does not refill.",
+    "lore": "It visits every shrine except the one on its own back."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 3,
+    "block": 5
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Deals 3 physical damage per affordable activation. Starts combat with 5 block; spent block does not refill.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 3,
+        "block": 5
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "rare-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_pilgrim_crab",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "ironroot_boots",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "pearl_of_brine",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "tin_beetle",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "pilgrim_crab",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Ironroot Boots, Pearl of Brine, Tin Beetle into Pilgrim Crab."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_cathedral_carapace",
+        "resultId": "cathedral_carapace"
+      }
+    ],
+    "mergeTargets": [
+      "cathedral_carapace"
+    ]
+  },
+  "visual": {
+    "brief": "A rust red crab carrying a tiny cream roadside shrine.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A rust red crab carrying a tiny cream roadside shrine."
+    ],
+    "assets": {
+      "icon": "assets/items/pilgrim_crab/icons/art/icon.png",
+      "svg": "assets/items/pilgrim_crab/icons/art/icon.svg",
+      "source": "assets/items/pilgrim_crab/icons/art/icon.sprite.json",
+      "footprint": "assets/items/pilgrim_crab/icons/art/footprint.json",
+      "provenance": "assets/items/pilgrim_crab/icons/art/provenance.json",
+      "manifest": "assets/items/pilgrim_crab/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/pilgrim_crab/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

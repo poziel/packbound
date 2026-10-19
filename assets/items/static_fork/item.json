@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "static_fork",
+  "kind": "item",
+  "identity": {
+    "name": "Static Fork",
+    "category": "spell",
+    "rarity": "common",
+    "tags": [
+      "spell",
+      "mage",
+      "lightning"
+    ],
+    "summary": "A two tined copper tuning fork with a dark cork grip.",
+    "description": "Costs 1 mana per activation. Deals 4 magical damage per affordable activation. Applies 1 spark through the existing combat keyword rules per affordable activation.",
+    "lore": "It answers distant thunder before the clouds arrive."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 4,
+    "spark": 1
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "mana",
+        "amount": 1
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 1 mana per activation. Deals 4 magical damage per affordable activation. Applies 1 spark through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 4,
+        "spark": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "different-element-spell"
+      ],
+      "description": "Its lightning trace participates in the Elementalist's existing reaction system; arrange it with spells of another element. No extra reaction beyond the shared rules is added.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "common-item-reward-pool"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "assemble_copper_cicada",
+        "resultId": "copper_cicada"
+      }
+    ],
+    "mergeTargets": [
+      "copper_cicada"
+    ]
+  },
+  "visual": {
+    "brief": "A two tined copper tuning fork with a dark cork grip.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A two tined copper tuning fork with a dark cork grip."
+    ],
+    "assets": {
+      "icon": "assets/items/static_fork/icons/art/icon.png",
+      "svg": "assets/items/static_fork/icons/art/icon.svg",
+      "source": "assets/items/static_fork/icons/art/icon.sprite.json",
+      "footprint": "assets/items/static_fork/icons/art/footprint.json",
+      "provenance": "assets/items/static_fork/icons/art/provenance.json",
+      "manifest": "assets/items/static_fork/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/static_fork/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

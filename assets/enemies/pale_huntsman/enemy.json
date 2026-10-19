@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "id": "pale_huntsman",
+  "name": "Pale Huntsman",
+  "species": "humanoid",
+  "age": "38 years at death; 91 years bound",
+  "role": "piercer",
+  "description": "A spectral gamekeeper who still follows trespassers through the lower halls. His spear is solid bone, even when his cloak seems weightless.",
+  "encounter_floor": 17,
+  "starting_stats": {
+    "hp": 105,
+    "attacks": [
+      12
+    ],
+    "hits": 1,
+    "armor": 0,
+    "pierce": 4,
+    "poison": 0,
+    "drain": 0,
+    "reflect": 0,
+    "sunder": 0,
+    "enrage": 0,
+    "regen": 0,
+    "parry": 0,
+    "opening_armor": 4,
+    "cycle_armor": 0,
+    "cleanse": 0,
+    "physical_resistance": 0,
+    "magical_resistance": 0,
+    "damage_type": "physical"
+  },
+  "abilities": [
+    {
+      "id": "pierce",
+      "amount": 4,
+      "description": "Up to 4 damage per strike bypasses block after slow, plating and resistance reduce the strike."
+    },
+    {
+      "id": "opening_armor",
+      "amount": 4,
+      "description": "Starts with 4 opening block. Any remainder expires after round two."
+    }
+  ],
+  "intent": "Piercer",
+  "detail": "Up to 4 damage per strike bypasses block after slow, plating and resistance reduce the strike. Starts with 4 opening block. Any remainder expires after round two.",
+  "art": {
+    "source": "art/pale_huntsman.pixloom.json",
+    "project": "art/pale_huntsman.pixloom",
+    "png": "art/pale_huntsman.png",
+    "svg": "art/pale_huntsman.svg"
+  }
+}

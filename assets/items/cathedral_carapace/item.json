@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "cathedral_carapace",
+  "kind": "item",
+  "identity": {
+    "name": "Cathedral Carapace",
+    "category": "armor",
+    "rarity": "epic",
+    "tags": [
+      "armor"
+    ],
+    "summary": "A cream breastplate with broad copper ribs like roof arches.",
+    "description": "Reduces each enemy strike by 3 before block. Supplies 3 ward each round against poison, curse and reflected damage.",
+    "lore": "Built for the guardian of a sanctuary no army could enter."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "###",
+      "###"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "plating": 3,
+    "ward": 3
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Reduces each enemy strike by 3 before block. Supplies 3 ward each round against poison, curse and reflected damage.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "plating": 3,
+        "ward": 3
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "epic-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_cathedral_carapace",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "amber_heart_pendant",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "blacksmith_s_apron",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "pilgrim_crab",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "salt_lantern",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "cathedral_carapace",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 4,
+          "priorityIngredientCount": 4
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Amber Heart Pendant, Blacksmith's Apron, Pilgrim Crab, Salt Lantern into Cathedral Carapace."
+      }
+    ],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A cream breastplate with broad copper ribs like roof arches.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A cream breastplate with broad copper ribs like roof arches."
+    ],
+    "assets": {
+      "icon": "assets/items/cathedral_carapace/icons/art/icon.png",
+      "svg": "assets/items/cathedral_carapace/icons/art/icon.svg",
+      "source": "assets/items/cathedral_carapace/icons/art/icon.sprite.json",
+      "footprint": "assets/items/cathedral_carapace/icons/art/footprint.json",
+      "provenance": "assets/items/cathedral_carapace/icons/art/provenance.json",
+      "manifest": "assets/items/cathedral_carapace/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/cathedral_carapace/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

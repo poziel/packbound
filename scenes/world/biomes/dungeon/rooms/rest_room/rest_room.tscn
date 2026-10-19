@@ -1,0 +1,126 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/activity_chamber/activity_chamber.tscn" id="chamber"]
+
+[ext_resource type="Script" path="res://scenes/world/rooms/shared/activity_room.gd" id="activity"]
+
+[sub_resource type="StandardMaterial3D" id="stone"]
+albedo_color = Color(0.22, 0.26, 0.32, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="edge"]
+albedo_color = Color(0.32, 0.36, 0.41, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="iron"]
+albedo_color = Color(0.10, 0.12, 0.15, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="embers"]
+albedo_color = Color(0.95, 0.35, 0.08, 1)
+roughness = 0.9
+emission_enabled = true
+emission = Color(0.95, 0.35, 0.08, 1)
+emission_energy_multiplier = 1.8
+
+[sub_resource type="BoxMesh" id="BenchSeat0_mesh"]
+size = Vector3(2.7, 0.32, 1.15)
+
+[sub_resource type="BoxMesh" id="BenchLeft0_mesh"]
+size = Vector3(0.4, 0.8, 1.0)
+
+[sub_resource type="BoxMesh" id="BenchRight0_mesh"]
+size = Vector3(0.4, 0.8, 1.0)
+
+[sub_resource type="BoxMesh" id="BenchBack0_mesh"]
+size = Vector3(2.7, 1.1, 0.25)
+
+[sub_resource type="BoxMesh" id="BenchSeat1_mesh"]
+size = Vector3(2.7, 0.32, 1.15)
+
+[sub_resource type="BoxMesh" id="BenchLeft1_mesh"]
+size = Vector3(0.4, 0.8, 1.0)
+
+[sub_resource type="BoxMesh" id="BenchRight1_mesh"]
+size = Vector3(0.4, 0.8, 1.0)
+
+[sub_resource type="BoxMesh" id="BenchBack1_mesh"]
+size = Vector3(2.7, 1.1, 0.25)
+
+[sub_resource type="BoxMesh" id="FireBowl_mesh"]
+size = Vector3(1.8, 0.9, 1.8)
+
+[sub_resource type="BoxMesh" id="Coals_mesh"]
+size = Vector3(1.4, 0.12, 1.4)
+
+[sub_resource type="PrismMesh" id="flame_mesh"]
+size = Vector3(0.75, 1.25, 0.75)
+
+[node name="DungeonRestRoom" instance=ExtResource("chamber")]
+script = ExtResource("activity")
+
+[node name="BenchSeat0" parent="." type="MeshInstance3D"]
+position = Vector3(-3.1, 0.95, 2)
+mesh = SubResource("BenchSeat0_mesh")
+material_override = SubResource("edge")
+
+[node name="BenchLeft0" parent="." type="MeshInstance3D"]
+position = Vector3(-4.1, 0.4, 2)
+mesh = SubResource("BenchLeft0_mesh")
+material_override = SubResource("stone")
+
+[node name="BenchRight0" parent="." type="MeshInstance3D"]
+position = Vector3(-2.1, 0.4, 2)
+mesh = SubResource("BenchRight0_mesh")
+material_override = SubResource("stone")
+
+[node name="BenchBack0" parent="." type="MeshInstance3D"]
+position = Vector3(-3.1, 1.65, 1.5)
+mesh = SubResource("BenchBack0_mesh")
+material_override = SubResource("stone")
+
+[node name="BenchSeat1" parent="." type="MeshInstance3D"]
+position = Vector3(3.1, 0.95, 2)
+mesh = SubResource("BenchSeat1_mesh")
+material_override = SubResource("edge")
+
+[node name="BenchLeft1" parent="." type="MeshInstance3D"]
+position = Vector3(2.1, 0.4, 2)
+mesh = SubResource("BenchLeft1_mesh")
+material_override = SubResource("stone")
+
+[node name="BenchRight1" parent="." type="MeshInstance3D"]
+position = Vector3(4.1, 0.4, 2)
+mesh = SubResource("BenchRight1_mesh")
+material_override = SubResource("stone")
+
+[node name="BenchBack1" parent="." type="MeshInstance3D"]
+position = Vector3(3.1, 1.65, 1.5)
+mesh = SubResource("BenchBack1_mesh")
+material_override = SubResource("stone")
+
+[node name="FireBowl" parent="." type="MeshInstance3D"]
+position = Vector3(-2.5, 0.45, 4)
+mesh = SubResource("FireBowl_mesh")
+material_override = SubResource("iron")
+
+[node name="Coals" parent="." type="MeshInstance3D"]
+position = Vector3(-2.5, 0.91, 4)
+mesh = SubResource("Coals_mesh")
+material_override = SubResource("embers")
+
+[node name="HearthLight" parent="." type="OmniLight3D"]
+position = Vector3(-2.5, 1.7, 4)
+light_color = Color(1.0, 0.54, 0.23, 1)
+light_energy = 2.4
+omni_range = 8
+
+[node name="Flame" type="MeshInstance3D" parent="."]
+position = Vector3(-2.5, 1.4, 4)
+mesh = SubResource("flame_mesh")
+material_override = SubResource("embers")
+[node name="ActivityGlow" type="OmniLight3D" parent="."]
+position = Vector3(-2.5, 1.6, 4)
+light_color = Color(1, 0.55, 0.2, 1)
+light_energy = 0.6
+omni_range = 4.0

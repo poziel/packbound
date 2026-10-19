@@ -6,9 +6,9 @@ Doors reveal only the activity type. Normal selectors offer two to four distinct
 
 ## State ownership
 
-`scripts/run_state.gd` owns `floor_index`, room type, generated doors, event resolution, and reserved room relics. `fight` mirrors the zero-based floor for existing combat/catalog readers. `prepare_enemy()` synchronizes this mirror for tools and tests that directly select an enemy by depth.
+`systems/runs/run_state.gd` owns `floor_index`, room type, generated doors, event resolution, and reserved room relics. `fight` mirrors the zero-based floor for existing combat/catalog readers. `prepare_enemy()` synchronizes this mirror for tools and tests that directly select an enemy by depth.
 
-`scripts/room_routes.gd` generates public door definitions and supplies authored dialogue. Contents are selected after commitment. `enter_selector()` accepts completed combat or activity rooms; `choose_destination(id)` advances depth once. `resolve_room(action)` applies a guarded activity choice. Combat uses the existing turn/playback engine.
+`systems/runs/room_routes.gd` generates public door definitions and supplies authored dialogue. Contents are selected after commitment. `enter_selector()` accepts completed combat or activity rooms; `choose_destination(id)` advances depth once. `resolve_room(action)` applies a guarded activity choice. Combat uses the existing turn/playback engine.
 
 Rest heals 30% of maximum health, rounded up and capped. Interrogation can grant an item choice, begin a fight on the same floor, or allow leaving. The blood altar costs 20% of maximum health, rounded up, and requires enough health to survive; it offers a relic choice. Activity outcomes resolve once.
 
@@ -16,27 +16,27 @@ The starting relic remains available. Later relics come from rooms rather than a
 
 ## Scene ownership
 
-`scripts/gameplay/gameplay_background.gd` maps logical state to scenes and handles travel with `travel_to()`. Scene replacement occurs under the fade; the shared camera, enemy actor, viewport, and lantern survive.
+`scenes/world/gameplay_background/gameplay_background.gd` maps logical state to scenes and handles travel with `travel_to()`. Scene replacement occurs under the fade; the shared camera, enemy actor, viewport, and lantern survive.
 
-- `scenes/gameplay/rooms/dungeon/floor_selector.tscn` and `cursed/floor_selector.tscn` provide separately editable biome corridors. The selector leading to floor 11 uses the cursed biome.
-- `scripts/gameplay/floor_selector.gd` configures eligible doors, wall infill, and chosen-exit travel markers.
-- `scenes/gameplay/rooms/selector/selector_door.tscn` provides the compact doorway. The dungeon biome uses `scenes/gameplay/rooms/dungeon/shared/selector_door.tscn`, combining the shared dungeon arch with its designed exit staircase.
-- `scenes/gameplay/rooms/rest/`, `relic/`, and `encounter/` contain activity scenes. The encounter room exposes its optional enemy slot only when dialogue becomes combat.
-- `scenes/game/floor_flow.tscn` and `scripts/floor_flow.gd` provide invisible full-resolution door targets and activity controls. Destination labels live on physical 3D plaques. Mouse, Tab, and Enter use the same guarded actions.
+- `scenes/world/biomes/dungeon/rooms/floor_selector/floor_selector.tscn` and `cursed/floor_selector.tscn` provide separately editable biome corridors. The selector leading to floor 11 uses the cursed biome.
+- `scenes/world/rooms/shared/floor_selector.gd` configures eligible doors, wall infill, and chosen-exit travel markers.
+- `scenes/world/rooms/selector/selector_door/selector_door.tscn` provides the compact doorway. The dungeon biome uses `scenes/world/biomes/dungeon/shared/selector_door/selector_door.tscn`, combining the shared dungeon arch with its designed exit staircase.
+- `scenes/world/rooms/rest/`, `relic/`, and `encounter/` contain activity scenes. The encounter room exposes its optional enemy slot only when dialogue becomes combat.
+- `scenes/run/floor_flow/floor_flow.tscn` and `scenes/run/floor_flow/floor_flow.gd` provide invisible full-resolution door targets and activity controls. Destination labels live on physical 3D plaques. Mouse, Tab, and Enter use the same guarded actions.
 
 All rooms retain the shared `room_definition.gd` camera/travel-marker contract. Edit the active TSCN scenes directly; runtime startup does not regenerate geometry. New biome selectors must be added to `scene_for_state()` explicitly.
 
-Floors 1–10 use the dungeon's `encounter_room.tscn`, `relic_room.tscn` and `rest_room.tscn`. They inherit `dungeon/shared/activity_chamber.tscn`, which composes the shared masonry kit and the dungeon staircase in Entrance and Exit roles. Room-specific furniture stays in each activity scene. The relic room has three pedestals; rest retains the existing health recovery; encounters retain dialogue and optional keeper combat. Existing floor-flow controls drive these activities. Deeper floors keep their existing activity scenes.
+Floors 1–10 use the dungeon's `encounter_room.tscn`, `relic_room.tscn` and `rest_room.tscn`. They inherit `dungeon/shared/activity_chamber.tscn`, which composes the shared masonry kit and the dungeon staircase in Entrance and Exit roles. Room-specific furniture stays in each activity scene. The relic room has three pedestals; rest retains the existing health recovery; encounters retain dialogue and optional keeper combat. Existing floor-flow controls drive these activities. Floors 11–20 use matching scenes under `cursed/`, composed from `cursed/shared/activity_chamber.tscn`. Inherited dungeon geometry, a shared violet palette, rune ambience and the cursed environment keep their layouts familiar while preserving the deeper biome. The cursed selector uses the same current doorway and stair layout, including violet hover feedback. Combat continues to use the existing `cursed/cursed_room.tscn`.
 
 Selectors use gray masonry, stone ceilings and ribs, iron-framed physical plaques and internal doorway glow. Door interactions retain invisible native controls for mouse, keyboard and accessibility, with all feedback rendered by the doorway. Selector `pixel_downscale = 2` keeps in-world lettering readable; other rooms retain the default of 3.
 
-The dungeon selector reuses the construction kit in `scenes/gameplay/rooms/dungeon/shared/`. Both dungeon rooms instance these assemblies and the same `shared/staircase.tscn`, selecting Entrance or Exit per instance. The staircase embeds the 4.4-unit-wide dungeon art and preserves the native Top/Bottom route. The off-axis camera frustum centers every door count on the left gameplay controls without tilting the door wall. See `scenes/gameplay/rooms/dungeon/shared/README.md` and `demo.tscn` for reuse and placement details.
+The dungeon selector reuses the construction kit in `scenes/world/biomes/dungeon/shared/`. Both dungeon rooms instance these assemblies and the same `shared/staircase.tscn`, selecting Entrance or Exit per instance. The staircase embeds the 4.4-unit-wide dungeon art and preserves the native Top/Bottom route. The off-axis camera frustum centers every door count on the left gameplay controls without tilting the door wall. See `scenes/world/biomes/dungeon/shared/README.md` and `demo.tscn` for reuse and placement details.
 
 Inventory editing is permitted outside running or paused combat, with pending turn checkpoints and defeat also protected. Backpack click/drag, priority, crafting locks and stash transfers use the same run permission. Inspection remains available during live combat; routine combat refreshes preserve open tooltip windows. Loading and room travel temporarily suspend inspection.
 
 ## Physical activities
 
-`scripts/gameplay/rooms/activity_room.gd` extends the shared room contract with physical activity anchors, hover lighting and relic retirement. `dungeon/shared/relic_pedestals.tscn` is an editable three-pedestal assembly shared by relic chambers and altar rewards. Each pedestal displays the actual offered relic as a nearest-filtered, camera-facing `Sprite3D`, with a small idle bob. Hover and keyboard focus illuminate the pedestal; its invisible full-resolution target uses the same inspector as inventory relics, including rarity and keyword stats.
+`scenes/world/rooms/shared/activity_room.gd` extends the shared room contract with physical activity anchors, hover lighting and relic retirement. `dungeon/shared/relic_pedestals.tscn` is an editable three-pedestal assembly shared by relic chambers and altar rewards. Each pedestal displays the actual offered relic as a nearest-filtered, camera-facing `Sprite3D`, with a small idle bob. Hover and keyboard focus illuminate the pedestal; its invisible full-resolution target uses the same inspector as inventory relics, including rarity and keyword stats.
 
 Selecting a relic removes the offered sprites and lowers all three pedestals into the floor over 0.85 seconds. Room resolution is saved first, and departure stays locked until the animation completes. Restoring a completed room keeps the pedestals hidden. Skipping relics retracts the same assembly before leaving. The middle action button skips an unused activity or continues from a completed room, using the normal exit-stair travel.
 

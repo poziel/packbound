@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "id": "mountain_s_verdict",
+  "kind": "item",
+  "identity": {
+    "name": "Mountain's Verdict",
+    "category": "weapon",
+    "rarity": "legendary",
+    "tags": [
+      "weapon",
+      "warrior"
+    ],
+    "summary": "A colossal stepped stone sword with a short iron grip.",
+    "description": "Costs 3 stamina per activation. Deals 22 physical damage per affordable activation. Warrior only: requires and spends 4 Momentum; adds 5 damage for each Momentum spent. No cost is spent if activation is unaffordable.",
+    "lore": "A king asked the mountain to judge him and received this answer."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "##",
+      ".#",
+      ".#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 22
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 3
+      },
+      {
+        "resource": "momentum",
+        "amount": 4
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 3 stamina per activation. Deals 22 physical damage per affordable activation. Warrior only: requires and spends 4 Momentum; adds 5 damage for each Momentum spent. No cost is spent if activation is unaffordable.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 22,
+        "momentum_cost": 4,
+        "momentum_damage": 5
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "legendary-item-reward-pool"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_mountain_s_verdict",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "anchor_cleaver",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "gallows_halberd",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "meteor_maul",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "siegebell_plate",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "war_council_seal",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "mountain_s_verdict",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 5,
+          "priorityIngredientCount": 5
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Anchor Cleaver, Gallows Halberd, Meteor Maul, Siegebell Plate, War Council Seal into Mountain's Verdict."
+      }
+    ],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A colossal stepped stone sword with a short iron grip.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A colossal stepped stone sword with a short iron grip."
+    ],
+    "assets": {
+      "icon": "assets/items/mountain_s_verdict/icons/art/icon.png",
+      "svg": "assets/items/mountain_s_verdict/icons/art/icon.svg",
+      "source": "assets/items/mountain_s_verdict/icons/art/icon.sprite.json",
+      "footprint": "assets/items/mountain_s_verdict/icons/art/footprint.json",
+      "provenance": "assets/items/mountain_s_verdict/icons/art/provenance.json",
+      "manifest": "assets/items/mountain_s_verdict/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/mountain_s_verdict/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "cadence_spurs",
+  "kind": "item",
+  "identity": {
+    "name": "Cadence Spurs",
+    "category": "boots",
+    "rarity": "rare",
+    "tags": [
+      "boots",
+      "warrior"
+    ],
+    "summary": "Two boot heels linked by a folded leather strap and blunt spurs.",
+    "description": "Adds 2 maximum stamina, refreshed each round.",
+    "lore": "They ring together even when their wearer stands still."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "stamina": 2
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Adds 2 maximum stamina, refreshed each round.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "stamina": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "rare-item-reward-pool"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_cadence_spurs",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "duelist_s_coin",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "vanguard_sabaton",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "cadence_spurs",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Duelist's Coin, Vanguard Sabaton into Cadence Spurs."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_war_council_seal",
+        "resultId": "war_council_seal"
+      }
+    ],
+    "mergeTargets": [
+      "war_council_seal"
+    ]
+  },
+  "visual": {
+    "brief": "Two boot heels linked by a folded leather strap and blunt spurs.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "Two boot heels linked by a folded leather strap and blunt spurs."
+    ],
+    "assets": {
+      "icon": "assets/items/cadence_spurs/icons/art/icon.png",
+      "svg": "assets/items/cadence_spurs/icons/art/icon.svg",
+      "source": "assets/items/cadence_spurs/icons/art/icon.sprite.json",
+      "footprint": "assets/items/cadence_spurs/icons/art/footprint.json",
+      "provenance": "assets/items/cadence_spurs/icons/art/provenance.json",
+      "manifest": "assets/items/cadence_spurs/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/cadence_spurs/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

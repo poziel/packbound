@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "id": "gravetread_boots",
+  "kind": "item",
+  "identity": {
+    "name": "Gravetread Boots",
+    "category": "boots",
+    "rarity": "rare",
+    "tags": [
+      "boots"
+    ],
+    "summary": "Dark boots with a broad pale stone heel plate.",
+    "description": "Adds 1 maximum stamina, refreshed each round. Supplies 3 ward each round against poison, curse and reflected damage.",
+    "lore": "They were returned clean from a grave that had never opened."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "#."
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "stamina": 1,
+    "ward": 3
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Adds 1 maximum stamina, refreshed each round. Supplies 3 ward each round against poison, curse and reflected damage.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "stamina": 1,
+        "ward": 3
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "rare-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_gravetread_boots",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "hedgehog_charm",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "ironroot_boots",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "salt_lantern",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "gravetread_boots",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Hedgehog Charm, Ironroot Boots, Salt Lantern into Gravetread Boots."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_seven_league_soles",
+        "resultId": "seven_league_soles"
+      },
+      {
+        "recipeId": "assemble_gloam_lynx",
+        "resultId": "gloam_lynx"
+      }
+    ],
+    "mergeTargets": [
+      "seven_league_soles",
+      "gloam_lynx"
+    ]
+  },
+  "visual": {
+    "brief": "Dark boots with a broad pale stone heel plate.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "Dark boots with a broad pale stone heel plate."
+    ],
+    "assets": {
+      "icon": "assets/items/gravetread_boots/icons/art/icon.png",
+      "svg": "assets/items/gravetread_boots/icons/art/icon.svg",
+      "source": "assets/items/gravetread_boots/icons/art/icon.sprite.json",
+      "footprint": "assets/items/gravetread_boots/icons/art/footprint.json",
+      "provenance": "assets/items/gravetread_boots/icons/art/provenance.json",
+      "manifest": "assets/items/gravetread_boots/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/gravetread_boots/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

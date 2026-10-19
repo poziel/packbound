@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "last_legion_aegis",
+  "kind": "item",
+  "identity": {
+    "name": "Last Legion Aegis",
+    "category": "shield",
+    "rarity": "legendary",
+    "tags": [
+      "shield",
+      "warrior"
+    ],
+    "summary": "A rectangular ivory shield split by a deep bronze sun.",
+    "description": "Starts combat with 24 block; spent block does not refill. Retaliates for 4 piercing damage per enemy strike.",
+    "lore": "Every soldier is gone, yet the shield remains on watch."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "##",
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "block": 24,
+    "thorns": 4
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Starts combat with 24 block; spent block does not refill. Retaliates for 4 piercing damage per enemy strike.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "block": 24,
+        "thorns": 4
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "legendary-item-reward-pool"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_last_legion_aegis",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "captain_s_baton",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "redoubt_cuirass",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "siegebell_plate",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "warding_sigil",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "existing"
+          }
+        ],
+        "result": {
+          "id": "last_legion_aegis",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 4,
+          "priorityIngredientCount": 4
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Captain's Baton, Redoubt Cuirass, Siegebell Plate, Warding Sigil into Last Legion Aegis."
+      }
+    ],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A rectangular ivory shield split by a deep bronze sun.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A rectangular ivory shield split by a deep bronze sun."
+    ],
+    "assets": {
+      "icon": "assets/items/last_legion_aegis/icons/art/icon.png",
+      "svg": "assets/items/last_legion_aegis/icons/art/icon.svg",
+      "source": "assets/items/last_legion_aegis/icons/art/icon.sprite.json",
+      "footprint": "assets/items/last_legion_aegis/icons/art/footprint.json",
+      "provenance": "assets/items/last_legion_aegis/icons/art/provenance.json",
+      "manifest": "assets/items/last_legion_aegis/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/last_legion_aegis/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

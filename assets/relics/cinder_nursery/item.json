@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "cinder_nursery",
+  "kind": "relic",
+  "identity": {
+    "name": "Cinder Nursery",
+    "category": "relic",
+    "rarity": "uncommon",
+    "tags": [
+      "relic",
+      "burning"
+    ],
+    "summary": "When the enemy already has Burn before activations: gain +2 healing.",
+    "description": "When the enemy already has Burn before activations: gain +2 healing.",
+    "lore": "The firewarden sheltered an ember through the winter flood. It learned to warm a hand without burning it."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When the enemy already has Burn before activations: gain +2 healing.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "When the enemy already has Burn before activations",
+      "parameters": {
+        "amount": 2,
+        "scaleCap": 1,
+        "condition": "burning",
+        "stat": "healing",
+        "metric": "one"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "burning"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A cradle carrying a single sleeping ember",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A cradle carrying a single sleeping ember"
+    ],
+    "assets": {
+      "icon": "assets/relics/cinder_nursery/icons/art/icon.png",
+      "svg": "assets/relics/cinder_nursery/icons/art/icon.svg",
+      "source": "assets/relics/cinder_nursery/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/cinder_nursery/icons/art/provenance.json",
+      "manifest": "assets/relics/cinder_nursery/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/cinder_nursery/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

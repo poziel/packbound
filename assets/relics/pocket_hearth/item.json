@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "pocket_hearth",
+  "kind": "relic",
+  "identity": {
+    "name": "Pocket Hearth",
+    "category": "relic",
+    "rarity": "common",
+    "tags": [
+      "relic",
+      "low_hp"
+    ],
+    "summary": "When current HP is at most half maximum HP before activations: gain +1 healing.",
+    "description": "When current HP is at most half maximum HP before activations: gain +1 healing.",
+    "lore": "The potter promised a soldier she could always carry home. A coal from her kitchen has never cooled inside it."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When current HP is at most half maximum HP before activations: gain +1 healing.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "When current HP is at most half maximum HP before activations",
+      "parameters": {
+        "amount": 1,
+        "scaleCap": 1,
+        "condition": "low_hp",
+        "stat": "healing",
+        "metric": "one",
+        "lowHealthFraction": 0.5
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "low_hp"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A ceramic stove charm with a red coal window",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A ceramic stove charm with a red coal window"
+    ],
+    "assets": {
+      "icon": "assets/relics/pocket_hearth/icons/art/icon.png",
+      "svg": "assets/relics/pocket_hearth/icons/art/icon.svg",
+      "source": "assets/relics/pocket_hearth/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/pocket_hearth/icons/art/provenance.json",
+      "manifest": "assets/relics/pocket_hearth/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/pocket_hearth/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

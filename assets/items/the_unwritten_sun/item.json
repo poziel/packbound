@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "id": "the_unwritten_sun",
+  "kind": "item",
+  "identity": {
+    "name": "The Unwritten Sun",
+    "category": "spell",
+    "rarity": "legendary",
+    "tags": [
+      "spell",
+      "mage",
+      "fire"
+    ],
+    "summary": "A blank ivory codex framing a broad stepped red sun.",
+    "description": "Costs 6 mana per activation. Deals 25 magical damage per affordable activation. Applies 8 burn through the existing combat keyword rules per affordable activation.",
+    "lore": "Its last page waits for a sunrise the world has not yet seen."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "###",
+      "###"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 25,
+    "burn": 8
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "mana",
+        "amount": 6
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 6 mana per activation. Deals 25 magical damage per affordable activation. Applies 8 burn through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 25,
+        "burn": 8
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "different-element-spell"
+      ],
+      "description": "Its fire trace participates in the Elementalist's existing reaction system; arrange it with spells of another element. No extra reaction beyond the shared rules is added.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "legendary-item-reward-pool"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_the_unwritten_sun",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "black_rain_theorem",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "moonwell_pebble",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "orchid_eclipse",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "solar_crucible",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "winter_orrery",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "the_unwritten_sun",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 5,
+          "priorityIngredientCount": 5
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Black Rain Theorem, Moonwell Pebble, Orchid Eclipse, Solar Crucible, Winter Orrery into The Unwritten Sun."
+      }
+    ],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A blank ivory codex framing a broad stepped red sun.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A blank ivory codex framing a broad stepped red sun."
+    ],
+    "assets": {
+      "icon": "assets/items/the_unwritten_sun/icons/art/icon.png",
+      "svg": "assets/items/the_unwritten_sun/icons/art/icon.svg",
+      "source": "assets/items/the_unwritten_sun/icons/art/icon.sprite.json",
+      "footprint": "assets/items/the_unwritten_sun/icons/art/footprint.json",
+      "provenance": "assets/items/the_unwritten_sun/icons/art/provenance.json",
+      "manifest": "assets/items/the_unwritten_sun/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/the_unwritten_sun/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "ossuary_hound",
+  "name": "Ossuary Hound",
+  "species": "hound",
+  "age": "17 years since binding",
+  "role": "charger",
+  "description": "A graveyard watchdog assembled from several loyal animals. It lowers its skull in a silent warning before lunging across the corridor.",
+  "encounter_floor": 7,
+  "starting_stats": {
+    "hp": 54,
+    "attacks": [
+      0,
+      14
+    ],
+    "hits": 1,
+    "armor": 0,
+    "pierce": 0,
+    "poison": 0,
+    "drain": 0,
+    "reflect": 0,
+    "sunder": 0,
+    "enrage": 0,
+    "regen": 0,
+    "parry": 0,
+    "opening_armor": 0,
+    "cycle_armor": 0,
+    "cleanse": 0,
+    "physical_resistance": 0,
+    "magical_resistance": 0,
+    "damage_type": "physical"
+  },
+  "abilities": [],
+  "intent": "Charger",
+  "detail": "Alternates a warning and a heavy strike.",
+  "art": {
+    "source": "art/ossuary_hound.pixloom.json",
+    "project": "art/ossuary_hound.pixloom",
+    "png": "art/ossuary_hound.png",
+    "svg": "art/ossuary_hound.svg"
+  }
+}

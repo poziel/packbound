@@ -7,7 +7,7 @@
     "##",
     ".#"
   ],
-  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
   "exports": [
     "revisions/catalog-v2/mirror-shard-64px.png",
     "revisions/catalog-v2/mirror-shard-64px.svg",

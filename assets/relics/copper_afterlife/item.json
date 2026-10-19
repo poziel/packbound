@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "copper_afterlife",
+  "kind": "relic",
+  "identity": {
+    "name": "Copper Afterlife",
+    "category": "relic",
+    "rarity": "epic",
+    "tags": [
+      "relic",
+      "third"
+    ],
+    "summary": "Every third round: gain +2 stamina.",
+    "description": "Every third round: gain +2 stamina. Increases the round refill budget.",
+    "lore": "The ferryman returned this boat instead of a passenger. The oar still takes a stroke whenever the third bell sounds."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "round-resource-refill",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "Every third round: gain +2 stamina. Increases the round refill budget.",
+      "trigger": "round-resource-refill",
+      "target": "player",
+      "condition": "Every third round",
+      "parameters": {
+        "amount": 2,
+        "scaleCap": 1,
+        "condition": "third",
+        "stat": "stamina_resource",
+        "metric": "one",
+        "periodRounds": 3
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "third"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A copper funeral boat with a standing oar",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A copper funeral boat with a standing oar"
+    ],
+    "assets": {
+      "icon": "assets/relics/copper_afterlife/icons/art/icon.png",
+      "svg": "assets/relics/copper_afterlife/icons/art/icon.svg",
+      "source": "assets/relics/copper_afterlife/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/copper_afterlife/icons/art/provenance.json",
+      "manifest": "assets/relics/copper_afterlife/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/copper_afterlife/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

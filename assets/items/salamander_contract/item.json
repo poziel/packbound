@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "salamander_contract",
+  "kind": "item",
+  "identity": {
+    "name": "Salamander Contract",
+    "category": "spell",
+    "rarity": "rare",
+    "tags": [
+      "spell",
+      "mage",
+      "fire"
+    ],
+    "summary": "A red scroll clasped by a tiny bronze lizard.",
+    "description": "Costs 3 mana per activation. Deals 10 magical damage per affordable activation. Applies 3 burn through the existing combat keyword rules per affordable activation.",
+    "lore": "The signature remains warm even in rain."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "#."
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 10,
+    "burn": 3
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "mana",
+        "amount": 3
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 3 mana per activation. Deals 10 magical damage per affordable activation. Applies 3 burn through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 10,
+        "burn": 3
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "different-element-spell"
+      ],
+      "description": "Its fire trace participates in the Elementalist's existing reaction system; arrange it with spells of another element. No extra reaction beyond the shared rules is added.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "rare-item-reward-pool"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_salamander_contract",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "kiln_prayer",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "lantern_moth_familiar",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "salamander_contract",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Kiln Prayer, Lantern Moth into Salamander Contract."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_solar_crucible",
+        "resultId": "solar_crucible"
+      }
+    ],
+    "mergeTargets": [
+      "solar_crucible"
+    ]
+  },
+  "visual": {
+    "brief": "A red scroll clasped by a tiny bronze lizard.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A red scroll clasped by a tiny bronze lizard."
+    ],
+    "assets": {
+      "icon": "assets/items/salamander_contract/icons/art/icon.png",
+      "svg": "assets/items/salamander_contract/icons/art/icon.svg",
+      "source": "assets/items/salamander_contract/icons/art/icon.sprite.json",
+      "footprint": "assets/items/salamander_contract/icons/art/footprint.json",
+      "provenance": "assets/items/salamander_contract/icons/art/provenance.json",
+      "manifest": "assets/items/salamander_contract/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/salamander_contract/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

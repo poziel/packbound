@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "horizon_engine",
+  "kind": "relic",
+  "identity": {
+    "name": "Horizon Engine",
+    "category": "relic",
+    "rarity": "epic",
+    "tags": [
+      "relic",
+      "volley"
+    ],
+    "summary": "When Volley fires this round: gain +5 burn.",
+    "description": "When Volley fires this round: gain +5 burn.",
+    "lore": "Built to chase the sunset, the engine runs hottest when the destination is out of sight."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When Volley fires this round: gain +5 burn.",
+      "trigger": "after-item-aggregation",
+      "target": "current-enemy",
+      "condition": "When Volley fires this round",
+      "parameters": {
+        "amount": 5,
+        "scaleCap": 1,
+        "condition": "volley",
+        "stat": "burn",
+        "metric": "one"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "volley"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A small brass engine with a horizon shaped aperture",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A small brass engine with a horizon shaped aperture"
+    ],
+    "assets": {
+      "icon": "assets/relics/horizon_engine/icons/art/icon.png",
+      "svg": "assets/relics/horizon_engine/icons/art/icon.svg",
+      "source": "assets/relics/horizon_engine/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/horizon_engine/icons/art/provenance.json",
+      "manifest": "assets/relics/horizon_engine/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/horizon_engine/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

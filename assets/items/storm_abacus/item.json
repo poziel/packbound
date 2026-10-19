@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "id": "storm_abacus",
+  "kind": "item",
+  "identity": {
+    "name": "Storm Abacus",
+    "category": "spell",
+    "rarity": "rare",
+    "tags": [
+      "spell",
+      "mage",
+      "lightning"
+    ],
+    "summary": "A dark wood counting frame threaded with brass cloud beads.",
+    "description": "Costs 3 mana per activation. Deals 10 magical damage per affordable activation. Applies 3 spark through the existing combat keyword rules per affordable activation.",
+    "lore": "Its final column measures thunder rather than numbers."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "#."
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 10,
+    "spark": 3
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "mana",
+        "amount": 3
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 3 mana per activation. Deals 10 magical damage per affordable activation. Applies 3 spark through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 10,
+        "spark": 3
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "different-element-spell"
+      ],
+      "description": "Its lightning trace participates in the Elementalist's existing reaction system; arrange it with spells of another element. No extra reaction beyond the shared rules is added.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "rare-item-reward-pool"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_storm_abacus",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "copper_cicada",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "raincatch_bowl",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "spark_ring",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "existing"
+          }
+        ],
+        "result": {
+          "id": "storm_abacus",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Copper Cicada, Raincatch Bowl, Spark Ring into Storm Abacus."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_cathedral_of_sparks",
+        "resultId": "cathedral_of_sparks"
+      }
+    ],
+    "mergeTargets": [
+      "cathedral_of_sparks"
+    ]
+  },
+  "visual": {
+    "brief": "A dark wood counting frame threaded with brass cloud beads.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A dark wood counting frame threaded with brass cloud beads."
+    ],
+    "assets": {
+      "icon": "assets/items/storm_abacus/icons/art/icon.png",
+      "svg": "assets/items/storm_abacus/icons/art/icon.svg",
+      "source": "assets/items/storm_abacus/icons/art/icon.sprite.json",
+      "footprint": "assets/items/storm_abacus/icons/art/footprint.json",
+      "provenance": "assets/items/storm_abacus/icons/art/provenance.json",
+      "manifest": "assets/items/storm_abacus/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/storm_abacus/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

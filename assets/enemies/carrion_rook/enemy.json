@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "carrion_rook",
+  "name": "Carrion Rook",
+  "species": "bird",
+  "age": "11 years",
+  "role": "sunder",
+  "description": "A clever crypt bird that pries buckles apart before pecking exposed skin. It keeps stolen rings tucked beneath one wing.",
+  "encounter_floor": 5,
+  "starting_stats": {
+    "hp": 40,
+    "attacks": [
+      6
+    ],
+    "hits": 1,
+    "armor": 0,
+    "pierce": 0,
+    "poison": 0,
+    "drain": 0,
+    "reflect": 0,
+    "sunder": 2,
+    "enrage": 0,
+    "regen": 0,
+    "parry": 0,
+    "opening_armor": 0,
+    "cycle_armor": 0,
+    "cleanse": 0,
+    "physical_resistance": 0,
+    "magical_resistance": 0,
+    "damage_type": "physical"
+  },
+  "abilities": [
+    {
+      "id": "sunder",
+      "amount": 2,
+      "description": "Destroys up to 2 player block before striking."
+    }
+  ],
+  "intent": "Sunder",
+  "detail": "Destroys up to 2 player block before striking.",
+  "art": {
+    "source": "art/carrion_rook.pixloom.json",
+    "project": "art/carrion_rook.pixloom",
+    "png": "art/carrion_rook.png",
+    "svg": "art/carrion_rook.svg"
+  }
+}

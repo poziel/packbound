@@ -1,11 +1,11 @@
 [gd_scene format=3]
 
 [ext_resource type="Theme" path="res://themes/menu/theme.tres" id="theme"]
-[ext_resource type="PackedScene" path="res://components/menu_button/hold_menu_button.tscn" id="hold"]
-[ext_resource type="Script" path="res://components/menu_button/showcase.gd" id="showcase"]
-[ext_resource type="PackedScene" path="res://components/pixel_search_field/pixel_search_field.tscn" id="search"]
-[ext_resource type="PackedScene" path="res://components/pixel_scrollbar/pixel_scroll_container.tscn" id="scroll"]
-[ext_resource type="PackedScene" path="res://scenes/menus/delver_tile.tscn" id="tile"]
+[ext_resource type="PackedScene" path="res://components/ui/buttons/menu_button/hold_menu_button.tscn" id="hold"]
+[ext_resource type="Script" path="res://components/ui/buttons/menu_button/showcase.gd" id="showcase"]
+[ext_resource type="PackedScene" path="res://components/ui/inputs/pixel_search_field/pixel_search_field.tscn" id="search"]
+[ext_resource type="PackedScene" path="res://components/ui/inputs/pixel_scrollbar/pixel_scroll_container.tscn" id="scroll"]
+[ext_resource type="PackedScene" path="res://scenes/menus/delver_tile/delver_tile.tscn" id="tile"]
 [ext_resource type="Texture2D" path="res://assets/characters/mage/art/full-body.svg" id="portrait"]
 
 [sub_resource type="StyleBoxLine" id="thick_line"]

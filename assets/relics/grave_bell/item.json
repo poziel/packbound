@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "grave_bell",
+  "kind": "relic",
+  "identity": {
+    "name": "Grave Bell",
+    "category": "relic",
+    "rarity": "uncommon",
+    "tags": [
+      "relic",
+      "companions"
+    ],
+    "summary": "With at least one companion (bone thralls and packed companion items count): gain +1 ward per companion count (up to 4 counted).",
+    "description": "With at least one companion (bone thralls and packed companion items count): gain +1 ward per companion count (up to 4 counted).",
+    "lore": "The dead do not need to hear a bell. They need to know someone is still willing to ring it."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "With at least one companion (bone thralls and packed companion items count): gain +1 ward per companion count (up to 4 counted).",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "With at least one companion (bone thralls and packed companion items count)",
+      "parameters": {
+        "amount": 1,
+        "scaleCap": 4,
+        "condition": "companions",
+        "stat": "ward",
+        "metric": "companion_count"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "companions"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "An iron handbell with a bone clapper",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "An iron handbell with a bone clapper"
+    ],
+    "assets": {
+      "icon": "assets/relics/grave_bell/icons/art/icon.png",
+      "svg": "assets/relics/grave_bell/icons/art/icon.svg",
+      "source": "assets/relics/grave_bell/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/grave_bell/icons/art/provenance.json",
+      "manifest": "assets/relics/grave_bell/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/grave_bell/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

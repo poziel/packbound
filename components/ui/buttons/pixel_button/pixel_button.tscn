@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://iyhkxheqo6em"]
+
+[ext_resource type="Script" uid="uid://ufi3uc08hncu" path="res://components/ui/buttons/pixel_button/pixel_button.gd" id="2_oxeip"]
+
+[node name="PixelButton" type="Button" unique_id=416794277]
+texture_filter = 1
+custom_minimum_size = Vector2(48, 48)
+offset_right = 240.0
+offset_bottom = 64.0
+mouse_default_cursor_shape = 2
+text = "Button"
+clip_text = true
+script = ExtResource("2_oxeip")
+shape_mask = PackedStringArray("#.", "##")
+shape_polygon = PackedVector2Array(0.25, 0, 0.75, 0, 1, 0.5, 0.75, 1, 0.25, 1, 0, 0.5)
+
+[node name="Content" type="Control" parent="." unique_id=390241252]
+anchors_preset = 0
+focus_behavior_recursive = 1
+mouse_filter = 2
+mouse_behavior_recursive = 1

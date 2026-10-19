@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "id": "foxglove_formula",
+  "kind": "item",
+  "identity": {
+    "name": "Foxglove Formula",
+    "category": "spell",
+    "rarity": "uncommon",
+    "tags": [
+      "spell",
+      "mage",
+      "venom"
+    ],
+    "summary": "A cream folded diagram beside a purple bell shaped blossom.",
+    "description": "Costs 2 mana per activation. Deals 4 magical damage per affordable activation. Applies 4 poison through the existing combat keyword rules per affordable activation.",
+    "lore": "The margin says remedy in one hand and warning in another."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 4,
+    "poison": 4
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "mana",
+        "amount": 2
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 2 mana per activation. Deals 4 magical damage per affordable activation. Applies 4 poison through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 4,
+        "poison": 4
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "different-element-spell"
+      ],
+      "description": "Its venom trace participates in the Elementalist's existing reaction system; arrange it with spells of another element. No extra reaction beyond the shared rules is added.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_foxglove_formula",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "antidote",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "existing"
+          },
+          {
+            "id": "spore_testament",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "foxglove_formula",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Antidote Flask, Spore Testament into Foxglove Formula."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_viper_s_proposition",
+        "resultId": "viper_s_proposition"
+      },
+      {
+        "recipeId": "assemble_orchid_eclipse",
+        "resultId": "orchid_eclipse"
+      }
+    ],
+    "mergeTargets": [
+      "viper_s_proposition",
+      "orchid_eclipse"
+    ]
+  },
+  "visual": {
+    "brief": "A cream folded diagram beside a purple bell shaped blossom.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A cream folded diagram beside a purple bell shaped blossom."
+    ],
+    "assets": {
+      "icon": "assets/items/foxglove_formula/icons/art/icon.png",
+      "svg": "assets/items/foxglove_formula/icons/art/icon.svg",
+      "source": "assets/items/foxglove_formula/icons/art/icon.sprite.json",
+      "footprint": "assets/items/foxglove_formula/icons/art/footprint.json",
+      "provenance": "assets/items/foxglove_formula/icons/art/provenance.json",
+      "manifest": "assets/items/foxglove_formula/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/foxglove_formula/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

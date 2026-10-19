@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "id": "siegebell_plate",
+  "kind": "item",
+  "identity": {
+    "name": "Siegebell Plate",
+    "category": "armor",
+    "rarity": "epic",
+    "tags": [
+      "armor",
+      "warrior"
+    ],
+    "summary": "A bell bronze breastplate with a broad cracked lip.",
+    "description": "Reduces each enemy strike by 3 before block. Retaliates for 2 piercing damage per enemy strike.",
+    "lore": "Its hollow note could be heard beneath the siege engines."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "###",
+      "###"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "plating": 3,
+    "thorns": 2
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Reduces each enemy strike by 3 before block. Retaliates for 2 piercing damage per enemy strike.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "plating": 3,
+        "thorns": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "epic-item-reward-pool"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_siegebell_plate",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "hedgehog_charm",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "ironroot_boots",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "redoubt_cuirass",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "siegebell_plate",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Hedgehog Charm, Ironroot Boots, Redoubt Cuirass into Siegebell Plate."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_mountain_s_verdict",
+        "resultId": "mountain_s_verdict"
+      },
+      {
+        "recipeId": "assemble_last_legion_aegis",
+        "resultId": "last_legion_aegis"
+      }
+    ],
+    "mergeTargets": [
+      "mountain_s_verdict",
+      "last_legion_aegis"
+    ]
+  },
+  "visual": {
+    "brief": "A bell bronze breastplate with a broad cracked lip.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A bell bronze breastplate with a broad cracked lip."
+    ],
+    "assets": {
+      "icon": "assets/items/siegebell_plate/icons/art/icon.png",
+      "svg": "assets/items/siegebell_plate/icons/art/icon.svg",
+      "source": "assets/items/siegebell_plate/icons/art/icon.sprite.json",
+      "footprint": "assets/items/siegebell_plate/icons/art/footprint.json",
+      "provenance": "assets/items/siegebell_plate/icons/art/provenance.json",
+      "manifest": "assets/items/siegebell_plate/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/siegebell_plate/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

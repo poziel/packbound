@@ -1,12 +1,12 @@
 [gd_resource type="Theme" format=3 uid="uid://bggrilg7vm1vv"]
 
 [ext_resource type="FontFile" path="res://assets/fonts/ui_pixel.tres" id="menu_body"]
-[ext_resource type="Script" uid="uid://dvx7wwqu3b25m" path="res://components/menu_button/menu_button_palette.gd" id="menu_button_palette"]
-[ext_resource type="Script" uid="uid://wfvbatb4xhlu" path="res://components/menu_button/menu_button_style.gd" id="menu_button_style"]
+[ext_resource type="Script" uid="uid://dvx7wwqu3b25m" path="res://components/ui/buttons/menu_button/menu_button_palette.gd" id="menu_button_palette"]
+[ext_resource type="Script" uid="uid://wfvbatb4xhlu" path="res://components/ui/buttons/menu_button/menu_button_style.gd" id="menu_button_style"]
 [ext_resource type="Texture2D" uid="uid://dwvmbel67yh63" path="res://themes/menu/frames.svg" id="menu_frames"]
-[ext_resource type="Script" uid="uid://dvhflscfq8i3q" path="res://components/pixel_scrollbar/pixel_scrollbar_style.gd" id="scroll_style"]
-[ext_resource type="Texture2D" uid="uid://deuv1h12prisv" path="res://components/pixel_search_field/clear.svg" id="search_clear"]
-[ext_resource type="Texture2D" uid="uid://hpve10ciphfi" path="res://components/pixel_search_field/search.svg" id="search_search"]
+[ext_resource type="Script" uid="uid://dvhflscfq8i3q" path="res://components/ui/inputs/pixel_scrollbar/pixel_scrollbar_style.gd" id="scroll_style"]
+[ext_resource type="Texture2D" uid="uid://deuv1h12prisv" path="res://components/ui/inputs/pixel_search_field/clear.svg" id="search_clear"]
+[ext_resource type="Texture2D" uid="uid://hpve10ciphfi" path="res://components/ui/inputs/pixel_search_field/search.svg" id="search_search"]
 
 [sub_resource type="Resource" id="button_palette"]
 script = ExtResource("menu_button_palette")

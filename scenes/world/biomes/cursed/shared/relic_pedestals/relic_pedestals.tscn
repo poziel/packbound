@@ -1,0 +1,35 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/relic_pedestals/relic_pedestals.tscn" id="base"]
+[ext_resource type="Material" path="res://scenes/world/biomes/cursed/shared/stone.tres" id="stone"]
+[ext_resource type="Material" path="res://scenes/world/biomes/cursed/shared/edge.tres" id="edge"]
+[ext_resource type="Material" path="res://scenes/world/biomes/cursed/shared/dark.tres" id="dark"]
+[ext_resource type="Material" path="res://scenes/world/biomes/cursed/shared/pale.tres" id="pale"]
+
+[node name="Pedestals" instance=ExtResource("base")]
+
+[node name="Base0" parent="Pedestal0"]
+material_override = ExtResource("edge")
+
+[node name="Shaft0" parent="Pedestal0"]
+material_override = ExtResource("stone")
+
+[node name="Cap0" parent="Pedestal0"]
+material_override = ExtResource("edge")
+
+[node name="Base1" parent="Pedestal1"]
+material_override = ExtResource("edge")
+
+[node name="Shaft1" parent="Pedestal1"]
+material_override = ExtResource("stone")
+
+[node name="Cap1" parent="Pedestal1"]
+material_override = ExtResource("edge")
+
+[node name="Base2" parent="Pedestal2"]
+material_override = ExtResource("edge")
+
+[node name="Shaft2" parent="Pedestal2"]
+material_override = ExtResource("stone")
+
+[node name="Cap2" parent="Pedestal2"]
+material_override = ExtResource("edge")

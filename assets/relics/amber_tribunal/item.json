@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "amber_tribunal",
+  "kind": "relic",
+  "identity": {
+    "name": "Amber Tribunal",
+    "category": "relic",
+    "rarity": "rare",
+    "tags": [
+      "relic",
+      "poison_and_burn"
+    ],
+    "summary": "When the enemy already has both Poison and Burn before activations: gain +5 pierce.",
+    "description": "When the enemy already has both Poison and Burn before activations: gain +5 pierce.",
+    "lore": "Three judges disagreed about the fate of a burning forest. The resin preserved their argument instead of their verdict."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When the enemy already has both Poison and Burn before activations: gain +5 pierce.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "When the enemy already has both Poison and Burn before activations",
+      "parameters": {
+        "amount": 5,
+        "scaleCap": 1,
+        "condition": "poison_and_burn",
+        "stat": "pierce",
+        "metric": "one"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "poison_and_burn"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "Three amber judges faces joined in a triangular seal",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "Three amber judges faces joined in a triangular seal"
+    ],
+    "assets": {
+      "icon": "assets/relics/amber_tribunal/icons/art/icon.png",
+      "svg": "assets/relics/amber_tribunal/icons/art/icon.svg",
+      "source": "assets/relics/amber_tribunal/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/amber_tribunal/icons/art/provenance.json",
+      "manifest": "assets/relics/amber_tribunal/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/amber_tribunal/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

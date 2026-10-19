@@ -158,8 +158,8 @@
     "review": "Inspect body, grip and portrait at native/intended display size. Technical validation is separate from user approval."
   },
   "mechanicsSource": [
-    "scripts/pack_catalog.gd",
-    "scripts/run_state.gd"
+    "systems/content/pack_catalog.gd",
+    "systems/runs/run_state.gd"
   ],
   "profilePath": "assets/characters/warrior/character.json",
   "biographyPath": "assets/characters/warrior/README.md"

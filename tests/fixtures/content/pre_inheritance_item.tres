@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="1_iosct"]
+[ext_resource type="Script" path="res://systems/items/item_definition.gd" id="2_fphqs"]
+
+[sub_resource type="Gradient" id="Gradient_r7o31"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sua1e"]
+gradient = SubResource("Gradient_r7o31")
+
+[resource]
+script = ExtResource("2_fphqs")
+id = &"test_charm"
+display_name = "Test Charm"
+description = "Line one.
+Line two."
+lore = "A test record, never a registered gameplay item."
+role = &"booster"
+rarity = 2
+tags = Array[StringName]([&"test", &"charm"])
+allowed_class_ids = Array[StringName]([&"warrior", &"mage"])
+allowed_character_ids = Array[StringName]([&"warrior"])
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(1, 1)])
+rotatable = false
+icon = SubResource("GradientTexture2D_sua1e")
+base_stats = Dictionary[int, int]({
+0: 9,
+9: -1
+})
+activation_costs = Dictionary[int, int]({
+0: 0,
+1: 2
+})
+damage_type = 1
+element = 1

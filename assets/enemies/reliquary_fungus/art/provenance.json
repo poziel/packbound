@@ -1,0 +1,55 @@
+{
+  "authoring": "Original explicit integer pixel geometry; no generated concept or external artwork copied.",
+  "tools": [
+    "Pixloom 0.2.0 CLI",
+    "Pixloom MCP (draft authoring review and final representative review)",
+    "Pixel Art skill",
+    "Monster Art Creator skill"
+  ],
+  "references": [
+    ".agents/skills/delver-art-creator/references/visual-direction.md",
+    "assets/enemies/mire_viper.png",
+    "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png"
+  ],
+  "canvas": [
+    288,
+    320
+  ],
+  "body_bounds": [
+    68,
+    140,
+    213,
+    292
+  ],
+  "body_size": [
+    145,
+    152
+  ],
+  "anchor": [
+    144,
+    288
+  ],
+  "flying": false,
+  "layers": [
+    "far_limbs",
+    "legs_or_roots",
+    "torso",
+    "reliquary",
+    "anatomy_and_material_details"
+  ],
+  "editability": "Named layers contain visible surfaces only; hidden anatomy is not reconstructed.",
+  "animation": "One static pose; existing runtime motion handles idle, attack, hit and death.",
+  "approval": "Integrated at user request; awaiting artistic acceptance.",
+  "review": "All 36 exports inspected in native-scale roster sheets. All 36 rendered in the actual dungeon; 144 projection/texture/vitals checks passed. Final Shroud Moth additionally inspected through Pixloom MCP at native and 2x scales, in color and silhouette. Awaiting user artistic acceptance.",
+  "sha256": {
+    "reliquary_fungus.pixloom.json": "5a17c1bbcfde79022739089716d897bd244dd64284d34b6f7c0a09685ec143da",
+    "reliquary_fungus.pixloom": "7133cc37422b89810d531afbe8b53cf6d614a77acc84a0ad36fac7b48de3b70f",
+    "reliquary_fungus.png": "1da87c82f1bcb144f141666f0ce2bae0eadc5076ffe004855361b5cd135a253b",
+    "reliquary_fungus.svg": "9c1e1597dddaab7eeddd50664c748a42681bb8c7628f73cdaf830cbe564c4a9a"
+  },
+  "reference_sha256": {
+    ".agents/skills/delver-art-creator/references/visual-direction.md": "5cadc4ef72c5db7bbec05c9504920e5abfd9ca4b33add8d2af9f98c610ada0df",
+    "assets/enemies/mire_viper.png": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7",
+    "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png": "3bcd9705f35494a28a94b3d1ecce67f657308bc4e952afe2ad7339864e140edf"
+  }
+}

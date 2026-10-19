@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/world/actors/enemy_actor/enemy_actor.gd" id="enemy"]
+
+[node name="Enemy" type="Sprite3D"]
+visible = false
+layers = 2
+pixel_size = 0.014
+offset = Vector2(0, 128)
+texture_filter = 0
+billboard = 2
+shaded = true
+alpha_cut = 1
+script = ExtResource("enemy")

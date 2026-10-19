@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "storm_census",
+  "kind": "relic",
+  "identity": {
+    "name": "Storm Census",
+    "category": "relic",
+    "rarity": "rare",
+    "tags": [
+      "relic",
+      "sparked"
+    ],
+    "summary": "When the enemy already has Spark before activations: gain +2 pierce per spark (up to 4 counted).",
+    "description": "When the enemy already has Spark before activations: gain +2 pierce per spark (up to 4 counted).",
+    "lore": "Every notch names a lightning strike. The last tally is still being carved by an invisible hand."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When the enemy already has Spark before activations: gain +2 pierce per spark (up to 4 counted).",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "When the enemy already has Spark before activations",
+      "parameters": {
+        "amount": 2,
+        "scaleCap": 4,
+        "condition": "sparked",
+        "stat": "pierce",
+        "metric": "spark"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "sparked"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "An ivory counting tablet with lightning shaped notches",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "An ivory counting tablet with lightning shaped notches"
+    ],
+    "assets": {
+      "icon": "assets/relics/storm_census/icons/art/icon.png",
+      "svg": "assets/relics/storm_census/icons/art/icon.svg",
+      "source": "assets/relics/storm_census/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/storm_census/icons/art/provenance.json",
+      "manifest": "assets/relics/storm_census/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/storm_census/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

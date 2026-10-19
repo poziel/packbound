@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "walking_bastion",
+  "kind": "relic",
+  "identity": {
+    "name": "Walking Bastion",
+    "category": "relic",
+    "rarity": "epic",
+    "tags": [
+      "relic",
+      "high_block"
+    ],
+    "summary": "With at least ten block after activations: gain +20 physical resistance.",
+    "description": "With at least ten block after activations: gain +20 physical resistance.",
+    "lore": "A besieged tower grew feet after its garrison refused another retreat. It has been following the survivors ever since."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "With at least ten block after activations: gain +20 physical resistance.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "With at least ten block after activations",
+      "parameters": {
+        "amount": 20,
+        "scaleCap": 1,
+        "condition": "high_block",
+        "stat": "physical_resistance",
+        "metric": "one",
+        "blockThreshold": 10
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "high_block"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A squat stone tower standing on two bronze feet",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A squat stone tower standing on two bronze feet"
+    ],
+    "assets": {
+      "icon": "assets/relics/walking_bastion/icons/art/icon.png",
+      "svg": "assets/relics/walking_bastion/icons/art/icon.svg",
+      "source": "assets/relics/walking_bastion/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/walking_bastion/icons/art/provenance.json",
+      "manifest": "assets/relics/walking_bastion/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/walking_bastion/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

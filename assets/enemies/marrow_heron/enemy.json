@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "marrow_heron",
+  "name": "Marrow Heron",
+  "species": "heron",
+  "age": "31 years since binding",
+  "role": "piercer",
+  "description": "A skeletal marsh bird that nests in the flooded ossuary. Its long bill finds gaps between shields as neatly as it once speared fish.",
+  "encounter_floor": 10,
+  "starting_stats": {
+    "hp": 65,
+    "attacks": [
+      9
+    ],
+    "hits": 1,
+    "armor": 0,
+    "pierce": 3,
+    "poison": 0,
+    "drain": 0,
+    "reflect": 0,
+    "sunder": 0,
+    "enrage": 0,
+    "regen": 0,
+    "parry": 0,
+    "opening_armor": 0,
+    "cycle_armor": 0,
+    "cleanse": 0,
+    "physical_resistance": 0,
+    "magical_resistance": 0,
+    "damage_type": "physical"
+  },
+  "abilities": [
+    {
+      "id": "pierce",
+      "amount": 3,
+      "description": "Up to 3 damage per strike bypasses block after slow, plating and resistance reduce the strike."
+    }
+  ],
+  "intent": "Piercer",
+  "detail": "Up to 3 damage per strike bypasses block after slow, plating and resistance reduce the strike.",
+  "art": {
+    "source": "art/marrow_heron.pixloom.json",
+    "project": "art/marrow_heron.pixloom",
+    "png": "art/marrow_heron.png",
+    "svg": "art/marrow_heron.svg"
+  }
+}

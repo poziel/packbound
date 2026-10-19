@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "id": "scorpion_magazine",
+  "kind": "item",
+  "identity": {
+    "name": "Scorpion Magazine",
+    "category": "booster",
+    "rarity": "epic",
+    "tags": [
+      "booster",
+      "ranger"
+    ],
+    "summary": "A segmented brass arrow cradle ending in a curved tail.",
+    "description": "While orthogonally touching the permanent Bowmaster quiver, adds 1 arrows, 2 poison to Volley; this equipment remains in the backpack and is not consumed.",
+    "lore": "A patient engineer watched a desert scorpion for seven years."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "#."
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "While orthogonally touching the permanent Bowmaster quiver, adds 1 arrows, 2 poison to Volley; this equipment remains in the backpack and is not consumed.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [
+    {
+      "id": "quiver_bonus",
+      "targetIds": [
+        "magnificent_quiver"
+      ],
+      "targetTags": [
+        "quiver"
+      ],
+      "geometry": "orthogonal occupied-cell contact",
+      "stacking": "once per distinct source and target; different sources add",
+      "trigger": "while-equipped",
+      "bonuses": {
+        "arrows": 1,
+        "poison": 2
+      },
+      "conditions": [
+        "Both source and target are equipped."
+      ],
+      "implementation": "supported"
+    }
+  ],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Pairs with the permanent Bowmaster quiver and other different quiver attachments; normal bows receive no implicit bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "epic-item-reward-pool"
+    ],
+    "classes": [
+      "ranger"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_scorpion_magazine",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "adder_sheath",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "briar_snare",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "gilded_scarab",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "scorpion_magazine",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Adder Sheath, Briar Snare, Gilded Scarab into Scorpion Magazine."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_horizon_harp",
+        "resultId": "horizon_harp"
+      },
+      {
+        "recipeId": "assemble_endless_flight_spool",
+        "resultId": "endless_flight_spool"
+      }
+    ],
+    "mergeTargets": [
+      "horizon_harp",
+      "endless_flight_spool"
+    ]
+  },
+  "visual": {
+    "brief": "A segmented brass arrow cradle ending in a curved tail.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A segmented brass arrow cradle ending in a curved tail."
+    ],
+    "assets": {
+      "icon": "assets/items/scorpion_magazine/icons/art/icon.png",
+      "svg": "assets/items/scorpion_magazine/icons/art/icon.svg",
+      "source": "assets/items/scorpion_magazine/icons/art/icon.sprite.json",
+      "footprint": "assets/items/scorpion_magazine/icons/art/footprint.json",
+      "provenance": "assets/items/scorpion_magazine/icons/art/provenance.json",
+      "manifest": "assets/items/scorpion_magazine/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/scorpion_magazine/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

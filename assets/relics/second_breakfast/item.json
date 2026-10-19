@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "second_breakfast",
+  "kind": "relic",
+  "identity": {
+    "name": "Second Breakfast",
+    "category": "relic",
+    "rarity": "common",
+    "tags": [
+      "relic",
+      "opening"
+    ],
+    "summary": "On the first round of each fight: gain +3 healing.",
+    "description": "On the first round of each fight: gain +3 healing.",
+    "lore": "The expedition cook packed an extra meal for the person who would insist they were not hungry. No one remembers who ate first."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "On the first round of each fight: gain +3 healing.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "On the first round of each fight",
+      "parameters": {
+        "amount": 3,
+        "scaleCap": 1,
+        "condition": "opening",
+        "stat": "healing",
+        "metric": "one",
+        "roundNumber": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "opening"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "Two stacked seed cakes tied in a linen scrap",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "Two stacked seed cakes tied in a linen scrap"
+    ],
+    "assets": {
+      "icon": "assets/relics/second_breakfast/icons/art/icon.png",
+      "svg": "assets/relics/second_breakfast/icons/art/icon.svg",
+      "source": "assets/relics/second_breakfast/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/second_breakfast/icons/art/provenance.json",
+      "manifest": "assets/relics/second_breakfast/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/second_breakfast/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

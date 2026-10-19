@@ -1,0 +1,16 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/cursed/rooms/cursed_room/cursed_room.tscn" id="room"]
+[ext_resource type="Environment" path="res://scenes/world/biomes/cursed/cursed_environment.tres" id="environment"]
+[ext_resource type="PackedScene" path="res://components/tools/free_camera/free_camera.tscn" id="camera"]
+[ext_resource type="PackedScene" path="res://components/world/lighting/player_lantern/player_lantern.tscn" id="lantern"]
+[node name="CursedDepthsDemo" type="Node3D"]
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = ExtResource("environment")
+[node name="CursedDepths" parent="." instance=ExtResource("room")]
+[node name="Camera" parent="." instance=ExtResource("camera")]
+position = Vector3(-5.8607135, 3, 8)
+rotation = Vector3(-0.093477, 0, 0)
+fov = 65.0
+far = 80.0
+
+[node name="PlayerLantern" parent="Camera" instance=ExtResource("lantern")]

@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "furnace_toad",
+  "kind": "item",
+  "identity": {
+    "name": "Furnace Toad",
+    "category": "companion",
+    "rarity": "epic",
+    "tags": [
+      "companion"
+    ],
+    "summary": "A squat brick red toad with a broad charcoal back.",
+    "description": "Deals 6 physical damage per affordable activation. Applies 4 burn through the existing combat keyword rules per affordable activation.",
+    "lore": "The kiln keeper mistook its first egg for a warm brick."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 6,
+    "burn": 4
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Deals 6 physical damage per affordable activation. Applies 4 burn through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 6,
+        "burn": 4
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "epic-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_furnace_toad",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "amber_heart_pendant",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "blacksmith_s_apron",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "chalk_poultice",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "lantern_moth_familiar",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "furnace_toad",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 4,
+          "priorityIngredientCount": 4
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Amber Heart Pendant, Blacksmith's Apron, Chalk Poultice, Lantern Moth into Furnace Toad."
+      }
+    ],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A squat brick red toad with a broad charcoal back.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A squat brick red toad with a broad charcoal back."
+    ],
+    "assets": {
+      "icon": "assets/items/furnace_toad/icons/art/icon.png",
+      "svg": "assets/items/furnace_toad/icons/art/icon.svg",
+      "source": "assets/items/furnace_toad/icons/art/icon.sprite.json",
+      "footprint": "assets/items/furnace_toad/icons/art/footprint.json",
+      "provenance": "assets/items/furnace_toad/icons/art/provenance.json",
+      "manifest": "assets/items/furnace_toad/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/furnace_toad/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

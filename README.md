@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="project.godot"><img src="https://img.shields.io/badge/Godot-4.7-478CBF?style=flat" alt="Godot 4.7"></a>
-  <a href="scripts/"><img src="https://img.shields.io/badge/Language-GDScript-355570?style=flat" alt="Written in GDScript"></a>
+  <a href="systems/"><img src="https://img.shields.io/badge/Language-GDScript-355570?style=flat" alt="Written in GDScript"></a>
 </p>
 
 Choose a Delver, pack weapons and supplies into your satchel, and descend into the dungeon. Item placement, neighboring bonuses, and limited mana and stamina determine how your build performs. Prepare between encounters, then start the fight and watch your equipment resolve automatically.
@@ -50,19 +50,18 @@ Start with these files:
 | Area | Entry point |
 | --- | --- |
 | Main scene | [scenes/main.tscn](scenes/main.tscn) |
-| Classes, items, relics, and enemies | [scripts/pack_catalog.gd](scripts/pack_catalog.gd) |
-| Run progression and combat rules | [scripts/run_state.gd](scripts/run_state.gd) |
-| Inventory placement and input | [scripts/backpack_board.gd](scripts/backpack_board.gd) |
+| Classes, items, relics, and enemies | [systems/content/pack_catalog.gd](systems/content/pack_catalog.gd) |
+| Run progression and combat rules | [systems/runs/run_state.gd](systems/runs/run_state.gd) |
+| Inventory placement and input | [scenes/run/inventory/backpack/backpack_board.gd](scenes/run/inventory/backpack/backpack_board.gd) |
 | Regression checks | [tests/](tests/) |
 | Artwork conventions | [AGENTS.md](AGENTS.md) |
 | Branding sources and provenance | [assets/branding/README.md](assets/branding/README.md) |
 
-Tests are Godot scripts. For example, from the project directory in PowerShell, run a deferred-reward regression check with an absolute diagnostic log path:
+Tests are registered Godot scripts run with isolated settings, saves, logs and artifacts. From the project directory in PowerShell:
 
 ```powershell
-New-Item -ItemType Directory -Force workspace/logs | Out-Null
-$logFile = Join-Path (Get-Location).Path 'workspace/logs/deferred-rewards.log'
-godot --headless --path . --log-file $logFile --script res://tests/deferred_rewards_test.gd
+./tests/run_tests.ps1                                  # smoke suite
+./tests/run_tests.ps1 -Suite all -Test deferred_rewards # focused regression
 ```
 
-Some UI tests require a graphics-enabled Godot process. See the individual scripts in [tests/](tests/) for their fixtures and checks.
+See [tests/README.md](tests/README.md) for suites, rendering requirements and reports, and [tests/AGENTS.md](tests/AGENTS.md) for authoring rules. Rendering-dependent tests require `-Render`; headless runs do not validate their appearance.

@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "heart_of_the_long_march",
+  "kind": "relic",
+  "identity": {
+    "name": "Heart Of The Long March",
+    "category": "relic",
+    "rarity": "legendary",
+    "tags": [
+      "relic",
+      "warrior"
+    ],
+    "summary": "For the Warmonger: gain +1 healing per momentum (up to 8 counted).",
+    "description": "For the Warmonger: gain +1 healing per momentum (up to 8 counted).",
+    "lore": "The iron wheel carried a wounded standard bearer beyond the last road. Its stone heart kept time with the feet around it."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "For the Warmonger: gain +1 healing per momentum (up to 8 counted).",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "For the Warmonger",
+      "parameters": {
+        "amount": 1,
+        "scaleCap": 8,
+        "condition": "warrior",
+        "stat": "healing",
+        "metric": "momentum"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "warrior"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A red stone heart inside an iron walking wheel",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A red stone heart inside an iron walking wheel"
+    ],
+    "assets": {
+      "icon": "assets/relics/heart_of_the_long_march/icons/art/icon.png",
+      "svg": "assets/relics/heart_of_the_long_march/icons/art/icon.svg",
+      "source": "assets/relics/heart_of_the_long_march/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/heart_of_the_long_march/icons/art/provenance.json",
+      "manifest": "assets/relics/heart_of_the_long_march/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/heart_of_the_long_march/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

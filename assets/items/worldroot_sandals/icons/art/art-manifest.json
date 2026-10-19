@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "worldroot_sandals",
+  "approval": "unreviewed",
+  "base": {
+    "source": "assets/items/worldroot_sandals/icons/art/icon.sprite.json",
+    "png": "assets/items/worldroot_sandals/icons/art/icon.png",
+    "svg": "assets/items/worldroot_sandals/icons/art/icon.svg",
+    "footprint": "assets/items/worldroot_sandals/icons/art/footprint.json"
+  },
+  "variants": [],
+  "provenance": "assets/items/worldroot_sandals/icons/art/provenance.json",
+  "reused": [],
+  "checks": [
+    {
+      "name": "numeric source validation",
+      "result": "passed",
+      "evidence": "pixloom-cli validate"
+    },
+    {
+      "name": "export and dimensions",
+      "result": "passed",
+      "evidence": "CLI png/svg, 64x64"
+    },
+    {
+      "name": "UI visual review",
+      "result": "passed",
+      "evidence": "Native and enlarged contact-sheet group review: workspace/tasks/content-expansion/art-native-04-labeled.png and art-sheet-04-labeled.png. Technical artist review only; simple candidate icons, user acceptance remains unreviewed."
+    },
+    {
+      "name": "footprint occupancy and distinct export",
+      "result": "passed",
+      "evidence": "workspace/tasks/content-expansion/art-verification.json: no empty-cell pixels, every occupied cell has at least16 painted pixels, all146 PNG hashes distinct."
+    }
+  ]
+}

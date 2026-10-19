@@ -6,7 +6,7 @@
   "inventoryMask": [
     "#"
   ],
-  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
   "exports": [
     "revisions/catalog-v1/antidote-32px.png",
     "revisions/catalog-v1/antidote-32px.svg",

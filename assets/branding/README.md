@@ -42,14 +42,14 @@ Use the dedicated 16 px export for a 16 px surface.
 From the project root, with Node.js and `sharp` available:
 
 ```powershell
-node scripts/art/build-branding.cjs
+node systems/art/tools/build-branding.cjs
 ```
 
 This preserves SVG edits and rebuilds PNGs, the Windows ICO, and previews. The script can also find
 `sharp` in the locally bundled Codex workspace runtime.
 
 ```powershell
-node scripts/art/build-branding.cjs --trace
+node systems/art/tools/build-branding.cjs --trace
 ```
 
 `--trace` rebuilds **and overwrites the title and detailed SVGs** from the preserved

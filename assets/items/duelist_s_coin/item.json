@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "duelist_s_coin",
+  "kind": "item",
+  "identity": {
+    "name": "Duelist's Coin",
+    "category": "pendant",
+    "rarity": "uncommon",
+    "tags": [
+      "pendant",
+      "warrior"
+    ],
+    "summary": "A clipped silver coin suspended through its punctured center.",
+    "description": "Adds 1 maximum stamina, refreshed each round.",
+    "lore": "Every defeated challenger left one notch in its rim."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "stamina": 1
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Adds 1 maximum stamina, refreshed each round.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "stamina": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_duelist_s_coin",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "hedgehog_charm",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "rivet_knuckle",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "duelist_s_coin",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Hedgehog Charm, Rivet Knuckle into Duelist's Coin."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_cadence_spurs",
+        "resultId": "cadence_spurs"
+      },
+      {
+        "recipeId": "assemble_captain_s_baton",
+        "resultId": "captain_s_baton"
+      }
+    ],
+    "mergeTargets": [
+      "cadence_spurs",
+      "captain_s_baton"
+    ]
+  },
+  "visual": {
+    "brief": "A clipped silver coin suspended through its punctured center.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A clipped silver coin suspended through its punctured center."
+    ],
+    "assets": {
+      "icon": "assets/items/duelist_s_coin/icons/art/icon.png",
+      "svg": "assets/items/duelist_s_coin/icons/art/icon.svg",
+      "source": "assets/items/duelist_s_coin/icons/art/icon.sprite.json",
+      "footprint": "assets/items/duelist_s_coin/icons/art/footprint.json",
+      "provenance": "assets/items/duelist_s_coin/icons/art/provenance.json",
+      "manifest": "assets/items/duelist_s_coin/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/duelist_s_coin/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

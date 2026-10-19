@@ -1,0 +1,1673 @@
+{
+  "version": 1,
+  "tests": [
+	{
+	  "id": "combatant_definitions",
+	  "path": "tests/systems/combat/combatant_definitions_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "collectible_catalog",
+	  "path": "tests/systems/content/collectible_catalog_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "collectible_definition",
+	  "path": "tests/systems/content/collectible_definition_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "gameplay_types",
+	  "path": "tests/systems/content/gameplay_types_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "dev_menu",
+	  "path": "tests/scenes/development/dev_menu_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 45
+	},
+	{
+	  "id": "dev_menu_flow",
+	  "path": "tests/integration/development/dev_menu_flow_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 45
+	},
+	{
+	  "id": "dev_cheats",
+	  "path": "tests/systems/development/dev_cheats_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "dev_commands",
+	  "path": "tests/systems/development/dev_commands_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "recipe_definition",
+	  "path": "tests/systems/crafting/recipe_definition_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "ability_definition",
+	  "path": "tests/systems/abilities/ability_definition_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "item_definition",
+	  "path": "tests/systems/items/item_definition_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "reward_crafting_hover",
+	  "path": "tests/scenes/run/reward_crafting_hover_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "tooltip_resource_polish",
+	  "path": "tests/scenes/run/tooltip_resource_polish_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "inventory_frame_retention",
+	  "path": "components/inventory/item_slot/tests/inventory_frame_retention_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "segmented_frame",
+	  "path": "components/inventory/item_slot/tests/segmented_frame_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "pixel_button",
+	  "path": "components/ui/buttons/pixel_button/tests/pixel_button_test.gd",
+	  "suites": [
+		"scenes",
+        "smoke"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "shared_button_frame",
+	  "path": "components/ui/buttons/shared/tests/shared_button_frame_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "character_resource_bars",
+	  "path": "components/ui/indicators/pixel_stat_bar/tests/character_resource_bars_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "health_caption_color",
+	  "path": "components/ui/indicators/pixel_stat_bar/tests/health_caption_color_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "pixel_search_field",
+	  "path": "components/ui/inputs/pixel_search_field/tests/pixel_search_field_test.gd",
+	  "suites": [
+		"scenes",
+        "smoke"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "frosted_backdrop",
+	  "path": "components/ui/layout/frosted_panel/tests/frosted_backdrop_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "torch_component",
+	  "path": "components/world/lighting/torch/tests/torch_component_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "torch_demo_camera",
+	  "path": "components/world/lighting/torch/tests/torch_demo_camera_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "prototype",
+	  "path": "tests/integration/prototype_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "scene_asset",
+	  "path": "tests/integration/scene_asset_test.gd",
+	  "suites": [
+		"integration",
+        "smoke"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "scene_organization",
+	  "path": "tests/integration/scene_organization_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "seven_row_layout",
+	  "path": "tests/integration/seven_row_layout_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "theme_showcase",
+	  "path": "tests/integration/theme_showcase_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "two_ui_themes",
+	  "path": "tests/integration/two_ui_themes_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "ui_polish",
+	  "path": "tests/integration/ui_polish_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 55
+	},
+	{
+	  "id": "ui_revision",
+	  "path": "tests/integration/ui_revision_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "widescreen",
+	  "path": "tests/integration/widescreen_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "class_selection",
+	  "path": "tests/scenes/menus/class_selection_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "death_screen",
+	  "path": "tests/scenes/menus/death_screen_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "menu_button_refinement",
+	  "path": "tests/scenes/menus/menu_button_refinement_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "menu_button",
+	  "path": "tests/scenes/menus/menu_button_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "menu",
+	  "path": "tests/scenes/menus/menu_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "moved_buttons",
+	  "path": "tests/scenes/menus/moved_buttons_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "options_border_tabs",
+	  "path": "tests/scenes/menus/options_border_tabs_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "options_menu",
+	  "path": "tests/scenes/menus/options_menu_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "options_reset_hold",
+	  "path": "tests/scenes/menus/options_reset_hold_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "pause_menu_buttons",
+	  "path": "tests/scenes/menus/pause_menu_buttons_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "run_selection",
+	  "path": "tests/scenes/menus/run_selection_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "title_gear",
+	  "path": "tests/scenes/menus/title_gear_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "adjacency_feedback",
+	  "path": "tests/scenes/run/adjacency_feedback_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "automatic_combat_render",
+	  "path": "tests/scenes/run/automatic_combat_render_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 45
+	},
+	{
+	  "id": "automatic_combat",
+	  "path": "tests/scenes/run/automatic_combat_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 65
+	},
+	{
+	  "id": "automatic_combat_ui",
+	  "path": "tests/scenes/run/automatic_combat_ui_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "backpack_item",
+	  "path": "tests/scenes/run/backpack_item_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "backpack_swap",
+	  "path": "tests/scenes/run/backpack_swap_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "battle_ui",
+	  "path": "tests/scenes/run/battle_ui_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 55
+	},
+	{
+	  "id": "block_vitals",
+	  "path": "tests/scenes/run/block_vitals_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "bottom_controls_rewards",
+	  "path": "tests/scenes/run/bottom_controls_rewards_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "character_asset_layout",
+	  "path": "tests/scenes/run/character_asset_layout_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "character_preview",
+	  "path": "tests/scenes/run/character_preview_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "click_keyword_regression",
+	  "path": "tests/scenes/run/click_keyword_regression_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "combat_controls_resources",
+	  "path": "tests/scenes/run/combat_controls_resources_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "combat_feedback",
+	  "path": "tests/scenes/run/combat_feedback_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "combat_flow",
+	  "path": "tests/scenes/run/combat_flow_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "combat_log",
+	  "path": "tests/scenes/run/combat_log_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "combat_pacing",
+	  "path": "tests/scenes/run/combat_pacing_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 50
+	},
+	{
+	  "id": "combat_popup_transition",
+	  "path": "tests/scenes/run/combat_popup_transition_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "combat_refinement_render",
+	  "path": "tests/scenes/run/combat_refinement_render_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 50
+	},
+	{
+	  "id": "connected_tabs",
+	  "path": "tests/scenes/run/connected_tabs_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "crafting_drag_attachment",
+	  "path": "tests/scenes/run/crafting_drag_attachment_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "crafting_drag_render",
+	  "path": "tests/scenes/run/crafting_drag_render_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "crafting_experience",
+	  "path": "tests/integration/crafting/crafting_experience_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "crafting_gpu_trail",
+	  "path": "tests/scenes/run/crafting_gpu_trail_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "crafting_lock",
+	  "path": "tests/integration/crafting/crafting_lock_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "crafting_persistence",
+	  "path": "tests/integration/crafting/crafting_persistence_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "crafting",
+	  "path": "tests/integration/crafting/crafting_test.gd",
+	  "suites": [
+		"integration",
+        "smoke"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "crafting_trail_render",
+	  "path": "tests/scenes/run/crafting_trail_render_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "deferred_rewards",
+	  "path": "tests/scenes/run/deferred_rewards_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "delver_presentation",
+	  "path": "tests/scenes/run/delver_presentation_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "diagonal_caret_render",
+	  "path": "tests/scenes/run/diagonal_caret_render_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "element_presentation",
+	  "path": "tests/scenes/run/element_presentation_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "enemy_expansion_render",
+	  "path": "tests/scenes/run/enemy_expansion_render_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "enemy_inspection",
+	  "path": "tests/scenes/run/enemy_inspection_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "enemy_status_hover",
+	  "path": "tests/scenes/run/enemy_status_hover_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "expansion_presentation",
+	  "path": "tests/integration/items/expansion_presentation_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "incoming_damage_feedback",
+	  "path": "tests/scenes/run/incoming_damage_feedback_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "incoming_damage_integration",
+	  "path": "tests/scenes/run/incoming_damage_integration_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 35
+	},
+	{
+	  "id": "inventory_effect_feedback",
+	  "path": "tests/scenes/run/inventory_effect_feedback_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "inventory_room_parity",
+	  "path": "tests/scenes/run/inventory_room_parity_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "item_bonus_presentation",
+	  "path": "tests/scenes/run/item_bonus_presentation_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "item_border_consistency",
+	  "path": "tests/scenes/run/item_border_consistency_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "item_grid_style",
+	  "path": "tests/scenes/run/item_grid_style_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "item_motion_quality",
+	  "path": "tests/scenes/run/item_motion_quality_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 70
+	},
+	{
+	  "id": "monster_animation",
+	  "path": "tests/scenes/run/monster_animation_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "monster_art",
+	  "path": "tests/scenes/run/monster_art_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "monster_presentation",
+	  "path": "tests/scenes/run/monster_presentation_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 35
+	},
+	{
+	  "id": "monster_source_import",
+	  "path": "tests/scenes/run/monster_source_import_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "pixel_scrollbar",
+	  "path": "tests/scenes/run/pixel_scrollbar_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "pixel_stat_bar",
+	  "path": "tests/scenes/run/pixel_stat_bar_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "portrait_layout_gap",
+	  "path": "tests/scenes/run/portrait_layout_gap_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "room_inventory_inspection",
+	  "path": "tests/scenes/run/room_inventory_inspection_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "round_resources",
+	  "path": "tests/scenes/run/round_resources_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "stage_tabs",
+	  "path": "tests/scenes/run/stage_tabs_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "stash_drag_regression",
+	  "path": "tests/scenes/run/stash_drag_regression_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "stash_fall_zone",
+	  "path": "tests/scenes/run/stash_fall_zone_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 35
+	},
+	{
+	  "id": "stash_grid_reentry",
+	  "path": "tests/scenes/run/stash_grid_reentry_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 35
+	},
+	{
+	  "id": "stash_physics_polish",
+	  "path": "tests/scenes/run/stash_physics_polish_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 45
+	},
+	{
+	  "id": "stash_shortcuts",
+	  "path": "tests/scenes/run/stash_shortcuts_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "stat_bar_cutout",
+	  "path": "tests/scenes/run/stat_bar_cutout_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "stat_bar_glow",
+	  "path": "tests/scenes/run/stat_bar_glow_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "storage_ui",
+	  "path": "tests/scenes/run/storage_ui_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 50
+	},
+	{
+	  "id": "tile_occlusion_portrait",
+	  "path": "tests/scenes/run/tile_occlusion_portrait_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "tooltip_hover_revision",
+	  "path": "tests/scenes/run/tooltip_hover_revision_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 45
+	},
+	{
+	  "id": "tooltip_item_footprint",
+	  "path": "tests/scenes/run/tooltip_item_footprint_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "turn_based_progression",
+	  "path": "tests/scenes/run/turn_based_progression_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "application_frame",
+	  "path": "tests/scenes/shared/application_frame_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "character_padding",
+	  "path": "tests/scenes/shared/character_padding_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "frame_polish",
+	  "path": "tests/scenes/shared/frame_polish_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "item_rarity_ui",
+	  "path": "tests/scenes/shared/item_rarity_ui_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "item_resource_footer",
+	  "path": "tests/scenes/shared/item_resource_footer_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "keyword_hover",
+	  "path": "tests/scenes/shared/keyword_hover_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "keyword_stats",
+	  "path": "tests/scenes/shared/keyword_stats_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "keyword_ui",
+	  "path": "tests/scenes/shared/keyword_ui_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 50
+	},
+	{
+	  "id": "loading_screen",
+	  "path": "tests/scenes/shared/loading_screen_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "loading_screen_timing",
+	  "path": "tests/scenes/shared/loading_screen_timing_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "rounded_settings_dock",
+	  "path": "tests/scenes/shared/rounded_settings_dock_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "shared_menu_frame",
+	  "path": "tests/scenes/shared/shared_menu_frame_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "tooltip_timing_settings",
+	  "path": "tests/scenes/shared/tooltip_timing_settings_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "translucent_panels",
+	  "path": "tests/scenes/shared/translucent_panels_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "basement_editable_scene",
+	  "path": "tests/scenes/world/basement_editable_scene_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "basement_entrance",
+	  "path": "tests/scenes/world/basement_entrance_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "corridor_life",
+	  "path": "tests/scenes/world/corridor_life_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "critter_routes",
+	  "path": "tests/scenes/world/critter_routes_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "cursed_room",
+	  "path": "tests/scenes/world/cursed_room_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "dungeon_activity_rooms",
+	  "path": "tests/scenes/world/dungeon_activity_rooms_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "dungeon_selector_kit",
+	  "path": "tests/scenes/world/dungeon_selector_kit_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "floor_biome",
+	  "path": "tests/scenes/world/floor_biome_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 35
+	},
+	{
+	  "id": "floor_flow_render",
+	  "path": "tests/scenes/world/floor_flow_render_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "floor_flow_ui",
+	  "path": "tests/scenes/world/floor_flow_ui_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "floor_selector_scene",
+	  "path": "tests/scenes/world/floor_selector_scene_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "floor_selector_travel",
+	  "path": "tests/scenes/world/floor_selector_travel_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 45
+	},
+	{
+	  "id": "gameplay_background",
+	  "path": "tests/scenes/world/gameplay_background_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 35
+	},
+	{
+	  "id": "gameplay_travel_speed",
+	  "path": "tests/scenes/world/gameplay_travel_speed_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "gameplay_world",
+	  "path": "tests/scenes/world/gameplay_world_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "monster_lighting",
+	  "path": "tests/scenes/world/monster_lighting_test.gd",
+	  "suites": [
+		"scenes",
+        "render"
+	  ],
+	  "requires_rendering": true,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "monster_world",
+	  "path": "tests/scenes/world/monster_world_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "physical_room_activity",
+	  "path": "tests/scenes/world/physical_room_activity_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "player_lantern",
+	  "path": "tests/scenes/world/player_lantern_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "staircase_component",
+	  "path": "tests/scenes/world/staircase_component_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "frontend_audio",
+	  "path": "tests/integration/audio/frontend_audio_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "gameplay_music",
+	  "path": "tests/integration/audio/gameplay_music_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "input_settings",
+	  "path": "tests/integration/application/input_settings_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "options_settings",
+	  "path": "tests/integration/application/options_settings_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "player_damage_audio",
+	  "path": "tests/systems/application/player_damage_audio_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "sound_effects",
+	  "path": "tests/integration/audio/sound_effects_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "archer_quiver",
+	  "path": "tests/integration/characters/archer_quiver_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "assassin",
+	  "path": "tests/integration/characters/assassin_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "momentum",
+	  "path": "tests/integration/characters/momentum_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "necromancer",
+	  "path": "tests/systems/characters/necromancer_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "automatic_combat_model",
+	  "path": "tests/systems/combat/automatic_combat_model_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "balance",
+	  "path": "tests/systems/combat/balance_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "causal_combat_log",
+	  "path": "tests/integration/combat/causal_combat_log_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "combat_delay",
+	  "path": "tests/systems/combat/combat_delay_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "elemental_combat",
+	  "path": "tests/integration/combat/elemental_combat_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "expansion_simulation",
+	  "path": "tests/systems/combat/expansion_simulation_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "class_restrictions",
+	  "path": "tests/integration/content/class_restrictions_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "enemy_expansion",
+	  "path": "tests/systems/content/enemy_expansion_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "expansion_catalog",
+	  "path": "tests/systems/content/expansion_catalog_test.gd",
+	  "suites": [
+		"systems",
+        "smoke"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "expansion_crafting_relic",
+	  "path": "tests/systems/content/expansion_crafting_relic_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "expansion_items",
+	  "path": "tests/systems/content/expansion_items_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "expansion_relic",
+	  "path": "tests/systems/content/expansion_relic_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "recipe_preview",
+	  "path": "tests/integration/crafting/recipe_preview_test.gd",
+	  "suites": [
+		"integration",
+        "smoke"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "item_rarity",
+	  "path": "tests/systems/items/item_rarity_test.gd",
+	  "suites": [
+		"systems",
+        "smoke"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "synergy_marker_dedup",
+	  "path": "tests/integration/items/synergy_marker_dedup_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "room_activities",
+	  "path": "tests/systems/runs/room_activities_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "room_routes",
+	  "path": "tests/systems/runs/room_routes_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "room_save",
+	  "path": "tests/systems/runs/room_save_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "run_save_reopen",
+	  "path": "tests/systems/runs/run_save_reopen_test.gd",
+	  "suites": [
+        "systems"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30,
+	  "phases": [
+		{
+		  "name": "write",
+		  "args": [
+            "--write"
+		  ]
+		},
+		{
+		  "name": "read",
+		  "args": []
+		}
+	  ]
+	},
+	{
+	  "id": "keyword_family",
+	  "path": "tests/integration/ui/keyword_family_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "keyword_icons",
+	  "path": "tests/integration/ui/keyword_icons_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "keyword_list",
+	  "path": "tests/integration/ui/keyword_list_test.gd",
+	  "suites": [
+        "integration"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "tooltip_link_transition",
+	  "path": "tests/scenes/shared/tooltip_link_transition_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "tooltip_opening",
+	  "path": "tests/scenes/shared/tooltip_opening_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "tooltip_placement",
+	  "path": "tests/scenes/shared/tooltip_placement_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 40
+	},
+	{
+	  "id": "tooltip_repeated_subject",
+	  "path": "tests/scenes/shared/tooltip_repeated_subject_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "tooltip_rules",
+	  "path": "tests/scenes/shared/tooltip_rules_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "tooltip_stack_return",
+	  "path": "tests/scenes/shared/tooltip_stack_return_test.gd",
+	  "suites": [
+        "scenes"
+	  ],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	}
+  ]
+}

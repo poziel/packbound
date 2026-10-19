@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "cobbler_s_boots",
+  "kind": "item",
+  "identity": {
+    "name": "Cobbler's Boots",
+    "category": "boots",
+    "rarity": "common",
+    "tags": [
+      "boots"
+    ],
+    "summary": "Two stout leather boots with thick cream soles.",
+    "description": "Adds 1 maximum stamina, refreshed each round.",
+    "lore": "Made for a journey whose destination was never named."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "stamina": 1
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Adds 1 maximum stamina, refreshed each round.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "stamina": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "common-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "assemble_seven_league_soles",
+        "resultId": "seven_league_soles"
+      },
+      {
+        "recipeId": "assemble_vanguard_sabaton",
+        "resultId": "vanguard_sabaton"
+      },
+      {
+        "recipeId": "assemble_pathfinder_gaiters",
+        "resultId": "pathfinder_gaiters"
+      },
+      {
+        "recipeId": "assemble_ironroot_boots",
+        "resultId": "ironroot_boots"
+      }
+    ],
+    "mergeTargets": [
+      "seven_league_soles",
+      "vanguard_sabaton",
+      "pathfinder_gaiters",
+      "ironroot_boots"
+    ]
+  },
+  "visual": {
+    "brief": "Two stout leather boots with thick cream soles.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "Two stout leather boots with thick cream soles."
+    ],
+    "assets": {
+      "icon": "assets/items/cobbler_s_boots/icons/art/icon.png",
+      "svg": "assets/items/cobbler_s_boots/icons/art/icon.svg",
+      "source": "assets/items/cobbler_s_boots/icons/art/icon.sprite.json",
+      "footprint": "assets/items/cobbler_s_boots/icons/art/footprint.json",
+      "provenance": "assets/items/cobbler_s_boots/icons/art/provenance.json",
+      "manifest": "assets/items/cobbler_s_boots/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/cobbler_s_boots/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

@@ -1,0 +1,85 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/run/inventory/storage_inventory/storage_inventory.gd" id="script"]
+
+[ext_resource type="Theme" path="res://themes/gameplay/theme.tres" id="theme"]
+
+[ext_resource type="PackedScene" path="res://components/ui/layout/frosted_panel/frosted_backdrop.tscn" id="frosted"]
+
+[ext_resource type="Script" path="res://components/ui/shared/surface_theme.gd" id="surface_theme"]
+
+[ext_resource type="PackedScene" path="res://components/ui/buttons/icon_button/icon_button.tscn" id="button"]
+
+[ext_resource type="Texture2D" path="res://assets/ui/icons/stash-reload/stash-reload.png" id="reload_icon"]
+
+[ext_resource type="Script" path="res://scenes/run/inventory/storage_inventory/stash_drag_overlay.gd" id="drag_overlay"]
+
+[sub_resource type="StyleBoxEmpty" id="transparent_surface"]
+
+[node name="Storage" type="Panel"]
+z_index = 10
+offset_right = 624.0
+offset_bottom = 574.0
+theme = ExtResource("theme")
+texture_filter = 1
+script = ExtResource("script")
+theme_override_styles/panel = SubResource("transparent_surface")
+
+[node name="Backdrop" parent="." instance=ExtResource("frosted")]
+layout_mode = 1
+opacity = 0.82
+blur_radius = 4.0
+
+[node name="Title" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 224.0
+offset_bottom = 60.0
+text = "STASH"
+theme_override_font_sizes/font_size = 28
+mouse_filter = 2
+
+[node name="Empty" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 196.0
+offset_right = -24.0
+offset_bottom = 260.0
+text = "All items are in your backpack."
+horizontal_alignment = 1
+mouse_filter = 2
+anchor_right = 1.0
+
+[node name="SurfaceTheme" type="Node" parent="."]
+script = ExtResource("surface_theme")
+reference_padding = 24
+padding_bindings = {"Title": "left,top", "Reorder": "top,right"}
+
+[node name="PhysicsPile" type="SubViewportContainer" parent="."]
+offset_left = 24.0
+offset_top = 92.0
+offset_right = 600.0
+offset_bottom = 550.0
+mouse_filter = 2
+stretch = true
+
+[node name="World" type="SubViewport" parent="PhysicsPile"]
+transparent_bg = true
+size = Vector2i(576, 458)
+render_target_update_mode = 4
+
+[node name="Reorder" parent="." instance=ExtResource("button")]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 64.0
+icon = ExtResource("reload_icon")
+theme_override_constants/icon_max_width = 24
+accessibility_name = "Reorder stash"
+tooltip_text = "Bring every stashed item back inside and arrange the pile."
+
+[node name="DragOverlay" type="Node2D" parent="."]
+z_index = 100
+z_as_relative = false
+script = ExtResource("drag_overlay")

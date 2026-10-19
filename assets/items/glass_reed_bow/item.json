@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "id": "glass_reed_bow",
+  "kind": "item",
+  "identity": {
+    "name": "Glass Reed Bow",
+    "category": "ranged",
+    "rarity": "rare",
+    "tags": [
+      "ranged",
+      "ranger"
+    ],
+    "summary": "A translucent jade bow reinforced by dark bamboo joints.",
+    "description": "Costs 2 stamina per activation. Deals 11 physical damage per affordable activation. Bypasses up to 3 enemy block per activation.",
+    "lore": "It sings like a wineglass when the string is drawn."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#.",
+      "##",
+      "#."
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 11,
+    "pierce": 3
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 2
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 2 stamina per activation. Deals 11 physical damage per affordable activation. Bypasses up to 3 enemy block per activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 11,
+        "pierce": 3
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "rare-item-reward-pool"
+    ],
+    "classes": [
+      "ranger"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_glass_reed_bow",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "hornback_bow",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "waxed_fletching",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "glass_reed_bow",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Hornback Bow, Waxed Fletching into Glass Reed Bow."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_horizon_harp",
+        "resultId": "horizon_harp"
+      },
+      {
+        "recipeId": "assemble_thunder_yew",
+        "resultId": "thunder_yew"
+      },
+      {
+        "recipeId": "assemble_seamfinder_lens",
+        "resultId": "seamfinder_lens"
+      }
+    ],
+    "mergeTargets": [
+      "horizon_harp",
+      "thunder_yew",
+      "seamfinder_lens"
+    ]
+  },
+  "visual": {
+    "brief": "A translucent jade bow reinforced by dark bamboo joints.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A translucent jade bow reinforced by dark bamboo joints."
+    ],
+    "assets": {
+      "icon": "assets/items/glass_reed_bow/icons/art/icon.png",
+      "svg": "assets/items/glass_reed_bow/icons/art/icon.svg",
+      "source": "assets/items/glass_reed_bow/icons/art/icon.sprite.json",
+      "footprint": "assets/items/glass_reed_bow/icons/art/footprint.json",
+      "provenance": "assets/items/glass_reed_bow/icons/art/provenance.json",
+      "manifest": "assets/items/glass_reed_bow/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/glass_reed_bow/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

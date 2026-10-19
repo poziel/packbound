@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "id": "blood_orchid",
+  "name": "Blood Orchid",
+  "species": "plant",
+  "age": "19 growing seasons",
+  "role": "drainer",
+  "description": "A carnivorous bloom cultivated in the old infirmary. It turns toward a wounded traveler with the patient attention of a nurse.",
+  "encounter_floor": 18,
+  "starting_stats": {
+    "hp": 116,
+    "attacks": [
+      11
+    ],
+    "hits": 1,
+    "armor": 0,
+    "pierce": 0,
+    "poison": 0,
+    "drain": 5,
+    "reflect": 0,
+    "sunder": 0,
+    "enrage": 0,
+    "regen": 2,
+    "parry": 0,
+    "opening_armor": 0,
+    "cycle_armor": 0,
+    "cleanse": 0,
+    "physical_resistance": 0,
+    "magical_resistance": 0,
+    "damage_type": "physical"
+  },
+  "abilities": [
+    {
+      "id": "drain",
+      "amount": 5,
+      "description": "Restores up to 5 health once after a response that damages player health, if still alive."
+    },
+    {
+      "id": "regen",
+      "amount": 2,
+      "description": "Restores up to 2 health after its response if still alive, capped at maximum health."
+    }
+  ],
+  "intent": "Drainer",
+  "detail": "Restores up to 5 health once after a response that damages player health, if still alive. Restores up to 2 health after its response if still alive, capped at maximum health.",
+  "art": {
+    "source": "art/blood_orchid.pixloom.json",
+    "project": "art/blood_orchid.pixloom",
+    "png": "art/blood_orchid.png",
+    "svg": "art/blood_orchid.svg"
+  }
+}

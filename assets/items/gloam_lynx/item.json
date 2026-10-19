@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "gloam_lynx",
+  "kind": "item",
+  "identity": {
+    "name": "Gloam Lynx",
+    "category": "companion",
+    "rarity": "epic",
+    "tags": [
+      "companion",
+      "ranger"
+    ],
+    "summary": "A low violet gray cat with long ear tufts and broad paws.",
+    "description": "Deals 7 physical damage per affordable activation. Reduces each enemy strike this round by 2.",
+    "lore": "It arrived at camp with no footprints behind it."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 7,
+    "slow": 2
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Deals 7 physical damage per affordable activation. Reduces each enemy strike this round by 2.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 7,
+        "slow": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "epic-item-reward-pool"
+    ],
+    "classes": [
+      "ranger"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_gloam_lynx",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "burrow_falcon",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "gravetread_boots",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "pocket_basilisk",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "gloam_lynx",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Burrow Falcon, Gravetread Boots, Pocket Basilisk into Gloam Lynx."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_horizon_harp",
+        "resultId": "horizon_harp"
+      }
+    ],
+    "mergeTargets": [
+      "horizon_harp"
+    ]
+  },
+  "visual": {
+    "brief": "A low violet gray cat with long ear tufts and broad paws.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A low violet gray cat with long ear tufts and broad paws."
+    ],
+    "assets": {
+      "icon": "assets/items/gloam_lynx/icons/art/icon.png",
+      "svg": "assets/items/gloam_lynx/icons/art/icon.svg",
+      "source": "assets/items/gloam_lynx/icons/art/icon.sprite.json",
+      "footprint": "assets/items/gloam_lynx/icons/art/footprint.json",
+      "provenance": "assets/items/gloam_lynx/icons/art/provenance.json",
+      "manifest": "assets/items/gloam_lynx/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/gloam_lynx/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "last_legion_aegis",
+  "approval": "unreviewed",
+  "base": {
+    "source": "assets/items/last_legion_aegis/icons/art/icon.sprite.json",
+    "png": "assets/items/last_legion_aegis/icons/art/icon.png",
+    "svg": "assets/items/last_legion_aegis/icons/art/icon.svg",
+    "footprint": "assets/items/last_legion_aegis/icons/art/footprint.json"
+  },
+  "variants": [],
+  "provenance": "assets/items/last_legion_aegis/icons/art/provenance.json",
+  "reused": [],
+  "checks": [
+    {
+      "name": "numeric source validation",
+      "result": "passed",
+      "evidence": "pixloom-cli validate"
+    },
+    {
+      "name": "export and dimensions",
+      "result": "passed",
+      "evidence": "CLI png/svg, 64x96"
+    },
+    {
+      "name": "UI visual review",
+      "result": "passed",
+      "evidence": "Native and enlarged contact-sheet group review: workspace/tasks/content-expansion/art-native-01-labeled.png and art-sheet-01-labeled.png. Technical artist review only; simple candidate icons, user acceptance remains unreviewed."
+    },
+    {
+      "name": "footprint occupancy and distinct export",
+      "result": "passed",
+      "evidence": "workspace/tasks/content-expansion/art-verification.json: no empty-cell pixels, every occupied cell has at least16 painted pixels, all146 PNG hashes distinct."
+    }
+  ]
+}

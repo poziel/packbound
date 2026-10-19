@@ -1,0 +1,48 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/run/character/player/player.tscn" id="player"]
+
+[ext_resource type="PackedScene" path="res://scenes/run/inventory/backpack/backpack.tscn" id="pack"]
+
+[ext_resource type="Theme" path="res://themes/gameplay/theme.tres" id="theme"]
+
+[ext_resource type="Script" path="res://scenes/run/character/tabs/backpack/character_backpack_layout.gd" id="layout"]
+
+[sub_resource type="StyleBoxEmpty" id="status_surface"]
+
+[node name="Backpack" type="Control" unique_id=1962209028]
+script = ExtResource("layout")
+layout_mode = 0
+offset_right = 584.0
+offset_bottom = 630.0
+theme = ExtResource("theme")
+texture_filter = 1
+
+[node name="Player" parent="." unique_id=1374515782 instance=ExtResource("player")]
+anchors_preset = 0
+offset_right = 584.0
+offset_top = 12.0
+offset_bottom = 108.0
+mouse_filter = 2
+
+[node name="Statuses" type="RichTextLabel" parent="."]
+offset_left = 22.0
+offset_top = 108.0
+offset_right = 562.0
+offset_bottom = 136.0
+bbcode_enabled = true
+scroll_active = false
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/normal = SubResource("status_surface")
+
+[node name="Inventory" parent="." unique_id=204474862 instance=ExtResource("pack")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 140.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,0 +1,30 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://scenes/world/biomes/shared/dungeon_wall_span.gd" id="span"]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/cursed/shared/wall_chunk/wall_chunk.tscn" id="chunk"]
+[node name="WallSpan" type="Node3D"]
+script = ExtResource("span")
+[node name="Chunks" type="Node3D" parent="."]
+
+[node name="Chunk00" parent="Chunks" instance=ExtResource("chunk")]
+position = Vector3(0, 0.0, 0)
+
+[node name="Chunk01" parent="Chunks" instance=ExtResource("chunk")]
+position = Vector3(4, 0.0, 0)
+
+[node name="Chunk02" parent="Chunks" instance=ExtResource("chunk")]
+position = Vector3(8, 0.0, 0)
+
+[node name="Chunk03" parent="Chunks" instance=ExtResource("chunk")]
+position = Vector3(12, 0.0, 0)
+
+[node name="Chunk10" parent="Chunks" instance=ExtResource("chunk")]
+position = Vector3(0, 3.4, 0)
+
+[node name="Chunk11" parent="Chunks" instance=ExtResource("chunk")]
+position = Vector3(4, 3.4, 0)
+
+[node name="Chunk12" parent="Chunks" instance=ExtResource("chunk")]
+position = Vector3(8, 3.4, 0)
+
+[node name="Chunk13" parent="Chunks" instance=ExtResource("chunk")]
+position = Vector3(12, 3.4, 0)

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "id": "shroud_abjurer",
+  "name": "Shroud Abjurer",
+  "species": "humanoid",
+  "age": "57 years",
+  "role": "purifier",
+  "description": "An exiled ward keeper who treats every delver as a contaminant. Her stitched veil hides her face while a forked staff grounds old curses.",
+  "encounter_floor": 16,
+  "starting_stats": {
+    "hp": 97,
+    "attacks": [
+      11
+    ],
+    "hits": 1,
+    "armor": 0,
+    "pierce": 0,
+    "poison": 0,
+    "drain": 0,
+    "reflect": 0,
+    "sunder": 0,
+    "enrage": 0,
+    "regen": 0,
+    "parry": 0,
+    "opening_armor": 0,
+    "cycle_armor": 0,
+    "cleanse": 3,
+    "physical_resistance": 0,
+    "magical_resistance": 15,
+    "damage_type": "physical"
+  },
+  "abilities": [
+    {
+      "id": "cleanse",
+      "amount": 3,
+      "description": "Clears existing conditions and elemental traces at the start of every 3th round, before fresh applications."
+    },
+    {
+      "id": "magical_resistance",
+      "amount": 15,
+      "description": "Reduces incoming magical damage by 15 percent using the shared resistance rules."
+    }
+  ],
+  "intent": "Purifier",
+  "detail": "Clears existing conditions and elemental traces at the start of every 3th round, before fresh applications. Reduces incoming magical damage by 15 percent using the shared resistance rules.",
+  "art": {
+    "source": "art/shroud_abjurer.pixloom.json",
+    "project": "art/shroud_abjurer.pixloom",
+    "png": "art/shroud_abjurer.png",
+    "svg": "art/shroud_abjurer.svg"
+  }
+}

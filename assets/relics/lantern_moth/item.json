@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "lantern_moth",
+  "kind": "relic",
+  "identity": {
+    "name": "Lantern Moth",
+    "category": "relic",
+    "rarity": "uncommon",
+    "tags": [
+      "relic",
+      "has_magic"
+    ],
+    "summary": "When activations produced magical damage: gain +2 cleanse.",
+    "description": "When activations produced magical damage: gain +2 cleanse.",
+    "lore": "It ate the smoke from a plague lantern and laid its eggs in clean glass. None of its children ever found a brighter flame."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When activations produced magical damage: gain +2 cleanse.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "When activations produced magical damage",
+      "parameters": {
+        "amount": 2,
+        "scaleCap": 1,
+        "condition": "has_magic",
+        "stat": "cleanse",
+        "metric": "one"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "has_magic"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A pale moth perched on an amber lantern bead",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A pale moth perched on an amber lantern bead"
+    ],
+    "assets": {
+      "icon": "assets/relics/lantern_moth/icons/art/icon.png",
+      "svg": "assets/relics/lantern_moth/icons/art/icon.svg",
+      "source": "assets/relics/lantern_moth/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/lantern_moth/icons/art/provenance.json",
+      "manifest": "assets/relics/lantern_moth/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/lantern_moth/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

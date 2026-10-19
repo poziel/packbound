@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "id": "blacksmith_s_apron",
+  "kind": "item",
+  "identity": {
+    "name": "Blacksmith's Apron",
+    "category": "armor",
+    "rarity": "rare",
+    "tags": [
+      "armor"
+    ],
+    "summary": "A broad soot stained leather apron with a bronze waist plate.",
+    "description": "Reduces each enemy strike by 2 before block. Applies 1 burn through the existing combat keyword rules per affordable activation.",
+    "lore": "The forge is cold but the apron still smells of iron."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "plating": 2,
+    "burn": 1
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Reduces each enemy strike by 2 before block. Applies 1 burn through the existing combat keyword rules per affordable activation.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "plating": 2,
+        "burn": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "rare-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_blacksmith_s_apron",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "ironroot_boots",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "lantern_moth_familiar",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "patchwork_jack",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "blacksmith_s_apron",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Ironroot Boots, Lantern Moth, Patchwork Jack into Blacksmith's Apron."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_cathedral_carapace",
+        "resultId": "cathedral_carapace"
+      },
+      {
+        "recipeId": "assemble_furnace_toad",
+        "resultId": "furnace_toad"
+      }
+    ],
+    "mergeTargets": [
+      "cathedral_carapace",
+      "furnace_toad"
+    ]
+  },
+  "visual": {
+    "brief": "A broad soot stained leather apron with a bronze waist plate.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A broad soot stained leather apron with a bronze waist plate."
+    ],
+    "assets": {
+      "icon": "assets/items/blacksmith_s_apron/icons/art/icon.png",
+      "svg": "assets/items/blacksmith_s_apron/icons/art/icon.svg",
+      "source": "assets/items/blacksmith_s_apron/icons/art/icon.sprite.json",
+      "footprint": "assets/items/blacksmith_s_apron/icons/art/footprint.json",
+      "provenance": "assets/items/blacksmith_s_apron/icons/art/provenance.json",
+      "manifest": "assets/items/blacksmith_s_apron/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/blacksmith_s_apron/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

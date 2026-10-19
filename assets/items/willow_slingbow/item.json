@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "willow_slingbow",
+  "kind": "item",
+  "identity": {
+    "name": "Willow Slingbow",
+    "category": "ranged",
+    "rarity": "common",
+    "tags": [
+      "ranged",
+      "ranger"
+    ],
+    "summary": "A bent pale willow bow with a leather pocket at its string.",
+    "description": "Costs 1 stamina per activation. Deals 5 physical damage per affordable activation.",
+    "lore": "Children of the flooded orchards learned its balance early."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#.",
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 5
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 1
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 1 stamina per activation. Deals 5 physical damage per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 5
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "common-item-reward-pool"
+    ],
+    "classes": [
+      "ranger"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "assemble_hornback_bow",
+        "resultId": "hornback_bow"
+      }
+    ],
+    "mergeTargets": [
+      "hornback_bow"
+    ]
+  },
+  "visual": {
+    "brief": "A bent pale willow bow with a leather pocket at its string.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A bent pale willow bow with a leather pocket at its string."
+    ],
+    "assets": {
+      "icon": "assets/items/willow_slingbow/icons/art/icon.png",
+      "svg": "assets/items/willow_slingbow/icons/art/icon.svg",
+      "source": "assets/items/willow_slingbow/icons/art/icon.sprite.json",
+      "footprint": "assets/items/willow_slingbow/icons/art/footprint.json",
+      "provenance": "assets/items/willow_slingbow/icons/art/provenance.json",
+      "manifest": "assets/items/willow_slingbow/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/willow_slingbow/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

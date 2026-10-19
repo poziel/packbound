@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "wax_ear_trumpet",
+  "kind": "item",
+  "identity": {
+    "name": "Wax Ear Trumpet",
+    "category": "focus",
+    "rarity": "uncommon",
+    "tags": [
+      "focus"
+    ],
+    "summary": "A curled ivory ear horn with a broad wax rim.",
+    "description": "Supplies 2 ward each round against poison, curse and reflected damage. Removes up to 1 poison before its round tick.",
+    "lore": "Its owner used it to listen for silence."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "ward": 2,
+    "cleanse": 1
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Supplies 2 ward each round against poison, curse and reflected damage. Removes up to 1 poison before its round tick.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "ward": 2,
+        "cleanse": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_wax_ear_trumpet",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "chalk_poultice",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "salt_lantern",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "wax_ear_trumpet",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Chalk Poultice, Salt Lantern into Wax Ear Trumpet."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_porcelain_lung",
+        "resultId": "porcelain_lung"
+      },
+      {
+        "recipeId": "assemble_bottle_of_yesterday",
+        "resultId": "bottle_of_yesterday"
+      },
+      {
+        "recipeId": "assemble_gilded_scarab",
+        "resultId": "gilded_scarab"
+      }
+    ],
+    "mergeTargets": [
+      "porcelain_lung",
+      "bottle_of_yesterday",
+      "gilded_scarab"
+    ]
+  },
+  "visual": {
+    "brief": "A curled ivory ear horn with a broad wax rim.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A curled ivory ear horn with a broad wax rim."
+    ],
+    "assets": {
+      "icon": "assets/items/wax_ear_trumpet/icons/art/icon.png",
+      "svg": "assets/items/wax_ear_trumpet/icons/art/icon.svg",
+      "source": "assets/items/wax_ear_trumpet/icons/art/icon.sprite.json",
+      "footprint": "assets/items/wax_ear_trumpet/icons/art/footprint.json",
+      "provenance": "assets/items/wax_ear_trumpet/icons/art/provenance.json",
+      "manifest": "assets/items/wax_ear_trumpet/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/wax_ear_trumpet/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

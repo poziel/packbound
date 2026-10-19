@@ -2,13 +2,13 @@
 
 [ext_resource type="FontFile" path="res://assets/fonts/ui_pixel.tres" id="body"]
 [ext_resource type="Texture2D" uid="uid://y8wtkdwynv6" path="res://themes/gameplay/frames.svg" id="frames"]
-[ext_resource type="Script" uid="uid://dgiwxyiyagk1i" path="res://components/gameplay_input_texture.gd" id="input_texture"]
-[ext_resource type="Script" uid="uid://4edu36dtrv4e" path="res://components/icon_button/log_scrollbar_style.gd" id="log_scroll_style"]
-[ext_resource type="Texture2D" uid="uid://deuv1h12prisv" path="res://components/pixel_search_field/clear.svg" id="search_clear"]
-[ext_resource type="Texture2D" uid="uid://hpve10ciphfi" path="res://components/pixel_search_field/search.svg" id="search_search"]
-[ext_resource type="Script" uid="uid://dvx7wwqu3b25m" path="res://components/menu_button/menu_button_palette.gd" id="shared_button_palette"]
-[ext_resource type="Script" uid="uid://wfvbatb4xhlu" path="res://components/menu_button/menu_button_style.gd" id="shared_button_style"]
-[ext_resource type="FontFile" path="res://components/pixel_stat_bar/pixel_font.tres" id="stat_font"]
+[ext_resource type="Script" uid="uid://dgiwxyiyagk1i" path="res://themes/gameplay/gameplay_input_texture.gd" id="input_texture"]
+[ext_resource type="Script" uid="uid://4edu36dtrv4e" path="res://themes/gameplay/log_scrollbar_style.gd" id="log_scroll_style"]
+[ext_resource type="Texture2D" uid="uid://deuv1h12prisv" path="res://components/ui/inputs/pixel_search_field/clear.svg" id="search_clear"]
+[ext_resource type="Texture2D" uid="uid://hpve10ciphfi" path="res://components/ui/inputs/pixel_search_field/search.svg" id="search_search"]
+[ext_resource type="Script" uid="uid://dvx7wwqu3b25m" path="res://components/ui/buttons/menu_button/menu_button_palette.gd" id="shared_button_palette"]
+[ext_resource type="Script" uid="uid://wfvbatb4xhlu" path="res://components/ui/buttons/menu_button/menu_button_style.gd" id="shared_button_style"]
+[ext_resource type="FontFile" path="res://components/ui/indicators/pixel_stat_bar/pixel_font.tres" id="stat_font"]
 
 [sub_resource type="Resource" id="shared_frame_palette"]
 script = ExtResource("shared_button_palette")

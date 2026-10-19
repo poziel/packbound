@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "tailor_moon",
+  "kind": "relic",
+  "identity": {
+    "name": "Tailor Moon",
+    "category": "relic",
+    "rarity": "uncommon",
+    "tags": [
+      "relic",
+      "many_items"
+    ],
+    "summary": "With at least eight packed items: gain +3 ward.",
+    "description": "With at least eight packed items: gain +3 ward.",
+    "lore": "The royal tailor pinned the night sky while mending a tear in it. This pincushion remembers the shape of the missing moon."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "With at least eight packed items: gain +3 ward.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "With at least eight packed items",
+      "parameters": {
+        "amount": 3,
+        "scaleCap": 1,
+        "condition": "many_items",
+        "stat": "ward",
+        "metric": "one",
+        "manyItemMinimum": 8
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "many_items"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A crescent pincushion with two threaded needles",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A crescent pincushion with two threaded needles"
+    ],
+    "assets": {
+      "icon": "assets/relics/tailor_moon/icons/art/icon.png",
+      "svg": "assets/relics/tailor_moon/icons/art/icon.svg",
+      "source": "assets/relics/tailor_moon/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/tailor_moon/icons/art/provenance.json",
+      "manifest": "assets/relics/tailor_moon/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/tailor_moon/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

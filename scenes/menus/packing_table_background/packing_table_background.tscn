@@ -1,0 +1,85 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/menus/packing_table_background/packing_table_background.gd" id="controller"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/main-menu/packing-table-base.png" id="base"]
+[ext_resource type="SpriteFrames" path="res://assets/backgrounds/main-menu/window-lightning.tres" id="lightning"]
+[ext_resource type="SpriteFrames" path="res://assets/backgrounds/main-menu/storm-light-on-stone.tres" id="stone_light"]
+[ext_resource type="SpriteFrames" path="res://assets/backgrounds/main-menu/satchel-flap.tres" id="flap"]
+[ext_resource type="SpriteFrames" path="res://assets/backgrounds/main-menu/curse-reflection.tres" id="reflection"]
+[ext_resource type="SpriteFrames" path="res://assets/backgrounds/main-menu/candle-flame.tres" id="flame"]
+[ext_resource type="SpriteFrames" path="res://assets/backgrounds/main-menu/candlelight.tres" id="candlelight"]
+[ext_resource type="SpriteFrames" path="res://assets/backgrounds/main-menu/purple-smoke-billows.tres" id="smoke"]
+[ext_resource type="SpriteFrames" path="res://assets/backgrounds/main-menu/purple-smoke-fragments.tres" id="fragments"]
+[ext_resource type="SpriteFrames" path="res://assets/backgrounds/main-menu/candlelit-dust.tres" id="dust"]
+
+[node name="PackingTableBackground" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("controller")
+
+[node name="Artwork" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Base" type="Sprite2D" parent="Artwork"]
+texture = ExtResource("base")
+centered = false
+
+[node name="WindowLightning" type="AnimatedSprite2D" parent="Artwork"]
+position = Vector2(545, 64)
+sprite_frames = ExtResource("lightning")
+animation = &"storm"
+centered = false
+
+[node name="StormLightOnStone" type="AnimatedSprite2D" parent="Artwork"]
+position = Vector2(529, 48)
+sprite_frames = ExtResource("stone_light")
+animation = &"storm"
+centered = false
+
+[node name="SatchelFlap" type="AnimatedSprite2D" parent="Artwork"]
+position = Vector2(42, 230)
+sprite_frames = ExtResource("flap")
+animation = &"breathe"
+centered = false
+
+[node name="CurseReflection" type="AnimatedSprite2D" parent="Artwork"]
+position = Vector2(136, 244)
+sprite_frames = ExtResource("reflection")
+animation = &"breathe"
+centered = false
+
+[node name="CandleFlame" type="AnimatedSprite2D" parent="Artwork"]
+position = Vector2(551, 197)
+sprite_frames = ExtResource("flame")
+animation = &"flicker"
+centered = false
+
+[node name="Candlelight" type="AnimatedSprite2D" parent="Artwork"]
+position = Vector2(472, 176)
+sprite_frames = ExtResource("candlelight")
+animation = &"warmth"
+centered = false
+
+[node name="PurpleSmokeBillows" type="AnimatedSprite2D" parent="Artwork"]
+position = Vector2(144, 168)
+sprite_frames = ExtResource("smoke")
+animation = &"breathe"
+centered = false
+
+[node name="PurpleSmokeFragments" type="AnimatedSprite2D" parent="Artwork"]
+position = Vector2(140, 164)
+sprite_frames = ExtResource("fragments")
+animation = &"breathe"
+centered = false
+
+[node name="CandlelitDust" type="AnimatedSprite2D" parent="Artwork"]
+position = Vector2(512, 184)
+sprite_frames = ExtResource("dust")
+animation = &"drift"
+centered = false

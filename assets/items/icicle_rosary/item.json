@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "id": "icicle_rosary",
+  "kind": "item",
+  "identity": {
+    "name": "Icicle Rosary",
+    "category": "spell",
+    "rarity": "uncommon",
+    "tags": [
+      "spell",
+      "mage",
+      "frost"
+    ],
+    "summary": "A loop of white ice beads hanging from a long silver spike.",
+    "description": "Costs 2 mana per activation. Deals 6 magical damage per affordable activation. Reduces each enemy strike this round by 2.",
+    "lore": "Each bead holds one silent breath of a lost pilgrim."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 6,
+    "slow": 2
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "mana",
+        "amount": 2
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 2 mana per activation. Deals 6 magical damage per affordable activation. Reduces each enemy strike this round by 2.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 6,
+        "slow": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "different-element-spell"
+      ],
+      "description": "Its frost trace participates in the Elementalist's existing reaction system; arrange it with spells of another element. No extra reaction beyond the shared rules is added.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_icicle_rosary",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "bandage",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "existing"
+          },
+          {
+            "id": "rime_thimble",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "icicle_rosary",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Grave Bandage, Rime Thimble into Icicle Rosary."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_winter_orrery",
+        "resultId": "winter_orrery"
+      },
+      {
+        "recipeId": "assemble_glacier_diagram",
+        "resultId": "glacier_diagram"
+      }
+    ],
+    "mergeTargets": [
+      "winter_orrery",
+      "glacier_diagram"
+    ]
+  },
+  "visual": {
+    "brief": "A loop of white ice beads hanging from a long silver spike.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A loop of white ice beads hanging from a long silver spike."
+    ],
+    "assets": {
+      "icon": "assets/items/icicle_rosary/icons/art/icon.png",
+      "svg": "assets/items/icicle_rosary/icons/art/icon.svg",
+      "source": "assets/items/icicle_rosary/icons/art/icon.sprite.json",
+      "footprint": "assets/items/icicle_rosary/icons/art/footprint.json",
+      "provenance": "assets/items/icicle_rosary/icons/art/provenance.json",
+      "manifest": "assets/items/icicle_rosary/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/icicle_rosary/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

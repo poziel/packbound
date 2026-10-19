@@ -7,7 +7,7 @@
     "#",
     "#"
   ],
-  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
   "exports": [
     "revisions/catalog-v1/vampire-fang-32x64.png",
     "revisions/catalog-v1/vampire-fang-32x64.svg",

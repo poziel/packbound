@@ -1,0 +1,904 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/shared/dev_menu/dev_menu.gd" id="controller"]
+[ext_resource type="Script" path="res://scenes/shared/dev_menu/dev_menu_host.gd" id="host"]
+[ext_resource type="Theme" path="res://themes/gameplay/theme.tres" id="theme"]
+[ext_resource type="PackedScene" path="res://components/ui/inputs/pixel_search_field/pixel_search_field.tscn" id="search"]
+[ext_resource type="PackedScene" path="res://components/ui/inputs/pixel_scrollbar/pixel_scroll_container.tscn" id="scroll"]
+[ext_resource type="PackedScene" path="res://components/ui/buttons/pixel_button/pixel_button.tscn" id="button"]
+
+[node name="DevMenu" type="CanvasLayer"]
+layer = 80
+script = ExtResource("controller")
+
+[node name="Host" type="Node" parent="."]
+script = ExtResource("host")
+
+[node name="Hint" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 220.0
+offset_bottom = 48.0
+theme = ExtResource("theme")
+text = "DEV TOOLS · F8"
+theme_override_font_sizes/font_size = 20
+
+[node name="Indicator" type="Button" parent="."]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -620.0
+offset_top = 12.0
+offset_right = -16.0
+offset_bottom = 48.0
+grow_horizontal = 0
+theme = ExtResource("theme")
+text = "DEV"
+clip_text = true
+theme_override_font_sizes/font_size = 20
+
+[node name="Overlay" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("theme")
+
+[node name="Shade" type="ColorRect" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.025, 0.03, 0.025, 0.94)
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = -16.0
+offset_bottom = -12.0
+
+[node name="Panel" type="PanelContainer" parent="Overlay/Margin"]
+layout_mode = 2
+
+[node name="Padding" type="MarginContainer" parent="Overlay/Margin/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Layout" type="VBoxContainer" parent="Overlay/Margin/Panel/Padding"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Header"]
+text = "PACKBOUND / DEV TOOLS"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="Close" parent="Overlay/Margin/Panel/Padding/Layout/Header" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Close · Esc"
+
+[node name="Context" type="Label" parent="Overlay/Margin/Panel/Padding/Layout"]
+unique_name_in_owner = true
+text = "Current run"
+autowrap_mode = 2
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Tabs" type="TabContainer" parent="Overlay/Margin/Panel/Padding/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+clip_contents = true
+theme_override_colors/font_selected_color = Color(0.93, 0.78, 0.43, 1)
+theme_override_colors/font_unselected_color = Color(0.78, 0.8, 0.72, 1)
+theme_override_colors/font_hovered_color = Color(1, 0.9, 0.65, 1)
+
+[node name="Items" parent="Overlay/Margin/Panel/Padding/Layout/Tabs" instance=ExtResource("scroll")]
+layout_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Items"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Player" parent="Overlay/Margin/Panel/Padding/Layout/Tabs" instance=ExtResource("scroll")]
+layout_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Cheats" parent="Overlay/Margin/Panel/Padding/Layout/Tabs" instance=ExtResource("scroll")]
+layout_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Cheats"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Combat" parent="Overlay/Margin/Panel/Padding/Layout/Tabs" instance=ExtResource("scroll")]
+layout_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="World" parent="Overlay/Margin/Panel/Padding/Layout/Tabs" instance=ExtResource("scroll")]
+layout_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/World"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Filter" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Items/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Scope" type="OptionButton" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Items/Content/Filter"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(140, 40)
+selected = 0
+item_count = 2
+popup/item_0/text = "Items"
+popup/item_0/id = 0
+popup/item_1/text = "Relics"
+popup/item_1/id = 1
+
+[node name="Search" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Items/Content/Filter" instance=ExtResource("search")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(200, 40)
+placeholder_text = "Search names or IDs…"
+
+[node name="Catalog" type="ItemList" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Items/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 145)
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 22
+allow_reselect = true
+
+[node name="Selection" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Items/Content"]
+unique_name_in_owner = true
+text = "Select an item to see its rules."
+layout_mode = 2
+autowrap_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="GrantRow" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Items/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="QuantityLabel" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Items/Content/GrantRow"]
+text = "Quantity"
+layout_mode = 2
+
+[node name="Quantity" type="SpinBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Items/Content/GrantRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120, 40)
+max_value = 100.0
+value = 1.0
+min_value = 1.0
+step = 1.0
+
+[node name="Grant" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Items/Content/GrantRow" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Give to stash"
+
+[node name="AutoPlace" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Items/Content/GrantRow" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Give & pack"
+
+[node name="RemoveRelic" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Items/Content/GrantRow" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Remove relic"
+
+[node name="OwnedRow" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Items/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Owned" type="OptionButton" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Items/Content/OwnedRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+
+[node name="RemoveItem" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Items/Content/OwnedRow" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Remove item"
+
+[node name="PlayerNote" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content"]
+text = "Mana, stamina and Block edits set starting/round budgets. Reset budgets restores equipment rules."
+layout_mode = 2
+autowrap_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="hp" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Name" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/hp"]
+text = "Health"
+layout_mode = 2
+custom_minimum_size = Vector2(180, 0)
+
+[node name="Value_hp" type="SpinBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/hp"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120, 40)
+max_value = 1000000.0
+value = 0.0
+step = 1.0
+
+[node name="Now_hp" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/hp"]
+unique_name_in_owner = true
+text = "Now: —"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="Apply_hp" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/hp" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Apply"
+
+[node name="max_hp" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Name" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/max_hp"]
+text = "Maximum health"
+layout_mode = 2
+custom_minimum_size = Vector2(180, 0)
+
+[node name="Value_max_hp" type="SpinBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/max_hp"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120, 40)
+max_value = 1000000.0
+value = 0.0
+step = 1.0
+
+[node name="Now_max_hp" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/max_hp"]
+unique_name_in_owner = true
+text = "Now: —"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="Apply_max_hp" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/max_hp" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Apply"
+
+[node name="mana" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Name" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/mana"]
+text = "Mana"
+layout_mode = 2
+custom_minimum_size = Vector2(180, 0)
+
+[node name="Value_mana" type="SpinBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/mana"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120, 40)
+max_value = 1000000.0
+value = 0.0
+step = 1.0
+
+[node name="Now_mana" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/mana"]
+unique_name_in_owner = true
+text = "Now: —"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="Apply_mana" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/mana" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Apply"
+
+[node name="stamina" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Name" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/stamina"]
+text = "Stamina / energy"
+layout_mode = 2
+custom_minimum_size = Vector2(180, 0)
+
+[node name="Value_stamina" type="SpinBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/stamina"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120, 40)
+max_value = 1000000.0
+value = 0.0
+step = 1.0
+
+[node name="Now_stamina" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/stamina"]
+unique_name_in_owner = true
+text = "Now: —"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="Apply_stamina" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/stamina" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Apply"
+
+[node name="block" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Name" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/block"]
+text = "Block"
+layout_mode = 2
+custom_minimum_size = Vector2(180, 0)
+
+[node name="Value_block" type="SpinBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/block"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120, 40)
+max_value = 1000000.0
+value = 0.0
+step = 1.0
+
+[node name="Now_block" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/block"]
+unique_name_in_owner = true
+text = "Now: —"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="Apply_block" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/block" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Apply"
+
+[node name="momentum" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Name" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/momentum"]
+text = "Momentum"
+layout_mode = 2
+custom_minimum_size = Vector2(180, 0)
+
+[node name="Value_momentum" type="SpinBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/momentum"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120, 40)
+max_value = 1000000.0
+value = 0.0
+step = 1.0
+
+[node name="Now_momentum" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/momentum"]
+unique_name_in_owner = true
+text = "Now: —"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="Apply_momentum" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/momentum" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Apply"
+
+[node name="undead_companions" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Name" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/undead_companions"]
+text = "Bone thralls"
+layout_mode = 2
+custom_minimum_size = Vector2(180, 0)
+
+[node name="Value_undead_companions" type="SpinBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/undead_companions"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120, 40)
+max_value = 1000000.0
+value = 0.0
+step = 1.0
+
+[node name="Now_undead_companions" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/undead_companions"]
+unique_name_in_owner = true
+text = "Now: —"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="Apply_undead_companions" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/undead_companions" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Apply"
+
+[node name="volley_remaining" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Name" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/volley_remaining"]
+text = "Volley countdown"
+layout_mode = 2
+custom_minimum_size = Vector2(180, 0)
+
+[node name="Value_volley_remaining" type="SpinBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/volley_remaining"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120, 40)
+max_value = 1000000.0
+value = 0.0
+step = 1.0
+
+[node name="Now_volley_remaining" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/volley_remaining"]
+unique_name_in_owner = true
+text = "Now: —"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="Apply_volley_remaining" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/volley_remaining" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Apply"
+
+[node name="PlayerActions" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Heal" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/PlayerActions" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Restore health"
+
+[node name="Refill" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/PlayerActions" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Refill mana & stamina"
+
+[node name="Cleanse" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/PlayerActions" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Clear poison"
+
+[node name="ResetBudgets" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Player/Content/PlayerActions" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Reset budgets"
+
+[node name="CheatNote" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Cheats/Content"]
+text = "SESSION SWITCHES / reset when the game closes. Changes take effect at the next uncommitted action."
+layout_mode = 2
+autowrap_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Cheat_invulnerable" type="CheckBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Cheats/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+text = "Invulnerable"
+tooltip_text = "Prevents health loss from attacks, poison, reflection, and blood costs."
+
+[node name="Cheat_restore_health" type="CheckBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Cheats/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+text = "Restore health each round"
+tooltip_text = "Refills at the round boundary. A lethal hit within a round can still defeat you."
+
+[node name="Cheat_infinite_mana" type="CheckBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Cheats/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+text = "Infinite mana"
+tooltip_text = "Items ignore mana cost. Actual mana remains available for other effects."
+
+[node name="Cheat_infinite_stamina" type="CheckBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Cheats/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+text = "Infinite stamina"
+tooltip_text = "Items ignore stamina cost; other activation requirements still apply."
+
+[node name="DisableCheats" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Cheats/Content" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Disable all cheats"
+
+[node name="EnemySearch" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content" instance=ExtResource("search")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(200, 40)
+placeholder_text = "Find an enemy by name or ID…"
+
+[node name="Enemies" type="ItemList" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 140)
+theme_override_font_sizes/font_size = 22
+allow_reselect = true
+
+[node name="EnemyActions" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Prepare" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/EnemyActions" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Fight selected"
+
+[node name="Restart" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/EnemyActions" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Restart encounter"
+
+[node name="Defeat" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/EnemyActions" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Defeat enemy"
+
+[node name="PlaybackActions" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ToggleCombat" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/PlaybackActions" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Start / pause / resume"
+
+[node name="Step" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/PlaybackActions" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Step one round"
+
+[node name="TurnBased" type="CheckBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/PlaybackActions"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Turn based"
+
+[node name="enemy_hp" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Name" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_hp"]
+text = "Enemy health"
+layout_mode = 2
+custom_minimum_size = Vector2(180, 0)
+
+[node name="EnemyValue_hp" type="SpinBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_hp"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120, 40)
+max_value = 1000000.0
+value = 0.0
+step = 1.0
+
+[node name="EnemyNow_hp" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_hp"]
+unique_name_in_owner = true
+text = "Now: —"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="EnemyApply_hp" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_hp" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Apply"
+
+[node name="enemy_enemy_poison" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Name" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_poison"]
+text = "Poison"
+layout_mode = 2
+custom_minimum_size = Vector2(180, 0)
+
+[node name="EnemyValue_enemy_poison" type="SpinBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_poison"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120, 40)
+max_value = 1000000.0
+value = 0.0
+step = 1.0
+
+[node name="EnemyNow_enemy_poison" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_poison"]
+unique_name_in_owner = true
+text = "Now: —"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="EnemyApply_enemy_poison" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_poison" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Apply"
+
+[node name="enemy_enemy_burn" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Name" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_burn"]
+text = "Burn"
+layout_mode = 2
+custom_minimum_size = Vector2(180, 0)
+
+[node name="EnemyValue_enemy_burn" type="SpinBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_burn"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120, 40)
+max_value = 1000000.0
+value = 0.0
+step = 1.0
+
+[node name="EnemyNow_enemy_burn" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_burn"]
+unique_name_in_owner = true
+text = "Now: —"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="EnemyApply_enemy_burn" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_burn" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Apply"
+
+[node name="enemy_enemy_slow" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Name" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_slow"]
+text = "Slow"
+layout_mode = 2
+custom_minimum_size = Vector2(180, 0)
+
+[node name="EnemyValue_enemy_slow" type="SpinBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_slow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120, 40)
+max_value = 1000000.0
+value = 0.0
+step = 1.0
+
+[node name="EnemyNow_enemy_slow" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_slow"]
+unique_name_in_owner = true
+text = "Now: —"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="EnemyApply_enemy_slow" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_slow" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Apply"
+
+[node name="enemy_enemy_spark" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Name" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_spark"]
+text = "Spark"
+layout_mode = 2
+custom_minimum_size = Vector2(180, 0)
+
+[node name="EnemyValue_enemy_spark" type="SpinBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_spark"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120, 40)
+max_value = 1000000.0
+value = 0.0
+step = 1.0
+
+[node name="EnemyNow_enemy_spark" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_spark"]
+unique_name_in_owner = true
+text = "Now: —"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="EnemyApply_enemy_spark" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_spark" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Apply"
+
+[node name="enemy_enemy_doom" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Name" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_doom"]
+text = "Doom"
+layout_mode = 2
+custom_minimum_size = Vector2(180, 0)
+
+[node name="EnemyValue_enemy_doom" type="SpinBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_doom"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120, 40)
+max_value = 1000000.0
+value = 0.0
+step = 1.0
+
+[node name="EnemyNow_enemy_doom" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_doom"]
+unique_name_in_owner = true
+text = "Now: —"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="EnemyApply_enemy_doom" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_doom" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Apply"
+
+[node name="enemy_enemy_doom_turns" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Name" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_doom_turns"]
+text = "Doom turns"
+layout_mode = 2
+custom_minimum_size = Vector2(180, 0)
+
+[node name="EnemyValue_enemy_doom_turns" type="SpinBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_doom_turns"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120, 40)
+max_value = 1000000.0
+value = 0.0
+step = 1.0
+
+[node name="EnemyNow_enemy_doom_turns" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_doom_turns"]
+unique_name_in_owner = true
+text = "Now: —"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="EnemyApply_enemy_doom_turns" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/Combat/Content/enemy_enemy_doom_turns" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Apply"
+
+[node name="WorldNote" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/World/Content"]
+text = "Jump instantly to a valid room. Your inventory and earned rewards stay with you; the current encounter is abandoned."
+layout_mode = 2
+autowrap_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Destination" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/World/Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="FloorLabel" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/World/Content/Destination"]
+text = "Floor"
+layout_mode = 2
+
+[node name="Floor" type="SpinBox" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/World/Content/Destination"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120, 40)
+max_value = 20.0
+value = 1.0
+min_value = 1.0
+step = 1.0
+
+[node name="RoomKind" type="OptionButton" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/World/Content/Destination"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 5
+popup/item_0/text = "Combat"
+popup/item_0/id = 0
+popup/item_1/text = "Rest"
+popup/item_1/id = 1
+popup/item_2/text = "Relic"
+popup/item_2/id = 2
+popup/item_3/text = "Encounter"
+popup/item_3/id = 3
+popup/item_4/text = "Floor selector"
+popup/item_4/id = 4
+
+[node name="Travel" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/World/Content/Destination" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Jump"
+
+[node name="Entrance" parent="Overlay/Margin/Panel/Padding/Layout/Tabs/World/Content" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Return to entrance"
+
+[node name="Pending" type="HBoxContainer" parent="Overlay/Margin/Panel/Padding/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PendingLabel" type="Label" parent="Overlay/Margin/Panel/Padding/Layout/Pending"]
+unique_name_in_owner = true
+text = "Pending edits"
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="FinishApply" parent="Overlay/Margin/Panel/Padding/Layout/Pending" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Finish exchange & apply"
+
+[node name="CancelPending" parent="Overlay/Margin/Panel/Padding/Layout/Pending" instance=ExtResource("button")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Cancel edits"
+
+[node name="Result" type="Label" parent="Overlay/Margin/Panel/Padding/Layout"]
+unique_name_in_owner = true
+text = "Changes affect your current saved run."
+layout_mode = 2
+autowrap_mode = 2
+theme_override_font_sizes/font_size = 20

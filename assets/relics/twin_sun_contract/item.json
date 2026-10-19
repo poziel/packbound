@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "twin_sun_contract",
+  "kind": "relic",
+  "identity": {
+    "name": "Twin Sun Contract",
+    "category": "relic",
+    "rarity": "rare",
+    "tags": [
+      "relic",
+      "both_damage"
+    ],
+    "summary": "When activations produced both physical and magical damage: gain +3 healing.",
+    "description": "When activations produced both physical and magical damage: gain +3 healing.",
+    "lore": "Two rival temples signed the treaty beneath different suns. Only the bearer can see both seals shine at once."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When activations produced both physical and magical damage: gain +3 healing.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "When activations produced both physical and magical damage",
+      "parameters": {
+        "amount": 3,
+        "scaleCap": 1,
+        "condition": "both_damage",
+        "stat": "healing",
+        "metric": "one"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "both_damage"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A parchment contract bearing gold and silver suns",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A parchment contract bearing gold and silver suns"
+    ],
+    "assets": {
+      "icon": "assets/relics/twin_sun_contract/icons/art/icon.png",
+      "svg": "assets/relics/twin_sun_contract/icons/art/icon.svg",
+      "source": "assets/relics/twin_sun_contract/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/twin_sun_contract/icons/art/provenance.json",
+      "manifest": "assets/relics/twin_sun_contract/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/twin_sun_contract/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

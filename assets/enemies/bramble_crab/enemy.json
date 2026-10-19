@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "bramble_crab",
+  "name": "Bramble Crab",
+  "species": "crab",
+  "age": "6 years",
+  "role": "piercer",
+  "description": "Roots growing through its abandoned pot-shell have hardened into thorns. It guards flooded stairs with a single long pincer.",
+  "encounter_floor": 4,
+  "starting_stats": {
+    "hp": 38,
+    "attacks": [
+      6
+    ],
+    "hits": 1,
+    "armor": 0,
+    "pierce": 1,
+    "poison": 0,
+    "drain": 0,
+    "reflect": 0,
+    "sunder": 0,
+    "enrage": 0,
+    "regen": 0,
+    "parry": 0,
+    "opening_armor": 0,
+    "cycle_armor": 0,
+    "cleanse": 0,
+    "physical_resistance": 0,
+    "magical_resistance": 0,
+    "damage_type": "physical"
+  },
+  "abilities": [
+    {
+      "id": "pierce",
+      "amount": 1,
+      "description": "Up to 1 damage per strike bypasses block after slow, plating and resistance reduce the strike."
+    }
+  ],
+  "intent": "Piercer",
+  "detail": "Up to 1 damage per strike bypasses block after slow, plating and resistance reduce the strike.",
+  "art": {
+    "source": "art/bramble_crab.pixloom.json",
+    "project": "art/bramble_crab.pixloom",
+    "png": "art/bramble_crab.png",
+    "svg": "art/bramble_crab.svg"
+  }
+}

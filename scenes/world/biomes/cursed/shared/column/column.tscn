@@ -1,0 +1,44 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/column/column.tscn" id="base"]
+[ext_resource type="Material" path="res://scenes/world/biomes/cursed/shared/stone.tres" id="stone"]
+[ext_resource type="Material" path="res://scenes/world/biomes/cursed/shared/edge.tres" id="edge"]
+[ext_resource type="Material" path="res://scenes/world/biomes/cursed/shared/dark.tres" id="dark"]
+[ext_resource type="Material" path="res://scenes/world/biomes/cursed/shared/pale.tres" id="pale"]
+
+[node name="Column" instance=ExtResource("base")]
+
+[node name="Piece00" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece01" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece02" parent="."]
+material_override = ExtResource("stone")
+
+[node name="Piece03" parent="."]
+material_override = ExtResource("stone")
+
+[node name="Piece04" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece05" parent="."]
+material_override = ExtResource("stone")
+
+[node name="Piece06" parent="."]
+material_override = ExtResource("stone")
+
+[node name="Piece07" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Piece08" parent="."]
+material_override = ExtResource("stone")
+
+[node name="Piece09" parent="."]
+material_override = ExtResource("stone")
+
+[node name="Piece10" parent="."]
+material_override = ExtResource("edge")
+
+[node name="Core" parent="."]
+material_override = ExtResource("dark")

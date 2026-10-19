@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "revolution_spindle",
+  "kind": "relic",
+  "identity": {
+    "name": "Revolution Spindle",
+    "category": "relic",
+    "rarity": "epic",
+    "tags": [
+      "relic",
+      "warrior"
+    ],
+    "summary": "For the Warmonger: gain +2 physical damage per momentum (up to 10 counted).",
+    "description": "For the Warmonger: gain +2 physical damage per momentum (up to 10 counted).",
+    "lore": "The loom powered the whole fortress until its workers reversed the wheel. The governor heard the new rhythm only once."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "For the Warmonger: gain +2 physical damage per momentum (up to 10 counted).",
+      "trigger": "after-item-aggregation",
+      "target": "current-enemy",
+      "condition": "For the Warmonger",
+      "parameters": {
+        "amount": 2,
+        "scaleCap": 10,
+        "condition": "warrior",
+        "stat": "physical_damage",
+        "metric": "momentum"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "warrior"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A red iron spindle with three concentric toothed wheels",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A red iron spindle with three concentric toothed wheels"
+    ],
+    "assets": {
+      "icon": "assets/relics/revolution_spindle/icons/art/icon.png",
+      "svg": "assets/relics/revolution_spindle/icons/art/icon.svg",
+      "source": "assets/relics/revolution_spindle/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/revolution_spindle/icons/art/provenance.json",
+      "manifest": "assets/relics/revolution_spindle/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/revolution_spindle/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

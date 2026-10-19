@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "id": "tomb_mason",
+  "name": "Tomb Mason",
+  "species": "golem",
+  "age": "84 years since carving",
+  "role": "sunder",
+  "description": "This unfinished stone worker still tries to repair the dungeon around living intruders. Its chisel-like fist knocks defensive stances apart.",
+  "encounter_floor": 9,
+  "starting_stats": {
+    "hp": 61,
+    "attacks": [
+      8
+    ],
+    "hits": 1,
+    "armor": 3,
+    "pierce": 0,
+    "poison": 0,
+    "drain": 0,
+    "reflect": 0,
+    "sunder": 2,
+    "enrage": 0,
+    "regen": 0,
+    "parry": 0,
+    "opening_armor": 0,
+    "cycle_armor": 0,
+    "cleanse": 0,
+    "physical_resistance": 0,
+    "magical_resistance": 0,
+    "damage_type": "physical"
+  },
+  "abilities": [
+    {
+      "id": "armor",
+      "amount": 3,
+      "description": "Starts combat with 3 block. Absorbed damage spends it permanently for this fight."
+    },
+    {
+      "id": "sunder",
+      "amount": 2,
+      "description": "Destroys up to 2 player block before striking."
+    }
+  ],
+  "intent": "Sunder",
+  "detail": "Starts combat with 3 block. Absorbed damage spends it permanently for this fight. Destroys up to 2 player block before striking.",
+  "art": {
+    "source": "art/tomb_mason.pixloom.json",
+    "project": "art/tomb_mason.pixloom",
+    "png": "art/tomb_mason.png",
+    "svg": "art/tomb_mason.svg"
+  }
+}

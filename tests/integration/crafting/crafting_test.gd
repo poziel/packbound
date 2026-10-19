@@ -1,0 +1,166 @@
+extends "res://tests/support/test_case.gd"
+
+
+func fixture() -> PackRun:
+	var run := PackRun.new()
+	run.reset(42)
+	run.relics.clear()
+	run.items.clear()
+	return run
+
+func _initialize() -> void:
+	if not require_isolation():
+		return
+	_run.call_deferred()
+
+func _run() -> void:
+	var run := fixture()
+	run.add_item("rusty_knife", Vector2i.ZERO)
+	run.add_item("rusty_knife", Vector2i.RIGHT)
+	check(run.items.size() == 2, "Ingredients remain until combat starts")
+	var before: Array[Dictionary] = run.items.duplicate(true)
+	run.effects()
+	run.round_resources()
+	check(run.items == before, "Combat and resource previews cannot consume ingredients")
+	var pending: Array[Dictionary] = PackRun.CRAFTING.plans(run)
+	check(pending.size() == 1 and pending[0]["links"].size() == 1, "Two-component recipe has one pending link")
+	var old_ids: Array = [run.items[0]["id"], run.items[1]["id"]]
+	run.items[0]["priority"] = 4
+	check(run.start_combat(), "Combat starts normally")
+	check(run.items.size() == 1 and run.items[0]["key"] == "longsword", "Adjacent knives merge at battle start")
+	check(not old_ids.has(run.items[0]["id"]), "Output has a fresh unique ID")
+	check(run.items[0]["priority"] == 4, "Result retains anchor activation priority")
+	check(run.crafting_events.size() == 1 and run.history.back().contains("Crafted"), "Merge supplies visual events and a history entry")
+	check(not run.start_combat(), "Repeated combat start cannot craft twice")
+	check(run.items.size() == 1, "No duplicate output")
+	run = fixture()
+	run.add_item("rusty_knife", Vector2i.ZERO)
+	run.add_item("rusty_knife", Vector2i.ONE)
+	run.start_combat()
+	check(run.items.size() == 2, "Diagonal contact does not craft")
+	run = fixture()
+	run.add_item("rusty_knife", Vector2i.ZERO)
+	run.add_item("rusty_knife")
+	run.start_combat()
+	check(run.items.size() == 2, "Stashed ingredients do not craft")
+	run = fixture()
+	run.add_item("bandage", Vector2i.ZERO)
+	run.add_item("bandage", Vector2i.RIGHT)
+	run.add_item("antidote", Vector2i.ONE)
+	run.start_combat()
+	check(run.items.size() == 1 and run.items[0]["key"] == "healing_herbs", "Three components can craft through connected chain")
+	check(run.cells(run.items[0]).size() == 3, "Result uses its full footprint")
+	run = fixture()
+	run.add_item("bandage", Vector2i.ZERO)
+	run.add_item("bandage", Vector2i.RIGHT)
+	run.add_item("antidote", Vector2i(2, 0))
+	run.start_combat()
+	check(run.items.size() == 1 and run.items[0]["cell"] != null, "Output searches the whole grid when its original footprint cannot fit")
+	run = fixture()
+	run.add_item("cracked_shield", Vector2i.ZERO)
+	run.add_item("cracked_shield", Vector2i.RIGHT)
+	run.start_combat()
+	check(run.items.size() == 1 and run.items[0]["key"] == "tower_shield", "Shield recipe produces its result")
+	check(run.block == 9, "Crafted equipment contributes starting resources immediately")
+	run = fixture()
+	for x in range(4):
+		run.add_item("rusty_knife", Vector2i(x, 0))
+	check(PackRun.CRAFTING.plans(run).size() == 2, "Disjoint groups can craft simultaneously")
+	run.start_combat()
+	check(run.items.size() == 2, "Four ingredients produce exactly two results")
+	check(run.items[0]["id"] != run.items[1]["id"], "Simultaneous outputs get distinct IDs")
+	run = fixture()
+	for x in range(3):
+		run.add_item("rusty_knife", Vector2i(x, 0))
+	run.start_combat()
+	check(run.items.size() == 2, "Overlapping matches never reuse an ingredient")
+	run = fixture()
+	run.add_item("bandage", Vector2i.ZERO)
+	run.add_item("bandage", Vector2i.RIGHT)
+	run.add_item("antidote", Vector2i(6, 5))
+	check(PackRun.CRAFTING.plans(run).is_empty(), "Partial adjacency cannot activate a three-component recipe")
+	run = fixture()
+	var bow: Dictionary = run.add_item("shortbow", Vector2i.ZERO)
+	bow["rotation"] = 1
+	bow["shape"] = PackRun.dimensions(bow)
+	var knife: Dictionary = run.add_item("rusty_knife", Vector2i(3, 1))
+	var pair: Array[Vector2i] = PackRun.CRAFTING.nearest_tiles(run, bow, knife)
+	check(pair.size() == 2 and run.cells(bow).has(pair[0]) and run.cells(knife).has(pair[1]), "Nearest endpoints belong to rotated occupied masks")
+	for a: Vector2i in run.cells(bow):
+		for b: Vector2i in run.cells(knife):
+			check((pair[1] - pair[0]).length_squared() <= (b - a).length_squared(), "Link uses minimum occupied-tile distance")
+	run = fixture()
+	run.add_item("rusty_knife", Vector2i.ZERO)
+	run.add_item("rusty_knife", Vector2i.RIGHT)
+	var saves = preload("res://systems/runs/run_saves.gd").new()
+	var restored := PackRun.new()
+	saves.restore(restored, saves.capture(run, 0.0))
+	check(PackRun.CRAFTING.plans(restored).size() == 1, "Prepared crafting survives save and restore")
+	restored.start_combat()
+	var running := PackRun.new()
+	saves.restore(running, saves.capture(restored, 0.0))
+	check(not running.start_combat() and running.items.size() == 1, "Running save cannot replay crafting")
+	run = fixture()
+	run.add_item("rusty_knife", Vector2i.ZERO)
+	run.add_item("rusty_knife", Vector2i.RIGHT)
+	run.phase = PackRun.Phase.LOOT
+	run.combat_state = PackRun.CombatState.FINISHED
+	run.advance_encounter()
+	check(run.phase == PackRun.Phase.SELECTOR and run.items.size() == 2, "Entering the selector preserves prepared ingredients")
+	check(run.choose_destination("combat"), "Choose the next combat before starting its crafting")
+	check(run.fight == 1 and run.items.size() == 2, "Advancing encounters preserves ingredients for preparation")
+	run.start_combat()
+	check(run.items.size() == 1, "Next battle start crafts the prepared recipe")
+	await _board_checks()
+	await _game_checks()
+	report("CRAFTING RESULT")
+	quit(1 if failures else 0)
+
+func _board_checks() -> void:
+	var run := fixture()
+	run.add_item("bandage", Vector2i.ZERO)
+	run.add_item("bandage", Vector2i.RIGHT)
+	run.add_item("antidote", Vector2i.ONE)
+	var board: BackpackBoard = load("res://scenes/run/inventory/backpack/backpack.tscn").instantiate()
+	board.run = run
+	root.add_child(board)
+	await process_frame
+	check(board.crafting_links().size() == 2, "Three-component cluster draws a two-link spanning tree")
+	board.dragging = run.items[0]
+	check(board.crafting_links().is_empty(), "Dragging hides the complete recipe preview")
+	board.dragging = {}
+	var antidote: Dictionary = run.items[2]
+	antidote["cell"] = Vector2i(5, 5)
+	check(board.crafting_links().size() == 1 and board.crafting_attempts()[0]["count"] == 2, "Moving away downgrades the cached attempt to 2/3")
+	antidote["cell"] = Vector2i.ONE
+	check(board.crafting_links().size() == 2, "Moving back restores pending links")
+	run.start_combat()
+	check(board.crafting_links().is_empty(), "Pending links disappear during combat")
+	board.show_crafting_merges(run.crafting_events)
+	check(board._crafting_bursts.size() == 1, "Actual merge starts a visual burst")
+	board.set_activation_feedback_paused(true)
+	board._process(0.2)
+	check(board._crafting_bursts[0]["elapsed"] == 0.0, "Combat pause freezes the merge burst")
+	board.set_activation_feedback_paused(false)
+	board._process(PackRun.CRAFTING.ANIMATION_SECONDS + 0.1)
+	check(board._crafting_bursts.is_empty(), "Merge burst expires cleanly")
+	board.queue_free()
+	await process_frame
+
+func _game_checks() -> void:
+	var game: Control = load("res://scenes/main.tscn").instantiate()
+	root.add_child(game)
+	await process_frame
+	game.run_saves.directory = preload("res://tests/support/artifact_paths.gd").path("legacy/crafting-integration-saves")
+	game.start_run("warrior", 42)
+	game.run.items.clear()
+	game.run.add_item("rusty_knife", Vector2i.ZERO)
+	game.run.add_item("rusty_knife", Vector2i.RIGHT)
+	game._refresh()
+	var info: Dictionary = game._describe_item(game.run.items[0], Rect2())
+	check(not info["body"].contains("Ready to merge") and not PackRun.CRAFTING.recipe_inspection(game.run, game.run.items[0]).is_empty(), "Ordinary tooltip omits recipes while dedicated recipe inspection identifies the pending output")
+	game._act()
+	check(game.run.items.size() == 1 and game.run.items[0]["key"] == "longsword", "Actual game Attack action merges ingredients")
+	check(game.board._crafting_bursts.size() == 1, "Actual game Attack action displays the merge burst")
+	game.playback.set_paused(true)
+	await preload("res://tests/support/automatic_combat_cleanup.gd").release(self, game)

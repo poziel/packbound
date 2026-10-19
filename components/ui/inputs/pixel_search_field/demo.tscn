@@ -1,0 +1,460 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://components/ui/inputs/pixel_search_field/demo.gd" id="1"]
+[ext_resource type="PackedScene" path="res://components/ui/inputs/pixel_search_field/pixel_search_field.tscn" id="2"]
+[ext_resource type="Theme" path="res://themes/gameplay/theme.tres" id="3"]
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.065, 0.083, 0.12, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.21, 0.24, 0.29, 1)
+
+[node name="PixelSearchDemo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3")
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.035, 0.047, 0.071, 1)
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 40
+
+[node name="Layout" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Eyebrow" type="Label" parent="Margin/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.47, 1)
+theme_override_font_sizes/font_size = 16
+text = "PACKBOUND  /  REUSABLE CONTROLS"
+
+[node name="Title" type="Label" parent="Margin/Layout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Find what you need."
+
+[node name="Description" type="Label" parent="Margin/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.56, 0.62, 0.65, 1)
+theme_override_font_sizes/font_size = 24
+text = "Filter names, effects and item types. Each list keeps its own search."
+
+[node name="Lists" type="HBoxContainer" parent="Margin/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="Statistics" type="PanelContainer" parent="Margin/Layout/Lists"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Inset" type="MarginContainer" parent="Margin/Layout/Lists/Statistics"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Content" type="VBoxContainer" parent="Margin/Layout/Lists/Statistics/Inset"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Heading" type="HBoxContainer" parent="Margin/Layout/Lists/Statistics/Inset/Content"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Heading"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Statistics"
+
+[node name="Count" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Heading"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.56, 0.62, 0.65, 1)
+text = "8 / 8"
+
+[node name="Search" parent="Margin/Layout/Lists/Statistics/Inset/Content" instance=ExtResource("2")]
+layout_mode = 2
+placeholder_text = "Search statistics..."
+list_path = NodePath("../Scroll/Rows")
+empty_state_path = NodePath("../Empty")
+
+[node name="Empty" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.68, 0.68, 1)
+theme_override_font_sizes/font_size = 24
+text = "No matches. Try another search or clear the field."
+autowrap_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Margin/Layout/Lists/Statistics/Inset/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Rows" type="VBoxContainer" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="Row1" type="HBoxContainer" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+metadata/search_text = "physical attack damage melee"
+
+[node name="Name" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows/Row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Physical Attack"
+
+[node name="Value" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows/Row1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.47, 1)
+theme_override_font_sizes/font_size = 24
+text = "28"
+
+[node name="Row2" type="HBoxContainer" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+metadata/search_text = "luck chance"
+
+[node name="Name" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows/Row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Luck"
+
+[node name="Value" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows/Row2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.47, 1)
+theme_override_font_sizes/font_size = 24
+text = "25%"
+
+[node name="Row3" type="HBoxContainer" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+metadata/search_text = "magic attack damage spell"
+
+[node name="Name" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows/Row3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Magic Attack"
+
+[node name="Value" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows/Row3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.47, 1)
+theme_override_font_sizes/font_size = 24
+text = "16"
+
+[node name="Row4" type="HBoxContainer" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+metadata/search_text = "critical chance crit"
+
+[node name="Name" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows/Row4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Critical Chance"
+
+[node name="Value" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows/Row4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.47, 1)
+theme_override_font_sizes/font_size = 24
+text = "12%"
+
+[node name="Row5" type="HBoxContainer" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+metadata/search_text = "armor defence defense"
+
+[node name="Name" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows/Row5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Armor"
+
+[node name="Value" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows/Row5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.47, 1)
+theme_override_font_sizes/font_size = 24
+text = "8"
+
+[node name="Row6" type="HBoxContainer" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+metadata/search_text = "block defence defense shield"
+
+[node name="Name" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows/Row6"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Block"
+
+[node name="Value" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows/Row6"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.47, 1)
+theme_override_font_sizes/font_size = 24
+text = "10"
+
+[node name="Row7" type="HBoxContainer" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+metadata/search_text = "regeneration heal health"
+
+[node name="Name" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows/Row7"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Regeneration"
+
+[node name="Value" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows/Row7"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.47, 1)
+theme_override_font_sizes/font_size = 24
+text = "3"
+
+[node name="Row8" type="HBoxContainer" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+metadata/search_text = "mana magic resource"
+
+[node name="Name" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows/Row8"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Mana"
+
+[node name="Value" type="Label" parent="Margin/Layout/Lists/Statistics/Inset/Content/Scroll/Rows/Row8"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.47, 1)
+theme_override_font_sizes/font_size = 24
+text = "12"
+
+[node name="Items" type="PanelContainer" parent="Margin/Layout/Lists"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Inset" type="MarginContainer" parent="Margin/Layout/Lists/Items"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Content" type="VBoxContainer" parent="Margin/Layout/Lists/Items/Inset"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Heading" type="HBoxContainer" parent="Margin/Layout/Lists/Items/Inset/Content"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Heading"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Items"
+
+[node name="Count" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Heading"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.56, 0.62, 0.65, 1)
+text = "8 / 8"
+
+[node name="Search" parent="Margin/Layout/Lists/Items/Inset/Content" instance=ExtResource("2")]
+layout_mode = 2
+placeholder_text = "Search items or effects..."
+list_path = NodePath("../Scroll/Rows")
+empty_state_path = NodePath("../Empty")
+accent_color = Color(0.67, 0.60, 0.83, 1)
+
+[node name="Empty" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.68, 0.68, 1)
+theme_override_font_sizes/font_size = 24
+text = "No matches. Try another search or clear the field."
+autowrap_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Margin/Layout/Lists/Items/Inset/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Rows" type="VBoxContainer" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="Row1" type="HBoxContainer" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+metadata/search_text = "longsword weapon physical melee"
+
+[node name="Name" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows/Row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Longsword"
+
+[node name="Value" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows/Row1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.67, 0.60, 0.83, 1)
+theme_override_font_sizes/font_size = 24
+text = "Weapon"
+
+[node name="Row2" type="HBoxContainer" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+metadata/search_text = "cracked shield armor block defence defense"
+
+[node name="Name" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows/Row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Cracked Shield"
+
+[node name="Value" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows/Row2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.67, 0.60, 0.83, 1)
+theme_override_font_sizes/font_size = 24
+text = "Armor"
+
+[node name="Row3" type="HBoxContainer" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+metadata/search_text = "venom dagger weapon poison melee"
+
+[node name="Name" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows/Row3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Venom Dagger"
+
+[node name="Value" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows/Row3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.67, 0.60, 0.83, 1)
+theme_override_font_sizes/font_size = 24
+text = "Weapon"
+
+[node name="Row4" type="HBoxContainer" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+metadata/search_text = "ember grimoire spell fire burn magic"
+
+[node name="Name" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows/Row4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Ember Grimoire"
+
+[node name="Value" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows/Row4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.67, 0.60, 0.83, 1)
+theme_override_font_sizes/font_size = 24
+text = "Spell"
+
+[node name="Row5" type="HBoxContainer" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+metadata/search_text = "hunting quiver support ranged bow"
+
+[node name="Name" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows/Row5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Hunting Quiver"
+
+[node name="Value" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows/Row5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.67, 0.60, 0.83, 1)
+theme_override_font_sizes/font_size = 24
+text = "Support"
+
+[node name="Row6" type="HBoxContainer" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+metadata/search_text = "grave bandage healing regeneration"
+
+[node name="Name" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows/Row6"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Grave Bandage"
+
+[node name="Value" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows/Row6"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.67, 0.60, 0.83, 1)
+theme_override_font_sizes/font_size = 24
+text = "Healing"
+
+[node name="Row7" type="HBoxContainer" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+metadata/search_text = "spark ring spell magic lightning mana"
+
+[node name="Name" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows/Row7"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Spark Ring"
+
+[node name="Value" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows/Row7"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.67, 0.60, 0.83, 1)
+theme_override_font_sizes/font_size = 24
+text = "Spell"
+
+[node name="Row8" type="HBoxContainer" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+metadata/search_text = "iron charm trinket armor defence defense"
+
+[node name="Name" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows/Row8"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Iron Charm"
+
+[node name="Value" type="Label" parent="Margin/Layout/Lists/Items/Inset/Content/Scroll/Rows/Row8"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.67, 0.60, 0.83, 1)
+theme_override_font_sizes/font_size = 24
+text = "Trinket"
+
+[node name="Hint" type="Label" parent="Margin/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.56, 0.62, 0.65, 1)
+theme_override_font_sizes/font_size = 16
+text = "TYPE TO FILTER     /     ESC TO CLEAR     /     TAB TO SWITCH LISTS"

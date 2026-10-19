@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "hedgehog_penny",
+  "kind": "relic",
+  "identity": {
+    "name": "Hedgehog Penny",
+    "category": "relic",
+    "rarity": "common",
+    "tags": [
+      "relic",
+      "has_shield"
+    ],
+    "summary": "With at least one packed shield: gain +1 thorns.",
+    "description": "With at least one packed shield: gain +1 thorns.",
+    "lore": "Children once left these pennies beneath the city hedge. The hedge grew teeth when the tax collectors came."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "With at least one packed shield: gain +1 thorns.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "With at least one packed shield",
+      "parameters": {
+        "amount": 1,
+        "scaleCap": 1,
+        "condition": "has_shield",
+        "stat": "thorns",
+        "metric": "one"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "has_shield"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A thick copper penny stamped with a hedgehog",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A thick copper penny stamped with a hedgehog"
+    ],
+    "assets": {
+      "icon": "assets/relics/hedgehog_penny/icons/art/icon.png",
+      "svg": "assets/relics/hedgehog_penny/icons/art/icon.svg",
+      "source": "assets/relics/hedgehog_penny/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/hedgehog_penny/icons/art/provenance.json",
+      "manifest": "assets/relics/hedgehog_penny/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/hedgehog_penny/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

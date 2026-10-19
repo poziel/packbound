@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "id": "endless_flight_spool",
+  "kind": "item",
+  "identity": {
+    "name": "Endless Flight Spool",
+    "category": "booster",
+    "rarity": "legendary",
+    "tags": [
+      "booster",
+      "ranger"
+    ],
+    "summary": "An ivory spool wrapped with a feather shaped bronze ribbon.",
+    "description": "While orthogonally touching the permanent Bowmaster quiver, adds 2 arrows, 4 damage to Volley; this equipment remains in the backpack and is not consumed.",
+    "lore": "The first arrow returned carrying the last feather ever shed."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "While orthogonally touching the permanent Bowmaster quiver, adds 2 arrows, 4 damage to Volley; this equipment remains in the backpack and is not consumed.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [
+    {
+      "id": "quiver_bonus",
+      "targetIds": [
+        "magnificent_quiver"
+      ],
+      "targetTags": [
+        "quiver"
+      ],
+      "geometry": "orthogonal occupied-cell contact",
+      "stacking": "once per distinct source and target; different sources add",
+      "trigger": "while-equipped",
+      "bonuses": {
+        "arrows": 2,
+        "damage": 4
+      },
+      "conditions": [
+        "Both source and target are equipped."
+      ],
+      "implementation": "supported"
+    }
+  ],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Pairs with the permanent Bowmaster quiver and other different quiver attachments; normal bows receive no implicit bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "legendary-item-reward-pool"
+    ],
+    "classes": [
+      "ranger"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_endless_flight_spool",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "cinder_nock_rack",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "scorpion_magazine",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "seamfinder_lens",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "winterflight_rack",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "endless_flight_spool",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 4,
+          "priorityIngredientCount": 4
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Cinder Nock Rack, Scorpion Magazine, Seamfinder Lens, Winterflight Rack into Endless Flight Spool."
+      }
+    ],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "An ivory spool wrapped with a feather shaped bronze ribbon.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "An ivory spool wrapped with a feather shaped bronze ribbon."
+    ],
+    "assets": {
+      "icon": "assets/items/endless_flight_spool/icons/art/icon.png",
+      "svg": "assets/items/endless_flight_spool/icons/art/icon.svg",
+      "source": "assets/items/endless_flight_spool/icons/art/icon.sprite.json",
+      "footprint": "assets/items/endless_flight_spool/icons/art/footprint.json",
+      "provenance": "assets/items/endless_flight_spool/icons/art/provenance.json",
+      "manifest": "assets/items/endless_flight_spool/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/endless_flight_spool/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

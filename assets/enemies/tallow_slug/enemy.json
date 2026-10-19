@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "tallow_slug",
+  "name": "Tallow Slug",
+  "species": "slug",
+  "age": "14 months",
+  "role": "sustain",
+  "description": "Once bred to clean lamp trays, these slugs now feed on the fatty runoff of the crypt kitchens. Their wounds close with pale wax.",
+  "encounter_floor": 3,
+  "starting_stats": {
+    "hp": 35,
+    "attacks": [
+      4
+    ],
+    "hits": 1,
+    "armor": 0,
+    "pierce": 0,
+    "poison": 0,
+    "drain": 0,
+    "reflect": 0,
+    "sunder": 0,
+    "enrage": 0,
+    "regen": 2,
+    "parry": 0,
+    "opening_armor": 0,
+    "cycle_armor": 0,
+    "cleanse": 0,
+    "physical_resistance": 0,
+    "magical_resistance": 0,
+    "damage_type": "physical"
+  },
+  "abilities": [
+    {
+      "id": "regen",
+      "amount": 2,
+      "description": "Restores up to 2 health after its response if still alive, capped at maximum health."
+    }
+  ],
+  "intent": "Sustain",
+  "detail": "Restores up to 2 health after its response if still alive, capped at maximum health.",
+  "art": {
+    "source": "art/tallow_slug.pixloom.json",
+    "project": "art/tallow_slug.pixloom",
+    "png": "art/tallow_slug.png",
+    "svg": "art/tallow_slug.svg"
+  }
+}

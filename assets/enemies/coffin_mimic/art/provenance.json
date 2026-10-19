@@ -1,0 +1,55 @@
+{
+  "authoring": "Original explicit integer pixel geometry; no generated concept or external artwork copied.",
+  "tools": [
+    "Pixloom 0.2.0 CLI",
+    "Pixloom MCP (draft authoring review and final representative review)",
+    "Pixel Art skill",
+    "Monster Art Creator skill"
+  ],
+  "references": [
+    ".agents/skills/delver-art-creator/references/visual-direction.md",
+    "assets/enemies/mire_viper.png",
+    "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png"
+  ],
+  "canvas": [
+    288,
+    320
+  ],
+  "body_bounds": [
+    69,
+    126,
+    192,
+    293
+  ],
+  "body_size": [
+    123,
+    167
+  ],
+  "anchor": [
+    144,
+    288
+  ],
+  "flying": false,
+  "layers": [
+    "far_limbs",
+    "coffin_body",
+    "lid",
+    "teeth_and_tongue",
+    "anatomy_and_material_details"
+  ],
+  "editability": "Named layers contain visible surfaces only; hidden anatomy is not reconstructed.",
+  "animation": "One static pose; existing runtime motion handles idle, attack, hit and death.",
+  "approval": "Integrated at user request; awaiting artistic acceptance.",
+  "review": "All 36 exports inspected in native-scale roster sheets. All 36 rendered in the actual dungeon; 144 projection/texture/vitals checks passed. Final Shroud Moth additionally inspected through Pixloom MCP at native and 2x scales, in color and silhouette. Awaiting user artistic acceptance.",
+  "sha256": {
+    "coffin_mimic.pixloom.json": "205598d3c82078278f8f97ae86eb2bc4de0282411b1bcdcb6dd2eaac3a8af187",
+    "coffin_mimic.pixloom": "577d5a257305c8fb6d4a63ea918b587e857632752aac132a07c670afdb65d19a",
+    "coffin_mimic.png": "b59839f103983524e7d5c7986de38233d509bf04d855c114768ea9259002ac34",
+    "coffin_mimic.svg": "f75410e0859ef0a0adde7d57d68c20c41beb76c344cf58131bb7a65862d1d054"
+  },
+  "reference_sha256": {
+    ".agents/skills/delver-art-creator/references/visual-direction.md": "5cadc4ef72c5db7bbec05c9504920e5abfd9ca4b33add8d2af9f98c610ada0df",
+    "assets/enemies/mire_viper.png": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7",
+    "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png": "3bcd9705f35494a28a94b3d1ecce67f657308bc4e952afe2ad7339864e140edf"
+  }
+}

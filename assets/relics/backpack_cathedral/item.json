@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "backpack_cathedral",
+  "kind": "relic",
+  "identity": {
+    "name": "Backpack Cathedral",
+    "category": "relic",
+    "rarity": "rare",
+    "tags": [
+      "relic",
+      "many_items"
+    ],
+    "summary": "With at least eight packed items: gain +12 magical resistance.",
+    "description": "With at least eight packed items: gain +12 magical resistance.",
+    "lore": "When the congregation fled, the mason carried the church rather than abandon its last prayer. The straps have never frayed."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "With at least eight packed items: gain +12 magical resistance.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "With at least eight packed items",
+      "parameters": {
+        "amount": 12,
+        "scaleCap": 1,
+        "condition": "many_items",
+        "stat": "magical_resistance",
+        "metric": "one",
+        "manyItemMinimum": 8
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "many_items"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A miniature stone cathedral carried on leather straps",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A miniature stone cathedral carried on leather straps"
+    ],
+    "assets": {
+      "icon": "assets/relics/backpack_cathedral/icons/art/icon.png",
+      "svg": "assets/relics/backpack_cathedral/icons/art/icon.svg",
+      "source": "assets/relics/backpack_cathedral/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/backpack_cathedral/icons/art/provenance.json",
+      "manifest": "assets/relics/backpack_cathedral/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/backpack_cathedral/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

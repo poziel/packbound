@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "id": "ironroot_boots",
+  "kind": "item",
+  "identity": {
+    "name": "Ironroot Boots",
+    "category": "boots",
+    "rarity": "uncommon",
+    "tags": [
+      "boots"
+    ],
+    "summary": "A heavy boot whose sole spreads into three dark root toes.",
+    "description": "Starts combat with 5 block; spent block does not refill. Reduces each enemy strike by 1 before block.",
+    "lore": "The cobbler buried the lasts for an entire winter."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "#."
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "block": 5,
+    "plating": 1
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Starts combat with 5 block; spent block does not refill. Reduces each enemy strike by 1 before block.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "block": 5,
+        "plating": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_ironroot_boots",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "cobbler_s_boots",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "cracked_shield",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "existing"
+          }
+        ],
+        "result": {
+          "id": "ironroot_boots",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Cobbler's Boots, Cracked Shield into Ironroot Boots."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_seven_league_soles",
+        "resultId": "seven_league_soles"
+      },
+      {
+        "recipeId": "assemble_gravetread_boots",
+        "resultId": "gravetread_boots"
+      },
+      {
+        "recipeId": "assemble_pilgrim_crab",
+        "resultId": "pilgrim_crab"
+      },
+      {
+        "recipeId": "assemble_blacksmith_s_apron",
+        "resultId": "blacksmith_s_apron"
+      },
+      {
+        "recipeId": "assemble_siegebell_plate",
+        "resultId": "siegebell_plate"
+      },
+      {
+        "recipeId": "assemble_redoubt_cuirass",
+        "resultId": "redoubt_cuirass"
+      }
+    ],
+    "mergeTargets": [
+      "seven_league_soles",
+      "gravetread_boots",
+      "pilgrim_crab",
+      "blacksmith_s_apron",
+      "siegebell_plate",
+      "redoubt_cuirass"
+    ]
+  },
+  "visual": {
+    "brief": "A heavy boot whose sole spreads into three dark root toes.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A heavy boot whose sole spreads into three dark root toes."
+    ],
+    "assets": {
+      "icon": "assets/items/ironroot_boots/icons/art/icon.png",
+      "svg": "assets/items/ironroot_boots/icons/art/icon.svg",
+      "source": "assets/items/ironroot_boots/icons/art/icon.sprite.json",
+      "footprint": "assets/items/ironroot_boots/icons/art/footprint.json",
+      "provenance": "assets/items/ironroot_boots/icons/art/provenance.json",
+      "manifest": "assets/items/ironroot_boots/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/ironroot_boots/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "seven_league_soles",
+  "kind": "item",
+  "identity": {
+    "name": "Seven League Soles",
+    "category": "boots",
+    "rarity": "epic",
+    "tags": [
+      "boots"
+    ],
+    "summary": "A pair of long dark boots with thick violet folded cuffs.",
+    "description": "Adds 2 maximum stamina, refreshed each round. Reduces each enemy strike this round by 2.",
+    "lore": "Their footsteps are always heard farther down the road."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "stamina": 2,
+    "slow": 2
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Adds 2 maximum stamina, refreshed each round. Reduces each enemy strike this round by 2.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "stamina": 2,
+        "slow": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "epic-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_seven_league_soles",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "cobbler_s_boots",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "gravetread_boots",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "ironroot_boots",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "mercy_needlecase",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "seven_league_soles",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 4,
+          "priorityIngredientCount": 4
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Cobbler's Boots, Gravetread Boots, Ironroot Boots, Mercy Needlecase into Seven League Soles."
+      }
+    ],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A pair of long dark boots with thick violet folded cuffs.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A pair of long dark boots with thick violet folded cuffs."
+    ],
+    "assets": {
+      "icon": "assets/items/seven_league_soles/icons/art/icon.png",
+      "svg": "assets/items/seven_league_soles/icons/art/icon.svg",
+      "source": "assets/items/seven_league_soles/icons/art/icon.sprite.json",
+      "footprint": "assets/items/seven_league_soles/icons/art/footprint.json",
+      "provenance": "assets/items/seven_league_soles/icons/art/provenance.json",
+      "manifest": "assets/items/seven_league_soles/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/seven_league_soles/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "chalk_poultice",
+  "kind": "item",
+  "identity": {
+    "name": "Chalk Poultice",
+    "category": "healer",
+    "rarity": "common",
+    "tags": [
+      "healer"
+    ],
+    "summary": "A pale cloth pouch tied beneath a broad green leaf.",
+    "description": "Removes up to 1 poison before its round tick. Restores up to 1 HP each round.",
+    "lore": "Miners carried it where the spring water tasted bitter."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "cleanse": 1,
+    "healing": 1
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Removes up to 1 poison before its round tick. Restores up to 1 HP each round.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "cleanse": 1,
+        "healing": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "common-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "assemble_furnace_toad",
+        "resultId": "furnace_toad"
+      },
+      {
+        "recipeId": "assemble_mercy_needlecase",
+        "resultId": "mercy_needlecase"
+      },
+      {
+        "recipeId": "assemble_wax_ear_trumpet",
+        "resultId": "wax_ear_trumpet"
+      }
+    ],
+    "mergeTargets": [
+      "furnace_toad",
+      "mercy_needlecase",
+      "wax_ear_trumpet"
+    ]
+  },
+  "visual": {
+    "brief": "A pale cloth pouch tied beneath a broad green leaf.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A pale cloth pouch tied beneath a broad green leaf."
+    ],
+    "assets": {
+      "icon": "assets/items/chalk_poultice/icons/art/icon.png",
+      "svg": "assets/items/chalk_poultice/icons/art/icon.svg",
+      "source": "assets/items/chalk_poultice/icons/art/icon.sprite.json",
+      "footprint": "assets/items/chalk_poultice/icons/art/footprint.json",
+      "provenance": "assets/items/chalk_poultice/icons/art/provenance.json",
+      "manifest": "assets/items/chalk_poultice/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/chalk_poultice/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "mourning_volcano",
+  "kind": "relic",
+  "identity": {
+    "name": "Mourning Volcano",
+    "category": "relic",
+    "rarity": "epic",
+    "tags": [
+      "relic",
+      "low_hp"
+    ],
+    "summary": "When current HP is at most half maximum HP before activations: gain +6 burn.",
+    "description": "When current HP is at most half maximum HP before activations: gain +6 burn.",
+    "lore": "The mountain did not erupt when its village burned. It swallowed the smoke and began to weep."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When current HP is at most half maximum HP before activations: gain +6 burn.",
+      "trigger": "after-item-aggregation",
+      "target": "current-enemy",
+      "condition": "When current HP is at most half maximum HP before activations",
+      "parameters": {
+        "amount": 6,
+        "scaleCap": 1,
+        "condition": "low_hp",
+        "stat": "burn",
+        "metric": "one",
+        "lowHealthFraction": 0.5
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "low_hp"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A black volcano with a red tear shaped lava seam",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A black volcano with a red tear shaped lava seam"
+    ],
+    "assets": {
+      "icon": "assets/relics/mourning_volcano/icons/art/icon.png",
+      "svg": "assets/relics/mourning_volcano/icons/art/icon.svg",
+      "source": "assets/relics/mourning_volcano/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/mourning_volcano/icons/art/provenance.json",
+      "manifest": "assets/relics/mourning_volcano/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/mourning_volcano/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

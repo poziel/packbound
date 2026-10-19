@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "quiet_inkwell",
+  "kind": "relic",
+  "identity": {
+    "name": "Quiet Inkwell",
+    "category": "relic",
+    "rarity": "uncommon",
+    "tags": [
+      "relic",
+      "unused_mana"
+    ],
+    "summary": "When mana remains after activations and Mana Furnace: gain +1 magical damage per unused mana (up to 4 counted).",
+    "description": "When mana remains after activations and Mana Furnace: gain +1 magical damage per unused mana (up to 4 counted).",
+    "lore": "A spell can be wasted by speaking it. The silent archivist preferred to keep hers bottled."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When mana remains after activations and Mana Furnace: gain +1 magical damage per unused mana (up to 4 counted).",
+      "trigger": "after-item-aggregation",
+      "target": "current-enemy",
+      "condition": "When mana remains after activations and Mana Furnace",
+      "parameters": {
+        "amount": 1,
+        "scaleCap": 4,
+        "condition": "unused_mana",
+        "stat": "magical_damage",
+        "metric": "unused_mana"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "unused_mana"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A black ink bottle with an unbroken wax stopper",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A black ink bottle with an unbroken wax stopper"
+    ],
+    "assets": {
+      "icon": "assets/relics/quiet_inkwell/icons/art/icon.png",
+      "svg": "assets/relics/quiet_inkwell/icons/art/icon.svg",
+      "source": "assets/relics/quiet_inkwell/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/quiet_inkwell/icons/art/provenance.json",
+      "manifest": "assets/relics/quiet_inkwell/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/quiet_inkwell/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

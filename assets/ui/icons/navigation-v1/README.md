@@ -4,7 +4,7 @@ Eight standalone white-mask pixel icons, integrated at the user's request. Rewar
 
 `registry.json` maps stable IDs to PNG, integer-grid SVG, and layered Pixelorama sources. Original generated concepts, exact prompts, subagent geometry, and provenance are preserved under `workspace/docs/art/concepts/ui-icons/navigation-v1/`. Native drawings were authored from explicit pixel geometry in Pixelorama, not resized from the generated concepts. Each document has two or three meaningful layers.
 
-Consumers are `scenes/game/battle_area.tscn` and `scenes/game/character/character_panel.tscn`. The original `assets/navigation/` artwork remains intact. This set does not replace the proposed fight or block action glyphs.
+Consumers are `scenes/run/battle_area/battle_area.tscn` and `scenes/run/character/character_panel/character_panel.tscn`. The original `assets/navigation/` artwork remains intact. This set does not replace the proposed fight or block action glyphs.
 
 Validation:
 

@@ -1,0 +1,52 @@
+[gd_scene format=3]
+[ext_resource type="Shader" path="res://scenes/world/biomes/cursed/curse.gdshader" id="curse"]
+[sub_resource type="ShaderMaterial" id="rune"]
+shader = ExtResource("curse")
+shader_parameter/curse_color = Color(0.48, 0.24, 0.68, 1)
+[sub_resource type="BoxMesh" id="stroke"]
+size = Vector3(0.09, 0.75, 0.06)
+[sub_resource type="BoxMesh" id="bar"]
+size = Vector3(0.5, 0.09, 0.06)
+[node name="CursedAmbience" type="Node3D"]
+[node name="WestRune" type="Node3D" parent="."]
+position = Vector3(-7.15, 2.6, 3)
+rotation = Vector3(0, 1.5707963, 0)
+[node name="Stem" type="MeshInstance3D" parent="WestRune"]
+mesh = SubResource("stroke")
+material_override = SubResource("rune")
+[node name="Upper" type="MeshInstance3D" parent="WestRune"]
+position = Vector3(0.14, 0.18, 0)
+rotation = Vector3(0, 0, 0.65)
+mesh = SubResource("bar")
+material_override = SubResource("rune")
+[node name="Lower" type="MeshInstance3D" parent="WestRune"]
+position = Vector3(-0.14, -0.12, 0)
+rotation = Vector3(0, 0, 0.65)
+mesh = SubResource("bar")
+material_override = SubResource("rune")
+[node name="Light" type="OmniLight3D" parent="WestRune"]
+position = Vector3(0, 0, 0.3)
+light_color = Color(0.58, 0.3, 0.8, 1)
+light_energy = 0.7
+omni_range = 4.5
+[node name="EastRune" type="Node3D" parent="."]
+position = Vector3(7.15, 2.6, 3)
+rotation = Vector3(0, -1.5707963, 0)
+[node name="Stem" type="MeshInstance3D" parent="EastRune"]
+mesh = SubResource("stroke")
+material_override = SubResource("rune")
+[node name="Upper" type="MeshInstance3D" parent="EastRune"]
+position = Vector3(0.14, 0.18, 0)
+rotation = Vector3(0, 0, -0.65)
+mesh = SubResource("bar")
+material_override = SubResource("rune")
+[node name="Lower" type="MeshInstance3D" parent="EastRune"]
+position = Vector3(-0.14, -0.12, 0)
+rotation = Vector3(0, 0, -0.65)
+mesh = SubResource("bar")
+material_override = SubResource("rune")
+[node name="Light" type="OmniLight3D" parent="EastRune"]
+position = Vector3(0, 0, 0.3)
+light_color = Color(0.58, 0.3, 0.8, 1)
+light_energy = 0.7
+omni_range = 4.5

@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "coal_letter",
+  "kind": "item",
+  "identity": {
+    "name": "Coal Letter",
+    "category": "spell",
+    "rarity": "common",
+    "tags": [
+      "spell",
+      "mage",
+      "fire"
+    ],
+    "summary": "A folded charcoal paper letter with a red wax flame seal.",
+    "description": "Costs 1 mana per activation. Deals 4 magical damage per affordable activation. Applies 1 burn through the existing combat keyword rules per affordable activation.",
+    "lore": "Its sender wrote only the word warm."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 4,
+    "burn": 1
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "mana",
+        "amount": 1
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 1 mana per activation. Deals 4 magical damage per affordable activation. Applies 1 burn through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 4,
+        "burn": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "different-element-spell"
+      ],
+      "description": "Its fire trace participates in the Elementalist's existing reaction system; arrange it with spells of another element. No extra reaction beyond the shared rules is added.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "common-item-reward-pool"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "assemble_kiln_prayer",
+        "resultId": "kiln_prayer"
+      }
+    ],
+    "mergeTargets": [
+      "kiln_prayer"
+    ]
+  },
+  "visual": {
+    "brief": "A folded charcoal paper letter with a red wax flame seal.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A folded charcoal paper letter with a red wax flame seal."
+    ],
+    "assets": {
+      "icon": "assets/items/coal_letter/icons/art/icon.png",
+      "svg": "assets/items/coal_letter/icons/art/icon.svg",
+      "source": "assets/items/coal_letter/icons/art/icon.sprite.json",
+      "footprint": "assets/items/coal_letter/icons/art/footprint.json",
+      "provenance": "assets/items/coal_letter/icons/art/provenance.json",
+      "manifest": "assets/items/coal_letter/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/coal_letter/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

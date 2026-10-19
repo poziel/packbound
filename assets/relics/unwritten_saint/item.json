@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "unwritten_saint",
+  "kind": "relic",
+  "identity": {
+    "name": "Unwritten Saint",
+    "category": "relic",
+    "rarity": "epic",
+    "tags": [
+      "relic",
+      "no_damage"
+    ],
+    "summary": "When activations produced no direct damage: gain +7 healing.",
+    "description": "When activations produced no direct damage: gain +7 healing.",
+    "lore": "Her followers left the tablet blank so no miracle would be attributed to the wrong hands. The empty halo has healed more than the statues."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When activations produced no direct damage: gain +7 healing.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "When activations produced no direct damage",
+      "parameters": {
+        "amount": 7,
+        "scaleCap": 1,
+        "condition": "no_damage",
+        "stat": "healing",
+        "metric": "one"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "no_damage"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A blank ivory saint tablet beneath a plain gold halo",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A blank ivory saint tablet beneath a plain gold halo"
+    ],
+    "assets": {
+      "icon": "assets/relics/unwritten_saint/icons/art/icon.png",
+      "svg": "assets/relics/unwritten_saint/icons/art/icon.svg",
+      "source": "assets/relics/unwritten_saint/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/unwritten_saint/icons/art/provenance.json",
+      "manifest": "assets/relics/unwritten_saint/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/unwritten_saint/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

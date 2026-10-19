@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "id": "mourning_gargoyle",
+  "name": "Mourning Gargoyle",
+  "species": "gargoyle",
+  "age": "206 years since carving",
+  "role": "guard",
+  "description": "A roof guardian brought below ground after its chapel fell. It crouches over an imaginary roof edge and bares its stone teeth at passing lights.",
+  "encounter_floor": 15,
+  "starting_stats": {
+    "hp": 99,
+    "attacks": [
+      10
+    ],
+    "hits": 1,
+    "armor": 6,
+    "pierce": 0,
+    "poison": 0,
+    "drain": 0,
+    "reflect": 0,
+    "sunder": 0,
+    "enrage": 0,
+    "regen": 0,
+    "parry": 0,
+    "opening_armor": 0,
+    "cycle_armor": 0,
+    "cleanse": 0,
+    "physical_resistance": 15,
+    "magical_resistance": 0,
+    "damage_type": "physical"
+  },
+  "abilities": [
+    {
+      "id": "armor",
+      "amount": 6,
+      "description": "Starts combat with 6 block. Absorbed damage spends it permanently for this fight."
+    },
+    {
+      "id": "physical_resistance",
+      "amount": 15,
+      "description": "Reduces incoming physical damage by 15 percent using the shared resistance rules."
+    }
+  ],
+  "intent": "Guard",
+  "detail": "Starts combat with 6 block. Absorbed damage spends it permanently for this fight. Reduces incoming physical damage by 15 percent using the shared resistance rules.",
+  "art": {
+    "source": "art/mourning_gargoyle.pixloom.json",
+    "project": "art/mourning_gargoyle.pixloom",
+    "png": "art/mourning_gargoyle.png",
+    "svg": "art/mourning_gargoyle.svg"
+  }
+}

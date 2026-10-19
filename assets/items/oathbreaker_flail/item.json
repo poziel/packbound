@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "oathbreaker_flail",
+  "kind": "item",
+  "identity": {
+    "name": "Oathbreaker Flail",
+    "category": "weapon",
+    "rarity": "rare",
+    "tags": [
+      "weapon",
+      "warrior"
+    ],
+    "summary": "A dark iron striking weight attached to a broad chain.",
+    "description": "Costs 2 stamina per activation. Deals 10 physical damage per affordable activation. Bypasses up to 4 enemy block per activation.",
+    "lore": "A jailer broke his oath and opened every door."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      ".#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 10,
+    "pierce": 4
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 2
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 2 stamina per activation. Deals 10 physical damage per affordable activation. Bypasses up to 4 enemy block per activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 10,
+        "pierce": 4
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "rare-item-reward-pool"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_oathbreaker_flail",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "longsword",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "existing"
+          },
+          {
+            "id": "standard_spike",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "oathbreaker_flail",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Iron Dagger, Standard Spike into Oathbreaker Flail."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_gallows_halberd",
+        "resultId": "gallows_halberd"
+      }
+    ],
+    "mergeTargets": [
+      "gallows_halberd"
+    ]
+  },
+  "visual": {
+    "brief": "A dark iron striking weight attached to a broad chain.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A dark iron striking weight attached to a broad chain."
+    ],
+    "assets": {
+      "icon": "assets/items/oathbreaker_flail/icons/art/icon.png",
+      "svg": "assets/items/oathbreaker_flail/icons/art/icon.svg",
+      "source": "assets/items/oathbreaker_flail/icons/art/icon.sprite.json",
+      "footprint": "assets/items/oathbreaker_flail/icons/art/footprint.json",
+      "provenance": "assets/items/oathbreaker_flail/icons/art/provenance.json",
+      "manifest": "assets/items/oathbreaker_flail/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/oathbreaker_flail/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "crown_of_the_unmade",
+  "kind": "relic",
+  "identity": {
+    "name": "Crown Of The Unmade",
+    "category": "relic",
+    "rarity": "legendary",
+    "tags": [
+      "relic",
+      "reactions"
+    ],
+    "summary": "When an Elemental Reaction occurs this round: gain +2 doom per reaction count (up to 4 counted).",
+    "description": "When an Elemental Reaction occurs this round: gain +2 doom per reaction count (up to 4 counted).",
+    "lore": "Its missing points belonged to monarchs erased from every history. The gaps are the heaviest part."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When an Elemental Reaction occurs this round: gain +2 doom per reaction count (up to 4 counted).",
+      "trigger": "after-item-aggregation",
+      "target": "current-enemy",
+      "condition": "When an Elemental Reaction occurs this round",
+      "parameters": {
+        "amount": 2,
+        "scaleCap": 4,
+        "condition": "reactions",
+        "stat": "doom",
+        "metric": "reaction_count"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "reactions"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "An incomplete obsidian crown floating around an empty center",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "An incomplete obsidian crown floating around an empty center"
+    ],
+    "assets": {
+      "icon": "assets/relics/crown_of_the_unmade/icons/art/icon.png",
+      "svg": "assets/relics/crown_of_the_unmade/icons/art/icon.svg",
+      "source": "assets/relics/crown_of_the_unmade/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/crown_of_the_unmade/icons/art/provenance.json",
+      "manifest": "assets/relics/crown_of_the_unmade/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/crown_of_the_unmade/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

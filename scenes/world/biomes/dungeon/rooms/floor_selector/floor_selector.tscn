@@ -1,0 +1,796 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://scenes/world/rooms/shared/floor_selector.gd" id="controller"]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/wall_chunk/wall_chunk.tscn" id="wall"]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/wall_span/wall_span.tscn" id="span"]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/floor_chunk/floor_chunk.tscn" id="floor"]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/column/column.tscn" id="column"]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/roof_chunk/roof_chunk.tscn" id="roof"]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/selector_door/selector_door.tscn" id="door"]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/staircase/staircase.tscn" id="entry"]
+[sub_resource type="StandardMaterial3D" id="mortar"]
+albedo_color = Color(0.09803922, 0.12941177, 0.18039216, 1)
+roughness = 1.0
+[sub_resource type="StandardMaterial3D" id="floor_material"]
+albedo_color = Color(0.17254902, 0.21568628, 0.2784314, 1)
+roughness = 1.0
+[sub_resource type="StandardMaterial3D" id="trim"]
+albedo_color = Color(0.27058825, 0.30588236, 0.36078432, 1)
+roughness = 1.0
+[sub_resource type="BoxMesh" id="floor_backing"]
+size = Vector3(31.2, 0.5, 33.6)
+[sub_resource type="BoxMesh" id="ceiling_backing"]
+size = Vector3(32, 0.5, 33.3)
+[sub_resource type="BoxMesh" id="rib"]
+size = Vector3(31.2, 0.22, 0.22)
+[sub_resource type="BoxMesh" id="topwall"]
+size = Vector3(31.2, 0.7, 0.8)
+[node name="DungeonFloorSelector" type="Node3D"]
+script = ExtResource("controller")
+pixel_downscale = 2
+camera_frustum_offset = Vector2(0.05111111, 0)
+door_center_x = 0.0
+door_spacing = 5.4
+opening_half_width = 2.2
+wall_left = -15.6
+wall_right = 15.6
+entrance_stairs_path = NodePath("EntryStairs")
+[node name="CameraStart" type="Marker3D" parent="."]
+position = Vector3(0, 3, 18)
+[node name="EntryStairs" parent="." instance=ExtResource("entry")]
+role = 0
+position = Vector3(0, 0, 24)
+metadata/staircase = true
+
+
+[node name="Travel" type="Node3D" parent="."]
+[node name="ArrivalStart" type="Marker3D" parent="Travel"]
+position = Vector3(0, 6.92, 36.7)
+[node name="ArrivalLanding" type="Marker3D" parent="Travel"]
+position = Vector3(0, 3, 24)
+[node name="ExitApproach" type="Marker3D" parent="Travel"]
+position = Vector3(0, 3, -7.2)
+[node name="ExitEnd" type="Marker3D" parent="Travel"]
+position = Vector3(0, -0.92, -19.9)
+[node name="Floor" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.25, 8.75)
+mesh = SubResource("floor_backing")
+material_override = SubResource("floor_material")
+[node name="Ceiling" type="MeshInstance3D" parent="."]
+position = Vector3(0, 7.4, 8.325)
+mesh = SubResource("ceiling_backing")
+material_override = SubResource("mortar")
+[node name="Header" type="MeshInstance3D" parent="."]
+position = Vector3(0, 7.1, -8.5)
+mesh = SubResource("topwall")
+material_override = SubResource("mortar")
+[node name="FloorTiles" type="Node3D" parent="."]
+
+[node name="Patch0_0" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-15.600, 0, -8.050)
+
+[node name="Patch0_1" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-11.700, 0, -8.050)
+
+[node name="Patch0_2" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-7.800, 0, -8.050)
+
+[node name="Patch0_3" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-3.900, 0, -8.050)
+
+[node name="Patch0_4" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(0.000, 0, -8.050)
+
+[node name="Patch0_5" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(3.900, 0, -8.050)
+
+[node name="Patch0_6" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(7.800, 0, -8.050)
+
+[node name="Patch0_7" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(11.700, 0, -8.050)
+
+[node name="Patch1_0" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-15.600, 0, -3.850)
+
+[node name="Patch1_1" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-11.700, 0, -3.850)
+
+[node name="Patch1_2" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-7.800, 0, -3.850)
+
+[node name="Patch1_3" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-3.900, 0, -3.850)
+
+[node name="Patch1_4" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(0.000, 0, -3.850)
+
+[node name="Patch1_5" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(3.900, 0, -3.850)
+
+[node name="Patch1_6" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(7.800, 0, -3.850)
+
+[node name="Patch1_7" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(11.700, 0, -3.850)
+
+[node name="Patch2_0" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-15.600, 0, 0.350)
+
+[node name="Patch2_1" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-11.700, 0, 0.350)
+
+[node name="Patch2_2" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-7.800, 0, 0.350)
+
+[node name="Patch2_3" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-3.900, 0, 0.350)
+
+[node name="Patch2_4" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(0.000, 0, 0.350)
+
+[node name="Patch2_5" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(3.900, 0, 0.350)
+
+[node name="Patch2_6" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(7.800, 0, 0.350)
+
+[node name="Patch2_7" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(11.700, 0, 0.350)
+
+[node name="Patch3_0" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-15.600, 0, 4.550)
+
+[node name="Patch3_1" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-11.700, 0, 4.550)
+
+[node name="Patch3_2" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-7.800, 0, 4.550)
+
+[node name="Patch3_3" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-3.900, 0, 4.550)
+
+[node name="Patch3_4" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(0.000, 0, 4.550)
+
+[node name="Patch3_5" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(3.900, 0, 4.550)
+
+[node name="Patch3_6" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(7.800, 0, 4.550)
+
+[node name="Patch3_7" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(11.700, 0, 4.550)
+
+[node name="Patch4_0" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-15.600, 0, 8.750)
+
+[node name="Patch4_1" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-11.700, 0, 8.750)
+
+[node name="Patch4_2" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-7.800, 0, 8.750)
+
+[node name="Patch4_3" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-3.900, 0, 8.750)
+
+[node name="Patch4_4" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(0.000, 0, 8.750)
+
+[node name="Patch4_5" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(3.900, 0, 8.750)
+
+[node name="Patch4_6" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(7.800, 0, 8.750)
+
+[node name="Patch4_7" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(11.700, 0, 8.750)
+
+[node name="Patch5_0" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-15.600, 0, 12.950)
+
+[node name="Patch5_1" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-11.700, 0, 12.950)
+
+[node name="Patch5_2" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-7.800, 0, 12.950)
+
+[node name="Patch5_3" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-3.900, 0, 12.950)
+
+[node name="Patch5_4" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(0.000, 0, 12.950)
+
+[node name="Patch5_5" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(3.900, 0, 12.950)
+
+[node name="Patch5_6" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(7.800, 0, 12.950)
+
+[node name="Patch5_7" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(11.700, 0, 12.950)
+
+[node name="Patch6_0" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-15.600, 0, 17.150)
+
+[node name="Patch6_1" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-11.700, 0, 17.150)
+
+[node name="Patch6_2" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-7.800, 0, 17.150)
+
+[node name="Patch6_3" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-3.900, 0, 17.150)
+
+[node name="Patch6_4" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(0.000, 0, 17.150)
+
+[node name="Patch6_5" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(3.900, 0, 17.150)
+
+[node name="Patch6_6" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(7.800, 0, 17.150)
+
+[node name="Patch6_7" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(11.700, 0, 17.150)
+
+[node name="Patch7_0" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-15.600, 0, 21.350)
+
+[node name="Patch7_1" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-11.700, 0, 21.350)
+
+[node name="Patch7_2" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-7.800, 0, 21.350)
+
+[node name="Patch7_3" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(-3.900, 0, 21.350)
+
+[node name="Patch7_4" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(0.000, 0, 21.350)
+
+[node name="Patch7_5" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(3.900, 0, 21.350)
+
+[node name="Patch7_6" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(7.800, 0, 21.350)
+
+[node name="Patch7_7" parent="FloorTiles" instance=ExtResource("floor")]
+position = Vector3(11.700, 0, 21.350)
+
+[node name="RoofTiles" type="Node3D" parent="."]
+
+[node name="Patch0_0" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-16.000, 7.12, -8.325)
+
+[node name="Patch0_1" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-12.800, 7.12, -8.325)
+
+[node name="Patch0_2" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-9.600, 7.12, -8.325)
+
+[node name="Patch0_3" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-6.400, 7.12, -8.325)
+
+[node name="Patch0_4" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-3.200, 7.12, -8.325)
+
+[node name="Patch0_5" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(0.000, 7.12, -8.325)
+
+[node name="Patch0_6" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(3.200, 7.12, -8.325)
+
+[node name="Patch0_7" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(6.400, 7.12, -8.325)
+
+[node name="Patch0_8" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(9.600, 7.12, -8.325)
+
+[node name="Patch0_9" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(12.800, 7.12, -8.325)
+
+[node name="Patch1_0" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-16.000, 7.12, -4.625)
+
+[node name="Patch1_1" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-12.800, 7.12, -4.625)
+
+[node name="Patch1_2" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-9.600, 7.12, -4.625)
+
+[node name="Patch1_3" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-6.400, 7.12, -4.625)
+
+[node name="Patch1_4" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-3.200, 7.12, -4.625)
+
+[node name="Patch1_5" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(0.000, 7.12, -4.625)
+
+[node name="Patch1_6" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(3.200, 7.12, -4.625)
+
+[node name="Patch1_7" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(6.400, 7.12, -4.625)
+
+[node name="Patch1_8" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(9.600, 7.12, -4.625)
+
+[node name="Patch1_9" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(12.800, 7.12, -4.625)
+
+[node name="Patch2_0" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-16.000, 7.12, -0.925)
+
+[node name="Patch2_1" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-12.800, 7.12, -0.925)
+
+[node name="Patch2_2" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-9.600, 7.12, -0.925)
+
+[node name="Patch2_3" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-6.400, 7.12, -0.925)
+
+[node name="Patch2_4" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-3.200, 7.12, -0.925)
+
+[node name="Patch2_5" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(0.000, 7.12, -0.925)
+
+[node name="Patch2_6" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(3.200, 7.12, -0.925)
+
+[node name="Patch2_7" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(6.400, 7.12, -0.925)
+
+[node name="Patch2_8" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(9.600, 7.12, -0.925)
+
+[node name="Patch2_9" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(12.800, 7.12, -0.925)
+
+[node name="Patch3_0" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-16.000, 7.12, 2.775)
+
+[node name="Patch3_1" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-12.800, 7.12, 2.775)
+
+[node name="Patch3_2" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-9.600, 7.12, 2.775)
+
+[node name="Patch3_3" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-6.400, 7.12, 2.775)
+
+[node name="Patch3_4" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-3.200, 7.12, 2.775)
+
+[node name="Patch3_5" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(0.000, 7.12, 2.775)
+
+[node name="Patch3_6" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(3.200, 7.12, 2.775)
+
+[node name="Patch3_7" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(6.400, 7.12, 2.775)
+
+[node name="Patch3_8" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(9.600, 7.12, 2.775)
+
+[node name="Patch3_9" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(12.800, 7.12, 2.775)
+
+[node name="Patch4_0" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-16.000, 7.12, 6.475)
+
+[node name="Patch4_1" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-12.800, 7.12, 6.475)
+
+[node name="Patch4_2" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-9.600, 7.12, 6.475)
+
+[node name="Patch4_3" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-6.400, 7.12, 6.475)
+
+[node name="Patch4_4" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-3.200, 7.12, 6.475)
+
+[node name="Patch4_5" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(0.000, 7.12, 6.475)
+
+[node name="Patch4_6" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(3.200, 7.12, 6.475)
+
+[node name="Patch4_7" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(6.400, 7.12, 6.475)
+
+[node name="Patch4_8" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(9.600, 7.12, 6.475)
+
+[node name="Patch4_9" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(12.800, 7.12, 6.475)
+
+[node name="Patch5_0" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-16.000, 7.12, 10.175)
+
+[node name="Patch5_1" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-12.800, 7.12, 10.175)
+
+[node name="Patch5_2" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-9.600, 7.12, 10.175)
+
+[node name="Patch5_3" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-6.400, 7.12, 10.175)
+
+[node name="Patch5_4" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-3.200, 7.12, 10.175)
+
+[node name="Patch5_5" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(0.000, 7.12, 10.175)
+
+[node name="Patch5_6" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(3.200, 7.12, 10.175)
+
+[node name="Patch5_7" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(6.400, 7.12, 10.175)
+
+[node name="Patch5_8" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(9.600, 7.12, 10.175)
+
+[node name="Patch5_9" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(12.800, 7.12, 10.175)
+
+[node name="Patch6_0" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-16.000, 7.12, 13.875)
+
+[node name="Patch6_1" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-12.800, 7.12, 13.875)
+
+[node name="Patch6_2" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-9.600, 7.12, 13.875)
+
+[node name="Patch6_3" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-6.400, 7.12, 13.875)
+
+[node name="Patch6_4" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-3.200, 7.12, 13.875)
+
+[node name="Patch6_5" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(0.000, 7.12, 13.875)
+
+[node name="Patch6_6" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(3.200, 7.12, 13.875)
+
+[node name="Patch6_7" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(6.400, 7.12, 13.875)
+
+[node name="Patch6_8" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(9.600, 7.12, 13.875)
+
+[node name="Patch6_9" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(12.800, 7.12, 13.875)
+
+[node name="Patch7_0" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-16.000, 7.12, 17.575)
+
+[node name="Patch7_1" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-12.800, 7.12, 17.575)
+
+[node name="Patch7_2" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-9.600, 7.12, 17.575)
+
+[node name="Patch7_3" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-6.400, 7.12, 17.575)
+
+[node name="Patch7_4" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-3.200, 7.12, 17.575)
+
+[node name="Patch7_5" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(0.000, 7.12, 17.575)
+
+[node name="Patch7_6" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(3.200, 7.12, 17.575)
+
+[node name="Patch7_7" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(6.400, 7.12, 17.575)
+
+[node name="Patch7_8" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(9.600, 7.12, 17.575)
+
+[node name="Patch7_9" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(12.800, 7.12, 17.575)
+
+[node name="Patch8_0" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-16.000, 7.12, 21.275)
+
+[node name="Patch8_1" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-12.800, 7.12, 21.275)
+
+[node name="Patch8_2" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-9.600, 7.12, 21.275)
+
+[node name="Patch8_3" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-6.400, 7.12, 21.275)
+
+[node name="Patch8_4" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(-3.200, 7.12, 21.275)
+
+[node name="Patch8_5" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(0.000, 7.12, 21.275)
+
+[node name="Patch8_6" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(3.200, 7.12, 21.275)
+
+[node name="Patch8_7" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(6.400, 7.12, 21.275)
+
+[node name="Patch8_8" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(9.600, 7.12, 21.275)
+
+[node name="Patch8_9" parent="RoofTiles" instance=ExtResource("roof")]
+position = Vector3(12.800, 7.12, 21.275)
+
+[node name="SideWalls" type="Node3D" parent="."]
+
+[node name="Wall-1_0_0" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 0.0, 25.200)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall-1_0_1" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 0.0, 21.200)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall-1_0_2" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 0.0, 17.200)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall-1_0_3" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 0.0, 13.200)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall-1_0_4" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 0.0, 9.200)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall-1_0_5" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 0.0, 5.200)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall-1_0_6" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 0.0, 1.200)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall-1_0_7" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 0.0, -2.800)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall-1_0_8" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 0.0, -6.800)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall-1_1_0" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 3.4, 25.200)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall-1_1_1" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 3.4, 21.200)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall-1_1_2" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 3.4, 17.200)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall-1_1_3" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 3.4, 13.200)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall-1_1_4" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 3.4, 9.200)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall-1_1_5" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 3.4, 5.200)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall-1_1_6" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 3.4, 1.200)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall-1_1_7" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 3.4, -2.800)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall-1_1_8" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(-15.6, 3.4, -6.800)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Wall1_0_0" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 0.0, -8.400)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Wall1_0_1" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 0.0, -4.400)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Wall1_0_2" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 0.0, -0.400)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Wall1_0_3" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 0.0, 3.600)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Wall1_0_4" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 0.0, 7.600)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Wall1_0_5" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 0.0, 11.600)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Wall1_0_6" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 0.0, 15.600)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Wall1_0_7" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 0.0, 19.600)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Wall1_0_8" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 0.0, 23.600)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Wall1_1_0" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 3.4, -8.400)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Wall1_1_1" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 3.4, -4.400)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Wall1_1_2" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 3.4, -0.400)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Wall1_1_3" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 3.4, 3.600)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Wall1_1_4" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 3.4, 7.600)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Wall1_1_5" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 3.4, 11.600)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Wall1_1_6" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 3.4, 15.600)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Wall1_1_7" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 3.4, 19.600)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Wall1_1_8" parent="SideWalls" instance=ExtResource("wall")]
+position = Vector3(15.6, 3.4, 23.600)
+rotation = Vector3(0, -1.5707963, 0)
+
+[node name="Columns" type="Node3D" parent="."]
+
+[node name="Column-1_0" parent="Columns" instance=ExtResource("column")]
+position = Vector3(-14.9, 0, -7.5)
+
+[node name="Column-1_1" parent="Columns" instance=ExtResource("column")]
+position = Vector3(-14.9, 0, 2)
+
+[node name="Column-1_2" parent="Columns" instance=ExtResource("column")]
+position = Vector3(-14.9, 0, 12)
+
+[node name="Column-1_3" parent="Columns" instance=ExtResource("column")]
+position = Vector3(-14.9, 0, 22)
+
+[node name="Column1_0" parent="Columns" instance=ExtResource("column")]
+position = Vector3(14.9, 0, -7.5)
+
+[node name="Column1_1" parent="Columns" instance=ExtResource("column")]
+position = Vector3(14.9, 0, 2)
+
+[node name="Column1_2" parent="Columns" instance=ExtResource("column")]
+position = Vector3(14.9, 0, 12)
+
+[node name="Column1_3" parent="Columns" instance=ExtResource("column")]
+position = Vector3(14.9, 0, 22)
+
+[node name="CeilingRib0" type="MeshInstance3D" parent="."]
+position = Vector3(0, 6.98, -6.8)
+mesh = SubResource("rib")
+material_override = SubResource("trim")
+
+[node name="CeilingRib1" type="MeshInstance3D" parent="."]
+position = Vector3(0, 6.98, -3.1)
+mesh = SubResource("rib")
+material_override = SubResource("trim")
+
+[node name="CeilingRib2" type="MeshInstance3D" parent="."]
+position = Vector3(0, 6.98, 0.6)
+mesh = SubResource("rib")
+material_override = SubResource("trim")
+
+[node name="CeilingRib3" type="MeshInstance3D" parent="."]
+position = Vector3(0, 6.98, 4.3)
+mesh = SubResource("rib")
+material_override = SubResource("trim")
+
+[node name="CeilingRib4" type="MeshInstance3D" parent="."]
+position = Vector3(0, 6.98, 8)
+mesh = SubResource("rib")
+material_override = SubResource("trim")
+
+[node name="CeilingRib5" type="MeshInstance3D" parent="."]
+position = Vector3(0, 6.98, 11.7)
+mesh = SubResource("rib")
+material_override = SubResource("trim")
+
+[node name="CeilingRib6" type="MeshInstance3D" parent="."]
+position = Vector3(0, 6.98, 15.4)
+mesh = SubResource("rib")
+material_override = SubResource("trim")
+
+[node name="CeilingRib7" type="MeshInstance3D" parent="."]
+position = Vector3(0, 6.98, 19.1)
+mesh = SubResource("rib")
+material_override = SubResource("trim")
+
+[node name="CeilingRib8" type="MeshInstance3D" parent="."]
+position = Vector3(0, 6.98, 22.8)
+mesh = SubResource("rib")
+material_override = SubResource("trim")
+
+[node name="RearPanels" type="Node3D" parent="."]
+
+[node name="Panel0" parent="RearPanels" instance=ExtResource("span")]
+position = Vector3(0, 0, -7.95)
+
+[node name="Panel1" parent="RearPanels" instance=ExtResource("span")]
+position = Vector3(0, 0, -7.95)
+
+[node name="Panel2" parent="RearPanels" instance=ExtResource("span")]
+position = Vector3(0, 0, -7.95)
+
+[node name="Panel3" parent="RearPanels" instance=ExtResource("span")]
+position = Vector3(0, 0, -7.95)
+
+[node name="Panel4" parent="RearPanels" instance=ExtResource("span")]
+position = Vector3(0, 0, -7.95)
+
+[node name="Doors" type="Node3D" parent="."]
+
+[node name="Door0" parent="Doors" instance=ExtResource("door")]
+position = Vector3(-8.100, 0, -8)
+
+[node name="Door1" parent="Doors" instance=ExtResource("door")]
+position = Vector3(-2.700, 0, -8)
+
+[node name="Door2" parent="Doors" instance=ExtResource("door")]
+position = Vector3(2.700, 0, -8)
+
+[node name="Door3" parent="Doors" instance=ExtResource("door")]
+position = Vector3(8.100, 0, -8)
+
+[node name="RoomFill0" type="OmniLight3D" parent="."]
+position = Vector3(-8, 5.8, 6)
+light_color = Color(0.78, 0.83, 0.91, 1)
+light_energy = 0.7
+omni_range = 15.0
+
+[node name="RoomFill1" type="OmniLight3D" parent="."]
+position = Vector3(8, 5.8, 6)
+light_color = Color(0.78, 0.83, 0.91, 1)
+light_energy = 0.7
+omni_range = 15.0
+
+[node name="RoomFill2" type="OmniLight3D" parent="."]
+position = Vector3(0, 5.8, 17)
+light_color = Color(0.78, 0.83, 0.91, 1)
+light_energy = 0.7
+omni_range = 15.0

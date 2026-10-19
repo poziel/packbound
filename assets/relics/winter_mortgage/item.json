@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "winter_mortgage",
+  "kind": "relic",
+  "identity": {
+    "name": "Winter Mortgage",
+    "category": "relic",
+    "rarity": "rare",
+    "tags": [
+      "relic",
+      "slowed"
+    ],
+    "summary": "When the enemy already has Slow before activations: gain +2 ward per slow (up to 4 counted).",
+    "description": "When the enemy already has Slow before activations: gain +2 ward per slow (up to 4 counted).",
+    "lore": "The frost broker accepted a house key as security against the spring. The debt comes due whenever the ice begins to melt."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When the enemy already has Slow before activations: gain +2 ward per slow (up to 4 counted).",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "When the enemy already has Slow before activations",
+      "parameters": {
+        "amount": 2,
+        "scaleCap": 4,
+        "condition": "slowed",
+        "stat": "ward",
+        "metric": "slow"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "slowed"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A frozen house key trapped inside a blue crystal",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A frozen house key trapped inside a blue crystal"
+    ],
+    "assets": {
+      "icon": "assets/relics/winter_mortgage/icons/art/icon.png",
+      "svg": "assets/relics/winter_mortgage/icons/art/icon.svg",
+      "source": "assets/relics/winter_mortgage/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/winter_mortgage/icons/art/provenance.json",
+      "manifest": "assets/relics/winter_mortgage/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/winter_mortgage/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

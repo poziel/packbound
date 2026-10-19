@@ -8,7 +8,7 @@
     "#",
     "#"
   ],
-  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
   "exports": [
     "revisions/catalog-v2/frost-wand-32x96.png",
     "revisions/catalog-v2/frost-wand-32x96.svg",

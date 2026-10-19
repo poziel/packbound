@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "siege_heart",
+  "kind": "relic",
+  "identity": {
+    "name": "Siege Heart",
+    "category": "relic",
+    "rarity": "rare",
+    "tags": [
+      "relic",
+      "warrior"
+    ],
+    "summary": "For the Warmonger: gain +2 block per momentum (up to 8 counted).",
+    "description": "For the Warmonger: gain +2 block per momentum (up to 8 counted). Block is added each round.",
+    "lore": "The city carved a heart from its oldest wall and carried it into exile. No camp built around it was ever overrun."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "For the Warmonger: gain +2 block per momentum (up to 8 counted). Block is added each round.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "For the Warmonger",
+      "parameters": {
+        "amount": 2,
+        "scaleCap": 8,
+        "condition": "warrior",
+        "stat": "block",
+        "metric": "momentum"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "warrior"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A stone heart held in a bronze siege frame",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A stone heart held in a bronze siege frame"
+    ],
+    "assets": {
+      "icon": "assets/relics/siege_heart/icons/art/icon.png",
+      "svg": "assets/relics/siege_heart/icons/art/icon.svg",
+      "source": "assets/relics/siege_heart/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/siege_heart/icons/art/provenance.json",
+      "manifest": "assets/relics/siege_heart/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/siege_heart/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

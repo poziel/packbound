@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "marching_pike",
+  "kind": "item",
+  "identity": {
+    "name": "Marching Pike",
+    "category": "weapon",
+    "rarity": "common",
+    "tags": [
+      "weapon",
+      "warrior"
+    ],
+    "summary": "A leaf spearhead above a long ash shaft and red grip.",
+    "description": "Costs 2 stamina per activation. Deals 7 physical damage per affordable activation. Bypasses up to 1 enemy block per activation.",
+    "lore": "Road wardens planted these beside every mile marker."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 7,
+    "pierce": 1
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 2
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 2 stamina per activation. Deals 7 physical damage per affordable activation. Bypasses up to 1 enemy block per activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 7,
+        "pierce": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "common-item-reward-pool"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "assemble_gallows_halberd",
+        "resultId": "gallows_halberd"
+      },
+      {
+        "recipeId": "assemble_hooked_falchion",
+        "resultId": "hooked_falchion"
+      },
+      {
+        "recipeId": "assemble_standard_spike",
+        "resultId": "standard_spike"
+      }
+    ],
+    "mergeTargets": [
+      "gallows_halberd",
+      "hooked_falchion",
+      "standard_spike"
+    ]
+  },
+  "visual": {
+    "brief": "A leaf spearhead above a long ash shaft and red grip.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A leaf spearhead above a long ash shaft and red grip."
+    ],
+    "assets": {
+      "icon": "assets/items/marching_pike/icons/art/icon.png",
+      "svg": "assets/items/marching_pike/icons/art/icon.svg",
+      "source": "assets/items/marching_pike/icons/art/icon.sprite.json",
+      "footprint": "assets/items/marching_pike/icons/art/footprint.json",
+      "provenance": "assets/items/marching_pike/icons/art/provenance.json",
+      "manifest": "assets/items/marching_pike/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/marching_pike/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

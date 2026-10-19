@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "id": "raincatch_bowl",
+  "kind": "item",
+  "identity": {
+    "name": "Raincatch Bowl",
+    "category": "focus",
+    "rarity": "uncommon",
+    "tags": [
+      "focus"
+    ],
+    "summary": "A shallow blue ceramic bowl beneath a curved wire handle.",
+    "description": "Adds 2 maximum mana, refreshed each round.",
+    "lore": "Even indoors, it gathers a little clear water by dawn."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "mana": 2
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Adds 2 maximum mana, refreshed each round.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "mana": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_raincatch_bowl",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "bandage",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "existing"
+          },
+          {
+            "id": "traveler_s_kettle",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "raincatch_bowl",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Grave Bandage, Traveler's Kettle into Raincatch Bowl."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_choir_eel",
+        "resultId": "choir_eel"
+      },
+      {
+        "recipeId": "assemble_storm_abacus",
+        "resultId": "storm_abacus"
+      },
+      {
+        "recipeId": "assemble_bottle_of_yesterday",
+        "resultId": "bottle_of_yesterday"
+      },
+      {
+        "recipeId": "assemble_moonwell_pebble",
+        "resultId": "moonwell_pebble"
+      },
+      {
+        "recipeId": "assemble_hunter_s_compass",
+        "resultId": "hunter_s_compass"
+      }
+    ],
+    "mergeTargets": [
+      "choir_eel",
+      "storm_abacus",
+      "bottle_of_yesterday",
+      "moonwell_pebble",
+      "hunter_s_compass"
+    ]
+  },
+  "visual": {
+    "brief": "A shallow blue ceramic bowl beneath a curved wire handle.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A shallow blue ceramic bowl beneath a curved wire handle."
+    ],
+    "assets": {
+      "icon": "assets/items/raincatch_bowl/icons/art/icon.png",
+      "svg": "assets/items/raincatch_bowl/icons/art/icon.svg",
+      "source": "assets/items/raincatch_bowl/icons/art/icon.sprite.json",
+      "footprint": "assets/items/raincatch_bowl/icons/art/footprint.json",
+      "provenance": "assets/items/raincatch_bowl/icons/art/provenance.json",
+      "manifest": "assets/items/raincatch_bowl/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/raincatch_bowl/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

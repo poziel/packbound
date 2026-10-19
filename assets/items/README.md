@@ -129,7 +129,7 @@ inventory depictions do not change the 128-pixel character contract.
 
 ## Rebuild
 
-Run `node scripts/art/build_item_atlas.cjs` from the project root with `sharp`
+Run `node systems/art/tools/build_item_atlas.cjs` from the project root with `sharp`
 available to Node. The Codex bundled dependency directory can be supplied through
 `NODE_PATH`; the script does not install packages or call an image API.
 

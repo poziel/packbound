@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "prism_leviathan",
+  "kind": "relic",
+  "identity": {
+    "name": "Prism Leviathan",
+    "category": "relic",
+    "rarity": "epic",
+    "tags": [
+      "relic",
+      "reactions"
+    ],
+    "summary": "When an Elemental Reaction occurs this round: gain +5 magical damage per reaction count (up to 4 counted).",
+    "description": "When an Elemental Reaction occurs this round: gain +5 magical damage per reaction count (up to 4 counted).",
+    "lore": "A glassblower dreamed of a serpent too large for any kiln. Each scale cooled into a different storm."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When an Elemental Reaction occurs this round: gain +5 magical damage per reaction count (up to 4 counted).",
+      "trigger": "after-item-aggregation",
+      "target": "current-enemy",
+      "condition": "When an Elemental Reaction occurs this round",
+      "parameters": {
+        "amount": 5,
+        "scaleCap": 4,
+        "condition": "reactions",
+        "stat": "magical_damage",
+        "metric": "reaction_count"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "reactions"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A curled translucent serpent with distinct colored facets",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A curled translucent serpent with distinct colored facets"
+    ],
+    "assets": {
+      "icon": "assets/relics/prism_leviathan/icons/art/icon.png",
+      "svg": "assets/relics/prism_leviathan/icons/art/icon.svg",
+      "source": "assets/relics/prism_leviathan/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/prism_leviathan/icons/art/provenance.json",
+      "manifest": "assets/relics/prism_leviathan/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/prism_leviathan/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

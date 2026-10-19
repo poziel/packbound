@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "empty_scabbard",
+  "kind": "relic",
+  "identity": {
+    "name": "Empty Scabbard",
+    "category": "relic",
+    "rarity": "rare",
+    "tags": [
+      "relic",
+      "no_weapon"
+    ],
+    "summary": "With no packed melee weapons: gain +5 magical damage.",
+    "description": "With no packed melee weapons: gain +5 magical damage.",
+    "lore": "The wizard bought a fine sheath to discourage duels. After a year, the empty space inside began answering her spells."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "With no packed melee weapons: gain +5 magical damage.",
+      "trigger": "after-item-aggregation",
+      "target": "current-enemy",
+      "condition": "With no packed melee weapons",
+      "parameters": {
+        "amount": 5,
+        "scaleCap": 1,
+        "condition": "no_weapon",
+        "stat": "magical_damage",
+        "metric": "one"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "no_weapon"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "An empty red leather sword sheath with a broken strap",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "An empty red leather sword sheath with a broken strap"
+    ],
+    "assets": {
+      "icon": "assets/relics/empty_scabbard/icons/art/icon.png",
+      "svg": "assets/relics/empty_scabbard/icons/art/icon.svg",
+      "source": "assets/relics/empty_scabbard/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/empty_scabbard/icons/art/provenance.json",
+      "manifest": "assets/relics/empty_scabbard/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/empty_scabbard/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

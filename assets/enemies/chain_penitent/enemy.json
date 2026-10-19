@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "id": "chain_penitent",
+  "name": "Chain Penitent",
+  "species": "humanoid",
+  "age": "46 years at death; 137 years bound",
+  "role": "enrager",
+  "description": "An armored prisoner who counts every blow as another broken vow. Two short chain lashes become harder to withstand the longer the fight lasts.",
+  "encounter_floor": 18,
+  "starting_stats": {
+    "hp": 113,
+    "attacks": [
+      7
+    ],
+    "hits": 2,
+    "armor": 0,
+    "pierce": 0,
+    "poison": 0,
+    "drain": 0,
+    "reflect": 0,
+    "sunder": 0,
+    "enrage": 1,
+    "regen": 0,
+    "parry": 0,
+    "opening_armor": 0,
+    "cycle_armor": 0,
+    "cleanse": 0,
+    "physical_resistance": 0,
+    "magical_resistance": 0,
+    "damage_type": "physical"
+  },
+  "abilities": [
+    {
+      "id": "hits",
+      "amount": 2,
+      "description": "Makes 2 strikes per response. Plating and retaliation apply to each strike."
+    },
+    {
+      "id": "enrage",
+      "amount": 1,
+      "description": "Gains 1 attack damage for each elapsed round; resets next combat."
+    }
+  ],
+  "intent": "Enrager",
+  "detail": "Makes 2 strikes per response. Plating and retaliation apply to each strike. Gains 1 attack damage for each elapsed round; resets next combat.",
+  "art": {
+    "source": "art/chain_penitent.pixloom.json",
+    "project": "art/chain_penitent.pixloom",
+    "png": "art/chain_penitent.png",
+    "svg": "art/chain_penitent.svg"
+  }
+}

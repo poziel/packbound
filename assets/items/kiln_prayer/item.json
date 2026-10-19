@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "id": "kiln_prayer",
+  "kind": "item",
+  "identity": {
+    "name": "Kiln Prayer",
+    "category": "spell",
+    "rarity": "uncommon",
+    "tags": [
+      "spell",
+      "mage",
+      "fire"
+    ],
+    "summary": "A clay tablet with a red furnace mouth carved into its face.",
+    "description": "Costs 2 mana per activation. Deals 7 magical damage per affordable activation. Applies 2 burn through the existing combat keyword rules per affordable activation.",
+    "lore": "Potters whispered it over vessels that must never crack."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "#."
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 7,
+    "burn": 2
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "mana",
+        "amount": 2
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 2 mana per activation. Deals 7 magical damage per affordable activation. Applies 2 burn through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 7,
+        "burn": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "different-element-spell"
+      ],
+      "description": "Its fire trace participates in the Elementalist's existing reaction system; arrange it with spells of another element. No extra reaction beyond the shared rules is added.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_kiln_prayer",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "coal_letter",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "salt_lantern",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "kiln_prayer",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Coal Letter, Salt Lantern into Kiln Prayer."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_solar_crucible",
+        "resultId": "solar_crucible"
+      },
+      {
+        "recipeId": "assemble_salamander_contract",
+        "resultId": "salamander_contract"
+      }
+    ],
+    "mergeTargets": [
+      "solar_crucible",
+      "salamander_contract"
+    ]
+  },
+  "visual": {
+    "brief": "A clay tablet with a red furnace mouth carved into its face.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A clay tablet with a red furnace mouth carved into its face."
+    ],
+    "assets": {
+      "icon": "assets/items/kiln_prayer/icons/art/icon.png",
+      "svg": "assets/items/kiln_prayer/icons/art/icon.svg",
+      "source": "assets/items/kiln_prayer/icons/art/icon.sprite.json",
+      "footprint": "assets/items/kiln_prayer/icons/art/footprint.json",
+      "provenance": "assets/items/kiln_prayer/icons/art/provenance.json",
+      "manifest": "assets/items/kiln_prayer/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/kiln_prayer/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

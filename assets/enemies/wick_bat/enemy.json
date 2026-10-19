@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "wick_bat",
+  "name": "Wick Bat",
+  "species": "bat",
+  "age": "3 years",
+  "role": "skirmisher",
+  "description": "This cave bat collects candle wax on its ears. It hunts by the sound of buckles, swooping twice before retreating to the rafters.",
+  "encounter_floor": 2,
+  "starting_stats": {
+    "hp": 24,
+    "attacks": [
+      2
+    ],
+    "hits": 2,
+    "armor": 0,
+    "pierce": 0,
+    "poison": 0,
+    "drain": 0,
+    "reflect": 0,
+    "sunder": 0,
+    "enrage": 0,
+    "regen": 0,
+    "parry": 0,
+    "opening_armor": 0,
+    "cycle_armor": 0,
+    "cleanse": 0,
+    "physical_resistance": 0,
+    "magical_resistance": 0,
+    "damage_type": "physical"
+  },
+  "abilities": [
+    {
+      "id": "hits",
+      "amount": 2,
+      "description": "Makes 2 strikes per response. Plating and retaliation apply to each strike."
+    }
+  ],
+  "intent": "Skirmisher",
+  "detail": "Makes 2 strikes per response. Plating and retaliation apply to each strike.",
+  "art": {
+    "source": "art/wick_bat.pixloom.json",
+    "project": "art/wick_bat.pixloom",
+    "png": "art/wick_bat.png",
+    "svg": "art/wick_bat.svg"
+  }
+}

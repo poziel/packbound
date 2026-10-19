@@ -3,131 +3,131 @@
   "id": "tempered_blade",
   "kind": "item",
   "identity": {
-    "name": "Tempered Blade",
-    "category": "weapon",
-    "rarity": "uncommon",
-    "tags": [
-      "weapon",
+	"name": "Tempered Blade",
+	"category": "weapon",
+	"rarity": "uncommon",
+	"tags": [
+	  "weapon",
       "uncommon"
-    ],
-    "summary": "8 damage.",
-    "description": "Each affordable normal melee activation costs 1 stamina; damage targets the current enemy. Piercing bypasses that amount of enemy block. Ordinary attacks activate once per round; explicit extra-activation effects may repeat them.",
-    "lore": "The roadside smith folds patience into every bar."
+	],
+	"summary": "8 damage.",
+	"description": "Each affordable normal melee activation costs 1 stamina; damage targets the current enemy. Piercing bypasses that amount of enemy block. Ordinary attacks activate once per round; explicit extra-activation effects may repeat them.",
+	"lore": "The roadside smith folds patience into every bar."
   },
   "status": {
-    "design": "proposed",
-    "runtime": "integrated"
+	"design": "proposed",
+	"runtime": "integrated"
   },
   "placement": {
-    "mode": "backpack",
-    "mask": [
-      "#",
+	"mode": "backpack",
+	"mask": [
+	  "#",
       "#"
-    ],
-    "cellPixels": 32,
-    "rotatable": true
+	],
+	"cellPixels": 32,
+	"rotatable": true
   },
   "startingStats": {
-    "damage": 8
+	"damage": 8
   },
   "activation": {
-    "trigger": "player-item-activation",
-    "priority": 0,
-    "costs": [
-      {
-        "resource": "stamina",
-        "amount": 1
-      }
-    ],
-    "cooldownRounds": 0,
-    "maxActivationsPerRound": 1,
-    "reset": "round-start",
-    "extraActivationEffectsMayRepeat": true
+	"trigger": "player-item-activation",
+	"priority": 0,
+	"costs": [
+	  {
+		"resource": "stamina",
+		"amount": 1
+	  }
+	],
+	"cooldownRounds": 0,
+	"maxActivationsPerRound": 1,
+	"reset": "round-start",
+	"extraActivationEffectsMayRepeat": true
   },
   "effects": [
-    {
-      "id": "damage",
-      "description": "Deal physical damage to the current enemy.",
-      "trigger": "affordable-melee-activation",
-      "target": "current-enemy",
-      "condition": "Item is packed and all activation costs are affordable.",
-      "parameters": {
-        "amount": 8
-      },
-      "implementation": "supported"
-    }
+	{
+	  "id": "damage",
+	  "description": "Deal physical damage to the current enemy.",
+	  "trigger": "affordable-melee-activation",
+	  "target": "current-enemy",
+	  "condition": "Item is packed and all activation costs are affordable.",
+	  "parameters": {
+		"amount": 8
+	  },
+	  "implementation": "supported"
+	}
   ],
   "empowerment": [],
   "synergies": [],
   "acquisition": {
-    "sources": [
+	"sources": [
       "item-reward-pool"
-    ],
-    "prices": [],
-    "dropProbabilities": [],
-    "unlockFloor": 5
+	],
+	"prices": [],
+	"dropProbabilities": [],
+	"unlockFloor": 5
   },
   "crafting": {
-    "recipes": [
-      {
-        "id": "forge_tempered_blade",
-        "implementation": "supported",
-        "ingredients": [
-          {
-            "id": "field_blade",
-            "quantity": 2,
-            "consumed": true,
-            "referenceState": "existing"
-          }
-        ],
-        "result": {
-          "id": "tempered_blade",
-          "quantity": 1,
-          "referenceState": "existing"
-        },
-        "conditions": [
-          "Inventory editing is available.",
+	"recipes": [
+	  {
+		"id": "forge_tempered_blade",
+		"implementation": "supported",
+		"ingredients": [
+		  {
+			"id": "field_blade",
+			"quantity": 2,
+			"consumed": true,
+			"referenceState": "existing"
+		  }
+		],
+		"result": {
+		  "id": "tempered_blade",
+		  "quantity": 1,
+		  "referenceState": "existing"
+		},
+		"conditions": [
+		  "Inventory editing is available.",
           "Both unlocked ingredients are packed and form an orthogonally connected group."
-        ],
-        "parameters": {
-          "goldCost": 0
-        },
-        "trigger": "battle-start",
-        "failureBehavior": "Consume nothing if requirements fail. If the result cannot fit after consumption, it remains unpacked.",
-        "description": "Combine two Field Blade into one Tempered Blade."
-      }
-    ],
-    "merges": [
-      {
-        "recipeId": "forge_oathsteel_blade"
-      }
-    ],
-    "mergeTargets": [
+		],
+		"parameters": {
+		  "goldCost": 0
+		},
+		"trigger": "battle-start",
+		"failureBehavior": "Consume nothing if requirements fail. If the result cannot fit after consumption, it remains unpacked.",
+		"description": "Combine two Field Blade into one Tempered Blade."
+	  }
+	],
+	"merges": [
+	  {
+		"recipeId": "forge_oathsteel_blade"
+	  }
+	],
+	"mergeTargets": [
       "oathsteel_blade"
-    ]
+	]
   },
   "visual": {
-    "brief": "A clean leaf-point steel sword with a bronze guard that turns upward and a tight brown leather grip. A fuller separates the broad blade planes.",
-    "materials": [
-      "steel",
-      "bronze",
+	"brief": "A clean leaf-point steel sword with a bronze guard that turns upward and a tight brown leather grip. A fuller separates the broad blade planes.",
+	"materials": [
+	  "steel",
+	  "bronze",
       "brown leather"
-    ],
-    "paletteIntent": "Restrained material ramps; no colored rim lighting or isolated glints.",
-    "definingFeatures": [
-      "A clean leaf-point steel sword with a bronze guard that turns upward and a tight brown leather grip",
+	],
+	"paletteIntent": "Restrained material ramps; no colored rim lighting or isolated glints.",
+	"definingFeatures": [
+	  "A clean leaf-point steel sword with a bronze guard that turns upward and a tight brown leather grip",
       "A fuller separates the broad blade planes."
-    ],
-    "assets": {
-      "icon": "assets/items/tempered_blade/icons/art/icon.png",
-      "svg": "assets/items/tempered_blade/icons/art/icon.svg",
-      "source": "assets/items/tempered_blade/icons/art/icon.sprite.json",
-      "footprint": "assets/items/tempered_blade/icons/art/footprint.json",
-      "provenance": "assets/items/tempered_blade/icons/art/provenance.json",
-      "manifest": "assets/items/tempered_blade/icons/art/art-manifest.json",
-      "variants": []
-    },
-    "approval": "unreviewed"
+	],
+	"assets": {
+	  "icon": "assets/items/tempered_blade/icons/art/icon.png",
+	  "svg": "assets/items/tempered_blade/icons/art/icon.svg",
+	  "source": "assets/items/tempered_blade/icons/art/icon.sprite.json",
+	  "footprint": "assets/items/tempered_blade/icons/art/footprint.json",
+	  "provenance": "assets/items/tempered_blade/icons/art/provenance.json",
+	  "manifest": "assets/items/tempered_blade/icons/art/art-manifest.json",
+	  "variants": []
+	},
+	"approval": "unreviewed"
   },
   "unresolved": []
 }

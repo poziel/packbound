@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "id": "pathfinder_gaiters",
+  "kind": "item",
+  "identity": {
+    "name": "Pathfinder Gaiters",
+    "category": "boots",
+    "rarity": "uncommon",
+    "tags": [
+      "boots",
+      "ranger"
+    ],
+    "summary": "A pair of moss brown wrapped boots with high shin ties.",
+    "description": "Adds 1 maximum stamina, refreshed each round. Supplies 1 ward each round against poison, curse and reflected damage.",
+    "lore": "Their old trails can only be found in morning mist."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "stamina": 1,
+    "ward": 1
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Adds 1 maximum stamina, refreshed each round. Supplies 1 ward each round against poison, curse and reflected damage.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "stamina": 1,
+        "ward": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [
+      "ranger"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_pathfinder_gaiters",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "cobbler_s_boots",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "feather_keeper",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "pathfinder_gaiters",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Cobbler's Boots, Feather Keeper into Pathfinder Gaiters."
+      }
+    ],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A pair of moss brown wrapped boots with high shin ties.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A pair of moss brown wrapped boots with high shin ties."
+    ],
+    "assets": {
+      "icon": "assets/items/pathfinder_gaiters/icons/art/icon.png",
+      "svg": "assets/items/pathfinder_gaiters/icons/art/icon.svg",
+      "source": "assets/items/pathfinder_gaiters/icons/art/icon.sprite.json",
+      "footprint": "assets/items/pathfinder_gaiters/icons/art/footprint.json",
+      "provenance": "assets/items/pathfinder_gaiters/icons/art/provenance.json",
+      "manifest": "assets/items/pathfinder_gaiters/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/pathfinder_gaiters/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

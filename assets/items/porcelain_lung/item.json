@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "porcelain_lung",
+  "kind": "item",
+  "identity": {
+    "name": "Porcelain Lung",
+    "category": "focus",
+    "rarity": "epic",
+    "tags": [
+      "focus"
+    ],
+    "summary": "A cream ceramic lung with thick blue branching channels.",
+    "description": "Adds 2 maximum mana, refreshed each round. Removes up to 3 poison before its round tick. Supplies 2 ward each round against poison, curse and reflected damage.",
+    "lore": "Its maker needed a place to store a last clean breath."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "#."
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "mana": 2,
+    "cleanse": 3,
+    "ward": 2
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Adds 2 maximum mana, refreshed each round. Removes up to 3 poison before its round tick. Supplies 2 ward each round against poison, curse and reflected damage.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "mana": 2,
+        "cleanse": 3,
+        "ward": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "epic-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_porcelain_lung",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "bottle_of_yesterday",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "mercy_needlecase",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "pearl_of_brine",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "wax_ear_trumpet",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "porcelain_lung",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 4,
+          "priorityIngredientCount": 4
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Bottle of Yesterday, Mercy Needlecase, Pearl of Brine, Wax Ear Trumpet into Porcelain Lung."
+      }
+    ],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A cream ceramic lung with thick blue branching channels.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A cream ceramic lung with thick blue branching channels."
+    ],
+    "assets": {
+      "icon": "assets/items/porcelain_lung/icons/art/icon.png",
+      "svg": "assets/items/porcelain_lung/icons/art/icon.svg",
+      "source": "assets/items/porcelain_lung/icons/art/icon.sprite.json",
+      "footprint": "assets/items/porcelain_lung/icons/art/footprint.json",
+      "provenance": "assets/items/porcelain_lung/icons/art/provenance.json",
+      "manifest": "assets/items/porcelain_lung/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/porcelain_lung/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

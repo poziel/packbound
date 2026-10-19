@@ -4,7 +4,7 @@
   "kind": "run_relic",
   "occupies_backpack_cells": false,
   "footprint": null,
-  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
   "exports": [
     "revisions/catalog-v2/echo-clock-32px.png",
     "revisions/catalog-v2/echo-clock-32px.svg",

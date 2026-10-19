@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "id": "crown_scorpion",
+  "name": "Crown Scorpion",
+  "species": "scorpion",
+  "age": "13 years",
+  "role": "venom",
+  "description": "A crypt scorpion that wears a ring of grave gold across its head. Its heavy pincers hold a target steady for the crowned tail.",
+  "encounter_floor": 14,
+  "starting_stats": {
+    "hp": 87,
+    "attacks": [
+      9
+    ],
+    "hits": 1,
+    "armor": 4,
+    "pierce": 0,
+    "poison": 3,
+    "drain": 0,
+    "reflect": 0,
+    "sunder": 0,
+    "enrage": 0,
+    "regen": 0,
+    "parry": 0,
+    "opening_armor": 0,
+    "cycle_armor": 0,
+    "cleanse": 0,
+    "physical_resistance": 0,
+    "magical_resistance": 0,
+    "damage_type": "physical"
+  },
+  "abilities": [
+    {
+      "id": "armor",
+      "amount": 4,
+      "description": "Starts combat with 4 block. Absorbed damage spends it permanently for this fight."
+    },
+    {
+      "id": "poison",
+      "amount": 3,
+      "description": "Applies 3 poison once per response only if a strike damages player health."
+    }
+  ],
+  "intent": "Venom",
+  "detail": "Starts combat with 4 block. Absorbed damage spends it permanently for this fight. Applies 3 poison once per response only if a strike damages player health.",
+  "art": {
+    "source": "art/crown_scorpion.pixloom.json",
+    "project": "art/crown_scorpion.pixloom",
+    "png": "art/crown_scorpion.png",
+    "svg": "art/crown_scorpion.svg"
+  }
+}

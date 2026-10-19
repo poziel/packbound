@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "arrow_rosary",
+  "kind": "relic",
+  "identity": {
+    "name": "Arrow Rosary",
+    "category": "relic",
+    "rarity": "uncommon",
+    "tags": [
+      "relic",
+      "volley"
+    ],
+    "summary": "When Volley fires this round: gain +3 pierce.",
+    "description": "When Volley fires this round: gain +3 pierce.",
+    "lore": "A fletcher counted lost friends with blunted arrowheads. On the last bead, every bow in the company answered."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When Volley fires this round: gain +3 pierce.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "When Volley fires this round",
+      "parameters": {
+        "amount": 3,
+        "scaleCap": 1,
+        "condition": "volley",
+        "stat": "pierce",
+        "metric": "one"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "volley"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "Three blunt arrowheads threaded on a knotted cord",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "Three blunt arrowheads threaded on a knotted cord"
+    ],
+    "assets": {
+      "icon": "assets/relics/arrow_rosary/icons/art/icon.png",
+      "svg": "assets/relics/arrow_rosary/icons/art/icon.svg",
+      "source": "assets/relics/arrow_rosary/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/arrow_rosary/icons/art/provenance.json",
+      "manifest": "assets/relics/arrow_rosary/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/arrow_rosary/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

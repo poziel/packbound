@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "id": "choir_eel",
+  "kind": "item",
+  "identity": {
+    "name": "Choir Eel",
+    "category": "companion",
+    "rarity": "epic",
+    "tags": [
+      "companion"
+    ],
+    "summary": "A dark sinuous eel with a broad gold gill collar.",
+    "description": "Deals 7 physical damage per affordable activation. Applies 3 spark through the existing combat keyword rules per affordable activation.",
+    "lore": "It learned harmony from the bells of a drowned chapel."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 7,
+    "spark": 3
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Deals 7 physical damage per affordable activation. Applies 3 spark through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 7,
+        "spark": 3
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "epic-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_choir_eel",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "gilded_scarab",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "marrow_sparrow",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "pocket_basilisk",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "raincatch_bowl",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "choir_eel",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 4,
+          "priorityIngredientCount": 4
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Gilded Scarab, Marrow Sparrow, Pocket Basilisk, Raincatch Bowl into Choir Eel."
+      }
+    ],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A dark sinuous eel with a broad gold gill collar.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A dark sinuous eel with a broad gold gill collar."
+    ],
+    "assets": {
+      "icon": "assets/items/choir_eel/icons/art/icon.png",
+      "svg": "assets/items/choir_eel/icons/art/icon.svg",
+      "source": "assets/items/choir_eel/icons/art/icon.sprite.json",
+      "footprint": "assets/items/choir_eel/icons/art/footprint.json",
+      "provenance": "assets/items/choir_eel/icons/art/provenance.json",
+      "manifest": "assets/items/choir_eel/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/choir_eel/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

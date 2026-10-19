@@ -6,7 +6,7 @@
   "inventoryMask": [
     "#"
   ],
-  "gameplaySource": "res://scripts/pack_catalog.gd",
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
   "exports": [
     "iron-dagger.png",
     "iron-dagger.svg",

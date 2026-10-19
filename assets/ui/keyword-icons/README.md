@@ -45,7 +45,7 @@ PixelStatBar's optional `badge_icon` and `badge_icon_color` properties are
 generic component inputs; the game supplies the accepted health identity.
 Existing value text remains plain and accessible.
 
-Verification scripts: `tests/keyword_icons_test.gd` (formatting, idempotence,
-aliases and wrapping) and `tests/keyword_ui_test.gd` (real consumers, catalog
+Verification scripts: `tests/systems/ui/keyword_icons_test.gd` (formatting, idempotence,
+aliases and wrapping) and `tests/scenes/shared/keyword_ui_test.gd` (real consumers, catalog
 tooltips, rewards and screenshots). Rendered review artifacts are saved in
 `workspace/docs/art/reviews/semantic-icons-v1/`.

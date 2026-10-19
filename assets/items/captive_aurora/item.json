@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "captive_aurora",
+  "kind": "item",
+  "identity": {
+    "name": "Captive Aurora",
+    "category": "pendant",
+    "rarity": "epic",
+    "tags": [
+      "pendant"
+    ],
+    "summary": "A green glass prism holding a broad folded violet ribbon.",
+    "description": "Adds 3 maximum mana, refreshed each round. Supplies 3 ward each round against poison, curse and reflected damage.",
+    "lore": "The northern sky lost one color the night it was captured."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "mana": 3,
+    "ward": 3
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Adds 3 maximum mana, refreshed each round. Supplies 3 ward each round against poison, curse and reflected damage.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "mana": 3,
+        "ward": 3
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "epic-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_captive_aurora",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "amber_heart_pendant",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "bottle_of_yesterday",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "moonwell_pebble",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "pearl_of_brine",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "captive_aurora",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 4,
+          "priorityIngredientCount": 4
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Amber Heart Pendant, Bottle of Yesterday, Moonwell Pebble, Pearl of Brine into Captive Aurora."
+      }
+    ],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A green glass prism holding a broad folded violet ribbon.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A green glass prism holding a broad folded violet ribbon."
+    ],
+    "assets": {
+      "icon": "assets/items/captive_aurora/icons/art/icon.png",
+      "svg": "assets/items/captive_aurora/icons/art/icon.svg",
+      "source": "assets/items/captive_aurora/icons/art/icon.sprite.json",
+      "footprint": "assets/items/captive_aurora/icons/art/footprint.json",
+      "provenance": "assets/items/captive_aurora/icons/art/provenance.json",
+      "manifest": "assets/items/captive_aurora/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/captive_aurora/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "id": "anchor_cleaver",
+  "kind": "item",
+  "identity": {
+    "name": "Anchor Cleaver",
+    "category": "weapon",
+    "rarity": "rare",
+    "tags": [
+      "weapon",
+      "warrior"
+    ],
+    "summary": "An anchor shaped chopping blade on a short rope wrapped haft.",
+    "description": "Costs 2 stamina per activation. Deals 12 physical damage per affordable activation. Warrior only: requires and spends 2 Momentum; adds 3 damage for each Momentum spent. No cost is spent if activation is unaffordable.",
+    "lore": "Salvaged from a warship that never reached the sea."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      ".#",
+      ".#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 12
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 2
+      },
+      {
+        "resource": "momentum",
+        "amount": 2
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 2 stamina per activation. Deals 12 physical damage per affordable activation. Warrior only: requires and spends 2 Momentum; adds 3 damage for each Momentum spent. No cost is spent if activation is unaffordable.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 12,
+        "momentum_cost": 2,
+        "momentum_damage": 3
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "rare-item-reward-pool"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_anchor_cleaver",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "hooked_falchion",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "iron_charm",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "existing"
+          }
+        ],
+        "result": {
+          "id": "anchor_cleaver",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Hooked Falchion, Iron Charm into Anchor Cleaver."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_mountain_s_verdict",
+        "resultId": "mountain_s_verdict"
+      },
+      {
+        "recipeId": "assemble_meteor_maul",
+        "resultId": "meteor_maul"
+      }
+    ],
+    "mergeTargets": [
+      "mountain_s_verdict",
+      "meteor_maul"
+    ]
+  },
+  "visual": {
+    "brief": "An anchor shaped chopping blade on a short rope wrapped haft.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "An anchor shaped chopping blade on a short rope wrapped haft."
+    ],
+    "assets": {
+      "icon": "assets/items/anchor_cleaver/icons/art/icon.png",
+      "svg": "assets/items/anchor_cleaver/icons/art/icon.svg",
+      "source": "assets/items/anchor_cleaver/icons/art/icon.sprite.json",
+      "footprint": "assets/items/anchor_cleaver/icons/art/footprint.json",
+      "provenance": "assets/items/anchor_cleaver/icons/art/provenance.json",
+      "manifest": "assets/items/anchor_cleaver/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/anchor_cleaver/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

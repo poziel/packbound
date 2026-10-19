@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "id": "bellroot",
+  "name": "Bellroot",
+  "species": "plant",
+  "age": "73 growing seasons",
+  "role": "cycle guard",
+  "description": "A root colony that has grown through a fallen bronze bell. It closes the bell around its core, then opens to strike with knotted limbs.",
+  "encounter_floor": 15,
+  "starting_stats": {
+    "hp": 96,
+    "attacks": [
+      6,
+      15
+    ],
+    "hits": 1,
+    "armor": 0,
+    "pierce": 0,
+    "poison": 0,
+    "drain": 0,
+    "reflect": 0,
+    "sunder": 0,
+    "enrage": 0,
+    "regen": 0,
+    "parry": 0,
+    "opening_armor": 0,
+    "cycle_armor": 6,
+    "cleanse": 0,
+    "physical_resistance": 0,
+    "magical_resistance": 0,
+    "damage_type": "physical"
+  },
+  "abilities": [
+    {
+      "id": "cycle_armor",
+      "amount": 6,
+      "description": "Restores 6 temporary block for odd rounds; unused block expires before even rounds."
+    }
+  ],
+  "intent": "Cycle Guard",
+  "detail": "Restores 6 temporary block for odd rounds; unused block expires before even rounds.",
+  "art": {
+    "source": "art/bellroot.pixloom.json",
+    "project": "art/bellroot.pixloom",
+    "png": "art/bellroot.png",
+    "svg": "art/bellroot.svg"
+  }
+}

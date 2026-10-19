@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "id": "pearl_of_brine",
+  "kind": "item",
+  "identity": {
+    "name": "Pearl of Brine",
+    "category": "pendant",
+    "rarity": "uncommon",
+    "tags": [
+      "pendant"
+    ],
+    "summary": "An uneven cream pearl held in an open sea green shell.",
+    "description": "Removes up to 2 poison before its round tick. Supplies 1 ward each round against poison, curse and reflected damage.",
+    "lore": "The diver found it inside a shell older than the coastline."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "cleanse": 2,
+    "ward": 1
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Removes up to 2 poison before its round tick. Supplies 1 ward each round against poison, curse and reflected damage.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "cleanse": 2,
+        "ward": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_pearl_of_brine",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "acorn_pendant",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "antidote",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "existing"
+          }
+        ],
+        "result": {
+          "id": "pearl_of_brine",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Acorn Pendant, Antidote Flask into Pearl of Brine."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_captive_aurora",
+        "resultId": "captive_aurora"
+      },
+      {
+        "recipeId": "assemble_porcelain_lung",
+        "resultId": "porcelain_lung"
+      },
+      {
+        "recipeId": "assemble_absent_atlas",
+        "resultId": "absent_atlas"
+      },
+      {
+        "recipeId": "assemble_amber_heart_pendant",
+        "resultId": "amber_heart_pendant"
+      },
+      {
+        "recipeId": "assemble_pocket_basilisk",
+        "resultId": "pocket_basilisk"
+      },
+      {
+        "recipeId": "assemble_pilgrim_crab",
+        "resultId": "pilgrim_crab"
+      },
+      {
+        "recipeId": "assemble_seamfinder_lens",
+        "resultId": "seamfinder_lens"
+      },
+      {
+        "recipeId": "assemble_winterflight_rack",
+        "resultId": "winterflight_rack"
+      },
+      {
+        "recipeId": "assemble_glacier_diagram",
+        "resultId": "glacier_diagram"
+      }
+    ],
+    "mergeTargets": [
+      "captive_aurora",
+      "porcelain_lung",
+      "absent_atlas",
+      "amber_heart_pendant",
+      "pocket_basilisk",
+      "pilgrim_crab",
+      "seamfinder_lens",
+      "winterflight_rack",
+      "glacier_diagram"
+    ]
+  },
+  "visual": {
+    "brief": "An uneven cream pearl held in an open sea green shell.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "An uneven cream pearl held in an open sea green shell."
+    ],
+    "assets": {
+      "icon": "assets/items/pearl_of_brine/icons/art/icon.png",
+      "svg": "assets/items/pearl_of_brine/icons/art/icon.svg",
+      "source": "assets/items/pearl_of_brine/icons/art/icon.sprite.json",
+      "footprint": "assets/items/pearl_of_brine/icons/art/footprint.json",
+      "provenance": "assets/items/pearl_of_brine/icons/art/provenance.json",
+      "manifest": "assets/items/pearl_of_brine/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/pearl_of_brine/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

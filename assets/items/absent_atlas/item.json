@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "id": "absent_atlas",
+  "kind": "item",
+  "identity": {
+	"name": "Absent Atlas",
+	"category": "spell",
+	"rarity": "rare",
+	"tags": [
+	  "spell",
+	  "mage",
+      "void"
+	],
+	"summary": "An open black atlas surrounding a pale square hole.",
+	"description": "Costs 3 mana per activation. Deals 12 magical damage per affordable activation. Applies 2 doom through the existing combat keyword rules per affordable activation.",
+	"lore": "Every route ends in the same unwritten country."
+  },
+  "status": {
+	"design": "proposed",
+	"runtime": "integrated"
+  },
+  "placement": {
+	"mode": "backpack",
+	"mask": [
+	  "##",
+      "##"
+	],
+	"cellPixels": 32,
+	"rotatable": true
+  },
+  "startingStats": {
+	"damage": 12,
+	"doom": 2
+  },
+  "activation": {
+	"trigger": "player-item-activation",
+	"priority": 0,
+	"costs": [
+	  {
+		"resource": "mana",
+		"amount": 3
+	  }
+	],
+	"cooldownRounds": 0,
+	"maxActivationsPerRound": 1,
+	"reset": "round-start"
+  },
+  "effects": [
+	{
+	  "id": "base_effect",
+	  "description": "Costs 3 mana per activation. Deals 12 magical damage per affordable activation. Applies 2 doom through the existing combat keyword rules per affordable activation.",
+	  "trigger": "affordable-activation",
+	  "target": "current-enemy-and-player-as-defined-by-keyword",
+	  "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+	  "parameters": {
+		"damage": 12,
+		"doom": 2
+	  },
+	  "implementation": "supported"
+	}
+  ],
+  "empowerment": [],
+  "synergies": [
+	{
+	  "tags": [
+        "different-element-spell"
+	  ],
+	  "description": "Its void trace participates in the Elementalist's existing reaction system; arrange it with spells of another element. No extra reaction beyond the shared rules is added.",
+	  "parameters": {},
+	  "implementation": "supported"
+	}
+  ],
+  "acquisition": {
+	"sources": [
+      "rare-item-reward-pool"
+	],
+	"classes": [
+      "mage"
+	],
+	"prices": [],
+	"dropProbabilities": []
+  },
+  "crafting": {
+	"recipes": [
+	  {
+		"id": "assemble_absent_atlas",
+		"implementation": "supported",
+		"ingredients": [
+		  {
+			"id": "hollow_bookmark",
+			"quantity": 1,
+			"consumed": true,
+			"referenceState": "proposed"
+		  },
+		  {
+			"id": "pearl_of_brine",
+			"quantity": 1,
+			"consumed": true,
+			"referenceState": "proposed"
+		  },
+		  {
+			"id": "salt_lantern",
+			"quantity": 1,
+			"consumed": true,
+			"referenceState": "proposed"
+		  }
+		],
+		"result": {
+		  "id": "absent_atlas",
+		  "quantity": 1,
+		  "referenceState": "proposed"
+		},
+		"conditions": [
+		  "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+		],
+		"parameters": {
+		  "goldCost": 0,
+		  "ingredientCount": 3,
+		  "priorityIngredientCount": 3
+		},
+		"trigger": "combat-start",
+		"failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+		"description": "Combine Hollow Bookmark, Pearl of Brine, Salt Lantern into Absent Atlas."
+	  }
+	],
+	"merges": [
+	  {
+		"recipeId": "assemble_black_rain_theorem",
+		"resultId": "black_rain_theorem"
+	  }
+	],
+	"mergeTargets": [
+      "black_rain_theorem"
+	]
+  },
+  "visual": {
+	"brief": "An open black atlas surrounding a pale square hole.",
+	"materials": [],
+	"paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+	"definingFeatures": [
+      "An open black atlas surrounding a pale square hole."
+	],
+	"assets": {
+	  "icon": "assets/items/absent_atlas/icons/art/icon.png",
+	  "svg": "assets/items/absent_atlas/icons/art/icon.svg",
+	  "source": "assets/items/absent_atlas/icons/art/icon.sprite.json",
+	  "footprint": "assets/items/absent_atlas/icons/art/footprint.json",
+	  "provenance": "assets/items/absent_atlas/icons/art/provenance.json",
+	  "manifest": "assets/items/absent_atlas/icons/art/art-manifest.json",
+	  "variants": [],
+	  "native": "assets/items/absent_atlas/icons/art/icon.pixloom"
+	},
+	"approval": "unreviewed"
+  },
+  "unresolved": []
+}

@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "id": "patchwork_jack",
+  "kind": "item",
+  "identity": {
+    "name": "Patchwork Jack",
+    "category": "armor",
+    "rarity": "common",
+    "tags": [
+      "armor"
+    ],
+    "summary": "A brown quilted jacket with one broad pale elbow patch.",
+    "description": "Starts combat with 4 block; spent block does not refill. Supplies 1 ward each round against poison, curse and reflected damage.",
+    "lore": "A different traveler repaired each square."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "block": 4,
+    "ward": 1
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Starts combat with 4 block; spent block does not refill. Supplies 1 ward each round against poison, curse and reflected damage.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "block": 4,
+        "ward": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "common-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "assemble_blacksmith_s_apron",
+        "resultId": "blacksmith_s_apron"
+      },
+      {
+        "recipeId": "assemble_mothweave_mantle",
+        "resultId": "mothweave_mantle"
+      }
+    ],
+    "mergeTargets": [
+      "blacksmith_s_apron",
+      "mothweave_mantle"
+    ]
+  },
+  "visual": {
+    "brief": "A brown quilted jacket with one broad pale elbow patch.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A brown quilted jacket with one broad pale elbow patch."
+    ],
+    "assets": {
+      "icon": "assets/items/patchwork_jack/icons/art/icon.png",
+      "svg": "assets/items/patchwork_jack/icons/art/icon.svg",
+      "source": "assets/items/patchwork_jack/icons/art/icon.sprite.json",
+      "footprint": "assets/items/patchwork_jack/icons/art/footprint.json",
+      "provenance": "assets/items/patchwork_jack/icons/art/provenance.json",
+      "manifest": "assets/items/patchwork_jack/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/patchwork_jack/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

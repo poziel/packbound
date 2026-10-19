@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "copper_cicada",
+  "kind": "item",
+  "identity": {
+    "name": "Copper Cicada",
+    "category": "spell",
+    "rarity": "uncommon",
+    "tags": [
+      "spell",
+      "mage",
+      "lightning"
+    ],
+    "summary": "A broad winged copper insect folded around a glass abdomen.",
+    "description": "Costs 2 mana per activation. Deals 6 magical damage per affordable activation. Applies 2 spark through the existing combat keyword rules per affordable activation.",
+    "lore": "Its summer song wakes machines beneath the ruins."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 6,
+    "spark": 2
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "mana",
+        "amount": 2
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 2 mana per activation. Deals 6 magical damage per affordable activation. Applies 2 spark through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 6,
+        "spark": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "different-element-spell"
+      ],
+      "description": "Its lightning trace participates in the Elementalist's existing reaction system; arrange it with spells of another element. No extra reaction beyond the shared rules is added.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_copper_cicada",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "static_fork",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "tin_beetle",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "copper_cicada",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Static Fork, Tin Beetle into Copper Cicada."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_storm_abacus",
+        "resultId": "storm_abacus"
+      }
+    ],
+    "mergeTargets": [
+      "storm_abacus"
+    ]
+  },
+  "visual": {
+    "brief": "A broad winged copper insect folded around a glass abdomen.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A broad winged copper insect folded around a glass abdomen."
+    ],
+    "assets": {
+      "icon": "assets/items/copper_cicada/icons/art/icon.png",
+      "svg": "assets/items/copper_cicada/icons/art/icon.svg",
+      "source": "assets/items/copper_cicada/icons/art/icon.sprite.json",
+      "footprint": "assets/items/copper_cicada/icons/art/footprint.json",
+      "provenance": "assets/items/copper_cicada/icons/art/provenance.json",
+      "manifest": "assets/items/copper_cicada/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/copper_cicada/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

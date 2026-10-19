@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "id": "traveler_s_kettle",
+  "kind": "item",
+  "identity": {
+    "name": "Traveler's Kettle",
+    "category": "focus",
+    "rarity": "common",
+    "tags": [
+      "focus"
+    ],
+    "summary": "A black round kettle with a broad copper handle.",
+    "description": "Adds 1 maximum mana, refreshed each round.",
+    "lore": "The same pot has boiled water in a hundred camps."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "mana": 1
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Adds 1 maximum mana, refreshed each round.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "mana": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "common-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "assemble_hollow_bookmark",
+        "resultId": "hollow_bookmark"
+      },
+      {
+        "recipeId": "assemble_raincatch_bowl",
+        "resultId": "raincatch_bowl"
+      }
+    ],
+    "mergeTargets": [
+      "hollow_bookmark",
+      "raincatch_bowl"
+    ]
+  },
+  "visual": {
+    "brief": "A black round kettle with a broad copper handle.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A black round kettle with a broad copper handle."
+    ],
+    "assets": {
+      "icon": "assets/items/traveler_s_kettle/icons/art/icon.png",
+      "svg": "assets/items/traveler_s_kettle/icons/art/icon.svg",
+      "source": "assets/items/traveler_s_kettle/icons/art/icon.sprite.json",
+      "footprint": "assets/items/traveler_s_kettle/icons/art/footprint.json",
+      "provenance": "assets/items/traveler_s_kettle/icons/art/provenance.json",
+      "manifest": "assets/items/traveler_s_kettle/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/traveler_s_kettle/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "vanguard_sabaton",
+  "kind": "item",
+  "identity": {
+    "name": "Vanguard Sabaton",
+    "category": "boots",
+    "rarity": "uncommon",
+    "tags": [
+      "boots",
+      "warrior"
+    ],
+    "summary": "A single broad plated boot with a hooked ankle guard.",
+    "description": "Adds 1 maximum stamina, refreshed each round. Starts combat with 2 block; spent block does not refill.",
+    "lore": "Its owner always reached the breach first."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "stamina": 1,
+    "block": 2
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Adds 1 maximum stamina, refreshed each round. Starts combat with 2 block; spent block does not refill.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "stamina": 1,
+        "block": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_vanguard_sabaton",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "barricade_board",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "cobbler_s_boots",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "vanguard_sabaton",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Barricade Board, Cobbler's Boots into Vanguard Sabaton."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_cadence_spurs",
+        "resultId": "cadence_spurs"
+      }
+    ],
+    "mergeTargets": [
+      "cadence_spurs"
+    ]
+  },
+  "visual": {
+    "brief": "A single broad plated boot with a hooked ankle guard.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A single broad plated boot with a hooked ankle guard."
+    ],
+    "assets": {
+      "icon": "assets/items/vanguard_sabaton/icons/art/icon.png",
+      "svg": "assets/items/vanguard_sabaton/icons/art/icon.svg",
+      "source": "assets/items/vanguard_sabaton/icons/art/icon.sprite.json",
+      "footprint": "assets/items/vanguard_sabaton/icons/art/footprint.json",
+      "provenance": "assets/items/vanguard_sabaton/icons/art/provenance.json",
+      "manifest": "assets/items/vanguard_sabaton/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/vanguard_sabaton/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

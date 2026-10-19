@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://b16ywvt6ifli5"]
 
-[ext_resource type="PackedScene" uid="uid://iyhkxheqo6em" path="res://components/pixel_button/pixel_button.tscn" id="button"]
-[ext_resource type="PackedScene" path="res://components/pixel_scrollbar/pixel_scroll_container.tscn" id="scroll"]
-[ext_resource type="PackedScene" path="res://components/pixel_search_field/pixel_search_field.tscn" id="search"]
-[ext_resource type="PackedScene" path="res://components/item_slot/item_slot.tscn" id="slot"]
-[ext_resource type="PackedScene" uid="uid://b8pk2ue168bup" path="res://components/pixel_stat_bar/pixel_stat_bar.tscn" id="stat"]
+[ext_resource type="PackedScene" uid="uid://iyhkxheqo6em" path="res://components/ui/buttons/pixel_button/pixel_button.tscn" id="button"]
+[ext_resource type="PackedScene" path="res://components/ui/inputs/pixel_scrollbar/pixel_scroll_container.tscn" id="scroll"]
+[ext_resource type="PackedScene" path="res://components/ui/inputs/pixel_search_field/pixel_search_field.tscn" id="search"]
+[ext_resource type="PackedScene" path="res://components/inventory/item_slot/item_slot.tscn" id="slot"]
+[ext_resource type="PackedScene" uid="uid://b8pk2ue168bup" path="res://components/ui/indicators/pixel_stat_bar/pixel_stat_bar.tscn" id="stat"]
 [ext_resource type="Theme" uid="uid://b3k7avi5t7hlb" path="res://themes/gameplay/theme.tres" id="theme"]
 
 [sub_resource type="StyleBoxLine" id="thin_line"]

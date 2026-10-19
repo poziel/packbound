@@ -1,0 +1,467 @@
+[gd_scene format=3 uid="uid://cg2874aei87mn"]
+
+[ext_resource type="PackedScene" uid="uid://iyhkxheqo6em" path="res://components/ui/buttons/pixel_button/pixel_button.tscn" id="button"]
+[ext_resource type="FontFile" path="res://assets/fonts/ui_pixel.tres" id="font"]
+[ext_resource type="Texture2D" uid="uid://emcl4nmegxfl" path="res://themes/gameplay/controls.svg" id="icons"]
+[ext_resource type="Texture2D" uid="uid://bx3lcku53t3es" path="res://assets/items/relics/shield-relic/shield-relic.png" id="relic"]
+[ext_resource type="Script" uid="uid://xhf4hxjh1tsa" path="res://components/ui/buttons/pixel_button/demo.gd" id="script"]
+[ext_resource type="Texture2D" path="res://assets/items/armor/cracked-shield/cracked-shield-32px.png" id="shield"]
+
+[sub_resource type="Theme" id="theme"]
+default_font = ExtResource("font")
+default_font_size = 24
+Label/colors/font_color = Color(0.89, 0.9, 0.83, 1)
+
+[sub_resource type="AtlasTexture" id="attack"]
+atlas = ExtResource("icons")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="settings"]
+atlas = ExtResource("icons")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="next"]
+atlas = ExtResource("icons")
+region = Rect2(96, 0, 32, 32)
+
+[node name="PixelButtonGallery" type="Control" unique_id=1708527528]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("theme")
+script = ExtResource("script")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1004977235]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.043, 0.055, 0.075, 1)
+
+[node name="Eyebrow" type="Label" parent="." unique_id=1950221468]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 28.0
+offset_right = 856.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0.58, 0.64, 0.6, 1)
+theme_override_font_sizes/font_size = 18
+text = "PACKBOUND  /  COMPONENT WORKSHOP"
+
+[node name="Title" type="Label" parent="." unique_id=1842452505]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 60.0
+offset_right = 816.0
+offset_bottom = 116.0
+theme_override_font_sizes/font_size = 48
+text = "Pixel buttons"
+
+[node name="Subtitle" type="Label" parent="." unique_id=1181998907]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 119.0
+offset_right = 906.0
+offset_bottom = 149.0
+theme_override_colors/font_color = Color(0.58, 0.64, 0.6, 1)
+theme_override_font_sizes/font_size = 24
+text = "One shared frame. Your colors, silhouettes and content."
+
+[node name="PaletteLabel" type="Label" parent="." unique_id=1463409346]
+layout_mode = 0
+offset_left = 924.0
+offset_top = 48.0
+offset_right = 1214.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0.58, 0.64, 0.6, 1)
+theme_override_font_sizes/font_size = 18
+text = "TRY A PALETTE"
+
+[node name="ActionsLabel" type="Label" parent="." unique_id=751722338]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 185.0
+offset_right = 656.0
+offset_bottom = 213.0
+theme_override_colors/font_color = Color(0.72, 0.76, 0.62, 1)
+theme_override_font_sizes/font_size = 20
+text = "01    ACTIONS"
+
+[node name="ShapesLabel" type="Label" parent="." unique_id=602557561]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 350.0
+offset_right = 706.0
+offset_bottom = 378.0
+theme_override_colors/font_color = Color(0.72, 0.76, 0.62, 1)
+theme_override_font_sizes/font_size = 20
+text = "02    SILHOUETTES"
+
+[node name="ContentLabel" type="Label" parent="." unique_id=1623226620]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 568.0
+offset_right = 956.0
+offset_bottom = 596.0
+theme_override_colors/font_color = Color(0.72, 0.76, 0.62, 1)
+theme_override_font_sizes/font_size = 20
+text = "03    CONTENT"
+
+[node name="SquareCaption" type="Label" parent="." unique_id=640440916]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 519.0
+offset_right = 168.0
+offset_bottom = 545.0
+theme_override_colors/font_color = Color(0.58, 0.64, 0.6, 1)
+theme_override_font_sizes/font_size = 20
+text = "Square"
+
+[node name="HexCaption" type="Label" parent="." unique_id=745124856]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 519.0
+offset_right = 352.0
+offset_bottom = 545.0
+theme_override_colors/font_color = Color(0.58, 0.64, 0.6, 1)
+theme_override_font_sizes/font_size = 20
+text = "Hexagon"
+
+[node name="DiamondCaption" type="Label" parent="." unique_id=779735446]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 519.0
+offset_right = 520.0
+offset_bottom = 545.0
+theme_override_colors/font_color = Color(0.58, 0.64, 0.6, 1)
+theme_override_font_sizes/font_size = 20
+text = "Diamond"
+
+[node name="LCaption" type="Label" parent="." unique_id=136635582]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 519.0
+offset_right = 688.0
+offset_bottom = 545.0
+theme_override_colors/font_color = Color(0.58, 0.64, 0.6, 1)
+theme_override_font_sizes/font_size = 20
+text = "L mask"
+
+[node name="TCaption" type="Label" parent="." unique_id=2009692101]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 519.0
+offset_right = 872.0
+offset_bottom = 545.0
+theme_override_colors/font_color = Color(0.58, 0.64, 0.6, 1)
+theme_override_font_sizes/font_size = 20
+text = "T mask"
+
+[node name="CustomCaption" type="Label" parent="." unique_id=1438575688]
+layout_mode = 0
+offset_left = 912.0
+offset_top = 519.0
+offset_right = 1200.0
+offset_bottom = 545.0
+theme_override_colors/font_color = Color(0.58, 0.64, 0.6, 1)
+theme_override_font_sizes/font_size = 20
+text = "Custom polygon"
+
+[node name="ContentNote" type="Label" parent="." unique_id=826542320]
+layout_mode = 0
+offset_left = 848.0
+offset_top = 630.0
+offset_right = 1208.0
+offset_bottom = 694.0
+theme_override_colors/font_color = Color(0.58, 0.64, 0.6, 1)
+theme_override_font_sizes/font_size = 24
+text = "Text, icon, or any layout
+inside the Content slot."
+
+[node name="Status" type="Label" parent="." unique_id=1110478983]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 748.0
+offset_right = 1224.0
+offset_bottom = 776.0
+theme_override_colors/font_color = Color(0.68, 0.74, 0.7, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="Guard" parent="." unique_id=142233690 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 232.0
+offset_right = 144.0
+offset_bottom = 312.0
+tooltip_text = "Guard"
+theme_override_constants/icon_max_width = 40
+text = ""
+icon = ExtResource("shield")
+icon_alignment = 1
+expand_icon = true
+face_color = Color(0.32156864, 0.3529412, 0.4392157, 1)
+
+[node name="Attack" parent="." unique_id=1177824255 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 232.0
+offset_right = 516.0
+offset_bottom = 312.0
+tooltip_text = "Attack"
+theme_override_constants/h_separation = 16
+text = "Attack"
+icon = SubResource("attack")
+
+[node name="Disabled" parent="." unique_id=118201969 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 232.0
+offset_right = 624.0
+offset_bottom = 312.0
+tooltip_text = "Disabled action"
+disabled = true
+text = ""
+icon = SubResource("attack")
+icon_alignment = 1
+face_color = Color(0.32156864, 0.3529412, 0.4392157, 1)
+
+[node name="Settings" parent="." unique_id=947194273 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 644.0
+offset_top = 232.0
+offset_right = 732.0
+offset_bottom = 312.0
+tooltip_text = "Settings"
+text = ""
+icon = SubResource("settings")
+icon_alignment = 1
+face_color = Color(0.32156864, 0.3529412, 0.4392157, 1)
+
+[node name="Selected" parent="." unique_id=1436283718 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 232.0
+offset_right = 968.0
+offset_bottom = 312.0
+tooltip_text = "Equipment toggle"
+toggle_mode = true
+button_pressed = true
+text = "Equipped"
+face_color = Color(0.5411765, 0.4509804, 0.2627451, 1)
+
+[node name="Next" parent="." unique_id=988999385 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 988.0
+offset_top = 232.0
+offset_right = 1224.0
+offset_bottom = 312.0
+tooltip_text = "Continue"
+theme_override_constants/h_separation = 12
+text = "Continue"
+icon = SubResource("next")
+face_color = Color(0.3647059, 0.32156864, 0.46666667, 1)
+
+[node name="Square" parent="." unique_id=1083534552 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 396.0
+offset_right = 168.0
+offset_bottom = 508.0
+tooltip_text = "Square"
+text = "A"
+corner_cut = 0
+
+[node name="Hexagon" parent="." unique_id=1975236438 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 396.0
+offset_right = 352.0
+offset_bottom = 508.0
+tooltip_text = "Hexagon"
+text = "B"
+silhouette = 1
+
+[node name="Diamond" parent="." unique_id=2058306793 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 388.0
+offset_right = 520.0
+offset_bottom = 516.0
+tooltip_text = "Diamond"
+text = "C"
+silhouette = 2
+
+[node name="LShape" parent="." unique_id=2089457153 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 396.0
+offset_right = 688.0
+offset_bottom = 508.0
+tooltip_text = "L shape"
+text = "L"
+silhouette = 3
+content_region = Rect2(0, 0.5, 1, 0.5)
+content_padding = Vector2i(8, 4)
+
+[node name="TShape" parent="." unique_id=772597259 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 396.0
+offset_right = 872.0
+offset_bottom = 508.0
+tooltip_text = "T shape"
+text = "T"
+silhouette = 3
+shape_mask = PackedStringArray("###", ".#.", ".#.")
+content_region = Rect2(0, 0, 1, 0.36)
+content_padding = Vector2i(8, 4)
+
+[node name="Chevron" parent="." unique_id=672100934 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 912.0
+offset_top = 396.0
+offset_right = 1224.0
+offset_bottom = 508.0
+tooltip_text = "Custom chevron polygon"
+text = "Next"
+silhouette = 4
+shape_polygon = PackedVector2Array(0, 0, 0.82, 0, 1, 0.5, 0.82, 1, 0, 1, 0.14, 0.5)
+content_region = Rect2(0.15, 0, 0.65, 1)
+
+[node name="ItemShield" parent="." unique_id=206974553 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 620.0
+offset_right = 152.0
+offset_bottom = 716.0
+tooltip_text = "Shield icon"
+theme_override_constants/icon_max_width = 64
+text = ""
+icon = ExtResource("shield")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ItemRelic" parent="." unique_id=1180879336 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 620.0
+offset_right = 268.0
+offset_bottom = 716.0
+tooltip_text = "Relic icon"
+theme_override_constants/icon_max_width = 56
+text = ""
+icon = ExtResource("relic")
+icon_alignment = 1
+expand_icon = true
+face_color = Color(0.3647059, 0.32156864, 0.46666667, 1)
+
+[node name="TextOnly" parent="." unique_id=1620071082 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 620.0
+offset_right = 504.0
+offset_bottom = 716.0
+tooltip_text = "Text-only button"
+text = "Inventory"
+face_color = Color(0.3019608, 0.40784314, 0.4862745, 1)
+
+[node name="CustomContent" parent="." unique_id=365258953 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 620.0
+offset_right = 808.0
+offset_bottom = 716.0
+tooltip_text = "Rest: restore 4 HP"
+text = ""
+
+[node name="Content" parent="CustomContent" index="0" unique_id=390241252]
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 260.0
+offset_bottom = 82.0
+
+[node name="Layout" type="HBoxContainer" parent="CustomContent/Content" index="0" unique_id=1083071488]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Icon" type="TextureRect" parent="CustomContent/Content/Layout" unique_id=1957685051]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("relic")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="CustomContent/Content/Layout" unique_id=1835540873]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="CustomContent/Content/Layout/Text" unique_id=1423568536]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Rest"
+
+[node name="Description" type="Label" parent="CustomContent/Content/Layout/Text" unique_id=828296085]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Restore 4 HP"
+
+[node name="Tint0" parent="." unique_id=54061398 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 924.0
+offset_top = 88.0
+offset_right = 976.0
+offset_bottom = 136.0
+tooltip_text = "Moss"
+text = ""
+
+[node name="Tint1" parent="." unique_id=1332625885 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 984.0
+offset_top = 88.0
+offset_right = 1036.0
+offset_bottom = 136.0
+tooltip_text = "Steel"
+text = ""
+face_color = Color(0.3019608, 0.40784314, 0.4862745, 1)
+
+[node name="Tint2" parent="." unique_id=182624064 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 1044.0
+offset_top = 88.0
+offset_right = 1096.0
+offset_bottom = 136.0
+tooltip_text = "Gold"
+text = ""
+face_color = Color(0.5411765, 0.4509804, 0.2627451, 1)
+
+[node name="Tint3" parent="." unique_id=1246259321 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 1104.0
+offset_top = 88.0
+offset_right = 1156.0
+offset_bottom = 136.0
+tooltip_text = "Violet"
+text = ""
+face_color = Color(0.3647059, 0.32156864, 0.46666667, 1)
+
+[node name="Tint4" parent="." unique_id=1638852899 instance=ExtResource("button")]
+layout_mode = 0
+offset_left = 1164.0
+offset_top = 88.0
+offset_right = 1216.0
+offset_bottom = 136.0
+tooltip_text = "Ember"
+text = ""
+face_color = Color(0.52156866, 0.3019608, 0.3019608, 1)
+
+[editable path="CustomContent"]

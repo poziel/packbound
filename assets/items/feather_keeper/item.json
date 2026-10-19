@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "feather_keeper",
+  "kind": "item",
+  "identity": {
+    "name": "Feather Keeper",
+    "category": "booster",
+    "rarity": "common",
+    "tags": [
+      "booster",
+      "ranger"
+    ],
+    "summary": "A bundle of broad brown flight feathers tied with flax.",
+    "description": "While orthogonally touching the permanent Bowmaster quiver, adds 1 damage to Volley; this equipment remains in the backpack and is not consumed.",
+    "lore": "A fletcher saves the strongest feathers for the longest road."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "While orthogonally touching the permanent Bowmaster quiver, adds 1 damage to Volley; this equipment remains in the backpack and is not consumed.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [
+    {
+      "id": "quiver_bonus",
+      "targetIds": [
+        "magnificent_quiver"
+      ],
+      "targetTags": [
+        "quiver"
+      ],
+      "geometry": "orthogonal occupied-cell contact",
+      "stacking": "once per distinct source and target; different sources add",
+      "trigger": "while-equipped",
+      "bonuses": {
+        "damage": 1
+      },
+      "conditions": [
+        "Both source and target are equipped."
+      ],
+      "implementation": "supported"
+    }
+  ],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Pairs with the permanent Bowmaster quiver and other different quiver attachments; normal bows receive no implicit bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "common-item-reward-pool"
+    ],
+    "classes": [
+      "ranger"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "assemble_waxed_fletching",
+        "resultId": "waxed_fletching"
+      },
+      {
+        "recipeId": "assemble_pathfinder_gaiters",
+        "resultId": "pathfinder_gaiters"
+      }
+    ],
+    "mergeTargets": [
+      "waxed_fletching",
+      "pathfinder_gaiters"
+    ]
+  },
+  "visual": {
+    "brief": "A bundle of broad brown flight feathers tied with flax.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A bundle of broad brown flight feathers tied with flax."
+    ],
+    "assets": {
+      "icon": "assets/items/feather_keeper/icons/art/icon.png",
+      "svg": "assets/items/feather_keeper/icons/art/icon.svg",
+      "source": "assets/items/feather_keeper/icons/art/icon.sprite.json",
+      "footprint": "assets/items/feather_keeper/icons/art/footprint.json",
+      "provenance": "assets/items/feather_keeper/icons/art/provenance.json",
+      "manifest": "assets/items/feather_keeper/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/feather_keeper/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

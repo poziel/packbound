@@ -1,0 +1,39 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://components/inventory/item_slot/numbered_item_slot.tscn" id="numbered"]
+[ext_resource type="Theme" path="res://themes/gameplay/theme.tres" id="theme"]
+
+[node name="NumberedTileDemo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("theme")
+texture_filter = 1
+
+[node name="Title" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 620.0
+offset_bottom = 60.0
+text = "NUMBERED TILE VARIANT · NONE / 1 / 9"
+
+[node name="Plain" parent="." instance=ExtResource("numbered")]
+offset_left = 32.0
+offset_top = 84.0
+offset_right = 116.0
+offset_bottom = 168.0
+corner_number = 0
+
+[node name="First" parent="." instance=ExtResource("numbered")]
+offset_left = 148.0
+offset_top = 84.0
+offset_right = 232.0
+offset_bottom = 168.0
+
+[node name="Ninth" parent="." instance=ExtResource("numbered")]
+offset_left = 264.0
+offset_top = 84.0
+offset_right = 348.0
+offset_bottom = 168.0
+corner_number = 9

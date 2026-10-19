@@ -1,0 +1,320 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://scenes/world/rooms/shared/activity_room.gd" id="room"]
+[ext_resource type="PackedScene" path="res://scenes/world/rooms/selector/selector_door/selector_door.tscn" id="door"]
+[ext_resource type="PackedScene" path="res://scenes/world/biomes/dungeon/shared/relic_pedestals/relic_pedestals.tscn" id="pedestals"]
+[sub_resource type="StandardMaterial3D" id="stone"]
+albedo_color = Color(0.24, 0.21, 0.18, 1)
+roughness = 1.0
+[sub_resource type="StandardMaterial3D" id="trim"]
+albedo_color = Color(0.52, 0.40, 0.18, 1)
+roughness = 1.0
+
+[sub_resource type="BoxMesh" id="Floor_root"]
+size = Vector3(15, 0.5, 22)
+
+[sub_resource type="BoxMesh" id="LeftWall_root"]
+size = Vector3(0.5, 4.5, 22)
+
+[sub_resource type="BoxMesh" id="RightWall_root"]
+size = Vector3(0.5, 4.5, 22)
+
+[sub_resource type="BoxMesh" id="RearPier0_root"]
+size = Vector3(0.3, 4.3, 0.7)
+
+[sub_resource type="BoxMesh" id="RearPier1_root"]
+size = Vector3(0.3, 4.3, 0.7)
+
+[sub_resource type="BoxMesh" id="RearPier2_root"]
+size = Vector3(0.3, 4.3, 0.7)
+
+[sub_resource type="BoxMesh" id="RearPier3_root"]
+size = Vector3(0.3, 4.3, 0.7)
+
+[sub_resource type="BoxMesh" id="RearPier4_root"]
+size = Vector3(0.3, 4.3, 0.7)
+
+[sub_resource type="BoxMesh" id="RearPier5_root"]
+size = Vector3(0.3, 4.3, 0.7)
+
+[sub_resource type="BoxMesh" id="RearPier6_root"]
+size = Vector3(0.3, 4.3, 0.7)
+
+[sub_resource type="BoxMesh" id="RearPier7_root"]
+size = Vector3(0.3, 4.3, 0.7)
+
+[sub_resource type="BoxMesh" id="RearPier8_root"]
+size = Vector3(0.3, 4.3, 0.7)
+
+[sub_resource type="BoxMesh" id="UpperBeam_root"]
+size = Vector3(15, 0.65, 0.8)
+
+[sub_resource type="BoxMesh" id="FloorBand0_root"]
+size = Vector3(14, 0.025, 0.035)
+
+[sub_resource type="BoxMesh" id="FloorBand1_root"]
+size = Vector3(14, 0.025, 0.035)
+
+[sub_resource type="BoxMesh" id="FloorBand2_root"]
+size = Vector3(14, 0.025, 0.035)
+
+[sub_resource type="BoxMesh" id="FloorBand3_root"]
+size = Vector3(14, 0.025, 0.035)
+
+[sub_resource type="BoxMesh" id="FloorBand4_root"]
+size = Vector3(14, 0.025, 0.035)
+
+[sub_resource type="BoxMesh" id="FloorBand5_root"]
+size = Vector3(14, 0.025, 0.035)
+
+[sub_resource type="BoxMesh" id="Pillar0_root"]
+size = Vector3(0.65, 3.5, 0.65)
+
+[sub_resource type="BoxMesh" id="Pillar1_root"]
+size = Vector3(0.65, 3.5, 0.65)
+
+[sub_resource type="BoxMesh" id="Pillar2_root"]
+size = Vector3(0.65, 3.5, 0.65)
+
+[sub_resource type="BoxMesh" id="Pillar3_root"]
+size = Vector3(0.65, 3.5, 0.65)
+
+[sub_resource type="BoxMesh" id="EntryStep0_root"]
+size = Vector3(2.2, 0.2, 0.4)
+
+[sub_resource type="BoxMesh" id="EntryStep1_root"]
+size = Vector3(2.2, 0.2, 0.4)
+
+[sub_resource type="BoxMesh" id="EntryStep2_root"]
+size = Vector3(2.2, 0.2, 0.4)
+
+[sub_resource type="BoxMesh" id="EntryStep3_root"]
+size = Vector3(2.2, 0.2, 0.4)
+
+[sub_resource type="BoxMesh" id="EntryStep4_root"]
+size = Vector3(2.2, 0.2, 0.4)
+
+[sub_resource type="BoxMesh" id="EntryStep5_root"]
+size = Vector3(2.2, 0.2, 0.4)
+
+[sub_resource type="BoxMesh" id="EntryStep6_root"]
+size = Vector3(2.2, 0.2, 0.4)
+
+[sub_resource type="BoxMesh" id="BackWall_root"]
+size = Vector3(15, 4.5, 0.4)
+
+[sub_resource type="BoxMesh" id="Plinth0_root"]
+size = Vector3(0.7, 1.1, 0.7)
+
+[sub_resource type="BoxMesh" id="Reliquary0_root"]
+size = Vector3(0.42, 0.35, 0.42)
+
+[sub_resource type="BoxMesh" id="Plinth1_root"]
+size = Vector3(0.7, 1.1, 0.7)
+
+[sub_resource type="BoxMesh" id="Reliquary1_root"]
+size = Vector3(0.42, 0.35, 0.42)
+
+[sub_resource type="BoxMesh" id="Plinth2_root"]
+size = Vector3(0.7, 1.1, 0.7)
+
+[sub_resource type="BoxMesh" id="Reliquary2_root"]
+size = Vector3(0.42, 0.35, 0.42)
+
+[node name="RelicRoom" type="Node3D"]
+script = ExtResource("room")
+camera_size = 0.115
+camera_frustum_offset = Vector2(0.046, 0)
+arrival_look_down_degrees = 10.0
+departure_look_down_degrees = 0.0
+departure_seconds = 1.8
+[node name="CameraStart" type="Marker3D" parent="."]
+position = Vector3(0, 1.7, 4.6)
+[node name="Travel" type="Node3D" parent="."]
+[node name="ArrivalStart" type="Marker3D" parent="Travel"]
+position = Vector3(0, 3.0, 8)
+[node name="ArrivalLanding" type="Marker3D" parent="Travel"]
+position = Vector3(0, 1.7, 6)
+[node name="ExitApproach" type="Marker3D" parent="Travel"]
+position = Vector3(4.5, 1.7, -4)
+[node name="ExitEnd" type="Marker3D" parent="Travel"]
+position = Vector3(4.5, 1.7, -5.2)
+
+[node name="ExitDoor" parent="." instance=ExtResource("door")]
+position = Vector3(4.5, 0, -4.8)
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.25, 0)
+mesh = SubResource("Floor_root")
+material_override = SubResource("stone")
+
+[node name="LeftWall" type="MeshInstance3D" parent="."]
+position = Vector3(-7.2, 2, 0)
+mesh = SubResource("LeftWall_root")
+material_override = SubResource("stone")
+
+[node name="RightWall" type="MeshInstance3D" parent="."]
+position = Vector3(7.2, 2, 0)
+mesh = SubResource("RightWall_root")
+material_override = SubResource("stone")
+
+[node name="RearPier0" type="MeshInstance3D" parent="."]
+position = Vector3(-6.6, 1.9, -5.2)
+mesh = SubResource("RearPier0_root")
+material_override = SubResource("stone")
+
+[node name="RearPier1" type="MeshInstance3D" parent="."]
+position = Vector3(-4.8, 1.9, -5.2)
+mesh = SubResource("RearPier1_root")
+material_override = SubResource("stone")
+
+[node name="RearPier2" type="MeshInstance3D" parent="."]
+position = Vector3(-2.9999999999999996, 1.9, -5.2)
+mesh = SubResource("RearPier2_root")
+material_override = SubResource("stone")
+
+[node name="RearPier3" type="MeshInstance3D" parent="."]
+position = Vector3(-1.1999999999999993, 1.9, -5.2)
+mesh = SubResource("RearPier3_root")
+material_override = SubResource("stone")
+
+[node name="RearPier4" type="MeshInstance3D" parent="."]
+position = Vector3(0.6000000000000005, 1.9, -5.2)
+mesh = SubResource("RearPier4_root")
+material_override = SubResource("stone")
+
+[node name="RearPier5" type="MeshInstance3D" parent="."]
+position = Vector3(2.4000000000000004, 1.9, -5.2)
+mesh = SubResource("RearPier5_root")
+material_override = SubResource("stone")
+
+[node name="RearPier6" type="MeshInstance3D" parent="."]
+position = Vector3(4.200000000000001, 1.9, -5.2)
+mesh = SubResource("RearPier6_root")
+material_override = SubResource("stone")
+
+[node name="RearPier7" type="MeshInstance3D" parent="."]
+position = Vector3(6.0, 1.9, -5.2)
+mesh = SubResource("RearPier7_root")
+material_override = SubResource("stone")
+
+[node name="RearPier8" type="MeshInstance3D" parent="."]
+position = Vector3(7.800000000000001, 1.9, -5.2)
+mesh = SubResource("RearPier8_root")
+material_override = SubResource("stone")
+
+[node name="UpperBeam" type="MeshInstance3D" parent="."]
+position = Vector3(0, 3.75, -5.2)
+mesh = SubResource("UpperBeam_root")
+material_override = SubResource("trim")
+
+[node name="FloorBand0" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.01, -4.0)
+mesh = SubResource("FloorBand0_root")
+material_override = SubResource("trim")
+
+[node name="FloorBand1" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.01, -1.7999999999999998)
+mesh = SubResource("FloorBand1_root")
+material_override = SubResource("trim")
+
+[node name="FloorBand2" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.01, 0.40000000000000036)
+mesh = SubResource("FloorBand2_root")
+material_override = SubResource("trim")
+
+[node name="FloorBand3" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.01, 2.6000000000000005)
+mesh = SubResource("FloorBand3_root")
+material_override = SubResource("trim")
+
+[node name="FloorBand4" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.01, 4.800000000000001)
+mesh = SubResource("FloorBand4_root")
+material_override = SubResource("trim")
+
+[node name="FloorBand5" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.01, 7.0)
+mesh = SubResource("FloorBand5_root")
+material_override = SubResource("trim")
+
+[node name="Pillar0" type="MeshInstance3D" parent="."]
+position = Vector3(-6.5, 1.6, -3)
+mesh = SubResource("Pillar0_root")
+material_override = SubResource("trim")
+
+[node name="Pillar1" type="MeshInstance3D" parent="."]
+position = Vector3(6.5, 1.6, -3)
+mesh = SubResource("Pillar1_root")
+material_override = SubResource("trim")
+
+[node name="Pillar2" type="MeshInstance3D" parent="."]
+position = Vector3(-6.5, 1.6, 3)
+mesh = SubResource("Pillar2_root")
+material_override = SubResource("trim")
+
+[node name="Pillar3" type="MeshInstance3D" parent="."]
+position = Vector3(6.5, 1.6, 3)
+mesh = SubResource("Pillar3_root")
+material_override = SubResource("trim")
+
+[node name="EntryStep0" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.1, 6.0)
+mesh = SubResource("EntryStep0_root")
+material_override = SubResource("stone")
+
+[node name="EntryStep1" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.1, 6.38)
+mesh = SubResource("EntryStep1_root")
+material_override = SubResource("stone")
+
+[node name="EntryStep2" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.30000000000000004, 6.76)
+mesh = SubResource("EntryStep2_root")
+material_override = SubResource("stone")
+
+[node name="EntryStep3" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.5000000000000001, 7.140000000000001)
+mesh = SubResource("EntryStep3_root")
+material_override = SubResource("stone")
+
+[node name="EntryStep4" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.7000000000000001, 7.52)
+mesh = SubResource("EntryStep4_root")
+material_override = SubResource("stone")
+
+[node name="EntryStep5" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.9, 7.9)
+mesh = SubResource("EntryStep5_root")
+material_override = SubResource("stone")
+
+[node name="EntryStep6" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.1, 8.280000000000001)
+mesh = SubResource("EntryStep6_root")
+material_override = SubResource("stone")
+
+[node name="BackWall" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2, -5.5)
+mesh = SubResource("BackWall_root")
+material_override = SubResource("stone")
+
+[node name="Lantern0" type="OmniLight3D" parent="."]
+position = Vector3(-4, 2.8, -2)
+light_color = Color(1, 0.68, 0.36, 1)
+light_energy = 1.4
+omni_range = 7.0
+
+[node name="Lantern1" type="OmniLight3D" parent="."]
+position = Vector3(0, 2.8, -2)
+light_color = Color(1, 0.68, 0.36, 1)
+light_energy = 1.4
+omni_range = 7.0
+
+[node name="Lantern2" type="OmniLight3D" parent="."]
+position = Vector3(4, 2.8, -2)
+light_color = Color(1, 0.68, 0.36, 1)
+light_energy = 1.4
+omni_range = 7.0
+
+[node name="Pedestals" parent="." instance=ExtResource("pedestals")]
+position = Vector3(0, 0, -4)
+scale = Vector3(0.6, 0.6, 0.6)

@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "winterflight_rack",
+  "kind": "item",
+  "identity": {
+    "name": "Winterflight Rack",
+    "category": "booster",
+    "rarity": "rare",
+    "tags": [
+      "booster",
+      "ranger"
+    ],
+    "summary": "A pale blue feather rack with a broad frost crystal clasp.",
+    "description": "While orthogonally touching the permanent Bowmaster quiver, adds 2 slow to Volley; this equipment remains in the backpack and is not consumed.",
+    "lore": "Migrating birds avoid the valley where these feathers fell."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "While orthogonally touching the permanent Bowmaster quiver, adds 2 slow to Volley; this equipment remains in the backpack and is not consumed.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [
+    {
+      "id": "quiver_bonus",
+      "targetIds": [
+        "magnificent_quiver"
+      ],
+      "targetTags": [
+        "quiver"
+      ],
+      "geometry": "orthogonal occupied-cell contact",
+      "stacking": "once per distinct source and target; different sources add",
+      "trigger": "while-equipped",
+      "bonuses": {
+        "slow": 2
+      },
+      "conditions": [
+        "Both source and target are equipped."
+      ],
+      "implementation": "supported"
+    }
+  ],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Pairs with the permanent Bowmaster quiver and other different quiver attachments; normal bows receive no implicit bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "rare-item-reward-pool"
+    ],
+    "classes": [
+      "ranger"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_winterflight_rack",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "pearl_of_brine",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "waxed_fletching",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "winterflight_rack",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Pearl of Brine, Waxed Fletching into Winterflight Rack."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_endless_flight_spool",
+        "resultId": "endless_flight_spool"
+      }
+    ],
+    "mergeTargets": [
+      "endless_flight_spool"
+    ]
+  },
+  "visual": {
+    "brief": "A pale blue feather rack with a broad frost crystal clasp.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A pale blue feather rack with a broad frost crystal clasp."
+    ],
+    "assets": {
+      "icon": "assets/items/winterflight_rack/icons/art/icon.png",
+      "svg": "assets/items/winterflight_rack/icons/art/icon.svg",
+      "source": "assets/items/winterflight_rack/icons/art/icon.sprite.json",
+      "footprint": "assets/items/winterflight_rack/icons/art/footprint.json",
+      "provenance": "assets/items/winterflight_rack/icons/art/provenance.json",
+      "manifest": "assets/items/winterflight_rack/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/winterflight_rack/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

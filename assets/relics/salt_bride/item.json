@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "salt_bride",
+  "kind": "relic",
+  "identity": {
+    "name": "Salt Bride",
+    "category": "relic",
+    "rarity": "rare",
+    "tags": [
+      "relic",
+      "cursed"
+    ],
+    "summary": "When packed activations contribute Curse: gain +4 cleanse.",
+    "description": "When packed activations contribute Curse: gain +4 cleanse.",
+    "lore": "She waited on the shore until her veil turned white with salt. The sea sent back everything except the promise."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When packed activations contribute Curse: gain +4 cleanse.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "When packed activations contribute Curse",
+      "parameters": {
+        "amount": 4,
+        "scaleCap": 1,
+        "condition": "cursed",
+        "stat": "cleanse",
+        "metric": "one"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "cursed"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A salt white bridal veil folded around a black pearl",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A salt white bridal veil folded around a black pearl"
+    ],
+    "assets": {
+      "icon": "assets/relics/salt_bride/icons/art/icon.png",
+      "svg": "assets/relics/salt_bride/icons/art/icon.svg",
+      "source": "assets/relics/salt_bride/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/salt_bride/icons/art/provenance.json",
+      "manifest": "assets/relics/salt_bride/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/salt_bride/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

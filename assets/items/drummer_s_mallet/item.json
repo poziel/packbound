@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "drummer_s_mallet",
+  "kind": "item",
+  "identity": {
+    "name": "Drummer's Mallet",
+    "category": "weapon",
+    "rarity": "common",
+    "tags": [
+      "weapon",
+      "warrior"
+    ],
+    "summary": "A heavy felt drum beater bound in brass rings.",
+    "description": "Costs 1 stamina per activation. Deals 5 physical damage per affordable activation. Warrior only: gains 1 Momentum after an affordable activation.",
+    "lore": "Its rhythm once kept a starving company walking."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 5
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 1
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 1 stamina per activation. Deals 5 physical damage per affordable activation. Warrior only: gains 1 Momentum after an affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 5,
+        "momentum_gain": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Feeds Momentum-spending Warrior weapons; ordinary completed exchanges remain another Momentum source.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "common-item-reward-pool"
+    ],
+    "classes": [
+      "warrior"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "assemble_boiler_hammer",
+        "resultId": "boiler_hammer"
+      },
+      {
+        "recipeId": "assemble_standard_spike",
+        "resultId": "standard_spike"
+      }
+    ],
+    "mergeTargets": [
+      "boiler_hammer",
+      "standard_spike"
+    ]
+  },
+  "visual": {
+    "brief": "A heavy felt drum beater bound in brass rings.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A heavy felt drum beater bound in brass rings."
+    ],
+    "assets": {
+      "icon": "assets/items/drummer_s_mallet/icons/art/icon.png",
+      "svg": "assets/items/drummer_s_mallet/icons/art/icon.svg",
+      "source": "assets/items/drummer_s_mallet/icons/art/icon.sprite.json",
+      "footprint": "assets/items/drummer_s_mallet/icons/art/footprint.json",
+      "provenance": "assets/items/drummer_s_mallet/icons/art/provenance.json",
+      "manifest": "assets/items/drummer_s_mallet/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/drummer_s_mallet/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

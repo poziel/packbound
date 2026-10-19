@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "mercy_needlecase",
+  "kind": "item",
+  "identity": {
+    "name": "Mercy Needlecase",
+    "category": "healer",
+    "rarity": "rare",
+    "tags": [
+      "healer"
+    ],
+    "summary": "A slim ivory case opened to show a broad silver needle.",
+    "description": "Restores up to 3 HP each round. Removes up to 2 poison before its round tick.",
+    "lore": "A battlefield surgeon left it at the first peaceful inn."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "healing": 3,
+    "cleanse": 2
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Restores up to 3 HP each round. Removes up to 2 poison before its round tick.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "healing": 3,
+        "cleanse": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "rare-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_mercy_needlecase",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "antidote",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "existing"
+          },
+          {
+            "id": "chalk_poultice",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "roseglass_brooch",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "mercy_needlecase",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Antidote Flask, Chalk Poultice, Roseglass Brooch into Mercy Needlecase."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_seven_league_soles",
+        "resultId": "seven_league_soles"
+      },
+      {
+        "recipeId": "assemble_porcelain_lung",
+        "resultId": "porcelain_lung"
+      },
+      {
+        "recipeId": "assemble_orchid_eclipse",
+        "resultId": "orchid_eclipse"
+      }
+    ],
+    "mergeTargets": [
+      "seven_league_soles",
+      "porcelain_lung",
+      "orchid_eclipse"
+    ]
+  },
+  "visual": {
+    "brief": "A slim ivory case opened to show a broad silver needle.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A slim ivory case opened to show a broad silver needle."
+    ],
+    "assets": {
+      "icon": "assets/items/mercy_needlecase/icons/art/icon.png",
+      "svg": "assets/items/mercy_needlecase/icons/art/icon.svg",
+      "source": "assets/items/mercy_needlecase/icons/art/icon.sprite.json",
+      "footprint": "assets/items/mercy_needlecase/icons/art/footprint.json",
+      "provenance": "assets/items/mercy_needlecase/icons/art/provenance.json",
+      "manifest": "assets/items/mercy_needlecase/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/mercy_needlecase/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

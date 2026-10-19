@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "id": "barbed_tip_roll",
+  "kind": "item",
+  "identity": {
+    "name": "Barbed Tip Roll",
+    "category": "booster",
+    "rarity": "uncommon",
+    "tags": [
+      "booster",
+      "ranger"
+    ],
+    "summary": "A leather roll exposing three triangular barbed tips.",
+    "description": "While orthogonally touching the permanent Bowmaster quiver, adds 2 pierce to Volley; this equipment remains in the backpack and is not consumed.",
+    "lore": "The quartermaster wrapped each edge before touching the next."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "While orthogonally touching the permanent Bowmaster quiver, adds 2 pierce to Volley; this equipment remains in the backpack and is not consumed.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [
+    {
+      "id": "quiver_bonus",
+      "targetIds": [
+        "magnificent_quiver"
+      ],
+      "targetTags": [
+        "quiver"
+      ],
+      "geometry": "orthogonal occupied-cell contact",
+      "stacking": "once per distinct source and target; different sources add",
+      "trigger": "while-equipped",
+      "bonuses": {
+        "pierce": 2
+      },
+      "conditions": [
+        "Both source and target are equipped."
+      ],
+      "implementation": "supported"
+    }
+  ],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Pairs with the permanent Bowmaster quiver and other different quiver attachments; normal bows receive no implicit bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [
+      "ranger"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_barbed_tip_roll",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "rusty_knife",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "existing"
+          },
+          {
+            "id": "tin_arrow_cup",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "barbed_tip_roll",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Rusty Knife, Tin Arrow Cup into Barbed Tip Roll."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_thunder_yew",
+        "resultId": "thunder_yew"
+      },
+      {
+        "recipeId": "assemble_cinder_nock_rack",
+        "resultId": "cinder_nock_rack"
+      },
+      {
+        "recipeId": "assemble_hunter_s_compass",
+        "resultId": "hunter_s_compass"
+      }
+    ],
+    "mergeTargets": [
+      "thunder_yew",
+      "cinder_nock_rack",
+      "hunter_s_compass"
+    ]
+  },
+  "visual": {
+    "brief": "A leather roll exposing three triangular barbed tips.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A leather roll exposing three triangular barbed tips."
+    ],
+    "assets": {
+      "icon": "assets/items/barbed_tip_roll/icons/art/icon.png",
+      "svg": "assets/items/barbed_tip_roll/icons/art/icon.svg",
+      "source": "assets/items/barbed_tip_roll/icons/art/icon.sprite.json",
+      "footprint": "assets/items/barbed_tip_roll/icons/art/footprint.json",
+      "provenance": "assets/items/barbed_tip_roll/icons/art/provenance.json",
+      "manifest": "assets/items/barbed_tip_roll/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/barbed_tip_roll/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

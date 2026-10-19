@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "id": "hunter_s_compass",
+  "kind": "item",
+  "identity": {
+    "name": "Hunter's Compass",
+    "category": "booster",
+    "rarity": "rare",
+    "tags": [
+      "booster",
+      "ranger"
+    ],
+    "summary": "A square brass compass whose needle resembles an arrow.",
+    "description": "Adds 1 maximum stamina, refreshed each round. Each orthogonally touching ranged gains +2 pierce. Each source applies once per target, regardless of shared edges; distinct sources stack.",
+    "lore": "The needle points toward the next living threat."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "stamina": 1
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Adds 1 maximum stamina, refreshed each round. Each orthogonally touching ranged gains +2 pierce. Each source applies once per target, regardless of shared edges; distinct sources stack.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "stamina": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [
+    {
+      "id": "adjacency_bonus",
+      "targetIds": [],
+      "targetTags": [
+        "ranged"
+      ],
+      "geometry": "orthogonal occupied-cell contact",
+      "stacking": "once per distinct source and target; different sources add",
+      "trigger": "while-equipped",
+      "bonuses": {
+        "pierce": 2
+      },
+      "conditions": [
+        "Both source and target are equipped."
+      ],
+      "implementation": "supported"
+    }
+  ],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "rare-item-reward-pool"
+    ],
+    "classes": [
+      "ranger"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_hunter_s_compass",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "barbed_tip_roll",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "raincatch_bowl",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "hunter_s_compass",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Barbed Tip Roll, Raincatch Bowl into Hunter's Compass."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_seamfinder_lens",
+        "resultId": "seamfinder_lens"
+      }
+    ],
+    "mergeTargets": [
+      "seamfinder_lens"
+    ]
+  },
+  "visual": {
+    "brief": "A square brass compass whose needle resembles an arrow.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A square brass compass whose needle resembles an arrow."
+    ],
+    "assets": {
+      "icon": "assets/items/hunter_s_compass/icons/art/icon.png",
+      "svg": "assets/items/hunter_s_compass/icons/art/icon.svg",
+      "source": "assets/items/hunter_s_compass/icons/art/icon.sprite.json",
+      "footprint": "assets/items/hunter_s_compass/icons/art/footprint.json",
+      "provenance": "assets/items/hunter_s_compass/icons/art/provenance.json",
+      "manifest": "assets/items/hunter_s_compass/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/hunter_s_compass/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

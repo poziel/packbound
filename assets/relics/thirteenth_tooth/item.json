@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "thirteenth_tooth",
+  "kind": "relic",
+  "identity": {
+    "name": "Thirteenth Tooth",
+    "category": "relic",
+    "rarity": "rare",
+    "tags": [
+      "relic",
+      "third"
+    ],
+    "summary": "Every third round: gain +5 vampirism.",
+    "description": "Every third round: gain +5 vampirism.",
+    "lore": "The village counted twelve teeth in the wolf skull every morning. Each third evening, someone found another beneath their pillow."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "Every third round: gain +5 vampirism.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "Every third round",
+      "parameters": {
+        "amount": 5,
+        "scaleCap": 1,
+        "condition": "third",
+        "stat": "vampirism",
+        "metric": "one",
+        "periodRounds": 3
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "third"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A large ivory tooth with thirteen deliberate root notches",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A large ivory tooth with thirteen deliberate root notches"
+    ],
+    "assets": {
+      "icon": "assets/relics/thirteenth_tooth/icons/art/icon.png",
+      "svg": "assets/relics/thirteenth_tooth/icons/art/icon.svg",
+      "source": "assets/relics/thirteenth_tooth/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/thirteenth_tooth/icons/art/provenance.json",
+      "manifest": "assets/relics/thirteenth_tooth/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/thirteenth_tooth/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

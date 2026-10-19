@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "acorn_pendant",
+  "kind": "item",
+  "identity": {
+    "name": "Acorn Pendant",
+    "category": "pendant",
+    "rarity": "common",
+    "tags": [
+      "pendant"
+    ],
+    "summary": "A brown acorn in a broad hammered copper cup.",
+    "description": "Restores up to 1 HP each round.",
+    "lore": "A child traded it for a promise to plant it someday."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "healing": 1
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Restores up to 1 HP each round.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "healing": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "common-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "assemble_amber_heart_pendant",
+        "resultId": "amber_heart_pendant"
+      },
+      {
+        "recipeId": "assemble_pearl_of_brine",
+        "resultId": "pearl_of_brine"
+      },
+      {
+        "recipeId": "assemble_roseglass_brooch",
+        "resultId": "roseglass_brooch"
+      }
+    ],
+    "mergeTargets": [
+      "amber_heart_pendant",
+      "pearl_of_brine",
+      "roseglass_brooch"
+    ]
+  },
+  "visual": {
+    "brief": "A brown acorn in a broad hammered copper cup.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A brown acorn in a broad hammered copper cup."
+    ],
+    "assets": {
+      "icon": "assets/items/acorn_pendant/icons/art/icon.png",
+      "svg": "assets/items/acorn_pendant/icons/art/icon.svg",
+      "source": "assets/items/acorn_pendant/icons/art/icon.sprite.json",
+      "footprint": "assets/items/acorn_pendant/icons/art/footprint.json",
+      "provenance": "assets/items/acorn_pendant/icons/art/provenance.json",
+      "manifest": "assets/items/acorn_pendant/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/acorn_pendant/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

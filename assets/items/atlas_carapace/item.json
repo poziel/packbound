@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "atlas_carapace",
+  "kind": "item",
+  "identity": {
+    "name": "Atlas Carapace",
+    "category": "armor",
+    "rarity": "legendary",
+    "tags": [
+      "armor"
+    ],
+    "summary": "A massive dark shell bearing broad brass mountain ridges.",
+    "description": "Reduces each enemy strike by 4 before block. Starts combat with 12 block; spent block does not refill.",
+    "lore": "A traveler once mistook its sleeping owner for a small island."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "###",
+      "###",
+      ".#."
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "plating": 4,
+    "block": 12
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Reduces each enemy strike by 4 before block. Starts combat with 12 block; spent block does not refill.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "plating": 4,
+        "block": 12
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "legendary-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A massive dark shell bearing broad brass mountain ridges.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A massive dark shell bearing broad brass mountain ridges."
+    ],
+    "assets": {
+      "icon": "assets/items/atlas_carapace/icons/art/icon.png",
+      "svg": "assets/items/atlas_carapace/icons/art/icon.svg",
+      "source": "assets/items/atlas_carapace/icons/art/icon.sprite.json",
+      "footprint": "assets/items/atlas_carapace/icons/art/footprint.json",
+      "provenance": "assets/items/atlas_carapace/icons/art/provenance.json",
+      "manifest": "assets/items/atlas_carapace/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/atlas_carapace/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "gutter_duelist",
+  "name": "Gutter Duelist",
+  "species": "humanoid",
+  "age": "29 years",
+  "role": "parry",
+  "description": "A former fencing tutor who sells passage through the drains. He hides a precise blade beneath a ragged red coat and never wastes a flourish.",
+  "encounter_floor": 9,
+  "starting_stats": {
+    "hp": 57,
+    "attacks": [
+      8
+    ],
+    "hits": 1,
+    "armor": 0,
+    "pierce": 0,
+    "poison": 0,
+    "drain": 0,
+    "reflect": 0,
+    "sunder": 0,
+    "enrage": 0,
+    "regen": 0,
+    "parry": 5,
+    "opening_armor": 0,
+    "cycle_armor": 0,
+    "cleanse": 0,
+    "physical_resistance": 0,
+    "magical_resistance": 0,
+    "damage_type": "physical"
+  },
+  "abilities": [
+    {
+      "id": "parry",
+      "amount": 5,
+      "description": "Restores 5 temporary block every third round. Any remainder expires afterward."
+    }
+  ],
+  "intent": "Parry",
+  "detail": "Restores 5 temporary block every third round. Any remainder expires afterward.",
+  "art": {
+    "source": "art/gutter_duelist.pixloom.json",
+    "project": "art/gutter_duelist.pixloom",
+    "png": "art/gutter_duelist.png",
+    "svg": "art/gutter_duelist.svg"
+  }
+}

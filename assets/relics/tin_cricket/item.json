@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "tin_cricket",
+  "kind": "relic",
+  "identity": {
+    "name": "Tin Cricket",
+    "category": "relic",
+    "rarity": "common",
+    "tags": [
+      "relic",
+      "always"
+    ],
+    "summary": "Every round: gain +1 ward.",
+    "description": "Every round: gain +1 ward.",
+    "lore": "The watchmaker made it to sing when the air turned poisonous. Its legs still twitch, though the spring is gone."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "Every round: gain +1 ward.",
+      "trigger": "after-item-aggregation",
+      "target": "player",
+      "condition": "Every round",
+      "parameters": {
+        "amount": 1,
+        "scaleCap": 1,
+        "condition": "always",
+        "stat": "ward",
+        "metric": "one"
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "always"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A little folded tin cricket with articulated hind legs",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A little folded tin cricket with articulated hind legs"
+    ],
+    "assets": {
+      "icon": "assets/relics/tin_cricket/icons/art/icon.png",
+      "svg": "assets/relics/tin_cricket/icons/art/icon.svg",
+      "source": "assets/relics/tin_cricket/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/tin_cricket/icons/art/provenance.json",
+      "manifest": "assets/relics/tin_cricket/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/tin_cricket/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

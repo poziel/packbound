@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "roseglass_brooch",
+  "kind": "item",
+  "identity": {
+    "name": "Roseglass Brooch",
+    "category": "pendant",
+    "rarity": "uncommon",
+    "tags": [
+      "pendant"
+    ],
+    "summary": "A rose pink glass flower with broad overlapping petals.",
+    "description": "Restores up to 2 HP each round.",
+    "lore": "A gardener wore it through the winter after the garden burned."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "healing": 2
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Restores up to 2 HP each round.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "healing": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_roseglass_brooch",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "acorn_pendant",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "bandage",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "existing"
+          }
+        ],
+        "result": {
+          "id": "roseglass_brooch",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Acorn Pendant, Grave Bandage into Roseglass Brooch."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_amber_heart_pendant",
+        "resultId": "amber_heart_pendant"
+      },
+      {
+        "recipeId": "assemble_mercy_needlecase",
+        "resultId": "mercy_needlecase"
+      },
+      {
+        "recipeId": "assemble_war_council_seal",
+        "resultId": "war_council_seal"
+      }
+    ],
+    "mergeTargets": [
+      "amber_heart_pendant",
+      "mercy_needlecase",
+      "war_council_seal"
+    ]
+  },
+  "visual": {
+    "brief": "A rose pink glass flower with broad overlapping petals.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A rose pink glass flower with broad overlapping petals."
+    ],
+    "assets": {
+      "icon": "assets/items/roseglass_brooch/icons/art/icon.png",
+      "svg": "assets/items/roseglass_brooch/icons/art/icon.svg",
+      "source": "assets/items/roseglass_brooch/icons/art/icon.sprite.json",
+      "footprint": "assets/items/roseglass_brooch/icons/art/footprint.json",
+      "provenance": "assets/items/roseglass_brooch/icons/art/provenance.json",
+      "manifest": "assets/items/roseglass_brooch/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/roseglass_brooch/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

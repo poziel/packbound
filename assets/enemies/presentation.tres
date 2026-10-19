@@ -1,7 +1,7 @@
 [gd_resource type="Resource" format=3 uid="uid://dku7r71vd0j6i"]
 
-[ext_resource type="Script" uid="uid://dqwbwpe764iv" path="res://scripts/monster_presentation_library.gd" id="library"]
-[ext_resource type="Script" uid="uid://cawn5xxenalj2" path="res://scripts/monster_presentation.gd" id="profile"]
+[ext_resource type="Script" uid="uid://dqwbwpe764iv" path="res://systems/enemies/monster_presentation_library.gd" id="library"]
+[ext_resource type="Script" uid="uid://cawn5xxenalj2" path="res://systems/enemies/monster_presentation.gd" id="profile"]
 
 [sub_resource type="Resource" id="ash_rat"]
 script = ExtResource("profile")
@@ -125,6 +125,192 @@ monster_id = "zippered_maw"
 shadow_size = Vector2(188, 76)
 shadow_offset = Vector2(-6, 0)
 
+[sub_resource type="Resource" id="cellar_tick"]
+script = ExtResource("profile")
+monster_id = "cellar_tick"
+shadow_size = Vector2(93, 35)
+
+[sub_resource type="Resource" id="wick_bat"]
+script = ExtResource("profile")
+monster_id = "wick_bat"
+shadow_size = Vector2(130, 49)
+flying = true
+
+[sub_resource type="Resource" id="copper_scarab"]
+script = ExtResource("profile")
+monster_id = "copper_scarab"
+shadow_size = Vector2(93, 35)
+
+[sub_resource type="Resource" id="tallow_slug"]
+script = ExtResource("profile")
+monster_id = "tallow_slug"
+shadow_size = Vector2(83, 31)
+
+[sub_resource type="Resource" id="bramble_crab"]
+script = ExtResource("profile")
+monster_id = "bramble_crab"
+shadow_size = Vector2(114, 43)
+
+[sub_resource type="Resource" id="shroud_moth"]
+script = ExtResource("profile")
+monster_id = "shroud_moth"
+shadow_size = Vector2(130, 49)
+flying = true
+
+[sub_resource type="Resource" id="sewer_asp"]
+script = ExtResource("profile")
+monster_id = "sewer_asp"
+shadow_size = Vector2(68, 25)
+
+[sub_resource type="Resource" id="carrion_rook"]
+script = ExtResource("profile")
+monster_id = "carrion_rook"
+shadow_size = Vector2(55, 20)
+
+[sub_resource type="Resource" id="chalk_toad"]
+script = ExtResource("profile")
+monster_id = "chalk_toad"
+shadow_size = Vector2(70, 26)
+
+[sub_resource type="Resource" id="needle_spider"]
+script = ExtResource("profile")
+monster_id = "needle_spider"
+shadow_size = Vector2(100, 38)
+
+[sub_resource type="Resource" id="ossuary_hound"]
+script = ExtResource("profile")
+monster_id = "ossuary_hound"
+shadow_size = Vector2(100, 38)
+
+[sub_resource type="Resource" id="chain_snail"]
+script = ExtResource("profile")
+monster_id = "chain_snail"
+shadow_size = Vector2(88, 33)
+
+[sub_resource type="Resource" id="soot_jelly"]
+script = ExtResource("profile")
+monster_id = "soot_jelly"
+shadow_size = Vector2(63, 23)
+flying = true
+
+[sub_resource type="Resource" id="bog_stalker"]
+script = ExtResource("profile")
+monster_id = "bog_stalker"
+shadow_size = Vector2(99, 37)
+
+[sub_resource type="Resource" id="tomb_mason"]
+script = ExtResource("profile")
+monster_id = "tomb_mason"
+shadow_size = Vector2(78, 29)
+
+[sub_resource type="Resource" id="gutter_duelist"]
+script = ExtResource("profile")
+monster_id = "gutter_duelist"
+shadow_size = Vector2(83, 31)
+
+[sub_resource type="Resource" id="marrow_heron"]
+script = ExtResource("profile")
+monster_id = "marrow_heron"
+shadow_size = Vector2(55, 20)
+
+[sub_resource type="Resource" id="cinder_boar"]
+script = ExtResource("profile")
+monster_id = "cinder_boar"
+shadow_size = Vector2(75, 28)
+
+[sub_resource type="Resource" id="velvet_widow"]
+script = ExtResource("profile")
+monster_id = "velvet_widow"
+shadow_size = Vector2(115, 43)
+
+[sub_resource type="Resource" id="reliquary_fungus"]
+script = ExtResource("profile")
+monster_id = "reliquary_fungus"
+shadow_size = Vector2(87, 33)
+
+[sub_resource type="Resource" id="brass_mantis"]
+script = ExtResource("profile")
+monster_id = "brass_mantis"
+shadow_size = Vector2(62, 23)
+
+[sub_resource type="Resource" id="pallbearer"]
+script = ExtResource("profile")
+monster_id = "pallbearer"
+shadow_size = Vector2(78, 29)
+
+[sub_resource type="Resource" id="salt_mirror"]
+script = ExtResource("profile")
+monster_id = "salt_mirror"
+shadow_size = Vector2(81, 30)
+flying = true
+
+[sub_resource type="Resource" id="crypt_fencer"]
+script = ExtResource("profile")
+monster_id = "crypt_fencer"
+shadow_size = Vector2(83, 31)
+
+[sub_resource type="Resource" id="pitch_eel"]
+script = ExtResource("profile")
+monster_id = "pitch_eel"
+shadow_size = Vector2(85, 32)
+
+[sub_resource type="Resource" id="crown_scorpion"]
+script = ExtResource("profile")
+monster_id = "crown_scorpion"
+shadow_size = Vector2(114, 43)
+
+[sub_resource type="Resource" id="bellroot"]
+script = ExtResource("profile")
+monster_id = "bellroot"
+shadow_size = Vector2(73, 27)
+
+[sub_resource type="Resource" id="mourning_gargoyle"]
+script = ExtResource("profile")
+monster_id = "mourning_gargoyle"
+shadow_size = Vector2(130, 49)
+
+[sub_resource type="Resource" id="coffin_mimic"]
+script = ExtResource("profile")
+monster_id = "coffin_mimic"
+shadow_size = Vector2(73, 27)
+
+[sub_resource type="Resource" id="shroud_abjurer"]
+script = ExtResource("profile")
+monster_id = "shroud_abjurer"
+shadow_size = Vector2(66, 25)
+
+[sub_resource type="Resource" id="kiln_tortoise"]
+script = ExtResource("profile")
+monster_id = "kiln_tortoise"
+shadow_size = Vector2(90, 34)
+
+[sub_resource type="Resource" id="pale_huntsman"]
+script = ExtResource("profile")
+monster_id = "pale_huntsman"
+shadow_size = Vector2(64, 24)
+
+[sub_resource type="Resource" id="blood_orchid"]
+script = ExtResource("profile")
+monster_id = "blood_orchid"
+shadow_size = Vector2(73, 27)
+
+[sub_resource type="Resource" id="chain_penitent"]
+script = ExtResource("profile")
+monster_id = "chain_penitent"
+shadow_size = Vector2(75, 28)
+
+[sub_resource type="Resource" id="vault_custodian"]
+script = ExtResource("profile")
+monster_id = "vault_custodian"
+shadow_size = Vector2(78, 29)
+
+[sub_resource type="Resource" id="last_vesper"]
+script = ExtResource("profile")
+monster_id = "last_vesper"
+shadow_size = Vector2(84, 31)
+flying = true
+
+
 [resource]
 script = ExtResource("library")
-monsters = Array[Resource]([SubResource("ash_rat"), SubResource("bone_thief"), SubResource("lantern_wretch"), SubResource("iron_mite"), SubResource("pack_leech"), SubResource("mire_viper"), SubResource("bell_sentinel"), SubResource("mirror_wisp"), SubResource("rust_knight"), SubResource("crypt_butcher"), SubResource("hollow_monk"), SubResource("carrion_swarm"), SubResource("glass_duelist"), SubResource("cinder_oracle"), SubResource("grave_keeper"), SubResource("iron_matron"), SubResource("clockwork_warden"), SubResource("blood_collector"), SubResource("oathbreaker"), SubResource("zippered_maw")])
+monsters = Array[Resource]([SubResource("ash_rat"), SubResource("bone_thief"), SubResource("lantern_wretch"), SubResource("iron_mite"), SubResource("pack_leech"), SubResource("mire_viper"), SubResource("bell_sentinel"), SubResource("mirror_wisp"), SubResource("rust_knight"), SubResource("crypt_butcher"), SubResource("hollow_monk"), SubResource("carrion_swarm"), SubResource("glass_duelist"), SubResource("cinder_oracle"), SubResource("grave_keeper"), SubResource("iron_matron"), SubResource("clockwork_warden"), SubResource("blood_collector"), SubResource("oathbreaker"), SubResource("zippered_maw"), SubResource("cellar_tick"), SubResource("wick_bat"), SubResource("copper_scarab"), SubResource("tallow_slug"), SubResource("bramble_crab"), SubResource("shroud_moth"), SubResource("sewer_asp"), SubResource("carrion_rook"), SubResource("chalk_toad"), SubResource("needle_spider"), SubResource("ossuary_hound"), SubResource("chain_snail"), SubResource("soot_jelly"), SubResource("bog_stalker"), SubResource("tomb_mason"), SubResource("gutter_duelist"), SubResource("marrow_heron"), SubResource("cinder_boar"), SubResource("velvet_widow"), SubResource("reliquary_fungus"), SubResource("brass_mantis"), SubResource("pallbearer"), SubResource("salt_mirror"), SubResource("crypt_fencer"), SubResource("pitch_eel"), SubResource("crown_scorpion"), SubResource("bellroot"), SubResource("mourning_gargoyle"), SubResource("coffin_mimic"), SubResource("shroud_abjurer"), SubResource("kiln_tortoise"), SubResource("pale_huntsman"), SubResource("blood_orchid"), SubResource("chain_penitent"), SubResource("vault_custodian"), SubResource("last_vesper")])

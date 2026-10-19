@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "id": "moonwell_pebble",
+  "kind": "item",
+  "identity": {
+    "name": "Moonwell Pebble",
+    "category": "focus",
+    "rarity": "rare",
+    "tags": [
+      "focus"
+    ],
+    "summary": "A smooth pale blue stone with one crescent shaped hollow.",
+    "description": "Adds 3 maximum mana, refreshed each round.",
+    "lore": "It is always found on the side of a well facing the moon."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "mana": 3
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Adds 3 maximum mana, refreshed each round.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "mana": 3
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "rare-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_moonwell_pebble",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "raincatch_bowl",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "salt_lantern",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "spark_ring",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "existing"
+          }
+        ],
+        "result": {
+          "id": "moonwell_pebble",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Raincatch Bowl, Salt Lantern, Spark Ring into Moonwell Pebble."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_the_unwritten_sun",
+        "resultId": "the_unwritten_sun"
+      },
+      {
+        "recipeId": "assemble_captive_aurora",
+        "resultId": "captive_aurora"
+      },
+      {
+        "recipeId": "assemble_solar_crucible",
+        "resultId": "solar_crucible"
+      }
+    ],
+    "mergeTargets": [
+      "the_unwritten_sun",
+      "captive_aurora",
+      "solar_crucible"
+    ]
+  },
+  "visual": {
+    "brief": "A smooth pale blue stone with one crescent shaped hollow.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A smooth pale blue stone with one crescent shaped hollow."
+    ],
+    "assets": {
+      "icon": "assets/items/moonwell_pebble/icons/art/icon.png",
+      "svg": "assets/items/moonwell_pebble/icons/art/icon.svg",
+      "source": "assets/items/moonwell_pebble/icons/art/icon.sprite.json",
+      "footprint": "assets/items/moonwell_pebble/icons/art/footprint.json",
+      "provenance": "assets/items/moonwell_pebble/icons/art/provenance.json",
+      "manifest": "assets/items/moonwell_pebble/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/moonwell_pebble/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

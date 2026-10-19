@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "id": "thorn_whetstone",
+  "kind": "item",
+  "identity": {
+    "name": "Thorn Whetstone",
+    "category": "booster",
+    "rarity": "uncommon",
+    "tags": [
+      "booster"
+    ],
+    "summary": "A long gray sharpening stone wrapped with a green bramble.",
+    "description": "Retaliates for 1 piercing damage per enemy strike. Each orthogonally touching weapon gains +2 damage. Each source applies once per target, regardless of shared edges; distinct sources stack.",
+    "lore": "The edge it sharpens is never quite the one expected."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "thorns": 1
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Retaliates for 1 piercing damage per enemy strike. Each orthogonally touching weapon gains +2 damage. Each source applies once per target, regardless of shared edges; distinct sources stack.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "thorns": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [
+    {
+      "id": "adjacency_bonus",
+      "targetIds": [],
+      "targetTags": [
+        "weapon"
+      ],
+      "geometry": "orthogonal occupied-cell contact",
+      "stacking": "once per distinct source and target; different sources add",
+      "trigger": "while-equipped",
+      "bonuses": {
+        "damage": 2
+      },
+      "conditions": [
+        "Both source and target are equipped."
+      ],
+      "implementation": "supported"
+    }
+  ],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "uncommon-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_thorn_whetstone",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "hedgehog_charm",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "rusty_knife",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "existing"
+          }
+        ],
+        "result": {
+          "id": "thorn_whetstone",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 2,
+          "priorityIngredientCount": 2
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Hedgehog Charm, Rusty Knife into Thorn Whetstone."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_viper_s_proposition",
+        "resultId": "viper_s_proposition"
+      },
+      {
+        "recipeId": "assemble_pocket_basilisk",
+        "resultId": "pocket_basilisk"
+      },
+      {
+        "recipeId": "assemble_gallows_halberd",
+        "resultId": "gallows_halberd"
+      }
+    ],
+    "mergeTargets": [
+      "viper_s_proposition",
+      "pocket_basilisk",
+      "gallows_halberd"
+    ]
+  },
+  "visual": {
+    "brief": "A long gray sharpening stone wrapped with a green bramble.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A long gray sharpening stone wrapped with a green bramble."
+    ],
+    "assets": {
+      "icon": "assets/items/thorn_whetstone/icons/art/icon.png",
+      "svg": "assets/items/thorn_whetstone/icons/art/icon.svg",
+      "source": "assets/items/thorn_whetstone/icons/art/icon.sprite.json",
+      "footprint": "assets/items/thorn_whetstone/icons/art/footprint.json",
+      "provenance": "assets/items/thorn_whetstone/icons/art/provenance.json",
+      "manifest": "assets/items/thorn_whetstone/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/thorn_whetstone/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

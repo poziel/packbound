@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "mercy_guillotine",
+  "kind": "relic",
+  "identity": {
+    "name": "Mercy Guillotine",
+    "category": "relic",
+    "rarity": "epic",
+    "tags": [
+      "relic",
+      "enemy_low_hp"
+    ],
+    "summary": "When the enemy starts the round at or below one third maximum HP: gain +12 physical damage.",
+    "description": "When the enemy starts the round at or below one third maximum HP: gain +12 physical damage.",
+    "lore": "The executioner made it for cutting the final knot on a burial shroud. It has no patience for unfinished endings."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {},
+  "activation": {
+    "trigger": "after-item-aggregation",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "passive_rule",
+      "description": "When the enemy starts the round at or below one third maximum HP: gain +12 physical damage.",
+      "trigger": "after-item-aggregation",
+      "target": "current-enemy",
+      "condition": "When the enemy starts the round at or below one third maximum HP",
+      "parameters": {
+        "amount": 12,
+        "scaleCap": 1,
+        "condition": "enemy_low_hp",
+        "stat": "physical_damage",
+        "metric": "one",
+        "enemyLowHealthFraction": 0.3333333333333333
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "enemy_low_hp"
+      ],
+      "rationale": "Meet the stated passive condition; no separate bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool",
+      "relic-chamber"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A miniature silver guillotine with a heart shaped opening",
+    "materials": [
+      "neutral metal",
+      "natural material"
+    ],
+    "paletteIntent": "Restrained material ramps without colored reflection accents.",
+    "definingFeatures": [
+      "A miniature silver guillotine with a heart shaped opening"
+    ],
+    "assets": {
+      "icon": "assets/relics/mercy_guillotine/icons/art/icon.png",
+      "svg": "assets/relics/mercy_guillotine/icons/art/icon.svg",
+      "source": "assets/relics/mercy_guillotine/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/mercy_guillotine/icons/art/provenance.json",
+      "manifest": "assets/relics/mercy_guillotine/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/relics/mercy_guillotine/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "id": "salt_lantern",
+  "kind": "item",
+  "identity": {
+    "name": "Salt Lantern",
+    "category": "focus",
+    "rarity": "common",
+    "tags": [
+      "focus"
+    ],
+    "summary": "A squat iron lantern holding a block of pale salt.",
+    "description": "Supplies 2 ward each round against poison, curse and reflected damage.",
+    "lore": "Its light is too faint to see, but nightmares avoid it."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "ward": 2
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Supplies 2 ward each round against poison, curse and reflected damage.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "ward": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "common-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "assemble_cathedral_carapace",
+        "resultId": "cathedral_carapace"
+      },
+      {
+        "recipeId": "assemble_absent_atlas",
+        "resultId": "absent_atlas"
+      },
+      {
+        "recipeId": "assemble_gravetread_boots",
+        "resultId": "gravetread_boots"
+      },
+      {
+        "recipeId": "assemble_bottle_of_yesterday",
+        "resultId": "bottle_of_yesterday"
+      },
+      {
+        "recipeId": "assemble_moonwell_pebble",
+        "resultId": "moonwell_pebble"
+      },
+      {
+        "recipeId": "assemble_boiler_hammer",
+        "resultId": "boiler_hammer"
+      },
+      {
+        "recipeId": "assemble_kiln_prayer",
+        "resultId": "kiln_prayer"
+      },
+      {
+        "recipeId": "assemble_hollow_bookmark",
+        "resultId": "hollow_bookmark"
+      },
+      {
+        "recipeId": "assemble_mothweave_mantle",
+        "resultId": "mothweave_mantle"
+      },
+      {
+        "recipeId": "assemble_lantern_moth_familiar",
+        "resultId": "lantern_moth_familiar"
+      },
+      {
+        "recipeId": "assemble_wax_ear_trumpet",
+        "resultId": "wax_ear_trumpet"
+      }
+    ],
+    "mergeTargets": [
+      "cathedral_carapace",
+      "absent_atlas",
+      "gravetread_boots",
+      "bottle_of_yesterday",
+      "moonwell_pebble",
+      "boiler_hammer",
+      "kiln_prayer",
+      "hollow_bookmark",
+      "mothweave_mantle",
+      "lantern_moth_familiar",
+      "wax_ear_trumpet"
+    ]
+  },
+  "visual": {
+    "brief": "A squat iron lantern holding a block of pale salt.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A squat iron lantern holding a block of pale salt."
+    ],
+    "assets": {
+      "icon": "assets/items/salt_lantern/icons/art/icon.png",
+      "svg": "assets/items/salt_lantern/icons/art/icon.svg",
+      "source": "assets/items/salt_lantern/icons/art/icon.sprite.json",
+      "footprint": "assets/items/salt_lantern/icons/art/footprint.json",
+      "provenance": "assets/items/salt_lantern/icons/art/provenance.json",
+      "manifest": "assets/items/salt_lantern/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/salt_lantern/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

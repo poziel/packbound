@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "heart_outside_time",
+  "kind": "item",
+  "identity": {
+    "name": "Heart Outside Time",
+    "category": "pendant",
+    "rarity": "legendary",
+    "tags": [
+      "pendant"
+    ],
+    "summary": "A dark red heart in an open square gold clock frame.",
+    "description": "Adds 3 maximum mana, refreshed each round. Adds 2 maximum stamina, refreshed each round. Supplies 4 ward each round against poison, curse and reflected damage.",
+    "lore": "It beats between the moments measured by every other clock."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "mana": 3,
+    "stamina": 2,
+    "ward": 4
+  },
+  "activation": {
+    "trigger": "while-equipped",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Adds 3 maximum mana, refreshed each round. Adds 2 maximum stamina, refreshed each round. Supplies 4 ward each round against poison, curse and reflected damage.",
+      "trigger": "while-equipped",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "mana": 3,
+        "stamina": 2,
+        "ward": 4
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "resource-support"
+      ],
+      "description": "Orthogonal adjacency support and available mana/stamina determine the best arrangement. Strategic combinations grant no unlisted bonus.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "legendary-item-reward-pool"
+    ],
+    "classes": [],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A dark red heart in an open square gold clock frame.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A dark red heart in an open square gold clock frame."
+    ],
+    "assets": {
+      "icon": "assets/items/heart_outside_time/icons/art/icon.png",
+      "svg": "assets/items/heart_outside_time/icons/art/icon.svg",
+      "source": "assets/items/heart_outside_time/icons/art/icon.sprite.json",
+      "footprint": "assets/items/heart_outside_time/icons/art/footprint.json",
+      "provenance": "assets/items/heart_outside_time/icons/art/provenance.json",
+      "manifest": "assets/items/heart_outside_time/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/heart_outside_time/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

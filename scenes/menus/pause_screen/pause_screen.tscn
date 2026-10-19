@@ -1,0 +1,108 @@
+[gd_scene format=3]
+
+[ext_resource type="Theme" path="res://themes/menu/theme.tres" id="theme"]
+[ext_resource type="PackedScene" path="res://components/ui/buttons/menu_button/hold_menu_button.tscn" id="hold"]
+
+[ext_resource type="Script" path="res://components/ui/shared/surface_theme.gd" id="surface_theme"]
+
+[node name="PauseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("theme")
+texture_filter = 1
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.063, 0.082, 0.122, 1)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Actions" type="VBoxContainer" parent="Center"]
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="RunActions" type="HBoxContainer" parent="Center/Actions"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="RestartButton" parent="Center/Actions/RunActions" instance=ExtResource("hold")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"LeftMenuButton"
+theme_override_font_sizes/font_size = 24
+text = "RESTART"
+tooltip_text = "Hold for 1.2 seconds, then release to start a fresh run with this character. Release early to cancel."
+click_description = "Discard this run and start again with the same character."
+accessibility_name = "Hold to restart the run"
+accessibility_description = "Hold for 1.2 seconds, then release to discard the current run and start again with the same character."
+focus_neighbor_right = NodePath("../PauseButton1")
+focus_neighbor_bottom = NodePath("../../LibraryButton")
+focus_next = NodePath("../PauseButton1")
+
+[node name="PauseButton1" type="Button" parent="Center/Actions/RunActions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ResumeRightMenuButton"
+theme_override_font_sizes/font_size = 24
+text = "RESUME"
+focus_neighbor_left = NodePath("../RestartButton")
+focus_neighbor_bottom = NodePath("../../LibraryButton")
+focus_next = NodePath("../../LibraryButton")
+focus_previous = NodePath("../RestartButton")
+
+[node name="LibraryButton" type="Button" parent="Center/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(520, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "LIBRARY"
+focus_neighbor_top = NodePath("../RunActions/PauseButton1")
+focus_neighbor_bottom = NodePath("../RecipesButton")
+
+[node name="RecipesButton" type="Button" parent="Center/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(520, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "RECIPES"
+focus_neighbor_top = NodePath("../LibraryButton")
+focus_neighbor_bottom = NodePath("../PauseButton2")
+
+[node name="PauseButton2" type="Button" parent="Center/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(520, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "OPTIONS"
+
+[node name="PauseButton3" type="Button" parent="Center/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(520, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "MAIN MENU"
+
+[node name="SurfaceTheme" type="Node" parent="."]
+script = ExtResource("surface_theme")
+reference_padding = 22
+background_nodes = Array[NodePath]([NodePath("Background")])

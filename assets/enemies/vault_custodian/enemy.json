@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "vault_custodian",
+  "name": "Vault Custodian",
+  "species": "golem",
+  "age": "312 years since assembly",
+  "role": "sunder",
+  "description": "The lower vault still recognizes this brass construct as its only keyholder. It turns its entire torso to drive a heavy lock-shaped fist forward.",
+  "encounter_floor": 19,
+  "starting_stats": {
+    "hp": 126,
+    "attacks": [
+      11,
+      14
+    ],
+    "hits": 1,
+    "armor": 6,
+    "pierce": 0,
+    "poison": 0,
+    "drain": 0,
+    "reflect": 0,
+    "sunder": 3,
+    "enrage": 0,
+    "regen": 0,
+    "parry": 0,
+    "opening_armor": 0,
+    "cycle_armor": 0,
+    "cleanse": 0,
+    "physical_resistance": 0,
+    "magical_resistance": 0,
+    "damage_type": "physical"
+  },
+  "abilities": [
+    {
+      "id": "sunder",
+      "amount": 3,
+      "description": "Destroys up to 3 player block before striking."
+    },
+    {
+      "id": "armor",
+      "amount": 6,
+      "description": "Starts combat with 6 block. Absorbed damage spends it permanently for this fight."
+    }
+  ],
+  "intent": "Sunder",
+  "detail": "Destroys up to 3 player block before striking. Starts combat with 6 block. Absorbed damage spends it permanently for this fight.",
+  "art": {
+    "source": "art/vault_custodian.pixloom.json",
+    "project": "art/vault_custodian.pixloom",
+    "png": "art/vault_custodian.png",
+    "svg": "art/vault_custodian.svg"
+  }
+}

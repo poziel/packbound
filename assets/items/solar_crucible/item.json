@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "id": "solar_crucible",
+  "kind": "item",
+  "identity": {
+    "name": "Solar Crucible",
+    "category": "spell",
+    "rarity": "epic",
+    "tags": [
+      "spell",
+      "mage",
+      "fire"
+    ],
+    "summary": "A broad gold crucible holding a restrained orange flame.",
+    "description": "Costs 4 mana per activation. Deals 15 magical damage per affordable activation. Applies 5 burn through the existing combat keyword rules per affordable activation.",
+    "lore": "An astronomer melted a fallen ray of dawn inside it."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "##",
+      "##"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 15,
+    "burn": 5
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "mana",
+        "amount": 4
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start"
+  },
+  "effects": [
+    {
+      "id": "base_effect",
+      "description": "Costs 4 mana per activation. Deals 15 magical damage per affordable activation. Applies 5 burn through the existing combat keyword rules per affordable activation.",
+      "trigger": "affordable-activation",
+      "target": "current-enemy-and-player-as-defined-by-keyword",
+      "condition": "Equipped; class restriction satisfied; all activation costs can be paid together.",
+      "parameters": {
+        "damage": 15,
+        "burn": 5
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [
+    {
+      "tags": [
+        "different-element-spell"
+      ],
+      "description": "Its fire trace participates in the Elementalist's existing reaction system; arrange it with spells of another element. No extra reaction beyond the shared rules is added.",
+      "parameters": {},
+      "implementation": "supported"
+    }
+  ],
+  "acquisition": {
+    "sources": [
+      "epic-item-reward-pool"
+    ],
+    "classes": [
+      "mage"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "assemble_solar_crucible",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "kiln_prayer",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "moonwell_pebble",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          },
+          {
+            "id": "salamander_contract",
+            "quantity": 1,
+            "consumed": true,
+            "referenceState": "proposed"
+          }
+        ],
+        "result": {
+          "id": "solar_crucible",
+          "quantity": 1,
+          "referenceState": "proposed"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "All ingredients are packed, unlocked, nonpermanent and form one orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0,
+          "ingredientCount": 3,
+          "priorityIngredientCount": 3
+        },
+        "trigger": "combat-start",
+        "failureBehavior": "Incomplete, disconnected or locked inputs consume nothing. A complete recipe always consumes its inputs; an output that cannot fit enters the stash.",
+        "description": "Combine Kiln Prayer, Moonwell Pebble, Salamander Contract into Solar Crucible."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "assemble_the_unwritten_sun",
+        "resultId": "the_unwritten_sun"
+      },
+      {
+        "recipeId": "assemble_cathedral_of_sparks",
+        "resultId": "cathedral_of_sparks"
+      }
+    ],
+    "mergeTargets": [
+      "the_unwritten_sun",
+      "cathedral_of_sparks"
+    ]
+  },
+  "visual": {
+    "brief": "A broad gold crucible holding a restrained orange flame.",
+    "materials": [],
+    "paletteIntent": "Restrained material ramps; deliberate spell element colors; no incidental rim light.",
+    "definingFeatures": [
+      "A broad gold crucible holding a restrained orange flame."
+    ],
+    "assets": {
+      "icon": "assets/items/solar_crucible/icons/art/icon.png",
+      "svg": "assets/items/solar_crucible/icons/art/icon.svg",
+      "source": "assets/items/solar_crucible/icons/art/icon.sprite.json",
+      "footprint": "assets/items/solar_crucible/icons/art/footprint.json",
+      "provenance": "assets/items/solar_crucible/icons/art/provenance.json",
+      "manifest": "assets/items/solar_crucible/icons/art/art-manifest.json",
+      "variants": [],
+      "native": "assets/items/solar_crucible/icons/art/icon.pixloom"
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}
