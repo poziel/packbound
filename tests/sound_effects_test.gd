@@ -5,8 +5,8 @@ func _run() -> void:
 	root.add_child(game)
 	await process_frame
 	await process_frame
-	check(game.combat_audio.stream.resource_path == "res://assets/audio/enemy_hit.wav", "Enemy impact uses the new descriptive asset")
-	check(game.front.audio.fx.stream.resource_path == "res://assets/audio/ui_click.wav", "UI uses the replacement click")
+	check(game.combat_audio.stream.resource_path == "res://assets/audio/combat/enemy_hit.wav", "Enemy impact uses the new descriptive asset")
+	check(game.front.audio.fx.stream.resource_path == "res://assets/audio/ui/button_activate.wav", "UI uses the replacement click")
 	check(game.has_node("EnemyDeathAudio"), "Death has an independent player")
 	check(game.front.audio.has_node("ItemHoverFX"), "Shared item hover has an independent player")
 	if not game.has_node("EnemyDeathAudio") or not game.front.audio.has_node("ItemHoverFX"):
@@ -14,7 +14,7 @@ func _run() -> void:
 		return
 	var death: AudioStreamPlayer = game.get_node("EnemyDeathAudio")
 	var hover: AudioStreamPlayer = game.front.audio.get_node("ItemHoverFX")
-	for path: String in ["enemy_hit", "enemy_death", "item_hover", "ui_click"]:
+	for path: String in ["combat/enemy_hit", "combat/enemy_death", "ui/item_hover", "ui/button_activate"]:
 		var stream: AudioStreamWAV = load("res://assets/audio/%s.wav" % path)
 		check(stream.loop_mode == AudioStreamWAV.LOOP_DISABLED, "Effect does not loop: " + path)
 		var decoder: AudioStreamPlayback = stream.instantiate_playback()

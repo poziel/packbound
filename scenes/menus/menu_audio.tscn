@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/menu_audio.gd" id="controller"]
 [ext_resource type="AudioStream" path="res://assets/musics/menu/shadows_in_the_backpack.mp3" id="song"]
-[ext_resource type="AudioStream" path="res://assets/audio/ui_click.wav" id="click"]
-[ext_resource type="AudioStream" path="res://assets/audio/item_hover.wav" id="item_hover"]
+[ext_resource type="AudioStream" path="res://assets/audio/ui/button_activate.wav" id="click"]
+[ext_resource type="AudioStream" path="res://assets/audio/ui/item_hover.wav" id="item_hover"]
 [ext_resource type="AudioStream" path="res://assets/musics/ambience/Dungeon_Ambience_1.ogg" id="ambience_one"]
 [ext_resource type="AudioStream" path="res://assets/musics/ambience/Dungeon_Ambience_2.ogg" id="ambience_two"]
 

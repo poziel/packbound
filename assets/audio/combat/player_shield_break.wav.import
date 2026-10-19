@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cuxt88qocm2dw"
-path="res://.godot/imported/player_shield_break.wav-6c671f3a9ed9476d8a5809ef0081d61b.sample"
+path="res://.godot/imported/player_shield_break.wav-c48439a82fbd96ff45b434618b840e63.sample"
 
 [deps]
 
-source_file="res://assets/audio/player_shield_break.wav"
-dest_files=["res://.godot/imported/player_shield_break.wav-6c671f3a9ed9476d8a5809ef0081d61b.sample"]
+source_file="res://assets/audio/combat/player_shield_break.wav"
+dest_files=["res://.godot/imported/player_shield_break.wav-c48439a82fbd96ff45b434618b840e63.sample"]
 
 [params]
 

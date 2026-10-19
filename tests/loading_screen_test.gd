@@ -24,7 +24,7 @@ func _run() -> void:
 	var screen: Node = game.get_node("LoadingScreen")
 	var scanned_audio: PackedStringArray = ResourceLoader.list_directory("res://assets/audio/")
 	check(not scanned_audio.has("loading_screen_on.wav") and not scanned_audio.has("loading_screen_off.wav"), "Unsupported original WAVs stay outside Godot's import scan")
-	check(FileAccess.file_exists("res://assets/audio/sources/loading-screen/.gdignore"), "Original recordings have a persistent import exclusion")
+	check(not DirAccess.dir_exists_absolute("res://assets/audio/sources"), "Unused original recordings stay outside the runtime asset tree")
 	if not screen.has_node("AppearSound") or not screen.has_node("DisappearSound"):
 		check(false, "Loading screen has appear and disappear sound players")
 		await preload("res://tests/automatic_combat_cleanup.gd").release(self, game)
@@ -37,8 +37,8 @@ func _run() -> void:
 		await preload("res://tests/automatic_combat_cleanup.gd").release(self, game)
 		quit(1)
 		return
-	check(appear.stream.resource_path == "res://assets/audio/loading_screen_appear.wav", "Cover uses playback copy of supplied appear clip")
-	check(disappear.stream.resource_path == "res://assets/audio/loading_screen_disappear.wav", "Reveal uses playback copy of supplied disappear clip")
+	check(appear.stream.resource_path == "res://assets/audio/transitions/loading_screen_cover.wav", "Cover uses playback copy of supplied appear clip")
+	check(disappear.stream.resource_path == "res://assets/audio/transitions/loading_screen_reveal.wav", "Reveal uses playback copy of supplied disappear clip")
 	check(appear.bus == &"FX" and disappear.bus == &"FX", "Loading audio respects FX and Master settings")
 	check(not appear.autoplay and not disappear.autoplay, "Loading audio stays silent on startup")
 	var disappear_count: Array[int] = [0]

@@ -22,7 +22,7 @@ func _run() -> void:
 	var sound: PackMenuAudio = menu.audio
 	sound.click_played.connect(_count_click)
 	check(game.action.pressed.is_connected(sound.play_click), "Existing gameplay buttons receive click sound")
-	check(sound.fx.stream is AudioStreamWAV and sound.fx.stream.resource_path == "res://assets/audio/ui_click.wav", "FX uses the replacement UI click WAV")
+	check(sound.fx.stream is AudioStreamWAV and sound.fx.stream.resource_path == "res://assets/audio/ui/button_activate.wav", "FX uses the replacement UI click WAV")
 	var click_decoder: AudioStreamPlayback = sound.fx.stream.instantiate_playback()
 	click_decoder.start()
 	var click_frames: PackedVector2Array = click_decoder.mix_audio(1.0, 8192)

@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://assets/branding/packbound-satchel-simple.png"
 config/windows_native_icon="res://assets/branding/packbound.ico"
 
+[audio]
+
+buses/default_bus_layout="res://assets/audio/audio_bus_layout.tres"
+
 [autoload]
 
 _mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
@@ -35,9 +39,13 @@ enabled=PackedStringArray("res://addons/godot_ai/plugin.cfg")
 [file_customization]
 
 folder_colors={
+"res://addons/": "gray",
 "res://assets/": "red",
-"res://components/": "blue",
-"res://scenes/": "green"
+"res://components/": "purple",
+"res://scenes/": "green",
+"res://scripts/": "blue",
+"res://tests/": "gray",
+"res://themes/": "pink"
 }
 
 [physics]
