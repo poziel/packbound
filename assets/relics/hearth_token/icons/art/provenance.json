@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "hearth_token",
+  "method": "Exact scripted pixel plans drawn into three semantic layers through connected Pixloom MCP; no image generation or resampling.",
+  "authoringPlan": "workspace/docs/art/rarity-expansion/hearth_token.drawing-plan.json",
+  "brief": "A round baked-clay token hung on a brown cord. Its center carries one pale hearth-shaped rune; red clay is shaded with broad earthy planes.",
+  "layers": [
+    "Structure and silhouette",
+    "Material Planes",
+    "Fittings"
+  ],
+  "source": "assets/relics/hearth_token/icons/art/icon.sprite.json",
+  "nativeProject": "assets/relics/hearth_token/icons/art/icon.pixloom",
+  "tool": "Pixloom MCP and pixloom-cli 0.2.0",
+  "sourceFormat": "Version 1 numeric full-canvas indexed grids with explicit 100 ms still timeline; no animation requested.",
+  "migrationNote": "The project spritex instructions point to an absent old executable/skill. Pixloom is the available successor, retaining numeric full-canvas authoring JSON and native integer-grid PNG/SVG exports. No spritex validation is claimed.",
+  "references": [
+    {
+      "path": "assets/characters/warrior/art/full-body.png",
+      "sha256": "320ae336061ffb6d22d428f17ccafb5f61f05fae94a8354295cf430086b6cf1d"
+    },
+    {
+      "path": "assets/items/armor/buckler/revisions/catalog-v1/buckler-32px.png",
+      "sha256": "3c9992012661924451e1a7a033a136da6ddbcb4423a286bb3a573fbd78b8bca9"
+    }
+  ],
+  "approval": "unreviewed",
+  "review": "MCP actual enlarged image inspected for every project; all reviewed together at native and 2x on dark UI background. Runtime in-game review handled separately.",
+  "files": {
+    "icon.sprite.json": {
+      "sha256": "806b54e5ee5e65f38cf947f6b14a3dbd5032096f4f0a2db0181b6403be85653a"
+    },
+    "icon.pixloom": {
+      "sha256": "aa2ce20108a2bb68b57d3814f25d2e9170498f995064d185b39f3f28d213b859"
+    },
+    "icon.png": {
+      "sha256": "3ec390fe3f6c54d73c2f70dfa3fdea60fdcb09f340662f52ec30913f3ba61c06"
+    },
+    "icon.svg": {
+      "sha256": "923267ce661b1d08edb5187d5ab934558e51deac276175041eb8c69de8419780"
+    }
+  }
+}

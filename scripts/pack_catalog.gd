@@ -2,19 +2,21 @@ class_name PackCatalog
 extends RefCounted
 
 const QUIVER = preload("res://scripts/archer_quiver.gd")
+const RARITY = preload("res://scripts/item_rarity.gd")
+const CONTENT = preload("res://scripts/rarity_content.gd")
 
 const BASE_STAMINA: int = 3
 const BASE_MANA: int = 1
 const MAGE_MANA_BONUS: int = 5
 
 const STATS: Array[String] = ["damage", "block", "healing", "vampirism", "plating", "ward", "poison", "burn", "mana", "stamina", "curse", "thorns", "cleanse", "slow", "pierce", "doom", "spark", "physical_resistance", "magical_resistance"]
-const ROSTER: Array[String] = ["rusty_knife", "cracked_shield", "blood_gem", "bandage", "longsword", "tower_shield", "cursed_idol", "iron_charm", "shortbow", "quiver", "buckler", "ember_tome", "frost_wand", "spark_ring", "venom_dagger", "vampire_fang", "plate_mail", "thorn_mail", "warding_sigil", "hunting_trap", "battle_axe", "healing_herbs", "hourglass", "mirror_shard", "antidote", "lightning_wand", "void_tome", "venom_orb"]
+const ROSTER: Array[String] = ["rusty_knife", "cracked_shield", "blood_gem", "bandage", "longsword", "tower_shield", "cursed_idol", "iron_charm", "shortbow", "quiver", "buckler", "ember_tome", "frost_wand", "spark_ring", "venom_dagger", "vampire_fang", "plate_mail", "thorn_mail", "warding_sigil", "hunting_trap", "battle_axe", "healing_herbs", "hourglass", "mirror_shard", "antidote", "lightning_wand", "void_tome", "venom_orb", "field_blade", "riveted_guard", "tempered_blade", "iron_guard", "oathsteel_blade", "sentinel_guard", "dusksteel_blade", "citadel_guard", "dawnbringer", "sovereign_guard"]
 const ELEMENTAL_ITEMS: Dictionary = {
 	"lightning_wand": {"name": "Storm Wand", "template": "frost_wand", "damage": 4, "cost": 2, "element": "lightning", "spark": 1},
 	"void_tome": {"name": "Void Grimoire", "template": "ember_tome", "damage": 6, "cost": 3, "element": "void", "doom": 1},
 	"venom_orb": {"name": "Venom Codex", "template": "ember_tome", "damage": 3, "cost": 2, "element": "venom", "poison": 2}
 }
-const RELICS: Array[String] = ["diagonal_thread", "returning_guard", "blood_pact", "plague_seal", "echo_clock", "arcane_barter", "folded_space", "mana_furnace", "last_thread"]
+const RELICS: Array[String] = ["diagonal_thread", "returning_guard", "blood_pact", "plague_seal", "echo_clock", "arcane_barter", "folded_space", "mana_furnace", "last_thread", "hearth_token", "herbalist_knot", "trail_medallion", "bastion_seal", "starwell_crown"]
 
 static func classes() -> Dictionary:
 	return {
@@ -38,6 +40,9 @@ static func innate_stats(key: String) -> Array[Dictionary]:
 	return result
 
 static func item(key: String) -> Dictionary:
+	var authored: Dictionary = CONTENT.items()
+	if authored.has(key):
+		return authored[key].duplicate(true)
 	if ELEMENTAL_ITEMS.has(key):
 		var extension: Dictionary = ELEMENTAL_ITEMS[key]
 		var spell: Dictionary = item(extension["template"])
@@ -45,12 +50,14 @@ static func item(key: String) -> Dictionary:
 			spell[stat] = 0
 		spell.merge(extension, true)
 		spell["key"] = key
+		spell["rarity"] = RARITY.ITEMS[key]
 		spell["detail"] = ""
 		spell["tooltip_detail"] = ""
 		return spell
 	if key == QUIVER.KEY or QUIVER.OPTIONS.has(key):
 		var special: Dictionary = item("quiver")
 		special["key"] = key
+		special["rarity"] = RARITY.ITEMS[key]
 		if key == QUIVER.KEY:
 			special["name"] = "Bowmaster's Quiver"
 			special["role"] = "quiver"
@@ -101,6 +108,7 @@ static func item(key: String) -> Dictionary:
 	for stat in STATS:
 		result[stat] = 0
 	result.merge(entry[3], true)
+	result["rarity"] = RARITY.ITEMS[key]
 	result["damage_type"] = "magical" if result["role"] == "spell" else "physical"
 	result["element"] = {"ember_tome": "fire", "frost_wand": "frost"}.get(key, "")
 	var stamina_costs: Dictionary = {"rusty_knife": 0, "longsword": 2, "shortbow": 2, "venom_dagger": 1, "vampire_fang": 1, "hunting_trap": 1, "battle_axe": 3}
@@ -117,6 +125,9 @@ static func item(key: String) -> Dictionary:
 	return result
 
 static func relic(key: String) -> Dictionary:
+	var authored: Dictionary = CONTENT.relics()
+	if authored.has(key):
+		return authored[key].duplicate(true)
 	var data: Dictionary = {
 		"diagonal_thread": ["Diagonal Thread", "diagonal_thread", "Boosters and mirrors also connect across diagonals. Build clusters around corners."],
 		"returning_guard": ["Returning Guard", "returning_guard", "Unused block already carries in full for every champion. This relic currently adds no extra effect; block resets between floors."],
@@ -129,7 +140,21 @@ static func relic(key: String) -> Dictionary:
 		"last_thread": ["Last Thread", "last_thread", "Once per run, lethal damage instead restores 8 HP and unpacks your largest item. It can be packed again.", [{"key": "healing", "value": 8, "qualifier": "once, on lethal damage"}]]
 	}
 	var entry: Array = data[key]
-	return {"key": key, "name": entry[0], "icon": entry[1], "detail": entry[2], "keyword_stats": entry[3] if entry.size() > 3 else []}
+	return {"key": key, "name": entry[0], "icon": entry[1], "detail": entry[2], "rarity": RARITY.RELICS[key], "keyword_stats": entry[3] if entry.size() > 3 else []}
+
+static func items_of_rarity(tier: String) -> Array[String]:
+	var result: Array[String] = []
+	for key: String in ROSTER:
+		if item(key)["rarity"] == tier:
+			result.append(key)
+	return result
+
+static func relics_of_rarity(tier: String) -> Array[String]:
+	var result: Array[String] = []
+	for key: String in RELICS:
+		if relic(key)["rarity"] == tier:
+			result.append(key)
+	return result
 
 static func enemies() -> Array[Dictionary]:
 	var data: Array = [

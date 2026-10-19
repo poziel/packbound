@@ -424,6 +424,9 @@ func set_combat_paused(value: bool) -> void:
 
 func starting_resources() -> Dictionary:
 	var resources: Dictionary = PackCatalog.base_resources(class_key)
+	var passives: Dictionary = relic_passives()
+	for resource: String in ["mana", "stamina", "block"]:
+		resources[resource] += int(passives.get(resource, 0))
 	var equipped: Array[Dictionary] = packed()
 	for item in equipped:
 		resources["mana"] += int(item["mana"])
@@ -478,6 +481,14 @@ func start_combat() -> bool:
 	combat_state = CombatState.RUNNING
 	return true
 
+func relic_passives() -> Dictionary:
+	var result: Dictionary = {}
+	for key: String in relics:
+		var stats: Dictionary = PackCatalog.relic(key).get("stats", {})
+		for stat: String in stats:
+			result[stat] = int(result.get(stat, 0)) + int(stats[stat])
+	return result
+
 func effects() -> Dictionary:
 	var result: Dictionary = {"item_effects": [], "active_ids": [], "dormant_ids": [], "mana_after": 0, "blood_cost": 0, "repeats": 0, "echo_item_id": -1}
 	var activation_events: Array[String] = []
@@ -485,6 +496,14 @@ func effects() -> Dictionary:
 	result.merge({"physical_damage": 0, "magical_damage": 0, "elemental_inputs": [], "reactions": [], "traces_after": elemental_traces.duplicate(true)})
 	for stat in PackCatalog.STATS:
 		result[stat] = 0
+	var passives: Dictionary = relic_passives()
+	for stat: String in ["healing", "ward", "plating"]:
+		result[stat] = int(passives.get(stat, 0))
+	for key: String in relics:
+		var relic: Dictionary = PackCatalog.relic(key)
+		var stats: Dictionary = relic.get("stats", {})
+		for stat: String in stats:
+			activation_events.append("%s grants +%d %s." % [relic["name"], stats[stat], stat])
 	var equipped: Array[Dictionary] = packed()
 	var has_hourglass: bool = false
 	var resources: Dictionary = round_resources()
@@ -1004,6 +1023,13 @@ func roll_loot() -> void:
 	offense["mage"] = ["ember_tome", "frost_wand", "lightning_wand", "void_tome", "venom_orb"]
 	offense["necromancer"].append_array(["lightning_wand", "void_tome", "venom_orb"])
 	var groups: Array = [offense[class_key], ["cracked_shield", "tower_shield", "buckler", "plate_mail", "thorn_mail", "healing_herbs", "bandage", "warding_sigil"], ["blood_gem", "iron_charm", "quiver", "spark_ring", "hourglass", "mirror_shard", "antidote", "cursed_idol"]]
+	# New progression equipment joins normal rewards as deeper tiers open.
+	# Preserve class-specific legacy pools and the quiver-upgrade choice.
+	var tier_limit: int = mini(4, floori(float(fight) / 4.0))
+	for key: String in PackCatalog.CONTENT.items():
+		var definition: Dictionary = PackCatalog.item(key)
+		if PackCatalog.RARITY.TIERS.find(definition["rarity"]) <= tier_limit:
+			groups[0 if definition["role"] == "weapon" else 1].append(key)
 	var rolled: Array[String] = []
 	for group in groups:
 		rolled.append(group[rng.randi_range(0, group.size() - 1)])

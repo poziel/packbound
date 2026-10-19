@@ -48,6 +48,11 @@ func setup(data: Dictionary) -> void:
 	$Content/Header/Icon.visible = data.has("icon") and not is_keyword_definition
 	bound_status.visible = bool(data.get("bound", false))
 	_rich_text = PackKeywordLinks.rich(data.get("body", ""), key)
+	var rarity: String = str(data.get("rarity", ""))
+	if rarity in PackCatalog.RARITY.TIERS:
+		$Content/Header/Title.add_theme_color_override("default_color", PackCatalog.RARITY.COLORS[rarity])
+	else:
+		$Content/Header/Title.remove_theme_color_override("default_color")
 	var keyword_stats: String = PackKeywords.stats_markup(data.get("keyword_stats", []), true, body.get_theme_color("default_color"))
 	if not keyword_stats.is_empty():
 		_rich_text = keyword_stats + ("\n\n" + _rich_text if not _rich_text.is_empty() else "")
@@ -95,6 +100,8 @@ func setup(data: Dictionary) -> void:
 		_rich_text += ("\n\n" if not _rich_text.is_empty() else "") + str(data.get("bonus_heading", "Bonuses")) + "\n" + "\n".join(bonus_lines)
 	if not footer.is_empty():
 		_rich_text += ("\n\n" if not _rich_text.is_empty() else "") + footer
+	if rarity in PackCatalog.RARITY.TIERS:
+		_rich_text = PackCatalog.RARITY.markup({"rarity": rarity}) + ("\n\n" + _rich_text if not _rich_text.is_empty() else "")
 	body.text = _rich_text
 	body.visible = not _rich_text.is_empty()
 	if not body.meta_hover_started.is_connected(_on_keyword_link_entered):

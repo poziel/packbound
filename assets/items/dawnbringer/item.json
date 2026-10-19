@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "dawnbringer",
+  "kind": "item",
+  "identity": {
+    "name": "Dawnbringer",
+    "category": "weapon",
+    "rarity": "legendary",
+    "tags": [
+      "weapon",
+      "legendary"
+    ],
+    "summary": "20 damage, 5 pierce.",
+    "description": "Each affordable normal melee activation costs 3 stamina; damage targets the current enemy. Piercing bypasses that amount of enemy block. Ordinary attacks activate once per round; explicit extra-activation effects may repeat them.",
+    "lore": "The old watch carried this blade toward the first light."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 20,
+    "pierce": 5
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 3
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start",
+    "extraActivationEffectsMayRepeat": true
+  },
+  "effects": [
+    {
+      "id": "damage",
+      "description": "Deal physical damage to the current enemy.",
+      "trigger": "affordable-melee-activation",
+      "target": "current-enemy",
+      "condition": "Item is packed and all activation costs are affordable.",
+      "parameters": {
+        "amount": 20
+      },
+      "implementation": "supported"
+    },
+    {
+      "id": "pierce",
+      "description": "Bypass this amount of the current enemy block on an attack.",
+      "trigger": "affordable-melee-activation",
+      "target": "current-enemy",
+      "condition": "Item is packed and all activation costs are affordable.",
+      "parameters": {
+        "amount": 5
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [],
+  "acquisition": {
+    "sources": [
+      "item-reward-pool"
+    ],
+    "prices": [],
+    "dropProbabilities": [],
+    "unlockFloor": 17
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "forge_dawnbringer",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "dusksteel_blade",
+            "quantity": 2,
+            "consumed": true,
+            "referenceState": "existing"
+          }
+        ],
+        "result": {
+          "id": "dawnbringer",
+          "quantity": 1,
+          "referenceState": "existing"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "Both unlocked ingredients are packed and form an orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0
+        },
+        "trigger": "battle-start",
+        "failureBehavior": "Consume nothing if requirements fail. If the result cannot fit after consumption, it remains unpacked.",
+        "description": "Combine two Dusksteel Blade into one Dawnbringer."
+      }
+    ],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A ceremonial long steel sword with a crown-shaped gold guard, ivory grip and broad spear point. Gold is a material, never an edge-light effect.",
+    "materials": [
+      "steel",
+      "gold",
+      "ivory"
+    ],
+    "paletteIntent": "Restrained material ramps; no colored rim lighting or isolated glints.",
+    "definingFeatures": [
+      "A ceremonial long steel sword with a crown-shaped gold guard, ivory grip and broad spear point",
+      "Gold is a material, never an edge-light effect."
+    ],
+    "assets": {
+      "icon": "assets/items/dawnbringer/icons/art/icon.png",
+      "svg": "assets/items/dawnbringer/icons/art/icon.svg",
+      "source": "assets/items/dawnbringer/icons/art/icon.sprite.json",
+      "footprint": "assets/items/dawnbringer/icons/art/footprint.json",
+      "provenance": "assets/items/dawnbringer/icons/art/provenance.json",
+      "manifest": "assets/items/dawnbringer/icons/art/art-manifest.json",
+      "variants": []
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

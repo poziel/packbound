@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "starwell_crown",
+  "kind": "relic",
+  "identity": {
+    "name": "Starwell Crown",
+    "category": "relic",
+    "rarity": "legendary",
+    "tags": [
+      "relic",
+      "legendary"
+    ],
+    "summary": "2 mana, 1 stamina.",
+    "description": "While owned, add its listed passive stats. Mana and stamina increase their per-round resource capacity; healing restores health each round, plating reduces each enemy strike, and ward refreshes each round against indirect damage. Only the listed stats are granted.",
+    "lore": "The night sky is a reservoir for the patient."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {
+    "mana": 2,
+    "stamina": 1
+  },
+  "activation": {
+    "trigger": "while-owned",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "reset": "ownership",
+    "extraActivationEffectsMayRepeat": false
+  },
+  "effects": [
+    {
+      "id": "mana",
+      "description": "Increase maximum mana and its round refill.",
+      "trigger": "round-start",
+      "target": "owner",
+      "condition": "Relic is owned.",
+      "parameters": {
+        "amount": 2
+      },
+      "implementation": "supported"
+    },
+    {
+      "id": "stamina",
+      "description": "Increase maximum stamina and its round refill.",
+      "trigger": "round-start",
+      "target": "owner",
+      "condition": "Relic is owned.",
+      "parameters": {
+        "amount": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A low gold crown around a single deep-blue star stone. Three stepped points and a thick inner band distinguish its silhouette from a ring.",
+    "materials": [
+      "gold",
+      "deep-blue gemstone"
+    ],
+    "paletteIntent": "Restrained material ramps; no colored rim lighting or isolated glints.",
+    "definingFeatures": [
+      "A low gold crown around a single deep-blue star stone",
+      "Three stepped points and a thick inner band distinguish its silhouette from a ring."
+    ],
+    "assets": {
+      "icon": "assets/relics/starwell_crown/icons/art/icon.png",
+      "svg": "assets/relics/starwell_crown/icons/art/icon.svg",
+      "source": "assets/relics/starwell_crown/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/starwell_crown/icons/art/provenance.json",
+      "manifest": "assets/relics/starwell_crown/icons/art/art-manifest.json",
+      "variants": []
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

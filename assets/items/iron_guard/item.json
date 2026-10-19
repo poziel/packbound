@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "iron_guard",
+  "kind": "item",
+  "identity": {
+    "name": "Iron Guard",
+    "category": "shield",
+    "rarity": "uncommon",
+    "tags": [
+      "shield",
+      "uncommon"
+    ],
+    "summary": "7 block.",
+    "description": "Gain its block once at fight start. Block is spent when absorbing damage; it does not regenerate. Thorns, when present, retaliates for every enemy strike.",
+    "lore": "The outer plate keeps its smith's square hammer marks."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "block": 7
+  },
+  "activation": {
+    "trigger": "fight-start",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "reset": "fight-start",
+    "extraActivationEffectsMayRepeat": false
+  },
+  "effects": [
+    {
+      "id": "block",
+      "description": "Gain fight-opening block; spent block does not regenerate.",
+      "trigger": "fight-start",
+      "target": "owner",
+      "condition": "Item is packed.",
+      "parameters": {
+        "amount": 7
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [],
+  "acquisition": {
+    "sources": [
+      "item-reward-pool"
+    ],
+    "prices": [],
+    "dropProbabilities": [],
+    "unlockFloor": 5
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "forge_iron_guard",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "riveted_guard",
+            "quantity": 2,
+            "consumed": true,
+            "referenceState": "existing"
+          }
+        ],
+        "result": {
+          "id": "iron_guard",
+          "quantity": 1,
+          "referenceState": "existing"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "Both unlocked ingredients are packed and form an orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0
+        },
+        "trigger": "battle-start",
+        "failureBehavior": "Consume nothing if requirements fail. If the result cannot fit after consumption, it remains unpacked.",
+        "description": "Combine two Riveted Guard into one Iron Guard."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "forge_sentinel_guard"
+      }
+    ],
+    "mergeTargets": [
+      "sentinel_guard"
+    ]
+  },
+  "visual": {
+    "brief": "A small iron heater shield with a substantial folded rim and a raised vertical reinforcing band. Steel planes give the plate visible thickness.",
+    "materials": [
+      "steel"
+    ],
+    "paletteIntent": "Restrained material ramps; no colored rim lighting or isolated glints.",
+    "definingFeatures": [
+      "A small iron heater shield with a substantial folded rim and a raised vertical reinforcing band",
+      "Steel planes give the plate visible thickness."
+    ],
+    "assets": {
+      "icon": "assets/items/iron_guard/icons/art/icon.png",
+      "svg": "assets/items/iron_guard/icons/art/icon.svg",
+      "source": "assets/items/iron_guard/icons/art/icon.sprite.json",
+      "footprint": "assets/items/iron_guard/icons/art/footprint.json",
+      "provenance": "assets/items/iron_guard/icons/art/provenance.json",
+      "manifest": "assets/items/iron_guard/icons/art/art-manifest.json",
+      "variants": []
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

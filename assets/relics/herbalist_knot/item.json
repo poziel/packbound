@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "id": "herbalist_knot",
+  "kind": "relic",
+  "identity": {
+    "name": "Herbalist Knot",
+    "category": "relic",
+    "rarity": "uncommon",
+    "tags": [
+      "relic",
+      "uncommon"
+    ],
+    "summary": "1 healing.",
+    "description": "While owned, add its listed passive stats. Mana and stamina increase their per-round resource capacity; healing restores health each round, plating reduces each enemy strike, and ward refreshes each round against indirect damage. Only the listed stats are granted.",
+    "lore": "A healer tied this knot before walking into the marsh."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {
+    "healing": 1
+  },
+  "activation": {
+    "trigger": "while-owned",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "reset": "ownership",
+    "extraActivationEffectsMayRepeat": false
+  },
+  "effects": [
+    {
+      "id": "healing",
+      "description": "Restore health, capped at maximum health.",
+      "trigger": "player-turn",
+      "target": "owner",
+      "condition": "Relic is owned.",
+      "parameters": {
+        "amount": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "Two broad green leaves tied around a folded brown linen pouch with an ivory cord knot. Keep the leaf silhouettes separate and the knot thick.",
+    "materials": [
+      "green leaves",
+      "brown linen",
+      "ivory cord"
+    ],
+    "paletteIntent": "Restrained material ramps; no colored rim lighting or isolated glints.",
+    "definingFeatures": [
+      "Two broad green leaves tied around a folded brown linen pouch with an ivory cord knot",
+      "Keep the leaf silhouettes separate and the knot thick."
+    ],
+    "assets": {
+      "icon": "assets/relics/herbalist_knot/icons/art/icon.png",
+      "svg": "assets/relics/herbalist_knot/icons/art/icon.svg",
+      "source": "assets/relics/herbalist_knot/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/herbalist_knot/icons/art/provenance.json",
+      "manifest": "assets/relics/herbalist_knot/icons/art/art-manifest.json",
+      "variants": []
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

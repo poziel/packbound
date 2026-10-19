@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "dusksteel_blade",
+  "method": "Exact scripted pixel plans drawn into three semantic layers through connected Pixloom MCP; no image generation or resampling.",
+  "authoringPlan": "workspace/docs/art/rarity-expansion/dusksteel_blade.drawing-plan.json",
+  "brief": "A long dark steel sword with a split shoulder, forked bronze crossguard and burgundy leather grip. Calm dark blade planes; a deliberate pale fuller.",
+  "layers": [
+    "Structure and silhouette",
+    "Material Planes",
+    "Fittings"
+  ],
+  "source": "assets/items/dusksteel_blade/icons/art/icon.sprite.json",
+  "nativeProject": "assets/items/dusksteel_blade/icons/art/icon.pixloom",
+  "tool": "Pixloom MCP and pixloom-cli 0.2.0",
+  "sourceFormat": "Version 1 numeric full-canvas indexed grids with explicit 100 ms still timeline; no animation requested.",
+  "migrationNote": "The project spritex instructions point to an absent old executable/skill. Pixloom is the available successor, retaining numeric full-canvas authoring JSON and native integer-grid PNG/SVG exports. No spritex validation is claimed.",
+  "references": [
+    {
+      "path": "assets/characters/warrior/art/full-body.png",
+      "sha256": "320ae336061ffb6d22d428f17ccafb5f61f05fae94a8354295cf430086b6cf1d"
+    },
+    {
+      "path": "assets/items/armor/buckler/revisions/catalog-v1/buckler-32px.png",
+      "sha256": "3c9992012661924451e1a7a033a136da6ddbcb4423a286bb3a573fbd78b8bca9"
+    }
+  ],
+  "approval": "unreviewed",
+  "review": "MCP actual enlarged image inspected for every project; all reviewed together at native and 2x on dark UI background. Runtime in-game review handled separately.",
+  "files": {
+    "icon.sprite.json": {
+      "sha256": "090c0342cd2a7c7ab6a3d70b414d8762a45d67ffccd1414e9e32c122c275d7d8"
+    },
+    "icon.pixloom": {
+      "sha256": "257d11b58570afb33e0a34d32e256e6385d2f8c6ecbc516fffaa90334420d98d"
+    },
+    "icon.png": {
+      "sha256": "61a1d39e1546d37c4580bfb2967900b9edc7a725805991c3740268c10dbd4134"
+    },
+    "icon.svg": {
+      "sha256": "f6430849a67cca0bcd5c5f5307261ca0baa2a1adb61324b83750b1246116ec96"
+    }
+  }
+}

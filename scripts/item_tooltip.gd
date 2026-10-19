@@ -8,6 +8,9 @@ func set_item(item: Dictionary, adjacency_bonus: int = 0) -> void:
 	$Header/Icon.hide()
 	$Header/BoundStatus.visible = item.get("key") == PackCatalog.QUIVER.KEY
 	$Header/Name.text = preload("res://scripts/item_presentation.gd").display_name(item)
+	$Header/Name.add_theme_color_override("font_color", PackCatalog.RARITY.color(item))
+	$Rarity.text = PackCatalog.RARITY.label(item)
+	$Rarity.add_theme_color_override("font_color", PackCatalog.RARITY.color(item))
 	$KeywordList.text = PackKeywords.list_markup(PackKeywords.item_stats(item, adjacency_bonus), false, $KeywordList.get_theme_color("default_color"))
 	$KeywordList.visible = not $KeywordList.text.is_empty()
 	$Description.text = PackKeywordLinks.rich(PackKeywords.item_description(item), "", false)

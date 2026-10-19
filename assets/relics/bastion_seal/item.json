@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "bastion_seal",
+  "kind": "relic",
+  "identity": {
+    "name": "Bastion Seal",
+    "category": "relic",
+    "rarity": "epic",
+    "tags": [
+      "relic",
+      "epic"
+    ],
+    "summary": "1 plating, 2 ward.",
+    "description": "While owned, add its listed passive stats. Mana and stamina increase their per-round resource capacity; healing restores health each round, plating reduces each enemy strike, and ward refreshes each round against indirect damage. Only the listed stats are granted.",
+    "lore": "The gatekeeper left a seal where no stone wall remained."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {
+    "plating": 1,
+    "ward": 2
+  },
+  "activation": {
+    "trigger": "while-owned",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "reset": "ownership",
+    "extraActivationEffectsMayRepeat": false
+  },
+  "effects": [
+    {
+      "id": "plating",
+      "description": "Reduce every ordinary incoming enemy strike before block.",
+      "trigger": "enemy-strike",
+      "target": "owner",
+      "condition": "Relic is owned.",
+      "parameters": {
+        "amount": 1
+      },
+      "implementation": "supported"
+    },
+    {
+      "id": "ward",
+      "description": "Refresh protection against indirect damage each round.",
+      "trigger": "round-start",
+      "target": "owner",
+      "condition": "Relic is owned.",
+      "parameters": {
+        "amount": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A heavy square iron seal with cut corners, a bronze bail and a raised pale tower motif over burgundy enamel. Keep the side face substantial.",
+    "materials": [
+      "iron",
+      "bronze",
+      "burgundy enamel"
+    ],
+    "paletteIntent": "Restrained material ramps; no colored rim lighting or isolated glints.",
+    "definingFeatures": [
+      "A heavy square iron seal with cut corners, a bronze bail and a raised pale tower motif over burgundy enamel",
+      "Keep the side face substantial."
+    ],
+    "assets": {
+      "icon": "assets/relics/bastion_seal/icons/art/icon.png",
+      "svg": "assets/relics/bastion_seal/icons/art/icon.svg",
+      "source": "assets/relics/bastion_seal/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/bastion_seal/icons/art/provenance.json",
+      "manifest": "assets/relics/bastion_seal/icons/art/art-manifest.json",
+      "variants": []
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

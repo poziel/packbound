@@ -30,7 +30,7 @@ static func bonuses(run, item: Dictionary) -> Array[Dictionary]:
 
 static func catalog_inspection(key: String) -> Dictionary:
 	var item: Dictionary = PackCatalog.item(key)
-	return {"key": "catalog_item_" + key, "title": display_name(item), "body": PackKeywords.item_description(item), "bound": key == QUIVER.KEY, "keyword_list": [] if key == QUIVER.KEY else PackKeywords.item_stats(item), "keyword_stats": volley_stats(null, item), "resource_costs": PackKeywords.item_resource_costs(item)}
+	return {"key": "catalog_item_" + key, "rarity": PackCatalog.RARITY.tier(item), "title": display_name(item), "body": PackKeywords.item_description(item), "bound": key == QUIVER.KEY, "keyword_list": [] if key == QUIVER.KEY else PackKeywords.item_stats(item), "keyword_stats": volley_stats(null, item), "resource_costs": PackKeywords.item_resource_costs(item)}
 
 static func _upgrade(key: String, count: int) -> Dictionary:
 	var option: Dictionary = QUIVER.OPTIONS[key]

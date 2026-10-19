@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "dusksteel_blade",
+  "kind": "item",
+  "identity": {
+    "name": "Dusksteel Blade",
+    "category": "weapon",
+    "rarity": "epic",
+    "tags": [
+      "weapon",
+      "epic"
+    ],
+    "summary": "15 damage, 3 pierce.",
+    "description": "Each affordable normal melee activation costs 2 stamina; damage targets the current enemy. Piercing bypasses that amount of enemy block. Ordinary attacks activate once per round; explicit extra-activation effects may repeat them.",
+    "lore": "Its maker hammered through the last watch of night."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 15,
+    "pierce": 3
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 2
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start",
+    "extraActivationEffectsMayRepeat": true
+  },
+  "effects": [
+    {
+      "id": "damage",
+      "description": "Deal physical damage to the current enemy.",
+      "trigger": "affordable-melee-activation",
+      "target": "current-enemy",
+      "condition": "Item is packed and all activation costs are affordable.",
+      "parameters": {
+        "amount": 15
+      },
+      "implementation": "supported"
+    },
+    {
+      "id": "pierce",
+      "description": "Bypass this amount of the current enemy block on an attack.",
+      "trigger": "affordable-melee-activation",
+      "target": "current-enemy",
+      "condition": "Item is packed and all activation costs are affordable.",
+      "parameters": {
+        "amount": 3
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [],
+  "acquisition": {
+    "sources": [
+      "item-reward-pool"
+    ],
+    "prices": [],
+    "dropProbabilities": [],
+    "unlockFloor": 13
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "forge_dusksteel_blade",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "oathsteel_blade",
+            "quantity": 2,
+            "consumed": true,
+            "referenceState": "existing"
+          }
+        ],
+        "result": {
+          "id": "dusksteel_blade",
+          "quantity": 1,
+          "referenceState": "existing"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "Both unlocked ingredients are packed and form an orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0
+        },
+        "trigger": "battle-start",
+        "failureBehavior": "Consume nothing if requirements fail. If the result cannot fit after consumption, it remains unpacked.",
+        "description": "Combine two Oathsteel Blade into one Dusksteel Blade."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "forge_dawnbringer"
+      }
+    ],
+    "mergeTargets": [
+      "dawnbringer"
+    ]
+  },
+  "visual": {
+    "brief": "A long dark steel sword with a split shoulder, forked bronze crossguard and burgundy leather grip. Calm dark blade planes; a deliberate pale fuller.",
+    "materials": [
+      "dark steel",
+      "bronze",
+      "burgundy leather"
+    ],
+    "paletteIntent": "Restrained material ramps; no colored rim lighting or isolated glints.",
+    "definingFeatures": [
+      "A long dark steel sword with a split shoulder, forked bronze crossguard and burgundy leather grip",
+      "Calm dark blade planes; a deliberate pale fuller."
+    ],
+    "assets": {
+      "icon": "assets/items/dusksteel_blade/icons/art/icon.png",
+      "svg": "assets/items/dusksteel_blade/icons/art/icon.svg",
+      "source": "assets/items/dusksteel_blade/icons/art/icon.sprite.json",
+      "footprint": "assets/items/dusksteel_blade/icons/art/footprint.json",
+      "provenance": "assets/items/dusksteel_blade/icons/art/provenance.json",
+      "manifest": "assets/items/dusksteel_blade/icons/art/art-manifest.json",
+      "variants": []
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

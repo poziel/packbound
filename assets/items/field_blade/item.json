@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "id": "field_blade",
+  "kind": "item",
+  "identity": {
+    "name": "Field Blade",
+    "category": "weapon",
+    "rarity": "common",
+    "tags": [
+      "weapon",
+      "common"
+    ],
+    "summary": "5 damage.",
+    "description": "Each affordable normal melee activation costs 1 stamina; damage targets the current enemy. Piercing bypasses that amount of enemy block. Ordinary attacks activate once per round; explicit extra-activation effects may repeat them.",
+    "lore": "A caravan guard's first honest wages bought its iron."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 5
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 1
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start",
+    "extraActivationEffectsMayRepeat": true
+  },
+  "effects": [
+    {
+      "id": "damage",
+      "description": "Deal physical damage to the current enemy.",
+      "trigger": "affordable-melee-activation",
+      "target": "current-enemy",
+      "condition": "Item is packed and all activation costs are affordable.",
+      "parameters": {
+        "amount": 5
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [],
+  "acquisition": {
+    "sources": [
+      "item-reward-pool"
+    ],
+    "prices": [],
+    "dropProbabilities": [],
+    "unlockFloor": 1
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "forge_tempered_blade"
+      }
+    ],
+    "mergeTargets": [
+      "tempered_blade"
+    ]
+  },
+  "visual": {
+    "brief": "A workmanlike narrow iron blade with a blunt clipped point, plain straight guard and brown wrapped grip. Broad neutral steel planes; no colored reflections.",
+    "materials": [
+      "iron",
+      "brown leather"
+    ],
+    "paletteIntent": "Restrained material ramps; no colored rim lighting or isolated glints.",
+    "definingFeatures": [
+      "A workmanlike narrow iron blade with a blunt clipped point, plain straight guard and brown wrapped grip",
+      "Broad neutral steel planes; no colored reflections."
+    ],
+    "assets": {
+      "icon": "assets/items/field_blade/icons/art/icon.png",
+      "svg": "assets/items/field_blade/icons/art/icon.svg",
+      "source": "assets/items/field_blade/icons/art/icon.sprite.json",
+      "footprint": "assets/items/field_blade/icons/art/footprint.json",
+      "provenance": "assets/items/field_blade/icons/art/provenance.json",
+      "manifest": "assets/items/field_blade/icons/art/art-manifest.json",
+      "variants": []
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

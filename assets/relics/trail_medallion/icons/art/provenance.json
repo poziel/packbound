@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "trail_medallion",
+  "method": "Exact scripted pixel plans drawn into three semantic layers through connected Pixloom MCP; no image generation or resampling.",
+  "authoringPlan": "workspace/docs/art/rarity-expansion/trail_medallion.drawing-plan.json",
+  "brief": "A thick bronze compass medallion with a blue inset and pale four-point needle. The suspension loop joins visibly to the disc; no sparkle dots.",
+  "layers": [
+    "Structure and silhouette",
+    "Material Planes",
+    "Fittings"
+  ],
+  "source": "assets/relics/trail_medallion/icons/art/icon.sprite.json",
+  "nativeProject": "assets/relics/trail_medallion/icons/art/icon.pixloom",
+  "tool": "Pixloom MCP and pixloom-cli 0.2.0",
+  "sourceFormat": "Version 1 numeric full-canvas indexed grids with explicit 100 ms still timeline; no animation requested.",
+  "migrationNote": "The project spritex instructions point to an absent old executable/skill. Pixloom is the available successor, retaining numeric full-canvas authoring JSON and native integer-grid PNG/SVG exports. No spritex validation is claimed.",
+  "references": [
+    {
+      "path": "assets/characters/warrior/art/full-body.png",
+      "sha256": "320ae336061ffb6d22d428f17ccafb5f61f05fae94a8354295cf430086b6cf1d"
+    },
+    {
+      "path": "assets/items/armor/buckler/revisions/catalog-v1/buckler-32px.png",
+      "sha256": "3c9992012661924451e1a7a033a136da6ddbcb4423a286bb3a573fbd78b8bca9"
+    }
+  ],
+  "approval": "unreviewed",
+  "review": "MCP actual enlarged image inspected for every project; all reviewed together at native and 2x on dark UI background. Runtime in-game review handled separately.",
+  "files": {
+    "icon.sprite.json": {
+      "sha256": "cfe509b39cf39f707d10569cbd6bb6a779598bcba5e560e4ab401c923f52ebdc"
+    },
+    "icon.pixloom": {
+      "sha256": "0d99ec615b9a91c3ea61ca955cd9d80f5b069cc4b48c4f4b1856903ce3666f95"
+    },
+    "icon.png": {
+      "sha256": "b733314fd14fdee09765c6613e1e7911db9cd70e2182c475d7000cf6c861d838"
+    },
+    "icon.svg": {
+      "sha256": "b83b9864a890260bbc4e0113141503e80840a4da83c739e1a040d9c145c25692"
+    }
+  }
+}

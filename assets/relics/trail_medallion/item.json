@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "id": "trail_medallion",
+  "kind": "relic",
+  "identity": {
+    "name": "Trail Medallion",
+    "category": "relic",
+    "rarity": "rare",
+    "tags": [
+      "relic",
+      "rare"
+    ],
+    "summary": "1 stamina.",
+    "description": "While owned, add its listed passive stats. Mana and stamina increase their per-round resource capacity; healing restores health each round, plating reduces each enemy strike, and ward refreshes each round against indirect damage. Only the listed stats are granted.",
+    "lore": "Its needle remembers every road its bearer finished."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "relic-slot",
+    "mask": null,
+    "cellPixels": null,
+    "rotatable": false
+  },
+  "startingStats": {
+    "stamina": 1
+  },
+  "activation": {
+    "trigger": "while-owned",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "reset": "ownership",
+    "extraActivationEffectsMayRepeat": false
+  },
+  "effects": [
+    {
+      "id": "stamina",
+      "description": "Increase maximum stamina and its round refill.",
+      "trigger": "round-start",
+      "target": "owner",
+      "condition": "Relic is owned.",
+      "parameters": {
+        "amount": 1
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [],
+  "acquisition": {
+    "sources": [
+      "relic-reward-pool"
+    ],
+    "prices": [],
+    "dropProbabilities": []
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A thick bronze compass medallion with a blue inset and pale four-point needle. The suspension loop joins visibly to the disc; no sparkle dots.",
+    "materials": [
+      "bronze",
+      "blue enamel",
+      "steel"
+    ],
+    "paletteIntent": "Restrained material ramps; no colored rim lighting or isolated glints.",
+    "definingFeatures": [
+      "A thick bronze compass medallion with a blue inset and pale four-point needle",
+      "The suspension loop joins visibly to the disc; no sparkle dots."
+    ],
+    "assets": {
+      "icon": "assets/relics/trail_medallion/icons/art/icon.png",
+      "svg": "assets/relics/trail_medallion/icons/art/icon.svg",
+      "source": "assets/relics/trail_medallion/icons/art/icon.sprite.json",
+      "footprint": null,
+      "provenance": "assets/relics/trail_medallion/icons/art/provenance.json",
+      "manifest": "assets/relics/trail_medallion/icons/art/art-manifest.json",
+      "variants": []
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

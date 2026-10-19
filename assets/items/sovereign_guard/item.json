@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "sovereign_guard",
+  "kind": "item",
+  "identity": {
+    "name": "Sovereign Guard",
+    "category": "shield",
+    "rarity": "legendary",
+    "tags": [
+      "shield",
+      "legendary"
+    ],
+    "summary": "22 block, 3 thorns.",
+    "description": "Gain its block once at fight start. Block is spent when absorbing damage; it does not regenerate. Thorns, when present, retaliates for every enemy strike.",
+    "lore": "An empty throne is still a promise to protect its people."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "block": 22,
+    "thorns": 3
+  },
+  "activation": {
+    "trigger": "fight-start",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "reset": "fight-start",
+    "extraActivationEffectsMayRepeat": false
+  },
+  "effects": [
+    {
+      "id": "block",
+      "description": "Gain fight-opening block; spent block does not regenerate.",
+      "trigger": "fight-start",
+      "target": "owner",
+      "condition": "Item is packed.",
+      "parameters": {
+        "amount": 22
+      },
+      "implementation": "supported"
+    },
+    {
+      "id": "thorns",
+      "description": "Retaliate against the current enemy for each enemy strike.",
+      "trigger": "enemy-strike",
+      "target": "current-enemy",
+      "condition": "Item is packed.",
+      "parameters": {
+        "amount": 3
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [],
+  "acquisition": {
+    "sources": [
+      "item-reward-pool"
+    ],
+    "prices": [],
+    "dropProbabilities": [],
+    "unlockFloor": 17
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "forge_sovereign_guard",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "citadel_guard",
+            "quantity": 2,
+            "consumed": true,
+            "referenceState": "existing"
+          }
+        ],
+        "result": {
+          "id": "sovereign_guard",
+          "quantity": 1,
+          "referenceState": "existing"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "Both unlocked ingredients are packed and form an orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0
+        },
+        "trigger": "battle-start",
+        "failureBehavior": "Consume nothing if requirements fail. If the result cannot fit after consumption, it remains unpacked.",
+        "description": "Combine two Citadel Guard into one Sovereign Guard."
+      }
+    ],
+    "merges": [],
+    "mergeTargets": []
+  },
+  "visual": {
+    "brief": "A broad ivory shield with gold stepped shoulders and a dark central crown device. A heavy layered lower rim makes its thickness clear.",
+    "materials": [
+      "ivory",
+      "gold"
+    ],
+    "paletteIntent": "Restrained material ramps; no colored rim lighting or isolated glints.",
+    "definingFeatures": [
+      "A broad ivory shield with gold stepped shoulders and a dark central crown device",
+      "A heavy layered lower rim makes its thickness clear."
+    ],
+    "assets": {
+      "icon": "assets/items/sovereign_guard/icons/art/icon.png",
+      "svg": "assets/items/sovereign_guard/icons/art/icon.svg",
+      "source": "assets/items/sovereign_guard/icons/art/icon.sprite.json",
+      "footprint": "assets/items/sovereign_guard/icons/art/footprint.json",
+      "provenance": "assets/items/sovereign_guard/icons/art/provenance.json",
+      "manifest": "assets/items/sovereign_guard/icons/art/art-manifest.json",
+      "variants": []
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

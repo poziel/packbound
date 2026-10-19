@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "id": "riveted_guard",
+  "kind": "item",
+  "identity": {
+    "name": "Riveted Guard",
+    "category": "shield",
+    "rarity": "common",
+    "tags": [
+      "shield",
+      "common"
+    ],
+    "summary": "4 block.",
+    "description": "Gain its block once at fight start. Block is spent when absorbing damage; it does not regenerate. Thorns, when present, retaliates for every enemy strike.",
+    "lore": "Timber and iron still stand between a traveler and the dark."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "block": 4
+  },
+  "activation": {
+    "trigger": "fight-start",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "reset": "fight-start",
+    "extraActivationEffectsMayRepeat": false
+  },
+  "effects": [
+    {
+      "id": "block",
+      "description": "Gain fight-opening block; spent block does not regenerate.",
+      "trigger": "fight-start",
+      "target": "owner",
+      "condition": "Item is packed.",
+      "parameters": {
+        "amount": 4
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [],
+  "acquisition": {
+    "sources": [
+      "item-reward-pool"
+    ],
+    "prices": [],
+    "dropProbabilities": [],
+    "unlockFloor": 1
+  },
+  "crafting": {
+    "recipes": [],
+    "merges": [
+      {
+        "recipeId": "forge_iron_guard"
+      }
+    ],
+    "mergeTargets": [
+      "iron_guard"
+    ]
+  },
+  "visual": {
+    "brief": "A rounded small plank shield with a thick iron rim, quiet brown boards and a plain round iron boss. Two rivets hold a single central strap.",
+    "materials": [
+      "wood",
+      "iron"
+    ],
+    "paletteIntent": "Restrained material ramps; no colored rim lighting or isolated glints.",
+    "definingFeatures": [
+      "A rounded small plank shield with a thick iron rim, quiet brown boards and a plain round iron boss",
+      "Two rivets hold a single central strap."
+    ],
+    "assets": {
+      "icon": "assets/items/riveted_guard/icons/art/icon.png",
+      "svg": "assets/items/riveted_guard/icons/art/icon.svg",
+      "source": "assets/items/riveted_guard/icons/art/icon.sprite.json",
+      "footprint": "assets/items/riveted_guard/icons/art/footprint.json",
+      "provenance": "assets/items/riveted_guard/icons/art/provenance.json",
+      "manifest": "assets/items/riveted_guard/icons/art/art-manifest.json",
+      "variants": []
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

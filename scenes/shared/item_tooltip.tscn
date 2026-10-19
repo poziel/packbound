@@ -46,6 +46,10 @@ theme_override_font_sizes/font_size = 24
 text = "Item name"
 autowrap_mode = 3
 
+[node name="Rarity" type="Label" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
 [node name="KeywordList" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2

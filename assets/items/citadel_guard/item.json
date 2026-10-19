@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "citadel_guard",
+  "kind": "item",
+  "identity": {
+    "name": "Citadel Guard",
+    "category": "shield",
+    "rarity": "epic",
+    "tags": [
+      "shield",
+      "epic"
+    ],
+    "summary": "16 block, 2 thorns.",
+    "description": "Gain its block once at fight start. Block is spent when absorbing damage; it does not regenerate. Thorns, when present, retaliates for every enemy strike.",
+    "lore": "The lost fortress survives in the shields of its scattered guard."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "block": 16,
+    "thorns": 2
+  },
+  "activation": {
+    "trigger": "fight-start",
+    "priority": 0,
+    "costs": [],
+    "cooldownRounds": 0,
+    "reset": "fight-start",
+    "extraActivationEffectsMayRepeat": false
+  },
+  "effects": [
+    {
+      "id": "block",
+      "description": "Gain fight-opening block; spent block does not regenerate.",
+      "trigger": "fight-start",
+      "target": "owner",
+      "condition": "Item is packed.",
+      "parameters": {
+        "amount": 16
+      },
+      "implementation": "supported"
+    },
+    {
+      "id": "thorns",
+      "description": "Retaliate against the current enemy for each enemy strike.",
+      "trigger": "enemy-strike",
+      "target": "current-enemy",
+      "condition": "Item is packed.",
+      "parameters": {
+        "amount": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [],
+  "acquisition": {
+    "sources": [
+      "item-reward-pool"
+    ],
+    "prices": [],
+    "dropProbabilities": [],
+    "unlockFloor": 13
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "forge_citadel_guard",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "sentinel_guard",
+            "quantity": 2,
+            "consumed": true,
+            "referenceState": "existing"
+          }
+        ],
+        "result": {
+          "id": "citadel_guard",
+          "quantity": 1,
+          "referenceState": "existing"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "Both unlocked ingredients are packed and form an orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0
+        },
+        "trigger": "battle-start",
+        "failureBehavior": "Consume nothing if requirements fail. If the result cannot fit after consumption, it remains unpacked.",
+        "description": "Combine two Sentinel Guard into one Citadel Guard."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "forge_sovereign_guard"
+      }
+    ],
+    "mergeTargets": [
+      "sovereign_guard"
+    ]
+  },
+  "visual": {
+    "brief": "A dark red bulwark shield with squared shoulders, thick bronze edging and a substantial pale tower device. One broad diagonal shadow describes depth.",
+    "materials": [
+      "burgundy paint",
+      "bronze",
+      "steel"
+    ],
+    "paletteIntent": "Restrained material ramps; no colored rim lighting or isolated glints.",
+    "definingFeatures": [
+      "A dark red bulwark shield with squared shoulders, thick bronze edging and a substantial pale tower device",
+      "One broad diagonal shadow describes depth."
+    ],
+    "assets": {
+      "icon": "assets/items/citadel_guard/icons/art/icon.png",
+      "svg": "assets/items/citadel_guard/icons/art/icon.svg",
+      "source": "assets/items/citadel_guard/icons/art/icon.sprite.json",
+      "footprint": "assets/items/citadel_guard/icons/art/footprint.json",
+      "provenance": "assets/items/citadel_guard/icons/art/provenance.json",
+      "manifest": "assets/items/citadel_guard/icons/art/art-manifest.json",
+      "variants": []
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

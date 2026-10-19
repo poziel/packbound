@@ -235,7 +235,7 @@ static func tooltips(board) -> void:
 			fresh.z_index = 200
 			fresh.modulate.a = 0.0
 			board.add_child(fresh)
-			fresh.setup({"key": "craft_" + key, "title": attempt["output"]["name"], "body": "%d/%d ingredients" % [attempt["count"], attempt["total"]], "icon": PackArt.item(attempt["output"]["key"])})
+			fresh.setup({"key": "craft_" + key, "rarity": PackCatalog.RARITY.tier(attempt["output"]), "title": attempt["output"]["name"], "body": "%d/%d ingredients" % [attempt["count"], attempt["total"]], "icon": PackArt.item(attempt["output"]["key"])})
 			# This is a timed notification using the shared inspection window,
 			# rather than an interactive hover window with a lock countdown.
 			fresh.get_node("Content/Header/TimerSlot").hide()

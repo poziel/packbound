@@ -6,6 +6,14 @@ const RECIPES: Array[Dictionary] = [
 	{"id": "iron_dagger", "ingredients": ["rusty_knife", "rusty_knife"], "result": "longsword"},
 	{"id": "shield_relic", "ingredients": ["cracked_shield", "cracked_shield"], "result": "tower_shield"},
 	{"id": "moonleaf", "ingredients": ["bandage", "bandage", "antidote"], "result": "healing_herbs"},
+	{"id": "forge_tempered_blade", "ingredients": ["field_blade", "field_blade"], "result": "tempered_blade"},
+	{"id": "forge_oathsteel_blade", "ingredients": ["tempered_blade", "tempered_blade"], "result": "oathsteel_blade"},
+	{"id": "forge_dusksteel_blade", "ingredients": ["oathsteel_blade", "oathsteel_blade"], "result": "dusksteel_blade"},
+	{"id": "forge_dawnbringer", "ingredients": ["dusksteel_blade", "dusksteel_blade"], "result": "dawnbringer"},
+	{"id": "forge_iron_guard", "ingredients": ["riveted_guard", "riveted_guard"], "result": "iron_guard"},
+	{"id": "forge_sentinel_guard", "ingredients": ["iron_guard", "iron_guard"], "result": "sentinel_guard"},
+	{"id": "forge_citadel_guard", "ingredients": ["sentinel_guard", "sentinel_guard"], "result": "citadel_guard"},
+	{"id": "forge_sovereign_guard", "ingredients": ["citadel_guard", "citadel_guard"], "result": "sovereign_guard"},
 ]
 
 static func nearest_tiles(run, first: Dictionary, second: Dictionary) -> Array[Vector2i]:
@@ -184,7 +192,7 @@ static func recipe_inspection(_run, item: Dictionary) -> Dictionary:
 static func _recipe_definition(key: String, definitions: Dictionary) -> void:
 	var item: Dictionary = PackCatalog.item(key)
 	var link: String = "recipe_item_" + key
-	definitions[link] = {"key": link, "title": item["name"], "body": PackKeywords.item_description(item), "keyword_list": PackKeywords.item_stats(item, 0), "resource_costs": PackKeywords.item_resource_costs(item)}
+	definitions[link] = {"key": link, "title": item["name"], "rarity": item["rarity"], "body": PackKeywords.item_description(item), "keyword_list": PackKeywords.item_stats(item, 0), "resource_costs": PackKeywords.item_resource_costs(item)}
 
 static func partners(run, item: Dictionary) -> Array[Dictionary]:
 	var result: Array[Dictionary] = []

@@ -584,9 +584,9 @@ func _refresh_relics() -> void:
 		art.texture = PackArt.relic(relic["key"]) if bound else null
 		art.modulate.a = 0.4 if bound and relic["key"] == "last_thread" and run.last_thread_used else 1.0
 		relic_slots[index].occupied = bound
-		relic_slots[index].accent = Color("c5b48a")
+		relic_slots[index].accent = PackCatalog.RARITY.color(relic) if bound else Color("c5b48a")
 		relic_slots[index].focus_mode = Control.FOCUS_ALL if bound else Control.FOCUS_NONE
-		relic_slots[index].accessibility_name = relic["name"] if bound else "Empty relic slot"
+		relic_slots[index].accessibility_name = str(relic["name"]) + ", " + PackCatalog.RARITY.label(relic) if bound else "Empty relic slot"
 
 func _refresh_history() -> void:
 	var latest: int = run.stage_history.size() - 1
@@ -836,7 +836,8 @@ func _open_reward(is_relic: bool) -> void:
 		var item: Dictionary = PackCatalog.relic(keys[index]) if is_relic else PackCatalog.item(keys[index])
 		choice_buttons[index].show()
 		choice_art[index].texture = PackArt.relic(item["key"]) if is_relic else PackArt.item(item["key"], 64)
-		choice_names[index].text = item["name"]
+		choice_names[index].text = item["name"] + " / " + PackCatalog.RARITY.label(item)
+		choice_names[index].add_theme_color_override("font_color", PackCatalog.RARITY.color(item))
 		choice_details[index].set_description(item["detail"])
 		choice_shapes[index].visible = not is_relic and not PackCatalog.QUIVER.OPTIONS.has(keys[index])
 		choice_shapes[index].set_meta("cells", [] if is_relic else PackRun.offsets(item))
@@ -1028,7 +1029,7 @@ func _describe_item(item: Dictionary, rect: Rect2) -> Dictionary:
 	var costs: Array[Dictionary] = PackKeywords.item_resource_costs(item)
 	var bonus: int = run.item_bonus(item)
 	var presentation = preload("res://scripts/item_presentation.gd")
-	return {"key": "item_%d" % item["id"], "title": presentation.display_name(item), "body": body, "keyword_list": [] if run.is_permanent(item) else PackKeywords.item_stats(item, bonus), "keyword_stats": presentation.volley_stats(run, item), "bonuses": presentation.bonuses(run, item), "resource_costs": costs, "priority_label": "" if costs.is_empty() else PackKeywords.item_priority_label(item), "bound": run.is_permanent(item), "rect": rect}
+	return {"key": "item_%d" % item["id"], "rarity": PackCatalog.RARITY.tier(item), "title": presentation.display_name(item), "body": body, "keyword_list": [] if run.is_permanent(item) else PackKeywords.item_stats(item, bonus), "keyword_stats": presentation.volley_stats(run, item), "bonuses": presentation.bonuses(run, item), "resource_costs": costs, "priority_label": "" if costs.is_empty() else PackKeywords.item_priority_label(item), "bound": run.is_permanent(item), "rect": rect}
 
 func _character_inspection() -> Dictionary:
 	var data: Dictionary = PackCatalog.classes()[run.class_key]
@@ -1051,7 +1052,7 @@ func _relic_inspection(index: int) -> Dictionary:
 	if index >= run.relics.size():
 		return {}
 	var data: Dictionary = PackCatalog.relic(run.relics[index])
-	return {"key": "relic_" + data["key"], "title": data["name"], "icon": PackArt.relic(data["key"]), "keyword_stats": PackKeywords.relic_stats(data), "body": data["detail"] + ("\n\nConsumed this run." if data["key"] == "last_thread" and run.last_thread_used else "")}
+	return {"key": "relic_" + data["key"], "rarity": PackCatalog.RARITY.tier(data), "title": data["name"], "icon": PackArt.relic(data["key"]), "keyword_stats": PackKeywords.relic_stats(data), "body": data["detail"] + ("\n\nConsumed this run." if data["key"] == "last_thread" and run.last_thread_used else "")}
 
 func _play_item_hover(index: int, from_reward: bool) -> void:
 	if not combat.is_visible_in_tree() or loading_screen.active or not board.dragging.is_empty():
@@ -1072,10 +1073,10 @@ func _reward_inspection(index: int) -> Dictionary:
 		return {}
 	if reward_is_relic and index < run.relic_offers.size():
 		var relic: Dictionary = PackCatalog.relic(run.relic_offers[index])
-		return {"key": "reward_" + relic["key"], "title": relic["name"], "body": relic["detail"], "keyword_stats": PackKeywords.relic_stats(relic), "icon": PackArt.relic(relic["key"])}
+		return {"key": "reward_" + relic["key"], "rarity": PackCatalog.RARITY.tier(relic), "title": relic["name"], "body": relic["detail"], "keyword_stats": PackKeywords.relic_stats(relic), "icon": PackArt.relic(relic["key"])}
 	if not reward_is_relic and index < run.offers.size():
 		var item: Dictionary = PackCatalog.item(run.offers[index])
 		var body: String = PackKeywords.item_description(item)
 		var costs: Array[Dictionary] = PackKeywords.item_resource_costs(item)
-		return {"key": "reward_" + item["key"], "title": item["name"], "body": body, "keyword_list": PackKeywords.item_stats(item), "resource_costs": costs, "priority_label": "" if costs.is_empty() else PackKeywords.item_priority_label(item)}
+		return {"key": "reward_" + item["key"], "rarity": PackCatalog.RARITY.tier(item), "title": item["name"], "body": body, "keyword_list": PackKeywords.item_stats(item), "resource_costs": costs, "priority_label": "" if costs.is_empty() else PackKeywords.item_priority_label(item)}
 	return {}

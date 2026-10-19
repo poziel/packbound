@@ -41,6 +41,7 @@ func restore(run: PackRun, data: Dictionary) -> void:
 	# Fill only newly introduced fields; preserve saved rolls and existing art/layout.
 	for item: Dictionary in run.items:
 		var defaults: Dictionary = PackCatalog.item(item["key"])
+		item["rarity"] = defaults["rarity"]
 		if item["key"] == PackCatalog.QUIVER.KEY:
 			item["name"] = defaults["name"]
 		var migration_keys: Array[String] = ["priority", "stamina_cost", "stamina", "stamina_per_round", "element", "damage_type"]

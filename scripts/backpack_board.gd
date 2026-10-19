@@ -507,7 +507,7 @@ static func draw_craft_lock(canvas: CanvasItem, badge: Rect2, ink: Color, opacit
 func _draw_item(item: Dictionary, rect: Rect2, ghost: bool = false, opacity: float = 1.0, art_scale: float = 1.0) -> void:
 	_art_origin = rect.position
 	_art_scale = art_scale
-	var tint: Color = PackArt.color(item["key"])
+	var tint: Color = PackCatalog.RARITY.color(item)
 	var highlighted: bool = int(item["id"]) == hovered_id or ghost
 	var related: bool = not ghost and _bonus_related.has(int(item["id"]))
 	var rotation: int = drag_rotation if ghost else int(item["rotation"])

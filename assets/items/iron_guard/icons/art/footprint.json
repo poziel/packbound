@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "iron_guard",
+  "mask": [
+    "#"
+  ],
+  "cellPixels": 32,
+  "canvas": {
+    "width": 32,
+    "height": 32
+  },
+  "rotatable": true,
+  "occupiedCells": [
+    {
+      "x": 0,
+      "y": 0
+    }
+  ]
+}

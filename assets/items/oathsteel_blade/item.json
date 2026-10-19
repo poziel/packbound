@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "oathsteel_blade",
+  "kind": "item",
+  "identity": {
+    "name": "Oathsteel Blade",
+    "category": "weapon",
+    "rarity": "rare",
+    "tags": [
+      "weapon",
+      "rare"
+    ],
+    "summary": "11 damage, 2 pierce.",
+    "description": "Each affordable normal melee activation costs 2 stamina; damage targets the current enemy. Piercing bypasses that amount of enemy block. Ordinary attacks activate once per round; explicit extra-activation effects may repeat them.",
+    "lore": "Sworn names are pressed into the steel while it cools."
+  },
+  "status": {
+    "design": "proposed",
+    "runtime": "integrated"
+  },
+  "placement": {
+    "mode": "backpack",
+    "mask": [
+      "#",
+      "#"
+    ],
+    "cellPixels": 32,
+    "rotatable": true
+  },
+  "startingStats": {
+    "damage": 11,
+    "pierce": 2
+  },
+  "activation": {
+    "trigger": "player-item-activation",
+    "priority": 0,
+    "costs": [
+      {
+        "resource": "stamina",
+        "amount": 2
+      }
+    ],
+    "cooldownRounds": 0,
+    "maxActivationsPerRound": 1,
+    "reset": "round-start",
+    "extraActivationEffectsMayRepeat": true
+  },
+  "effects": [
+    {
+      "id": "damage",
+      "description": "Deal physical damage to the current enemy.",
+      "trigger": "affordable-melee-activation",
+      "target": "current-enemy",
+      "condition": "Item is packed and all activation costs are affordable.",
+      "parameters": {
+        "amount": 11
+      },
+      "implementation": "supported"
+    },
+    {
+      "id": "pierce",
+      "description": "Bypass this amount of the current enemy block on an attack.",
+      "trigger": "affordable-melee-activation",
+      "target": "current-enemy",
+      "condition": "Item is packed and all activation costs are affordable.",
+      "parameters": {
+        "amount": 2
+      },
+      "implementation": "supported"
+    }
+  ],
+  "empowerment": [],
+  "synergies": [],
+  "acquisition": {
+    "sources": [
+      "item-reward-pool"
+    ],
+    "prices": [],
+    "dropProbabilities": [],
+    "unlockFloor": 9
+  },
+  "crafting": {
+    "recipes": [
+      {
+        "id": "forge_oathsteel_blade",
+        "implementation": "supported",
+        "ingredients": [
+          {
+            "id": "tempered_blade",
+            "quantity": 2,
+            "consumed": true,
+            "referenceState": "existing"
+          }
+        ],
+        "result": {
+          "id": "oathsteel_blade",
+          "quantity": 1,
+          "referenceState": "existing"
+        },
+        "conditions": [
+          "Inventory editing is available.",
+          "Both unlocked ingredients are packed and form an orthogonally connected group."
+        ],
+        "parameters": {
+          "goldCost": 0
+        },
+        "trigger": "battle-start",
+        "failureBehavior": "Consume nothing if requirements fail. If the result cannot fit after consumption, it remains unpacked.",
+        "description": "Combine two Tempered Blade into one Oathsteel Blade."
+      }
+    ],
+    "merges": [
+      {
+        "recipeId": "forge_dusksteel_blade"
+      }
+    ],
+    "mergeTargets": [
+      "dusksteel_blade"
+    ]
+  },
+  "visual": {
+    "brief": "An oathbound steel sword with a flared base, blue leather grip and bronze wing-shaped guard. A single broad engraved groove anchors its identity.",
+    "materials": [
+      "steel",
+      "bronze",
+      "blue leather"
+    ],
+    "paletteIntent": "Restrained material ramps; no colored rim lighting or isolated glints.",
+    "definingFeatures": [
+      "An oathbound steel sword with a flared base, blue leather grip and bronze wing-shaped guard",
+      "A single broad engraved groove anchors its identity."
+    ],
+    "assets": {
+      "icon": "assets/items/oathsteel_blade/icons/art/icon.png",
+      "svg": "assets/items/oathsteel_blade/icons/art/icon.svg",
+      "source": "assets/items/oathsteel_blade/icons/art/icon.sprite.json",
+      "footprint": "assets/items/oathsteel_blade/icons/art/footprint.json",
+      "provenance": "assets/items/oathsteel_blade/icons/art/provenance.json",
+      "manifest": "assets/items/oathsteel_blade/icons/art/art-manifest.json",
+      "variants": []
+    },
+    "approval": "unreviewed"
+  },
+  "unresolved": []
+}

@@ -27,6 +27,16 @@ const ENEMY_TEXTURES: Dictionary = {
 }
 const CONTROLS: Texture2D = preload("res://themes/gameplay/controls.svg")
 const ITEM_TEXTURES: Dictionary = {
+	"field_blade": preload("res://assets/items/field_blade/icons/art/icon.svg"),
+	"riveted_guard": preload("res://assets/items/riveted_guard/icons/art/icon.svg"),
+	"tempered_blade": preload("res://assets/items/tempered_blade/icons/art/icon.svg"),
+	"iron_guard": preload("res://assets/items/iron_guard/icons/art/icon.svg"),
+	"oathsteel_blade": preload("res://assets/items/oathsteel_blade/icons/art/icon.svg"),
+	"sentinel_guard": preload("res://assets/items/sentinel_guard/icons/art/icon.svg"),
+	"dusksteel_blade": preload("res://assets/items/dusksteel_blade/icons/art/icon.svg"),
+	"citadel_guard": preload("res://assets/items/citadel_guard/icons/art/icon.svg"),
+	"dawnbringer": preload("res://assets/items/dawnbringer/icons/art/icon.svg"),
+	"sovereign_guard": preload("res://assets/items/sovereign_guard/icons/art/icon.svg"),
 	"tower_shield": preload("res://assets/items/relics/shield-relic/revisions/catalog-v1/shield-relic-32px.svg"),
 	"antidote": preload("res://assets/items/healing/antidote/revisions/catalog-v1/antidote-32px.svg"),
 	"mirror_shard": preload("res://assets/items/utility/mirror-shard/revisions/catalog-v2/mirror-shard-64px.svg"),
@@ -54,6 +64,11 @@ const ITEM_TEXTURES: Dictionary = {
 	"venom_dagger": preload("res://assets/items/weapons/venom-dagger/revisions/catalog-v1/venom-dagger-64px.svg"),
 }
 const RELIC_TEXTURES: Dictionary = {
+	"hearth_token": preload("res://assets/relics/hearth_token/icons/art/icon.svg"),
+	"herbalist_knot": preload("res://assets/relics/herbalist_knot/icons/art/icon.svg"),
+	"trail_medallion": preload("res://assets/relics/trail_medallion/icons/art/icon.svg"),
+	"bastion_seal": preload("res://assets/relics/bastion_seal/icons/art/icon.svg"),
+	"starwell_crown": preload("res://assets/relics/starwell_crown/icons/art/icon.svg"),
 	"diagonal_thread": preload("res://assets/relics/diagonal-thread/revisions/catalog-v2/diagonal-thread-32px.svg"),
 	"returning_guard": preload("res://assets/relics/returning-guard/revisions/catalog-v1/returning-guard-32px.svg"),
 	"blood_pact": preload("res://assets/relics/blood-pact/revisions/catalog-v1/blood-pact-32px.svg"),
