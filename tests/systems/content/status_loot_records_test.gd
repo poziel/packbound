@@ -1,6 +1,5 @@
 extends "res://tests/support/test_case.gd"
 const DATA = preload("res://systems/content/runtime_content.gd")
-const ELEMENTS = preload("res://systems/combat/elemental_combat.gd")
 
 func _run() -> void:
 	var content: GameContentDefinition = DATA.content()
@@ -13,9 +12,9 @@ func _run() -> void:
 		statuses[str(status.id)] = status
 		check(status.icon != null, "Status reuses existing glyph: " + str(status.id))
 		check(status.effects[0].resource_path.ends_with("rule_effect.tres"), "Status rule is an external definition")
-	check_equal(statuses.doom.duration_rounds, ELEMENTS.DOOM_ROUNDS, "Doom fuse retains actual runtime duration")
+	check_equal(statuses.doom.duration_rounds, 3, "Doom fuse retains the three-round content contract")
 	check(not statuses.doom.refresh_duration_on_application, "Doom applications do not reset its fuse")
-	check_equal(statuses.spark.effects[0].parameters.damage_per_stack, ELEMENTS.SPARK_DAMAGE, "Spark damage retains runtime tuning")
+	check_equal(statuses.spark.effects[0].parameters.damage_per_stack, 2, "Spark retains two damage per stack")
 	for key: String in ["poison", "burn", "slow"]:
 		check_equal(statuses[key].decay_per_round, 1, "Existing decay retained: " + key)
 	var pools: Dictionary = {}

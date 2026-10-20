@@ -2,6 +2,13 @@
   "version": 1,
   "tests": [
 	{
+	  "id": "status_runtime",
+	  "path": "tests/systems/combat/status_runtime_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
 	  "id": "poison_runtime",
 	  "path": "tests/systems/combat/poison_runtime_test.gd",
 	  "suites": ["systems"],

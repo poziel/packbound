@@ -38,7 +38,9 @@ static func migrate_legacy_values(value: Variant, state_root: bool = false) -> v
 				value[field] = converted
 		if value.get("elemental_inputs") is Array:
 			value.elemental_inputs = value.elemental_inputs.map(func(element): return GameplayTypes.element_from_id(element) if element is String else element)
-		for key: Variant in value: migrate_legacy_values(value[key], key is String and key == "player_state")
+		for key: Variant in value:
+			if key is String and key in ["statuses", "statuses_after"]: continue
+			migrate_legacy_values(value[key], key is String and key == "player_state")
 
 func new_id() -> String:
 	return "%d-%s" % [Time.get_unix_time_from_system() * 1000, Crypto.new().generate_random_bytes(8).hex_encode()]
@@ -46,9 +48,9 @@ func new_id() -> String:
 func capture(run: PackRun, elapsed: float, playback: PackCombatPlayback = null) -> Dictionary:
 	var state: Dictionary = {}
 	for property: Dictionary in run.get_property_list():
-		if int(property.usage) & PROPERTY_USAGE_SCRIPT_VARIABLE and property.name not in ["rng", "_poison_statuses"]:
+		if int(property.usage) & PROPERTY_USAGE_SCRIPT_VARIABLE and property.name not in ["rng", "_statuses", "_poison_statuses"]:
 			state[property.name] = run.get(property.name)
-	state["poison_statuses"] = run.poison_state()
+	state["statuses"] = run.status_state()
 	state["rng_seed"] = run.rng.seed
 	state["rng_state"] = run.rng.state
 	return {"version": VERSION, "elapsed": elapsed, "state": state.duplicate(true), "playback": playback.snapshot() if playback != null else {}}
@@ -57,9 +59,9 @@ func restore(run: PackRun, data: Dictionary) -> void:
 	var state: Dictionary = data["state"].duplicate(true)
 	migrate_legacy_values(state, true)
 	for property: Dictionary in run.get_property_list():
-		if int(property.usage) & PROPERTY_USAGE_SCRIPT_VARIABLE and state.has(property.name) and property.name not in ["rng", "_poison_statuses"]:
+		if int(property.usage) & PROPERTY_USAGE_SCRIPT_VARIABLE and state.has(property.name) and property.name not in ["rng", "_statuses", "_poison_statuses"]:
 			run.set(property.name, state[property.name])
-	run.restore_poison_state(state.get("poison_statuses", {}))
+	run.restore_status_state(state.get("statuses", {}), state.get("poison_statuses", {}))
 	run.rng.seed = state["rng_seed"]
 	run.rng.state = state["rng_state"]
 	run.normalize_room_state(state)
@@ -154,6 +156,11 @@ func read(id: String) -> Dictionary:
 		if not state.poison_statuses is Dictionary: return {}
 		for owner: String in ["player", "enemy"]:
 			if not StatusResolver.is_snapshot_valid(state.poison_statuses.get(owner), &"poison"): return {}
+	if not state.pending_turn is Dictionary: return {}
+	if not state.pending_turn.get("player_state", {}) is Dictionary: return {}
+	for container: Dictionary in [state, state.pending_turn, state.pending_turn.get("player_state", {})]:
+		for key: String in ["statuses", "statuses_after"]:
+			if container.has(key) and not _status_snapshot_valid(container[key]): return {}
 	for item: Variant in state.items:
 		if not item is Dictionary or (not PackCatalog.ROSTER.has(item.get("key", "")) and item.get("key", "") != PackCatalog.QUIVER.KEY):
 			return {}
@@ -235,3 +242,11 @@ func unfinished() -> Array[Dictionary]:
 		result.append(data)
 	result.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return a.id > b.id)
 	return result
+
+static func _status_snapshot_valid(value: Variant) -> bool:
+	if not value is Dictionary: return false
+	for owner: String in PackRun.STATUS_IDS:
+		if not value.get(owner) is Dictionary: return false
+		for id: StringName in PackRun.STATUS_IDS[owner]:
+			if not StatusResolver.is_snapshot_valid(value[owner].get(str(id)), id): return false
+	return true

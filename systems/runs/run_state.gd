@@ -38,19 +38,33 @@ var resource_overrides: Dictionary = {} # Explicit developer-authored round budg
 var mana_capacity: int = 0
 var stamina_capacity: int = 0
 var block_capacity: int = 0
-# Live Poison has one authority; integer properties preserve existing UI/dev APIs.
-var _poison_statuses: Dictionary = {}
+# Every status has one live instance. Numeric properties are compatibility views.
+const STATUS_IDS: Dictionary = {"player": [&"poison"], "enemy": [&"poison", &"burn", &"doom", &"spark", &"slow"]}
+var _statuses: Dictionary = {}
 var player_poison: int:
-	get: return poison_status("player").stacks
-	set(value): poison_status("player").stacks = value
+	get: return status("player", &"poison").stacks
+	set(value): _set_status_stacks("player", &"poison", value)
 var enemy_poison: int:
-	get: return poison_status("enemy").stacks
-	set(value): poison_status("enemy").stacks = value
-var enemy_burn: int = 0
-var enemy_slow: int = 0
-var enemy_spark: int = 0
-var enemy_doom: int = 0
-var enemy_doom_turns: int = 0
+	get: return status("enemy", &"poison").stacks
+	set(value): _set_status_stacks("enemy", &"poison", value)
+var enemy_burn: int:
+	get: return status("enemy", &"burn").stacks
+	set(value): _set_status_stacks("enemy", &"burn", value)
+var enemy_slow: int:
+	get: return status("enemy", &"slow").stacks
+	set(value): _set_status_stacks("enemy", &"slow", value)
+var enemy_spark: int:
+	get: return status("enemy", &"spark").stacks
+	set(value): _set_status_stacks("enemy", &"spark", value)
+var enemy_doom: int:
+	get: return status("enemy", &"doom").stacks
+	set(value): _set_status_stacks("enemy", &"doom", value)
+var enemy_doom_turns: int:
+	get: return status("enemy", &"doom").remaining_rounds
+	set(value):
+		var doomed: StatusEffectInstance = status("enemy", &"doom")
+		# Legacy positive stacks with a zero fuse meant "arm on next resolution".
+		doomed.remaining_rounds = doomed.definition.duration_rounds if value == 0 and doomed.stacks > 0 else value
 var elemental_traces: Dictionary = {}
 var enemy_shield_spent: int = 0
 var fight: int = 0
@@ -82,22 +96,55 @@ var room_relic_offers: Array[String] = []
 var room_reward_pending: bool = false
 var room_flow_version: int = 1
 
+func status(owner: String, id: StringName) -> StatusEffectInstance:
+	if not _statuses.has(owner): _statuses[owner] = {}
+	if not _statuses[owner].has(id): _statuses[owner][id] = STATUSES.create(id)
+	return _statuses[owner][id]
+
+func _set_status_stacks(owner: String, id: StringName, amount: int) -> void:
+	var value: StatusEffectInstance = status(owner, id)
+	value.stacks = amount
+	if amount == 0: value.remaining_rounds = 0
+	elif value.remaining_rounds == 0: value.remaining_rounds = value.definition.duration_rounds
+
 func poison_status(owner: String) -> StatusEffectInstance:
-	if not _poison_statuses.has(owner):
-		_poison_statuses[owner] = STATUSES.create(&"poison")
-	return _poison_statuses[owner]
+	return status(owner, &"poison")
 
 func poison_state() -> Dictionary:
 	return {"player": STATUSES.snapshot(poison_status("player")), "enemy": STATUSES.snapshot(poison_status("enemy"))}
 
-func restore_poison_state(data: Dictionary = {}) -> void:
-	var legacy: Dictionary = {"player": player_poison, "enemy": enemy_poison}
-	_poison_statuses.clear()
-	for owner: String in ["player", "enemy"]:
-		if STATUSES.is_snapshot_valid(data.get(owner), &"poison"):
-			_poison_statuses[owner] = STATUSES.restore(data[owner])
-		else:
-			_poison_statuses[owner] = StatusEffectInstance.new(STATUSES.definition(&"poison"), int(legacy[owner]))
+static func _snapshot_statuses(values: Dictionary) -> Dictionary:
+	var result: Dictionary = {}
+	for owner: String in values:
+		result[owner] = {}
+		for id: StringName in values[owner]:
+			result[owner][str(id)] = STATUSES.snapshot(values[owner][id])
+	return result
+
+func status_state() -> Dictionary:
+	for owner: String in STATUS_IDS:
+		for id: StringName in STATUS_IDS[owner]: status(owner, id)
+	return _snapshot_statuses(_statuses)
+
+func restore_status_state(data: Dictionary = {}, old_poison: Dictionary = {}) -> void:
+	var legacy: Dictionary = {"player": {&"poison": player_poison}, "enemy": {&"poison": enemy_poison, &"burn": enemy_burn, &"slow": enemy_slow, &"spark": enemy_spark, &"doom": enemy_doom}}
+	var doom_rounds: int = enemy_doom_turns
+	_statuses.clear()
+	for owner: String in STATUS_IDS:
+		_statuses[owner] = {}
+		for id: StringName in STATUS_IDS[owner]:
+			var saved: Variant = data.get(owner, {}).get(str(id))
+			if id == &"poison" and saved == null: saved = old_poison.get(owner)
+			var restored: StatusEffectInstance
+			if STATUSES.is_snapshot_valid(saved, id):
+				restored = STATUSES.restore(saved)
+			else:
+				var authored: StatusEffectDefinition = STATUSES.definition(id)
+				var stacks: int = int(legacy[owner][id])
+				var remaining: int = authored.duration_rounds if stacks > 0 else 0
+				if id == &"doom" and doom_rounds > 0: remaining = doom_rounds
+				restored = StatusEffectInstance.new(authored, stacks, remaining)
+			_statuses[owner][id] = restored
 
 static func definition(key: String) -> Dictionary:
 	return PackCatalog.item(key)
@@ -220,7 +267,7 @@ func prepare_enemy(selected: Dictionary = {}) -> void:
 	stamina = 0
 	stamina_capacity = 0
 	block_capacity = 0
-	_poison_statuses.clear()
+	_statuses.clear()
 	player_poison = 0
 	enemy_poison = 0
 	enemy_burn = 0
@@ -948,32 +995,29 @@ func outcome(stats: Dictionary) -> Dictionary:
 	var leech_heal: int = mini(max_hp - health, leech)
 	health += leech_heal
 	_record_amount(my_events, "Vampirism restored %d HP to me.", leech_heal)
-	var poisoned: StatusEffectInstance = STATUSES.copy(poison_status("enemy"))
-	var burn: int = enemy_burn
-	var doom: int = enemy_doom
-	var doom_turns: int = enemy_doom_turns
-	var spark: int = enemy_spark
-	var slow: int = enemy_slow
+	var resolving_statuses: Dictionary = {"player": {&"poison": STATUSES.copy(poison_status("player"))}, "enemy": {}}
+	for id: StringName in STATUS_IDS.enemy:
+		resolving_statuses.enemy[id] = STATUSES.copy(status("enemy", id))
+	var poisoned: StatusEffectInstance = resolving_statuses.enemy[&"poison"]
+	var burning: StatusEffectInstance = resolving_statuses.enemy[&"burn"]
+	var doomed: StatusEffectInstance = resolving_statuses.enemy[&"doom"]
+	var sparked: StatusEffectInstance = resolving_statuses.enemy[&"spark"]
+	var slowed_status: StatusEffectInstance = resolving_statuses.enemy[&"slow"]
+	var enemy_status_context: Dictionary = {"owner": "enemy", "magical_damage": magical_after, "resistances": {GameplayTypes.DamageType.MAGICAL: int(enemy.get(GameplayTypes.Stat.MAGICAL_RESISTANCE, 0)), GameplayTypes.DamageType.PHYSICAL: int(enemy.get(GameplayTypes.Stat.PHYSICAL_RESISTANCE, 0))}}
 	if int(enemy[GameplayTypes.Stat.CLEANSE]) > 0 and turn % int(enemy[GameplayTypes.Stat.CLEANSE]) == 0:
-		var poison_cleansed: int = STATUSES.cleanse(poisoned)
-		if foe_hp > 0:
-			_record_amount(my_events, foe + " cleansed %d poison.", poison_cleansed)
-			_record_amount(my_events, foe + " cleansed %d burn.", burn)
-			_record_amount(my_events, foe + " cleansed %d Doom.", doom)
-			_record_amount(my_events, foe + " cleansed %d Spark.", spark)
-			_record_amount(my_events, foe + " cleansed %d Slow.", slow)
-		burn = 0
-		doom = 0
-		doom_turns = 0
-		spark = 0
-		slow = 0
+		for id: StringName in STATUS_IDS.enemy:
+			var removed: int = STATUSES.cleanse(resolving_statuses.enemy[id])
+			if foe_hp > 0:
+				var label: String = str(id) if id in [&"poison", &"burn"] else str(id).capitalize()
+				_record_amount(my_events, foe + " cleansed %d " + label + ".", removed)
 	if foe_hp > 0:
 		_record_amount(my_events, "I applied %d poison to " + foe + ".", int(stats[GameplayTypes.Stat.POISON]))
 		_record_amount(my_events, "I applied %d burn to " + foe + ".", int(stats[GameplayTypes.Stat.BURN]))
 		for key: String in ["doom", "spark", "slow"]:
 			_record_amount(my_events, "I applied %d " + key.capitalize() + " to " + foe + ".", int(stats.get(GameplayTypes.stat_from_id(key), 0)))
 	STATUSES.apply(poisoned, int(stats[GameplayTypes.Stat.POISON]))
-	burn += int(stats[GameplayTypes.Stat.BURN])
+	STATUSES.apply(burning, int(stats[GameplayTypes.Stat.BURN]))
+	var burn_tick_stacks: int = burning.stacks
 	var poison_tick_stacks: int = poisoned.stacks
 	var poison_tick: Dictionary = STATUSES.tick(poisoned, &"after_direct_attacks", {"owner": "enemy", "resistances": {GameplayTypes.DamageType.MAGICAL: int(enemy.get(GameplayTypes.Stat.MAGICAL_RESISTANCE, 0)), GameplayTypes.DamageType.PHYSICAL: int(enemy.get(GameplayTypes.Stat.PHYSICAL_RESISTANCE, 0))}})
 	var poison_damage: int = int(poison_tick.damage)
@@ -981,34 +1025,33 @@ func outcome(stats: Dictionary) -> Dictionary:
 	_record_amount(my_events, "Poison dealt %d damage to " + foe + ".", mini(poison_damage, foe_hp))
 	result["poison_damage_actual"] = mini(poison_damage, foe_hp)
 	foe_hp = maxi(0, foe_hp - poison_damage)
-	var burn_damage: int = ELEMENTS.resist(burn, int(enemy.get(GameplayTypes.Stat.MAGICAL_RESISTANCE, 0)))
+	var burn_damage: int = int(STATUSES.resolve_tick(burning, &"after_poison_tick", enemy_status_context).damage)
+	STATUSES.advance_round(burning, enemy_status_context)
 	_record_amount(my_events, "Burn dealt %d damage to " + foe + ".", mini(burn_damage, foe_hp))
 	result["burn_damage_actual"] = mini(burn_damage, foe_hp)
 	foe_hp = maxi(0, foe_hp - burn_damage)
-	var spark_damage: int = ELEMENTS.resist(spark * ELEMENTS.SPARK_DAMAGE, int(enemy.get(GameplayTypes.Stat.MAGICAL_RESISTANCE, 0))) if magical_after > 0 else 0
+	var spark_damage: int = int(STATUSES.resolve_application(sparked, int(stats.get(GameplayTypes.Stat.SPARK, 0)), &"after_magical_direct_damage", enemy_status_context).damage)
+	STATUSES.advance_round(sparked, enemy_status_context)
 	result["spark_damage_actual"] = mini(spark_damage, foe_hp)
 	_record_amount(my_events, "Spark dealt %d damage to " + foe + ".", int(result["spark_damage_actual"]))
 	foe_hp = maxi(0, foe_hp - spark_damage)
-	if magical_after > 0:
-		spark = maxi(0, spark - 1)
-	spark += int(stats.get(GameplayTypes.Stat.SPARK, 0))
-	doom += int(stats.get(GameplayTypes.Stat.DOOM, 0))
-	if doom > 0 and doom_turns == 0:
-		doom_turns = ELEMENTS.DOOM_ROUNDS
-	doom_turns = maxi(0, doom_turns - 1)
-	var doom_damage: int = ELEMENTS.resist(doom * ELEMENTS.DOOM_DAMAGE, int(enemy.get(GameplayTypes.Stat.MAGICAL_RESISTANCE, 0))) if doom > 0 and doom_turns == 0 else 0
+	STATUSES.apply(doomed, int(stats.get(GameplayTypes.Stat.DOOM, 0)))
+	var doom_damage: int = int(STATUSES.resolve_tick(doomed, &"after_spark_tick", enemy_status_context).damage)
+	STATUSES.advance_round(doomed, enemy_status_context)
 	result["doom_damage_actual"] = mini(doom_damage, foe_hp)
 	_record_amount(my_events, "Doom dealt %d damage to " + foe + ".", int(result["doom_damage_actual"]))
 	foe_hp = maxi(0, foe_hp - doom_damage)
-	if doom_turns == 0:
-		doom = 0
-	slow += int(stats[GameplayTypes.Stat.SLOW])
-	result[GameplayTypes.Stat.SLOW] = slow
-	result["enemy_slow_after"] = maxi(0, slow - 1)
-	result["enemy_spark_after"] = spark
-	result["enemy_doom_after"] = doom
-	result["enemy_doom_turns_after"] = doom_turns
-	var toxin: StatusEffectInstance = STATUSES.copy(poison_status("player"))
+	STATUSES.apply(slowed_status, int(stats[GameplayTypes.Stat.SLOW]))
+	result[GameplayTypes.Stat.SLOW] = slowed_status.stacks
+	# Keep the undecayed instance for strike calculations; commit its advanced copy.
+	var slow_after: StatusEffectInstance = STATUSES.copy(slowed_status)
+	STATUSES.advance_round(slow_after, enemy_status_context)
+	resolving_statuses.enemy[&"slow"] = slow_after
+	result["enemy_slow_after"] = slow_after.stacks
+	result["enemy_spark_after"] = sparked.stacks
+	result["enemy_doom_after"] = doomed.stacks
+	result["enemy_doom_turns_after"] = doomed.remaining_rounds
+	var toxin: StatusEffectInstance = resolving_statuses.player[&"poison"]
 	var cleansed: int = STATUSES.cleanse(toxin, int(stats[GameplayTypes.Stat.CLEANSE]))
 	_record_amount(my_events, "I cleansed %d poison.", cleansed)
 	var reflection: int = int(enemy["reflect"]) if dealt > 0 else 0
@@ -1033,8 +1076,8 @@ func outcome(stats: Dictionary) -> Dictionary:
 	# Incoming poison is applied after this tick and retains all new stacks.
 	STATUSES.advance_round(toxin, {"owner": "player"})
 	# The UI commits this checkpoint first, then the response after its delay.
-	result["player_state"] = {"hp": maxi(0, health), "enemy_hp": foe_hp, "mana": stats["mana_after"], "stamina": stats.get("stamina_after", 0), "block": stats[GameplayTypes.Stat.BLOCK], "player_poison": toxin.stacks, "enemy_poison": poisoned.stacks, "enemy_burn": maxi(0, burn - 1), "enemy_shield_spent": shield_spent}
-	result["player_state"]["poison_statuses"] = {"player": STATUSES.snapshot(toxin), "enemy": STATUSES.snapshot(poisoned)}
+	result["player_state"] = {"hp": maxi(0, health), "enemy_hp": foe_hp, "mana": stats["mana_after"], "stamina": stats.get("stamina_after", 0), "block": stats[GameplayTypes.Stat.BLOCK], "player_poison": toxin.stacks, "enemy_poison": poisoned.stacks, "enemy_burn": burning.stacks, "enemy_shield_spent": shield_spent}
+	result["player_state"]["statuses"] = _snapshot_statuses(resolving_statuses)
 	result["has_response"] = health > 0 and foe_hp > 0
 	var guard: int = int(stats[GameplayTypes.Stat.BLOCK])
 	var taken: int = 0
@@ -1059,7 +1102,7 @@ func outcome(stats: Dictionary) -> Dictionary:
 		for hit in range(0 if is_invisible() else int(enemy["hits"])):
 			if health <= 0 or foe_hp <= 0:
 				break
-			var slowed: int = mini(attack(), int(result[GameplayTypes.Stat.SLOW]))
+			var slowed: int = int(STATUSES.tick(slowed_status, &"before_enemy_strikes", {"damage": attack(), "strike_index": hit}).reduction)
 			var plated: int = mini(maxi(0, attack() - slowed), int(stats[GameplayTypes.Stat.PLATING]))
 			reactive_amounts[GameplayTypes.Stat.SLOW] += slowed
 			reactive_amounts[GameplayTypes.Stat.PLATING] += plated
@@ -1103,8 +1146,8 @@ func outcome(stats: Dictionary) -> Dictionary:
 			var drain: int = mini(int(enemy["drain"]), int(enemy["max_hp"]) - foe_hp) if contact_damage > 0 else 0
 			foe_hp += drain
 			_record_amount(monster_events, foe + " drained %d HP to heal itself.", drain)
-	result.merge({"hp_after": maxi(0, health), "enemy_hp_after": foe_hp, "dealt": dealt, "taken": taken, "blocked": blocked, "retaliation": retaliation, "healed": healed + leech_heal, "ward_absorbed": ward_absorbed, "special_taken": 0 if _dev_flag("invulnerable") else special - ward_absorbed + int(stats["blood_cost"]), "poison_after": toxin.stacks, "poison_tick": poison_tick_stacks, "burn_tick": burn, "enemy_poison_after": poisoned.stacks, "enemy_burn_after": maxi(0, burn - 1), "block_after": guard, "carry_after": guard, "revived": false, "shield_absorbed": shield_absorbed}, true)
-	result["poison_statuses_after"] = {"player": STATUSES.snapshot(toxin), "enemy": STATUSES.snapshot(poisoned)}
+	result.merge({"hp_after": maxi(0, health), "enemy_hp_after": foe_hp, "dealt": dealt, "taken": taken, "blocked": blocked, "retaliation": retaliation, "healed": healed + leech_heal, "ward_absorbed": ward_absorbed, "special_taken": 0 if _dev_flag("invulnerable") else special - ward_absorbed + int(stats["blood_cost"]), "poison_after": toxin.stacks, "poison_tick": poison_tick_stacks, "burn_tick": burn_tick_stacks, "enemy_poison_after": poisoned.stacks, "enemy_burn_after": burning.stacks, "block_after": guard, "carry_after": guard, "revived": false, "shield_absorbed": shield_absorbed}, true)
+	result["statuses_after"] = _snapshot_statuses(resolving_statuses)
 	if health <= 0 and relics.has("last_thread") and not last_thread_used:
 		result["hp_after"] = mini(8, max_hp)
 		result["revived"] = true
@@ -1181,7 +1224,7 @@ func begin_turn() -> Dictionary:
 	enemy["hp"] = checkpoint["enemy_hp"]
 	for property: String in ["mana", "stamina", "block", "player_poison", "enemy_poison", "enemy_burn", "enemy_shield_spent"]:
 		set(property, int(checkpoint[property]))
-	restore_poison_state(checkpoint.get("poison_statuses", {}))
+	restore_status_state(checkpoint.get("statuses", {}), checkpoint.get("poison_statuses", {}))
 	total_turns += 1
 	log_action(pending_turn["player_events"])
 	return pending_turn
@@ -1200,7 +1243,7 @@ func complete_turn() -> Dictionary:
 	carry_block = 0 # Legacy field; full retention now lives in block.
 	player_poison = int(result["poison_after"])
 	enemy_poison = int(result["enemy_poison_after"])
-	restore_poison_state(result.get("poison_statuses_after", {}))
+	restore_status_state(result.get("statuses_after", {}), result.get("poison_statuses_after", {}))
 	enemy_burn = int(result["enemy_burn_after"])
 	enemy_shield_spent = int(result["enemy_shield_spent_after"])
 	log_action(result["monster_events"])

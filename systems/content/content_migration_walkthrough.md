@@ -197,7 +197,7 @@ The public numeric `player_poison` and `enemy_poison` properties remain compatib
 
 [PackRunSaves](../runs/run_saves.gd) stores plain definition IDs, stacks and remaining rounds rather than serializing runtime objects. Pending-turn checkpoints carry the corresponding state, and older numeric-only saves remain supported.
 
-**Current boundary:** Burn, Slow, Spark and Doom still execute through their existing counters and handlers. Their definitions exist, but they have not yet been individually migrated into this resolver. Elemental traces and other independent combat mechanics are also separate.
+**Follow-up migration:** Burn, Slow, Spark and Doom now also execute through StatusResolver with separate instances. Their old scalar counters are compatibility accessors into one status store. Status snapshots preserve timers across player-phase commits, pending saves and old-save restoration. Spark resolves old stacks before fresh ones, Slow reduces each strike and decays once, and Doom keeps its nonrefreshing countdown. The old hardcoded Spark/Doom tuning constants have been removed. Elemental traces and other independent combat mechanics remain separate.
 
 ## 12. Validation and verification added along the way
 

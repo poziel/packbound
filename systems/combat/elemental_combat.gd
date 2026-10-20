@@ -5,9 +5,6 @@ const CATEGORIES = preload("res://systems/content/collectible_categories.gd")
 const TYPES = preload("res://systems/content/gameplay_types.gd")
 const CONDITIONS: Dictionary = {TYPES.Element.FIRE: "burn", TYPES.Element.FROST: "slow", TYPES.Element.LIGHTNING: "spark", TYPES.Element.VOID: "doom", TYPES.Element.VENOM: "poison"}
 const TRACE_ROUNDS: int = 2
-const DOOM_ROUNDS: int = 3
-const DOOM_DAMAGE: int = 2
-const SPARK_DAMAGE: int = 2
 const REACTIONS: Array[Dictionary] = [
 	{"id": "prismatic_collapse", "name": "Prismatic Collapse", "needs": [TYPES.Element.FIRE, TYPES.Element.FROST, TYPES.Element.LIGHTNING], "produces": [TYPES.Element.VOID], GameplayTypes.Stat.DAMAGE: 6, GameplayTypes.Stat.DOOM: 2},
 	{"id": "sepulchral_flare", "name": "Sepulchral Flare", "needs": [TYPES.Element.FIRE, TYPES.Element.VOID, TYPES.Element.VENOM], "produces": [TYPES.Element.LIGHTNING], GameplayTypes.Stat.DAMAGE: 5, GameplayTypes.Stat.BURN: 2, GameplayTypes.Stat.DOOM: 1},

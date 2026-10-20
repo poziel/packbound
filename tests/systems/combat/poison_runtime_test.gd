@@ -83,7 +83,7 @@ func _run() -> void:
 	check(not run.begin_turn().is_empty(), "Combat creates a pending turn")
 	var captured: Dictionary = saves.capture(run, 1.0)
 	check(plain(captured), "Save contains plain data without runtime objects")
-	check(not captured.state.has("_poison_statuses"), "Backing instances are excluded from saves")
+	check(not captured.state.has("_statuses"), "Backing instances are excluded from saves")
 	check(saves.write("pending", captured), "Pending turn writes to disk")
 	var loaded: Dictionary = saves.read("pending")
 	check(not loaded.is_empty(), "Pending turn reloads from disk")
@@ -97,8 +97,11 @@ func _run() -> void:
 	check(restored.poison_status("player") != run.poison_status("player"), "Runs own distinct instances")
 	var legacy: Dictionary = captured.duplicate(true)
 	legacy.state.erase("poison_statuses")
+	legacy.state.erase("statuses")
 	legacy.state.pending_turn.erase("poison_statuses_after")
+	legacy.state.pending_turn.erase("statuses_after")
 	legacy.state.pending_turn.player_state.erase("poison_statuses")
+	legacy.state.pending_turn.player_state.erase("statuses")
 	# Pending outcome stats had text keys, while scalar player checkpoint fields stay text.
 	var pending_damage: int = legacy.state.pending_turn[GameplayTypes.Stat.DAMAGE]
 	legacy.state.pending_turn.erase(GameplayTypes.Stat.DAMAGE)
@@ -114,7 +117,7 @@ func _run() -> void:
 	check_equal(restored.poison_state(), run.poison_state(), "Pending completion does not double tick after reload")
 	check_equal(restored.hp, run.hp, "Pending completion preserves health")
 	check_equal(old_run.poison_state(), run.poison_state(), "Numeric-only legacy pending turns remain compatible")
-	loaded.state.poison_statuses.player.stacks = -1
+	loaded.state.statuses.player.poison.stacks = -1
 	check(saves.write("invalid", loaded), "Corrupted fixture writes")
 	check(saves.read("invalid").is_empty(), "Corrupted status counters are rejected")
 	var playback := PackCombatPlayback.new()

@@ -170,7 +170,7 @@ behavior conditions await concrete effect/action execution.
 ## Status and loot definitions
 
 These Resources are registered in GameContentDefinition and discovered with its
-Refresh button. Combat status execution still uses its existing handlers. Reward selection now
+Refresh button. All five existing statuses execute through StatusResolver. Reward selection now
 reads the registered records through systems/loot/loot_selection.gd.
 
 | Definition | Owner | Authored data |
@@ -184,11 +184,11 @@ Status stack caps and durations use zero for uncapped stacks and no timed expiry
 Stack policy applies to an incoming application; the cap applies afterward. Duration
 refresh is independent of the stack policy. Tick effects require a trigger ID. Actual
 stack counts, remaining lifetime, tick ordering and source tracking belong to the
-future runtime status executor, not this shared Resource.
+StatusEffectInstance and StatusResolver, not this shared Resource.
 
 Loot weights are relative, finite and nonnegative. Zero disables a candidate. Each
 rarity checkpoint is a complete distribution: omitted enum rarities have zero weight.
-The future resolver uses the latest checkpoint at or below the current floor, without
+loot_selection.gd uses the latest checkpoint at or below the current floor, without
 interpolation. Floor 1 is required. Preference matching boosts weight once when either
 class or character affinity matches; the neutral default is 1.0. It never grants
 eligibility. Offer counts are targets; filtering may leave fewer eligible candidates.
@@ -201,9 +201,8 @@ Concrete effect subclasses should gradually replace compatibility bindings, rath
 than expanding the wrapper into an arbitrary behavior interpreter.
 
 The existing statuses and loot tuning are now authored as .tres files, with typed
-catalog collections and cross-reference validation. Loot selection now uses its registered resources. Next implement the status
-lifetime/tick resolver. Route existing combat and reward authorities through those
-resolvers while preserving deterministic RNG and save compatibility.
+catalog collections and cross-reference validation. Loot selection now uses its registered resources. All five status lifecycles now use the resolver, with explicit combat phase commits
+and compatibility loading for numeric-only and earlier Poison snapshots.
 
 Verification: tests/run_tests.ps1 -Suite systems -Test reward_status_definitions.
 
@@ -222,9 +221,14 @@ modifying them. The constructor uses -1 only as its omitted-duration sentinel.
 
 The instance does not apply stack policy/caps, tick, decay, expire itself, consume RNG,
 or write saves. StatusResolver owns application, stacking, cleansing, ticking and
-round advancement. Poison now uses this resolver for both combatants. PackRun owns
-damage, Ward and phase commits, and resolves previews on copied instances. Its
-numeric Poison properties remain compatibility accessors into those instances.
-Saves store definition IDs, stacks and remaining rounds, including pending-turn
-checkpoints; older numeric-only saves remain supported. Other statuses still use
-their existing counters and handlers until migrated individually.
+round advancement. All five existing statuses now use this resolver: player/enemy
+Poison and enemy Burn, Slow, Spark and Doom. PackRun owns damage, Ward and phase
+commits, and resolves previews on copied instances. Its numeric status properties
+are compatibility accessors into the single owner/ID instance store.
+
+Saves store definition IDs, stacks and exact remaining rounds in `statuses`, including
+pending player checkpoints and final outcomes. Older numeric-only saves and earlier
+Poison maps remain supported. Restoration preserves recorded stacks without applying
+current caps. Spark consumption precedes fresh stacks, Slow reduces each strike but
+decays once, and Doom retains its nonrefreshing fuse. Resolver creation starts empty
+states with no timer; explicitly restored empty countdowns remain valid and elapse.

@@ -13,7 +13,7 @@ static func definition(id: StringName) -> StatusEffectDefinition:
 static func create(id: StringName, stacks: int = 0) -> StatusEffectInstance:
 	var authored := definition(id)
 	if authored == null: return null
-	var value := StatusEffectInstance.new(authored)
+	var value := StatusEffectInstance.new(authored, 0, 0)
 	apply(value, stacks)
 	return value
 
@@ -33,7 +33,7 @@ static func apply(value: StatusEffectInstance, amount: int) -> void:
 		StatusEffectDefinition.StackPolicy.KEEP_HIGHEST: value.stacks = maxi(value.stacks, amount)
 	if value.definition.max_stacks > 0:
 		value.stacks = mini(value.stacks, value.definition.max_stacks)
-	if not was_active or value.definition.refresh_duration_on_application:
+	if value.remaining_rounds == 0 or value.definition.refresh_duration_on_application:
 		value.remaining_rounds = value.definition.duration_rounds
 
 static func cleanse(value: StatusEffectInstance, amount: int = -1) -> int:
@@ -52,9 +52,10 @@ static func _prevents_decay(value: StatusEffectInstance, context: Dictionary) ->
 	return false
 
 static func decay(value: StatusEffectInstance, context: Dictionary = {}) -> void:
+	var had_stacks: bool = value.stacks > 0
 	if not _prevents_decay(value, context):
 		value.stacks = maxi(0, value.stacks - value.definition.decay_per_round)
-	if value.stacks == 0: value.remaining_rounds = 0
+	if had_stacks and value.stacks == 0: value.remaining_rounds = 0
 
 static func advance_round(value: StatusEffectInstance, context: Dictionary = {}) -> void:
 	decay(value, context)
@@ -62,22 +63,55 @@ static func advance_round(value: StatusEffectInstance, context: Dictionary = {})
 		value.remaining_rounds = maxi(0, value.remaining_rounds - 1)
 		if value.remaining_rounds == 0: value.stacks = 0
 
-## Pure tick calculation. Only Poison's existing coded binding is migrated here.
-## Additional effect handlers must be introduced explicitly, one condition at a time.
+## Pure calculation; consumption, lifetime and combat commits are explicit steps.
 static func tick(value: StatusEffectInstance, trigger: StringName, context: Dictionary = {}) -> Dictionary:
-	var result: Dictionary = {"damage": 0, "wardable_damage": 0}
+	var result: Dictionary = {"damage": 0, "wardable_damage": 0, "reduction": 0, "consumed_stacks": 0, "consume_all": false}
 	if not active(value) or value.definition.tick_trigger_id != trigger: return result
 	for effect: EffectDefinition in value.definition.effects:
-		if not effect is CatalogRuleEffectDefinition or effect.rule_id != &"poison_status_rules":
-			push_error("Status tick handler has not been migrated: " + str(value.definition.id))
+		if not effect is CatalogRuleEffectDefinition:
+			push_error("Unsupported status effect: " + str(value.definition.id))
 			continue
 		var rule: Dictionary = effect.parameters
+		match effect.rule_id:
+			&"slow_status_rules":
+				if not bool(rule.get("applies_to_each_strike", true)) and int(context.get("strike_index", 0)) > 0: continue
+				result.reduction += mini(maxi(0, int(context.get("damage", 0))), value.stacks * int(rule.get("reduction_per_stack", 0)))
+				continue
+			&"spark_status_rules":
+				if bool(rule.get("requires_positive_damage", true)) and int(context.get("magical_damage", 0)) <= 0: continue
+				result.consumed_stacks += int(rule.get("consumed_stacks", 0))
+			&"doom_status_rules":
+				if not bool(rule.get("detonate_at_expiration", true)) or value.definition.duration_rounds == 0 or value.remaining_rounds > 1: continue
+				result.consume_all = bool(rule.get("consume_all_on_detonation", true))
+			&"poison_status_rules", &"burn_status_rules": pass
+			_:
+				push_error("Unsupported status rule: " + str(effect.rule_id))
+				continue
 		var kind: int = rule.get("damage_type", GameplayTypes.DamageType.MAGICAL)
 		var raw: int = value.stacks * int(rule.get("damage_per_stack", 0))
 		var damage: int = DAMAGE.resist(raw, int(context.get("resistances", {}).get(kind, 0)))
 		result.damage += damage
 		if context.get("owner", "") == "player" and bool(rule.get("player_ward_absorbs", false)):
 			result.wardable_damage += damage
+	return result
+
+## Tick consumption is independent of cleansing permission.
+static func resolve_tick(value: StatusEffectInstance, trigger: StringName, context: Dictionary = {}) -> Dictionary:
+	var result: Dictionary = tick(value, trigger, context)
+	if result.consume_all or int(result.consumed_stacks) > 0:
+		value.stacks = 0 if result.consume_all else maxi(0, value.stacks - int(result.consumed_stacks))
+		if value.stacks == 0: value.remaining_rounds = 0
+	return result
+
+## Spark normally resolves old stacks before applying this action's fresh stacks.
+static func resolve_application(value: StatusEffectInstance, amount: int, trigger: StringName, context: Dictionary = {}) -> Dictionary:
+	var wait_for_later: bool = false
+	for effect: EffectDefinition in value.definition.effects:
+		if effect is CatalogRuleEffectDefinition:
+			wait_for_later = wait_for_later or bool(effect.parameters.get("fresh_stacks_wait", false))
+	if not wait_for_later: apply(value, amount)
+	var result: Dictionary = resolve_tick(value, trigger, context)
+	if wait_for_later: apply(value, amount)
 	return result
 
 static func snapshot(value: StatusEffectInstance) -> Dictionary:
