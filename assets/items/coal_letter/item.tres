@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bsw2bhntcrn6d" path="res://assets/items/coal_letter/art/item.png" id="3_ob6y3"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_peeyl"]
 
+[ext_resource type="Resource" path="res://assets/items/coal_letter/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qj1pl"]
 atlas = ExtResource("3_ob6y3")
 region = Rect2(0, 0, 32, 32)
@@ -27,7 +29,6 @@ category_ids = Array[StringName]([&"scrolls"])
 allowed_class_ids = Array[StringName]([&"mage"])
 icon = SubResource("AtlasTexture_qj1pl")
 base_stats = Dictionary[int, int]({
-0: 4,
-7: 1
+0: 4
 })
-abilities = Array[ExtResource("1_tcco1")]([ExtResource("2_pb5as")])
+abilities = Array[ExtResource("1_tcco1")]([ExtResource("2_pb5as"), ExtResource("status_ability")])

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="ability"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="effect"]
+[ext_resource type="Resource" path="res://assets/items/hunting_trap/apply_poison.tres" id="e0"]
+[ext_resource type="Resource" path="res://assets/items/hunting_trap/apply_slow.tres" id="e1"]
+
+[resource]
+resource_name = "Venom Trap: Status grants"
+script = ExtResource("ability")
+id = &"hunting_trap_status_grants"
+display_name = "Venom Trap: Status grants"
+trigger_id = &"item_activation"
+effects = Array[ExtResource("effect")]([ExtResource("e0"), ExtResource("e1")])

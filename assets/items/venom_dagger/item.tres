@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://o2u1p4bxc551" path="res://assets/items/venom_dagger/art/item.png" id="3_086cp"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_r74c4"]
 
+[ext_resource type="Resource" path="res://assets/items/venom_dagger/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ufii"]
 atlas = ExtResource("3_086cp")
 region = Rect2(0, 0, 64, 64)
@@ -24,7 +26,6 @@ category_ids = Array[StringName]([&"daggers"])
 icon = SubResource("AtlasTexture_2ufii")
 base_stats = Dictionary[int, int]({
 0: 5,
-6: 3,
 14: 2
 })
-abilities = Array[ExtResource("1_b2a5t")]([ExtResource("2_x0gmt")])
+abilities = Array[ExtResource("1_b2a5t")]([ExtResource("2_x0gmt"), ExtResource("status_ability")])

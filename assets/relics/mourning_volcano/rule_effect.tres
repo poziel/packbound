@@ -8,12 +8,6 @@ script = ExtResource("1_4k8j7")
 rule_id = &"mourning_volcano_rules"
 parameters = {
 "icon": "mourning_volcano",
-"rule": {
-"amount": 6,
-"cap": 1,
-"condition": "low_hp",
-"metric": "one",
-"stat": 7
-},
+
 "stats": {}
 }

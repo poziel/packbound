@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dolefovdqafpy" path="res://assets/items/thunder_yew/art/item.png" id="3_lspgq"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_gfcls"]
 
+[ext_resource type="Resource" path="res://assets/items/thunder_yew/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mml7h"]
 atlas = ExtResource("3_lspgq")
 region = Rect2(0, 0, 64, 128)
@@ -26,7 +28,6 @@ category_ids = Array[StringName]([&"bows"])
 allowed_class_ids = Array[StringName]([&"ranger"])
 icon = SubResource("AtlasTexture_mml7h")
 base_stats = Dictionary[int, int]({
-0: 16,
-16: 2
+0: 16
 })
-abilities = Array[ExtResource("1_p4a0x")]([ExtResource("2_7xsmk")])
+abilities = Array[ExtResource("1_p4a0x")]([ExtResource("2_7xsmk"), ExtResource("status_ability")])

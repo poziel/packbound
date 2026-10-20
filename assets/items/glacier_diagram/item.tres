@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dmof3gfbdi3pg" path="res://assets/items/glacier_diagram/art/item.png" id="3_mxis6"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_grpkh"]
 
+[ext_resource type="Resource" path="res://assets/items/glacier_diagram/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_dsomh"]
 atlas = ExtResource("3_mxis6")
 region = Rect2(0, 0, 64, 64)
@@ -28,7 +30,6 @@ category_ids = Array[StringName]([&"scrolls"])
 allowed_class_ids = Array[StringName]([&"mage"])
 icon = SubResource("AtlasTexture_dsomh")
 base_stats = Dictionary[int, int]({
-0: 9,
-13: 3
+0: 9
 })
-abilities = Array[ExtResource("1_awr4o")]([ExtResource("2_11gw7")])
+abilities = Array[ExtResource("1_awr4o")]([ExtResource("2_11gw7"), ExtResource("status_ability")])

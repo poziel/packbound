@@ -44,7 +44,18 @@ static func collectible(value: CollectibleDefinition) -> Dictionary:
 	for stat_type: int in GameplayTypes.Stat.values():
 		var stat: int = stat_type
 		result[stat] = int(value.base_stats.get(stat_type, 0))
+	if value is ItemDefinition:
+		var grants: Dictionary = CollectibleAbilityResolver.contributions(value.abilities, CollectibleAbilityResolver.ITEM_TRIGGER)
+		for stat: int in grants: result[stat] += int(grants[stat])
 	if value is RelicDefinition:
+		for ability: AbilityDefinition in value.abilities:
+			for predicate: ConditionDefinition in ability.conditions:
+				if not predicate is CombatMetricConditionDefinition: continue
+				if predicate.metric == CombatMetricConditionDefinition.Metric.HEALTH_PERCENT and predicate.comparison == CombatMetricConditionDefinition.Comparison.AT_MOST and predicate.threshold == 50:
+					result["status_condition_id"] = "low_hp"
+				elif predicate.comparison == CombatMetricConditionDefinition.Comparison.AT_LEAST and predicate.threshold == 1:
+					if predicate.metric == CombatMetricConditionDefinition.Metric.VOLLEY_DAMAGE: result["status_condition_id"] = "volley"
+					elif predicate.metric == CombatMetricConditionDefinition.Metric.REACTION_COUNT: result["status_condition_id"] = "reactions"
 		var stats: Dictionary = {}
 		for stat: int in value.base_stats:
 			stats[stat] = value.base_stats[stat]

@@ -39,7 +39,7 @@ Open [game_content.tres](game_content.tres) in Godot to inspect the content grap
 
 | Content | Canonical definitions |
 | --- | --- |
-| Items and relics | `item.tres` / `relic.tres`, with `rule_ability.tres` and `rule_effect.tres` where needed. |
+| Items and relics | `item.tres` / `relic.tres`; concrete status grants use `status_ability.tres` and `apply_<status>.tres`. Other special rules retain `rule_ability.tres` and `rule_effect.tres` where needed. |
 | Delvers | `character.tres`, `character_class.tres`, starting equipment and class ability/effect Resources. |
 | Monsters | `monster.tres`, `behavior.tres`, ordered actions/effects and innate ability/effect Resources. |
 | Categories and recipes | `categories/*.tres`, `recipes/*.tres`; recipe ingredient requirements are owned subresources. |

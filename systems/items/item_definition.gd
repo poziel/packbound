@@ -23,6 +23,9 @@ func _validate_property(property: Dictionary) -> void:
 		property.hint = PROPERTY_HINT_TYPE_STRING
 		property.hint_string = GameplayTypes.enum_dictionary_hint(GameplayTypes.ResourceType)
 
+func _status_ability_trigger() -> StringName:
+	return CollectibleAbilityResolver.ITEM_TRIGGER
+
 ## Intrinsic validation only. The loader must check known IDs and references.
 ## Returns all errors without changing this definition or accessing game state.
 func validation_errors() -> PackedStringArray:

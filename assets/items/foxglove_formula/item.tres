@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://7kaqq538bp8i" path="res://assets/items/foxglove_formula/art/item.png" id="3_ogyvq"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_fma4g"]
 
+[ext_resource type="Resource" path="res://assets/items/foxglove_formula/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_p2fi1"]
 atlas = ExtResource("3_ogyvq")
 region = Rect2(0, 0, 64, 32)
@@ -28,7 +30,6 @@ category_ids = Array[StringName]([&"scrolls"])
 allowed_class_ids = Array[StringName]([&"mage"])
 icon = SubResource("AtlasTexture_p2fi1")
 base_stats = Dictionary[int, int]({
-0: 4,
-6: 4
+0: 4
 })
-abilities = Array[ExtResource("1_dkaes")]([ExtResource("2_nw5e5")])
+abilities = Array[ExtResource("1_dkaes")]([ExtResource("2_nw5e5"), ExtResource("status_ability")])

@@ -21,7 +21,7 @@ func _run() -> void:
 		check_equal(PackedStringArray(value.allowed_class_ids), PackedStringArray(source.get("classes", [])), "Class restrictions retained")
 		check_equal(PackedStringArray(value.allowed_character_ids), PackedStringArray(source.get("characters", [])), "Character restrictions retained")
 		check(value.icon != null, "Existing icon retained")
-		check_equal(value.abilities.size(), 1, "Explicit coded rule binding exists")
+		check(not value.abilities.is_empty(), "Authored abilities exist")
 		var preserved: Dictionary = value.abilities[0].effects[0].parameters
 		for field: String in ["adjacency_bonus", "quiver_bonus", "momentum", "keyword_stats", "tooltip_detail", "mana_per_round", "stamina_per_round", "block_per_round"]:
 			if source.has(field):
@@ -32,7 +32,8 @@ func _run() -> void:
 		check(not value.abilities[0].effects[0].resource_path.is_empty(), "Effect has one external authority")
 		for stat_type: int in GameplayTypes.Stat.values():
 			var stat: String = str(GameplayTypes.stat_id(stat_type))
-			check_equal(value.base_stats.get(stat_type, 0), int(source.get(stat_type, 0)), "Catalog stat retained: " + stat)
+			var grants: Dictionary = CollectibleAbilityResolver.contributions(value.abilities, CollectibleAbilityResolver.ITEM_TRIGGER) if value is ItemDefinition else {}
+			check_equal(int(value.base_stats.get(stat_type, 0)) + int(grants.get(stat_type, 0)), int(source.get(stat_type, 0)), "Authored stat/effect contribution retained: " + stat)
 		if value is ItemDefinition:
 			check_equal(value.footprint, source.mask, "Item footprint retained")
 			check_equal(value.activation_costs.get(GameplayTypes.ResourceType.MANA, 0), int(source["activation_costs"].get(GameplayTypes.ResourceType.MANA, 0)), "Mana cost retained")

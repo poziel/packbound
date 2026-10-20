@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cw7tbaqafwtp7" path="res://assets/items/gloam_lynx/art/item.png" id="3_4qhjt"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_ccwo4"]
 
+[ext_resource type="Resource" path="res://assets/items/gloam_lynx/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_gv8hs"]
 atlas = ExtResource("3_4qhjt")
 region = Rect2(0, 0, 64, 64)
@@ -23,7 +25,6 @@ category_ids = Array[StringName]([&"companions"])
 allowed_class_ids = Array[StringName]([&"ranger"])
 icon = SubResource("AtlasTexture_gv8hs")
 base_stats = Dictionary[int, int]({
-0: 7,
-13: 2
+0: 7
 })
-abilities = Array[ExtResource("1_mny5n")]([ExtResource("2_u7dli")])
+abilities = Array[ExtResource("1_mny5n")]([ExtResource("2_u7dli"), ExtResource("status_ability")])

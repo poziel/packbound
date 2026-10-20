@@ -244,3 +244,10 @@ an exact reference to that registered status definition.
 Combat now executes these records through `EffectResolver`, which delegates to
 `StatusResolver`. This is the first concrete effect execution path; it does not
 provide a generic ability trigger or condition interpreter.
+
+Collectible status grants now have an execution path too: 38 items and four
+conditional relics reference owned status abilities/effects. The item adapter
+derives status contribution views from these Resources; relic evaluation uses a
+pre-relic snapshot for typed health/Volley/reaction conditions and bounded scaling.
+The complete content graph verifies that these effects reference registered status
+definitions. Other special collectible rules remain compatibility bindings.

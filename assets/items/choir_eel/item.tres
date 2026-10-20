@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bht8vvocnsu3s" path="res://assets/items/choir_eel/art/item.png" id="3_rvo65"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_onl0f"]
 
+[ext_resource type="Resource" path="res://assets/items/choir_eel/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlx5s"]
 atlas = ExtResource("3_rvo65")
 region = Rect2(0, 0, 32, 96)
@@ -22,7 +24,6 @@ tags = Array[StringName]([&"companion"])
 category_ids = Array[StringName]([&"companions"])
 icon = SubResource("AtlasTexture_qlx5s")
 base_stats = Dictionary[int, int]({
-0: 7,
-16: 3
+0: 7
 })
-abilities = Array[ExtResource("1_gyp24")]([ExtResource("2_a4rcc")])
+abilities = Array[ExtResource("1_gyp24")]([ExtResource("2_a4rcc"), ExtResource("status_ability")])

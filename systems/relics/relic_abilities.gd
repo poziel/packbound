@@ -13,6 +13,7 @@ const DEFINITIONS: Dictionary = {
 
 static func description(relic: Dictionary) -> String:
 	var condition: String = str(relic.get("rule", {}).get("condition", ""))
+	if condition.is_empty(): condition = str(relic.get("status_condition_id", ""))
 	var detail: String = str(relic.get("detail", ""))
 	return str(DEFINITIONS[condition][0]) + "\n" + detail if DEFINITIONS.has(condition) else detail
 

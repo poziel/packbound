@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bx3mx62l4iydy" path="res://assets/items/kiln_prayer/art/item.png" id="3_6vaff"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_uvbta"]
 
+[ext_resource type="Resource" path="res://assets/items/kiln_prayer/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_df63s"]
 atlas = ExtResource("3_6vaff")
 region = Rect2(0, 0, 64, 64)
@@ -28,7 +30,6 @@ category_ids = Array[StringName]([&"scrolls"])
 allowed_class_ids = Array[StringName]([&"mage"])
 icon = SubResource("AtlasTexture_df63s")
 base_stats = Dictionary[int, int]({
-0: 7,
-7: 2
+0: 7
 })
-abilities = Array[ExtResource("1_b6kfn")]([ExtResource("2_ojg0r")])
+abilities = Array[ExtResource("1_b6kfn")]([ExtResource("2_ojg0r"), ExtResource("status_ability")])

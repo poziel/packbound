@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://psawotpv8gv" path="res://assets/items/winter_orrery/art/item.png" id="3_ci21v"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_k4bb1"]
 
+[ext_resource type="Resource" path="res://assets/items/winter_orrery/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mfkco"]
 atlas = ExtResource("3_ci21v")
 region = Rect2(0, 0, 96, 64)
@@ -28,7 +30,6 @@ category_ids = Array[StringName]([&"magic_artifacts"])
 allowed_class_ids = Array[StringName]([&"mage"])
 icon = SubResource("AtlasTexture_mfkco")
 base_stats = Dictionary[int, int]({
-0: 13,
-13: 5
+0: 13
 })
-abilities = Array[ExtResource("1_lldi7")]([ExtResource("2_gtcqt")])
+abilities = Array[ExtResource("1_lldi7")]([ExtResource("2_gtcqt"), ExtResource("status_ability")])

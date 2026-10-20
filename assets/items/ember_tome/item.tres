@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dbcw8q651xijb" path="res://assets/items/ember_tome/art/item.png" id="3_fcm3l"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_l0b6o"]
 
+[ext_resource type="Resource" path="res://assets/items/ember_tome/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_dk6a6"]
 atlas = ExtResource("3_fcm3l")
 region = Rect2(0, 0, 64, 64)
@@ -25,7 +27,6 @@ rarity = 2
 category_ids = Array[StringName]([&"magic_books"])
 icon = SubResource("AtlasTexture_dk6a6")
 base_stats = Dictionary[int, int]({
-0: 10,
-7: 2
+0: 10
 })
-abilities = Array[ExtResource("1_jw051")]([ExtResource("2_u1jb0")])
+abilities = Array[ExtResource("1_jw051")]([ExtResource("2_u1jb0"), ExtResource("status_ability")])

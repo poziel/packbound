@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ApplyStatusEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/apply_status_effect_definition.gd" id="1"]
+[ext_resource type="Resource" path="res://assets/status_effects/doom/status_effect.tres" id="2"]
+
+[resource]
+resource_name = "Absent Atlas: Apply Doom"
+script = ExtResource("1")
+status = ExtResource("2")
+stacks = 2
+target = 1

@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bf5qhxdepnr61" path="res://assets/items/copper_cicada/art/item.png" id="3_1vvms"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_nasmb"]
 
+[ext_resource type="Resource" path="res://assets/items/copper_cicada/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_k6e4x"]
 atlas = ExtResource("3_1vvms")
 region = Rect2(0, 0, 32, 32)
@@ -28,7 +30,6 @@ category_ids = Array[StringName]([&"magic_artifacts"])
 allowed_class_ids = Array[StringName]([&"mage"])
 icon = SubResource("AtlasTexture_k6e4x")
 base_stats = Dictionary[int, int]({
-0: 6,
-16: 2
+0: 6
 })
-abilities = Array[ExtResource("1_f35l4")]([ExtResource("2_eevgf")])
+abilities = Array[ExtResource("1_f35l4")]([ExtResource("2_eevgf"), ExtResource("status_ability")])

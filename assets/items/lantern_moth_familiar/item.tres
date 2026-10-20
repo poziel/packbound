@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bd75scoekx3k" path="res://assets/items/lantern_moth_familiar/art/item.png" id="3_wbdql"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_1707m"]
 
+[ext_resource type="Resource" path="res://assets/items/lantern_moth_familiar/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_nu3yv"]
 atlas = ExtResource("3_wbdql")
 region = Rect2(0, 0, 64, 32)
@@ -22,7 +24,6 @@ tags = Array[StringName]([&"companion"])
 category_ids = Array[StringName]([&"companions"])
 icon = SubResource("AtlasTexture_nu3yv")
 base_stats = Dictionary[int, int]({
-0: 2,
-7: 1
+0: 2
 })
-abilities = Array[ExtResource("1_ifjo8")]([ExtResource("2_10nyv")])
+abilities = Array[ExtResource("1_ifjo8")]([ExtResource("2_10nyv"), ExtResource("status_ability")])

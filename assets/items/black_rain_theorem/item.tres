@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://v1a0aijdt6cw" path="res://assets/items/black_rain_theorem/art/item.png" id="3_7x5u1"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_xj1e3"]
 
+[ext_resource type="Resource" path="res://assets/items/black_rain_theorem/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_q7ggo"]
 atlas = ExtResource("3_7x5u1")
 region = Rect2(0, 0, 64, 64)
@@ -28,7 +30,6 @@ category_ids = Array[StringName]([&"scrolls"])
 allowed_class_ids = Array[StringName]([&"mage"])
 icon = SubResource("AtlasTexture_q7ggo")
 base_stats = Dictionary[int, int]({
-0: 15,
-15: 4
+0: 15
 })
-abilities = Array[ExtResource("1_vf6uc")]([ExtResource("2_v0vcl")])
+abilities = Array[ExtResource("1_vf6uc")]([ExtResource("2_v0vcl"), ExtResource("status_ability")])

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="ability"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="effect"]
+[ext_resource type="Resource" path="res://assets/items/lightning_wand/apply_spark.tres" id="e0"]
+
+[resource]
+resource_name = "Storm Wand: Status grants"
+script = ExtResource("ability")
+id = &"lightning_wand_status_grants"
+display_name = "Storm Wand: Status grants"
+trigger_id = &"item_activation"
+effects = Array[ExtResource("effect")]([ExtResource("e0")])

@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://d4itp3brmuv1o" path="res://assets/items/the_small_impossible/art/item.png" id="3_48w56"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_5t0rh"]
 
+[ext_resource type="Resource" path="res://assets/items/the_small_impossible/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ws5yx"]
 atlas = ExtResource("3_48w56")
 region = Rect2(0, 0, 64, 64)
@@ -22,7 +24,6 @@ tags = Array[StringName]([&"companion"])
 category_ids = Array[StringName]([&"companions"])
 icon = SubResource("AtlasTexture_ws5yx")
 base_stats = Dictionary[int, int]({
-0: 12,
-15: 3
+0: 12
 })
-abilities = Array[ExtResource("1_qg7ee")]([ExtResource("2_he5uh")])
+abilities = Array[ExtResource("1_qg7ee")]([ExtResource("2_he5uh"), ExtResource("status_ability")])

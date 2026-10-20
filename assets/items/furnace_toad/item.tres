@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://du8t15wl811jr" path="res://assets/items/furnace_toad/art/item.png" id="3_fqxq8"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_mcfpy"]
 
+[ext_resource type="Resource" path="res://assets/items/furnace_toad/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ve4ps"]
 atlas = ExtResource("3_fqxq8")
 region = Rect2(0, 0, 64, 64)
@@ -22,7 +24,6 @@ tags = Array[StringName]([&"companion"])
 category_ids = Array[StringName]([&"companions"])
 icon = SubResource("AtlasTexture_ve4ps")
 base_stats = Dictionary[int, int]({
-0: 6,
-7: 4
+0: 6
 })
-abilities = Array[ExtResource("1_0wjwi")]([ExtResource("2_2g1f4")])
+abilities = Array[ExtResource("1_0wjwi")]([ExtResource("2_2g1f4"), ExtResource("status_ability")])

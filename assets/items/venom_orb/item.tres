@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dbcw8q651xijb" path="res://assets/items/ember_tome/art/item.png" id="3_cwres"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_2bsrk"]
 
+[ext_resource type="Resource" path="res://assets/items/venom_orb/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgnyy"]
 atlas = ExtResource("3_cwres")
 region = Rect2(0, 0, 64, 64)
@@ -27,7 +29,6 @@ tags = Array[StringName]([&"magical", &"venom"])
 category_ids = Array[StringName]([&"magic_books"])
 icon = SubResource("AtlasTexture_vgnyy")
 base_stats = Dictionary[int, int]({
-0: 3,
-6: 2
+0: 3
 })
-abilities = Array[ExtResource("1_k5xov")]([ExtResource("2_xt0pj")])
+abilities = Array[ExtResource("1_k5xov")]([ExtResource("2_xt0pj"), ExtResource("status_ability")])

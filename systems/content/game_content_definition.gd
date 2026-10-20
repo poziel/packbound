@@ -124,6 +124,14 @@ func validation_errors() -> PackedStringArray:
 	for id: StringName in by_domain.status_effects:
 		if not application_ids.has(id):
 			errors.append("status %s requires a registered application effect." % id)
+	if collectibles != null:
+		for owner: CollectibleDefinition in collectibles.collectibles:
+			if owner == null: continue
+			for ability: AbilityDefinition in owner.abilities:
+				if ability == null: continue
+				for effect: EffectDefinition in ability.effects:
+					if effect is ApplyStatusEffectDefinition and effect.status != null and by_domain.status_effects.get(effect.status.id) != effect.status:
+						errors.append("collectible %s must reference a registered status definition." % owner.id)
 	for character: CharacterDefinition in characters:
 		if character == null:
 			continue

@@ -5,6 +5,9 @@ Each item uses its current individual image; obsolete shared atlas fallbacks are
 
 - `README.md`: the item description and existing design notes.
 - `item.tres` and supporting `.tres` files: authored gameplay definitions.
+- `status_ability.tres` and `apply_<status>.tres`, where present: concrete status
+  grants used by activation calculations. These amounts have one owner in the
+  effect Resource and are not repeated in `base_stats`.
 - `item.json` or `metadata.json`: structured identity, design and art records.
 - `art/item.png`: the current in-game image, unchanged in size and pixels.
 - `art/item.pixloom.json`: the matching editable JSON source, when one exists.

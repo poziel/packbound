@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="ability"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="effect"]
+[ext_resource type="Resource" path="res://assets/relics/crown_of_the_unmade/apply_doom.tres" id="e0"]
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="condition"]
+[ext_resource type="Script" path="res://systems/abilities/combat_metric_condition_definition.gd" id="metric_condition"]
+
+[sub_resource type="Resource" id="condition"]
+script = ExtResource("metric_condition")
+metric = 2
+comparison = 0
+threshold = 1
+
+[resource]
+resource_name = "Crown Of The Unmade: Status grants"
+script = ExtResource("ability")
+id = &"crown_of_the_unmade_status_grants"
+display_name = "Crown Of The Unmade: Status grants"
+trigger_id = &"relic_stats"
+conditions = Array[ExtResource("condition")]([SubResource("condition")])
+effects = Array[ExtResource("effect")]([ExtResource("e0")])

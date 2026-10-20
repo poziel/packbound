@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://b5cusw8uf3gi2" path="res://assets/items/salamander_contract/art/item.png" id="3_bh1ed"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_ij8rw"]
 
+[ext_resource type="Resource" path="res://assets/items/salamander_contract/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_iti83"]
 atlas = ExtResource("3_bh1ed")
 region = Rect2(0, 0, 64, 64)
@@ -28,7 +30,6 @@ category_ids = Array[StringName]([&"scrolls"])
 allowed_class_ids = Array[StringName]([&"mage"])
 icon = SubResource("AtlasTexture_iti83")
 base_stats = Dictionary[int, int]({
-0: 10,
-7: 3
+0: 10
 })
-abilities = Array[ExtResource("1_l8dgw")]([ExtResource("2_uefhv")])
+abilities = Array[ExtResource("1_l8dgw")]([ExtResource("2_uefhv"), ExtResource("status_ability")])

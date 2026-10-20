@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://fsnf4et3qe7c" path="res://assets/items/pocket_basilisk/art/item.png" id="3_sc5ph"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_dbrg0"]
 
+[ext_resource type="Resource" path="res://assets/items/pocket_basilisk/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_twnhf"]
 atlas = ExtResource("3_sc5ph")
 region = Rect2(0, 0, 64, 64)
@@ -22,7 +24,6 @@ tags = Array[StringName]([&"companion"])
 category_ids = Array[StringName]([&"companions"])
 icon = SubResource("AtlasTexture_twnhf")
 base_stats = Dictionary[int, int]({
-0: 4,
-13: 2
+0: 4
 })
-abilities = Array[ExtResource("1_ew0w2")]([ExtResource("2_64dfg")])
+abilities = Array[ExtResource("1_ew0w2")]([ExtResource("2_64dfg"), ExtResource("status_ability")])

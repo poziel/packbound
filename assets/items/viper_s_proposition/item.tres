@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dpfvgd2mo465s" path="res://assets/items/viper_s_proposition/art/item.png" id="3_o8pye"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_dxwii"]
 
+[ext_resource type="Resource" path="res://assets/items/viper_s_proposition/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_daucc"]
 atlas = ExtResource("3_o8pye")
 region = Rect2(0, 0, 64, 64)
@@ -28,7 +30,6 @@ category_ids = Array[StringName]([&"scrolls"])
 allowed_class_ids = Array[StringName]([&"mage"])
 icon = SubResource("AtlasTexture_daucc")
 base_stats = Dictionary[int, int]({
-0: 7,
-6: 6
+0: 7
 })
-abilities = Array[ExtResource("1_8j2a2")]([ExtResource("2_gblyo")])
+abilities = Array[ExtResource("1_8j2a2")]([ExtResource("2_gblyo"), ExtResource("status_ability")])

@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bqys0ltwpc8r2" path="res://assets/items/hunting_trap/art/item.png" id="3_303go"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_lhb5v"]
 
+[ext_resource type="Resource" path="res://assets/items/hunting_trap/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_4om32"]
 atlas = ExtResource("3_303go")
 region = Rect2(0, 0, 96, 64)
@@ -23,7 +25,6 @@ rarity = 2
 category_ids = Array[StringName]([&"traps"])
 icon = SubResource("AtlasTexture_4om32")
 base_stats = Dictionary[int, int]({
-6: 4,
-13: 1
+
 })
-abilities = Array[ExtResource("1_wsjbj")]([ExtResource("2_kukh3")])
+abilities = Array[ExtResource("1_wsjbj")]([ExtResource("2_kukh3"), ExtResource("status_ability")])

@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://guva420p6jqj" path="res://assets/items/orchid_eclipse/art/item.png" id="3_sj0yu"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_8l2qy"]
 
+[ext_resource type="Resource" path="res://assets/items/orchid_eclipse/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1m6a0"]
 atlas = ExtResource("3_sj0yu")
 region = Rect2(0, 0, 64, 64)
@@ -28,7 +30,6 @@ category_ids = Array[StringName]([&"magic_artifacts"])
 allowed_class_ids = Array[StringName]([&"mage"])
 icon = SubResource("AtlasTexture_1m6a0")
 base_stats = Dictionary[int, int]({
-0: 10,
-6: 9
+0: 10
 })
-abilities = Array[ExtResource("1_yve7f")]([ExtResource("2_q800j")])
+abilities = Array[ExtResource("1_yve7f")]([ExtResource("2_q800j"), ExtResource("status_ability")])

@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://8do1245gu7pa" path="res://assets/items/storm_abacus/art/item.png" id="3_npqum"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_yyprd"]
 
+[ext_resource type="Resource" path="res://assets/items/storm_abacus/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vfj75"]
 atlas = ExtResource("3_npqum")
 region = Rect2(0, 0, 64, 64)
@@ -28,7 +30,6 @@ category_ids = Array[StringName]([&"magic_artifacts"])
 allowed_class_ids = Array[StringName]([&"mage"])
 icon = SubResource("AtlasTexture_vfj75")
 base_stats = Dictionary[int, int]({
-0: 10,
-16: 3
+0: 10
 })
-abilities = Array[ExtResource("1_w2t4o")]([ExtResource("2_wulja")])
+abilities = Array[ExtResource("1_w2t4o")]([ExtResource("2_wulja"), ExtResource("status_ability")])

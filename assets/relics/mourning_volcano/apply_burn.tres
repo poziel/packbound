@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ScaledApplyStatusEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/scaled_apply_status_effect_definition.gd" id="1"]
+[ext_resource type="Resource" path="res://assets/status_effects/burn/status_effect.tres" id="2"]
+
+[resource]
+resource_name = "Mourning Volcano: Apply Burn"
+script = ExtResource("1")
+status = ExtResource("2")
+stacks = 6
+target = 1
+metric = 0
+cap = 1

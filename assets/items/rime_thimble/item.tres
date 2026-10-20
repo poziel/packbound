@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://m50xpgss3m3m" path="res://assets/items/rime_thimble/art/item.png" id="3_rpxb1"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_qyp3m"]
 
+[ext_resource type="Resource" path="res://assets/items/rime_thimble/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ex76v"]
 atlas = ExtResource("3_rpxb1")
 region = Rect2(0, 0, 32, 32)
@@ -27,7 +29,6 @@ category_ids = Array[StringName]([&"magic_artifacts"])
 allowed_class_ids = Array[StringName]([&"mage"])
 icon = SubResource("AtlasTexture_ex76v")
 base_stats = Dictionary[int, int]({
-0: 3,
-13: 1
+0: 3
 })
-abilities = Array[ExtResource("1_gy5nd")]([ExtResource("2_b67xx")])
+abilities = Array[ExtResource("1_gy5nd")]([ExtResource("2_b67xx"), ExtResource("status_ability")])

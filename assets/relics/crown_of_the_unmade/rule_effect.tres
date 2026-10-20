@@ -8,12 +8,6 @@ script = ExtResource("1_xslt4")
 rule_id = &"crown_of_the_unmade_rules"
 parameters = {
 "icon": "crown_of_the_unmade",
-"rule": {
-"amount": 2,
-"cap": 4,
-"condition": "reactions",
-"metric": "reaction_count",
-"stat": 15
-},
+
 "stats": {}
 }

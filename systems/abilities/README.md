@@ -49,6 +49,23 @@ copied instances; combat retains responsibility for timing and saving.
 
 The content catalog registers one `apply_effect.tres` per status. Current combat
 uses these one-stack records with its existing aggregate application counts.
-Player/enemy Poison and enemy Burn, Slow, Spark and Doom use this path. Individual
-item/relic abilities still need migration from compatibility rules to concrete
-effects; this bridge does not evaluate their triggers or conditions.
+Player/enemy Poison and enemy Burn, Slow, Spark and Doom use this path.
+
+## Collectible status abilities
+
+All 38 existing items with fixed status grants now reference `status_ability.tres`
+and owned `apply_<status>.tres` effects. Those amounts are removed from
+`base_stats`; the runtime adapter evaluates the authored `item_activation`
+ability into the existing enum-keyed contribution view. Combat still controls
+costs, adjacency, repeats and the combined attack's status application phases.
+
+The four conditional status relics use `relic_stats` abilities, typed
+`CombatMetricConditionDefinition` predicates and
+`ScaledApplyStatusEffectDefinition` effects. Predicates inspect health percentage,
+Volley damage or reaction count; reaction scaling preserves its authored cap.
+`CollectibleAbilityResolver` evaluates them against the pre-relic snapshot without
+mutating resources, statuses or RNG. Supported collectible status effects target
+the opponent; unsupported targets/triggers fail content validation.
+
+Other item/relic special mechanics still use their existing compatibility
+bindings. This is a status-ability executor, not a universal ability interpreter.

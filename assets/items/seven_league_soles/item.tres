@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://c5nft2x4cfnxu" path="res://assets/items/seven_league_soles/art/item.png" id="3_w5khi"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_hfpl8"]
 
+[ext_resource type="Resource" path="res://assets/items/seven_league_soles/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mt4f1"]
 atlas = ExtResource("3_w5khi")
 region = Rect2(0, 0, 64, 64)
@@ -22,7 +24,6 @@ tags = Array[StringName]([&"boots"])
 category_ids = Array[StringName]([&"boots"])
 icon = SubResource("AtlasTexture_mt4f1")
 base_stats = Dictionary[int, int]({
-9: 2,
-13: 2
+9: 2
 })
-abilities = Array[ExtResource("1_1v7ln")]([ExtResource("2_doaqa")])
+abilities = Array[ExtResource("1_1v7ln")]([ExtResource("2_doaqa"), ExtResource("status_ability")])

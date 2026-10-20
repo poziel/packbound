@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cu1cmyvhf5ekv" path="res://assets/items/blacksmith_s_apron/art/item.png" id="3_b3rus"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_wehsx"]
 
+[ext_resource type="Resource" path="res://assets/items/blacksmith_s_apron/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ipmo7"]
 atlas = ExtResource("3_b3rus")
 region = Rect2(0, 0, 64, 64)
@@ -22,7 +24,6 @@ tags = Array[StringName]([&"armor"])
 category_ids = Array[StringName]([&"body_armor"])
 icon = SubResource("AtlasTexture_ipmo7")
 base_stats = Dictionary[int, int]({
-4: 2,
-7: 1
+4: 2
 })
-abilities = Array[ExtResource("1_xtf1m")]([ExtResource("2_11nkb")])
+abilities = Array[ExtResource("1_xtf1m")]([ExtResource("2_11nkb"), ExtResource("status_ability")])

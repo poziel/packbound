@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cm24m6k7fqfrx" path="res://assets/items/solar_crucible/art/item.png" id="3_xop3b"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_3pgrr"]
 
+[ext_resource type="Resource" path="res://assets/items/solar_crucible/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5im2e"]
 atlas = ExtResource("3_xop3b")
 region = Rect2(0, 0, 64, 64)
@@ -28,7 +30,6 @@ category_ids = Array[StringName]([&"magic_artifacts"])
 allowed_class_ids = Array[StringName]([&"mage"])
 icon = SubResource("AtlasTexture_5im2e")
 base_stats = Dictionary[int, int]({
-0: 15,
-7: 5
+0: 15
 })
-abilities = Array[ExtResource("1_x6wx1")]([ExtResource("2_aufq6")])
+abilities = Array[ExtResource("1_x6wx1")]([ExtResource("2_aufq6"), ExtResource("status_ability")])

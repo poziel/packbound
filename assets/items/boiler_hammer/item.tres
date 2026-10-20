@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://ch5bhmwnqsqh5" path="res://assets/items/boiler_hammer/art/item.png" id="3_20k2k"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_hvd2g"]
 
+[ext_resource type="Resource" path="res://assets/items/boiler_hammer/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_wxuno"]
 atlas = ExtResource("3_20k2k")
 region = Rect2(0, 0, 64, 96)
@@ -26,7 +28,6 @@ category_ids = Array[StringName]([&"hammers"])
 allowed_class_ids = Array[StringName]([&"warrior"])
 icon = SubResource("AtlasTexture_wxuno")
 base_stats = Dictionary[int, int]({
-0: 9,
-7: 1
+0: 9
 })
-abilities = Array[ExtResource("1_yv5ju")]([ExtResource("2_yibgj")])
+abilities = Array[ExtResource("1_yv5ju")]([ExtResource("2_yibgj"), ExtResource("status_ability")])

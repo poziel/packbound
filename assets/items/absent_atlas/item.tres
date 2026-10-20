@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dh4110jjwysdj" path="res://assets/items/absent_atlas/art/item.png" id="3_7y8jd"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_5fsqg"]
 
+[ext_resource type="Resource" path="res://assets/items/absent_atlas/status_ability.tres" id="status_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_747a2"]
 atlas = ExtResource("3_7y8jd")
 region = Rect2(0, 0, 64, 64)
@@ -28,7 +30,6 @@ category_ids = Array[StringName]([&"magic_books"])
 allowed_class_ids = Array[StringName]([&"mage"])
 icon = SubResource("AtlasTexture_747a2")
 base_stats = Dictionary[int, int]({
-0: 12,
-15: 2
+0: 12
 })
-abilities = Array[ExtResource("1_0hgjk")]([ExtResource("2_wimw1")])
+abilities = Array[ExtResource("1_0hgjk")]([ExtResource("2_wimw1"), ExtResource("status_ability")])

@@ -1787,6 +1787,13 @@
 	  ],
 	  "requires_rendering": false,
 	  "timeout_sec": 30
+	},
+	{
+	  "id": "collectible_status_abilities",
+	  "path": "tests/systems/combat/collectible_status_abilities_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
 	}
   ]
 }
