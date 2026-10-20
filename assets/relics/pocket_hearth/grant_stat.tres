@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GrantCombatStatEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/grant_combat_stat_effect_definition.gd" id="1"]
+
+[resource]
+resource_name = "Pocket Hearth: Combat bonus"
+script = ExtResource("1")
+stat = 2
+amount = 1

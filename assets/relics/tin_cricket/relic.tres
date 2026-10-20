@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cpahoidnkhr01" path="res://assets/relics/tin_cricket/art/icon.png" id="3_vg57y"]
 [ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_8pmv7"]
 
+[ext_resource type="Resource" path="res://assets/relics/tin_cricket/stat_ability.tres" id="stat_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_af0dv"]
 atlas = ExtResource("3_vg57y")
 region = Rect2(0, 0, 32, 32)
@@ -22,4 +24,4 @@ preferred_class_ids = null
 preferred_character_ids = null
 icon = SubResource("AtlasTexture_af0dv")
 base_stats = null
-abilities = Array[ExtResource("1_vvcwi")]([ExtResource("2_j2gum")])
+abilities = Array[ExtResource("1_vvcwi")]([ExtResource("2_j2gum"), ExtResource("stat_ability")])

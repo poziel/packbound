@@ -8,12 +8,5 @@ script = ExtResource("1_r4ujd")
 rule_id = &"pocket_hearth_rules"
 parameters = {
 "icon": "pocket_hearth",
-"rule": {
-"amount": 1,
-"cap": 1,
-"condition": "low_hp",
-"metric": "one",
-"stat": 2
-},
 "stats": {}
 }

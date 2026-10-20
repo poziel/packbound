@@ -8,12 +8,5 @@ script = ExtResource("1_810sh")
 rule_id = &"tin_cricket_rules"
 parameters = {
 "icon": "tin_cricket",
-"rule": {
-"amount": 1,
-"cap": 1,
-"condition": "always",
-"metric": "one",
-"stat": 5
-},
 "stats": {}
 }

@@ -69,3 +69,18 @@ the opponent; unsupported targets/triggers fail content validation.
 
 Other item/relic special mechanics still use their existing compatibility
 bindings. This is a status-ability executor, not a universal ability interpreter.
+
+## Combat stat grants
+
+`GrantCombatStatEffectDefinition` supplies a positive amount and an enum stat for
+per-round relic contributions. Tin Cricket's Ward and Pocket Hearth's conditional
+Healing now use `stat_ability.tres` and `grant_stat.tres`; their former compatibility
+rules are removed. `CollectibleAbilityResolver` evaluates these through `relic_stats`
+on the same pre-relic snapshot as status grants. Block bonuses also update the
+combat feedback budget. Definitions remain read-only; combat resolves actual healing,
+absorption and round state through its existing commit path.
+
+Damage, mana/stamina budgets and status stacks are deliberately outside this
+stat-grant effect's supported stats. They require their corresponding mechanics.
+Other conditional/scaled relic bonuses and special item mechanics still need
+concrete effect migrations.

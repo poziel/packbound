@@ -91,11 +91,13 @@ static func apply_stats(run: Variant, result: Dictionary) -> void:
 		var authored: CollectibleDefinition = CATEGORIES.definition_for_key(key)
 		var effect_context: Dictionary = {"hp": run.hp, "max_hp": run.max_hp, "volley_damage": snapshot.get("volley_damage", 0), "reaction_count": context["reaction_count"]}
 		var grants: Dictionary = CollectibleAbilityResolver.contributions(authored.abilities, CollectibleAbilityResolver.RELIC_TRIGGER, effect_context)
-		for status_stat: int in grants:
-			var status_gain: int = grants[status_stat]
-			if status_gain <= 0: continue
-			result[status_stat] = int(result.get(status_stat, 0)) + status_gain
-			result["activation_events"].append("%s grants +%d %s." % [authored.display_name, status_gain, str(GameplayTypes.stat_id(status_stat)).replace("_", " ")])
+		for granted_stat: int in grants:
+			var grant_amount: int = grants[granted_stat]
+			if grant_amount <= 0: continue
+			result[granted_stat] = int(result.get(granted_stat, 0)) + grant_amount
+			if granted_stat == GameplayTypes.Stat.BLOCK:
+				result["block_gained"] = int(result.get("block_gained", 0)) + grant_amount
+			result["activation_events"].append("%s grants +%d %s." % [authored.display_name, grant_amount, str(GameplayTypes.stat_id(granted_stat)).replace("_", " ")])
 		if not PackCatalog.relic(key).has("rule"):
 			continue
 		var definition: Dictionary = PackCatalog.relic(key)

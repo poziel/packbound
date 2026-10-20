@@ -83,16 +83,16 @@ func validation_errors() -> PackedStringArray:
 			for error: String in abilities[index].validation_errors():
 				errors.append("abilities[%d]: %s" % [index, error])
 	for ability: AbilityDefinition in abilities:
-		if ability == null or ability.trigger_id == &"coded_catalog_rule": continue
-		var has_status_effect: bool = false
+		if ability == null: continue
+		var has_concrete_effect: bool = false
 		for effect: EffectDefinition in ability.effects:
-			has_status_effect = has_status_effect or effect is ApplyStatusEffectDefinition
+			has_concrete_effect = has_concrete_effect or effect is ApplyStatusEffectDefinition or effect is GrantCombatStatEffectDefinition
 			if effect is ApplyStatusEffectDefinition and effect.status != null:
 				var status_stat: int = GameplayTypes.stat_from_id(effect.status.id)
 				if base_stats.has(status_stat): errors.append("Status grants must not be duplicated in base_stats.")
-		if not has_status_effect: continue
-		errors.append_array(CollectibleAbilityResolver.validation_errors(ability, _status_ability_trigger()))
+		if not has_concrete_effect: continue
+		errors.append_array(CollectibleAbilityResolver.validation_errors(ability, _combat_ability_trigger()))
 	return errors
 
-func _status_ability_trigger() -> StringName:
+func _combat_ability_trigger() -> StringName:
 	return &""

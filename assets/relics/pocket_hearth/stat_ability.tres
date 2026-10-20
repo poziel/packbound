@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="ability"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="effect"]
+[ext_resource type="Resource" path="res://assets/relics/pocket_hearth/grant_stat.tres" id="grant"]
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="condition"]
+[ext_resource type="Script" path="res://systems/abilities/combat_metric_condition_definition.gd" id="metric"]
+
+[sub_resource type="Resource" id="low_health"]
+script = ExtResource("metric")
+metric = 0
+comparison = 1
+threshold = 50
+
+[resource]
+resource_name = "Pocket Hearth: Combat bonus"
+script = ExtResource("ability")
+id = &"pocket_hearth_combat_bonus"
+display_name = "Pocket Hearth: Combat bonus"
+trigger_id = &"relic_stats"
+conditions = Array[ExtResource("condition")]([SubResource("low_health")])
+effects = Array[ExtResource("effect")]([ExtResource("grant")])

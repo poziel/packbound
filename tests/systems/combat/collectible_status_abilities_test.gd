@@ -36,6 +36,7 @@ func _run() -> void:
 	for definition: CollectibleDefinition in DATA.content().collectibles.collectibles:
 		for ability: AbilityDefinition in definition.abilities:
 			if ability.trigger_id not in [CollectibleAbilityResolver.ITEM_TRIGGER, CollectibleAbilityResolver.RELIC_TRIGGER]: continue
+			if not ability.effects.any(func(effect): return effect is ApplyStatusEffectDefinition): continue
 			check_equal(ability.validation_errors(), PackedStringArray(), "Concrete authored status ability validates: " + str(definition.id))
 			if definition is ItemDefinition:
 				item_count += 1

@@ -251,3 +251,7 @@ derives status contribution views from these Resources; relic evaluation uses a
 pre-relic snapshot for typed health/Volley/reaction conditions and bounded scaling.
 The complete content graph verifies that these effects reference registered status
 definitions. Other special collectible rules remain compatibility bindings.
+
+Tin Cricket and Pocket Hearth additionally execute typed combat stat grants for
+Ward and conditional Healing. Their `stat_ability.tres` records reference
+`GrantCombatStatEffectDefinition`; their former `rule` dictionaries are removed.

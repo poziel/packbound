@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="ability"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="effect"]
+[ext_resource type="Resource" path="res://assets/relics/tin_cricket/grant_stat.tres" id="grant"]
+
+[resource]
+resource_name = "Tin Cricket: Combat bonus"
+script = ExtResource("ability")
+id = &"tin_cricket_combat_bonus"
+display_name = "Tin Cricket: Combat bonus"
+trigger_id = &"relic_stats"
+effects = Array[ExtResource("effect")]([ExtResource("grant")])
