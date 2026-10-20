@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_1kh8d"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_4ae7p"]
+[ext_resource type="Resource" path="res://assets/items/pearl_of_brine/rule_effect.tres" id="3_gbyn4"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_iysxg"]
+
+[resource]
+resource_name = "Pearl of Brine rules"
+script = ExtResource("4_iysxg")
+id = &"pearl_of_brine_rules"
+display_name = "Pearl of Brine rules"
+description = "Removes up to 2 poison before its round tick. Supplies 1 ward each round against poison, curse and reflected damage."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_4ae7p")]([ExtResource("3_gbyn4")])

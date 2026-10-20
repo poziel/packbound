@@ -100,14 +100,11 @@
       "A pale cloth pouch tied beneath a broad green leaf."
     ],
     "assets": {
-      "icon": "assets/items/chalk_poultice/icons/art/icon.png",
-      "svg": "assets/items/chalk_poultice/icons/art/icon.svg",
-      "source": "assets/items/chalk_poultice/icons/art/icon.sprite.json",
-      "footprint": "assets/items/chalk_poultice/icons/art/footprint.json",
-      "provenance": "assets/items/chalk_poultice/icons/art/provenance.json",
-      "manifest": "assets/items/chalk_poultice/icons/art/art-manifest.json",
+      "icon": "assets/items/chalk_poultice/art/item.png",
+      "source": "assets/items/chalk_poultice/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/chalk_poultice/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

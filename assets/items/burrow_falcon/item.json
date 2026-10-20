@@ -130,14 +130,11 @@
       "A squat tawny falcon with oversized claws and a leather hood."
     ],
     "assets": {
-      "icon": "assets/items/burrow_falcon/icons/art/icon.png",
-      "svg": "assets/items/burrow_falcon/icons/art/icon.svg",
-      "source": "assets/items/burrow_falcon/icons/art/icon.sprite.json",
-      "footprint": "assets/items/burrow_falcon/icons/art/footprint.json",
-      "provenance": "assets/items/burrow_falcon/icons/art/provenance.json",
-      "manifest": "assets/items/burrow_falcon/icons/art/art-manifest.json",
+      "icon": "assets/items/burrow_falcon/art/item.png",
+      "source": "assets/items/burrow_falcon/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/burrow_falcon/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

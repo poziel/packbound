@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_gj48o"]
+
+[resource]
+resource_name = "Broken Metronome Rule Effect"
+script = ExtResource("1_gj48o")
+rule_id = &"broken_metronome_rules"
+parameters = {
+"icon": "broken_metronome",
+"rule": {
+"amount": 3,
+"cap": 1,
+"condition": "even",
+"metric": "one",
+"stat": "block"
+},
+"stats": {}
+}

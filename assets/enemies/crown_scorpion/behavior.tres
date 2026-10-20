@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MonsterBehaviorDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="1_c4se0"]
+[ext_resource type="Resource" path="res://assets/enemies/crown_scorpion/attack_0.tres" id="2_r4nrr"]
+[ext_resource type="Script" path="res://systems/enemies/monster_behavior_definition.gd" id="3_tunaf"]
+
+[resource]
+resource_name = "Crown Scorpion Behavior"
+script = ExtResource("3_tunaf")
+actions = Array[ExtResource("1_c4se0")]([ExtResource("2_r4nrr")])

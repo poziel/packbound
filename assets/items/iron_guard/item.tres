@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://coikbb4crktms"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_0j104"]
+[ext_resource type="Resource" path="res://assets/items/iron_guard/rule_ability.tres" id="2_udb76"]
+[ext_resource type="Texture2D" uid="uid://c77f3i0rwwylm" path="res://assets/items/iron_guard/art/item.png" id="3_atxmd"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_glex0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0l4n"]
+atlas = ExtResource("3_atxmd")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Iron Guard"
+script = ExtResource("4_glex0")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"iron_guard"
+display_name = "Iron Guard"
+description = "Starts each fight with 7 block."
+lore = "The outer plate keeps its smith's square hammer marks."
+rarity = 1
+tags = Array[StringName]([&"shield", &"uncommon"])
+category_ids = Array[StringName]([&"shields"])
+icon = SubResource("AtlasTexture_y0l4n")
+base_stats = Dictionary[int, int]({
+1: 7
+})
+abilities = Array[ExtResource("1_0j104")]([ExtResource("2_udb76")])

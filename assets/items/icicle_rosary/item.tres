@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bd7kndvvypsps"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_dokav"]
+[ext_resource type="Resource" path="res://assets/items/icicle_rosary/rule_ability.tres" id="2_lk4v1"]
+[ext_resource type="Texture2D" uid="uid://bi7sn4akottuw" path="res://assets/items/icicle_rosary/art/item.png" id="3_xaesm"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_o2rks"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amun3"]
+atlas = ExtResource("3_xaesm")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Icicle Rosary"
+script = ExtResource("4_o2rks")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+activation_costs = Dictionary[int, int]({
+0: 2
+})
+damage_type = 1
+element = 2
+id = &"icicle_rosary"
+display_name = "Icicle Rosary"
+description = "Costs 2 mana per activation. Deals 6 magical damage per affordable activation. Reduces each enemy strike this round by 2."
+lore = "Each bead holds one silent breath of a lost pilgrim."
+rarity = 1
+tags = Array[StringName]([&"spell", &"mage", &"frost"])
+category_ids = Array[StringName]([&"magic_artifacts"])
+allowed_class_ids = Array[StringName]([&"mage"])
+icon = SubResource("AtlasTexture_amun3")
+base_stats = Dictionary[int, int]({
+0: 6,
+13: 2
+})
+abilities = Array[ExtResource("1_dokav")]([ExtResource("2_lk4v1")])

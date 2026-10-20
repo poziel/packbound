@@ -1,0 +1,63 @@
+{
+  "key": "longsword",
+  "name": "Iron Dagger",
+  "category": "weapons",
+  "gameplayRole": "weapon",
+  "inventoryMask": [
+    "#"
+  ],
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
+  "exports": [
+    "art/item.png",
+    "art/item.png"
+  ],
+  "editableSources": [
+    "art/item.png"
+  ],
+  "runtime": {
+    "texture": "res://assets/items/iron_dagger/art/item.png",
+    "viewPolicy": "Reuse the approved 32px sprite for all display sizes with nearest-neighbor filtering."
+  },
+  "atlasProvenance": {
+    "index": 4,
+    "file": "05-dagger",
+    "key": "longsword",
+    "title": "Iron dagger",
+    "fit": [
+      74,
+      74
+    ],
+    "inventoryCells": [
+      1,
+      1
+    ],
+    "cell": [
+      96,
+      96
+    ],
+    "source": "docs/art/concepts/items-2026-10-15/05-dagger.png",
+    "sourceSha256": "ae5d447722fb345055700e5b876e3fd9ab46acd503a86cbb240fb5afa5a80b78",
+    "sourceBounds": {
+      "left": 255,
+      "top": 186,
+      "width": 814,
+      "height": 930,
+      "pixels": 197026
+    },
+    "bounds": {
+      "left": 15,
+      "top": 11,
+      "width": 65,
+      "height": 74,
+      "pixels": 1260
+    },
+    "paletteColors": 32,
+    "alphaValues": [
+      0,
+      255
+    ],
+    "svgPixelMatch": true
+  },
+  "activeRevision": "catalog-v1",
+  "revisionProvenance": "res://docs/art/concepts/iron-dagger-catalog-v1/provenance.json"
+}

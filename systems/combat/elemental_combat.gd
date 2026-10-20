@@ -1,4 +1,6 @@
 extends RefCounted
+
+const CATEGORIES = preload("res://systems/content/collectible_categories.gd")
 ## Pure combat rules. Every reaction consumes more traces than it creates.
 const TYPES = preload("res://systems/content/gameplay_types.gd")
 const ELEMENTS: Array[String] = TYPES.ELEMENT_IDS_WITHOUT_NONE
@@ -28,7 +30,7 @@ static func damage_type(item: Dictionary) -> String:
 	var element_id: String = str(TYPES.element_id(raw_element)) if raw_element is int else str(raw_element)
 	if ELEMENTS.has(element_id):
 		return "magical"
-	var fallback: String = "magical" if item.get("role") == "spell" else "physical"
+	var fallback: String = "magical" if CATEGORIES.matches(item, &"magic_weapons") else "physical"
 	var raw_type: Variant = item.get("damage_type", fallback)
 	if raw_type is int:
 		var type_id: StringName = TYPES.damage_type_id(raw_type)

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bjyy3gy8icql1"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_p82fy"]
+[ext_resource type="Resource" path="res://assets/items/arrow_bodkin/rule_ability.tres" id="2_jdvvl"]
+[ext_resource type="Texture2D" uid="uid://51iaa2f6uo8d" path="res://assets/items/quiver/art/item.png" id="3_mxsl8"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_pbhim"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mewl5"]
+atlas = ExtResource("3_mxsl8")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Bodkin Arrows"
+script = ExtResource("4_pbhim")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+id = &"arrow_bodkin"
+display_name = "Bodkin Arrows"
+description = "Choose your starting arrows: each Volley arrow pierces 2 block."
+category_ids = Array[StringName]([&"quiver_upgrades"])
+icon = SubResource("AtlasTexture_mewl5")
+abilities = Array[ExtResource("1_p82fy")]([ExtResource("2_jdvvl")])

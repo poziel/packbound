@@ -135,14 +135,11 @@
       "A broad hooked steel edge and inward curled guard."
     ],
     "assets": {
-      "icon": "assets/items/hooked_falchion/icons/art/icon.png",
-      "svg": "assets/items/hooked_falchion/icons/art/icon.svg",
-      "source": "assets/items/hooked_falchion/icons/art/icon.sprite.json",
-      "footprint": "assets/items/hooked_falchion/icons/art/footprint.json",
-      "provenance": "assets/items/hooked_falchion/icons/art/provenance.json",
-      "manifest": "assets/items/hooked_falchion/icons/art/art-manifest.json",
+      "icon": "assets/items/hooked_falchion/art/item.png",
+      "source": "assets/items/hooked_falchion/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/hooked_falchion/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

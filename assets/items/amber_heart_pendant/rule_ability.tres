@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_wqrno"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_me420"]
+[ext_resource type="Resource" path="res://assets/items/amber_heart_pendant/rule_effect.tres" id="3_huya2"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_dpian"]
+
+[resource]
+resource_name = "Amber Heart Pendant rules"
+script = ExtResource("4_dpian")
+id = &"amber_heart_pendant_rules"
+display_name = "Amber Heart Pendant rules"
+description = "Restores up to 3 HP each round. Supplies 1 ward each round against poison, curse and reflected damage."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_me420")]([ExtResource("3_huya2")])

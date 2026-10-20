@@ -135,14 +135,11 @@
       "A thick brown cuirass with overlapping iron ribs."
     ],
     "assets": {
-      "icon": "assets/items/redoubt_cuirass/icons/art/icon.png",
-      "svg": "assets/items/redoubt_cuirass/icons/art/icon.svg",
-      "source": "assets/items/redoubt_cuirass/icons/art/icon.sprite.json",
-      "footprint": "assets/items/redoubt_cuirass/icons/art/footprint.json",
-      "provenance": "assets/items/redoubt_cuirass/icons/art/provenance.json",
-      "manifest": "assets/items/redoubt_cuirass/icons/art/art-manifest.json",
+      "icon": "assets/items/redoubt_cuirass/art/item.png",
+      "source": "assets/items/redoubt_cuirass/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/redoubt_cuirass/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

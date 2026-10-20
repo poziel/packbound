@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StatusEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="1_4cskd"]
+[ext_resource type="Resource" path="res://assets/status_effects/spark/rule_effect.tres" id="2_5crao"]
+[ext_resource type="Texture2D" path="res://assets/icons/keywords/magical_attack/magical_attack-16-mask.png" id="3_dghpa"]
+[ext_resource type="Script" path="res://systems/combat/status_effect_definition.gd" id="4_emvv6"]
+
+[resource]
+resource_name = "Spark"
+script = ExtResource("4_emvv6")
+id = &"spark"
+display_name = "Spark"
+description = "Lightning applies Spark. On a later magical hit, existing stacks deal 2 magical damage each, ignoring block, then lose 1 stack. Newly applied stacks wait until a later hit. Cleansing removes Spark."
+icon = ExtResource("3_dghpa")
+tick_trigger_id = &"after_magical_direct_damage"
+effects = Array[ExtResource("1_4cskd")]([ExtResource("2_5crao")])

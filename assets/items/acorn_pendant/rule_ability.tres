@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_45771"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_gfr0y"]
+[ext_resource type="Resource" path="res://assets/items/acorn_pendant/rule_effect.tres" id="3_2k6ms"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_771hj"]
+
+[resource]
+resource_name = "Acorn Pendant rules"
+script = ExtResource("4_771hj")
+id = &"acorn_pendant_rules"
+display_name = "Acorn Pendant rules"
+description = "Restores up to 1 HP each round."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_gfr0y")]([ExtResource("3_2k6ms")])

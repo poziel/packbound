@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_67g0u"]
+
+[resource]
+resource_name = "Last Seat Rule Effect"
+script = ExtResource("1_67g0u")
+rule_id = &"last_seat_rules"
+parameters = {
+"icon": "last_seat",
+"rule": {
+"amount": 2,
+"cap": 1,
+"condition": "sparse",
+"metric": "one",
+"stat": "block"
+},
+"stats": {}
+}

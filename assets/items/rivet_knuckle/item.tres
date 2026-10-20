@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cb2bsj0he4qvx"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_2uvdf"]
+[ext_resource type="Resource" path="res://assets/items/rivet_knuckle/rule_ability.tres" id="2_fr2j4"]
+[ext_resource type="Texture2D" uid="uid://cd3c1etvlrbnb" path="res://assets/items/rivet_knuckle/art/item.png" id="3_xyktm"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_a5vy4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jofp"]
+atlas = ExtResource("3_xyktm")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Rivet Knuckle"
+script = ExtResource("4_a5vy4")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+activation_costs = Dictionary[int, int]({
+1: 1
+})
+id = &"rivet_knuckle"
+display_name = "Rivet Knuckle"
+description = "Costs 1 stamina per activation. Deals 4 physical damage per affordable activation."
+lore = "An apprentice pit fighter's first honest wage."
+tags = Array[StringName]([&"weapon", &"warrior"])
+category_ids = Array[StringName]([&"fist_weapons"])
+allowed_class_ids = Array[StringName]([&"warrior"])
+icon = SubResource("AtlasTexture_4jofp")
+base_stats = Dictionary[int, int]({
+0: 4
+})
+abilities = Array[ExtResource("1_2uvdf")]([ExtResource("2_fr2j4")])

@@ -114,7 +114,7 @@
       "provenance": null,
       "manifest": null,
       "variants": [],
-      "placeholderSvg": "assets/items/spells/frost-wand/revisions/catalog-v2/frost-wand-32x96.svg"
+      "placeholderSvg": "assets/items/frost_wand/art/item.png"
     },
     "approval": "unreviewed"
   },

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://cxg4xp2o7r3lr"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_w43ee"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_cb6cy"]
+
+[sub_resource type="Resource" id="Resource_7c7li"]
+script = ExtResource("1_w43ee")
+accepted_item_ids = Array[StringName]([&"barbed_tip_roll"])
+
+[sub_resource type="Resource" id="Resource_dssqb"]
+script = ExtResource("1_w43ee")
+accepted_item_ids = Array[StringName]([&"raincatch_bowl"])
+
+[resource]
+resource_name = "Assemble Hunter S Compass"
+script = ExtResource("2_cb6cy")
+id = &"assemble_hunter_s_compass"
+ingredients = Array[ExtResource("1_w43ee")]([SubResource("Resource_7c7li"), SubResource("Resource_dssqb")])
+result_item_id = &"hunter_s_compass"

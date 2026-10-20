@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://hrs6ms5soqof"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_nl401"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_730hi"]
+
+[sub_resource type="Resource" id="Resource_y3lfp"]
+script = ExtResource("1_nl401")
+accepted_item_ids = Array[StringName]([&"amber_heart_pendant"])
+
+[sub_resource type="Resource" id="Resource_8djqm"]
+script = ExtResource("1_nl401")
+accepted_item_ids = Array[StringName]([&"blacksmith_s_apron"])
+
+[sub_resource type="Resource" id="Resource_3sdj1"]
+script = ExtResource("1_nl401")
+accepted_item_ids = Array[StringName]([&"pilgrim_crab"])
+
+[sub_resource type="Resource" id="Resource_r4boo"]
+script = ExtResource("1_nl401")
+accepted_item_ids = Array[StringName]([&"salt_lantern"])
+
+[resource]
+resource_name = "Assemble Cathedral Carapace"
+script = ExtResource("2_730hi")
+id = &"assemble_cathedral_carapace"
+ingredients = Array[ExtResource("1_nl401")]([SubResource("Resource_y3lfp"), SubResource("Resource_8djqm"), SubResource("Resource_3sdj1"), SubResource("Resource_r4boo")])
+result_item_id = &"cathedral_carapace"

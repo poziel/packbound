@@ -132,14 +132,11 @@
       "A rust red crab carrying a tiny cream roadside shrine."
     ],
     "assets": {
-      "icon": "assets/items/pilgrim_crab/icons/art/icon.png",
-      "svg": "assets/items/pilgrim_crab/icons/art/icon.svg",
-      "source": "assets/items/pilgrim_crab/icons/art/icon.sprite.json",
-      "footprint": "assets/items/pilgrim_crab/icons/art/footprint.json",
-      "provenance": "assets/items/pilgrim_crab/icons/art/provenance.json",
-      "manifest": "assets/items/pilgrim_crab/icons/art/art-manifest.json",
+      "icon": "assets/items/pilgrim_crab/art/item.png",
+      "source": "assets/items/pilgrim_crab/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/pilgrim_crab/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

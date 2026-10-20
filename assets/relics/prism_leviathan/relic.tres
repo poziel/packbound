@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RelicDefinition" format=3 uid="uid://ba6jv2fr7kesl"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_db51o"]
+[ext_resource type="Resource" path="res://assets/relics/prism_leviathan/rule_ability.tres" id="2_835a7"]
+[ext_resource type="Texture2D" uid="uid://bix7wdeqkc0p" path="res://assets/relics/prism_leviathan/art/icon.png" id="3_sjlny"]
+[ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_ktrs8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f06bc"]
+atlas = ExtResource("3_sjlny")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Prism Leviathan"
+script = ExtResource("4_ktrs8")
+id = &"prism_leviathan"
+display_name = "Prism Leviathan"
+description = "When an Elemental Reaction occurs this round: gain +5 magical damage per reaction count (up to 4 counted)."
+lore = "A glassblower dreamed of a serpent too large for any kiln. Each scale cooled into a different storm."
+rarity = 3
+tags = Array[StringName]([&"relic", &"reactions"])
+category_ids = Array[StringName]([&"relics"])
+preferred_class_ids = null
+preferred_character_ids = null
+icon = SubResource("AtlasTexture_f06bc")
+base_stats = null
+abilities = Array[ExtResource("1_db51o")]([ExtResource("2_835a7")])

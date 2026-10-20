@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CharacterClassDefinition" format=3 uid="uid://ca7w7wdilmlou"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_jc2js"]
+[ext_resource type="Resource" path="res://assets/characters/ranger/class_ability.tres" id="2_wkpat"]
+[ext_resource type="Texture2D" uid="uid://c5r5tl8yp3pdq" path="res://assets/items/shortbow/art/item.png" id="3_pkukg"]
+[ext_resource type="Script" uid="uid://bdw4mhhh1jy2c" path="res://systems/characters/character_class_definition.gd" id="4_gq7ny"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b16ov"]
+atlas = ExtResource("3_pkukg")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+resource_name = "Bowmaster"
+script = ExtResource("4_gq7ny")
+id = &"ranger"
+display_name = "Bowmaster"
+description = "Volley fires arrows from the Bowmaster's Quiver every 3 rounds. Choose starting arrows, then upgrade arrow capacity, tips and mechanisms through rewards. Bows attack normally; Volley costs no mana or stamina."
+icon = SubResource("AtlasTexture_b16ov")
+abilities = Array[ExtResource("1_jc2js")]([ExtResource("2_wkpat")])
+
+metadata/icon_item_id = "shortbow"

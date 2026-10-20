@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dsgrjunbtlloq"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_0g7nv"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_epml4"]
+
+[sub_resource type="Resource" id="Resource_u0x76"]
+script = ExtResource("1_0g7nv")
+accepted_item_ids = Array[StringName]([&"hedgehog_charm"])
+
+[sub_resource type="Resource" id="Resource_risv2"]
+script = ExtResource("1_0g7nv")
+accepted_item_ids = Array[StringName]([&"ironroot_boots"])
+
+[sub_resource type="Resource" id="Resource_ayck2"]
+script = ExtResource("1_0g7nv")
+accepted_item_ids = Array[StringName]([&"redoubt_cuirass"])
+
+[resource]
+resource_name = "Assemble Siegebell Plate"
+script = ExtResource("2_epml4")
+id = &"assemble_siegebell_plate"
+ingredients = Array[ExtResource("1_0g7nv")]([SubResource("Resource_u0x76"), SubResource("Resource_risv2"), SubResource("Resource_ayck2")])
+result_item_id = &"siegebell_plate"

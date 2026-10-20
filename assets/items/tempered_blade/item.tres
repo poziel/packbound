@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cd2t3pbg7e01g"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_2hobp"]
+[ext_resource type="Resource" path="res://assets/items/tempered_blade/rule_ability.tres" id="2_j00m0"]
+[ext_resource type="Texture2D" uid="uid://dni4res57ofa2" path="res://assets/items/tempered_blade/art/item.png" id="3_uek78"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_vmvfq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ib73w"]
+atlas = ExtResource("3_uek78")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Tempered Blade"
+script = ExtResource("4_vmvfq")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+activation_costs = Dictionary[int, int]({
+1: 1
+})
+id = &"tempered_blade"
+display_name = "Tempered Blade"
+description = "Costs 1 stamina: 8 physical damage."
+lore = "The roadside smith folds patience into every bar."
+rarity = 1
+tags = Array[StringName]([&"weapon", &"uncommon"])
+category_ids = Array[StringName]([&"swords"])
+icon = SubResource("AtlasTexture_ib73w")
+base_stats = Dictionary[int, int]({
+0: 8
+})
+abilities = Array[ExtResource("1_2hobp")]([ExtResource("2_j00m0")])

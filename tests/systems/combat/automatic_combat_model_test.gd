@@ -207,13 +207,13 @@ func _echo_checks() -> void:
 	state.add_item("spark_ring", Vector2i(5, 4))["mana"] = 3
 	check(state.effects().get("echo_item_id", -1) == spell["id"] and state.effects()["mana_spent"] == 3, "Eligible spell repeats without another mana cost")
 	spell["cell"] = null
-	early["role"] = "ranged"
+	early["category_ids"] = ["ranged_weapons"]
 	early["damage"] = 6
 	stats = state.effects()
 	check(stats.get("echo_item_id", -1) == strong["id"] and stats["damage"] == 28 and stats["repeats"] == 1, "Archer does not copy ranged weapons; Echo remains independent")
 	state.class_key = "warrior"
 	state.turn = 12
-	early["role"] = "weapon"
+	early["category_ids"] = ["melee_weapons"]
 	state.add_item("hourglass", Vector2i(0, 3))
 	stats = state.effects()
 	check(stats.get("echo_item_id", -1) == strong["id"] and stats["damage"] == 45 and stats["repeats"] == 3, "Hourglass and Echo add independent copies")

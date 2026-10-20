@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://48agmq2aglf8"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_sb5kc"]
+[ext_resource type="Resource" path="res://assets/enemies/pack_leech/innate_ability.tres" id="2_a86ln"]
+[ext_resource type="Resource" path="res://assets/enemies/pack_leech/behavior.tres" id="3_w4hsx"]
+[ext_resource type="Texture2D" uid="uid://b0tv0cner6t5j" path="res://assets/enemies/pack_leech/art/pack_leech.png" id="4_2s7ri"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_w52m1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxp5u"]
+atlas = ExtResource("4_2s7ri")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Pack Leech"
+script = ExtResource("5_w52m1")
+behavior = ExtResource("3_w4hsx")
+id = &"pack_leech"
+display_name = "Pack Leech"
+log_name = "Pack Leech"
+description = "Heals 3 HP if its attacks hurt you."
+icon = SubResource("AtlasTexture_rxp5u")
+resource_capacities = Dictionary[int, int]({
+2: 44
+})
+abilities = Array[ExtResource("1_sb5kc")]([ExtResource("2_a86ln")])
+
+metadata/progression_index = 4

@@ -124,12 +124,9 @@
       "Blue belongs to paint, not reflected light."
     ],
     "assets": {
-      "icon": "assets/items/sentinel_guard/icons/art/icon.png",
-      "svg": "assets/items/sentinel_guard/icons/art/icon.svg",
-      "source": "assets/items/sentinel_guard/icons/art/icon.sprite.json",
-      "footprint": "assets/items/sentinel_guard/icons/art/footprint.json",
-      "provenance": "assets/items/sentinel_guard/icons/art/provenance.json",
-      "manifest": "assets/items/sentinel_guard/icons/art/art-manifest.json",
+      "icon": "assets/items/sentinel_guard/art/item.png",
+      "source": "assets/items/sentinel_guard/art/item.pixloom.json",
+      "footprint": null,
       "variants": []
     },
     "approval": "unreviewed"

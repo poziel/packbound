@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://b5c08wvy62ih1"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_jnq0t"]
+[ext_resource type="Resource" path="res://assets/items/acorn_pendant/rule_ability.tres" id="2_muqg4"]
+[ext_resource type="Texture2D" uid="uid://b2uoo63oaq1j7" path="res://assets/items/acorn_pendant/art/item.png" id="3_aiycm"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_1sxq4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gif0m"]
+atlas = ExtResource("3_aiycm")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Acorn Pendant"
+script = ExtResource("4_1sxq4")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"acorn_pendant"
+display_name = "Acorn Pendant"
+description = "Restores up to 1 HP each round."
+lore = "A child traded it for a promise to plant it someday."
+tags = Array[StringName]([&"pendant"])
+category_ids = Array[StringName]([&"pendants"])
+icon = SubResource("AtlasTexture_gif0m")
+base_stats = Dictionary[int, int]({
+2: 1
+})
+abilities = Array[ExtResource("1_jnq0t")]([ExtResource("2_muqg4")])

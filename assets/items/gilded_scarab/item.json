@@ -158,14 +158,11 @@
       "A gold shelled beetle with a broad dark seam down its back."
     ],
     "assets": {
-      "icon": "assets/items/gilded_scarab/icons/art/icon.png",
-      "svg": "assets/items/gilded_scarab/icons/art/icon.svg",
-      "source": "assets/items/gilded_scarab/icons/art/icon.sprite.json",
-      "footprint": "assets/items/gilded_scarab/icons/art/footprint.json",
-      "provenance": "assets/items/gilded_scarab/icons/art/provenance.json",
-      "manifest": "assets/items/gilded_scarab/icons/art/art-manifest.json",
+      "icon": "assets/items/gilded_scarab/art/item.png",
+      "source": "assets/items/gilded_scarab/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/gilded_scarab/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

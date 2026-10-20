@@ -112,14 +112,11 @@
       "A bundle of broad brown flight feathers tied with flax."
     ],
     "assets": {
-      "icon": "assets/items/feather_keeper/icons/art/icon.png",
-      "svg": "assets/items/feather_keeper/icons/art/icon.svg",
-      "source": "assets/items/feather_keeper/icons/art/icon.sprite.json",
-      "footprint": "assets/items/feather_keeper/icons/art/footprint.json",
-      "provenance": "assets/items/feather_keeper/icons/art/provenance.json",
-      "manifest": "assets/items/feather_keeper/icons/art/art-manifest.json",
+      "icon": "assets/items/feather_keeper/art/item.png",
+      "source": "assets/items/feather_keeper/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/feather_keeper/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

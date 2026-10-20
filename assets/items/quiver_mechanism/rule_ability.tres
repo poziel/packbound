@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_jq181"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_gl1vg"]
+[ext_resource type="Resource" path="res://assets/items/quiver_mechanism/rule_effect.tres" id="3_lhdrs"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_t6eby"]
+
+[resource]
+resource_name = "Tension Mechanism rules"
+script = ExtResource("4_t6eby")
+id = &"quiver_mechanism_rules"
+display_name = "Tension Mechanism rules"
+description = "Quiver upgrade: +1 damage per Volley arrow. Up to 3 upgrades."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_gl1vg")]([ExtResource("3_lhdrs")])

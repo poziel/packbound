@@ -153,14 +153,11 @@
       "Ochre feathers stacked beneath a dark beeswax cake."
     ],
     "assets": {
-      "icon": "assets/items/waxed_fletching/icons/art/icon.png",
-      "svg": "assets/items/waxed_fletching/icons/art/icon.svg",
-      "source": "assets/items/waxed_fletching/icons/art/icon.sprite.json",
-      "footprint": "assets/items/waxed_fletching/icons/art/footprint.json",
-      "provenance": "assets/items/waxed_fletching/icons/art/provenance.json",
-      "manifest": "assets/items/waxed_fletching/icons/art/art-manifest.json",
+      "icon": "assets/items/waxed_fletching/art/item.png",
+      "source": "assets/items/waxed_fletching/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/waxed_fletching/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_aqxft"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_wj67e"]
+[ext_resource type="Resource" path="res://assets/items/riveted_guard/rule_effect.tres" id="3_lljrm"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_h8qlx"]
+
+[resource]
+resource_name = "Riveted Guard rules"
+script = ExtResource("4_h8qlx")
+id = &"riveted_guard_rules"
+display_name = "Riveted Guard rules"
+description = "Starts each fight with 4 block."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_wj67e")]([ExtResource("3_lljrm")])

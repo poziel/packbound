@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bbp7hrex4rmno"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_eqvel"]
+[ext_resource type="Resource" path="res://assets/items/shield_relic/rule_ability.tres" id="2_ca3fu"]
+[ext_resource type="Texture2D" uid="uid://crerhf2bbx3o8" path="res://assets/items/shield_relic/art/item.png" id="3_3epcp"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_iduhl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhxwq"]
+atlas = ExtResource("3_3epcp")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Shield Relic"
+script = ExtResource("4_iduhl")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"tower_shield"
+display_name = "Shield Relic"
+description = "Starts each fight with 9 block. Spent block does not regenerate."
+rarity = 1
+category_ids = Array[StringName]([&"shields"])
+icon = SubResource("AtlasTexture_rhxwq")
+base_stats = Dictionary[int, int]({
+1: 9
+})
+abilities = Array[ExtResource("1_eqvel")]([ExtResource("2_ca3fu")])

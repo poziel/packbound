@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RelicDefinition" format=3 uid="uid://cr5ujl7gxtigm"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_un5hc"]
+[ext_resource type="Resource" path="res://assets/relics/apiary_crown/rule_ability.tres" id="2_5dkgi"]
+[ext_resource type="Texture2D" uid="uid://jhyjn02dnq1j" path="res://assets/relics/apiary_crown/art/icon.png" id="3_vai01"]
+[ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_1y8lo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef7kr"]
+atlas = ExtResource("3_vai01")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Apiary Crown"
+script = ExtResource("4_1y8lo")
+id = &"apiary_crown"
+display_name = "Apiary Crown"
+description = "With at least one companion (bone thralls and packed companion items count): gain +2 thorns per companion count (up to 4 counted)."
+lore = "The queen of the orchard ruled by listening to wings. Her crown still makes room for a smaller court."
+rarity = 2
+tags = Array[StringName]([&"relic", &"companions"])
+category_ids = Array[StringName]([&"relics"])
+preferred_class_ids = null
+preferred_character_ids = null
+icon = SubResource("AtlasTexture_ef7kr")
+base_stats = null
+abilities = Array[ExtResource("1_un5hc")]([ExtResource("2_5dkgi")])

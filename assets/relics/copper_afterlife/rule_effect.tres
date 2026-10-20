@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_qtnvg"]
+
+[resource]
+resource_name = "Copper Afterlife Rule Effect"
+script = ExtResource("1_qtnvg")
+rule_id = &"copper_afterlife_rules"
+parameters = {
+"icon": "copper_afterlife",
+"rule": {
+"amount": 2,
+"cap": 1,
+"condition": "third",
+"metric": "one",
+"stat": "stamina_resource"
+},
+"stats": {}
+}

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://du2wlvo34ol82"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_p4a0x"]
+[ext_resource type="Resource" path="res://assets/items/thunder_yew/rule_ability.tres" id="2_7xsmk"]
+[ext_resource type="Texture2D" uid="uid://dolefovdqafpy" path="res://assets/items/thunder_yew/art/item.png" id="3_lspgq"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_gfcls"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mml7h"]
+atlas = ExtResource("3_lspgq")
+region = Rect2(0, 0, 64, 128)
+
+[resource]
+resource_name = "Thunder Yew"
+script = ExtResource("4_gfcls")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(0, 2), Vector2i(0, 3)])
+activation_costs = Dictionary[int, int]({
+1: 3
+})
+id = &"thunder_yew"
+display_name = "Thunder Yew"
+description = "Costs 3 stamina per activation. Deals 16 physical damage per affordable activation. Applies 2 spark through the existing combat keyword rules per affordable activation."
+lore = "Its tree was struck by lightning on a cloudless day."
+rarity = 3
+tags = Array[StringName]([&"ranged", &"ranger"])
+category_ids = Array[StringName]([&"bows"])
+allowed_class_ids = Array[StringName]([&"ranger"])
+icon = SubResource("AtlasTexture_mml7h")
+base_stats = Dictionary[int, int]({
+0: 16,
+16: 2
+})
+abilities = Array[ExtResource("1_p4a0x")]([ExtResource("2_7xsmk")])

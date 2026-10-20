@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_383w6"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_nea2j"]
+[ext_resource type="Resource" path="res://assets/items/mountain_s_verdict/rule_effect.tres" id="3_kx7o1"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_3ugmv"]
+
+[resource]
+resource_name = "Mountain's Verdict rules"
+script = ExtResource("4_3ugmv")
+id = &"mountain_s_verdict_rules"
+display_name = "Mountain's Verdict rules"
+description = "Costs 3 stamina per activation. Deals 22 physical damage per affordable activation. Warrior only: requires and spends 4 Momentum; adds 5 damage for each Momentum spent. No cost is spent if activation is unaffordable."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_nea2j")]([ExtResource("3_kx7o1")])

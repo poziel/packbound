@@ -86,14 +86,13 @@
       "A folded atlas with a conspicuous road shaped hole"
     ],
     "assets": {
-      "icon": "assets/relics/atlas_of_missing_roads/icons/art/icon.png",
-      "svg": "assets/relics/atlas_of_missing_roads/icons/art/icon.svg",
-      "source": "assets/relics/atlas_of_missing_roads/icons/art/icon.sprite.json",
+      "icon": "assets/relics/atlas_of_missing_roads/art/icon.png",
+      "source": "assets/relics/atlas_of_missing_roads/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/atlas_of_missing_roads/icons/art/provenance.json",
-      "manifest": "assets/relics/atlas_of_missing_roads/icons/art/art-manifest.json",
+      "provenance": "assets/relics/atlas_of_missing_roads/art/provenance.json",
+      "manifest": "assets/relics/atlas_of_missing_roads/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/atlas_of_missing_roads/icons/art/icon.pixloom"
+      "native": "assets/relics/atlas_of_missing_roads/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

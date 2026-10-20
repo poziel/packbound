@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://sgkvmvh681cj"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_p2tbi"]
+[ext_resource type="Resource" path="res://assets/items/battle_axe/rule_ability.tres" id="2_7knby"]
+[ext_resource type="Texture2D" uid="uid://dmacjp8a0j1i" path="res://assets/items/battle_axe/art/item.png" id="3_7rh2b"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_fw5o1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2f3q"]
+atlas = ExtResource("3_7rh2b")
+region = Rect2(0, 0, 96, 64)
+
+[resource]
+resource_name = "Executioner's Axe"
+script = ExtResource("4_fw5o1")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(1, 1)])
+activation_costs = Dictionary[int, int]({
+1: 3
+})
+id = &"battle_axe"
+display_name = "Executioner's Axe"
+description = "Deals 13 damage. Its open corners can hold other items."
+rarity = 2
+category_ids = Array[StringName]([&"axes"])
+icon = SubResource("AtlasTexture_o2f3q")
+base_stats = Dictionary[int, int]({
+0: 13
+})
+abilities = Array[ExtResource("1_p2tbi")]([ExtResource("2_7knby")])

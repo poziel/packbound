@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dluwdfyns3hvi"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_qwxfy"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_ckalp"]
+
+[sub_resource type="Resource" id="Resource_uva1o"]
+script = ExtResource("1_qwxfy")
+accepted_item_ids = Array[StringName]([&"acorn_pendant"])
+
+[sub_resource type="Resource" id="Resource_w18rg"]
+script = ExtResource("1_qwxfy")
+accepted_item_ids = Array[StringName]([&"pearl_of_brine"])
+
+[sub_resource type="Resource" id="Resource_6ickg"]
+script = ExtResource("1_qwxfy")
+accepted_item_ids = Array[StringName]([&"roseglass_brooch"])
+
+[resource]
+resource_name = "Assemble Amber Heart Pendant"
+script = ExtResource("2_ckalp")
+id = &"assemble_amber_heart_pendant"
+ingredients = Array[ExtResource("1_qwxfy")]([SubResource("Resource_uva1o"), SubResource("Resource_w18rg"), SubResource("Resource_6ickg")])
+result_item_id = &"amber_heart_pendant"

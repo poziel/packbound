@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MonsterBehaviorDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="1_y7tu6"]
+[ext_resource type="Resource" path="res://assets/enemies/reliquary_fungus/attack_0.tres" id="2_xccsy"]
+[ext_resource type="Script" path="res://systems/enemies/monster_behavior_definition.gd" id="3_bl25i"]
+
+[resource]
+resource_name = "Reliquary Fungus Behavior"
+script = ExtResource("3_bl25i")
+actions = Array[ExtResource("1_y7tu6")]([ExtResource("2_xccsy")])

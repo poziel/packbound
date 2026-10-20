@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RelicDefinition" format=3 uid="uid://crsjv6t56vclx"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_o3fvy"]
+[ext_resource type="Resource" path="res://assets/relics/echo_clock/rule_ability.tres" id="2_d7b4d"]
+[ext_resource type="Texture2D" uid="uid://s3jx4v5df3s7" path="res://assets/relics/echo_clock/art/revisions/catalog_v2/echo_clock_32px.png" id="3_evamn"]
+[ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_sn15i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov0kc"]
+atlas = ExtResource("3_evamn")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Echo Clock"
+script = ExtResource("4_sn15i")
+id = &"echo_clock"
+display_name = "Echo Clock"
+description = "Every third round: repeat strongest active attack, no extra mana cost. Adjacency counts; ties use reading order."
+rarity = 4
+category_ids = Array[StringName]([&"relics"])
+preferred_class_ids = null
+preferred_character_ids = null
+icon = SubResource("AtlasTexture_ov0kc")
+base_stats = null
+abilities = Array[ExtResource("1_o3fvy")]([ExtResource("2_d7b4d")])

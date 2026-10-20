@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://bkv7fmjxh7uqa"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_mtnq1"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_x00c3"]
+
+[sub_resource type="Resource" id="Resource_6521g"]
+script = ExtResource("1_mtnq1")
+accepted_item_ids = Array[StringName]([&"drummer_s_mallet"])
+
+[sub_resource type="Resource" id="Resource_dpup5"]
+script = ExtResource("1_mtnq1")
+accepted_item_ids = Array[StringName]([&"salt_lantern"])
+
+[resource]
+resource_name = "Assemble Boiler Hammer"
+script = ExtResource("2_x00c3")
+id = &"assemble_boiler_hammer"
+ingredients = Array[ExtResource("1_mtnq1")]([SubResource("Resource_6521g"), SubResource("Resource_dpup5")])
+result_item_id = &"boiler_hammer"

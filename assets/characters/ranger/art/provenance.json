@@ -29,18 +29,18 @@
     }
   },
   "currentAssets": {
-    "full-body.sprite.json": {
-      "path": "assets/characters/ranger/art/full-body.sprite.json",
+    "full_body.sprite.json": {
+      "path": "assets/characters/ranger/art/full_body.sprite.json",
       "sha256": "9a91c23addc3066f808759f5c60a9c732e918b5b73bb21bd88d8534393c57ea4",
       "originalPath": "assets/characters/ranger/art/v3/body.json"
     },
-    "full-body.png": {
-      "path": "assets/characters/ranger/art/full-body.png",
+    "full_body.png": {
+      "path": "assets/characters/ranger/art/full_body.png",
       "sha256": "106be95da286963821b588f00d4f5cbdcf9ca1e032229e5b4c2158e2bfc815fe",
       "originalPath": "assets/characters/ranger.png"
     },
-    "full-body.svg": {
-      "path": "assets/characters/ranger/art/full-body.svg",
+    "full_body.png": {
+      "path": "assets/characters/ranger/art/full_body.png",
       "sha256": "b250a0bc14803b7c44be4adf51ca9b1e41336ada7ca40d0457427f09d23cf941",
       "originalPath": "assets/characters/ranger.svg"
     },
@@ -54,8 +54,8 @@
       "sha256": "92d98ec75d911e4781587fa18397f202ee543def57694e8439966e98c6b6dda0",
       "originalPath": "assets/characters/portraits/ranger.png"
     },
-    "portrait.svg": {
-      "path": "assets/characters/ranger/art/portrait.svg",
+    "portrait.png": {
+      "path": "assets/characters/ranger/art/portrait.png",
       "sha256": "86e67476c236604015708c8fd081008ca756a9bcefa312b2707fafabd3da931c",
       "originalPath": "assets/characters/ranger/art/v3/portrait.svg"
     }

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cmp0dnapclj72"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_t6s7w"]
+[ext_resource type="Resource" path="res://assets/items/pathfinder_gaiters/rule_ability.tres" id="2_avfrp"]
+[ext_resource type="Texture2D" uid="uid://i6m6kstdfyav" path="res://assets/items/pathfinder_gaiters/art/item.png" id="3_acl5a"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_w4caw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb26q"]
+atlas = ExtResource("3_acl5a")
+region = Rect2(0, 0, 64, 32)
+
+[resource]
+resource_name = "Pathfinder Gaiters"
+script = ExtResource("4_w4caw")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+id = &"pathfinder_gaiters"
+display_name = "Pathfinder Gaiters"
+description = "Adds 1 maximum stamina, refreshed each round. Supplies 1 ward each round against poison, curse and reflected damage."
+lore = "Their old trails can only be found in morning mist."
+rarity = 1
+tags = Array[StringName]([&"boots", &"ranger"])
+category_ids = Array[StringName]([&"boots"])
+allowed_class_ids = Array[StringName]([&"ranger"])
+icon = SubResource("AtlasTexture_bb26q")
+base_stats = Dictionary[int, int]({
+5: 1,
+9: 1
+})
+abilities = Array[ExtResource("1_t6s7w")]([ExtResource("2_avfrp")])

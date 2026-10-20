@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_0mim2"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_g3ftf"]
+[ext_resource type="Resource" path="res://assets/items/venom_orb/rule_effect.tres" id="3_kg41h"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_jo4qf"]
+
+[resource]
+resource_name = "Venom Codex rules"
+script = ExtResource("4_jo4qf")
+id = &"venom_orb_rules"
+display_name = "Venom Codex rules"
+description = "A venom spell that deals 3 magical damage and applies 2 poison for 2 mana and no stamina. It activates each round when both resource costs can be paid, in priority and backpack reading order. Echo repeats its damage, condition and elemental trace contribution. Magical resistance reduces its damage; block absorbs direct damage after resistance. Conditions bypass block."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_g3ftf")]([ExtResource("3_kg41h")])

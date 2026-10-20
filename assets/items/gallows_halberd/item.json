@@ -144,14 +144,11 @@
       "A crescent axe and spear mounted on a dark long shaft."
     ],
     "assets": {
-      "icon": "assets/items/gallows_halberd/icons/art/icon.png",
-      "svg": "assets/items/gallows_halberd/icons/art/icon.svg",
-      "source": "assets/items/gallows_halberd/icons/art/icon.sprite.json",
-      "footprint": "assets/items/gallows_halberd/icons/art/footprint.json",
-      "provenance": "assets/items/gallows_halberd/icons/art/provenance.json",
-      "manifest": "assets/items/gallows_halberd/icons/art/art-manifest.json",
+      "icon": "assets/items/gallows_halberd/art/item.png",
+      "source": "assets/items/gallows_halberd/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/gallows_halberd/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

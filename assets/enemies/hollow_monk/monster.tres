@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://dl62legcgrq6o"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_bmt5c"]
+[ext_resource type="Resource" path="res://assets/enemies/hollow_monk/innate_ability.tres" id="2_cqiom"]
+[ext_resource type="Resource" path="res://assets/enemies/hollow_monk/behavior.tres" id="3_oj7sq"]
+[ext_resource type="Texture2D" uid="uid://cmh30jt2eahq6" path="res://assets/enemies/hollow_monk/art/hollow_monk.png" id="4_hpoby"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_gtgl1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmeu2"]
+atlas = ExtResource("4_hpoby")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Hollow Monk"
+script = ExtResource("5_gtgl1")
+behavior = ExtResource("3_oj7sq")
+id = &"hollow_monk"
+display_name = "Hollow Monk"
+log_name = "Hollow Monk"
+description = "Regenerates 5 HP after surviving your turn."
+icon = SubResource("AtlasTexture_xmeu2")
+resource_capacities = Dictionary[int, int]({
+2: 76
+})
+abilities = Array[ExtResource("1_bmt5c")]([ExtResource("2_cqiom")])
+
+metadata/progression_index = 10

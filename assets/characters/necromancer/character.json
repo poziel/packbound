@@ -137,9 +137,9 @@
     ]
   },
   "assetReferences": {
-    "runtime": "assets/characters/necromancer/art/full-body.svg",
+    "runtime": "assets/characters/necromancer/art/full_body.png",
     "concept": "assets/characters/necromancer/art/concept.png",
-    "nativeSource": "assets/characters/necromancer/art/full-body.sprite.json",
+    "nativeSource": "assets/characters/necromancer/art/full_body.sprite.json",
     "artStatus": "Odran v3 accepted and installed 2026-10-16; 256 px body and complete 64 x 64 portrait.",
     "appearanceBasis": "Retains the legacy skeletal keeper, plum cowl, bone mantle, moss robe and skull staff as identity cues. New name and biography are authored for this catalog.",
     "portrait": "assets/characters/necromancer/art/portrait.png",

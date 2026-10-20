@@ -59,7 +59,6 @@ func _run() -> void:
 	var item: Resource = load("res://systems/items/item_definition.gd").new()
 	item.id = &"test_enum_item"
 	item.display_name = "Enum Item"
-	item.role = &"weapon"
 	item.footprint.assign([Vector2i.ZERO])
 	item.base_stats[types.Stat.DAMAGE] = 9
 	item.activation_costs[types.ResourceType.MOMENTUM] = 2

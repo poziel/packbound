@@ -4,10 +4,11 @@ extends RefCounted
 static var _catalog_restrictions: Dictionary = {}
 
 static func character(key: String) -> Dictionary:
-	if not PackCatalog.classes().has(key):
+	var value: CharacterDefinition = preload("res://systems/content/runtime_content.gd").character(key)
+	if value == null:
 		return {}
-	var data = JSON.parse_string(FileAccess.get_file_as_string("res://assets/characters/%s/character.json" % key))
-	return data if data is Dictionary else {}
+	return {"id": str(value.id), "name": value.display_name, "class": str(value.class_id),
+		"bio": {"summary": value.biography}, "description": value.description}
 
 static func definition(content: Dictionary) -> Dictionary:
 	var key: String = str(content.get("key", ""))
@@ -27,9 +28,14 @@ static func definition(content: Dictionary) -> Dictionary:
 	return current
 
 static func allows(content: Dictionary, class_key: String) -> bool:
-	var data: Dictionary = definition(content)
-	var classes: Array = data.get("classes", [])
-	var characters: Array = data.get("characters", [])
+	# Eligibility is hot during drag previews. Read only the two constraint lists;
+	# do not copy and merge the entire item record for every source/target pair.
+	var key: String = str(content.get("key", ""))
+	if (not content.has("classes") or not content.has("characters")) and not key.is_empty() and not _catalog_restrictions.has(key):
+		definition(content)
+	var authored: Dictionary = _catalog_restrictions.get(key, {})
+	var classes: Array = content.get("classes", authored.get("classes", []))
+	var characters: Array = content.get("characters", authored.get("characters", []))
 	return (classes.is_empty() or class_key in classes) and (characters.is_empty() or class_key in characters)
 
 static func markup(content: Dictionary, links: bool = true) -> String:

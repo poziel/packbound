@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_fbb1f"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_dxtab"]
+[ext_resource type="Resource" path="res://assets/relics/mercy_guillotine/rule_effect.tres" id="3_jxhki"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_htrp8"]
+
+[resource]
+resource_name = "Mercy Guillotine rules"
+script = ExtResource("4_htrp8")
+id = &"mercy_guillotine_rules"
+display_name = "Mercy Guillotine rules"
+description = "When the enemy starts the round at or below one third maximum HP: gain +12 physical damage."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_dxtab")]([ExtResource("3_jxhki")])

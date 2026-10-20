@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_s5nkc"]
+
+[resource]
+resource_name = "Rain Button Rule Effect"
+script = ExtResource("1_s5nkc")
+rule_id = &"rain_button_rules"
+parameters = {
+"icon": "rain_button",
+"rule": {
+"amount": 1,
+"cap": 3,
+"condition": "has_spell",
+"metric": "spell_count",
+"stat": "ward"
+},
+"stats": {}
+}

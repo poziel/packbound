@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_wss4e"]
+
+[resource]
+resource_name = "Elementalist Class Effect"
+script = ExtResource("1_wss4e")
+rule_id = &"mage_class_rules"
+parameters = {
+"mechanic": "Elemental Reactions"
+}

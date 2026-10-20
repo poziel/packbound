@@ -85,14 +85,13 @@
       "Three tiny skulls seated around a round dark table"
     ],
     "assets": {
-      "icon": "assets/relics/bone_parliament/icons/art/icon.png",
-      "svg": "assets/relics/bone_parliament/icons/art/icon.svg",
-      "source": "assets/relics/bone_parliament/icons/art/icon.sprite.json",
+      "icon": "assets/relics/bone_parliament/art/icon.png",
+      "source": "assets/relics/bone_parliament/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/bone_parliament/icons/art/provenance.json",
-      "manifest": "assets/relics/bone_parliament/icons/art/art-manifest.json",
+      "provenance": "assets/relics/bone_parliament/art/provenance.json",
+      "manifest": "assets/relics/bone_parliament/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/bone_parliament/icons/art/icon.pixloom"
+      "native": "assets/relics/bone_parliament/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

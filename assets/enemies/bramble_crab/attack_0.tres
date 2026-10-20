@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_ewrbh"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_yh0jk"]
+[ext_resource type="Resource" path="res://assets/enemies/bramble_crab/attack_0_effect.tres" id="3_br63m"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_tgd2v"]
+
+[resource]
+resource_name = "Piercer"
+script = ExtResource("4_tgd2v")
+id = &"bramble_crab_attack_0"
+display_name = "Piercer"
+description = "Up to 1 damage per strike bypasses block after slow, plating and resistance reduce the strike."
+target_id = &"opponent"
+effects = Array[ExtResource("2_yh0jk")]([ExtResource("3_br63m")])

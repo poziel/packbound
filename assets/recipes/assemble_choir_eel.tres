@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dacdxqxr7ysna"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_tnqs0"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_8qec5"]
+
+[sub_resource type="Resource" id="Resource_orvr8"]
+script = ExtResource("1_tnqs0")
+accepted_item_ids = Array[StringName]([&"gilded_scarab"])
+
+[sub_resource type="Resource" id="Resource_en5bo"]
+script = ExtResource("1_tnqs0")
+accepted_item_ids = Array[StringName]([&"marrow_sparrow"])
+
+[sub_resource type="Resource" id="Resource_sgp12"]
+script = ExtResource("1_tnqs0")
+accepted_item_ids = Array[StringName]([&"pocket_basilisk"])
+
+[sub_resource type="Resource" id="Resource_7c0e3"]
+script = ExtResource("1_tnqs0")
+accepted_item_ids = Array[StringName]([&"raincatch_bowl"])
+
+[resource]
+resource_name = "Assemble Choir Eel"
+script = ExtResource("2_8qec5")
+id = &"assemble_choir_eel"
+ingredients = Array[ExtResource("1_tnqs0")]([SubResource("Resource_orvr8"), SubResource("Resource_en5bo"), SubResource("Resource_sgp12"), SubResource("Resource_7c0e3")])
+result_item_id = &"choir_eel"

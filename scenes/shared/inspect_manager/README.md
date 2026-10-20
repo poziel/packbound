@@ -8,6 +8,12 @@ Call `register(control, provider)` for inspection triggers, `register_links(labe
 for inline definition triggers, and `apply_timing(settings)` when preferences
 change. `clear()` removes the whole chain. No tooltip takes keyboard focus.
 
+The rebindable `tooltip_visibility` action defaults to Control. Holding it hides
+the entire tooltip chain; `invert_tooltip_shortcut` instead requires holding it
+to show tooltips. Releasing/pressing the key clears suppressed tooltips and resets
+their opening delay. This gates inspection independently of the global
+`tooltips` preference and preserves Quick inspect, nesting and timing rules.
+
 The four settings are `tooltip_opening_delay`, `tooltip_lock_delay`,
 `tooltip_grace_delay` and `tooltip_closing_delay`. They apply at every depth.
 Locking requires trigger hover after opening; unlocked tooltips close immediately

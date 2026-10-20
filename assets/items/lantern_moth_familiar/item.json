@@ -141,14 +141,11 @@
       "A broad amber moth with a tiny glowing belly."
     ],
     "assets": {
-      "icon": "assets/items/lantern_moth_familiar/icons/art/icon.png",
-      "svg": "assets/items/lantern_moth_familiar/icons/art/icon.svg",
-      "source": "assets/items/lantern_moth_familiar/icons/art/icon.sprite.json",
-      "footprint": "assets/items/lantern_moth_familiar/icons/art/footprint.json",
-      "provenance": "assets/items/lantern_moth_familiar/icons/art/provenance.json",
-      "manifest": "assets/items/lantern_moth_familiar/icons/art/art-manifest.json",
+      "icon": "assets/items/lantern_moth_familiar/art/item.png",
+      "source": "assets/items/lantern_moth_familiar/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/lantern_moth_familiar/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://ucj0brus4c27"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_fupul"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_jws3s"]
+
+[sub_resource type="Resource" id="Resource_yyx3e"]
+script = ExtResource("1_fupul")
+accepted_item_ids = Array[StringName]([&"duelist_s_coin"])
+
+[sub_resource type="Resource" id="Resource_0woo3"]
+script = ExtResource("1_fupul")
+accepted_item_ids = Array[StringName]([&"vanguard_sabaton"])
+
+[resource]
+resource_name = "Assemble Cadence Spurs"
+script = ExtResource("2_jws3s")
+id = &"assemble_cadence_spurs"
+ingredients = Array[ExtResource("1_fupul")]([SubResource("Resource_yyx3e"), SubResource("Resource_0woo3")])
+result_item_id = &"cadence_spurs"

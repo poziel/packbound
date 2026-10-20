@@ -131,12 +131,9 @@
       "A single broad engraved groove anchors its identity."
     ],
     "assets": {
-      "icon": "assets/items/oathsteel_blade/icons/art/icon.png",
-      "svg": "assets/items/oathsteel_blade/icons/art/icon.svg",
-      "source": "assets/items/oathsteel_blade/icons/art/icon.sprite.json",
-      "footprint": "assets/items/oathsteel_blade/icons/art/footprint.json",
-      "provenance": "assets/items/oathsteel_blade/icons/art/provenance.json",
-      "manifest": "assets/items/oathsteel_blade/icons/art/art-manifest.json",
+      "icon": "assets/items/oathsteel_blade/art/item.png",
+      "source": "assets/items/oathsteel_blade/art/item.pixloom.json",
+      "footprint": null,
       "variants": []
     },
     "approval": "unreviewed"

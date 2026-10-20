@@ -1,9 +1,16 @@
 # Enemies
 
-The runtime roster contains 56 enemies: 20 original opponents and [36 additional enemies](EXPANSION.md). Runs remain 20 floors, with two new encounter alternatives alongside the original opponent on each of floors 2–19. The opening Ash Rat and final Zippered Maw remain fixed.
+Each of the 56 enemy resources owns a folder named after its resource, using
+underscores. Each folder contains a design `README.md`, `monster.tres` and its
+supporting behavior/ability/effect resources, plus `art/` for artwork and art records.
+Expansion encounter floors are stored as metadata on `monster.tres`.
 
-Each new enemy folder contains an independent design README, an `enemy.json` starting-stat profile, and an `art/` folder with layered Pixloom JSON, a native `.pixloom` project, transparent PNG/SVG exports, and provenance. `expansion.json` lists the profiles consumed by the runtime loader. Profiles use the existing combat rules; legacy `armor` stores starting block, not plating.
+The original loose enemy PNGs now live in their owning enemy's `art/` folder.
+PNG exports retain their original dimensions and pixels. Editable Pixloom sources,
+provenance and art metadata stay beside the exports where available. SVGs were
+removed. The retained shared legacy sheet is `enemies.png`.
 
-Original individual sprites and `roster.json` retain their bytes and provenance. `enemies.svg` is a retained legacy atlas. `presentation.tres` provides editable per-enemy shadows and airborne behavior. The new art is integrated at user request and awaits artistic acceptance.
-
-When configuring a release export, include `assets/enemies/expansion.json` and `assets/enemies/*/enemy.json` as non-resource files. Editable art sources need not be shipped in the game package.
+`systems/enemies/enemy_expansion.gd` discovers `monster.tres` resources with
+`encounter_floor` metadata and adapts their stats, innate rules and ordered actions
+to the existing combat profile contract. It does not read a JSON index. See each
+enemy's README for design details. Stable enemy IDs and combat rules are unchanged.

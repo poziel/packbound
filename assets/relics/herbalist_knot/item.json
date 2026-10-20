@@ -75,12 +75,11 @@
       "Keep the leaf silhouettes separate and the knot thick."
     ],
     "assets": {
-      "icon": "assets/relics/herbalist_knot/icons/art/icon.png",
-      "svg": "assets/relics/herbalist_knot/icons/art/icon.svg",
-      "source": "assets/relics/herbalist_knot/icons/art/icon.sprite.json",
+      "icon": "assets/relics/herbalist_knot/art/icon.png",
+      "source": "assets/relics/herbalist_knot/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/herbalist_knot/icons/art/provenance.json",
-      "manifest": "assets/relics/herbalist_knot/icons/art/art-manifest.json",
+      "provenance": "assets/relics/herbalist_knot/art/provenance.json",
+      "manifest": "assets/relics/herbalist_knot/art/art_manifest.json",
       "variants": []
     },
     "approval": "unreviewed"

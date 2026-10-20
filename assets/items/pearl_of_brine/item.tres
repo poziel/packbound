@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://b74vvt3ibx44y"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_df18b"]
+[ext_resource type="Resource" path="res://assets/items/pearl_of_brine/rule_ability.tres" id="2_tldlx"]
+[ext_resource type="Texture2D" uid="uid://g5mnxshoerni" path="res://assets/items/pearl_of_brine/art/item.png" id="3_0ovad"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_0qbpw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drmcf"]
+atlas = ExtResource("3_0ovad")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Pearl of Brine"
+script = ExtResource("4_0qbpw")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"pearl_of_brine"
+display_name = "Pearl of Brine"
+description = "Removes up to 2 poison before its round tick. Supplies 1 ward each round against poison, curse and reflected damage."
+lore = "The diver found it inside a shell older than the coastline."
+rarity = 1
+tags = Array[StringName]([&"pendant"])
+category_ids = Array[StringName]([&"pendants"])
+icon = SubResource("AtlasTexture_drmcf")
+base_stats = Dictionary[int, int]({
+5: 1,
+12: 2
+})
+abilities = Array[ExtResource("1_df18b")]([ExtResource("2_tldlx")])

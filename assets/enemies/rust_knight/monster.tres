@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://dn1rtaj74228v"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_a8su8"]
+[ext_resource type="Resource" path="res://assets/enemies/rust_knight/innate_ability.tres" id="2_ldc67"]
+[ext_resource type="Resource" path="res://assets/enemies/rust_knight/behavior.tres" id="3_i4hmk"]
+[ext_resource type="Texture2D" uid="uid://d2gtttipt64bn" path="res://assets/enemies/rust_knight/art/rust_knight.png" id="4_xrbup"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_k4shb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6d1h"]
+atlas = ExtResource("4_xrbup")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Rust Knight"
+script = ExtResource("5_k4shb")
+behavior = ExtResource("3_i4hmk")
+id = &"rust_knight"
+display_name = "Rust Knight"
+log_name = "Rust Knight"
+description = "Destroys 3 of your generated block before attacking."
+icon = SubResource("AtlasTexture_j6d1h")
+base_stats = Dictionary[int, int]({
+17: 25
+})
+resource_capacities = Dictionary[int, int]({
+2: 62
+})
+abilities = Array[ExtResource("1_a8su8")]([ExtResource("2_ldc67")])
+
+metadata/progression_index = 8

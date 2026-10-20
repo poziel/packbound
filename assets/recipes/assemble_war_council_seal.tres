@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dyex572xfjfg0"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_ycnbg"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_q8vwj"]
+
+[sub_resource type="Resource" id="Resource_kjmyw"]
+script = ExtResource("1_ycnbg")
+accepted_item_ids = Array[StringName]([&"cadence_spurs"])
+
+[sub_resource type="Resource" id="Resource_t6tiv"]
+script = ExtResource("1_ycnbg")
+accepted_item_ids = Array[StringName]([&"captain_s_baton"])
+
+[sub_resource type="Resource" id="Resource_r82jk"]
+script = ExtResource("1_ycnbg")
+accepted_item_ids = Array[StringName]([&"roseglass_brooch"])
+
+[resource]
+resource_name = "Assemble War Council Seal"
+script = ExtResource("2_q8vwj")
+id = &"assemble_war_council_seal"
+ingredients = Array[ExtResource("1_ycnbg")]([SubResource("Resource_kjmyw"), SubResource("Resource_t6tiv"), SubResource("Resource_r82jk")])
+result_item_id = &"war_council_seal"

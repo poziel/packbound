@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_q1gax"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_ha65q"]
+[ext_resource type="Resource" path="res://assets/relics/hearth_token/rule_effect.tres" id="3_dx4sq"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_k5n73"]
+
+[resource]
+resource_name = "Hearth Token rules"
+script = ExtResource("4_k5n73")
+id = &"hearth_token_rules"
+display_name = "Hearth Token rules"
+description = "While owned: +1 ward."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_ha65q")]([ExtResource("3_dx4sq")])

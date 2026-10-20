@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_njakg"]
+
+[resource]
+resource_name = "Quick Loader Rule Effect"
+script = ExtResource("1_njakg")
+rule_id = &"quiver_loader_rules"
+parameters = {
+"block_per_round": 0,
+"cap": 1,
+"mana_per_round": 0,
+"priority": 0,
+"stamina_per_round": 0,
+"tooltip_detail": "Quiver upgrade: Volley fires every 2 rounds instead of 3. Once per run."
+}

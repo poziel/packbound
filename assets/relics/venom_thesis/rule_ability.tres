@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_p07g4"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_t1gcy"]
+[ext_resource type="Resource" path="res://assets/relics/venom_thesis/rule_effect.tres" id="3_jwnnn"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_t2sso"]
+
+[resource]
+resource_name = "Venom Thesis rules"
+script = ExtResource("4_t2sso")
+id = &"venom_thesis_rules"
+display_name = "Venom Thesis rules"
+description = "When the enemy already has Poison before activations: gain +2 magical damage."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_t1gcy")]([ExtResource("3_jwnnn")])

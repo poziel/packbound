@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://bihf55u0htjmi"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_57smb"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_23t1l"]
+
+[sub_resource type="Resource" id="Resource_ma6gc"]
+script = ExtResource("1_57smb")
+accepted_item_ids = Array[StringName]([&"tempered_blade"])
+
+[sub_resource type="Resource" id="Resource_iega5"]
+script = ExtResource("1_57smb")
+accepted_item_ids = Array[StringName]([&"tempered_blade"])
+
+[resource]
+resource_name = "Forge Oathsteel Blade"
+script = ExtResource("2_23t1l")
+id = &"forge_oathsteel_blade"
+ingredients = Array[ExtResource("1_57smb")]([SubResource("Resource_ma6gc"), SubResource("Resource_iega5")])
+result_item_id = &"oathsteel_blade"

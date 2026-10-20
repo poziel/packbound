@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://bikvuvfux3bdl"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_dcpmy"]
+[ext_resource type="Resource" path="res://assets/enemies/bellroot/innate_ability.tres" id="2_gvb3b"]
+[ext_resource type="Resource" path="res://assets/enemies/bellroot/behavior.tres" id="3_hsm0a"]
+[ext_resource type="Texture2D" uid="uid://dieqapjhu8pil" path="res://assets/enemies/bellroot/art/bellroot.png" id="4_12mkx"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_a3iqq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlxgg"]
+atlas = ExtResource("4_12mkx")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Bellroot"
+script = ExtResource("5_a3iqq")
+species_id = &"plant"
+role_id = &"cycle guard"
+behavior = ExtResource("3_hsm0a")
+id = &"bellroot"
+display_name = "Bellroot"
+log_name = "Bellroot"
+description = "A root colony that has grown through a fallen bronze bell. It closes the bell around its core, then opens to strike with knotted limbs."
+icon = SubResource("AtlasTexture_xlxgg")
+resource_capacities = Dictionary[int, int]({
+2: 96
+})
+abilities = Array[ExtResource("1_dcpmy")]([ExtResource("2_gvb3b")])
+metadata/encounter_floor = 15

@@ -85,14 +85,13 @@
       "An incomplete obsidian crown floating around an empty center"
     ],
     "assets": {
-      "icon": "assets/relics/crown_of_the_unmade/icons/art/icon.png",
-      "svg": "assets/relics/crown_of_the_unmade/icons/art/icon.svg",
-      "source": "assets/relics/crown_of_the_unmade/icons/art/icon.sprite.json",
+      "icon": "assets/relics/crown_of_the_unmade/art/icon.png",
+      "source": "assets/relics/crown_of_the_unmade/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/crown_of_the_unmade/icons/art/provenance.json",
-      "manifest": "assets/relics/crown_of_the_unmade/icons/art/art-manifest.json",
+      "provenance": "assets/relics/crown_of_the_unmade/art/provenance.json",
+      "manifest": "assets/relics/crown_of_the_unmade/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/crown_of_the_unmade/icons/art/icon.pixloom"
+      "native": "assets/relics/crown_of_the_unmade/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

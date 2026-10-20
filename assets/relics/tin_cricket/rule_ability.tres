@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_1yhn1"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_5laev"]
+[ext_resource type="Resource" path="res://assets/relics/tin_cricket/rule_effect.tres" id="3_67w3c"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_u7nu0"]
+
+[resource]
+resource_name = "Tin Cricket rules"
+script = ExtResource("4_u7nu0")
+id = &"tin_cricket_rules"
+display_name = "Tin Cricket rules"
+description = "Every round: gain +1 ward."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_5laev")]([ExtResource("3_67w3c")])

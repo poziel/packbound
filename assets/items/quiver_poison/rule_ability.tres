@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_tw81c"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_ppyb4"]
+[ext_resource type="Resource" path="res://assets/items/quiver_poison/rule_effect.tres" id="3_qtoed"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_c1ly6"]
+
+[resource]
+resource_name = "Venom Reservoir rules"
+script = ExtResource("4_c1ly6")
+id = &"quiver_poison_rules"
+display_name = "Venom Reservoir rules"
+description = "Quiver upgrade: each Volley arrow applies +1 poison. Up to 2 upgrades."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_ppyb4")]([ExtResource("3_qtoed")])

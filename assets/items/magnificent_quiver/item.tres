@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dsj3cxyb43wlg"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_2boc0"]
+[ext_resource type="Resource" path="res://assets/items/magnificent_quiver/rule_ability.tres" id="2_xw7n7"]
+[ext_resource type="Texture2D" uid="uid://51iaa2f6uo8d" path="res://assets/items/quiver/art/item.png" id="3_bxe4s"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_i17g3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba63d"]
+atlas = ExtResource("3_bxe4s")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Bowmaster's Quiver"
+script = ExtResource("4_i17g3")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+id = &"magnificent_quiver"
+display_name = "Bowmaster's Quiver"
+description = "Touching bows gain +2 damage"
+rarity = 2
+category_ids = Array[StringName]([&"quivers"])
+icon = SubResource("AtlasTexture_ba63d")
+abilities = Array[ExtResource("1_2boc0")]([ExtResource("2_xw7n7")])

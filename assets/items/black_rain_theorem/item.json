@@ -147,14 +147,11 @@
       "A black folded umbrella diagram on ivory parchment."
     ],
     "assets": {
-      "icon": "assets/items/black_rain_theorem/icons/art/icon.png",
-      "svg": "assets/items/black_rain_theorem/icons/art/icon.svg",
-      "source": "assets/items/black_rain_theorem/icons/art/icon.sprite.json",
-      "footprint": "assets/items/black_rain_theorem/icons/art/footprint.json",
-      "provenance": "assets/items/black_rain_theorem/icons/art/provenance.json",
-      "manifest": "assets/items/black_rain_theorem/icons/art/art-manifest.json",
+      "icon": "assets/items/black_rain_theorem/art/item.png",
+      "source": "assets/items/black_rain_theorem/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/black_rain_theorem/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

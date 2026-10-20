@@ -134,14 +134,11 @@
       "A rose pink glass flower with broad overlapping petals."
     ],
     "assets": {
-      "icon": "assets/items/roseglass_brooch/icons/art/icon.png",
-      "svg": "assets/items/roseglass_brooch/icons/art/icon.svg",
-      "source": "assets/items/roseglass_brooch/icons/art/icon.sprite.json",
-      "footprint": "assets/items/roseglass_brooch/icons/art/footprint.json",
-      "provenance": "assets/items/roseglass_brooch/icons/art/provenance.json",
-      "manifest": "assets/items/roseglass_brooch/icons/art/art-manifest.json",
+      "icon": "assets/items/roseglass_brooch/art/item.png",
+      "source": "assets/items/roseglass_brooch/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/roseglass_brooch/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

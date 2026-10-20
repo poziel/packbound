@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_6swrg"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_n71x4"]
+[ext_resource type="Resource" path="res://assets/relics/glass_orchard/rule_effect.tres" id="3_1opr6"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_ek7md"]
+
+[resource]
+resource_name = "Glass Orchard rules"
+script = ExtResource("4_ek7md")
+id = &"glass_orchard_rules"
+display_name = "Glass Orchard rules"
+description = "When an Elemental Reaction occurs this round: gain +1 healing per reaction count (up to 3 counted)."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_n71x4")]([ExtResource("3_1opr6")])

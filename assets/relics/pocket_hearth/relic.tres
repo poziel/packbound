@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RelicDefinition" format=3 uid="uid://dtd4oeuxy7gbn"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_y644n"]
+[ext_resource type="Resource" path="res://assets/relics/pocket_hearth/rule_ability.tres" id="2_dqakf"]
+[ext_resource type="Texture2D" uid="uid://6vi38ec7gl80" path="res://assets/relics/pocket_hearth/art/icon.png" id="3_3haih"]
+[ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_qulh0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rmcj"]
+atlas = ExtResource("3_3haih")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Pocket Hearth"
+script = ExtResource("4_qulh0")
+id = &"pocket_hearth"
+display_name = "Pocket Hearth"
+description = "When current HP is at most half maximum HP before activations: gain +1 healing."
+lore = "The potter promised a soldier she could always carry home. A coal from her kitchen has never cooled inside it."
+tags = Array[StringName]([&"relic", &"low_hp"])
+category_ids = Array[StringName]([&"relics"])
+preferred_class_ids = null
+preferred_character_ids = null
+icon = SubResource("AtlasTexture_8rmcj")
+base_stats = null
+abilities = Array[ExtResource("1_y644n")]([ExtResource("2_dqakf")])

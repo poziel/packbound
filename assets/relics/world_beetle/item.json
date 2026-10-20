@@ -86,14 +86,13 @@
       "A broad bronze beetle carrying a square stone world"
     ],
     "assets": {
-      "icon": "assets/relics/world_beetle/icons/art/icon.png",
-      "svg": "assets/relics/world_beetle/icons/art/icon.svg",
-      "source": "assets/relics/world_beetle/icons/art/icon.sprite.json",
+      "icon": "assets/relics/world_beetle/art/icon.png",
+      "source": "assets/relics/world_beetle/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/world_beetle/icons/art/provenance.json",
-      "manifest": "assets/relics/world_beetle/icons/art/art-manifest.json",
+      "provenance": "assets/relics/world_beetle/art/provenance.json",
+      "manifest": "assets/relics/world_beetle/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/world_beetle/icons/art/icon.pixloom"
+      "native": "assets/relics/world_beetle/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

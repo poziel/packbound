@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://t4s71ygm6845"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_4wp4i"]
+[ext_resource type="Resource" path="res://assets/items/captive_aurora/rule_ability.tres" id="2_vicmb"]
+[ext_resource type="Texture2D" uid="uid://cfiu1jnh7ujrg" path="res://assets/items/captive_aurora/art/item.png" id="3_omvoi"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_p12sf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ubgu"]
+atlas = ExtResource("3_omvoi")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Captive Aurora"
+script = ExtResource("4_p12sf")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+id = &"captive_aurora"
+display_name = "Captive Aurora"
+description = "Adds 3 maximum mana, refreshed each round. Supplies 3 ward each round against poison, curse and reflected damage."
+lore = "The northern sky lost one color the night it was captured."
+rarity = 3
+tags = Array[StringName]([&"pendant"])
+category_ids = Array[StringName]([&"pendants"])
+icon = SubResource("AtlasTexture_4ubgu")
+base_stats = Dictionary[int, int]({
+5: 3,
+8: 3
+})
+abilities = Array[ExtResource("1_4wp4i")]([ExtResource("2_vicmb")])

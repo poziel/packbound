@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_bd2tv"]
+
+[resource]
+resource_name = "Cinder Nursery Rule Effect"
+script = ExtResource("1_bd2tv")
+rule_id = &"cinder_nursery_rules"
+parameters = {
+"icon": "cinder_nursery",
+"rule": {
+"amount": 2,
+"cap": 1,
+"condition": "burning",
+"metric": "one",
+"stat": "healing"
+},
+"stats": {}
+}

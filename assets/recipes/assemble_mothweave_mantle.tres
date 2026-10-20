@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://v8g6kwnnugrh"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_wh5cm"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_kahqp"]
+
+[sub_resource type="Resource" id="Resource_xqgek"]
+script = ExtResource("1_wh5cm")
+accepted_item_ids = Array[StringName]([&"patchwork_jack"])
+
+[sub_resource type="Resource" id="Resource_svfhp"]
+script = ExtResource("1_wh5cm")
+accepted_item_ids = Array[StringName]([&"salt_lantern"])
+
+[resource]
+resource_name = "Assemble Mothweave Mantle"
+script = ExtResource("2_kahqp")
+id = &"assemble_mothweave_mantle"
+ingredients = Array[ExtResource("1_wh5cm")]([SubResource("Resource_xqgek"), SubResource("Resource_svfhp")])
+result_item_id = &"mothweave_mantle"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_fvc6i"]
+
+[resource]
+resource_name = "Gutter Duelist Innate Effect"
+script = ExtResource("1_fvc6i")
+rule_id = &"gutter_duelist_innate_rules"
+parameters = {
+"cycle_armor": 0,
+"drain": 0,
+"enrage": 0,
+"intent": "Parry",
+"opening_armor": 0,
+"parry": 5,
+"reflect": 0,
+"regen": 0,
+"sunder": 0
+}

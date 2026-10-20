@@ -1,6 +1,6 @@
 # Delver assets
 
-Each stable Delver ID owns one folder with `README.md` (design brief), `character.json` (structured profile), `concept/` (supplied visual references) and `art/` (current generated artwork and editable sources).
+Each stable Delver ID owns one folder with `README.md` (design brief), `character.json` (structured profile), `art/concept/` (supplied visual references) and `art/` (current generated artwork and editable sources).
 
 | ID | Delver | Profile |
 | --- | --- | --- |
@@ -17,3 +17,5 @@ The [acceptance registry](../../workspace/docs/art/characters/accepted.json) pre
 [Character archives](../../workspace/archives/characters/) contain retained ZIP snapshots, excluded from Godot import by `workspace/.gdignore`. Superseded versions, draft sources, legacy shared portraits/sources and the prior root layout are preserved there. Historical paths inside original provenance records describe their original location; consult the ZIP for those files.
 
 The game still defines classes in code. Moving assets does not migrate class gameplay to `character.json`.
+
+Art filenames use underscores (`full_body.png`); SVG exports were removed. Authored `.tres` gameplay resources remain beside each Delver README.

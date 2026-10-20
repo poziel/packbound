@@ -85,14 +85,13 @@
       "A dark funeral urn ringed by pale arrow fletchings"
     ],
     "assets": {
-      "icon": "assets/relics/thousand_arrow_funeral/icons/art/icon.png",
-      "svg": "assets/relics/thousand_arrow_funeral/icons/art/icon.svg",
-      "source": "assets/relics/thousand_arrow_funeral/icons/art/icon.sprite.json",
+      "icon": "assets/relics/thousand_arrow_funeral/art/icon.png",
+      "source": "assets/relics/thousand_arrow_funeral/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/thousand_arrow_funeral/icons/art/provenance.json",
-      "manifest": "assets/relics/thousand_arrow_funeral/icons/art/art-manifest.json",
+      "provenance": "assets/relics/thousand_arrow_funeral/art/provenance.json",
+      "manifest": "assets/relics/thousand_arrow_funeral/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/thousand_arrow_funeral/icons/art/icon.pixloom"
+      "native": "assets/relics/thousand_arrow_funeral/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

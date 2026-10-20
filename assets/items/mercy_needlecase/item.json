@@ -143,14 +143,11 @@
       "A slim ivory case opened to show a broad silver needle."
     ],
     "assets": {
-      "icon": "assets/items/mercy_needlecase/icons/art/icon.png",
-      "svg": "assets/items/mercy_needlecase/icons/art/icon.svg",
-      "source": "assets/items/mercy_needlecase/icons/art/icon.sprite.json",
-      "footprint": "assets/items/mercy_needlecase/icons/art/footprint.json",
-      "provenance": "assets/items/mercy_needlecase/icons/art/provenance.json",
-      "manifest": "assets/items/mercy_needlecase/icons/art/art-manifest.json",
+      "icon": "assets/items/mercy_needlecase/art/item.png",
+      "source": "assets/items/mercy_needlecase/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/mercy_needlecase/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

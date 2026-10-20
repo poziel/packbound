@@ -139,14 +139,11 @@
       "A squat iron lantern holding a block of pale salt."
     ],
     "assets": {
-      "icon": "assets/items/salt_lantern/icons/art/icon.png",
-      "svg": "assets/items/salt_lantern/icons/art/icon.svg",
-      "source": "assets/items/salt_lantern/icons/art/icon.sprite.json",
-      "footprint": "assets/items/salt_lantern/icons/art/footprint.json",
-      "provenance": "assets/items/salt_lantern/icons/art/provenance.json",
-      "manifest": "assets/items/salt_lantern/icons/art/art-manifest.json",
+      "icon": "assets/items/salt_lantern/art/item.png",
+      "source": "assets/items/salt_lantern/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/salt_lantern/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

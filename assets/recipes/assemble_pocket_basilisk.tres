@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dfb1unwbnjedy"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_fkk4i"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_0a61j"]
+
+[sub_resource type="Resource" id="Resource_ohuej"]
+script = ExtResource("1_fkk4i")
+accepted_item_ids = Array[StringName]([&"marrow_sparrow"])
+
+[sub_resource type="Resource" id="Resource_vgaiq"]
+script = ExtResource("1_fkk4i")
+accepted_item_ids = Array[StringName]([&"pearl_of_brine"])
+
+[sub_resource type="Resource" id="Resource_j7d0g"]
+script = ExtResource("1_fkk4i")
+accepted_item_ids = Array[StringName]([&"thorn_whetstone"])
+
+[resource]
+resource_name = "Assemble Pocket Basilisk"
+script = ExtResource("2_0a61j")
+id = &"assemble_pocket_basilisk"
+ingredients = Array[ExtResource("1_fkk4i")]([SubResource("Resource_ohuej"), SubResource("Resource_vgaiq"), SubResource("Resource_j7d0g")])
+result_item_id = &"pocket_basilisk"

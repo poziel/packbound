@@ -1,5 +1,7 @@
 # Shared surface tokens
 
+Active themes live in `gameplay/` and `menu/`, independently of scene folder names. Preserve both themes and intentional instance overrides. Keep shared appearance in its owning theme or reusable component.
+
 Edit `PackSurface` in the gameplay or menu `theme.tres` using Godot's Theme editor:
 
 - Constant `content_padding` (22): the content inset in UI pixels.

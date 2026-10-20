@@ -54,7 +54,7 @@ var menu_font: FontFile = preload("res://assets/fonts/ui_pixel.tres")
 var volume_sliders: Dictionary = {}
 var volume_labels: Dictionary = {}
 var from_game: bool = false
-const DEFAULT_SETTINGS: Dictionary = {"turn_based_combat": false, "hold_destructive_actions": true, "show_run_time": true, "fullscreen": false, "window_mode": 0, "vsync": true, "brightness": 100, "contrast": 100, "name_display": 0, "flash": true, "tooltips": true, "resolution": 2, "volume": 80, "music": 70, "fx": 60, "ambience": 15, "combat_speed": 1.0, "player_response_delay": 1.5, "enemy_response_delay": 1.5, "tooltip_opening_delay": 0.15, "tooltip_lock_delay": 1.2, "tooltip_grace_delay": 0.7, "tooltip_closing_delay": 0.7}
+const DEFAULT_SETTINGS: Dictionary = {"max_fps": 0, "show_fps": false, "reduce_unfocused_fps": false, "mute_unfocused": false, "software_cursor": false, "invert_tooltip_shortcut": false, "turn_based_combat": false, "hold_destructive_actions": true, "show_run_time": true, "fullscreen": false, "window_mode": 0, "vsync": true, "brightness": 100, "contrast": 100, "name_display": 0, "flash": true, "tooltips": true, "resolution": 2, "volume": 80, "music": 70, "fx": 60, "ambience": 15, "combat_speed": 1.0, "player_response_delay": 1.5, "enemy_response_delay": 1.5, "tooltip_opening_delay": 0.15, "tooltip_lock_delay": 1.2, "tooltip_grace_delay": 0.7, "tooltip_closing_delay": 0.7}
 var settings: Dictionary = DEFAULT_SETTINGS.duplicate()
 const SIZES: Array[Vector2i] = [Vector2i(800, 450), Vector2i(960, 540), Vector2i(1280, 720), Vector2i(1440, 810), Vector2i(1600, 900), Vector2i(1920, 1080), Vector2i(2560, 1440), Vector2i(3200, 1800), Vector2i(3840, 2160)]
 
@@ -76,6 +76,7 @@ func _ready() -> void:
 	BINDINGS.apply(keybindings)
 	_create_display_adjustment()
 	audio.apply_settings(settings)
+	$ApplicationPreferences.apply_settings(settings)
 	visibility_changed.connect(_sync_music)
 	play_button.pressed.connect(_transition_to_classes)
 	quit_button.pressed.connect(func() -> void: get_tree().quit())
@@ -126,6 +127,10 @@ func _navigate(destination: Callable) -> void:
 
 func _bind_options() -> void:
 	_build_keybind_rows()
+	for key: String in ["show_fps", "reduce_unfocused_fps", "mute_unfocused", "invert_tooltip_shortcut"]:
+		options.get_node("%" + key.to_pascal_case()).toggled.connect(func(value: bool) -> void: _set_option(key, value))
+	options.get_node("%MaxFps").value_changed.connect(func(value: float) -> void: _set_option("max_fps", int(value)))
+	options.get_node("%CursorMode").item_selected.connect(func(value: int) -> void: _set_option("software_cursor", value == 1))
 	resolution.clear()
 	for dimensions in SIZES:
 		resolution.add_item("%d x %d" % [dimensions.x, dimensions.y])
@@ -165,11 +170,15 @@ func _bind_options() -> void:
 		volume_labels[key] = label
 		slider.value_changed.connect(_volume_changed.bind(key))
 		slider.drag_ended.connect(func(_changed: bool) -> void: audio.play_click())
-	for select: OptionButton in [resolution, window_mode, name_display]:
+	for select: OptionButton in [resolution, window_mode, name_display, options.get_node("%CursorMode")]:
 		_style_popup(select.get_popup())
 	_sync_options()
 
 func _sync_options() -> void:
+	for key: String in ["show_fps", "reduce_unfocused_fps", "mute_unfocused", "invert_tooltip_shortcut"]:
+		options.get_node("%" + key.to_pascal_case()).set_pressed_no_signal(bool(settings[key]))
+	options.get_node("%MaxFps").set_value_no_signal(int(settings["max_fps"]))
+	options.get_node("%CursorMode").select(1 if bool(settings["software_cursor"]) else 0)
 	options.get_node("%TurnBasedToggle").set_pressed_no_signal(bool(settings["turn_based_combat"]))
 	options.get_node("%HoldDestructiveToggle").set_pressed_no_signal(bool(settings["hold_destructive_actions"]))
 	reset_button.call("set_hold_required", bool(settings["hold_destructive_actions"]))
@@ -208,6 +217,7 @@ func _reset_options() -> void:
 	_cancel_keybind()
 	_sync_options()
 	audio.apply_settings(settings)
+	$ApplicationPreferences.apply_settings(settings)
 	_apply_display()
 	_save_settings()
 	settings_changed.emit()
@@ -264,6 +274,8 @@ func _options_back() -> void:
 			play_button.grab_focus()
 
 func _set_option(key: String, value: Variant) -> void:
+	if key == "max_fps":
+		value = clampi(int(value), 0, 1000)
 	if key == "combat_speed":
 		value = snappedf(clampf(float(value), 0.5, 10.0), 0.5)
 	if key in ["player_response_delay", "enemy_response_delay"]:
@@ -281,6 +293,7 @@ func _set_option(key: String, value: Variant) -> void:
 	_sync_options()
 	if PackMenuAudio.BUS_NAMES.has(key):
 		audio.apply_settings(settings)
+	$ApplicationPreferences.apply_settings(settings)
 	if key in ["fullscreen", "window_mode", "resolution", "vsync", "brightness", "contrast"]:
 		_apply_display(key in ["fullscreen", "window_mode", "resolution"])
 	_save_settings()
@@ -309,6 +322,7 @@ func _load_settings() -> void:
 	settings["window_mode"] = clampi(int(settings["window_mode"]), 0, 2)
 	settings["fullscreen"] = int(settings["window_mode"]) != 0
 	settings["name_display"] = clampi(int(settings["name_display"]), 0, 1)
+	settings["max_fps"] = clampi(int(settings["max_fps"]), 0, 1000)
 	for key: String in ["brightness", "contrast"]:
 		settings[key] = clampi(int(settings[key]), 50, 150)
 	keybindings = BINDINGS.DEFAULTS.duplicate(true)
@@ -365,8 +379,8 @@ func _apply_display(update_window: bool = true) -> void:
 
 func player_name(class_key: String) -> String:
 	if int(settings["name_display"]) == 1:
-		var profile: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://assets/characters/%s/character.json" % class_key))
-		if profile is Dictionary and not str(profile.get("name", "")).is_empty():
+		var profile: Dictionary = preload("res://systems/content/content_restrictions.gd").character(class_key)
+		if not str(profile.get("name", "")).is_empty():
 			return profile.name
 	return PackCatalog.classes()[class_key]["name"]
 

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_gxxmh"]
+
+[resource]
+resource_name = "Diagonal Thread Rule Effect"
+script = ExtResource("1_gxxmh")
+rule_id = &"diagonal_thread_rules"
+parameters = {
+"icon": "diagonal_thread",
+"keyword_stats": []
+}

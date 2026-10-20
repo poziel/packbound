@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://b514aimnvkoy"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_txsng"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_5hcvu"]
+
+[sub_resource type="Resource" id="Resource_yrnpf"]
+script = ExtResource("1_txsng")
+accepted_item_ids = Array[StringName]([&"raincatch_bowl"])
+
+[sub_resource type="Resource" id="Resource_8rv5y"]
+script = ExtResource("1_txsng")
+accepted_item_ids = Array[StringName]([&"salt_lantern"])
+
+[sub_resource type="Resource" id="Resource_pixj5"]
+script = ExtResource("1_txsng")
+accepted_item_ids = Array[StringName]([&"wax_ear_trumpet"])
+
+[resource]
+resource_name = "Assemble Bottle Of Yesterday"
+script = ExtResource("2_5hcvu")
+id = &"assemble_bottle_of_yesterday"
+ingredients = Array[ExtResource("1_txsng")]([SubResource("Resource_yrnpf"), SubResource("Resource_8rv5y"), SubResource("Resource_pixj5")])
+result_item_id = &"bottle_of_yesterday"

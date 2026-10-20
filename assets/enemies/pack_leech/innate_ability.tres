@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_eld2o"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_1hs8n"]
+[ext_resource type="Resource" path="res://assets/enemies/pack_leech/innate_effect.tres" id="3_66n6k"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_sjll3"]
+
+[resource]
+resource_name = "Pack Leech rules"
+script = ExtResource("4_sjll3")
+id = &"pack_leech_innate_rules"
+display_name = "Pack Leech rules"
+description = "Heals 3 HP if its attacks hurt you."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_1hs8n")]([ExtResource("3_66n6k")])

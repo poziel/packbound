@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="RelicDefinition" format=3 uid="uid://bnhlbtu2cpu5t"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_slhrt"]
+[ext_resource type="Resource" path="res://assets/relics/starwell_crown/rule_ability.tres" id="2_010tq"]
+[ext_resource type="Texture2D" uid="uid://cocuqvr4rdytl" path="res://assets/relics/starwell_crown/art/icon.png" id="3_x6elk"]
+[ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_bhmoc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch36o"]
+atlas = ExtResource("3_x6elk")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Starwell Crown"
+script = ExtResource("4_bhmoc")
+id = &"starwell_crown"
+display_name = "Starwell Crown"
+description = "While owned: +2 mana, +1 stamina."
+lore = "The night sky is a reservoir for the patient."
+rarity = 4
+tags = Array[StringName]([&"relic", &"legendary"])
+category_ids = Array[StringName]([&"relics"])
+preferred_class_ids = null
+preferred_character_ids = null
+icon = SubResource("AtlasTexture_ch36o")
+base_stats = Dictionary[int, int]({
+8: 2,
+9: 1
+})
+abilities = Array[ExtResource("1_slhrt")]([ExtResource("2_010tq")])

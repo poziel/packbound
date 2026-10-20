@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_8667a"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_gvpmt"]
+[ext_resource type="Resource" path="res://assets/enemies/grave_keeper/innate_effect.tres" id="3_hxd2b"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_po5e5"]
+
+[resource]
+resource_name = "Grave Keeper rules"
+script = ExtResource("4_po5e5")
+id = &"grave_keeper_innate_rules"
+display_name = "Grave Keeper rules"
+description = "Starts with 7 block. Absorbed damage depletes it; any remainder expires after turn two."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_gvpmt")]([ExtResource("3_hxd2b")])

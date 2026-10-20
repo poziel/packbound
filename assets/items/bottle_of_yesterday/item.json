@@ -143,14 +143,11 @@
       "A square green bottle with a cork trapped inside the neck."
     ],
     "assets": {
-      "icon": "assets/items/bottle_of_yesterday/icons/art/icon.png",
-      "svg": "assets/items/bottle_of_yesterday/icons/art/icon.svg",
-      "source": "assets/items/bottle_of_yesterday/icons/art/icon.sprite.json",
-      "footprint": "assets/items/bottle_of_yesterday/icons/art/footprint.json",
-      "provenance": "assets/items/bottle_of_yesterday/icons/art/provenance.json",
-      "manifest": "assets/items/bottle_of_yesterday/icons/art/art-manifest.json",
+      "icon": "assets/items/bottle_of_yesterday/art/item.png",
+      "source": "assets/items/bottle_of_yesterday/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/bottle_of_yesterday/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

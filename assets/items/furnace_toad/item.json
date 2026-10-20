@@ -132,14 +132,11 @@
       "A squat brick red toad with a broad charcoal back."
     ],
     "assets": {
-      "icon": "assets/items/furnace_toad/icons/art/icon.png",
-      "svg": "assets/items/furnace_toad/icons/art/icon.svg",
-      "source": "assets/items/furnace_toad/icons/art/icon.sprite.json",
-      "footprint": "assets/items/furnace_toad/icons/art/footprint.json",
-      "provenance": "assets/items/furnace_toad/icons/art/provenance.json",
-      "manifest": "assets/items/furnace_toad/icons/art/art-manifest.json",
+      "icon": "assets/items/furnace_toad/art/item.png",
+      "source": "assets/items/furnace_toad/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/furnace_toad/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

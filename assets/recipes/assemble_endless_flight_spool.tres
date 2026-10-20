@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://kpa3clgbofhm"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_q4hql"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_m2ure"]
+
+[sub_resource type="Resource" id="Resource_nlcde"]
+script = ExtResource("1_q4hql")
+accepted_item_ids = Array[StringName]([&"cinder_nock_rack"])
+
+[sub_resource type="Resource" id="Resource_tinyl"]
+script = ExtResource("1_q4hql")
+accepted_item_ids = Array[StringName]([&"scorpion_magazine"])
+
+[sub_resource type="Resource" id="Resource_q37vw"]
+script = ExtResource("1_q4hql")
+accepted_item_ids = Array[StringName]([&"seamfinder_lens"])
+
+[sub_resource type="Resource" id="Resource_vqqth"]
+script = ExtResource("1_q4hql")
+accepted_item_ids = Array[StringName]([&"winterflight_rack"])
+
+[resource]
+resource_name = "Assemble Endless Flight Spool"
+script = ExtResource("2_m2ure")
+id = &"assemble_endless_flight_spool"
+ingredients = Array[ExtResource("1_q4hql")]([SubResource("Resource_nlcde"), SubResource("Resource_tinyl"), SubResource("Resource_q37vw"), SubResource("Resource_vqqth")])
+result_item_id = &"endless_flight_spool"

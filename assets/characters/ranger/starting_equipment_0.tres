@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="StartingEquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/characters/starting_equipment_definition.gd" id="1_ollu5"]
+
+[resource]
+resource_name = "Starting Equipment 0"
+script = ExtResource("1_ollu5")
+item_id = &"shortbow"

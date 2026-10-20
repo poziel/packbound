@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_dye6q"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_lgy87"]
+[ext_resource type="Resource" path="res://assets/enemies/bone_thief/attack_0_effect.tres" id="3_4a1wg"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_1iecf"]
+
+[resource]
+resource_name = "Twin knives"
+script = ExtResource("4_1iecf")
+id = &"bone_thief_attack_0"
+display_name = "Twin knives"
+description = "Strikes twice. Block is shared between both hits."
+target_id = &"opponent"
+effects = Array[ExtResource("2_lgy87")]([ExtResource("3_4a1wg")])

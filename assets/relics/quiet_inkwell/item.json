@@ -85,14 +85,13 @@
       "A black ink bottle with an unbroken wax stopper"
     ],
     "assets": {
-      "icon": "assets/relics/quiet_inkwell/icons/art/icon.png",
-      "svg": "assets/relics/quiet_inkwell/icons/art/icon.svg",
-      "source": "assets/relics/quiet_inkwell/icons/art/icon.sprite.json",
+      "icon": "assets/relics/quiet_inkwell/art/icon.png",
+      "source": "assets/relics/quiet_inkwell/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/quiet_inkwell/icons/art/provenance.json",
-      "manifest": "assets/relics/quiet_inkwell/icons/art/art-manifest.json",
+      "provenance": "assets/relics/quiet_inkwell/art/provenance.json",
+      "manifest": "assets/relics/quiet_inkwell/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/quiet_inkwell/icons/art/icon.pixloom"
+      "native": "assets/relics/quiet_inkwell/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

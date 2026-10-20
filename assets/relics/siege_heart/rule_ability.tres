@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_44k7m"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_lhwuv"]
+[ext_resource type="Resource" path="res://assets/relics/siege_heart/rule_effect.tres" id="3_aqml3"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_wjhf0"]
+
+[resource]
+resource_name = "Siege Heart rules"
+script = ExtResource("4_wjhf0")
+id = &"siege_heart_rules"
+display_name = "Siege Heart rules"
+description = "For the Warmonger: gain +2 block per momentum (up to 8 counted). Block is added each round."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_lhwuv")]([ExtResource("3_aqml3")])

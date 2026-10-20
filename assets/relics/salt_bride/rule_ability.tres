@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_18hkm"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_ay18p"]
+[ext_resource type="Resource" path="res://assets/relics/salt_bride/rule_effect.tres" id="3_y0yka"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_vwldb"]
+
+[resource]
+resource_name = "Salt Bride rules"
+script = ExtResource("4_vwldb")
+id = &"salt_bride_rules"
+display_name = "Salt Bride rules"
+description = "When packed activations contribute Curse: gain +4 cleanse."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_ay18p")]([ExtResource("3_y0yka")])

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://cjngmk0t84bo2"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_2fk38"]
+[ext_resource type="Resource" path="res://assets/enemies/soot_jelly/innate_ability.tres" id="2_2hekd"]
+[ext_resource type="Resource" path="res://assets/enemies/soot_jelly/behavior.tres" id="3_ts2dm"]
+[ext_resource type="Texture2D" uid="uid://dm5c8y4tum0ap" path="res://assets/enemies/soot_jelly/art/soot_jelly.png" id="4_wrlfk"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_eas7w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s80fp"]
+atlas = ExtResource("4_wrlfk")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Soot Jelly"
+script = ExtResource("5_eas7w")
+species_id = &"jelly"
+role_id = &"reflector"
+behavior = ExtResource("3_ts2dm")
+id = &"soot_jelly"
+display_name = "Soot Jelly"
+log_name = "Soot Jelly"
+description = "A floating colony born inside a neglected chimney. Its soot-black bell traps pale embers and lashes out when disturbed."
+icon = SubResource("AtlasTexture_s80fp")
+resource_capacities = Dictionary[int, int]({
+2: 47
+})
+abilities = Array[ExtResource("1_2fk38")]([ExtResource("2_2hekd")])
+metadata/encounter_floor = 8

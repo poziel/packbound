@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dyw33hc7cse5h"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_b31tj"]
+[ext_resource type="Resource" path="res://assets/items/gallows_halberd/rule_ability.tres" id="2_o1x7e"]
+[ext_resource type="Texture2D" uid="uid://dk5o4b5oyv82l" path="res://assets/items/gallows_halberd/art/item.png" id="3_b1qq4"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_udrnc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12i0f"]
+atlas = ExtResource("3_b1qq4")
+region = Rect2(0, 0, 64, 128)
+
+[resource]
+resource_name = "Gallows Halberd"
+script = ExtResource("4_udrnc")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(1, 1), Vector2i(1, 2), Vector2i(1, 3)])
+activation_costs = Dictionary[int, int]({
+1: 3
+})
+id = &"gallows_halberd"
+display_name = "Gallows Halberd"
+description = "Costs 3 stamina per activation. Deals 15 physical damage per affordable activation. Bypasses up to 5 enemy block per activation. Warrior only: gains 1 Momentum after an affordable activation."
+lore = "Hung above an empty scaffold after the tyrant fled."
+rarity = 3
+tags = Array[StringName]([&"weapon", &"warrior"])
+category_ids = Array[StringName]([&"polearms"])
+allowed_class_ids = Array[StringName]([&"warrior"])
+icon = SubResource("AtlasTexture_12i0f")
+base_stats = Dictionary[int, int]({
+0: 15,
+14: 5
+})
+abilities = Array[ExtResource("1_b31tj")]([ExtResource("2_o1x7e")])

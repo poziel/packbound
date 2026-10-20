@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_m10uk"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_o13lx"]
+[ext_resource type="Resource" path="res://assets/relics/plague_seal/rule_effect.tres" id="3_cw2ys"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_ebmc6"]
+
+[resource]
+resource_name = "Plague Seal rules"
+script = ExtResource("4_ebmc6")
+id = &"plague_seal_rules"
+display_name = "Plague Seal rules"
+description = "Poison on enemies no longer decays. Enemy cleansing can still remove it."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_o13lx")]([ExtResource("3_cw2ys")])

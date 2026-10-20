@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://components/ui/shared/surface_theme.gd" id="surface_theme"]
 
 [ext_resource type="PackedScene" path="res://components/ui/buttons/icon_button/icon_button.tscn" id="icon_button"]
-[ext_resource type="Texture2D" path="res://assets/ui/icons/minimal-controls/close.png" id="new_close"]
+[ext_resource type="Texture2D" path="res://assets/icons/controls/common/close.png" id="new_close"]
 
 [sub_resource type="StyleBoxEmpty" id="transparent_surface"]
 

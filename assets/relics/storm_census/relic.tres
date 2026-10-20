@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RelicDefinition" format=3 uid="uid://nbki0s5jtwh8"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_3msid"]
+[ext_resource type="Resource" path="res://assets/relics/storm_census/rule_ability.tres" id="2_hw64c"]
+[ext_resource type="Texture2D" uid="uid://bysoqxxb4xxlv" path="res://assets/relics/storm_census/art/icon.png" id="3_r4by5"]
+[ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_acli3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydd7e"]
+atlas = ExtResource("3_r4by5")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Storm Census"
+script = ExtResource("4_acli3")
+id = &"storm_census"
+display_name = "Storm Census"
+description = "When the enemy already has Spark before activations: gain +2 pierce per spark (up to 4 counted)."
+lore = "Every notch names a lightning strike. The last tally is still being carved by an invisible hand."
+rarity = 2
+tags = Array[StringName]([&"relic", &"sparked"])
+category_ids = Array[StringName]([&"relics"])
+preferred_class_ids = null
+preferred_character_ids = null
+icon = SubResource("AtlasTexture_ydd7e")
+base_stats = null
+abilities = Array[ExtResource("1_3msid")]([ExtResource("2_hw64c")])

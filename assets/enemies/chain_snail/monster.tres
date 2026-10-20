@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://cedkv2vhuc43q"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_dgpcg"]
+[ext_resource type="Resource" path="res://assets/enemies/chain_snail/innate_ability.tres" id="2_2180r"]
+[ext_resource type="Resource" path="res://assets/enemies/chain_snail/behavior.tres" id="3_sljwd"]
+[ext_resource type="Texture2D" uid="uid://di2gk8f8y4oba" path="res://assets/enemies/chain_snail/art/chain_snail.png" id="4_t23yr"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_ploxp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_652c3"]
+atlas = ExtResource("4_t23yr")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Chain Snail"
+script = ExtResource("5_ploxp")
+species_id = &"snail"
+role_id = &"guard"
+behavior = ExtResource("3_sljwd")
+id = &"chain_snail"
+display_name = "Chain Snail"
+log_name = "Chain Snail"
+description = "A slow scavenger that grows a spiral of iron links around its soft body. It has crossed the same stairwell for longer than most guards remember."
+icon = SubResource("AtlasTexture_652c3")
+base_stats = Dictionary[int, int]({
+1: 7
+})
+resource_capacities = Dictionary[int, int]({
+2: 58
+})
+abilities = Array[ExtResource("1_dgpcg")]([ExtResource("2_2180r")])
+metadata/encounter_floor = 7

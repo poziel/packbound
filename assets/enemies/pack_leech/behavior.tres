@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MonsterBehaviorDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="1_tb3q8"]
+[ext_resource type="Resource" path="res://assets/enemies/pack_leech/attack_0.tres" id="2_e625s"]
+[ext_resource type="Script" path="res://systems/enemies/monster_behavior_definition.gd" id="3_ux0wo"]
+
+[resource]
+resource_name = "Pack Leech Behavior"
+script = ExtResource("3_ux0wo")
+actions = Array[ExtResource("1_tb3q8")]([ExtResource("2_e625s")])

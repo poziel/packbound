@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://b01fgr1l0pnda"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_0qytc"]
+[ext_resource type="Resource" path="res://assets/items/siegebell_plate/rule_ability.tres" id="2_1gxdr"]
+[ext_resource type="Texture2D" uid="uid://bmma30nqsnqdr" path="res://assets/items/siegebell_plate/art/item.png" id="3_hmvpr"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_0i2u2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxb2d"]
+atlas = ExtResource("3_hmvpr")
+region = Rect2(0, 0, 96, 64)
+
+[resource]
+resource_name = "Siegebell Plate"
+script = ExtResource("4_0i2u2")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1)])
+id = &"siegebell_plate"
+display_name = "Siegebell Plate"
+description = "Reduces each enemy strike by 3 before block. Retaliates for 2 piercing damage per enemy strike."
+lore = "Its hollow note could be heard beneath the siege engines."
+rarity = 3
+tags = Array[StringName]([&"armor", &"warrior"])
+category_ids = Array[StringName]([&"body_armor"])
+allowed_class_ids = Array[StringName]([&"warrior"])
+icon = SubResource("AtlasTexture_dxb2d")
+base_stats = Dictionary[int, int]({
+4: 3,
+11: 2
+})
+abilities = Array[ExtResource("1_0qytc")]([ExtResource("2_1gxdr")])

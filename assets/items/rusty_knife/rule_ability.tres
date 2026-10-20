@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_lvxsx"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_p2ra8"]
+[ext_resource type="Resource" path="res://assets/items/rusty_knife/rule_effect.tres" id="3_q0vnh"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_85561"]
+
+[resource]
+resource_name = "Rusty Knife rules"
+script = ExtResource("4_85561")
+id = &"rusty_knife_rules"
+display_name = "Rusty Knife rules"
+description = "Deals 4 damage."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_p2ra8")]([ExtResource("3_q0vnh")])

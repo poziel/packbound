@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_n774p"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_bkq8n"]
+[ext_resource type="Resource" path="res://assets/items/viper_s_proposition/rule_effect.tres" id="3_2mses"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_6hwtc"]
+
+[resource]
+resource_name = "Viper's Proposition rules"
+script = ExtResource("4_6hwtc")
+id = &"viper_s_proposition_rules"
+display_name = "Viper's Proposition rules"
+description = "Costs 3 mana per activation. Deals 7 magical damage per affordable activation. Applies 6 poison through the existing combat keyword rules per affordable activation."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_bkq8n")]([ExtResource("3_2mses")])

@@ -127,14 +127,11 @@
       "Two boot heels linked by a folded leather strap and blunt spurs."
     ],
     "assets": {
-      "icon": "assets/items/cadence_spurs/icons/art/icon.png",
-      "svg": "assets/items/cadence_spurs/icons/art/icon.svg",
-      "source": "assets/items/cadence_spurs/icons/art/icon.sprite.json",
-      "footprint": "assets/items/cadence_spurs/icons/art/footprint.json",
-      "provenance": "assets/items/cadence_spurs/icons/art/provenance.json",
-      "manifest": "assets/items/cadence_spurs/icons/art/art-manifest.json",
+      "icon": "assets/items/cadence_spurs/art/item.png",
+      "source": "assets/items/cadence_spurs/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/cadence_spurs/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

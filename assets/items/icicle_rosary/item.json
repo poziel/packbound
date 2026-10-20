@@ -141,14 +141,11 @@
       "A loop of white ice beads hanging from a long silver spike."
     ],
     "assets": {
-      "icon": "assets/items/icicle_rosary/icons/art/icon.png",
-      "svg": "assets/items/icicle_rosary/icons/art/icon.svg",
-      "source": "assets/items/icicle_rosary/icons/art/icon.sprite.json",
-      "footprint": "assets/items/icicle_rosary/icons/art/footprint.json",
-      "provenance": "assets/items/icicle_rosary/icons/art/provenance.json",
-      "manifest": "assets/items/icicle_rosary/icons/art/art-manifest.json",
+      "icon": "assets/items/icicle_rosary/art/item.png",
+      "source": "assets/items/icicle_rosary/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/icicle_rosary/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

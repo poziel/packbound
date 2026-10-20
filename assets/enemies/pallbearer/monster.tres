@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://ct4mcjyj6gxv6"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_nmfk4"]
+[ext_resource type="Resource" path="res://assets/enemies/pallbearer/innate_ability.tres" id="2_60y20"]
+[ext_resource type="Resource" path="res://assets/enemies/pallbearer/behavior.tres" id="3_hise5"]
+[ext_resource type="Texture2D" uid="uid://c316ymcj3i6b6" path="res://assets/enemies/pallbearer/art/pallbearer.png" id="4_kn52v"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_ekfkx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hudi3"]
+atlas = ExtResource("4_kn52v")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Pallbearer"
+script = ExtResource("5_ekfkx")
+species_id = &"humanoid"
+role_id = &"opening guard"
+behavior = ExtResource("3_hise5")
+id = &"pallbearer"
+display_name = "Pallbearer"
+log_name = "Pallbearer"
+description = "The last attendant of a collapsed funeral house still carries an empty coffin lid. It braces the lid at first, then casts it aside."
+icon = SubResource("AtlasTexture_hudi3")
+resource_capacities = Dictionary[int, int]({
+2: 77
+})
+abilities = Array[ExtResource("1_nmfk4")]([ExtResource("2_60y20")])
+metadata/encounter_floor = 12

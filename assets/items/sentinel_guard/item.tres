@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://c6iq4ujuh28rq"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_6kgya"]
+[ext_resource type="Resource" path="res://assets/items/sentinel_guard/rule_ability.tres" id="2_xvyfq"]
+[ext_resource type="Texture2D" uid="uid://dsjbaca4pukpc" path="res://assets/items/sentinel_guard/art/item.png" id="3_sqsdp"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_5c1tf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0oum"]
+atlas = ExtResource("3_sqsdp")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Sentinel Guard"
+script = ExtResource("4_5c1tf")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"sentinel_guard"
+display_name = "Sentinel Guard"
+description = "Starts each fight with 11 block. Retaliates for 1 damage per enemy strike."
+lore = "A watch captain painted the chevron before the final patrol."
+rarity = 2
+tags = Array[StringName]([&"shield", &"rare"])
+category_ids = Array[StringName]([&"shields"])
+icon = SubResource("AtlasTexture_n0oum")
+base_stats = Dictionary[int, int]({
+1: 11,
+11: 1
+})
+abilities = Array[ExtResource("1_6kgya")]([ExtResource("2_xvyfq")])

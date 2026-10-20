@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://xkyqflopk47j"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_bsvgc"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_v1wiu"]
+
+[sub_resource type="Resource" id="Resource_cwljc"]
+script = ExtResource("1_bsvgc")
+accepted_item_ids = Array[StringName]([&"amber_heart_pendant"])
+
+[sub_resource type="Resource" id="Resource_r0wnl"]
+script = ExtResource("1_bsvgc")
+accepted_item_ids = Array[StringName]([&"anchor_cleaver"])
+
+[sub_resource type="Resource" id="Resource_ay8xr"]
+script = ExtResource("1_bsvgc")
+accepted_item_ids = Array[StringName]([&"boiler_hammer"])
+
+[resource]
+resource_name = "Assemble Meteor Maul"
+script = ExtResource("2_v1wiu")
+id = &"assemble_meteor_maul"
+ingredients = Array[ExtResource("1_bsvgc")]([SubResource("Resource_cwljc"), SubResource("Resource_r0wnl"), SubResource("Resource_ay8xr")])
+result_item_id = &"meteor_maul"

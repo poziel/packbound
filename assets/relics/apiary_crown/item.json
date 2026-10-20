@@ -85,14 +85,13 @@
       "A woven straw crown with a single dark honeycomb"
     ],
     "assets": {
-      "icon": "assets/relics/apiary_crown/icons/art/icon.png",
-      "svg": "assets/relics/apiary_crown/icons/art/icon.svg",
-      "source": "assets/relics/apiary_crown/icons/art/icon.sprite.json",
+      "icon": "assets/relics/apiary_crown/art/icon.png",
+      "source": "assets/relics/apiary_crown/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/apiary_crown/icons/art/provenance.json",
-      "manifest": "assets/relics/apiary_crown/icons/art/art-manifest.json",
+      "provenance": "assets/relics/apiary_crown/art/provenance.json",
+      "manifest": "assets/relics/apiary_crown/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/apiary_crown/icons/art/icon.pixloom"
+      "native": "assets/relics/apiary_crown/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

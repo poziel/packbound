@@ -85,14 +85,13 @@
       "An ivory counting tablet with lightning shaped notches"
     ],
     "assets": {
-      "icon": "assets/relics/storm_census/icons/art/icon.png",
-      "svg": "assets/relics/storm_census/icons/art/icon.svg",
-      "source": "assets/relics/storm_census/icons/art/icon.sprite.json",
+      "icon": "assets/relics/storm_census/art/icon.png",
+      "source": "assets/relics/storm_census/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/storm_census/icons/art/provenance.json",
-      "manifest": "assets/relics/storm_census/icons/art/art-manifest.json",
+      "provenance": "assets/relics/storm_census/art/provenance.json",
+      "manifest": "assets/relics/storm_census/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/storm_census/icons/art/icon.pixloom"
+      "native": "assets/relics/storm_census/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

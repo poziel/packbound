@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dw7v1okr2su0n"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_mvoue"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_hwbiq"]
+
+[sub_resource type="Resource" id="Resource_8l0fh"]
+script = ExtResource("1_mvoue")
+accepted_item_ids = Array[StringName]([&"black_rain_theorem"])
+
+[sub_resource type="Resource" id="Resource_fbuf0"]
+script = ExtResource("1_mvoue")
+accepted_item_ids = Array[StringName]([&"solar_crucible"])
+
+[sub_resource type="Resource" id="Resource_m60y5"]
+script = ExtResource("1_mvoue")
+accepted_item_ids = Array[StringName]([&"storm_abacus"])
+
+[sub_resource type="Resource" id="Resource_j1ymw"]
+script = ExtResource("1_mvoue")
+accepted_item_ids = Array[StringName]([&"winter_orrery"])
+
+[resource]
+resource_name = "Assemble Cathedral Of Sparks"
+script = ExtResource("2_hwbiq")
+id = &"assemble_cathedral_of_sparks"
+ingredients = Array[ExtResource("1_mvoue")]([SubResource("Resource_8l0fh"), SubResource("Resource_fbuf0"), SubResource("Resource_m60y5"), SubResource("Resource_j1ymw")])
+result_item_id = &"cathedral_of_sparks"

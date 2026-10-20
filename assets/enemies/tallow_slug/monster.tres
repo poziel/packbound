@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://dplnu2muvh7t0"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_nurrv"]
+[ext_resource type="Resource" path="res://assets/enemies/tallow_slug/innate_ability.tres" id="2_yv3rn"]
+[ext_resource type="Resource" path="res://assets/enemies/tallow_slug/behavior.tres" id="3_fn6bu"]
+[ext_resource type="Texture2D" uid="uid://d2kff1ilh2yfs" path="res://assets/enemies/tallow_slug/art/tallow_slug.png" id="4_x2xuf"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_jtqka"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jn3b"]
+atlas = ExtResource("4_x2xuf")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Tallow Slug"
+script = ExtResource("5_jtqka")
+species_id = &"slug"
+role_id = &"sustain"
+behavior = ExtResource("3_fn6bu")
+id = &"tallow_slug"
+display_name = "Tallow Slug"
+log_name = "Tallow Slug"
+description = "Once bred to clean lamp trays, these slugs now feed on the fatty runoff of the crypt kitchens. Their wounds close with pale wax."
+icon = SubResource("AtlasTexture_0jn3b")
+resource_capacities = Dictionary[int, int]({
+2: 35
+})
+abilities = Array[ExtResource("1_nurrv")]([ExtResource("2_yv3rn")])
+metadata/encounter_floor = 3

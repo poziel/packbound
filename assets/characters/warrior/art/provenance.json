@@ -29,18 +29,18 @@
     }
   },
   "currentAssets": {
-    "full-body.sprite.json": {
-      "path": "assets/characters/warrior/art/full-body.sprite.json",
+    "full_body.sprite.json": {
+      "path": "assets/characters/warrior/art/full_body.sprite.json",
       "sha256": "c583ffbb6422b9f8187db4b28367e54904d015586242199adde45b048647ae56",
       "originalPath": "assets/characters/warrior/art/v3/body.json"
     },
-    "full-body.png": {
-      "path": "assets/characters/warrior/art/full-body.png",
+    "full_body.png": {
+      "path": "assets/characters/warrior/art/full_body.png",
       "sha256": "320ae336061ffb6d22d428f17ccafb5f61f05fae94a8354295cf430086b6cf1d",
       "originalPath": "assets/characters/warrior.png"
     },
-    "full-body.svg": {
-      "path": "assets/characters/warrior/art/full-body.svg",
+    "full_body.png": {
+      "path": "assets/characters/warrior/art/full_body.png",
       "sha256": "6b6442fec9c717d81f9fd385306cb9cc1c1bb853b10312499ddc30b78f3b5a81",
       "originalPath": "assets/characters/warrior.svg"
     },
@@ -54,8 +54,8 @@
       "sha256": "98362ca5b7373da77cd05e380b974fcad87fcf40f64da62b134704621f118930",
       "originalPath": "assets/characters/portraits/warrior.png"
     },
-    "portrait.svg": {
-      "path": "assets/characters/warrior/art/portrait.svg",
+    "portrait.png": {
+      "path": "assets/characters/warrior/art/portrait.png",
       "sha256": "cc0f6903571035a1184095e5938ed95b198b814974e78d007cf770562f11f152",
       "originalPath": "assets/characters/warrior/art/v3/portrait.svg"
     }

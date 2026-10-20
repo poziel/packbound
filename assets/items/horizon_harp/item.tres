@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bcip252dn53hm"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_6qpqe"]
+[ext_resource type="Resource" path="res://assets/items/horizon_harp/rule_ability.tres" id="2_loee8"]
+[ext_resource type="Texture2D" uid="uid://dc0twjyrsrpsq" path="res://assets/items/horizon_harp/art/item.png" id="3_8n1as"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_1ckd2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f82nt"]
+atlas = ExtResource("3_8n1as")
+region = Rect2(0, 0, 64, 128)
+
+[resource]
+resource_name = "Horizon Harp"
+script = ExtResource("4_1ckd2")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(1, 2), Vector2i(0, 3)])
+activation_costs = Dictionary[int, int]({
+1: 3
+})
+id = &"horizon_harp"
+display_name = "Horizon Harp"
+description = "Costs 3 stamina per activation. Deals 21 physical damage per affordable activation. Bypasses up to 6 enemy block per activation."
+lore = "An archer asked a luthier for a song that could cross a kingdom."
+rarity = 4
+tags = Array[StringName]([&"ranged", &"ranger"])
+category_ids = Array[StringName]([&"ranged_instruments"])
+allowed_class_ids = Array[StringName]([&"ranger"])
+icon = SubResource("AtlasTexture_f82nt")
+base_stats = Dictionary[int, int]({
+0: 21,
+14: 6
+})
+abilities = Array[ExtResource("1_6qpqe")]([ExtResource("2_loee8")])

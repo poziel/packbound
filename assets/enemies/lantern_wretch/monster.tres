@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://5i7epn8yxuxs"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_wfbq5"]
+[ext_resource type="Resource" path="res://assets/enemies/lantern_wretch/innate_ability.tres" id="2_ug8ak"]
+[ext_resource type="Resource" path="res://assets/enemies/lantern_wretch/behavior.tres" id="3_qwtgy"]
+[ext_resource type="Texture2D" uid="uid://c3vd8q567ngql" path="res://assets/enemies/lantern_wretch/art/lantern_wretch.png" id="4_y52n2"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_l43be"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks2qm"]
+atlas = ExtResource("4_y52n2")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Lantern Wretch"
+script = ExtResource("5_l43be")
+behavior = ExtResource("3_qwtgy")
+id = &"lantern_wretch"
+display_name = "Lantern Wretch"
+log_name = "Lantern Wretch"
+description = "2 damage from each strike bypasses block."
+icon = SubResource("AtlasTexture_ks2qm")
+base_stats = Dictionary[int, int]({
+14: 2
+})
+resource_capacities = Dictionary[int, int]({
+2: 34
+})
+abilities = Array[ExtResource("1_wfbq5")]([ExtResource("2_ug8ak")])
+
+metadata/progression_index = 2

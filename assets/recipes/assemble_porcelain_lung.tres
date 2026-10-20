@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dc8n6h753mef6"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_f43lj"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_8yeca"]
+
+[sub_resource type="Resource" id="Resource_10t8j"]
+script = ExtResource("1_f43lj")
+accepted_item_ids = Array[StringName]([&"bottle_of_yesterday"])
+
+[sub_resource type="Resource" id="Resource_lpwxu"]
+script = ExtResource("1_f43lj")
+accepted_item_ids = Array[StringName]([&"mercy_needlecase"])
+
+[sub_resource type="Resource" id="Resource_gk8mv"]
+script = ExtResource("1_f43lj")
+accepted_item_ids = Array[StringName]([&"pearl_of_brine"])
+
+[sub_resource type="Resource" id="Resource_06sni"]
+script = ExtResource("1_f43lj")
+accepted_item_ids = Array[StringName]([&"wax_ear_trumpet"])
+
+[resource]
+resource_name = "Assemble Porcelain Lung"
+script = ExtResource("2_8yeca")
+id = &"assemble_porcelain_lung"
+ingredients = Array[ExtResource("1_f43lj")]([SubResource("Resource_10t8j"), SubResource("Resource_lpwxu"), SubResource("Resource_gk8mv"), SubResource("Resource_06sni")])
+result_item_id = &"porcelain_lung"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_yr8oj"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_hbo7i"]
+[ext_resource type="Resource" path="res://assets/items/sentinel_guard/rule_effect.tres" id="3_fn6rd"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_rv7vd"]
+
+[resource]
+resource_name = "Sentinel Guard rules"
+script = ExtResource("4_rv7vd")
+id = &"sentinel_guard_rules"
+display_name = "Sentinel Guard rules"
+description = "Starts each fight with 11 block. Retaliates for 1 damage per enemy strike."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_hbo7i")]([ExtResource("3_fn6rd")])

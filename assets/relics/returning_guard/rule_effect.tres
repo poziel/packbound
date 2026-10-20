@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_thmmn"]
+
+[resource]
+resource_name = "Returning Guard Rule Effect"
+script = ExtResource("1_thmmn")
+rule_id = &"returning_guard_rules"
+parameters = {
+"icon": "returning_guard",
+"keyword_stats": []
+}

@@ -85,14 +85,13 @@
       "An iron handbell with a bone clapper"
     ],
     "assets": {
-      "icon": "assets/relics/grave_bell/icons/art/icon.png",
-      "svg": "assets/relics/grave_bell/icons/art/icon.svg",
-      "source": "assets/relics/grave_bell/icons/art/icon.sprite.json",
+      "icon": "assets/relics/grave_bell/art/icon.png",
+      "source": "assets/relics/grave_bell/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/grave_bell/icons/art/provenance.json",
-      "manifest": "assets/relics/grave_bell/icons/art/art-manifest.json",
+      "provenance": "assets/relics/grave_bell/art/provenance.json",
+      "manifest": "assets/relics/grave_bell/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/grave_bell/icons/art/icon.pixloom"
+      "native": "assets/relics/grave_bell/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

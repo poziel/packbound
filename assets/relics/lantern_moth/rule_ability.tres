@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_qcvq4"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_qqkx6"]
+[ext_resource type="Resource" path="res://assets/relics/lantern_moth/rule_effect.tres" id="3_1dq1a"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_eqoi2"]
+
+[resource]
+resource_name = "Lantern Moth rules"
+script = ExtResource("4_eqoi2")
+id = &"lantern_moth_rules"
+display_name = "Lantern Moth rules"
+description = "When activations produced magical damage: gain +2 cleanse."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_qqkx6")]([ExtResource("3_1dq1a")])

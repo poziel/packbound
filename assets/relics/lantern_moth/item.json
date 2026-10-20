@@ -85,14 +85,13 @@
       "A pale moth perched on an amber lantern bead"
     ],
     "assets": {
-      "icon": "assets/relics/lantern_moth/icons/art/icon.png",
-      "svg": "assets/relics/lantern_moth/icons/art/icon.svg",
-      "source": "assets/relics/lantern_moth/icons/art/icon.sprite.json",
+      "icon": "assets/relics/lantern_moth/art/icon.png",
+      "source": "assets/relics/lantern_moth/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/lantern_moth/icons/art/provenance.json",
-      "manifest": "assets/relics/lantern_moth/icons/art/art-manifest.json",
+      "provenance": "assets/relics/lantern_moth/art/provenance.json",
+      "manifest": "assets/relics/lantern_moth/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/lantern_moth/icons/art/icon.pixloom"
+      "native": "assets/relics/lantern_moth/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://0mmk3he60gg2"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_r1n7m"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_nbu8v"]
+
+[sub_resource type="Resource" id="Resource_3i1bs"]
+script = ExtResource("1_r1n7m")
+accepted_item_ids = Array[StringName]([&"icicle_rosary"])
+
+[sub_resource type="Resource" id="Resource_xrimy"]
+script = ExtResource("1_r1n7m")
+accepted_item_ids = Array[StringName]([&"pearl_of_brine"])
+
+[resource]
+resource_name = "Assemble Glacier Diagram"
+script = ExtResource("2_nbu8v")
+id = &"assemble_glacier_diagram"
+ingredients = Array[ExtResource("1_r1n7m")]([SubResource("Resource_3i1bs"), SubResource("Resource_xrimy")])
+result_item_id = &"glacier_diagram"

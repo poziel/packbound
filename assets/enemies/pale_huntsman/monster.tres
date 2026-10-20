@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://ckx2ew2islym"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_uwk11"]
+[ext_resource type="Resource" path="res://assets/enemies/pale_huntsman/innate_ability.tres" id="2_aonnv"]
+[ext_resource type="Resource" path="res://assets/enemies/pale_huntsman/behavior.tres" id="3_n6cvl"]
+[ext_resource type="Texture2D" uid="uid://bl5lwgumidg3x" path="res://assets/enemies/pale_huntsman/art/pale_huntsman.png" id="4_qgp8y"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_08wvj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ct713"]
+atlas = ExtResource("4_qgp8y")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Pale Huntsman"
+script = ExtResource("5_08wvj")
+species_id = &"humanoid"
+role_id = &"piercer"
+behavior = ExtResource("3_n6cvl")
+id = &"pale_huntsman"
+display_name = "Pale Huntsman"
+log_name = "Pale Huntsman"
+description = "A spectral gamekeeper who still follows trespassers through the lower halls. His spear is solid bone, even when his cloak seems weightless."
+icon = SubResource("AtlasTexture_ct713")
+base_stats = Dictionary[int, int]({
+14: 4
+})
+resource_capacities = Dictionary[int, int]({
+2: 105
+})
+abilities = Array[ExtResource("1_uwk11")]([ExtResource("2_aonnv")])
+metadata/encounter_floor = 17

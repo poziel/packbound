@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_j0a47"]
+
+[resource]
+resource_name = "Thousand Arrow Funeral Rule Effect"
+script = ExtResource("1_j0a47")
+rule_id = &"thousand_arrow_funeral_rules"
+parameters = {
+"icon": "thousand_arrow_funeral",
+"rule": {
+"amount": 9,
+"cap": 1,
+"condition": "volley",
+"metric": "one",
+"stat": "poison"
+},
+"stats": {}
+}

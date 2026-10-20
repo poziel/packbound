@@ -86,12 +86,11 @@
       "Three stepped points and a thick inner band distinguish its silhouette from a ring."
     ],
     "assets": {
-      "icon": "assets/relics/starwell_crown/icons/art/icon.png",
-      "svg": "assets/relics/starwell_crown/icons/art/icon.svg",
-      "source": "assets/relics/starwell_crown/icons/art/icon.sprite.json",
+      "icon": "assets/relics/starwell_crown/art/icon.png",
+      "source": "assets/relics/starwell_crown/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/starwell_crown/icons/art/provenance.json",
-      "manifest": "assets/relics/starwell_crown/icons/art/art-manifest.json",
+      "provenance": "assets/relics/starwell_crown/art/provenance.json",
+      "manifest": "assets/relics/starwell_crown/art/art_manifest.json",
       "variants": []
     },
     "approval": "unreviewed"

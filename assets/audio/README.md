@@ -2,16 +2,17 @@
 
 ## Organization
 
-- `combat/`: enemy hits/deaths, player damage and shield reactions.
-- `ui/`: button activation and item/relic hover.
-- `transitions/`: loading-screen cover and reveal.
+- `sfx/combat/`: enemy hits/deaths, player damage and shield reactions.
+- `sfx/ui/`: button activation and item/relic hover.
+- `sfx/transitions/`: loading-screen cover and reveal.
+- `sfx/candidates/`: supplied audition clips without an assigned production event. Do not load this folder as a random effect pool.
 - `audio_bus_layout.tres`: shared Master, Music, FX and Ambience routing.
 - `sound-effects-provenance.json`: original supplied names and hashes for the active UI/enemy effects.
 
 Filenames describe playback purpose. Audio bytes and import settings are preserved.
-Music and ambience tracks remain in `../musics/`.
+Music and ambience tracks remain in `music/` and `ambience/`.
 
-`../musics/menu/shadows_in_the_backpack.mp3` is **Shadows in the Backpack**, composed and
+`music/menu/shadows_in_the_backpack.mp3` is **Shadows in the Backpack**, composed and
 provided by the project owner for this game. It is copied unchanged from the
 provided MP3. The source WAV and M4A remain untouched and are not duplicated
 into the project. No third-party music license is implied.
@@ -27,7 +28,7 @@ Gameplay music and looping ambience continue through pause and in-game Options.
 Master, Music, FX and Ambience levels are saved in the user's local options file. FX controls
 all UI clicks, item/relic hover, enemy hit and enemy death sounds.
 
-`transitions/loading_screen_cover.wav` and `transitions/loading_screen_reveal.wav` are the loading
+`sfx/transitions/loading_screen_cover.wav` and `sfx/transitions/loading_screen_reveal.wav` are the loading
 screen's dedicated sounds, played by `AppearSound` (`appear_sound`) and
 `DisappearSound` (`disappear_sound`). They are compatible 16-bit PCM playback
 copies of the owner's `loading_screen_on.wav` and `loading_screen_off.wav`.
@@ -38,7 +39,7 @@ Only the compatible playback copies remain in the asset tree. The disappear soun
 `disappear_sound_lead_seconds` (0.1 seconds by default); existing -2 dB player
 volume and FX/Master controls apply.
 
-`ui/button_activate.wav` replaces the previous UI click. It is the owner's supplied
+`sfx/ui/button_activate.wav` replaces the previous UI click. It is the owner's supplied
 `FL_GFX_UI_Click_27 (ui click).wav`, renamed without changing its audio bytes.
 Button activation throughout menus and gameplay plays this sound on the FX bus,
 including keyboard/controller activation and checkboxes. Opening a window-size
@@ -46,11 +47,11 @@ selector and choosing an entry each play one click. Slider drag completion keeps
 the existing FX preview behavior. Programmatic checkbox/selection restoration is
 silent. A scene-tree listener also covers dynamically created UI buttons.
 
-`combat/enemy_hit.wav` is the supplied `FL_GFX_8Bit_Sfx_Shot_01 (enemy hit).wav`.
+`sfx/combat/enemy_hit.wav` is the supplied `FL_GFX_8Bit_Sfx_Shot_01 (enemy hit).wav`.
 It plays on actual enemy hit reactions for every class, including damage from
 status effects and retaliation. Zero-damage actions do not trigger it.
 
-`combat/enemy_death.wav` is `FL_GFX_8Bit_Sfx_Explosion_01 (monster death sounds).wav`.
+`sfx/combat/enemy_death.wav` is `FL_GFX_8Bit_Sfx_Explosion_01 (monster death sounds).wav`.
 Its independent player starts exactly when the monster begins its pixel
 disintegration, after the killing-blow reaction. Combat pause also pauses both
 combat effect tails. Returning to the lobby, starting a new run, or opening
@@ -59,7 +60,7 @@ Options stops remaining combat effects.
 Both combat sounds use FX at -6 dB with up to four overlapping voices, without
 trimming, re-encoding, looping or pitch changes.
 
-`ui/item_hover.wav` is `FL_GFX_UI_Click_14 (hover item).wav`. It plays once on pointer
+`sfx/ui/item_hover.wav` is `FL_GFX_UI_Click_14 (hover item).wav`. It plays once on pointer
 entry into a backpack item, occupied storage/relic slot, or item/relic reward
 choice. Moving inside the same backpack item does not retrigger the sound;
 empty slots and dragging stay silent. It has a separate FX player, so it does

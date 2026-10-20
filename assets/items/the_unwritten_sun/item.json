@@ -147,14 +147,11 @@
       "A blank ivory codex framing a broad stepped red sun."
     ],
     "assets": {
-      "icon": "assets/items/the_unwritten_sun/icons/art/icon.png",
-      "svg": "assets/items/the_unwritten_sun/icons/art/icon.svg",
-      "source": "assets/items/the_unwritten_sun/icons/art/icon.sprite.json",
-      "footprint": "assets/items/the_unwritten_sun/icons/art/footprint.json",
-      "provenance": "assets/items/the_unwritten_sun/icons/art/provenance.json",
-      "manifest": "assets/items/the_unwritten_sun/icons/art/art-manifest.json",
+      "icon": "assets/items/the_unwritten_sun/art/item.png",
+      "source": "assets/items/the_unwritten_sun/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/the_unwritten_sun/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

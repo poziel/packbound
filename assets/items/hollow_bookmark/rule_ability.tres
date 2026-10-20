@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_tfgqc"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_c4ah7"]
+[ext_resource type="Resource" path="res://assets/items/hollow_bookmark/rule_effect.tres" id="3_8kavx"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_4vkrb"]
+
+[resource]
+resource_name = "Hollow Bookmark rules"
+script = ExtResource("4_4vkrb")
+id = &"hollow_bookmark_rules"
+display_name = "Hollow Bookmark rules"
+description = "Costs 2 mana per activation. Deals 7 magical damage per affordable activation. Applies 1 doom through the existing combat keyword rules per affordable activation."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_c4ah7")]([ExtResource("3_8kavx")])

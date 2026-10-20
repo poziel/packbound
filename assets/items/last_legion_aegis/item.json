@@ -136,14 +136,11 @@
       "A rectangular ivory shield split by a deep bronze sun."
     ],
     "assets": {
-      "icon": "assets/items/last_legion_aegis/icons/art/icon.png",
-      "svg": "assets/items/last_legion_aegis/icons/art/icon.svg",
-      "source": "assets/items/last_legion_aegis/icons/art/icon.sprite.json",
-      "footprint": "assets/items/last_legion_aegis/icons/art/footprint.json",
-      "provenance": "assets/items/last_legion_aegis/icons/art/provenance.json",
-      "manifest": "assets/items/last_legion_aegis/icons/art/art-manifest.json",
+      "icon": "assets/items/last_legion_aegis/art/item.png",
+      "source": "assets/items/last_legion_aegis/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/last_legion_aegis/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

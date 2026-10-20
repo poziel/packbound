@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_wub6c"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_188v2"]
+[ext_resource type="Resource" path="res://assets/enemies/cinder_oracle/innate_effect.tres" id="3_q780n"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_8sfps"]
+
+[resource]
+resource_name = "Cinder Oracle rules"
+script = ExtResource("4_8sfps")
+id = &"cinder_oracle_innate_rules"
+display_name = "Cinder Oracle rules"
+description = "4 damage from each strike bypasses block."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_188v2")]([ExtResource("3_q780n")])

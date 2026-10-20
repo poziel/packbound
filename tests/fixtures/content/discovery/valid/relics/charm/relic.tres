@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="RelicDefinition" format=3]
+[ext_resource type="Script" path="res://systems/relics/relic_definition.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = &"test_relic"
+display_name = "Test Relic"
+category_ids = Array[StringName]([&"test_category"])

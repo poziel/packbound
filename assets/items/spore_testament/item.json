@@ -99,14 +99,11 @@
       "A green scroll with mushroom gills along its curled edge."
     ],
     "assets": {
-      "icon": "assets/items/spore_testament/icons/art/icon.png",
-      "svg": "assets/items/spore_testament/icons/art/icon.svg",
-      "source": "assets/items/spore_testament/icons/art/icon.sprite.json",
-      "footprint": "assets/items/spore_testament/icons/art/footprint.json",
-      "provenance": "assets/items/spore_testament/icons/art/provenance.json",
-      "manifest": "assets/items/spore_testament/icons/art/art-manifest.json",
+      "icon": "assets/items/spore_testament/art/item.png",
+      "source": "assets/items/spore_testament/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/spore_testament/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

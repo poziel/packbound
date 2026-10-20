@@ -66,8 +66,7 @@ tool, then converted to native SVG pixel paths. PNG exports come from those SVGs
 
 `previews/asset-sheet.png` shows the three assets, actual small-icon sizes, and a
 light-background check. `previews/icon-pixel-check.png` enlarges the 16 and 32 px
-icons without smoothing. `previews/validation.json` records dimensions, rendered
-bounds, palette counts, binary transparency, and the absence of raster embedding.
+icons without smoothing. Historical JSON validation reports are not retained.
 
 The main menu scene displays `packbound-title.png` at its 696 × 163 source-grid
 size, including the subtitle, with nearest-neighbor filtering. `project.godot`

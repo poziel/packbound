@@ -8,7 +8,7 @@
   ],
   "references": [
     ".agents/skills/delver-art-creator/references/visual-direction.md",
-    "assets/enemies/mire_viper.png",
+    "assets/enemies/mire_viper/art/mire_viper.png",
     "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png"
   ],
   "canvas": [
@@ -45,11 +45,11 @@
     "pitch_eel.pixloom.json": "267b4f9c864c06f2381d52106095fee5f057010583ce6c6cd99fc91602b81d7a",
     "pitch_eel.pixloom": "4100d0866ab47d22648113c57a4c3e701ee3f4d9fcb61ab0ed2c99aa75b656aa",
     "pitch_eel.png": "45e2e357c70964bebccf160566242c4afb450aeb31d1561231258ec41c22975e",
-    "pitch_eel.svg": "c94e9612f14ca3b3e9b41fec043ddeeadea74dc5fe3ee80c78fb2dca15ed6627"
+    "pitch_eel.png": "c94e9612f14ca3b3e9b41fec043ddeeadea74dc5fe3ee80c78fb2dca15ed6627"
   },
   "reference_sha256": {
     ".agents/skills/delver-art-creator/references/visual-direction.md": "5cadc4ef72c5db7bbec05c9504920e5abfd9ca4b33add8d2af9f98c610ada0df",
-    "assets/enemies/mire_viper.png": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7",
+    "assets/enemies/mire_viper/art/mire_viper.png": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7",
     "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png": "3bcd9705f35494a28a94b3d1ecce67f657308bc4e952afe2ad7339864e140edf"
   }
 }

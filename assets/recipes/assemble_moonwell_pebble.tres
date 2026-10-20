@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://s28ak3idqyf1"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_4kk8y"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_wr5rj"]
+
+[sub_resource type="Resource" id="Resource_f4wrh"]
+script = ExtResource("1_4kk8y")
+accepted_item_ids = Array[StringName]([&"raincatch_bowl"])
+
+[sub_resource type="Resource" id="Resource_8gb4h"]
+script = ExtResource("1_4kk8y")
+accepted_item_ids = Array[StringName]([&"salt_lantern"])
+
+[sub_resource type="Resource" id="Resource_xnjun"]
+script = ExtResource("1_4kk8y")
+accepted_item_ids = Array[StringName]([&"spark_ring"])
+
+[resource]
+resource_name = "Assemble Moonwell Pebble"
+script = ExtResource("2_wr5rj")
+id = &"assemble_moonwell_pebble"
+ingredients = Array[ExtResource("1_4kk8y")]([SubResource("Resource_f4wrh"), SubResource("Resource_8gb4h"), SubResource("Resource_xnjun")])
+result_item_id = &"moonwell_pebble"

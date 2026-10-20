@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://cycpn7tewqi4a"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_5uvqd"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_ahmry"]
+
+[sub_resource type="Resource" id="Resource_jsqnb"]
+script = ExtResource("1_5uvqd")
+accepted_item_ids = Array[StringName]([&"foxglove_formula"])
+
+[sub_resource type="Resource" id="Resource_bx0ey"]
+script = ExtResource("1_5uvqd")
+accepted_item_ids = Array[StringName]([&"mercy_needlecase"])
+
+[sub_resource type="Resource" id="Resource_v6nlb"]
+script = ExtResource("1_5uvqd")
+accepted_item_ids = Array[StringName]([&"viper_s_proposition"])
+
+[resource]
+resource_name = "Assemble Orchid Eclipse"
+script = ExtResource("2_ahmry")
+id = &"assemble_orchid_eclipse"
+ingredients = Array[ExtResource("1_5uvqd")]([SubResource("Resource_jsqnb"), SubResource("Resource_bx0ey"), SubResource("Resource_v6nlb")])
+result_item_id = &"orchid_eclipse"

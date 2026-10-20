@@ -39,8 +39,8 @@ func _run() -> void:
 		return
 	create_timer(40.0).timeout.connect(func() -> void: printerr("Combat refinement render timeout"); quit(2))
 	DirAccess.make_dir_recursive_absolute(OUTPUT)
-	var native_resume: Image = Image.load_from_file(ProjectSettings.globalize_path("res://assets/ui/icons/combat-v1/resume.png"))
-	var svg_resume: Image = load("res://assets/ui/icons/combat-v1/resume.svg").get_image()
+	var native_resume: Image = Image.load_from_file(ProjectSettings.globalize_path("res://assets/icons/controls/combat/resume.png"))
+	var svg_resume: Image = load("res://assets/icons/controls/combat/resume.svg").get_image()
 	check(native_resume.get_size() == Vector2i(32, 32) and svg_resume.get_size() == Vector2i(32, 32), "Native PNG and runtime SVG resume glyphs use the same 32px canvas")
 	var glyphs_match: bool = native_resume.get_size() == svg_resume.get_size()
 	if glyphs_match:

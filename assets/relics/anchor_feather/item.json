@@ -85,14 +85,13 @@
       "A broad gray feather tied to a lead anchor"
     ],
     "assets": {
-      "icon": "assets/relics/anchor_feather/icons/art/icon.png",
-      "svg": "assets/relics/anchor_feather/icons/art/icon.svg",
-      "source": "assets/relics/anchor_feather/icons/art/icon.sprite.json",
+      "icon": "assets/relics/anchor_feather/art/icon.png",
+      "source": "assets/relics/anchor_feather/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/anchor_feather/icons/art/provenance.json",
-      "manifest": "assets/relics/anchor_feather/icons/art/art-manifest.json",
+      "provenance": "assets/relics/anchor_feather/art/provenance.json",
+      "manifest": "assets/relics/anchor_feather/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/anchor_feather/icons/art/icon.pixloom"
+      "native": "assets/relics/anchor_feather/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

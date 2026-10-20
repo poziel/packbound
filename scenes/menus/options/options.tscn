@@ -122,6 +122,13 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 44)
 text = "Show run time"
 
+[node name="InvertTooltipShortcut" type="CheckButton" parent="Layout/Content/Tabs/Gameplay/Fields"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+text = "Invert tooltip shortcut (hold to show)"
+tooltip_text = "Normally, holding Hide / show tooltips hides explanations. Invert this to show them only while held. Hover explanations must be enabled."
+
 
 [node name="HoldDestructiveToggle" type="CheckButton" parent="Layout/Content/Tabs/Gameplay/Fields"]
 unique_name_in_owner = true
@@ -440,6 +447,57 @@ custom_minimum_size = Vector2(0, 44)
 text = "V-sync"
 
 
+[node name="ShowFps" type="CheckButton" parent="Layout/Content/Tabs/Display/Fields"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+text = "Show FPS"
+
+[node name="MaxFpsRow" type="HBoxContainer" parent="Layout/Content/Tabs/Display/Fields"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="Layout/Content/Tabs/Display/Fields/MaxFpsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Maximum FPS (0 = Unlimited)"
+
+[node name="MaxFps" type="SpinBox" parent="Layout/Content/Tabs/Display/Fields/MaxFpsRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(150, 44)
+max_value = 1000.0
+step = 1.0
+tooltip_text = "V-sync can impose a lower limit than this cap. Zero leaves FPS unlimited."
+
+[node name="ReduceUnfocusedFps" type="CheckButton" parent="Layout/Content/Tabs/Display/Fields"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+text = "Limit to 10 FPS while unfocused"
+
+[node name="CursorRow" type="HBoxContainer" parent="Layout/Content/Tabs/Display/Fields"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="Layout/Content/Tabs/Display/Fields/CursorRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cursor mode"
+
+[node name="CursorMode" type="OptionButton" parent="Layout/Content/Tabs/Display/Fields/CursorRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(200, 44)
+item_count = 2
+selected = 0
+popup/item_0/text = "System"
+popup/item_0/id = 0
+popup/item_1/text = "Software"
+popup/item_1/id = 1
+
 [node name="BrightnessRow" type="HBoxContainer" parent="Layout/Content/Tabs/Display/Fields"]
 layout_mode = 2
 custom_minimum_size = Vector2(0, 44)
@@ -515,6 +573,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 6
 
+
+[node name="MuteUnfocused" type="CheckButton" parent="Layout/Content/Tabs/Audio/Fields"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+text = "Mute while unfocused"
 
 [node name="VolumeRow" type="HBoxContainer" parent="Layout/Content/Tabs/Audio/Fields"]
 layout_mode = 2

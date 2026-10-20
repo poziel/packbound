@@ -12,7 +12,7 @@
 
 
 
-[ext_resource type="Texture2D" path="res://assets/ui/icons/navigation-v3/backpack.png" id="collection_icon"]
+[ext_resource type="Texture2D" path="res://assets/icons/navigation/actions/backpack.png" id="collection_icon"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wu84c"]
 atlas = ExtResource("1_l6cm7")

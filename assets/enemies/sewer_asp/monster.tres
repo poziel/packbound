@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://c087ofw1x52ej"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_p8tin"]
+[ext_resource type="Resource" path="res://assets/enemies/sewer_asp/innate_ability.tres" id="2_q1qku"]
+[ext_resource type="Resource" path="res://assets/enemies/sewer_asp/behavior.tres" id="3_v7ryw"]
+[ext_resource type="Texture2D" uid="uid://i0rc7rc5tksk" path="res://assets/enemies/sewer_asp/art/sewer_asp.png" id="4_nvant"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_3i1ic"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj6jb"]
+atlas = ExtResource("4_nvant")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Sewer Asp"
+script = ExtResource("5_3i1ic")
+species_id = &"snake"
+role_id = &"venom"
+behavior = ExtResource("3_v7ryw")
+id = &"sewer_asp"
+display_name = "Sewer Asp"
+log_name = "Sewer Asp"
+description = "This patient drain hunter braces its lower coils against stone before striking. Its venom leaves a bitter metallic taste."
+icon = SubResource("AtlasTexture_yj6jb")
+base_stats = Dictionary[int, int]({
+6: 1
+})
+resource_capacities = Dictionary[int, int]({
+2: 42
+})
+abilities = Array[ExtResource("1_p8tin")]([ExtResource("2_q1qku")])
+metadata/encounter_floor = 5

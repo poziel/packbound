@@ -1,0 +1,22 @@
+{
+  "key": "folded_space",
+  "name": "Folded Space",
+  "kind": "run_relic",
+  "occupies_backpack_cells": false,
+  "footprint": null,
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
+  "exports": [
+    "art/revisions/catalog_v1/folded_space_32px.png",
+    "art/revisions/catalog_v1/folded_space_32px.png"
+  ],
+  "editableSources": [
+    "art/revisions/catalog_v1/folded_space_32px.pxo",
+    "art/revisions/catalog_v1/folded_space_32px.png"
+  ],
+  "runtime": {
+    "texture": "res://assets/relics/folded_space/art/revisions/catalog_v1/folded_space_32px.png",
+    "viewPolicy": "Reuse the accepted native 32px sprite with nearest filtering at all display sizes."
+  },
+  "activeRevision": "catalog-v1",
+  "revisionProvenance": "res://docs/art/concepts/folded-space-relic-v1/provenance.json"
+}

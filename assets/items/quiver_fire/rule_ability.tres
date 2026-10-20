@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_8wkby"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_sljb1"]
+[ext_resource type="Resource" path="res://assets/items/quiver_fire/rule_effect.tres" id="3_jeex4"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_d236t"]
+
+[resource]
+resource_name = "Ember Tips rules"
+script = ExtResource("4_d236t")
+id = &"quiver_fire_rules"
+display_name = "Ember Tips rules"
+description = "Quiver upgrade: each Volley arrow applies +1 burn. Up to 2 upgrades."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_sljb1")]([ExtResource("3_jeex4")])

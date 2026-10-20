@@ -5,171 +5,171 @@
   "title": "The Dusk Runner",
   "speciality": "Eluding enemy attacks with timed invisibility, then exploiting venom and shield-piercing dagger strikes.",
   "specialPowers": [
-    {
-      "id": "shadowstep",
-      "name": "Shadowstep",
-      "kind": "class-mechanic",
-      "description": "Invisible on turns 1, 4, 7 and every third turn thereafter. Monsters cannot target her, so their strikes and on-hit effects are skipped. Existing poison, reflection and item costs still apply.",
-      "visualDirection": "A brief reduction to a coherent shadow silhouette during activation. The idle character remains visible and readable; no automatic clone or large smoke cloud."
-    },
-    {
-      "id": "venom_edge",
-      "name": "Venom edge",
-      "kind": "equipment-effect",
-      "gameItemId": "venom_dagger",
-      "description": "Venom Dagger provides 5 direct damage, 3 poison and 2 shield piercing. These are inventory-item effects, not extra innate class abilities.",
-      "visualDirection": "A restrained greenish material tint near the blade edge only when depicting poison; no dripping fluorescent slime."
-    }
+	{
+	  "id": "shadowstep",
+	  "name": "Shadowstep",
+	  "kind": "class-mechanic",
+	  "description": "Invisible on turns 1, 4, 7 and every third turn thereafter. Monsters cannot target her, so their strikes and on-hit effects are skipped. Existing poison, reflection and item costs still apply.",
+	  "visualDirection": "A brief reduction to a coherent shadow silhouette during activation. The idle character remains visible and readable; no automatic clone or large smoke cloud."
+	},
+	{
+	  "id": "venom_edge",
+	  "name": "Venom edge",
+	  "kind": "equipment-effect",
+	  "gameItemId": "venom_dagger",
+	  "description": "Venom Dagger provides 5 direct damage, 3 poison and 2 shield piercing. These are inventory-item effects, not extra innate class abilities.",
+	  "visualDirection": "A restrained greenish material tint near the blade edge only when depicting poison; no dripping fluorescent slime."
+	}
   ],
   "weapons": [
-    {
-      "name": "Venom Dagger",
-      "type": "dagger",
-      "gameItemId": "venom_dagger",
-      "relationship": "Starting inventory item and primary visual weapon.",
-      "description": "Slim stepped steel blade, small antique-brass guard, dark wrapped grip and restrained pommel. Nominal total length is 64 source pixels at the 256-pixel body target."
-    },
-    {
-      "name": "Off-hand parrying dagger",
-      "type": "dagger",
-      "gameItemId": null,
-      "relationship": "Secondary visual equipment; does not implement a free extra attack or dual-wield rule.",
-      "description": "A plain companion dagger of similar construction. One dagger may be held upright and the other in a relaxed reverse grip; each hand must visibly close around its own handle."
-    }
+	{
+	  "name": "Venom Dagger",
+	  "type": "dagger",
+	  "gameItemId": "venom_dagger",
+	  "relationship": "Starting inventory item and primary visual weapon.",
+	  "description": "Slim stepped steel blade, small antique-brass guard, dark wrapped grip and restrained pommel. Nominal total length is 64 source pixels at the 256-pixel body target."
+	},
+	{
+	  "name": "Off-hand parrying dagger",
+	  "type": "dagger",
+	  "gameItemId": null,
+	  "relationship": "Secondary visual equipment; does not implement a free extra attack or dual-wield rule.",
+	  "description": "A plain companion dagger of similar construction. One dagger may be held upright and the other in a relaxed reverse grip; each hand must visibly close around its own handle."
+	}
   ],
   "gameplay": {
-    "startingHp": 30,
-    "startingItemIds": [
-      "venom_dagger",
-      "buckler",
+	"startingHp": 30,
+	"startingItemIds": [
+	  "venom_dagger",
+	  "buckler",
       "bandage"
-    ],
-    "itemAliasNotes": [
+	],
+	"itemAliasNotes": [
       "The second illustrated dagger is visual equipment; combat is determined by the inventory and existing class mechanic."
-    ]
+	]
   },
   "bio": {
-    "summary": "A former smuggler and message-runner who treats every locked door as a conversation she has not finished.",
-    "origin": "Sable grew up carrying sealed messages through a district where official couriers refused to go. She learned to steal keys before she learned to trust employers. When a guild began using her routes to traffic people instead of goods, she stole its ledger and disappeared. Dungeon work funds the safe houses she now maintains under names nobody can trace back to her.",
-    "personality": [
-      "Wry and guarded",
-      "Meticulous about promises",
+	"summary": "A former smuggler and message-runner who treats every locked door as a conversation she has not finished.",
+	"origin": "Sable grew up carrying sealed messages through a district where official couriers refused to go. She learned to steal keys before she learned to trust employers. When a guild began using her routes to traffic people instead of goods, she stole its ledger and disappeared. Dungeon work funds the safe houses she now maintains under names nobody can trace back to her.",
+	"personality": [
+	  "Wry and guarded",
+	  "Meticulous about promises",
       "Protective of people who cannot fight back"
-    ],
-    "motivation": "Buy freedom for the people named in the stolen ledger and find the guild's hidden route through the dungeon.",
-    "mannerisms": "Turns a coin across her knuckles while listening; watches hands rather than faces; always notes a second exit.",
-    "voice": "Low and direct, with a dry edge and very little wasted explanation.",
-    "quote": "You did not see me. That was the kind version."
+	],
+	"motivation": "Buy freedom for the people named in the stolen ledger and find the guild's hidden route through the dungeon.",
+	"mannerisms": "Turns a coin across her knuckles while listening; watches hands rather than faces; always notes a second exit.",
+	"voice": "Low and direct, with a dry edge and very little wasted explanation.",
+	"quote": "You did not see me. That was the kind version."
   },
   "physicalAppearance": {
-    "species": "Human",
-    "lifeStage": "Adult, approximately 31",
-    "genderPresentation": "Woman",
-    "heightCm": 173,
-    "build": "Wiry and athletic, with compact shoulders, balanced hips and strong flexible legs. The costume fits a practical adult runner; avoid exaggerated curves or a stocky toy-like silhouette.",
-    "silhouette": "A deep-plum pointed hood above narrow petrol-teal leather armor, a split dark cloak and two compact daggers held clear of the body.",
-    "headTreatment": "Partial cloth mask covering nose, mouth and lower jaw; visible anime-inspired eyes and brow. Concealment is intentional.",
-    "headShape": "Narrow oval head within a close-fitting hood; the upper cheek and brow communicate adult structure without enlarging the eyes.",
-    "face": "Medium warm olive skin visible around the brow and upper cheeks only. The lower face remains hidden; never draw a mouth on top of the mask.",
-    "eyes": "Amber-brown eyes with controlled dark upper lids, low expressive brows and a slightly narrowed, observant gaze.",
-    "hair": "Near-black hair, mostly concealed; a short side fringe can break the hood opening without covering both eyes.",
-    "headwear": "Deep-plum fabric hood with a soft asymmetric peak and a dark inner opening; a muted teal scarf-mask wraps securely around the lower face.",
-    "upperBody": "Fitted petrol-teal leather tunic with overlapping chest panels, small asymmetrical shoulder protection, dark forearm wraps, a narrow diagonal strap and minimal brass fasteners.",
-    "lowerBody": "Charcoal fitted trousers with restrained teal knee reinforcement, dark plum-brown soft boots and a low-profile utility belt with one small pouch.",
-    "hands": "Bare fingertips or fingerless gloves; clearly drawn palms, curled fingers and aligned wrists around each dagger grip.",
-    "cloak": "Split plum-black cloak falling behind the arms and legs, long enough for a distinctive silhouette but short enough to run without dragging.",
-    "palette": [
-      {
-        "material": "Plum hood/cloak",
-        "colors": [
-          "#251e31",
-          "#49344e",
+	"species": "Human",
+	"lifeStage": "Adult, approximately 31",
+	"genderPresentation": "Woman",
+	"heightCm": 173,
+	"build": "Wiry and athletic, with compact shoulders, balanced hips and strong flexible legs. The costume fits a practical adult runner; avoid exaggerated curves or a stocky toy-like silhouette.",
+	"silhouette": "A deep-plum pointed hood above narrow petrol-teal leather armor, a split dark cloak and two compact daggers held clear of the body.",
+	"headTreatment": "Partial cloth mask covering nose, mouth and lower jaw; visible anime-inspired eyes and brow. Concealment is intentional.",
+	"headShape": "Narrow oval head within a close-fitting hood; the upper cheek and brow communicate adult structure without enlarging the eyes.",
+	"face": "Medium warm olive skin visible around the brow and upper cheeks only. The lower face remains hidden; never draw a mouth on top of the mask.",
+	"eyes": "Amber-brown eyes with controlled dark upper lids, low expressive brows and a slightly narrowed, observant gaze.",
+	"hair": "Near-black hair, mostly concealed; a short side fringe can break the hood opening without covering both eyes.",
+	"headwear": "Deep-plum fabric hood with a soft asymmetric peak and a dark inner opening; a muted teal scarf-mask wraps securely around the lower face.",
+	"upperBody": "Fitted petrol-teal leather tunic with overlapping chest panels, small asymmetrical shoulder protection, dark forearm wraps, a narrow diagonal strap and minimal brass fasteners.",
+	"lowerBody": "Charcoal fitted trousers with restrained teal knee reinforcement, dark plum-brown soft boots and a low-profile utility belt with one small pouch.",
+	"hands": "Bare fingertips or fingerless gloves; clearly drawn palms, curled fingers and aligned wrists around each dagger grip.",
+	"cloak": "Split plum-black cloak falling behind the arms and legs, long enough for a distinctive silhouette but short enough to run without dragging.",
+	"palette": [
+	  {
+		"material": "Plum hood/cloak",
+		"colors": [
+		  "#251e31",
+		  "#49344e",
           "#755269"
-        ]
-      },
-      {
-        "material": "Petrol teal leather",
-        "colors": [
-          "#172d30",
-          "#2e5051",
+		]
+	  },
+	  {
+		"material": "Petrol teal leather",
+		"colors": [
+		  "#172d30",
+		  "#2e5051",
           "#527675"
-        ]
-      },
-      {
-        "material": "Steel/brass",
-        "colors": [
-          "#4c6570",
-          "#81979d",
+		]
+	  },
+	  {
+		"material": "Steel/brass",
+		"colors": [
+		  "#4c6570",
+		  "#81979d",
           "#b9a17a"
-        ]
-      }
-    ],
-    "distinguishingFeatures": [
-      "Plum hood and teal lower-face mask",
-      "A narrow amber-eyed gaze rather than an exposed full face",
-      "Two deliberately held compact daggers",
+		]
+	  }
+	],
+	"distinguishingFeatures": [
+	  "Plum hood and teal lower-face mask",
+	  "A narrow amber-eyed gaze rather than an exposed full face",
+	  "Two deliberately held compact daggers",
       "Light asymmetrical armor with a runner's silhouette"
-    ],
-    "expressionAndBearing": "Watchful and restrained, with a subtle head tilt and natural asymmetric elbows; relaxed readiness instead of a crouched attack pose.",
-    "effects": "None in the default idle. Shadowstep effects belong on separate activation layers and must not hide the portrait.",
-    "portraitDirection": "Center the hood-framed upper face and mask, preserving the hood peak and masked chin shape. Remove dagger tips, straps that intrude on the face and any shadow-effect fragments. Keep the eyes readable without inventing an exposed mouth.",
-    "avoid": [
-      "A visible mouth through the mask",
-      "Huge dagger blades",
-      "Two ungripped floating weapons",
-      "A seductive or exaggerated body pose",
-      "Permanent smoke obscuring the face",
+	],
+	"expressionAndBearing": "Watchful and restrained, with a subtle head tilt and natural asymmetric elbows; relaxed readiness instead of a crouched attack pose.",
+	"effects": "None in the default idle. Shadowstep effects belong on separate activation layers and must not hide the portrait.",
+	"portraitDirection": "Center the hood-framed upper face and mask, preserving the hood peak and masked chin shape. Remove dagger tips, straps that intrude on the face and any shadow-effect fragments. Keep the eyes readable without inventing an exposed mouth.",
+	"avoid": [
+	  "A visible mouth through the mask",
+	  "Huge dagger blades",
+	  "Two ungripped floating weapons",
+	  "A seductive or exaggerated body pose",
+	  "Permanent smoke obscuring the face",
       "Copying rejected roster proportions"
-    ]
+	]
   },
   "assetReferences": {
-    "runtime": "assets/characters/assassin/art/full-body.svg",
-    "concept": "assets/characters/assassin/art/concept.png",
-    "nativeSource": "assets/characters/assassin/art/full-body.sprite.json",
-    "artStatus": "assassin-v2 accepted and installed 2026-10-16; spritex JSON is the editable production source",
-    "appearanceBasis": "Retains the legacy plum hood, teal armor, lower-face mask and paired daggers as identity cues, with newly authored adult proportions, face details, name and biography.",
-    "portrait": "assets/characters/assassin/art/portrait.png",
-    "portraitNativeSource": "assets/characters/assassin/art/portrait.sprite.json",
-    "review": "workspace/docs/art/concepts/characters/assassin-v2/README.md"
+	"runtime": "assets/characters/assassin/art/full_body.png",
+	"concept": "assets/characters/assassin/art/concept.png",
+	"nativeSource": "assets/characters/assassin/art/full_body.sprite.json",
+	"artStatus": "assassin-v2 accepted and installed 2026-10-16; spritex JSON is the editable production source",
+	"appearanceBasis": "Retains the legacy plum hood, teal armor, lower-face mask and paired daggers as identity cues, with newly authored adult proportions, face details, name and biography.",
+	"portrait": "assets/characters/assassin/art/portrait.png",
+	"portraitNativeSource": "assets/characters/assassin/art/portrait.sprite.json",
+	"review": "workspace/docs/art/concepts/characters/assassin-v2/README.md"
   },
   "schemaVersion": 1,
   "identityStatus": "Newly authored character profile; names and lore have not yet been individually reviewed.",
   "generation": {
-    "skill": "skills/packbound-character-art/SKILL.md",
-    "body": {
-      "visibleHeightPx": 256,
-      "canvasPx": [
-        384,
-        320
-      ],
-      "topY": 32,
-      "baselineY": 288,
-      "centerX": 192,
-      "measurement": "Head/headwear to soles; exclude held equipment, detached effects and transparent padding."
-    },
-    "portrait": {
-      "canvasPx": [
-        64,
-        64
-      ],
-      "source": "Original generated concept or another sufficiently detailed identity source, independently framed and cleaned.",
-      "framing": "Optically center the visible head; preserve complete hair/headwear and chin, with modest neck and shoulder context.",
-      "obstructions": "Remove incidental weapons, quivers, spell fragments and other obstructions; reconstruct hidden head details. Retain intentional helmets and masks."
-    },
-    "pose": "Upright, relaxed and alert, slight three-quarter turn toward the viewer's right, grounded feet and a natural weight shift.",
-    "rendering": "Original fantasy pixel art with cohesive adult proportions, deliberate connected clusters, sculpted material planes, selective highlights and restrained texture. Exposed faces use intentional anime-inspired eye/lid, nose and mouth shapes.",
-    "deliverables": [
-      "Layered full-body spritex authoring JSON",
-      "Transparent full-body PNG",
-      "Integer-grid editable full-body SVG",
-      "Separate 64 x 64 portrait spritex authoring JSON",
-      "Transparent 64 x 64 portrait PNG",
+	"skill": "skills/packbound-character-art/SKILL.md",
+	"body": {
+	  "visibleHeightPx": 256,
+	  "canvasPx": [
+		384,
+		320
+	  ],
+	  "topY": 32,
+	  "baselineY": 288,
+	  "centerX": 192,
+	  "measurement": "Head/headwear to soles; exclude held equipment, detached effects and transparent padding."
+	},
+	"portrait": {
+	  "canvasPx": [
+		64,
+		64
+	  ],
+	  "source": "Original generated concept or another sufficiently detailed identity source, independently framed and cleaned.",
+	  "framing": "Optically center the visible head; preserve complete hair/headwear and chin, with modest neck and shoulder context.",
+	  "obstructions": "Remove incidental weapons, quivers, spell fragments and other obstructions; reconstruct hidden head details. Retain intentional helmets and masks."
+	},
+	"pose": "Upright, relaxed and alert, slight three-quarter turn toward the viewer's right, grounded feet and a natural weight shift.",
+	"rendering": "Original fantasy pixel art with cohesive adult proportions, deliberate connected clusters, sculpted material planes, selective highlights and restrained texture. Exposed faces use intentional anime-inspired eye/lid, nose and mouth shapes.",
+	"deliverables": [
+	  "Layered full-body spritex authoring JSON",
+	  "Transparent full-body PNG",
+	  "Integer-grid editable full-body SVG",
+	  "Separate 64 x 64 portrait spritex authoring JSON",
+	  "Transparent 64 x 64 portrait PNG",
       "Source prompt, references and provenance"
-    ],
-    "review": "Inspect body, grip and portrait at native/intended display size. Technical validation is separate from user approval."
+	],
+	"review": "Inspect body, grip and portrait at native/intended display size. Technical validation is separate from user approval."
   },
   "mechanicsSource": [
-    "systems/content/pack_catalog.gd",
+	"systems/content/pack_catalog.gd",
     "systems/runs/run_state.gd"
   ],
   "profilePath": "assets/characters/assassin/character.json",

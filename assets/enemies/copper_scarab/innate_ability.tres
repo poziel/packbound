@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_wyh6l"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_yfh43"]
+[ext_resource type="Resource" path="res://assets/enemies/copper_scarab/innate_effect.tres" id="3_wtp6a"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_q3xaa"]
+
+[resource]
+resource_name = "Copper Scarab rules"
+script = ExtResource("4_q3xaa")
+id = &"copper_scarab_innate_rules"
+display_name = "Copper Scarab rules"
+description = "Starts combat with 5 block. Absorbed damage spends it permanently for this fight."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_yfh43")]([ExtResource("3_wtp6a")])

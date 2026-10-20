@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_moogn"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_gu0ok"]
+[ext_resource type="Resource" path="res://assets/items/pocket_basilisk/rule_effect.tres" id="3_l2eog"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_nab2w"]
+
+[resource]
+resource_name = "Pocket Basilisk rules"
+script = ExtResource("4_nab2w")
+id = &"pocket_basilisk_rules"
+display_name = "Pocket Basilisk rules"
+description = "Deals 4 physical damage per affordable activation. Reduces each enemy strike this round by 2."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_gu0ok")]([ExtResource("3_l2eog")])

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://cnty2vw4n61qd"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_s5xd7"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_65k7y"]
+
+[sub_resource type="Resource" id="Resource_nftlm"]
+script = ExtResource("1_s5xd7")
+accepted_item_ids = Array[StringName]([&"copper_cicada"])
+
+[sub_resource type="Resource" id="Resource_42etm"]
+script = ExtResource("1_s5xd7")
+accepted_item_ids = Array[StringName]([&"raincatch_bowl"])
+
+[sub_resource type="Resource" id="Resource_ik6yl"]
+script = ExtResource("1_s5xd7")
+accepted_item_ids = Array[StringName]([&"spark_ring"])
+
+[resource]
+resource_name = "Assemble Storm Abacus"
+script = ExtResource("2_65k7y")
+id = &"assemble_storm_abacus"
+ingredients = Array[ExtResource("1_s5xd7")]([SubResource("Resource_nftlm"), SubResource("Resource_42etm"), SubResource("Resource_ik6yl")])
+result_item_id = &"storm_abacus"

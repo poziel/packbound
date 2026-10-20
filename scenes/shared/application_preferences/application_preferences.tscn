@@ -1,0 +1,38 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/shared/application_preferences/application_preferences.gd" id="controller"]
+[ext_resource type="FontFile" path="res://assets/fonts/ui_pixel.tres" id="font"]
+
+[node name="ApplicationPreferences" type="CanvasLayer"]
+layer = 120
+process_mode = 3
+script = ExtResource("controller")
+
+[node name="FPS" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -140.0
+offset_top = 8.0
+offset_right = -12.0
+offset_bottom = 36.0
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("font")
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "0 FPS"
+horizontal_alignment = 2
+visible = false
+
+[node name="Cursor" type="Node2D" parent="."]
+visible = false
+
+[node name="Outline" type="Polygon2D" parent="Cursor"]
+polygon = PackedVector2Array(0, 0, 0, 21, 5, 16, 9, 24, 14, 22, 10, 14, 18, 14)
+color = Color(0.04, 0.05, 0.07, 1)
+
+[node name="Fill" type="Polygon2D" parent="Cursor"]
+polygon = PackedVector2Array(2, 4, 2, 16, 6, 12, 10, 21, 11, 20, 7, 12, 13, 12)
+color = Color(0.92, 0.92, 0.86, 1)

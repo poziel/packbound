@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_05buv"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_hliab"]
+[ext_resource type="Resource" path="res://assets/items/anchor_cleaver/rule_effect.tres" id="3_3ourc"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_7v8lu"]
+
+[resource]
+resource_name = "Anchor Cleaver rules"
+script = ExtResource("4_7v8lu")
+id = &"anchor_cleaver_rules"
+display_name = "Anchor Cleaver rules"
+description = "Costs 2 stamina per activation. Deals 12 physical damage per affordable activation. Warrior only: requires and spends 2 Momentum; adds 3 damage for each Momentum spent. No cost is spent if activation is unaffordable."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_hliab")]([ExtResource("3_3ourc")])

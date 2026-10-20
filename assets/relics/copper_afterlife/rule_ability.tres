@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_st7bx"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_dwtuj"]
+[ext_resource type="Resource" path="res://assets/relics/copper_afterlife/rule_effect.tres" id="3_jb4ne"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_x2ydt"]
+
+[resource]
+resource_name = "Copper Afterlife rules"
+script = ExtResource("4_x2ydt")
+id = &"copper_afterlife_rules"
+display_name = "Copper Afterlife rules"
+description = "Every third round: gain +2 stamina. Increases the round refill budget."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_dwtuj")]([ExtResource("3_jb4ne")])

@@ -145,14 +145,11 @@
       "A square brass compass whose needle resembles an arrow."
     ],
     "assets": {
-      "icon": "assets/items/hunter_s_compass/icons/art/icon.png",
-      "svg": "assets/items/hunter_s_compass/icons/art/icon.svg",
-      "source": "assets/items/hunter_s_compass/icons/art/icon.sprite.json",
-      "footprint": "assets/items/hunter_s_compass/icons/art/footprint.json",
-      "provenance": "assets/items/hunter_s_compass/icons/art/provenance.json",
-      "manifest": "assets/items/hunter_s_compass/icons/art/art-manifest.json",
+      "icon": "assets/items/hunter_s_compass/art/item.png",
+      "source": "assets/items/hunter_s_compass/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/hunter_s_compass/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

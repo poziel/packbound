@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_dtihq"]
+
+[resource]
+resource_name = "Meteor Maul Rule Effect"
+script = ExtResource("1_dtihq")
+rule_id = &"meteor_maul_rules"
+parameters = {
+"block_per_round": 0,
+"mana_per_round": 0,
+"momentum_cost": 3,
+"momentum_damage": 4,
+"priority": 0,
+"stamina_per_round": 0,
+"tooltip_detail": "Warrior only: requires and spends 3 Momentum; adds 4 damage for each Momentum spent. Only warrior can equip this item."
+}

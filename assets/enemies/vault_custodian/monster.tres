@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://cvjeuv1onwowb"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_211me"]
+[ext_resource type="Resource" path="res://assets/enemies/vault_custodian/innate_ability.tres" id="2_3k3a8"]
+[ext_resource type="Resource" path="res://assets/enemies/vault_custodian/behavior.tres" id="3_5frm5"]
+[ext_resource type="Texture2D" uid="uid://bqnu22mwsqohe" path="res://assets/enemies/vault_custodian/art/vault_custodian.png" id="4_5e3g1"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_gp2aq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0x4ha"]
+atlas = ExtResource("4_5e3g1")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Vault Custodian"
+script = ExtResource("5_gp2aq")
+species_id = &"golem"
+role_id = &"sunder"
+behavior = ExtResource("3_5frm5")
+id = &"vault_custodian"
+display_name = "Vault Custodian"
+log_name = "Vault Custodian"
+description = "The lower vault still recognizes this brass construct as its only keyholder. It turns its entire torso to drive a heavy lock-shaped fist forward."
+icon = SubResource("AtlasTexture_0x4ha")
+base_stats = Dictionary[int, int]({
+1: 6
+})
+resource_capacities = Dictionary[int, int]({
+2: 126
+})
+abilities = Array[ExtResource("1_211me")]([ExtResource("2_3k3a8")])
+metadata/encounter_floor = 19

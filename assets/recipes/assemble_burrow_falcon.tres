@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dpqyhhgwe8l0d"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_smwwa"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_asklk"]
+
+[sub_resource type="Resource" id="Resource_koh6f"]
+script = ExtResource("1_smwwa")
+accepted_item_ids = Array[StringName]([&"marrow_sparrow"])
+
+[sub_resource type="Resource" id="Resource_oh7jb"]
+script = ExtResource("1_smwwa")
+accepted_item_ids = Array[StringName]([&"waxed_fletching"])
+
+[resource]
+resource_name = "Assemble Burrow Falcon"
+script = ExtResource("2_asklk")
+id = &"assemble_burrow_falcon"
+ingredients = Array[ExtResource("1_smwwa")]([SubResource("Resource_koh6f"), SubResource("Resource_oh7jb")])
+result_item_id = &"burrow_falcon"

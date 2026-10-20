@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_uqi2p"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_nk6l8"]
+[ext_resource type="Resource" path="res://assets/enemies/reliquary_fungus/attack_0_effect.tres" id="3_hd6mu"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_0w4jw"]
+
+[resource]
+resource_name = "Sustain"
+script = ExtResource("4_0w4jw")
+id = &"reliquary_fungus_attack_0"
+display_name = "Sustain"
+description = "Restores up to 4 health after its response if still alive, capped at maximum health."
+target_id = &"opponent"
+effects = Array[ExtResource("2_nk6l8")]([ExtResource("3_hd6mu")])

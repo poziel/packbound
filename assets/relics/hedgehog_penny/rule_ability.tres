@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_1nubc"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_kl3aa"]
+[ext_resource type="Resource" path="res://assets/relics/hedgehog_penny/rule_effect.tres" id="3_ajcr4"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_wkmwm"]
+
+[resource]
+resource_name = "Hedgehog Penny rules"
+script = ExtResource("4_wkmwm")
+id = &"hedgehog_penny_rules"
+display_name = "Hedgehog Penny rules"
+description = "With at least one packed shield: gain +1 thorns."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_kl3aa")]([ExtResource("3_ajcr4")])

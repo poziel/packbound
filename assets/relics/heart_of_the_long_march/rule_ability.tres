@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_v7bg6"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_fvqkp"]
+[ext_resource type="Resource" path="res://assets/relics/heart_of_the_long_march/rule_effect.tres" id="3_ix1tw"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_fe1a3"]
+
+[resource]
+resource_name = "Heart Of The Long March rules"
+script = ExtResource("4_fe1a3")
+id = &"heart_of_the_long_march_rules"
+display_name = "Heart Of The Long March rules"
+description = "For the Warmonger: gain +1 healing per momentum (up to 8 counted)."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_fvqkp")]([ExtResource("3_ix1tw")])

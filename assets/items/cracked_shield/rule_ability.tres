@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_4n6i0"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_klu3y"]
+[ext_resource type="Resource" path="res://assets/items/cracked_shield/rule_effect.tres" id="3_miwwl"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_enbm2"]
+
+[resource]
+resource_name = "Cracked Shield rules"
+script = ExtResource("4_enbm2")
+id = &"cracked_shield_rules"
+display_name = "Cracked Shield rules"
+description = "Starts each fight with 5 block. Spent block does not regenerate."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_klu3y")]([ExtResource("3_miwwl")])

@@ -86,14 +86,13 @@
       "A ceramic stove charm with a red coal window"
     ],
     "assets": {
-      "icon": "assets/relics/pocket_hearth/icons/art/icon.png",
-      "svg": "assets/relics/pocket_hearth/icons/art/icon.svg",
-      "source": "assets/relics/pocket_hearth/icons/art/icon.sprite.json",
+      "icon": "assets/relics/pocket_hearth/art/icon.png",
+      "source": "assets/relics/pocket_hearth/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/pocket_hearth/icons/art/provenance.json",
-      "manifest": "assets/relics/pocket_hearth/icons/art/art-manifest.json",
+      "provenance": "assets/relics/pocket_hearth/art/provenance.json",
+      "manifest": "assets/relics/pocket_hearth/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/pocket_hearth/icons/art/icon.pixloom"
+      "native": "assets/relics/pocket_hearth/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

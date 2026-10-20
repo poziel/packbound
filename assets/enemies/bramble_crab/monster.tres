@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://bjtfs11m1jet6"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_v7j51"]
+[ext_resource type="Resource" path="res://assets/enemies/bramble_crab/innate_ability.tres" id="2_q8jc7"]
+[ext_resource type="Resource" path="res://assets/enemies/bramble_crab/behavior.tres" id="3_25ar8"]
+[ext_resource type="Texture2D" uid="uid://di630tgs3622j" path="res://assets/enemies/bramble_crab/art/bramble_crab.png" id="4_e1bqm"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_6jk7a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl5q5"]
+atlas = ExtResource("4_e1bqm")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Bramble Crab"
+script = ExtResource("5_6jk7a")
+species_id = &"crab"
+role_id = &"piercer"
+behavior = ExtResource("3_25ar8")
+id = &"bramble_crab"
+display_name = "Bramble Crab"
+log_name = "Bramble Crab"
+description = "Roots growing through its abandoned pot-shell have hardened into thorns. It guards flooded stairs with a single long pincer."
+icon = SubResource("AtlasTexture_rl5q5")
+base_stats = Dictionary[int, int]({
+14: 1
+})
+resource_capacities = Dictionary[int, int]({
+2: 38
+})
+abilities = Array[ExtResource("1_v7j51")]([ExtResource("2_q8jc7")])
+metadata/encounter_floor = 4

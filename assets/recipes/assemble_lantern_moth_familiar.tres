@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://ckwyo4wgjkgll"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_0n3y0"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_8hmbm"]
+
+[sub_resource type="Resource" id="Resource_ry5jb"]
+script = ExtResource("1_0n3y0")
+accepted_item_ids = Array[StringName]([&"salt_lantern"])
+
+[sub_resource type="Resource" id="Resource_jk1ch"]
+script = ExtResource("1_0n3y0")
+accepted_item_ids = Array[StringName]([&"tin_beetle"])
+
+[resource]
+resource_name = "Assemble Lantern Moth Familiar"
+script = ExtResource("2_8hmbm")
+id = &"assemble_lantern_moth_familiar"
+ingredients = Array[ExtResource("1_0n3y0")]([SubResource("Resource_ry5jb"), SubResource("Resource_jk1ch")])
+result_item_id = &"lantern_moth_familiar"

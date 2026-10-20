@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://btq6pscbvu452"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_xkq5i"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_gvi6d"]
+
+[sub_resource type="Resource" id="Resource_rqjd4"]
+script = ExtResource("1_xkq5i")
+accepted_item_ids = Array[StringName]([&"adder_sheath"])
+
+[sub_resource type="Resource" id="Resource_c8de5"]
+script = ExtResource("1_xkq5i")
+accepted_item_ids = Array[StringName]([&"briar_snare"])
+
+[sub_resource type="Resource" id="Resource_lpmk0"]
+script = ExtResource("1_xkq5i")
+accepted_item_ids = Array[StringName]([&"gilded_scarab"])
+
+[resource]
+resource_name = "Assemble Scorpion Magazine"
+script = ExtResource("2_gvi6d")
+id = &"assemble_scorpion_magazine"
+ingredients = Array[ExtResource("1_xkq5i")]([SubResource("Resource_rqjd4"), SubResource("Resource_c8de5"), SubResource("Resource_lpmk0")])
+result_item_id = &"scorpion_magazine"

@@ -100,14 +100,11 @@
       "A two tined copper tuning fork with a dark cork grip."
     ],
     "assets": {
-      "icon": "assets/items/static_fork/icons/art/icon.png",
-      "svg": "assets/items/static_fork/icons/art/icon.svg",
-      "source": "assets/items/static_fork/icons/art/icon.sprite.json",
-      "footprint": "assets/items/static_fork/icons/art/footprint.json",
-      "provenance": "assets/items/static_fork/icons/art/provenance.json",
-      "manifest": "assets/items/static_fork/icons/art/art-manifest.json",
+      "icon": "assets/items/static_fork/art/item.png",
+      "source": "assets/items/static_fork/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/static_fork/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

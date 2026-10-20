@@ -4,11 +4,36 @@ extends Resource
 ## Authored container for item/relic definitions and their complete category graph.
 ## This does not register content or replace the running PackCatalog service.
 
+@export_tool_button("Refresh From Item / Relic Folders") var refresh_catalog: Callable = _refresh_in_inspector
+
 @export_group("Collectibles")
 @export var collectibles: Array[CollectibleDefinition] = []
 
 @export_group("Categories")
 @export var categories: Array[CollectibleCategoryDefinition] = []
+
+func _refresh_in_inspector() -> void:
+	var errors: PackedStringArray = refresh_from_folders()
+	for error: String in errors:
+		push_error(error)
+
+## Build and validate a candidate first; never publish a partial or invalid catalog.
+func refresh_from_folders(item_root: String = "res://assets/items", relic_root: String = "res://assets/relics", category_root: String = "res://assets/categories") -> PackedStringArray:
+	var discovered: Dictionary = preload("res://systems/content/collectible_discovery.gd").discover(item_root, relic_root, category_root)
+	var errors: PackedStringArray = discovered.errors
+	if not errors.is_empty():
+		return errors
+	var candidate: Resource = get_script().new()
+	candidate.collectibles.assign(discovered.collectibles)
+	candidate.categories.assign(discovered.categories)
+	errors = candidate.validation_errors()
+	if not errors.is_empty():
+		return errors
+	collectibles.assign(candidate.collectibles)
+	categories.assign(candidate.categories)
+	resource_name = "Collectibles"
+	emit_changed()
+	return errors
 
 func validation_errors() -> PackedStringArray:
 	var errors := PackedStringArray()

@@ -1,0 +1,11 @@
+{
+  "key": "mana_furnace",
+  "name": "Mana Furnace",
+  "category": "relics",
+  "kind": "run-relic",
+  "detail": "After spells activate, all remaining mana becomes block at 2 block per mana. No mana is retained.",
+  "iconItemKey": "spark_ring",
+  "iconMetadata": "res://assets/items/spark_ring/metadata.json",
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
+  "note": "Reuses an inventory item icon; no separate artwork exists."
+}

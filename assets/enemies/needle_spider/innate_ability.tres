@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_l20cj"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_plu7x"]
+[ext_resource type="Resource" path="res://assets/enemies/needle_spider/innate_effect.tres" id="3_nqr1v"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_ko82d"]
+
+[resource]
+resource_name = "Needle Spider rules"
+script = ExtResource("4_ko82d")
+id = &"needle_spider_innate_rules"
+display_name = "Needle Spider rules"
+description = "Makes 2 strikes per response. Plating and retaliation apply to each strike. Up to 1 damage per strike bypasses block after slow, plating and resistance reduce the strike."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_plu7x")]([ExtResource("3_nqr1v")])

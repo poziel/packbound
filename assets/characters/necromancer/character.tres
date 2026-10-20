@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="CharacterDefinition" format=3 uid="uid://bs7ifpqiejggc"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_801ib"]
+[ext_resource type="Texture2D" uid="uid://bayp0bte21kg2" path="res://assets/characters/necromancer/art/portrait.png" id="2_56jpi"]
+[ext_resource type="Script" uid="uid://cg0vuad452ie5" path="res://systems/characters/character_definition.gd" id="3_0t7fp"]
+[ext_resource type="Script" uid="uid://c0epfnyobaeik" path="res://systems/characters/starting_equipment_definition.gd" id="4_wqlvp"]
+[ext_resource type="Resource" path="res://assets/characters/necromancer/starting_equipment_0.tres" id="5_7i6i1"]
+[ext_resource type="Resource" path="res://assets/characters/necromancer/starting_equipment_1.tres" id="6_ax7yk"]
+[ext_resource type="Resource" path="res://assets/characters/necromancer/starting_equipment_2.tres" id="7_lgj36"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbs2g"]
+atlas = ExtResource("2_56jpi")
+region = Rect2(0, 0, 64, 64)
+filter_clip = true
+
+[resource]
+resource_name = "Odran Morrow"
+script = ExtResource("3_0t7fp")
+class_id = &"necromancer"
+biography = "An undead archivist who remembers the names that the living would rather forget."
+starting_equipment = Array[ExtResource("4_wqlvp")]([ExtResource("5_7i6i1"), ExtResource("6_ax7yk"), ExtResource("7_lgj36")])
+id = &"necromancer"
+display_name = "Odran Morrow"
+log_name = "Odran Morrow"
+description = "Raising persistent bone thralls and combining their direct damage with spellcraft and life-stealing equipment."
+icon = SubResource("AtlasTexture_rbs2g")
+resource_capacities = Dictionary[int, int]({
+0: 1,
+1: 3,
+2: 28
+})
+
+metadata/selection_order = 4

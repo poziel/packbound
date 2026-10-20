@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_xdkfd"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_l8kw4"]
+[ext_resource type="Resource" path="res://assets/enemies/iron_matron/innate_effect.tres" id="3_5le82"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_hunsr"]
+
+[resource]
+resource_name = "Iron Matron rules"
+script = ExtResource("4_hunsr")
+id = &"iron_matron_innate_rules"
+display_name = "Iron Matron rules"
+description = "Starts with 3 block and strikes twice each turn."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_l8kw4")]([ExtResource("3_5le82")])

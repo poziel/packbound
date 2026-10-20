@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dwk788ikloc6c"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_3h3h2"]
+[ext_resource type="Resource" path="res://assets/items/hornback_bow/rule_ability.tres" id="2_inb2i"]
+[ext_resource type="Texture2D" uid="uid://baj44cj460pgt" path="res://assets/items/hornback_bow/art/item.png" id="3_1036w"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_q68x2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mv7e"]
+atlas = ExtResource("3_1036w")
+region = Rect2(0, 0, 64, 96)
+
+[resource]
+resource_name = "Hornback Bow"
+script = ExtResource("4_q68x2")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(0, 2)])
+activation_costs = Dictionary[int, int]({
+1: 2
+})
+id = &"hornback_bow"
+display_name = "Hornback Bow"
+description = "Costs 2 stamina per activation. Deals 8 physical damage per affordable activation. Bypasses up to 1 enemy block per activation."
+lore = "Made from the antlers of a beast that outgrew the forest."
+rarity = 1
+tags = Array[StringName]([&"ranged", &"ranger"])
+category_ids = Array[StringName]([&"bows"])
+allowed_class_ids = Array[StringName]([&"ranger"])
+icon = SubResource("AtlasTexture_2mv7e")
+base_stats = Dictionary[int, int]({
+0: 8,
+14: 1
+})
+abilities = Array[ExtResource("1_3h3h2")]([ExtResource("2_inb2i")])

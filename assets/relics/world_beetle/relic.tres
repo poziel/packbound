@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RelicDefinition" format=3 uid="uid://c4wvb0648gtsl"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_fq6fw"]
+[ext_resource type="Resource" path="res://assets/relics/world_beetle/rule_ability.tres" id="2_xsswl"]
+[ext_resource type="Texture2D" uid="uid://l2r3a4uue2j5" path="res://assets/relics/world_beetle/art/icon.png" id="3_n6a0v"]
+[ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_cn1qk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b10mx"]
+atlas = ExtResource("3_n6a0v")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "World Beetle"
+script = ExtResource("4_cn1qk")
+id = &"world_beetle"
+display_name = "World Beetle"
+description = "With at least twenty occupied backpack cells: gain +2 plating."
+lore = "The beetle was found beneath a fallen boundary stone, still trying to lift it. The stone has grown lighter; the beetle has not grown tired."
+rarity = 3
+tags = Array[StringName]([&"relic", &"dense"])
+category_ids = Array[StringName]([&"relics"])
+preferred_class_ids = null
+preferred_character_ids = null
+icon = SubResource("AtlasTexture_b10mx")
+base_stats = null
+abilities = Array[ExtResource("1_fq6fw")]([ExtResource("2_xsswl")])

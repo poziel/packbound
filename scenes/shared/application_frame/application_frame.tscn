@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cvvx4qm6mjnjc"]
 
 [ext_resource type="Script" uid="uid://bjmhnek3lbbgk" path="res://scenes/shared/application_frame/application_frame.gd" id="controller"]
-[ext_resource type="Texture2D" path="res://assets/ui/icons/settings/settings.png" id="settings_icon"]
+[ext_resource type="Texture2D" path="res://assets/icons/controls/settings/settings.png" id="settings_icon"]
 [ext_resource type="Script" uid="uid://dn3si2y2d45nd" path="res://scenes/shared/application_frame/application_frame_style.gd" id="frame_style"]
 [ext_resource type="Theme" uid="uid://b3k7avi5t7hlb" path="res://themes/gameplay/theme.tres" id="theme"]
 

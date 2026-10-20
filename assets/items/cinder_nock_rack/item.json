@@ -143,14 +143,11 @@
       "A black iron comb holding three ember red arrow nocks."
     ],
     "assets": {
-      "icon": "assets/items/cinder_nock_rack/icons/art/icon.png",
-      "svg": "assets/items/cinder_nock_rack/icons/art/icon.svg",
-      "source": "assets/items/cinder_nock_rack/icons/art/icon.sprite.json",
-      "footprint": "assets/items/cinder_nock_rack/icons/art/footprint.json",
-      "provenance": "assets/items/cinder_nock_rack/icons/art/provenance.json",
-      "manifest": "assets/items/cinder_nock_rack/icons/art/art-manifest.json",
+      "icon": "assets/items/cinder_nock_rack/art/item.png",
+      "source": "assets/items/cinder_nock_rack/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/cinder_nock_rack/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

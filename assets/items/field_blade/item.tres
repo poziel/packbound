@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dfou86x5phtyr"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_qbj7j"]
+[ext_resource type="Resource" path="res://assets/items/field_blade/rule_ability.tres" id="2_v8jab"]
+[ext_resource type="Texture2D" uid="uid://bifdi1ranhonb" path="res://assets/items/field_blade/art/item.png" id="3_8oi8d"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_ck7kb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbt0t"]
+atlas = ExtResource("3_8oi8d")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Field Blade"
+script = ExtResource("4_ck7kb")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+activation_costs = Dictionary[int, int]({
+1: 1
+})
+id = &"field_blade"
+display_name = "Field Blade"
+description = "Costs 1 stamina: 5 physical damage."
+lore = "A caravan guard's first honest wages bought its iron."
+tags = Array[StringName]([&"weapon", &"common"])
+category_ids = Array[StringName]([&"swords"])
+icon = SubResource("AtlasTexture_bbt0t")
+base_stats = Dictionary[int, int]({
+0: 5
+})
+abilities = Array[ExtResource("1_qbj7j")]([ExtResource("2_v8jab")])

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_jmvb4"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_hx1qm"]
+[ext_resource type="Resource" path="res://assets/enemies/sewer_asp/attack_0_effect.tres" id="3_vqena"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_ibd6h"]
+
+[resource]
+resource_name = "Venom"
+script = ExtResource("4_ibd6h")
+id = &"sewer_asp_attack_0"
+display_name = "Venom"
+description = "Applies 1 poison once per response only if a strike damages player health."
+target_id = &"opponent"
+effects = Array[ExtResource("2_hx1qm")]([ExtResource("3_vqena")])

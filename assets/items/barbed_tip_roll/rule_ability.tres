@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_rwvlf"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_f7oi5"]
+[ext_resource type="Resource" path="res://assets/items/barbed_tip_roll/rule_effect.tres" id="3_ky4f7"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_sxfh6"]
+
+[resource]
+resource_name = "Barbed Tip Roll rules"
+script = ExtResource("4_sxfh6")
+id = &"barbed_tip_roll_rules"
+display_name = "Barbed Tip Roll rules"
+description = "While orthogonally touching the permanent Bowmaster quiver, adds 2 pierce to Volley; this equipment remains in the backpack and is not consumed."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_f7oi5")]([ExtResource("3_ky4f7")])

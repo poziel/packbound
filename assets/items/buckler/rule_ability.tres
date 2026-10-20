@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_pqtt5"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_v3njd"]
+[ext_resource type="Resource" path="res://assets/items/buckler/rule_effect.tres" id="3_nvgji"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_55xip"]
+
+[resource]
+resource_name = "Buckler rules"
+script = ExtResource("4_55xip")
+id = &"buckler_rules"
+display_name = "Buckler rules"
+description = "Starts each fight with 4 block. Reflects 1 damage for each enemy strike."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_v3njd")]([ExtResource("3_nvgji")])

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://byppkyo2ynxg"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_pws7c"]
+[ext_resource type="Resource" path="res://assets/items/cursed_idol/rule_ability.tres" id="2_nncjg"]
+[ext_resource type="Texture2D" uid="uid://p03wm8irfv1s" path="res://assets/items/cursed_idol/art/item.png" id="3_v3usd"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_pdnvf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebivt"]
+atlas = ExtResource("3_v3usd")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Cursed Idol"
+script = ExtResource("4_pdnvf")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"cursed_idol"
+display_name = "Cursed Idol"
+description = "Touching attacks gain +3 damage; shields gain +3 block. Costs 1 HP each turn; ward absorbs this cost."
+rarity = 3
+category_ids = Array[StringName]([&"boosters"])
+icon = SubResource("AtlasTexture_ebivt")
+base_stats = Dictionary[int, int]({
+10: 1
+})
+abilities = Array[ExtResource("1_pws7c")]([ExtResource("2_nncjg")])

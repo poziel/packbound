@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dc20j2xm372gr"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_jlil3"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_4xrqk"]
+
+[sub_resource type="Resource" id="Resource_8qju6"]
+script = ExtResource("1_jlil3")
+accepted_item_ids = Array[StringName]([&"oathsteel_blade"])
+
+[sub_resource type="Resource" id="Resource_4a0ls"]
+script = ExtResource("1_jlil3")
+accepted_item_ids = Array[StringName]([&"oathsteel_blade"])
+
+[resource]
+resource_name = "Forge Dusksteel Blade"
+script = ExtResource("2_4xrqk")
+id = &"forge_dusksteel_blade"
+ingredients = Array[ExtResource("1_jlil3")]([SubResource("Resource_8qju6"), SubResource("Resource_4a0ls")])
+result_item_id = &"dusksteel_blade"

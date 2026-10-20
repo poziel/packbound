@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_npgiy"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_5dxd6"]
+[ext_resource type="Resource" path="res://assets/enemies/bell_sentinel/attack_1_effect.tres" id="3_ad4yv"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_fbv3g"]
+
+[resource]
+resource_name = "Charge / Slam"
+script = ExtResource("4_fbv3g")
+id = &"bell_sentinel_attack_1"
+display_name = "Charge / Slam"
+description = "Alternates a harmless charge and a heavy slam."
+target_id = &"opponent"
+effects = Array[ExtResource("2_5dxd6")]([ExtResource("3_ad4yv")])

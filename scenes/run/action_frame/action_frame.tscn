@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://blr0doqorpx58"]
 
 [ext_resource type="Script" uid="uid://dxp0wr47fepk2" path="res://components/ui/shared/runtime_pixel_style.gd" id="3_mikuh"]
-[ext_resource type="Texture2D" path="res://assets/ui/icons/attack/attack.png" id="4_16yx4"]
-[ext_resource type="Texture2D" uid="uid://dgcqmd1las1ko" path="res://assets/ui/icons/navigation-v3/unused-items.png" id="7_5jirj"]
-[ext_resource type="Texture2D" uid="uid://detk8ls2ptktg" path="res://assets/ui/icons/navigation-v3/reward-items.png" id="8_vaxfo"]
-[ext_resource type="Texture2D" uid="uid://g31x2x3n5q1b" path="res://assets/navigation/reward-alert.svg" id="9_ftsea"]
-[ext_resource type="Texture2D" uid="uid://cyowoooopgjv6" path="res://assets/ui/icons/navigation-v3/reward-relics.png" id="10_otnwt"]
+[ext_resource type="Texture2D" path="res://assets/icons/actions/attack/attack.png" id="4_16yx4"]
+[ext_resource type="Texture2D" uid="uid://dgcqmd1las1ko" path="res://assets/icons/navigation/actions/unused-items.png" id="7_5jirj"]
+[ext_resource type="Texture2D" uid="uid://detk8ls2ptktg" path="res://assets/icons/navigation/actions/reward-items.png" id="8_vaxfo"]
+[ext_resource type="Texture2D" uid="uid://g31x2x3n5q1b" path="res://assets/icons/navigation/alerts/reward-alert.svg" id="9_ftsea"]
+[ext_resource type="Texture2D" uid="uid://cyowoooopgjv6" path="res://assets/icons/navigation/actions/reward-relics.png" id="10_otnwt"]
 [ext_resource type="PackedScene" uid="uid://iyhkxheqo6em" path="res://components/ui/buttons/pixel_button/pixel_button.tscn" id="pixel_button"]
 [ext_resource type="Theme" uid="uid://b3k7avi5t7hlb" path="res://themes/gameplay/theme.tres" id="theme"]
 

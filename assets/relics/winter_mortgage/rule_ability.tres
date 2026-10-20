@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_kad8a"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_teda5"]
+[ext_resource type="Resource" path="res://assets/relics/winter_mortgage/rule_effect.tres" id="3_cby5y"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_galnu"]
+
+[resource]
+resource_name = "Winter Mortgage rules"
+script = ExtResource("4_galnu")
+id = &"winter_mortgage_rules"
+display_name = "Winter Mortgage rules"
+description = "When the enemy already has Slow before activations: gain +2 ward per slow (up to 4 counted)."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_teda5")]([ExtResource("3_cby5y")])

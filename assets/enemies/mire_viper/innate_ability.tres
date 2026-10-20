@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_64ex8"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_jbswo"]
+[ext_resource type="Resource" path="res://assets/enemies/mire_viper/innate_effect.tres" id="3_newg5"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_lajo8"]
+
+[resource]
+resource_name = "Mire Viper rules"
+script = ExtResource("4_lajo8")
+id = &"mire_viper_innate_rules"
+display_name = "Mire Viper rules"
+description = "Adds 2 poison when an attack hurts you."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_jbswo")]([ExtResource("3_newg5")])

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://cicfdmaeqts2p"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_aee5i"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_kuav5"]
+
+[sub_resource type="Resource" id="Resource_syhna"]
+script = ExtResource("1_aee5i")
+accepted_item_ids = Array[StringName]([&"glass_reed_bow"])
+
+[sub_resource type="Resource" id="Resource_ye8tp"]
+script = ExtResource("1_aee5i")
+accepted_item_ids = Array[StringName]([&"gloam_lynx"])
+
+[sub_resource type="Resource" id="Resource_spale"]
+script = ExtResource("1_aee5i")
+accepted_item_ids = Array[StringName]([&"scorpion_magazine"])
+
+[sub_resource type="Resource" id="Resource_cfq3x"]
+script = ExtResource("1_aee5i")
+accepted_item_ids = Array[StringName]([&"seamfinder_lens"])
+
+[sub_resource type="Resource" id="Resource_lpehf"]
+script = ExtResource("1_aee5i")
+accepted_item_ids = Array[StringName]([&"thunder_yew"])
+
+[resource]
+resource_name = "Assemble Horizon Harp"
+script = ExtResource("2_kuav5")
+id = &"assemble_horizon_harp"
+ingredients = Array[ExtResource("1_aee5i")]([SubResource("Resource_syhna"), SubResource("Resource_ye8tp"), SubResource("Resource_spale"), SubResource("Resource_cfq3x"), SubResource("Resource_lpehf")])
+result_item_id = &"horizon_harp"

@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bm8fhckhdlwvq"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_mdveb"]
+[ext_resource type="Resource" path="res://assets/items/hollow_bookmark/rule_ability.tres" id="2_e452n"]
+[ext_resource type="Texture2D" uid="uid://bq77lswhbty3b" path="res://assets/items/hollow_bookmark/art/item.png" id="3_bqnbm"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_rmwid"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00pjq"]
+atlas = ExtResource("3_bqnbm")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Hollow Bookmark"
+script = ExtResource("4_rmwid")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+activation_costs = Dictionary[int, int]({
+0: 2
+})
+damage_type = 1
+element = 4
+id = &"hollow_bookmark"
+display_name = "Hollow Bookmark"
+description = "Costs 2 mana per activation. Deals 7 magical damage per affordable activation. Applies 1 doom through the existing combat keyword rules per affordable activation."
+lore = "No page touched by the frame can be remembered afterward."
+rarity = 1
+tags = Array[StringName]([&"spell", &"mage", &"void"])
+category_ids = Array[StringName]([&"magic_books"])
+allowed_class_ids = Array[StringName]([&"mage"])
+icon = SubResource("AtlasTexture_00pjq")
+base_stats = Dictionary[int, int]({
+0: 7,
+15: 1
+})
+abilities = Array[ExtResource("1_mdveb")]([ExtResource("2_e452n")])

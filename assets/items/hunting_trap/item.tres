@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bnlggwrv8w2j0"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_wsjbj"]
+[ext_resource type="Resource" path="res://assets/items/hunting_trap/rule_ability.tres" id="2_kukh3"]
+[ext_resource type="Texture2D" uid="uid://bqys0ltwpc8r2" path="res://assets/items/hunting_trap/art/item.png" id="3_303go"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_lhb5v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4om32"]
+atlas = ExtResource("3_303go")
+region = Rect2(0, 0, 96, 64)
+
+[resource]
+resource_name = "Venom Trap"
+script = ExtResource("4_lhb5v")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(2, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1)])
+activation_costs = Dictionary[int, int]({
+1: 1
+})
+id = &"hunting_trap"
+display_name = "Venom Trap"
+description = "Adds 4 poison and slows enemy strikes by 1."
+rarity = 2
+category_ids = Array[StringName]([&"traps"])
+icon = SubResource("AtlasTexture_4om32")
+base_stats = Dictionary[int, int]({
+6: 4,
+13: 1
+})
+abilities = Array[ExtResource("1_wsjbj")]([ExtResource("2_kukh3")])

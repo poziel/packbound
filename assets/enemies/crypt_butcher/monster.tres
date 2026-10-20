@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://dso5dxm8mmyy2"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_1e4d5"]
+[ext_resource type="Resource" path="res://assets/enemies/crypt_butcher/innate_ability.tres" id="2_kretk"]
+[ext_resource type="Resource" path="res://assets/enemies/crypt_butcher/behavior.tres" id="3_fgpuc"]
+[ext_resource type="Texture2D" uid="uid://d3hhvfxbvkom1" path="res://assets/enemies/crypt_butcher/art/crypt_butcher.png" id="4_ha200"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_rfp83"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjruf"]
+atlas = ExtResource("4_ha200")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Crypt Butcher"
+script = ExtResource("5_rfp83")
+behavior = ExtResource("3_fgpuc")
+id = &"crypt_butcher"
+display_name = "Crypt Butcher"
+log_name = "Crypt Butcher"
+description = "Gains 1 attack for each elapsed turn."
+icon = SubResource("AtlasTexture_gjruf")
+resource_capacities = Dictionary[int, int]({
+2: 70
+})
+abilities = Array[ExtResource("1_1e4d5")]([ExtResource("2_kretk")])
+
+metadata/progression_index = 9

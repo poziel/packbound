@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://b6oko7sswl2f0"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_p6ieb"]
+[ext_resource type="Resource" path="res://assets/enemies/brass_mantis/innate_ability.tres" id="2_idteo"]
+[ext_resource type="Resource" path="res://assets/enemies/brass_mantis/behavior.tres" id="3_0mw2u"]
+[ext_resource type="Texture2D" uid="uid://cxys3v7sle25" path="res://assets/enemies/brass_mantis/art/brass_mantis.png" id="4_68081"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_61qre"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l0y3"]
+atlas = ExtResource("4_68081")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Brass Mantis"
+script = ExtResource("5_61qre")
+species_id = &"mantis"
+role_id = &"multi-strike"
+behavior = ExtResource("3_0mw2u")
+id = &"brass_mantis"
+display_name = "Brass Mantis"
+log_name = "Brass Mantis"
+description = "A surgical automaton left to maintain the crypt machinery. Its three measured cuts follow the same inspection routine every round."
+icon = SubResource("AtlasTexture_0l0y3")
+resource_capacities = Dictionary[int, int]({
+2: 69
+})
+abilities = Array[ExtResource("1_p6ieb")]([ExtResource("2_idteo")])
+metadata/encounter_floor = 12

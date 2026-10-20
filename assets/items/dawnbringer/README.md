@@ -24,4 +24,4 @@ A ceremonial long steel sword with a crown-shaped gold guard, ivory grip and bro
 
 Footprint is two vertical 32 px cells, 32 × 64 px total. Art and mask rotate together. Use deliberate stepped silhouettes and broad material planes. No scattered glitter, colored reflection accents or glow. Semantic layers separate structure, material planes and fittings.
 
-Art: [PNG](icons/art/icon.png), [SVG](icons/art/icon.svg), [numeric layered source](icons/art/icon.sprite.json), [Pixloom project](icons/art/icon.pixloom). Artwork is an integrated review candidate; individual visual acceptance is not claimed.
+Art: [PNG](art/item.png), [SVG](art/item.png), [numeric layered source](art/item.pixloom.json), Pixloom project (archived). Artwork is an integrated review candidate; individual visual acceptance is not claimed.

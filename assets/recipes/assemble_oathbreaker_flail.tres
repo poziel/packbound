@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://b58uw3qin7yqd"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_togyo"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_44o3a"]
+
+[sub_resource type="Resource" id="Resource_0c3ut"]
+script = ExtResource("1_togyo")
+accepted_item_ids = Array[StringName]([&"longsword"])
+
+[sub_resource type="Resource" id="Resource_sma2a"]
+script = ExtResource("1_togyo")
+accepted_item_ids = Array[StringName]([&"standard_spike"])
+
+[resource]
+resource_name = "Assemble Oathbreaker Flail"
+script = ExtResource("2_44o3a")
+id = &"assemble_oathbreaker_flail"
+ingredients = Array[ExtResource("1_togyo")]([SubResource("Resource_0c3ut"), SubResource("Resource_sma2a")])
+result_item_id = &"oathbreaker_flail"

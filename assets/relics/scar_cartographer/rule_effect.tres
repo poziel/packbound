@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_wl3te"]
+
+[resource]
+resource_name = "Scar Cartographer Rule Effect"
+script = ExtResource("1_wl3te")
+rule_id = &"scar_cartographer_rules"
+parameters = {
+"icon": "scar_cartographer",
+"rule": {
+"amount": 6,
+"cap": 1,
+"condition": "low_hp",
+"metric": "one",
+"stat": "physical_damage"
+},
+"stats": {}
+}

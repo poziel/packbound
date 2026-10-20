@@ -1,0 +1,63 @@
+{
+  "key": "blood_gem",
+  "name": "Blood Gem",
+  "category": "charms",
+  "gameplayRole": "booster",
+  "inventoryMask": [
+    "#"
+  ],
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
+  "exports": [
+    "art/item.png",
+    "art/item.png"
+  ],
+  "editableSources": [
+    "art/item.png"
+  ],
+  "runtime": {
+    "texture": "res://assets/items/blood_gem/art/item.png",
+    "viewPolicy": "Reuse approved native sprite across display sizes with nearest filtering."
+  },
+  "atlasProvenance": {
+    "index": 2,
+    "file": "03-ruby",
+    "key": "blood_gem",
+    "title": "Ruby",
+    "fit": [
+      58,
+      64
+    ],
+    "inventoryCells": [
+      1,
+      1
+    ],
+    "cell": [
+      96,
+      96
+    ],
+    "source": "docs/art/concepts/items-2026-10-15/03-ruby.png",
+    "sourceSha256": "edac9f60d146bb09af0a31d936357fd57ef7ec99d8f296e3670b252870a61374",
+    "sourceBounds": {
+      "left": 278,
+      "top": 228,
+      "width": 699,
+      "height": 814,
+      "pixels": 361406
+    },
+    "bounds": {
+      "left": 20,
+      "top": 16,
+      "width": 55,
+      "height": 64,
+      "pixels": 2246
+    },
+    "paletteColors": 32,
+    "alphaValues": [
+      0,
+      255
+    ],
+    "svgPixelMatch": true
+  },
+  "activeRevision": "catalog-v2",
+  "revisionProvenance": "res://docs/art/concepts/blood-gem-catalog-v2/provenance.json"
+}

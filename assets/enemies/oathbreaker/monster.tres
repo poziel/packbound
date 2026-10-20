@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://bx117fen6ii5v"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_ubcud"]
+[ext_resource type="Resource" path="res://assets/enemies/oathbreaker/innate_ability.tres" id="2_s4qlb"]
+[ext_resource type="Resource" path="res://assets/enemies/oathbreaker/behavior.tres" id="3_x0bum"]
+[ext_resource type="Texture2D" uid="uid://di7fa8ihmqy1q" path="res://assets/enemies/oathbreaker/art/oathbreaker.png" id="4_vaimq"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_i15kh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxl2w"]
+atlas = ExtResource("4_vaimq")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Oathbreaker"
+script = ExtResource("5_i15kh")
+behavior = ExtResource("3_x0bum")
+id = &"oathbreaker"
+display_name = "Oathbreaker"
+log_name = "Oathbreaker"
+description = "Removes existing conditions and elemental traces at the start of every third turn."
+icon = SubResource("AtlasTexture_sxl2w")
+base_stats = Dictionary[int, int]({
+12: 3,
+18: 20
+})
+resource_capacities = Dictionary[int, int]({
+2: 128
+})
+abilities = Array[ExtResource("1_ubcud")]([ExtResource("2_s4qlb")])
+
+metadata/progression_index = 18

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_rg0a4"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_hrcou"]
+[ext_resource type="Resource" path="res://assets/enemies/gutter_duelist/innate_effect.tres" id="3_2yjft"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_turh5"]
+
+[resource]
+resource_name = "Gutter Duelist rules"
+script = ExtResource("4_turh5")
+id = &"gutter_duelist_innate_rules"
+display_name = "Gutter Duelist rules"
+description = "Restores 5 temporary block every third round. Any remainder expires afterward."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_hrcou")]([ExtResource("3_2yjft")])

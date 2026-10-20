@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_j8kgp"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_rqu1l"]
+[ext_resource type="Resource" path="res://assets/relics/pilgrim_sock/rule_effect.tres" id="3_p2uag"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_66avq"]
+
+[resource]
+resource_name = "Pilgrim Sock rules"
+script = ExtResource("4_66avq")
+id = &"pilgrim_sock_rules"
+display_name = "Pilgrim Sock rules"
+description = "From round four onward: gain +1 stamina. Increases the round refill budget."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_rqu1l")]([ExtResource("3_p2uag")])

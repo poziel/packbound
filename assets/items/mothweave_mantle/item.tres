@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dtkb77ycdceg2"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_p4meg"]
+[ext_resource type="Resource" path="res://assets/items/mothweave_mantle/rule_ability.tres" id="2_m7bbi"]
+[ext_resource type="Texture2D" uid="uid://cu125g6llvh28" path="res://assets/items/mothweave_mantle/art/item.png" id="3_145hd"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_b6rud"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1610t"]
+atlas = ExtResource("3_145hd")
+region = Rect2(0, 0, 96, 64)
+
+[resource]
+resource_name = "Mothweave Mantle"
+script = ExtResource("4_b6rud")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(1, 1)])
+id = &"mothweave_mantle"
+display_name = "Mothweave Mantle"
+description = "Supplies 3 ward each round against poison, curse and reflected damage."
+lore = "It was woven from the cocoons left after a moonless migration."
+rarity = 1
+tags = Array[StringName]([&"armor"])
+category_ids = Array[StringName]([&"body_armor"])
+icon = SubResource("AtlasTexture_1610t")
+base_stats = Dictionary[int, int]({
+5: 3
+})
+abilities = Array[ExtResource("1_p4meg")]([ExtResource("2_m7bbi")])

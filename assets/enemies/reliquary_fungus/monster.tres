@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://nmic5amqousd"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_mq4vm"]
+[ext_resource type="Resource" path="res://assets/enemies/reliquary_fungus/innate_ability.tres" id="2_14axg"]
+[ext_resource type="Resource" path="res://assets/enemies/reliquary_fungus/behavior.tres" id="3_s0jdx"]
+[ext_resource type="Texture2D" uid="uid://ce3vnnlicqc76" path="res://assets/enemies/reliquary_fungus/art/reliquary_fungus.png" id="4_g28lv"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_8gpt3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_janr5"]
+atlas = ExtResource("4_g28lv")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Reliquary Fungus"
+script = ExtResource("5_8gpt3")
+species_id = &"fungus"
+role_id = &"sustain"
+behavior = ExtResource("3_s0jdx")
+id = &"reliquary_fungus"
+display_name = "Reliquary Fungus"
+log_name = "Reliquary Fungus"
+description = "A walking shelf fungus that has grown around a forgotten saint box. The box is empty, but the creature still protects it."
+icon = SubResource("AtlasTexture_janr5")
+resource_capacities = Dictionary[int, int]({
+2: 74
+})
+abilities = Array[ExtResource("1_mq4vm")]([ExtResource("2_14axg")])
+metadata/encounter_floor = 11

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://drnsjsanxoxmg"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_1p1g3"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_8njpw"]
+
+[sub_resource type="Resource" id="Resource_dha5l"]
+script = ExtResource("1_1p1g3")
+accepted_item_ids = Array[StringName]([&"cobbler_s_boots"])
+
+[sub_resource type="Resource" id="Resource_5nsda"]
+script = ExtResource("1_1p1g3")
+accepted_item_ids = Array[StringName]([&"cracked_shield"])
+
+[resource]
+resource_name = "Assemble Ironroot Boots"
+script = ExtResource("2_8njpw")
+id = &"assemble_ironroot_boots"
+ingredients = Array[ExtResource("1_1p1g3")]([SubResource("Resource_dha5l"), SubResource("Resource_5nsda")])
+result_item_id = &"ironroot_boots"

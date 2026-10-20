@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RelicDefinition" format=3 uid="uid://dfphbo7pwsyya"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_vvcwi"]
+[ext_resource type="Resource" path="res://assets/relics/tin_cricket/rule_ability.tres" id="2_j2gum"]
+[ext_resource type="Texture2D" uid="uid://cpahoidnkhr01" path="res://assets/relics/tin_cricket/art/icon.png" id="3_vg57y"]
+[ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_8pmv7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af0dv"]
+atlas = ExtResource("3_vg57y")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Tin Cricket"
+script = ExtResource("4_8pmv7")
+id = &"tin_cricket"
+display_name = "Tin Cricket"
+description = "Every round: gain +1 ward."
+lore = "The watchmaker made it to sing when the air turned poisonous. Its legs still twitch, though the spring is gone."
+tags = Array[StringName]([&"relic", &"always"])
+category_ids = Array[StringName]([&"relics"])
+preferred_class_ids = null
+preferred_character_ids = null
+icon = SubResource("AtlasTexture_af0dv")
+base_stats = null
+abilities = Array[ExtResource("1_vvcwi")]([ExtResource("2_j2gum")])

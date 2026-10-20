@@ -136,14 +136,11 @@
       "A red scroll clasped by a tiny bronze lizard."
     ],
     "assets": {
-      "icon": "assets/items/salamander_contract/icons/art/icon.png",
-      "svg": "assets/items/salamander_contract/icons/art/icon.svg",
-      "source": "assets/items/salamander_contract/icons/art/icon.sprite.json",
-      "footprint": "assets/items/salamander_contract/icons/art/footprint.json",
-      "provenance": "assets/items/salamander_contract/icons/art/provenance.json",
-      "manifest": "assets/items/salamander_contract/icons/art/art-manifest.json",
+      "icon": "assets/items/salamander_contract/art/item.png",
+      "source": "assets/items/salamander_contract/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/salamander_contract/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

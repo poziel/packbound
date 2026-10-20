@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cwvhckrqm7wsr"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_3xfws"]
+[ext_resource type="Resource" path="res://assets/items/war_council_seal/rule_ability.tres" id="2_a5p12"]
+[ext_resource type="Texture2D" uid="uid://d1c41rrukh12v" path="res://assets/items/war_council_seal/art/item.png" id="3_ueg1p"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_s7uli"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycm3p"]
+atlas = ExtResource("3_ueg1p")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "War Council Seal"
+script = ExtResource("4_s7uli")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"war_council_seal"
+display_name = "War Council Seal"
+description = "Adds 2 maximum stamina, refreshed each round. Each orthogonally touching weapon gains +3 damage. Each source applies once per target, regardless of shared edges; distinct sources stack."
+lore = "The signature was erased; the promise was kept."
+rarity = 3
+tags = Array[StringName]([&"booster", &"warrior"])
+category_ids = Array[StringName]([&"boosters"])
+allowed_class_ids = Array[StringName]([&"warrior"])
+icon = SubResource("AtlasTexture_ycm3p")
+base_stats = Dictionary[int, int]({
+9: 2
+})
+abilities = Array[ExtResource("1_3xfws")]([ExtResource("2_a5p12")])

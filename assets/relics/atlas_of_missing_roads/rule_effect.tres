@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_r2pi8"]
+
+[resource]
+resource_name = "Atlas Of Missing Roads Rule Effect"
+script = ExtResource("1_r2pi8")
+rule_id = &"atlas_of_missing_roads_rules"
+parameters = {
+"icon": "atlas_of_missing_roads",
+"rule": {
+"amount": 14,
+"cap": 1,
+"condition": "sparse",
+"metric": "one",
+"stat": "physical_damage"
+},
+"stats": {}
+}

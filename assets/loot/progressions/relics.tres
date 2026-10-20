@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="LootProgressionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/loot/loot_progression_definition.gd" id="1_ksi5i"]
+
+[resource]
+resource_name = "Relics Progression"
+script = ExtResource("1_ksi5i")
+id = &"relics"
+pool_ids = Array[StringName]([&"relics"])
+rarity_weights_by_floor = Dictionary[int, Dictionary]({
+1: {
+0: 1.0,
+1: 1.0,
+2: 1.0,
+3: 1.0,
+4: 1.0
+}
+})
+metadata/balance_policy = "Uniform eligible candidates; newer equipment uses pool minimum_floors. Existing legacy rarity exceptions are preserved."

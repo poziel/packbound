@@ -1,9 +1,0 @@
-{
-  "method": "Direct integer-grid authoring; semantic structure/material/fittings layers. Pixloom CLI 0.2.0 validates legacy spritex version-1 numeric schema and exports PNG/SVG. Required old spritex skill/executable absent; user-requested Pixloom replacement used.",
-  "references": [],
-  "artist": "Codex",
-  "archetype": "sword",
-  "acceptance": "unreviewed",
-  "sourceAuthority": "icon.sprite.json",
-  "nativeProject": "icon.pixloom"
-}

@@ -1,6 +1,8 @@
 class_name BackpackBoard
 extends Control
 
+const CATEGORIES = preload("res://systems/content/collectible_categories.gd")
+
 signal changed
 signal selected(item: Dictionary)
 signal item_hovered
@@ -18,8 +20,8 @@ const GRID_RECT: Rect2 = Rect2(ORIGIN, Vector2(PackRun.GRID) * STEP - Vector2.ON
 const ITEM_TOOLTIP: PackedScene = preload("res://scenes/shared/item_tooltip/item_tooltip.tscn")
 const ITEM_FRAME = preload("res://components/inventory/item_slot/item_frame.gd")
 const CRAFTING_PRESENTATION = preload("res://scenes/run/inventory/backpack/crafting_presentation.gd")
-const BONUS_EDGE = preload("res://assets/ui/icons/adjacency-carets-v3/edge-inward.png")
-const BONUS_CORNER = preload("res://assets/ui/icons/adjacency-carets-v3/corner-inward.png")
+const BONUS_EDGE = preload("res://assets/icons/inventory/adjacency/edge-inward.png")
+const BONUS_CORNER = preload("res://assets/icons/inventory/adjacency/corner-inward.png")
 
 var run: PackRun
 var dragging: Dictionary = {}
@@ -226,7 +228,7 @@ func _ready() -> void:
 	tooltip_text = "Item"
 
 static func has_activation_priority(item: Dictionary) -> bool:
-	return item.get("role", "") in ["weapon", "ranged", "spell"] or int(item.get("cost", 0)) > 0 or int(item.get("stamina_cost", 0)) > 0
+	return CATEGORIES.matches_any(item, ["melee_weapons", "ranged_weapons", "magic_weapons"]) or int(item.get("cost", 0)) > 0 or int(item.get("stamina_cost", 0)) > 0
 
 static func priority_corner(points: Array[Vector2i]) -> Vector2i:
 	var corner: Vector2i = points[0]

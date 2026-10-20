@@ -85,14 +85,13 @@
       "A brass flywheel with a ram head hub"
     ],
     "assets": {
-      "icon": "assets/relics/ram_flywheel/icons/art/icon.png",
-      "svg": "assets/relics/ram_flywheel/icons/art/icon.svg",
-      "source": "assets/relics/ram_flywheel/icons/art/icon.sprite.json",
+      "icon": "assets/relics/ram_flywheel/art/icon.png",
+      "source": "assets/relics/ram_flywheel/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/ram_flywheel/icons/art/provenance.json",
-      "manifest": "assets/relics/ram_flywheel/icons/art/art-manifest.json",
+      "provenance": "assets/relics/ram_flywheel/art/provenance.json",
+      "manifest": "assets/relics/ram_flywheel/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/ram_flywheel/icons/art/icon.pixloom"
+      "native": "assets/relics/ram_flywheel/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

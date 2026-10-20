@@ -85,14 +85,13 @@
       "A corroded tuning fork wound in prayer ribbon"
     ],
     "assets": {
-      "icon": "assets/relics/rust_psalm/icons/art/icon.png",
-      "svg": "assets/relics/rust_psalm/icons/art/icon.svg",
-      "source": "assets/relics/rust_psalm/icons/art/icon.sprite.json",
+      "icon": "assets/relics/rust_psalm/art/icon.png",
+      "source": "assets/relics/rust_psalm/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/rust_psalm/icons/art/provenance.json",
-      "manifest": "assets/relics/rust_psalm/icons/art/art-manifest.json",
+      "provenance": "assets/relics/rust_psalm/art/provenance.json",
+      "manifest": "assets/relics/rust_psalm/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/rust_psalm/icons/art/icon.pixloom"
+      "native": "assets/relics/rust_psalm/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

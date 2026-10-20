@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://bug6tsax5mocf"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_mym8h"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_sxatk"]
+
+[sub_resource type="Resource" id="Resource_pqytq"]
+script = ExtResource("1_mym8h")
+accepted_item_ids = Array[StringName]([&"amber_heart_pendant"])
+
+[sub_resource type="Resource" id="Resource_8ioor"]
+script = ExtResource("1_mym8h")
+accepted_item_ids = Array[StringName]([&"bottle_of_yesterday"])
+
+[sub_resource type="Resource" id="Resource_3jav6"]
+script = ExtResource("1_mym8h")
+accepted_item_ids = Array[StringName]([&"moonwell_pebble"])
+
+[sub_resource type="Resource" id="Resource_g5q0w"]
+script = ExtResource("1_mym8h")
+accepted_item_ids = Array[StringName]([&"pearl_of_brine"])
+
+[resource]
+resource_name = "Assemble Captive Aurora"
+script = ExtResource("2_sxatk")
+id = &"assemble_captive_aurora"
+ingredients = Array[ExtResource("1_mym8h")]([SubResource("Resource_pqytq"), SubResource("Resource_8ioor"), SubResource("Resource_3jav6"), SubResource("Resource_g5q0w")])
+result_item_id = &"captive_aurora"

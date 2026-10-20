@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://qw7d105r6y86"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_khwov"]
+[ext_resource type="Resource" path="res://assets/enemies/mourning_gargoyle/innate_ability.tres" id="2_mqyad"]
+[ext_resource type="Resource" path="res://assets/enemies/mourning_gargoyle/behavior.tres" id="3_ujoe3"]
+[ext_resource type="Texture2D" uid="uid://dpbms10eiwldv" path="res://assets/enemies/mourning_gargoyle/art/mourning_gargoyle.png" id="4_dy384"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_fn1i2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usdat"]
+atlas = ExtResource("4_dy384")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Mourning Gargoyle"
+script = ExtResource("5_fn1i2")
+species_id = &"gargoyle"
+role_id = &"guard"
+behavior = ExtResource("3_ujoe3")
+id = &"mourning_gargoyle"
+display_name = "Mourning Gargoyle"
+log_name = "Mourning Gargoyle"
+description = "A roof guardian brought below ground after its chapel fell. It crouches over an imaginary roof edge and bares its stone teeth at passing lights."
+icon = SubResource("AtlasTexture_usdat")
+base_stats = Dictionary[int, int]({
+1: 6,
+17: 15
+})
+resource_capacities = Dictionary[int, int]({
+2: 99
+})
+abilities = Array[ExtResource("1_khwov")]([ExtResource("2_mqyad")])
+metadata/encounter_floor = 15

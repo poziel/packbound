@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_tgtlh"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_yii7k"]
+[ext_resource type="Resource" path="res://assets/enemies/oathbreaker/attack_0_effect.tres" id="3_sf5hw"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_hq21g"]
+
+[resource]
+resource_name = "Purify / Rend"
+script = ExtResource("4_hq21g")
+id = &"oathbreaker_attack_0"
+display_name = "Purify / Rend"
+description = "Removes existing conditions and elemental traces at the start of every third turn."
+target_id = &"opponent"
+effects = Array[ExtResource("2_yii7k")]([ExtResource("3_sf5hw")])

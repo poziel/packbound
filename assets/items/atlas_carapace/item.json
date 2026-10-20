@@ -85,14 +85,11 @@
       "A massive dark shell bearing broad brass mountain ridges."
     ],
     "assets": {
-      "icon": "assets/items/atlas_carapace/icons/art/icon.png",
-      "svg": "assets/items/atlas_carapace/icons/art/icon.svg",
-      "source": "assets/items/atlas_carapace/icons/art/icon.sprite.json",
-      "footprint": "assets/items/atlas_carapace/icons/art/footprint.json",
-      "provenance": "assets/items/atlas_carapace/icons/art/provenance.json",
-      "manifest": "assets/items/atlas_carapace/icons/art/art-manifest.json",
+      "icon": "assets/items/atlas_carapace/art/item.png",
+      "source": "assets/items/atlas_carapace/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/atlas_carapace/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

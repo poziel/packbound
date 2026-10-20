@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_v4bre"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_01smf"]
+[ext_resource type="Resource" path="res://assets/items/the_small_impossible/rule_effect.tres" id="3_xsish"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_78mue"]
+
+[resource]
+resource_name = "The Small Impossible rules"
+script = ExtResource("4_78mue")
+id = &"the_small_impossible_rules"
+display_name = "The Small Impossible rules"
+description = "Deals 12 physical damage per affordable activation. Applies 3 doom through the existing combat keyword rules per affordable activation."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_01smf")]([ExtResource("3_xsish")])

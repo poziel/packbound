@@ -1,0 +1,24 @@
+{
+  "key": "battle_axe",
+  "name": "Executioner's Axe",
+  "category": "weapons",
+  "gameplayRole": "weapon",
+  "inventoryMask": [
+    "###",
+    ".#."
+  ],
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
+  "exports": [
+    "art/item.png",
+    "art/item.png"
+  ],
+  "editableSources": [
+    "art/item.png"
+  ],
+  "runtime": {
+    "texture": "res://assets/items/battle_axe/art/item.png",
+    "viewPolicy": "Reuse approved footprint-derived native sprite across display sizes with nearest filtering."
+  },
+  "activeRevision": "catalog-v4",
+  "revisionProvenance": "res://docs/art/concepts/executioners-axe-catalog-v4/provenance.json"
+}

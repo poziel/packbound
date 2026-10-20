@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://hinkrqlc4xee"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_dluex"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_ffrhq"]
+
+[sub_resource type="Resource" id="Resource_c3owq"]
+script = ExtResource("1_dluex")
+accepted_item_ids = Array[StringName]([&"bandage"])
+
+[sub_resource type="Resource" id="Resource_gvp2p"]
+script = ExtResource("1_dluex")
+accepted_item_ids = Array[StringName]([&"rime_thimble"])
+
+[resource]
+resource_name = "Assemble Icicle Rosary"
+script = ExtResource("2_ffrhq")
+id = &"assemble_icicle_rosary"
+ingredients = Array[ExtResource("1_dluex")]([SubResource("Resource_c3owq"), SubResource("Resource_gvp2p")])
+result_item_id = &"icicle_rosary"

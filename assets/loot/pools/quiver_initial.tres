@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="LootPoolDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/loot/loot_pool_definition.gd" id="1_t7o1u"]
+
+[resource]
+resource_name = "Quiver Initial"
+script = ExtResource("1_t7o1u")
+id = &"quiver_initial"
+display_name = "Quiver Initial"
+description = "Existing quiver initial reward candidates. Apply canonical collectible restrictions and owned/upgrade availability filters before selection."
+collectible_weights = Dictionary[StringName, float]({
+&"arrow_bodkin": 1.0,
+&"arrow_broadhead": 1.0,
+&"arrow_venom": 1.0
+})
+candidate_order = Array[StringName]([&"arrow_broadhead", &"arrow_bodkin", &"arrow_venom"])
+offer_count = 3

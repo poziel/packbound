@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://drvk4hecq7wf"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_tdph3"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_2asor"]
+
+[sub_resource type="Resource" id="Resource_53rq3"]
+script = ExtResource("1_tdph3")
+accepted_item_ids = Array[StringName]([&"kiln_prayer"])
+
+[sub_resource type="Resource" id="Resource_0oya6"]
+script = ExtResource("1_tdph3")
+accepted_item_ids = Array[StringName]([&"lantern_moth_familiar"])
+
+[resource]
+resource_name = "Assemble Salamander Contract"
+script = ExtResource("2_2asor")
+id = &"assemble_salamander_contract"
+ingredients = Array[ExtResource("1_tdph3")]([SubResource("Resource_53rq3"), SubResource("Resource_0oya6")])
+result_item_id = &"salamander_contract"

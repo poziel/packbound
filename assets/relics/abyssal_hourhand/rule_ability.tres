@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_0kbss"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_b7n2k"]
+[ext_resource type="Resource" path="res://assets/relics/abyssal_hourhand/rule_effect.tres" id="3_jklfo"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_hmu23"]
+
+[resource]
+resource_name = "Abyssal Hourhand rules"
+script = ExtResource("4_hmu23")
+id = &"abyssal_hourhand_rules"
+display_name = "Abyssal Hourhand rules"
+description = "When the enemy already has Doom before activations: gain +3 magical damage per doom (up to 3 counted)."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_b7n2k")]([ExtResource("3_jklfo")])

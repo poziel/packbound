@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://wtv0xj1kkmok"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_ymt3h"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_og7ml"]
+
+[sub_resource type="Resource" id="Resource_4x10v"]
+script = ExtResource("1_ymt3h")
+accepted_item_ids = Array[StringName]([&"pearl_of_brine"])
+
+[sub_resource type="Resource" id="Resource_wd3cl"]
+script = ExtResource("1_ymt3h")
+accepted_item_ids = Array[StringName]([&"waxed_fletching"])
+
+[resource]
+resource_name = "Assemble Winterflight Rack"
+script = ExtResource("2_og7ml")
+id = &"assemble_winterflight_rack"
+ingredients = Array[ExtResource("1_ymt3h")]([SubResource("Resource_4x10v"), SubResource("Resource_wd3cl")])
+result_item_id = &"winterflight_rack"

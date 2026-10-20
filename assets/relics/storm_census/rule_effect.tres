@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_127u0"]
+
+[resource]
+resource_name = "Storm Census Rule Effect"
+script = ExtResource("1_127u0")
+rule_id = &"storm_census_rules"
+parameters = {
+"icon": "storm_census",
+"rule": {
+"amount": 2,
+"cap": 4,
+"condition": "sparked",
+"metric": "spark",
+"stat": "pierce"
+},
+"stats": {}
+}

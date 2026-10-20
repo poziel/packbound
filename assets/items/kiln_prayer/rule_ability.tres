@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_yri38"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_ikt22"]
+[ext_resource type="Resource" path="res://assets/items/kiln_prayer/rule_effect.tres" id="3_3rhrl"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_iu6mt"]
+
+[resource]
+resource_name = "Kiln Prayer rules"
+script = ExtResource("4_iu6mt")
+id = &"kiln_prayer_rules"
+display_name = "Kiln Prayer rules"
+description = "Costs 2 mana per activation. Deals 7 magical damage per affordable activation. Applies 2 burn through the existing combat keyword rules per affordable activation."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_ikt22")]([ExtResource("3_3rhrl")])

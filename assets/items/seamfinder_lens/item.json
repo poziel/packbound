@@ -155,14 +155,11 @@
       "A dark circular lens held between two copper arrowheads."
     ],
     "assets": {
-      "icon": "assets/items/seamfinder_lens/icons/art/icon.png",
-      "svg": "assets/items/seamfinder_lens/icons/art/icon.svg",
-      "source": "assets/items/seamfinder_lens/icons/art/icon.sprite.json",
-      "footprint": "assets/items/seamfinder_lens/icons/art/footprint.json",
-      "provenance": "assets/items/seamfinder_lens/icons/art/provenance.json",
-      "manifest": "assets/items/seamfinder_lens/icons/art/art-manifest.json",
+      "icon": "assets/items/seamfinder_lens/art/item.png",
+      "source": "assets/items/seamfinder_lens/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/seamfinder_lens/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

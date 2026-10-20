@@ -1,0 +1,24 @@
+{
+  "key": "hunting_trap",
+  "name": "Venom Trap",
+  "category": "traps",
+  "gameplayRole": "ranged",
+  "inventoryMask": [
+    "#.#",
+    "###"
+  ],
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
+  "exports": [
+    "art/item.png",
+    "art/item.png"
+  ],
+  "editableSources": [
+    "art/item.png"
+  ],
+  "runtime": {
+    "texture": "res://assets/items/hunting_trap/art/item.png",
+    "viewPolicy": "Reuse approved footprint-derived native sprite across display sizes with nearest filtering."
+  },
+  "activeRevision": "catalog-v1",
+  "revisionProvenance": "res://docs/art/concepts/hunting-trap-catalog-v1/provenance.json"
+}

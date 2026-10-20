@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cwkqngwhvdb21"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_6dmd1"]
+[ext_resource type="Resource" path="res://assets/items/warding_sigil/rule_ability.tres" id="2_gsv65"]
+[ext_resource type="Texture2D" uid="uid://c765kov1m81gk" path="res://assets/items/warding_sigil/art/item.png" id="3_ctcal"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_xicg1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14buj"]
+atlas = ExtResource("3_ctcal")
+region = Rect2(0, 0, 96, 96)
+
+[resource]
+resource_name = "Warding Sigil"
+script = ExtResource("4_xicg1")
+footprint = Array[Vector2i]([Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(1, 2)])
+id = &"warding_sigil"
+display_name = "Warding Sigil"
+description = "4 ward each turn absorbs curse, poison and reflected damage. Does not absorb ordinary attacks."
+rarity = 3
+category_ids = Array[StringName]([&"focuses"])
+icon = SubResource("AtlasTexture_14buj")
+base_stats = Dictionary[int, int]({
+5: 4
+})
+abilities = Array[ExtResource("1_6dmd1")]([ExtResource("2_gsv65")])

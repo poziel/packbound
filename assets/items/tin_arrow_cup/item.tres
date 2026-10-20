@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bhicudsb1jivo"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_s3ni4"]
+[ext_resource type="Resource" path="res://assets/items/tin_arrow_cup/rule_ability.tres" id="2_mx0en"]
+[ext_resource type="Texture2D" uid="uid://b14y55u006g7h" path="res://assets/items/tin_arrow_cup/art/item.png" id="3_sn26f"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_2jhnb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujxhr"]
+atlas = ExtResource("3_sn26f")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Tin Arrow Cup"
+script = ExtResource("4_2jhnb")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+id = &"tin_arrow_cup"
+display_name = "Tin Arrow Cup"
+description = "While orthogonally touching the permanent Bowmaster quiver, adds 1 arrows to Volley; this equipment remains in the backpack and is not consumed."
+lore = "It rattles cheerfully beside a much finer quiver."
+tags = Array[StringName]([&"booster", &"ranger"])
+category_ids = Array[StringName]([&"boosters"])
+allowed_class_ids = Array[StringName]([&"ranger"])
+icon = SubResource("AtlasTexture_ujxhr")
+abilities = Array[ExtResource("1_s3ni4")]([ExtResource("2_mx0en")])

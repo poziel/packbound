@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://co5haxavo56e4"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_uniic"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_g0377"]
+
+[sub_resource type="Resource" id="Resource_p0e0o"]
+script = ExtResource("1_uniic")
+accepted_item_ids = Array[StringName]([&"hollow_bookmark"])
+
+[sub_resource type="Resource" id="Resource_4dkat"]
+script = ExtResource("1_uniic")
+accepted_item_ids = Array[StringName]([&"pearl_of_brine"])
+
+[sub_resource type="Resource" id="Resource_fjjvr"]
+script = ExtResource("1_uniic")
+accepted_item_ids = Array[StringName]([&"salt_lantern"])
+
+[resource]
+resource_name = "Assemble Absent Atlas"
+script = ExtResource("2_g0377")
+id = &"assemble_absent_atlas"
+ingredients = Array[ExtResource("1_uniic")]([SubResource("Resource_p0e0o"), SubResource("Resource_4dkat"), SubResource("Resource_fjjvr")])
+result_item_id = &"absent_atlas"

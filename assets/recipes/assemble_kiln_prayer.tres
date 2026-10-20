@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://cq5o5c37u4b2v"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_q64eg"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_bl8ug"]
+
+[sub_resource type="Resource" id="Resource_3d77x"]
+script = ExtResource("1_q64eg")
+accepted_item_ids = Array[StringName]([&"coal_letter"])
+
+[sub_resource type="Resource" id="Resource_ib0hy"]
+script = ExtResource("1_q64eg")
+accepted_item_ids = Array[StringName]([&"salt_lantern"])
+
+[resource]
+resource_name = "Assemble Kiln Prayer"
+script = ExtResource("2_bl8ug")
+id = &"assemble_kiln_prayer"
+ingredients = Array[ExtResource("1_q64eg")]([SubResource("Resource_3d77x"), SubResource("Resource_ib0hy")])
+result_item_id = &"kiln_prayer"

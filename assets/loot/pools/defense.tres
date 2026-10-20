@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="LootPoolDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/loot/loot_pool_definition.gd" id="1_wk46r"]
+
+[resource]
+resource_name = "Defense"
+script = ExtResource("1_wk46r")
+id = &"defense"
+display_name = "Defense"
+description = "Existing defense reward candidates. Apply canonical collectible restrictions and owned/upgrade availability filters before selection."
+collectible_weights = Dictionary[StringName, float]({
+&"atlas_carapace": 1.0,
+&"bandage": 1.0,
+&"barricade_board": 1.0,
+&"blacksmith_s_apron": 1.0,
+&"buckler": 1.0,
+&"cadence_spurs": 1.0,
+&"cathedral_carapace": 1.0,
+&"chalk_poultice": 1.0,
+&"citadel_guard": 1.0,
+&"cobbler_s_boots": 1.0,
+&"cracked_shield": 1.0,
+&"gravetread_boots": 1.0,
+&"healing_herbs": 1.0,
+&"iron_guard": 1.0,
+&"ironroot_boots": 1.0,
+&"last_legion_aegis": 1.0,
+&"mercy_needlecase": 1.0,
+&"mothweave_mantle": 1.0,
+&"patchwork_jack": 1.0,
+&"pathfinder_gaiters": 1.0,
+&"plate_mail": 1.0,
+&"redoubt_cuirass": 1.0,
+&"riveted_guard": 1.0,
+&"sentinel_guard": 1.0,
+&"seven_league_soles": 1.0,
+&"siegebell_plate": 1.0,
+&"sovereign_guard": 1.0,
+&"thorn_mail": 1.0,
+&"tower_shield": 1.0,
+&"vanguard_sabaton": 1.0,
+&"warding_sigil": 1.0,
+&"worldroot_sandals": 1.0
+})
+minimum_floors = Dictionary[StringName, int]({
+&"atlas_carapace": 17,
+&"blacksmith_s_apron": 9,
+&"cadence_spurs": 9,
+&"cathedral_carapace": 13,
+&"citadel_guard": 13,
+&"gravetread_boots": 9,
+&"iron_guard": 5,
+&"ironroot_boots": 5,
+&"last_legion_aegis": 17,
+&"mercy_needlecase": 9,
+&"mothweave_mantle": 5,
+&"pathfinder_gaiters": 5,
+&"redoubt_cuirass": 9,
+&"sentinel_guard": 9,
+&"seven_league_soles": 13,
+&"siegebell_plate": 13,
+&"sovereign_guard": 17,
+&"vanguard_sabaton": 5,
+&"worldroot_sandals": 17
+})
+candidate_order = Array[StringName]([&"cracked_shield", &"tower_shield", &"buckler", &"plate_mail", &"thorn_mail", &"healing_herbs", &"bandage", &"warding_sigil", &"riveted_guard", &"iron_guard", &"sentinel_guard", &"citadel_guard", &"sovereign_guard", &"barricade_board", &"vanguard_sabaton", &"redoubt_cuirass", &"cadence_spurs", &"siegebell_plate", &"last_legion_aegis", &"pathfinder_gaiters", &"patchwork_jack", &"cobbler_s_boots", &"chalk_poultice", &"mothweave_mantle", &"ironroot_boots", &"gravetread_boots", &"blacksmith_s_apron", &"mercy_needlecase", &"cathedral_carapace", &"seven_league_soles", &"atlas_carapace", &"worldroot_sandals"])

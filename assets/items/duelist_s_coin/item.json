@@ -132,14 +132,11 @@
       "A clipped silver coin suspended through its punctured center."
     ],
     "assets": {
-      "icon": "assets/items/duelist_s_coin/icons/art/icon.png",
-      "svg": "assets/items/duelist_s_coin/icons/art/icon.svg",
-      "source": "assets/items/duelist_s_coin/icons/art/icon.sprite.json",
-      "footprint": "assets/items/duelist_s_coin/icons/art/footprint.json",
-      "provenance": "assets/items/duelist_s_coin/icons/art/provenance.json",
-      "manifest": "assets/items/duelist_s_coin/icons/art/art-manifest.json",
+      "icon": "assets/items/duelist_s_coin/art/item.png",
+      "source": "assets/items/duelist_s_coin/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/duelist_s_coin/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

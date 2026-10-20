@@ -85,14 +85,13 @@
       "An empty red leather sword sheath with a broken strap"
     ],
     "assets": {
-      "icon": "assets/relics/empty_scabbard/icons/art/icon.png",
-      "svg": "assets/relics/empty_scabbard/icons/art/icon.svg",
-      "source": "assets/relics/empty_scabbard/icons/art/icon.sprite.json",
+      "icon": "assets/relics/empty_scabbard/art/icon.png",
+      "source": "assets/relics/empty_scabbard/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/empty_scabbard/icons/art/provenance.json",
-      "manifest": "assets/relics/empty_scabbard/icons/art/art-manifest.json",
+      "provenance": "assets/relics/empty_scabbard/art/provenance.json",
+      "manifest": "assets/relics/empty_scabbard/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/empty_scabbard/icons/art/icon.pixloom"
+      "native": "assets/relics/empty_scabbard/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

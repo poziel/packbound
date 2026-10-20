@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_npboy"]
+
+[resource]
+resource_name = "Thorn Whetstone Rule Effect"
+script = ExtResource("1_npboy")
+rule_id = &"thorn_whetstone_rules"
+parameters = {
+"adjacency_bonus": {
+"stats": {
+"damage": 2
+},
+"target_category_ids": ["melee_weapons"]
+},
+"block_per_round": 0,
+"mana_per_round": 0,
+"priority": 0,
+"stamina_per_round": 0,
+"tooltip_detail": "Each orthogonally touching weapon gains +2 damage. Each source applies once per target, regardless of shared edges; distinct sources stack."
+}

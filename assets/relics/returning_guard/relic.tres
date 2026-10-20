@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RelicDefinition" format=3 uid="uid://b1xe787gdp8ag"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_0bk7q"]
+[ext_resource type="Resource" path="res://assets/relics/returning_guard/rule_ability.tres" id="2_6xajn"]
+[ext_resource type="Texture2D" uid="uid://coib4gcvddu7g" path="res://assets/relics/returning_guard/art/revisions/catalog_v1/returning_guard_32px.png" id="3_1ya6l"]
+[ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_00vss"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5ydb"]
+atlas = ExtResource("3_1ya6l")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Returning Guard"
+script = ExtResource("4_00vss")
+id = &"returning_guard"
+display_name = "Returning Guard"
+description = "Unused block already carries in full for every champion. This relic currently adds no extra effect; block resets between floors."
+category_ids = Array[StringName]([&"relics"])
+preferred_class_ids = null
+preferred_character_ids = null
+icon = SubResource("AtlasTexture_g5ydb")
+base_stats = null
+abilities = Array[ExtResource("1_0bk7q")]([ExtResource("2_6xajn")])

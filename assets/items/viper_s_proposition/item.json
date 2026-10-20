@@ -142,14 +142,11 @@
       "A serpentine green scroll wound around an ivory rod."
     ],
     "assets": {
-      "icon": "assets/items/viper_s_proposition/icons/art/icon.png",
-      "svg": "assets/items/viper_s_proposition/icons/art/icon.svg",
-      "source": "assets/items/viper_s_proposition/icons/art/icon.sprite.json",
-      "footprint": "assets/items/viper_s_proposition/icons/art/footprint.json",
-      "provenance": "assets/items/viper_s_proposition/icons/art/provenance.json",
-      "manifest": "assets/items/viper_s_proposition/icons/art/art-manifest.json",
+      "icon": "assets/items/viper_s_proposition/art/item.png",
+      "source": "assets/items/viper_s_proposition/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/viper_s_proposition/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

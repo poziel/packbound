@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://p6txsrtlqooc"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_pybxx"]
+[ext_resource type="Resource" path="res://assets/items/blood_gem/rule_ability.tres" id="2_f2i33"]
+[ext_resource type="Texture2D" uid="uid://coth2wrfqll7c" path="res://assets/items/blood_gem/art/item.png" id="3_brcfd"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_w7fx2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2pe3"]
+atlas = ExtResource("3_brcfd")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Blood Gem"
+script = ExtResource("4_w7fx2")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"blood_gem"
+display_name = "Blood Gem"
+description = "Touching weapons, bows and spells gain +2 damage."
+rarity = 1
+category_ids = Array[StringName]([&"boosters"])
+icon = SubResource("AtlasTexture_s2pe3")
+abilities = Array[ExtResource("1_pybxx")]([ExtResource("2_f2i33")])

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://c7jyx2v71q85d"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_t2e8s"]
+[ext_resource type="Resource" path="res://assets/items/dusksteel_blade/rule_ability.tres" id="2_y761i"]
+[ext_resource type="Texture2D" uid="uid://cpygj6gt3ir8g" path="res://assets/items/dusksteel_blade/art/item.png" id="3_sshga"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_vhrat"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycgg7"]
+atlas = ExtResource("3_sshga")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Dusksteel Blade"
+script = ExtResource("4_vhrat")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+activation_costs = Dictionary[int, int]({
+1: 2
+})
+id = &"dusksteel_blade"
+display_name = "Dusksteel Blade"
+description = "Costs 2 stamina: 15 physical damage. Bypasses 3 block."
+lore = "Its maker hammered through the last watch of night."
+rarity = 3
+tags = Array[StringName]([&"weapon", &"epic"])
+category_ids = Array[StringName]([&"swords"])
+icon = SubResource("AtlasTexture_ycgg7")
+base_stats = Dictionary[int, int]({
+0: 15,
+14: 3
+})
+abilities = Array[ExtResource("1_t2e8s")]([ExtResource("2_y761i")])

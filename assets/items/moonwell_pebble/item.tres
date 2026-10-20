@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://c53xxtocc16a5"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_gud0y"]
+[ext_resource type="Resource" path="res://assets/items/moonwell_pebble/rule_ability.tres" id="2_gnulq"]
+[ext_resource type="Texture2D" uid="uid://dm20dalfs8qak" path="res://assets/items/moonwell_pebble/art/item.png" id="3_87fwh"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_u0b0p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yq4kv"]
+atlas = ExtResource("3_87fwh")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Moonwell Pebble"
+script = ExtResource("4_u0b0p")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"moonwell_pebble"
+display_name = "Moonwell Pebble"
+description = "Adds 3 maximum mana, refreshed each round."
+lore = "It is always found on the side of a well facing the moon."
+rarity = 2
+tags = Array[StringName]([&"focus"])
+category_ids = Array[StringName]([&"focuses"])
+icon = SubResource("AtlasTexture_yq4kv")
+base_stats = Dictionary[int, int]({
+8: 3
+})
+abilities = Array[ExtResource("1_gud0y")]([ExtResource("2_gnulq")])

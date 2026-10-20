@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://d227gs11spv7g"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_pre13"]
+[ext_resource type="Resource" path="res://assets/enemies/cellar_tick/innate_ability.tres" id="2_wt0wa"]
+[ext_resource type="Resource" path="res://assets/enemies/cellar_tick/behavior.tres" id="3_cpmcn"]
+[ext_resource type="Texture2D" uid="uid://b8wmd4uxndcr3" path="res://assets/enemies/cellar_tick/art/cellar_tick.png" id="4_wjqsv"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_8kjgk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3om7"]
+atlas = ExtResource("4_wjqsv")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Cellar Tick"
+script = ExtResource("5_8kjgk")
+species_id = &"tick"
+role_id = &"guard"
+behavior = ExtResource("3_cpmcn")
+id = &"cellar_tick"
+display_name = "Cellar Tick"
+log_name = "Cellar Tick"
+description = "A swollen scavenger that follows the warmth of occupied bedrolls. It wedges itself into mortar cracks until a traveler passes."
+icon = SubResource("AtlasTexture_v3om7")
+base_stats = Dictionary[int, int]({
+1: 4
+})
+resource_capacities = Dictionary[int, int]({
+2: 26
+})
+abilities = Array[ExtResource("1_pre13")]([ExtResource("2_wt0wa")])
+metadata/encounter_floor = 2

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_6brw5"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_7jq0h"]
+[ext_resource type="Resource" path="res://assets/items/hedgehog_charm/rule_effect.tres" id="3_1wssd"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_6kphp"]
+
+[resource]
+resource_name = "Hedgehog Charm rules"
+script = ExtResource("4_6kphp")
+id = &"hedgehog_charm_rules"
+display_name = "Hedgehog Charm rules"
+description = "Retaliates for 1 piercing damage per enemy strike."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_7jq0h")]([ExtResource("3_1wssd")])

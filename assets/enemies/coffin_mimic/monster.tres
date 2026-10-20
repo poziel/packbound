@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://dyvfvpp048jnn"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_lkgec"]
+[ext_resource type="Resource" path="res://assets/enemies/coffin_mimic/innate_ability.tres" id="2_0a5x4"]
+[ext_resource type="Resource" path="res://assets/enemies/coffin_mimic/behavior.tres" id="3_ega3d"]
+[ext_resource type="Texture2D" uid="uid://dlhc4lu4327qy" path="res://assets/enemies/coffin_mimic/art/coffin_mimic.png" id="4_u5vok"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_87j2q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbhn8"]
+atlas = ExtResource("4_u5vok")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Coffin Mimic"
+script = ExtResource("5_87j2q")
+species_id = &"mimic"
+role_id = &"multi-strike"
+behavior = ExtResource("3_ega3d")
+id = &"coffin_mimic"
+display_name = "Coffin Mimic"
+log_name = "Coffin Mimic"
+description = "A corridor predator disguised as a child-sized coffin. It opens sideways and uses the lid as a second jaw."
+icon = SubResource("AtlasTexture_dbhn8")
+resource_capacities = Dictionary[int, int]({
+2: 101
+})
+abilities = Array[ExtResource("1_lkgec")]([ExtResource("2_0a5x4")])
+metadata/encounter_floor = 16

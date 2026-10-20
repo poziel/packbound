@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://b34jhjskmueve"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_p3t0c"]
+[ext_resource type="Resource" path="res://assets/items/adder_sheath/rule_ability.tres" id="2_soduv"]
+[ext_resource type="Texture2D" uid="uid://nurd2kiqs5sj" path="res://assets/items/adder_sheath/art/item.png" id="3_cv7d7"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_s0vxj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3ga7"]
+atlas = ExtResource("3_cv7d7")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Adder Sheath"
+script = ExtResource("4_s0vxj")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+id = &"adder_sheath"
+display_name = "Adder Sheath"
+description = "While orthogonally touching the permanent Bowmaster quiver, adds 1 poison to Volley; this equipment remains in the backpack and is not consumed."
+lore = "The maker refused to disclose what cured the hide."
+rarity = 1
+tags = Array[StringName]([&"booster", &"ranger"])
+category_ids = Array[StringName]([&"boosters"])
+allowed_class_ids = Array[StringName]([&"ranger"])
+icon = SubResource("AtlasTexture_x3ga7")
+abilities = Array[ExtResource("1_p3t0c")]([ExtResource("2_soduv")])

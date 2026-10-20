@@ -36,8 +36,9 @@ func _run() -> void:
 	check(crafting.has_method("recipe_inspection"), "Alt inspection exposes every recipe")
 	if crafting.has_method("recipe_inspection"):
 		var data: Dictionary = crafting.recipe_inspection(run, first)
-		check(data.get("definitions", {}).size() == 2, "Recipe includes inspectable ingredient and output")
-		check(data["recipes"][0]["ingredients"][0]["key"] == "rusty_knife" and data["recipes"][0]["output"]["key"] == "longsword", "Recipe exposes ingredient and result items")
+		check(data.get("definitions", {}).has("recipe_item_rusty_knife") and data["definitions"].has("recipe_item_longsword"), "Recipe includes inspectable ingredient and output")
+		var matching: Array = data["recipes"].filter(func(row: Dictionary) -> bool: return row["output"]["key"] == "longsword")
+		check(matching.size() == 1 and matching[0]["ingredients"][0]["key"] == "rusty_knife", "Recipe exposes ingredient and result items")
 		for amount in [4, 5, 6]:
 			run.reset(42)
 			run.items.clear()
@@ -45,10 +46,19 @@ func _run() -> void:
 			for x in amount:
 				run.add_item("bandage", Vector2i(x, 0))
 				keys.append("bandage")
-			var recipe: Dictionary = {"id": "large_test", "ingredients": keys, "result": "healing_herbs"}
-			var chosen: Array[Dictionary] = []
-			var matched: Dictionary = PackRun.CRAFTING._match(run, recipe, run.packed(), chosen, 0)
-			check(matched.get("components", []).size() == amount, "%d-ingredient recipe matches without a pair limit" % amount)
+			var recipe := RecipeDefinition.new()
+			recipe.id = &"large_test"
+			recipe.result_item_id = &"healing_herbs"
+			var ingredient := RecipeIngredientDefinition.new()
+			ingredient.accepted_item_ids.assign([&"bandage"])
+			ingredient.quantity = amount
+			recipe.ingredients.assign([ingredient])
+			var content: GameContentDefinition = preload("res://systems/content/runtime_content.gd").content()
+			var originals: Array[RecipeDefinition] = content.recipes.duplicate()
+			content.recipes.assign([recipe])
+			var plans: Array[Dictionary] = PackRun.CRAFTING.plans(run)
+			check(plans.size() == 1 and plans[0]["components"].size() == amount, "%d-ingredient recipe matches without a pair limit" % amount)
+			content.recipes.assign(originals)
 		await _ui_checks()
 	print("CRAFT LOCK: %d failures" % failures)
 	report("crafting_lock")
@@ -104,12 +114,13 @@ func _ui_checks() -> void:
 	inspector._open_keyword_link("recipe_item_longsword", 0)
 	check(inspector.windows.size() == 2 and inspector.windows[1].key == "recipe_item_longsword", "Result link opens the official nested item inspector")
 	inspector.pointer = Vector2(-500, -500)
-	inspector._process(0.5)
+	inspector._process(inspector.grace_delay + inspector.closing_delay + 0.01)
 	check(inspector.windows.is_empty(), "Leaving the inspection chain dismisses the pinned recipe")
 	alt.pressed = true
 	Input.parse_input_event(alt.duplicate())
 	inspector.source = board
 	inspector._spawn(data, Rect2(200, 30, 40, 40), -1)
+	await process_frame
 	inspector._process(0.1)
 	alt.pressed = false
 	Input.parse_input_event(alt.duplicate())

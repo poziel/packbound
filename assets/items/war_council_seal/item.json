@@ -151,14 +151,11 @@
       "A wax red seal held in a scalloped iron frame."
     ],
     "assets": {
-      "icon": "assets/items/war_council_seal/icons/art/icon.png",
-      "svg": "assets/items/war_council_seal/icons/art/icon.svg",
-      "source": "assets/items/war_council_seal/icons/art/icon.sprite.json",
-      "footprint": "assets/items/war_council_seal/icons/art/footprint.json",
-      "provenance": "assets/items/war_council_seal/icons/art/provenance.json",
-      "manifest": "assets/items/war_council_seal/icons/art/art-manifest.json",
+      "icon": "assets/items/war_council_seal/art/item.png",
+      "source": "assets/items/war_council_seal/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/war_council_seal/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

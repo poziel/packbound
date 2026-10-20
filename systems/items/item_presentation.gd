@@ -1,4 +1,6 @@
 extends RefCounted
+
+const CATEGORIES = preload("res://systems/content/collectible_categories.gd")
 ## Shared source labels and nested definitions for applied item bonuses.
 const QUIVER = preload("res://systems/characters/archer_quiver.gd")
 
@@ -58,6 +60,6 @@ static func item_stats(run, item: Dictionary) -> Array[Dictionary]:
 		for stat: String in supplied:
 			displayed[stat] = int(displayed.get(stat, 0)) + int(supplied[stat])
 		# Legacy sources are included in item_bonus alongside authored damage/block.
-		var primary: String = "block" if item["role"] == "shield" else "damage"
+		var primary: String = "block" if CATEGORIES.matches(item, &"shields") else "damage"
 		displayed[primary] = int(item.get(primary, 0)) + run.item_bonus(item)
 	return PackKeywords.item_stats(displayed)

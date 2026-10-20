@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://gjwk2kadq2r6"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_ca8un"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_2hebm"]
+
+[sub_resource type="Resource" id="Resource_prao7"]
+script = ExtResource("1_ca8un")
+accepted_item_ids = Array[StringName]([&"cobbler_s_boots"])
+
+[sub_resource type="Resource" id="Resource_uulkf"]
+script = ExtResource("1_ca8un")
+accepted_item_ids = Array[StringName]([&"feather_keeper"])
+
+[resource]
+resource_name = "Assemble Pathfinder Gaiters"
+script = ExtResource("2_2hebm")
+id = &"assemble_pathfinder_gaiters"
+ingredients = Array[ExtResource("1_ca8un")]([SubResource("Resource_prao7"), SubResource("Resource_uulkf")])
+result_item_id = &"pathfinder_gaiters"

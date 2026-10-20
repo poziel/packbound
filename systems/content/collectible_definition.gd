@@ -7,7 +7,10 @@ extends Resource
 
 @export_group("Identity")
 @export var id: StringName = &""
-@export var display_name: String = ""
+@export var display_name: String = "":
+	set(value):
+		display_name = value
+		resource_name = value
 @export_multiline var description: String = ""
 @export_multiline var lore: String = ""
 

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://djk2nn2sogn1f"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_vari4"]
+[ext_resource type="Resource" path="res://assets/enemies/glass_duelist/innate_ability.tres" id="2_73jn7"]
+[ext_resource type="Resource" path="res://assets/enemies/glass_duelist/behavior.tres" id="3_vcb8f"]
+[ext_resource type="Texture2D" uid="uid://b6ku1rn71cj4a" path="res://assets/enemies/glass_duelist/art/glass_duelist.png" id="4_554pr"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_uxrnv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_en6ld"]
+atlas = ExtResource("4_554pr")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Glass Duelist"
+script = ExtResource("5_uxrnv")
+behavior = ExtResource("3_vcb8f")
+id = &"glass_duelist"
+display_name = "Glass Duelist"
+log_name = "Glass Duelist"
+description = "Restores 8 block for every third turn. Unused block expires after that turn."
+icon = SubResource("AtlasTexture_en6ld")
+resource_capacities = Dictionary[int, int]({
+2: 82
+})
+abilities = Array[ExtResource("1_vari4")]([ExtResource("2_73jn7")])
+
+metadata/progression_index = 12

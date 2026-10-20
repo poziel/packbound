@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StartingEquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/characters/starting_equipment_definition.gd" id="1_djqp4"]
+
+[resource]
+resource_name = "Starting Equipment 1"
+script = ExtResource("1_djqp4")
+item_id = &"buckler"
+position = Vector2i(2, 0)

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_jqh6m"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_mortw"]
+[ext_resource type="Resource" path="res://assets/enemies/pitch_eel/attack_0_effect.tres" id="3_714cj"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_htfyo"]
+
+[resource]
+resource_name = "Drainer"
+script = ExtResource("4_htfyo")
+id = &"pitch_eel_attack_0"
+display_name = "Drainer"
+description = "Restores up to 4 health once after a response that damages player health, if still alive."
+target_id = &"opponent"
+effects = Array[ExtResource("2_mortw")]([ExtResource("3_714cj")])

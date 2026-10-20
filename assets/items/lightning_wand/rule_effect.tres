@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_orccs"]
+
+[resource]
+resource_name = "Storm Wand Rule Effect"
+script = ExtResource("1_orccs")
+rule_id = &"lightning_wand_rules"
+parameters = {
+"block_per_round": 0,
+"mana_per_round": 0,
+"priority": 0,
+"stamina_per_round": 0,
+"template": "frost_wand",
+"tooltip_detail": ""
+}

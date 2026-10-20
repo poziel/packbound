@@ -24,6 +24,6 @@ The ferryman returned this boat instead of a passenger. The oar still takes a st
 
 A copper funeral boat with a standing oar. A centered, readable 32 pixel relic icon using broad material shading and connected clusters; no colored edge lighting. Art remains unreviewed until explicit visual acceptance.
 
-![Inventory art](icons/art/icon.png)
+![Inventory art](art/icon.png)
 
-Editable [numeric layered source](icons/art/icon.sprite.json) and [Pixloom project](icons/art/icon.pixloom); exports remain review candidates pending user art acceptance.
+Editable [numeric layered source](art/icon.sprite.json) and [Pixloom project](art/icon.pixloom); exports remain review candidates pending user art acceptance.

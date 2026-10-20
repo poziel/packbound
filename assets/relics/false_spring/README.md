@@ -24,6 +24,6 @@ The gardener trapped a thaw inside glass. The branch blooms beautifully, then re
 
 A flowering branch emerging from a cracked snow globe. A centered, readable 32 pixel relic icon using broad material shading and connected clusters; no colored edge lighting. Art remains unreviewed until explicit visual acceptance.
 
-![Inventory art](icons/art/icon.png)
+![Inventory art](art/icon.png)
 
-Editable [numeric layered source](icons/art/icon.sprite.json) and [Pixloom project](icons/art/icon.pixloom); exports remain review candidates pending user art acceptance.
+Editable [numeric layered source](art/icon.sprite.json) and [Pixloom project](art/icon.pixloom); exports remain review candidates pending user art acceptance.

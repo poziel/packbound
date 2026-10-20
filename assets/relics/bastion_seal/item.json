@@ -87,12 +87,11 @@
       "Keep the side face substantial."
     ],
     "assets": {
-      "icon": "assets/relics/bastion_seal/icons/art/icon.png",
-      "svg": "assets/relics/bastion_seal/icons/art/icon.svg",
-      "source": "assets/relics/bastion_seal/icons/art/icon.sprite.json",
+      "icon": "assets/relics/bastion_seal/art/icon.png",
+      "source": "assets/relics/bastion_seal/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/bastion_seal/icons/art/provenance.json",
-      "manifest": "assets/relics/bastion_seal/icons/art/art-manifest.json",
+      "provenance": "assets/relics/bastion_seal/art/provenance.json",
+      "manifest": "assets/relics/bastion_seal/art/art_manifest.json",
       "variants": []
     },
     "approval": "unreviewed"

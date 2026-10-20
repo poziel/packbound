@@ -140,14 +140,11 @@
       "A cream folded diagram beside a purple bell shaped blossom."
     ],
     "assets": {
-      "icon": "assets/items/foxglove_formula/icons/art/icon.png",
-      "svg": "assets/items/foxglove_formula/icons/art/icon.svg",
-      "source": "assets/items/foxglove_formula/icons/art/icon.sprite.json",
-      "footprint": "assets/items/foxglove_formula/icons/art/footprint.json",
-      "provenance": "assets/items/foxglove_formula/icons/art/provenance.json",
-      "manifest": "assets/items/foxglove_formula/icons/art/art-manifest.json",
+      "icon": "assets/items/foxglove_formula/art/item.png",
+      "source": "assets/items/foxglove_formula/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/foxglove_formula/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

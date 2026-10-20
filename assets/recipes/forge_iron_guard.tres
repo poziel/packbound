@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://be8phdi4vqhxw"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_ghstk"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_7oxa8"]
+
+[sub_resource type="Resource" id="Resource_mlp6p"]
+script = ExtResource("1_ghstk")
+accepted_item_ids = Array[StringName]([&"riveted_guard"])
+
+[sub_resource type="Resource" id="Resource_iwu85"]
+script = ExtResource("1_ghstk")
+accepted_item_ids = Array[StringName]([&"riveted_guard"])
+
+[resource]
+resource_name = "Forge Iron Guard"
+script = ExtResource("2_7oxa8")
+id = &"forge_iron_guard"
+ingredients = Array[ExtResource("1_ghstk")]([SubResource("Resource_mlp6p"), SubResource("Resource_iwu85")])
+result_item_id = &"iron_guard"

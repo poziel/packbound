@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="CharacterDefinition" format=3 uid="uid://b6l5hgxte0cjh"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_w84lt"]
+[ext_resource type="Texture2D" uid="uid://c7qf4elkmfn4l" path="res://assets/characters/mage/art/portrait.png" id="2_dgouf"]
+[ext_resource type="Script" uid="uid://cg0vuad452ie5" path="res://systems/characters/character_definition.gd" id="3_q2upo"]
+[ext_resource type="Script" uid="uid://c0epfnyobaeik" path="res://systems/characters/starting_equipment_definition.gd" id="4_ndhqx"]
+[ext_resource type="Resource" path="res://assets/characters/mage/starting_equipment_0.tres" id="5_2higd"]
+[ext_resource type="Resource" path="res://assets/characters/mage/starting_equipment_1.tres" id="6_1hxun"]
+[ext_resource type="Resource" path="res://assets/characters/mage/starting_equipment_2.tres" id="7_a20em"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qtt3"]
+atlas = ExtResource("2_dgouf")
+region = Rect2(0, 0, 64, 64)
+filter_clip = true
+
+[resource]
+resource_name = "Mira Vey"
+script = ExtResource("3_q2upo")
+class_id = &"mage"
+biography = "A young spellwright who believes fire and frost are two ways of asking the same question."
+starting_equipment = Array[ExtResource("4_ndhqx")]([ExtResource("5_2higd"), ExtResource("6_1hxun"), ExtResource("7_a20em")])
+id = &"mage"
+display_name = "Mira Vey"
+log_name = "Mira Vey"
+description = "Careful mana management and elemental spellcraft, visually expressed through simultaneous frost and fire."
+icon = SubResource("AtlasTexture_5qtt3")
+resource_capacities = Dictionary[int, int]({
+0: 6,
+1: 0,
+2: 28
+})
+
+metadata/selection_order = 2

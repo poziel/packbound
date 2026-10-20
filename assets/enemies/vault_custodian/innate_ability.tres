@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_r0ikm"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_u76q7"]
+[ext_resource type="Resource" path="res://assets/enemies/vault_custodian/innate_effect.tres" id="3_j8e1l"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_5ko0n"]
+
+[resource]
+resource_name = "Vault Custodian rules"
+script = ExtResource("4_5ko0n")
+id = &"vault_custodian_innate_rules"
+display_name = "Vault Custodian rules"
+description = "Destroys up to 3 player block before striking. Starts combat with 6 block. Absorbed damage spends it permanently for this fight."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_u76q7")]([ExtResource("3_j8e1l")])

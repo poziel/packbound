@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://c4vkhmj5spuyj"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_w2t4o"]
+[ext_resource type="Resource" path="res://assets/items/storm_abacus/rule_ability.tres" id="2_wulja"]
+[ext_resource type="Texture2D" uid="uid://8do1245gu7pa" path="res://assets/items/storm_abacus/art/item.png" id="3_npqum"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_yyprd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfj75"]
+atlas = ExtResource("3_npqum")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+resource_name = "Storm Abacus"
+script = ExtResource("4_yyprd")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1)])
+activation_costs = Dictionary[int, int]({
+0: 3
+})
+damage_type = 1
+element = 3
+id = &"storm_abacus"
+display_name = "Storm Abacus"
+description = "Costs 3 mana per activation. Deals 10 magical damage per affordable activation. Applies 3 spark through the existing combat keyword rules per affordable activation."
+lore = "Its final column measures thunder rather than numbers."
+rarity = 2
+tags = Array[StringName]([&"spell", &"mage", &"lightning"])
+category_ids = Array[StringName]([&"magic_artifacts"])
+allowed_class_ids = Array[StringName]([&"mage"])
+icon = SubResource("AtlasTexture_vfj75")
+base_stats = Dictionary[int, int]({
+0: 10,
+16: 3
+})
+abilities = Array[ExtResource("1_w2t4o")]([ExtResource("2_wulja")])

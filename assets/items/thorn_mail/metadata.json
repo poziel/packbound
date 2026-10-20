@@ -1,0 +1,24 @@
+{
+  "key": "thorn_mail",
+  "name": "Briar Mail",
+  "category": "armor",
+  "gameplayRole": "shield",
+  "inventoryMask": [
+    "##",
+    "##"
+  ],
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
+  "exports": [
+    "art/item.png",
+    "art/item.png"
+  ],
+  "editableSources": [
+    "art/item.png"
+  ],
+  "runtime": {
+    "texture": "res://assets/items/thorn_mail/art/item.png",
+    "viewPolicy": "Reuse approved footprint-derived native sprite across display sizes with nearest filtering."
+  },
+  "activeRevision": "catalog-v2",
+  "revisionProvenance": "res://docs/art/concepts/thorn-mail-catalog-v2/provenance.json"
+}

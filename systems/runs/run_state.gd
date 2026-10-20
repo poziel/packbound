@@ -1,6 +1,8 @@
 class_name PackRun
 extends RefCounted
 
+const CATEGORIES = preload("res://systems/content/collectible_categories.gd")
+
 const CRAFTING = preload("res://systems/crafting/pack_crafting.gd")
 const QUIVER = preload("res://systems/characters/archer_quiver.gd")
 const ELEMENTS = preload("res://systems/combat/elemental_combat.gd")
@@ -117,8 +119,10 @@ func reset(seed_value: int = -1, chosen_class: String = "warrior") -> void:
 	room_flow_version = 1
 	total_turns = 0
 	last_thread_used = false
-	for index in range(3):
-		add_item(character["starters"][index], character["positions"][index])
+	for index in range(character["starters"].size()):
+		var starter: Dictionary = add_item(character["starters"][index], character["positions"][index])
+		starter["rotation"] = character["rotations"][index]
+		starter["shape"] = dimensions(starter, starter["rotation"])
 	prepare_enemy()
 	if class_key == "ranger":
 		item_rewards.push_front({"floor": 0, "offers": QUIVER.INITIAL.duplicate()})
@@ -378,18 +382,18 @@ func touches(a: Dictionary, b: Dictionary) -> bool:
 	return false
 
 func bonus(source: Dictionary, target: Dictionary) -> int:
-	if not item_enabled(source) or not item_enabled(target) or source["id"] == target["id"] or not touches(source, target):
+	if source["id"] == target["id"] or not touches(source, target) or not item_enabled(source) or not item_enabled(target):
 		return 0
 	var supplied: Dictionary = source.get("adjacency_bonus", {})
-	if target["role"] in supplied.get("target_roles", []):
-		return int(supplied.get("stats", {}).get("block" if target["role"] == "shield" else "damage", 0))
-	if source["key"] == "blood_gem" and target["role"] in ["weapon", "ranged", "spell", "quiver", "companion"]:
+	if CATEGORIES.matches_any(target, CATEGORIES.target_ids(supplied)):
+		return int(supplied.get("stats", {}).get("block" if CATEGORIES.matches(target, &"shields") else "damage", 0))
+	if source["key"] == "blood_gem" and CATEGORIES.matches_any(target, ["melee_weapons", "ranged_weapons", "magic_weapons", "quivers", "companions"]):
 		return 2
-	if source["key"] == "iron_charm" and target["role"] == "shield":
+	if source["key"] == "iron_charm" and CATEGORIES.matches(target, &"shields"):
 		return 3
-	if source["key"] in ["quiver", QUIVER.KEY] and target["role"] == "ranged":
+	if source["key"] in ["quiver", QUIVER.KEY] and CATEGORIES.matches(target, &"ranged_weapons"):
 		return 2
-	if source["key"] == "cursed_idol" and target["role"] in ["weapon", "ranged", "spell", "shield", "quiver"]:
+	if source["key"] == "cursed_idol" and CATEGORIES.matches_any(target, ["melee_weapons", "ranged_weapons", "magic_weapons", "shields", "quivers"]):
 		return 3
 	return 0
 
@@ -400,11 +404,11 @@ func item_bonus(target: Dictionary) -> int:
 	return amount
 
 func supplied_bonus(source: Dictionary, target: Dictionary) -> Dictionary:
-	if not item_enabled(source) or not item_enabled(target) or source.get("cell") == null or target.get("cell") == null or source["id"] == target["id"] or not touches(source, target):
+	if source.get("cell") == null or target.get("cell") == null or source["id"] == target["id"] or not touches(source, target) or not item_enabled(source) or not item_enabled(target):
 		return {}
 	var supplied: Dictionary = source.get("adjacency_bonus", {})
 	var result: Dictionary = {}
-	if target["role"] in supplied.get("target_roles", []):
+	if CATEGORIES.matches_any(target, CATEGORIES.target_ids(supplied)):
 		result = supplied.get("stats", {}).duplicate()
 	if target["key"] == QUIVER.KEY:
 		for stat: String in source.get("quiver_bonus", {}):
@@ -412,7 +416,7 @@ func supplied_bonus(source: Dictionary, target: Dictionary) -> Dictionary:
 	if supplied.is_empty():
 		var legacy: int = bonus(source, target)
 		if legacy > 0:
-			var stat: String = "block" if target["role"] == "shield" else "damage"
+			var stat: String = "block" if CATEGORIES.matches(target, &"shields") else "damage"
 			result[stat] = int(result.get(stat, 0)) + legacy
 	return result
 
@@ -424,13 +428,15 @@ func has_bonus(source: Dictionary, target: Dictionary) -> bool:
 
 func adjacency_stats(target: Dictionary) -> Dictionary:
 	var result: Dictionary = {}
+	if not item_enabled(target):
+		return result
 	# Addition does not depend on reading order. Avoid sorting the whole pack
 	# again for every recipient while evaluating a live placement preview.
 	for source: Dictionary in items:
-		if source.get("cell") == null or not item_enabled(source) or not item_enabled(target) or source["id"] == target["id"]:
+		if source.get("cell") == null or source["id"] == target["id"]:
 			continue
 		var supplied: Dictionary = source.get("adjacency_bonus", {})
-		if target["role"] not in supplied.get("target_roles", []) or not touches(source, target):
+		if supplied.is_empty() or not touches(source, target) or not CATEGORIES.matches_any(target, CATEGORIES.target_ids(supplied)) or not item_enabled(source):
 			continue
 		for stat: String in supplied.get("stats", {}):
 			result[stat] = int(result.get(stat, 0)) + int(supplied["stats"][stat])
@@ -561,9 +567,9 @@ func starting_resources() -> Dictionary:
 		resources["stamina"] += int(item.get("stamina", 0))
 		resources["block"] += int(item["block"])
 		for resource: String in ["mana", "stamina", "block"]:
-			if resource != "block" or item["role"] != "shield":
+			if resource != "block" or not CATEGORIES.matches(item, &"shields"):
 				resources[resource] += int(supplied.get(resource, 0))
-		if item["role"] == "shield":
+		if CATEGORIES.matches(item, &"shields"):
 			resources["block"] += item_bonus(item)
 		if item["key"] == "mirror_shard":
 			var best: Dictionary = _mirror_target(item, equipped)
@@ -679,7 +685,7 @@ func effects() -> Dictionary:
 		var grants: Array[String] = []
 		for resource: String in ["mana", "stamina", "block"]:
 			var gain: int = int(item.get(resource + "_per_round", 0)) + (int(item.get(resource, 0)) if resource != "block" or turn == 1 else 0)
-			if resource == "block" and turn == 1 and item["role"] == "shield":
+			if resource == "block" and turn == 1 and CATEGORIES.matches(item, &"shields"):
 				gain += item_bonus(item)
 			if resource == "block" and turn == 1 and item["key"] == "mirror_shard":
 				var target: Dictionary = _mirror_target(item, equipped)
@@ -689,7 +695,7 @@ func effects() -> Dictionary:
 						grants.append("Copies %d block from %s." % [int(target["block"]) / 2, _log_item(target)])
 			if gain > 0:
 				result["item_effects"].append({"id": item["id"], "key": resource, "amount": gain})
-				if resource == "block" and turn == 1 and item["role"] == "shield":
+				if resource == "block" and turn == 1 and CATEGORIES.matches(item, &"shields"):
 					grants.append_array(_log_bonus_sources(item, equipped))
 				grants.append("Granted %d %s%s." % [gain, resource, " at combat start" if turn == 1 else " before activations"])
 		if not grants.is_empty():
@@ -755,7 +761,7 @@ func effects() -> Dictionary:
 	var strongest_damage: int = -1
 	if relics.has("echo_clock") and turn % 3 == 0:
 		for item in eligible:
-			if item["role"] in ["weapon", "ranged", "spell", "companion"]:
+			if CATEGORIES.matches_any(item, ["melee_weapons", "ranged_weapons", "magic_weapons", "companions"]):
 				var strength: int = int(item["damage"]) + item_bonus(item)
 				if strength > strongest_damage or (strength == strongest_damage and reading_rank(item) < reading_rank(_item_by_id(int(result["echo_item_id"])))):
 					strongest_damage = strength
@@ -765,7 +771,7 @@ func effects() -> Dictionary:
 		if not activation_costs.has(item["id"]):
 			activation_events.append("%s skips activation: insufficient mana, stamina or Momentum; no costs are spent." % _log_item(item))
 			continue
-		var activates: bool = item["role"] in ["weapon", "ranged", "spell", "companion"] or item["key"] == "mirror_shard"
+		var activates: bool = CATEGORIES.matches_any(item, ["melee_weapons", "ranged_weapons", "magic_weapons", "companions"]) or item["key"] == "mirror_shard"
 		for stat: String in PackCatalog.STATS:
 			activates = activates or (stat not in ["mana", "stamina", "block"] and int(item[stat]) != 0)
 		if not activates:
@@ -780,15 +786,15 @@ func effects() -> Dictionary:
 		activation_events.append(source + " activation" + (" (cost: %s)" % " and ".join(payments) if not payments.is_empty() else ""))
 		for received: String in _log_bonus_sources(item, equipped):
 			activation_events.append(_log_effect(received))
-		var is_attack: bool = item["role"] in ["weapon", "ranged", "spell", "companion"]
+		var is_attack: bool = CATEGORIES.matches_any(item, ["melee_weapons", "ranged_weapons", "magic_weapons", "companions"])
 		var copies: int = 1
-		if has_hourglass and item["role"] == "weapon" and turn % 4 == 0:
+		if has_hourglass and CATEGORIES.matches(item, &"melee_weapons") and turn % 4 == 0:
 			copies += 1
 		if item["id"] == result["echo_item_id"]:
 			copies += 1
 		result["repeats"] += copies - 1
 		if copies > 1:
-			activation_events.append(_log_effect("Repeated %d extra time(s)%s%s." % [copies - 1, " from Hourglass" if has_hourglass and item["role"] == "weapon" and turn % 4 == 0 else "", " from Echo Clock" if item["id"] == result["echo_item_id"] else ""]))
+			activation_events.append(_log_effect("Repeated %d extra time(s)%s%s." % [copies - 1, " from Hourglass" if has_hourglass and CATEGORIES.matches(item, &"melee_weapons") and turn % 4 == 0 else "", " from Echo Clock" if item["id"] == result["echo_item_id"] else ""]))
 		var supplied: Dictionary = adjacency_stats(item)
 		for stat in PackCatalog.STATS:
 			if stat not in ["mana", "stamina", "block"]:
@@ -813,7 +819,7 @@ func effects() -> Dictionary:
 		for stat: String in PackCatalog.STATS:
 			var contribution: int = int(result[stat]) - int(before[stat])
 			if contribution > 0:
-				var icon_key: String = ("magical_attack" if item["role"] == "spell" else "physical_attack") if stat == "damage" else ("piercing" if stat == "pierce" else stat)
+				var icon_key: String = ("magical_attack" if CATEGORIES.matches(item, &"magic_weapons") else "physical_attack") if stat == "damage" else ("piercing" if stat == "pierce" else stat)
 				result["item_effects"].append({"id": item["id"], "key": icon_key, "amount": contribution})
 				activation_events.append(_log_effect("Contributes %d %s%s." % [contribution, typed_damage.replace("_", " ") if stat == "damage" else stat.replace("_", " "), " to the combined attack" if stat == "damage" else ""]))
 		if class_key == "mage" and ELEMENTS.ELEMENTS.has(element):
@@ -1227,18 +1233,18 @@ func roll_loot() -> void:
 	# New progression equipment joins normal rewards as deeper tiers open.
 	# Preserve class-specific legacy pools and the quiver-upgrade choice.
 	var tier_limit: int = mini(4, floori(float(fight) / 4.0))
-	for key: String in PackCatalog.CONTENT.items():
+	for key: String in PackCatalog.CONTENT.ITEM_KEYS:
 		var definition: Dictionary = PackCatalog.item(key)
 		if PackCatalog.RARITY.TIERS.find(definition["rarity"]) <= tier_limit:
-			groups[0 if definition["role"] == "weapon" else 1].append(key)
+			groups[0 if CATEGORIES.matches(definition, &"melee_weapons") else 1].append(key)
 	for key: String in PackCatalog.EXPANSION_ITEMS.ITEM_KEYS:
 		var definition: Dictionary = PackCatalog.item(key)
 		if not item_enabled(definition) or PackCatalog.RARITY.TIERS.find(definition["rarity"]) > tier_limit:
 			continue
 		var group_index: int = 2
-		if definition["role"] in ["weapon", "ranged", "spell", "companion"]:
+		if CATEGORIES.matches_any(definition, ["melee_weapons", "ranged_weapons", "magic_weapons", "companions"]):
 			group_index = 0
-		elif definition["role"] in ["shield", "armor", "boots", "healer"]:
+		elif CATEGORIES.matches_any(definition, ["shields", "body_armor", "boots", "healing_supplies"]):
 			group_index = 1
 		groups[group_index].append(key)
 	var rolled: Array[String] = []

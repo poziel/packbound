@@ -85,14 +85,13 @@
       "A small closed bone door with three singing mask panels"
     ],
     "assets": {
-      "icon": "assets/relics/choir_beyond_the_door/icons/art/icon.png",
-      "svg": "assets/relics/choir_beyond_the_door/icons/art/icon.svg",
-      "source": "assets/relics/choir_beyond_the_door/icons/art/icon.sprite.json",
+      "icon": "assets/relics/choir_beyond_the_door/art/icon.png",
+      "source": "assets/relics/choir_beyond_the_door/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/choir_beyond_the_door/icons/art/provenance.json",
-      "manifest": "assets/relics/choir_beyond_the_door/icons/art/art-manifest.json",
+      "provenance": "assets/relics/choir_beyond_the_door/art/provenance.json",
+      "manifest": "assets/relics/choir_beyond_the_door/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/choir_beyond_the_door/icons/art/icon.pixloom"
+      "native": "assets/relics/choir_beyond_the_door/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

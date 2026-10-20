@@ -121,9 +121,9 @@
     ]
   },
   "assetReferences": {
-    "runtime": "assets/characters/ranger/art/full-body.svg",
+    "runtime": "assets/characters/ranger/art/full_body.png",
     "concept": "assets/characters/ranger/art/concept.png",
-    "nativeSource": "assets/characters/ranger/art/full-body.sprite.json",
+    "nativeSource": "assets/characters/ranger/art/full_body.sprite.json",
     "artStatus": "ranger v3 accepted and installed 2026-10-16; 256 px body and 64 x 64 portrait",
     "appearanceBasis": "Accepted ranger v2. New name and biography are authored for this catalog.",
     "portrait": "assets/characters/ranger/art/portrait.png",

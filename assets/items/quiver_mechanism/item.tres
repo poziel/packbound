@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bcpoktac14p6h"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_ssutr"]
+[ext_resource type="Resource" path="res://assets/items/quiver_mechanism/rule_ability.tres" id="2_a51qr"]
+[ext_resource type="Texture2D" uid="uid://51iaa2f6uo8d" path="res://assets/items/quiver/art/item.png" id="3_8n13h"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_c86js"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uovla"]
+atlas = ExtResource("3_8n13h")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Tension Mechanism"
+script = ExtResource("4_c86js")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+id = &"quiver_mechanism"
+display_name = "Tension Mechanism"
+description = "Quiver upgrade: +1 damage per Volley arrow. Up to 3 upgrades."
+rarity = 1
+category_ids = Array[StringName]([&"quiver_upgrades"])
+icon = SubResource("AtlasTexture_uovla")
+abilities = Array[ExtResource("1_ssutr")]([ExtResource("2_a51qr")])

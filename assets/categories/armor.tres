@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CollectibleCategoryDefinition" format=3 uid="uid://ckrkvm3jmbqir"]
+
+[ext_resource type="Script" uid="uid://ccft8lyr7x3v3" path="res://systems/content/collectible_category_definition.gd" id="1"]
+
+[resource]
+resource_name = "Armor"
+script = ExtResource("1")
+id = &"armor"
+display_name = "Armor"

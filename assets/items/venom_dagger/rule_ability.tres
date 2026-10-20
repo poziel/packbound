@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_76cnx"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_7gtdf"]
+[ext_resource type="Resource" path="res://assets/items/venom_dagger/rule_effect.tres" id="3_i0hqq"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_u46t0"]
+
+[resource]
+resource_name = "Venom Dagger rules"
+script = ExtResource("4_u46t0")
+id = &"venom_dagger_rules"
+display_name = "Venom Dagger rules"
+description = "5 damage, 3 poison and 2 block piercing. Poison ticks each turn and decays by 1."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_7gtdf")]([ExtResource("3_i0hqq")])

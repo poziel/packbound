@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dxwpq64if82jg"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_lyt00"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_q7fla"]
+
+[sub_resource type="Resource" id="Resource_g4kds"]
+script = ExtResource("1_lyt00")
+accepted_item_ids = Array[StringName]([&"barbed_tip_roll"])
+
+[sub_resource type="Resource" id="Resource_dxomq"]
+script = ExtResource("1_lyt00")
+accepted_item_ids = Array[StringName]([&"gilded_scarab"])
+
+[sub_resource type="Resource" id="Resource_tqm5n"]
+script = ExtResource("1_lyt00")
+accepted_item_ids = Array[StringName]([&"glass_reed_bow"])
+
+[resource]
+resource_name = "Assemble Thunder Yew"
+script = ExtResource("2_q7fla")
+id = &"assemble_thunder_yew"
+ingredients = Array[ExtResource("1_lyt00")]([SubResource("Resource_g4kds"), SubResource("Resource_dxomq"), SubResource("Resource_tqm5n")])
+result_item_id = &"thunder_yew"

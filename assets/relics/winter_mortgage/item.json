@@ -85,14 +85,13 @@
       "A frozen house key trapped inside a blue crystal"
     ],
     "assets": {
-      "icon": "assets/relics/winter_mortgage/icons/art/icon.png",
-      "svg": "assets/relics/winter_mortgage/icons/art/icon.svg",
-      "source": "assets/relics/winter_mortgage/icons/art/icon.sprite.json",
+      "icon": "assets/relics/winter_mortgage/art/icon.png",
+      "source": "assets/relics/winter_mortgage/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/winter_mortgage/icons/art/provenance.json",
-      "manifest": "assets/relics/winter_mortgage/icons/art/art-manifest.json",
+      "provenance": "assets/relics/winter_mortgage/art/provenance.json",
+      "manifest": "assets/relics/winter_mortgage/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/winter_mortgage/icons/art/icon.pixloom"
+      "native": "assets/relics/winter_mortgage/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

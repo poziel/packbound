@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://ds3m7gqi408sn"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_3vxos"]
+[ext_resource type="Resource" path="res://assets/items/roseglass_brooch/rule_ability.tres" id="2_sb5aq"]
+[ext_resource type="Texture2D" uid="uid://bu03b0sc0lieh" path="res://assets/items/roseglass_brooch/art/item.png" id="3_lp252"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_pfplh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksuyg"]
+atlas = ExtResource("3_lp252")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Roseglass Brooch"
+script = ExtResource("4_pfplh")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"roseglass_brooch"
+display_name = "Roseglass Brooch"
+description = "Restores up to 2 HP each round."
+lore = "A gardener wore it through the winter after the garden burned."
+rarity = 1
+tags = Array[StringName]([&"pendant"])
+category_ids = Array[StringName]([&"pendants"])
+icon = SubResource("AtlasTexture_ksuyg")
+base_stats = Dictionary[int, int]({
+2: 2
+})
+abilities = Array[ExtResource("1_3vxos")]([ExtResource("2_sb5aq")])

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_p3xay"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_7nhln"]
+[ext_resource type="Resource" path="res://assets/items/porcelain_lung/rule_effect.tres" id="3_sn5ph"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_otnoq"]
+
+[resource]
+resource_name = "Porcelain Lung rules"
+script = ExtResource("4_otnoq")
+id = &"porcelain_lung_rules"
+display_name = "Porcelain Lung rules"
+description = "Adds 2 maximum mana, refreshed each round. Removes up to 3 poison before its round tick. Supplies 2 ward each round against poison, curse and reflected damage."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_7nhln")]([ExtResource("3_sn5ph")])

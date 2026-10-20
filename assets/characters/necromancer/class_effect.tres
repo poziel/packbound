@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_tl0ni"]
+
+[resource]
+resource_name = "Necromancer Class Effect"
+script = ExtResource("1_tl0ni")
+rule_id = &"necromancer_class_rules"
+parameters = {
+"mechanic": "Raise Dead"
+}

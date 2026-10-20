@@ -132,14 +132,11 @@
       "A cream breastplate with broad copper ribs like roof arches."
     ],
     "assets": {
-      "icon": "assets/items/cathedral_carapace/icons/art/icon.png",
-      "svg": "assets/items/cathedral_carapace/icons/art/icon.svg",
-      "source": "assets/items/cathedral_carapace/icons/art/icon.sprite.json",
-      "footprint": "assets/items/cathedral_carapace/icons/art/footprint.json",
-      "provenance": "assets/items/cathedral_carapace/icons/art/provenance.json",
-      "manifest": "assets/items/cathedral_carapace/icons/art/art-manifest.json",
+      "icon": "assets/items/cathedral_carapace/art/item.png",
+      "source": "assets/items/cathedral_carapace/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/cathedral_carapace/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

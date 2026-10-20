@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://mlhmwe1ios6r"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_d8ohv"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_ly6ss"]
+
+[sub_resource type="Resource" id="Resource_v44ui"]
+script = ExtResource("1_d8ohv")
+accepted_item_ids = Array[StringName]([&"drummer_s_mallet"])
+
+[sub_resource type="Resource" id="Resource_g8n46"]
+script = ExtResource("1_d8ohv")
+accepted_item_ids = Array[StringName]([&"marching_pike"])
+
+[resource]
+resource_name = "Assemble Standard Spike"
+script = ExtResource("2_ly6ss")
+id = &"assemble_standard_spike"
+ingredients = Array[ExtResource("1_d8ohv")]([SubResource("Resource_v44ui"), SubResource("Resource_g8n46")])
+result_item_id = &"standard_spike"

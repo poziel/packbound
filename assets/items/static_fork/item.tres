@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://c2g8urxt7upnj"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_1l3lo"]
+[ext_resource type="Resource" path="res://assets/items/static_fork/rule_ability.tres" id="2_dvjoc"]
+[ext_resource type="Texture2D" uid="uid://u5waaxkhgd7b" path="res://assets/items/static_fork/art/item.png" id="3_dhe4c"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_n5jje"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwtsr"]
+atlas = ExtResource("3_dhe4c")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Static Fork"
+script = ExtResource("4_n5jje")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+activation_costs = Dictionary[int, int]({
+0: 1
+})
+damage_type = 1
+element = 3
+id = &"static_fork"
+display_name = "Static Fork"
+description = "Costs 1 mana per activation. Deals 4 magical damage per affordable activation. Applies 1 spark through the existing combat keyword rules per affordable activation."
+lore = "It answers distant thunder before the clouds arrive."
+tags = Array[StringName]([&"spell", &"mage", &"lightning"])
+category_ids = Array[StringName]([&"magic_artifacts"])
+allowed_class_ids = Array[StringName]([&"mage"])
+icon = SubResource("AtlasTexture_pwtsr")
+base_stats = Dictionary[int, int]({
+0: 4,
+16: 1
+})
+abilities = Array[ExtResource("1_1l3lo")]([ExtResource("2_dvjoc")])

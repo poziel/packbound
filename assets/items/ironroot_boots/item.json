@@ -152,14 +152,11 @@
       "A heavy boot whose sole spreads into three dark root toes."
     ],
     "assets": {
-      "icon": "assets/items/ironroot_boots/icons/art/icon.png",
-      "svg": "assets/items/ironroot_boots/icons/art/icon.svg",
-      "source": "assets/items/ironroot_boots/icons/art/icon.sprite.json",
-      "footprint": "assets/items/ironroot_boots/icons/art/footprint.json",
-      "provenance": "assets/items/ironroot_boots/icons/art/provenance.json",
-      "manifest": "assets/items/ironroot_boots/icons/art/art-manifest.json",
+      "icon": "assets/items/ironroot_boots/art/item.png",
+      "source": "assets/items/ironroot_boots/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/ironroot_boots/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

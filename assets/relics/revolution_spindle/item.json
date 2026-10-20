@@ -85,14 +85,13 @@
       "A red iron spindle with three concentric toothed wheels"
     ],
     "assets": {
-      "icon": "assets/relics/revolution_spindle/icons/art/icon.png",
-      "svg": "assets/relics/revolution_spindle/icons/art/icon.svg",
-      "source": "assets/relics/revolution_spindle/icons/art/icon.sprite.json",
+      "icon": "assets/relics/revolution_spindle/art/icon.png",
+      "source": "assets/relics/revolution_spindle/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/revolution_spindle/icons/art/provenance.json",
-      "manifest": "assets/relics/revolution_spindle/icons/art/art-manifest.json",
+      "provenance": "assets/relics/revolution_spindle/art/provenance.json",
+      "manifest": "assets/relics/revolution_spindle/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/revolution_spindle/icons/art/icon.pixloom"
+      "native": "assets/relics/revolution_spindle/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

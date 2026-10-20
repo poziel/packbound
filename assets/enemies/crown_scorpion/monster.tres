@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://bf2gsylj3dubg"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_jbuwy"]
+[ext_resource type="Resource" path="res://assets/enemies/crown_scorpion/innate_ability.tres" id="2_ymicb"]
+[ext_resource type="Resource" path="res://assets/enemies/crown_scorpion/behavior.tres" id="3_wvru4"]
+[ext_resource type="Texture2D" uid="uid://u1i5knvn3qjg" path="res://assets/enemies/crown_scorpion/art/crown_scorpion.png" id="4_7gss6"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_80kpj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8gyj"]
+atlas = ExtResource("4_7gss6")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Crown Scorpion"
+script = ExtResource("5_80kpj")
+species_id = &"scorpion"
+role_id = &"venom"
+behavior = ExtResource("3_wvru4")
+id = &"crown_scorpion"
+display_name = "Crown Scorpion"
+log_name = "Crown Scorpion"
+description = "A crypt scorpion that wears a ring of grave gold across its head. Its heavy pincers hold a target steady for the crowned tail."
+icon = SubResource("AtlasTexture_d8gyj")
+base_stats = Dictionary[int, int]({
+1: 4,
+6: 3
+})
+resource_capacities = Dictionary[int, int]({
+2: 87
+})
+abilities = Array[ExtResource("1_jbuwy")]([ExtResource("2_ymicb")])
+metadata/encounter_floor = 14

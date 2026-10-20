@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_mhdag"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_ktqjq"]
+[ext_resource type="Resource" path="res://assets/relics/pocket_hearth/rule_effect.tres" id="3_es1ld"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_r8yo4"]
+
+[resource]
+resource_name = "Pocket Hearth rules"
+script = ExtResource("4_r8yo4")
+id = &"pocket_hearth_rules"
+display_name = "Pocket Hearth rules"
+description = "When current HP is at most half maximum HP before activations: gain +1 healing."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_ktqjq")]([ExtResource("3_es1ld")])

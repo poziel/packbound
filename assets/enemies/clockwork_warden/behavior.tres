@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MonsterBehaviorDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="1_3iqae"]
+[ext_resource type="Resource" path="res://assets/enemies/clockwork_warden/attack_0.tres" id="2_57qbm"]
+[ext_resource type="Resource" path="res://assets/enemies/clockwork_warden/attack_1.tres" id="3_6kdji"]
+[ext_resource type="Script" path="res://systems/enemies/monster_behavior_definition.gd" id="4_tbnmk"]
+
+[resource]
+resource_name = "Clockwork Warden Behavior"
+script = ExtResource("4_tbnmk")
+actions = Array[ExtResource("1_3iqae")]([ExtResource("2_57qbm"), ExtResource("3_6kdji")])

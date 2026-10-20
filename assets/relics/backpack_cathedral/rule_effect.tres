@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_il7tp"]
+
+[resource]
+resource_name = "Backpack Cathedral Rule Effect"
+script = ExtResource("1_il7tp")
+rule_id = &"backpack_cathedral_rules"
+parameters = {
+"icon": "backpack_cathedral",
+"rule": {
+"amount": 12,
+"cap": 1,
+"condition": "many_items",
+"metric": "one",
+"stat": "magical_resistance"
+},
+"stats": {}
+}

@@ -69,7 +69,7 @@ func _run() -> void:
 	disabled["classes"] = ["mage"]
 	state.relics.assign(["rust_psalm"])
 	check(state.effects()["pierce"] == 0, "Dormant wrong-class weapons cannot enable relic bonuses")
-	disabled["role"] = "companion"
+	disabled["category_ids"] = ["companions"]
 	state.relics.assign(["grave_bell"])
 	check(state.effects()["ward"] == 0, "Dormant wrong-class companions cannot enable relic bonuses")
 	report("EXPANSION RELICS")

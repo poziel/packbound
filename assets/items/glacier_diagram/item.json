@@ -136,14 +136,11 @@
       "A square blue slate showing a stepped white mountain."
     ],
     "assets": {
-      "icon": "assets/items/glacier_diagram/icons/art/icon.png",
-      "svg": "assets/items/glacier_diagram/icons/art/icon.svg",
-      "source": "assets/items/glacier_diagram/icons/art/icon.sprite.json",
-      "footprint": "assets/items/glacier_diagram/icons/art/footprint.json",
-      "provenance": "assets/items/glacier_diagram/icons/art/provenance.json",
-      "manifest": "assets/items/glacier_diagram/icons/art/art-manifest.json",
+      "icon": "assets/items/glacier_diagram/art/item.png",
+      "source": "assets/items/glacier_diagram/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/glacier_diagram/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

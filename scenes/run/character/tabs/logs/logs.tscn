@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bmja72d2h141u"]
 
-[ext_resource type="Texture2D" path="res://assets/ui/icons/minimal-controls/previous.png" id="previous_icon"]
+[ext_resource type="Texture2D" path="res://assets/icons/controls/common/previous.png" id="previous_icon"]
 [ext_resource type="PackedScene" path="res://components/ui/buttons/icon_button/icon_button.tscn" id="icon_button"]
-[ext_resource type="Texture2D" path="res://assets/ui/icons/minimal-controls/next.png" id="next_icon"]
+[ext_resource type="Texture2D" path="res://assets/icons/controls/common/next.png" id="next_icon"]
 [ext_resource type="Theme" uid="uid://b3k7avi5t7hlb" path="res://themes/gameplay/theme.tres" id="theme"]
 
 [ext_resource type="Script" path="res://scenes/run/character/tabs/logs/log_view.gd" id="log_view"]

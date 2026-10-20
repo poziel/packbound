@@ -8,7 +8,7 @@
   ],
   "references": [
     ".agents/skills/delver-art-creator/references/visual-direction.md",
-    "assets/enemies/mire_viper.png",
+    "assets/enemies/mire_viper/art/mire_viper.png",
     "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png"
   ],
   "canvas": [
@@ -45,11 +45,11 @@
     "blood_orchid.pixloom.json": "668b05fb7108bbd6e3a146dd6a395a5399dd002fce149b0e4accc658a4dd66d1",
     "blood_orchid.pixloom": "4da7ac14527681df229770e0c88f6ebd5747ba2bc9a64f30084dd07b51a8edc6",
     "blood_orchid.png": "7719241ec2695c62e047c077ccde521347bfeb8463f87c9ae848239c08558bb7",
-    "blood_orchid.svg": "da704bed378a527069d1293e1d22d3f87fb841a530dce36e4234d6163f47d55e"
+    "blood_orchid.png": "da704bed378a527069d1293e1d22d3f87fb841a530dce36e4234d6163f47d55e"
   },
   "reference_sha256": {
     ".agents/skills/delver-art-creator/references/visual-direction.md": "5cadc4ef72c5db7bbec05c9504920e5abfd9ca4b33add8d2af9f98c610ada0df",
-    "assets/enemies/mire_viper.png": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7",
+    "assets/enemies/mire_viper/art/mire_viper.png": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7",
     "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png": "3bcd9705f35494a28a94b3d1ecce67f657308bc4e952afe2ad7339864e140edf"
   }
 }

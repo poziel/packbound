@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dq5chrlkse75x"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_1fsbu"]
+[ext_resource type="Resource" path="res://assets/items/spark_ring/rule_ability.tres" id="2_po073"]
+[ext_resource type="Texture2D" uid="uid://dxu2kj0tsb51v" path="res://assets/items/spark_ring/art/item.png" id="3_i1w3q"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_47mgd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8tdx"]
+atlas = ExtResource("3_i1w3q")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Spark Ring"
+script = ExtResource("4_47mgd")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"spark_ring"
+display_name = "Spark Ring"
+description = "+2 maximum mana. Mana refills each round."
+rarity = 1
+category_ids = Array[StringName]([&"focuses"])
+icon = SubResource("AtlasTexture_g8tdx")
+base_stats = Dictionary[int, int]({
+8: 2
+})
+abilities = Array[ExtResource("1_1fsbu")]([ExtResource("2_po073")])

@@ -96,14 +96,11 @@
       "A brown quilted jacket with one broad pale elbow patch."
     ],
     "assets": {
-      "icon": "assets/items/patchwork_jack/icons/art/icon.png",
-      "svg": "assets/items/patchwork_jack/icons/art/icon.svg",
-      "source": "assets/items/patchwork_jack/icons/art/icon.sprite.json",
-      "footprint": "assets/items/patchwork_jack/icons/art/footprint.json",
-      "provenance": "assets/items/patchwork_jack/icons/art/provenance.json",
-      "manifest": "assets/items/patchwork_jack/icons/art/art-manifest.json",
+      "icon": "assets/items/patchwork_jack/art/item.png",
+      "source": "assets/items/patchwork_jack/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/patchwork_jack/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

@@ -43,7 +43,6 @@ func collectible(script: Script, id: StringName) -> Resource:
 	value.id = id
 	value.display_name = str(id).capitalize()
 	if script == item_script:
-		value.role = &"armor"
 		value.footprint.assign([Vector2i.ZERO])
 	return value
 

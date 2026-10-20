@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_as8uo"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_5mlw4"]
+[ext_resource type="Resource" path="res://assets/enemies/ash_rat/innate_effect.tres" id="3_y5u65"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_7l1uk"]
+
+[resource]
+resource_name = "Ash Rat rules"
+script = ExtResource("4_7l1uk")
+id = &"ash_rat_innate_rules"
+display_name = "Ash Rat rules"
+description = "A steady single strike."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_5mlw4")]([ExtResource("3_y5u65")])

@@ -131,12 +131,9 @@
       "Calm dark blade planes; a deliberate pale fuller."
     ],
     "assets": {
-      "icon": "assets/items/dusksteel_blade/icons/art/icon.png",
-      "svg": "assets/items/dusksteel_blade/icons/art/icon.svg",
-      "source": "assets/items/dusksteel_blade/icons/art/icon.sprite.json",
-      "footprint": "assets/items/dusksteel_blade/icons/art/footprint.json",
-      "provenance": "assets/items/dusksteel_blade/icons/art/provenance.json",
-      "manifest": "assets/items/dusksteel_blade/icons/art/art-manifest.json",
+      "icon": "assets/items/dusksteel_blade/art/item.png",
+      "source": "assets/items/dusksteel_blade/art/item.pixloom.json",
+      "footprint": null,
       "variants": []
     },
     "approval": "unreviewed"

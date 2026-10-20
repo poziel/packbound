@@ -147,9 +147,9 @@
     ]
   },
   "assetReferences": {
-    "runtime": "assets/characters/mage/art/full-body.svg",
+    "runtime": "assets/characters/mage/art/full_body.png",
     "concept": "assets/characters/mage/art/concept.png",
-    "nativeSource": "assets/characters/mage/art/full-body.sprite.json",
+    "nativeSource": "assets/characters/mage/art/full_body.sprite.json",
     "artStatus": "mage v3 accepted and installed 2026-10-16; 256 px body and 64 x 64 portrait",
     "appearanceBasis": "User-requested young woman with frost, fire and subtle mana aura, following mage v2. New name and biography are authored for this catalog.",
     "portrait": "assets/characters/mage/art/portrait.png",

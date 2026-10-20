@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://beeh3wjedy48p"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_0hr4o"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_vwfkk"]
+
+[sub_resource type="Resource" id="Resource_17si5"]
+script = ExtResource("1_0hr4o")
+accepted_item_ids = Array[StringName]([&"bottle_of_yesterday"])
+
+[sub_resource type="Resource" id="Resource_3nlea"]
+script = ExtResource("1_0hr4o")
+accepted_item_ids = Array[StringName]([&"glacier_diagram"])
+
+[sub_resource type="Resource" id="Resource_o71f5"]
+script = ExtResource("1_0hr4o")
+accepted_item_ids = Array[StringName]([&"icicle_rosary"])
+
+[resource]
+resource_name = "Assemble Winter Orrery"
+script = ExtResource("2_vwfkk")
+id = &"assemble_winter_orrery"
+ingredients = Array[ExtResource("1_0hr4o")]([SubResource("Resource_17si5"), SubResource("Resource_3nlea"), SubResource("Resource_o71f5")])
+result_item_id = &"winter_orrery"

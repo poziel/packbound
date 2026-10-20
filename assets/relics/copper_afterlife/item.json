@@ -86,14 +86,13 @@
       "A copper funeral boat with a standing oar"
     ],
     "assets": {
-      "icon": "assets/relics/copper_afterlife/icons/art/icon.png",
-      "svg": "assets/relics/copper_afterlife/icons/art/icon.svg",
-      "source": "assets/relics/copper_afterlife/icons/art/icon.sprite.json",
+      "icon": "assets/relics/copper_afterlife/art/icon.png",
+      "source": "assets/relics/copper_afterlife/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/copper_afterlife/icons/art/provenance.json",
-      "manifest": "assets/relics/copper_afterlife/icons/art/art-manifest.json",
+      "provenance": "assets/relics/copper_afterlife/art/provenance.json",
+      "manifest": "assets/relics/copper_afterlife/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/copper_afterlife/icons/art/icon.pixloom"
+      "native": "assets/relics/copper_afterlife/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

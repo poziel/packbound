@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_i3luq"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_75m1k"]
+[ext_resource type="Resource" path="res://assets/enemies/marrow_heron/attack_0_effect.tres" id="3_d5y50"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_6svh2"]
+
+[resource]
+resource_name = "Piercer"
+script = ExtResource("4_6svh2")
+id = &"marrow_heron_attack_0"
+display_name = "Piercer"
+description = "Up to 3 damage per strike bypasses block after slow, plating and resistance reduce the strike."
+target_id = &"opponent"
+effects = Array[ExtResource("2_75m1k")]([ExtResource("3_d5y50")])

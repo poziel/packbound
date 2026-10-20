@@ -110,7 +110,6 @@ func valid_item() -> Resource:
 	var item: Resource = load("res://systems/items/item_definition.gd").new()
 	item.id = &"test_charm"
 	item.display_name = "Test Charm"
-	item.role = &"booster"
 	item.footprint.assign([Vector2i.ZERO])
 	return item
 

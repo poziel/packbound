@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://cixq6hiv8xnc6"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_5c21x"]
+[ext_resource type="Resource" path="res://assets/enemies/tomb_mason/innate_ability.tres" id="2_2sx4s"]
+[ext_resource type="Resource" path="res://assets/enemies/tomb_mason/behavior.tres" id="3_b4ng8"]
+[ext_resource type="Texture2D" uid="uid://d8r46vjnwjr8" path="res://assets/enemies/tomb_mason/art/tomb_mason.png" id="4_kfaa7"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_f56ab"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34eud"]
+atlas = ExtResource("4_kfaa7")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Tomb Mason"
+script = ExtResource("5_f56ab")
+species_id = &"golem"
+role_id = &"sunder"
+behavior = ExtResource("3_b4ng8")
+id = &"tomb_mason"
+display_name = "Tomb Mason"
+log_name = "Tomb Mason"
+description = "This unfinished stone worker still tries to repair the dungeon around living intruders. Its chisel-like fist knocks defensive stances apart."
+icon = SubResource("AtlasTexture_34eud")
+base_stats = Dictionary[int, int]({
+1: 3
+})
+resource_capacities = Dictionary[int, int]({
+2: 61
+})
+abilities = Array[ExtResource("1_5c21x")]([ExtResource("2_2sx4s")])
+metadata/encounter_floor = 9

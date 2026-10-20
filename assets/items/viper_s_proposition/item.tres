@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://j7miqg87b0mm"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_8j2a2"]
+[ext_resource type="Resource" path="res://assets/items/viper_s_proposition/rule_ability.tres" id="2_gblyo"]
+[ext_resource type="Texture2D" uid="uid://dpfvgd2mo465s" path="res://assets/items/viper_s_proposition/art/item.png" id="3_o8pye"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_dxwii"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_daucc"]
+atlas = ExtResource("3_o8pye")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+resource_name = "Viper's Proposition"
+script = ExtResource("4_dxwii")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1)])
+activation_costs = Dictionary[int, int]({
+0: 3
+})
+damage_type = 1
+element = 5
+id = &"viper_s_proposition"
+display_name = "Viper's Proposition"
+description = "Costs 3 mana per activation. Deals 7 magical damage per affordable activation. Applies 6 poison through the existing combat keyword rules per affordable activation."
+lore = "It offers the reader exactly enough time to regret agreeing."
+rarity = 2
+tags = Array[StringName]([&"spell", &"mage", &"venom"])
+category_ids = Array[StringName]([&"scrolls"])
+allowed_class_ids = Array[StringName]([&"mage"])
+icon = SubResource("AtlasTexture_daucc")
+base_stats = Dictionary[int, int]({
+0: 7,
+6: 6
+})
+abilities = Array[ExtResource("1_8j2a2")]([ExtResource("2_gblyo")])

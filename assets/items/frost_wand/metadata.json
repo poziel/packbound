@@ -1,0 +1,25 @@
+{
+  "key": "frost_wand",
+  "name": "Frost Wand",
+  "category": "spells",
+  "gameplayRole": "spell",
+  "inventoryMask": [
+    "#",
+    "#",
+    "#"
+  ],
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
+  "exports": [
+    "art/item.png",
+    "art/item.png"
+  ],
+  "editableSources": [
+    "art/item.png"
+  ],
+  "runtime": {
+    "texture": "res://assets/items/frost_wand/art/item.png",
+    "viewPolicy": "Reuse approved footprint-derived native sprite across display sizes with nearest filtering."
+  },
+  "activeRevision": "catalog-v2",
+  "revisionProvenance": "res://docs/art/concepts/frost-wand-catalog-v2/provenance.json"
+}

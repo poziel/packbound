@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_xu48a"]
+
+[resource]
+resource_name = "Assassin Class Effect"
+script = ExtResource("1_xu48a")
+rule_id = &"assassin_class_rules"
+parameters = {
+"mechanic": "Shadowstep"
+}

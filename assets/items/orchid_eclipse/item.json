@@ -142,14 +142,11 @@
       "A broad purple orchid surrounding a dark green seed core."
     ],
     "assets": {
-      "icon": "assets/items/orchid_eclipse/icons/art/icon.png",
-      "svg": "assets/items/orchid_eclipse/icons/art/icon.svg",
-      "source": "assets/items/orchid_eclipse/icons/art/icon.sprite.json",
-      "footprint": "assets/items/orchid_eclipse/icons/art/footprint.json",
-      "provenance": "assets/items/orchid_eclipse/icons/art/provenance.json",
-      "manifest": "assets/items/orchid_eclipse/icons/art/art-manifest.json",
+      "icon": "assets/items/orchid_eclipse/art/item.png",
+      "source": "assets/items/orchid_eclipse/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/orchid_eclipse/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

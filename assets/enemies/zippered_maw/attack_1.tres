@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_gpgcp"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_mnls5"]
+[ext_resource type="Resource" path="res://assets/enemies/zippered_maw/attack_1_effect.tres" id="3_n4c62"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_n6p0r"]
+
+[resource]
+resource_name = "Bite / Rend"
+script = ExtResource("4_n6p0r")
+id = &"zippered_maw_attack_1"
+display_name = "Bite / Rend"
+description = "Starts with 3 block. Alternates a bite and a devastating rend."
+target_id = &"opponent"
+effects = Array[ExtResource("2_mnls5")]([ExtResource("3_n4c62")])

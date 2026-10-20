@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_ja41h"]
+
+[resource]
+resource_name = "Slow Status Rules"
+script = ExtResource("1_ja41h")
+rule_id = &"slow_status_rules"
+parameters = {
+"applies_to_each_strike": true,
+"before_plating_and_block": true,
+"reduction_per_stack": 1
+}

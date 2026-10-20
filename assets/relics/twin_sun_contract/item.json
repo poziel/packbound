@@ -85,14 +85,13 @@
       "A parchment contract bearing gold and silver suns"
     ],
     "assets": {
-      "icon": "assets/relics/twin_sun_contract/icons/art/icon.png",
-      "svg": "assets/relics/twin_sun_contract/icons/art/icon.svg",
-      "source": "assets/relics/twin_sun_contract/icons/art/icon.sprite.json",
+      "icon": "assets/relics/twin_sun_contract/art/icon.png",
+      "source": "assets/relics/twin_sun_contract/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/twin_sun_contract/icons/art/provenance.json",
-      "manifest": "assets/relics/twin_sun_contract/icons/art/art-manifest.json",
+      "provenance": "assets/relics/twin_sun_contract/art/provenance.json",
+      "manifest": "assets/relics/twin_sun_contract/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/twin_sun_contract/icons/art/icon.pixloom"
+      "native": "assets/relics/twin_sun_contract/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

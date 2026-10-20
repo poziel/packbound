@@ -83,12 +83,9 @@
       "Two rivets hold a single central strap."
     ],
     "assets": {
-      "icon": "assets/items/riveted_guard/icons/art/icon.png",
-      "svg": "assets/items/riveted_guard/icons/art/icon.svg",
-      "source": "assets/items/riveted_guard/icons/art/icon.sprite.json",
-      "footprint": "assets/items/riveted_guard/icons/art/footprint.json",
-      "provenance": "assets/items/riveted_guard/icons/art/provenance.json",
-      "manifest": "assets/items/riveted_guard/icons/art/art-manifest.json",
+      "icon": "assets/items/riveted_guard/art/item.png",
+      "source": "assets/items/riveted_guard/art/item.pixloom.json",
+      "footprint": null,
       "variants": []
     },
     "approval": "unreviewed"

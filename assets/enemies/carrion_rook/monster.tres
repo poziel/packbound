@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://3v4pyvi8dhvq"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_4j2li"]
+[ext_resource type="Resource" path="res://assets/enemies/carrion_rook/innate_ability.tres" id="2_5m416"]
+[ext_resource type="Resource" path="res://assets/enemies/carrion_rook/behavior.tres" id="3_raw5p"]
+[ext_resource type="Texture2D" uid="uid://ccqn0faqhsjpy" path="res://assets/enemies/carrion_rook/art/carrion_rook.png" id="4_kp2r2"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_gwrm3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ndt5"]
+atlas = ExtResource("4_kp2r2")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Carrion Rook"
+script = ExtResource("5_gwrm3")
+species_id = &"bird"
+role_id = &"sunder"
+behavior = ExtResource("3_raw5p")
+id = &"carrion_rook"
+display_name = "Carrion Rook"
+log_name = "Carrion Rook"
+description = "A clever crypt bird that pries buckles apart before pecking exposed skin. It keeps stolen rings tucked beneath one wing."
+icon = SubResource("AtlasTexture_8ndt5")
+resource_capacities = Dictionary[int, int]({
+2: 40
+})
+abilities = Array[ExtResource("1_4j2li")]([ExtResource("2_5m416")])
+metadata/encounter_floor = 5

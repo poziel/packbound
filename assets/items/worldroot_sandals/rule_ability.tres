@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_2r430"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_7s6sx"]
+[ext_resource type="Resource" path="res://assets/items/worldroot_sandals/rule_effect.tres" id="3_a1agp"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_5tplh"]
+
+[resource]
+resource_name = "Worldroot Sandals rules"
+script = ExtResource("4_5tplh")
+id = &"worldroot_sandals_rules"
+display_name = "Worldroot Sandals rules"
+description = "Adds 3 maximum stamina, refreshed each round. Restores up to 3 HP each round."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_7s6sx")]([ExtResource("3_a1agp")])

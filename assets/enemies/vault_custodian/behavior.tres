@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MonsterBehaviorDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="1_rjoaa"]
+[ext_resource type="Resource" path="res://assets/enemies/vault_custodian/attack_0.tres" id="2_sxlet"]
+[ext_resource type="Resource" path="res://assets/enemies/vault_custodian/attack_1.tres" id="3_atx6e"]
+[ext_resource type="Script" path="res://systems/enemies/monster_behavior_definition.gd" id="4_0tvia"]
+
+[resource]
+resource_name = "Vault Custodian Behavior"
+script = ExtResource("4_0tvia")
+actions = Array[ExtResource("1_rjoaa")]([ExtResource("2_sxlet"), ExtResource("3_atx6e")])

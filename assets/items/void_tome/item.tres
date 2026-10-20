@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cf61j0itb1s2v"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_h31bj"]
+[ext_resource type="Resource" path="res://assets/items/void_tome/rule_ability.tres" id="2_ovdfh"]
+[ext_resource type="Texture2D" uid="uid://dbcw8q651xijb" path="res://assets/items/ember_tome/art/item.png" id="3_c7wts"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_ms2so"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7op3"]
+atlas = ExtResource("3_c7wts")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+resource_name = "Void Grimoire"
+script = ExtResource("4_ms2so")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1)])
+activation_costs = Dictionary[int, int]({
+0: 3
+})
+damage_type = 1
+element = 4
+id = &"void_tome"
+display_name = "Void Grimoire"
+description = "A void spell that deals 6 magical damage and applies 1 doom for 3 mana and no stamina. It activates each round when both resource costs can be paid, in priority and backpack reading order. Echo repeats its damage, condition and elemental trace contribution. Magical resistance reduces its damage; block absorbs direct damage after resistance. Conditions bypass block."
+lore = "An experimental focus recovered from the lower archives."
+rarity = 3
+tags = Array[StringName]([&"magical", &"void"])
+category_ids = Array[StringName]([&"magic_books"])
+icon = SubResource("AtlasTexture_a7op3")
+base_stats = Dictionary[int, int]({
+0: 6,
+15: 1
+})
+abilities = Array[ExtResource("1_h31bj")]([ExtResource("2_ovdfh")])

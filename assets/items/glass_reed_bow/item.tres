@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cis18612dyv42"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_ouxuv"]
+[ext_resource type="Resource" path="res://assets/items/glass_reed_bow/rule_ability.tres" id="2_fpyjq"]
+[ext_resource type="Texture2D" uid="uid://b8x8y2ax8w83g" path="res://assets/items/glass_reed_bow/art/item.png" id="3_564ba"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_58diy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uuib"]
+atlas = ExtResource("3_564ba")
+region = Rect2(0, 0, 64, 96)
+
+[resource]
+resource_name = "Glass Reed Bow"
+script = ExtResource("4_58diy")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(0, 2)])
+activation_costs = Dictionary[int, int]({
+1: 2
+})
+id = &"glass_reed_bow"
+display_name = "Glass Reed Bow"
+description = "Costs 2 stamina per activation. Deals 11 physical damage per affordable activation. Bypasses up to 3 enemy block per activation."
+lore = "It sings like a wineglass when the string is drawn."
+rarity = 2
+tags = Array[StringName]([&"ranged", &"ranger"])
+category_ids = Array[StringName]([&"bows"])
+allowed_class_ids = Array[StringName]([&"ranger"])
+icon = SubResource("AtlasTexture_5uuib")
+base_stats = Dictionary[int, int]({
+0: 11,
+14: 3
+})
+abilities = Array[ExtResource("1_ouxuv")]([ExtResource("2_fpyjq")])

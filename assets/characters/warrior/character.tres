@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="CharacterDefinition" format=3 uid="uid://c1tjpfqhs4yj3"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_jtrlp"]
+[ext_resource type="Texture2D" uid="uid://b18ipydnmc72n" path="res://assets/characters/warrior/art/portrait.png" id="2_idxxs"]
+[ext_resource type="Script" uid="uid://cg0vuad452ie5" path="res://systems/characters/character_definition.gd" id="3_rayyj"]
+[ext_resource type="Script" uid="uid://c0epfnyobaeik" path="res://systems/characters/starting_equipment_definition.gd" id="4_8rybn"]
+[ext_resource type="Resource" path="res://assets/characters/warrior/starting_equipment_0.tres" id="5_uivhe"]
+[ext_resource type="Resource" path="res://assets/characters/warrior/starting_equipment_1.tres" id="6_ew4yv"]
+[ext_resource type="Resource" path="res://assets/characters/warrior/starting_equipment_2.tres" id="7_ymwmx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3a8h"]
+atlas = ExtResource("2_idxxs")
+region = Rect2(0, 0, 64, 64)
+filter_clip = true
+
+[resource]
+resource_name = "Garran Vale"
+script = ExtResource("3_rayyj")
+class_id = &"warrior"
+biography = "A former bridge-watch captain who keeps counting the people behind him, even when he travels alone."
+starting_equipment = Array[ExtResource("4_8rybn")]([ExtResource("5_uivhe"), ExtResource("6_ew4yv"), ExtResource("7_ymwmx")])
+id = &"warrior"
+display_name = "Garran Vale"
+log_name = "Garran Vale"
+description = "Holding the line, protecting companions and turning a completely defended enemy action into a decisive counterattack."
+icon = SubResource("AtlasTexture_k3a8h")
+resource_capacities = Dictionary[int, int]({
+0: 1,
+1: 3,
+2: 40
+})
+metadata/unbounded_resource_ids = ["momentum"]
+
+metadata/selection_order = 0

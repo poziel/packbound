@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MonsterBehaviorDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="1_sjxil"]
+[ext_resource type="Resource" path="res://assets/enemies/crypt_fencer/attack_0.tres" id="2_xaq2m"]
+[ext_resource type="Script" path="res://systems/enemies/monster_behavior_definition.gd" id="3_5tthn"]
+
+[resource]
+resource_name = "Crypt Fencer Behavior"
+script = ExtResource("3_5tthn")
+actions = Array[ExtResource("1_sjxil")]([ExtResource("2_xaq2m")])

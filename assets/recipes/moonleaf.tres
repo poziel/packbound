@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://ddjggd3q3lroy"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_tc8rp"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_oq5gl"]
+
+[sub_resource type="Resource" id="Resource_5trve"]
+script = ExtResource("1_tc8rp")
+accepted_item_ids = Array[StringName]([&"bandage"])
+
+[sub_resource type="Resource" id="Resource_lghjg"]
+script = ExtResource("1_tc8rp")
+accepted_item_ids = Array[StringName]([&"bandage"])
+
+[sub_resource type="Resource" id="Resource_e14ee"]
+script = ExtResource("1_tc8rp")
+accepted_item_ids = Array[StringName]([&"antidote"])
+
+[resource]
+resource_name = "Moonleaf"
+script = ExtResource("2_oq5gl")
+id = &"moonleaf"
+ingredients = Array[ExtResource("1_tc8rp")]([SubResource("Resource_5trve"), SubResource("Resource_lghjg"), SubResource("Resource_e14ee")])
+result_item_id = &"healing_herbs"

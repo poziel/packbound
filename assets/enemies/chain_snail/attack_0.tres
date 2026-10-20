@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_g6hqx"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_qowpf"]
+[ext_resource type="Resource" path="res://assets/enemies/chain_snail/attack_0_effect.tres" id="3_bvd54"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_2yhxt"]
+
+[resource]
+resource_name = "Guard"
+script = ExtResource("4_2yhxt")
+id = &"chain_snail_attack_0"
+display_name = "Guard"
+description = "Starts combat with 7 block. Absorbed damage spends it permanently for this fight."
+target_id = &"opponent"
+effects = Array[ExtResource("2_qowpf")]([ExtResource("3_bvd54")])

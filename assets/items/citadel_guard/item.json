@@ -124,12 +124,9 @@
       "One broad diagonal shadow describes depth."
     ],
     "assets": {
-      "icon": "assets/items/citadel_guard/icons/art/icon.png",
-      "svg": "assets/items/citadel_guard/icons/art/icon.svg",
-      "source": "assets/items/citadel_guard/icons/art/icon.sprite.json",
-      "footprint": "assets/items/citadel_guard/icons/art/footprint.json",
-      "provenance": "assets/items/citadel_guard/icons/art/provenance.json",
-      "manifest": "assets/items/citadel_guard/icons/art/art-manifest.json",
+      "icon": "assets/items/citadel_guard/art/item.png",
+      "source": "assets/items/citadel_guard/art/item.pixloom.json",
+      "footprint": null,
       "variants": []
     },
     "approval": "unreviewed"

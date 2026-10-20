@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CollectibleCategoryDefinition" format=3 uid="uid://dlu0lbo1raonj"]
+
+[ext_resource type="Script" uid="uid://ccft8lyr7x3v3" path="res://systems/content/collectible_category_definition.gd" id="1"]
+
+[resource]
+resource_name = "Pendants"
+script = ExtResource("1")
+id = &"pendants"
+display_name = "Pendants"
+parent_category_id = &"accessories"

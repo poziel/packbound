@@ -1,0 +1,78 @@
+[gd_resource type="Resource" script_class="LootPoolDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/loot/loot_pool_definition.gd" id="1_4nd0k"]
+
+[resource]
+resource_name = "Relics"
+script = ExtResource("1_4nd0k")
+id = &"relics"
+display_name = "Relics"
+description = "Existing relics reward candidates. Apply canonical collectible restrictions and owned/upgrade availability filters before selection."
+collectible_weights = Dictionary[StringName, float]({
+&"abyssal_hourhand": 1.0,
+&"amber_tribunal": 1.0,
+&"anchor_feather": 1.0,
+&"apiary_crown": 1.0,
+&"arcane_barter": 1.0,
+&"arrow_rosary": 1.0,
+&"atlas_of_missing_roads": 1.0,
+&"backpack_cathedral": 1.0,
+&"bastion_seal": 1.0,
+&"blood_pact": 1.0,
+&"bone_parliament": 1.0,
+&"broken_metronome": 1.0,
+&"choir_beyond_the_door": 1.0,
+&"cinder_nursery": 1.0,
+&"copper_afterlife": 1.0,
+&"crown_of_the_unmade": 1.0,
+&"diagonal_thread": 1.0,
+&"duelist_receipt": 1.0,
+&"echo_clock": 1.0,
+&"empty_scabbard": 1.0,
+&"false_spring": 1.0,
+&"fletchers_eclipse": 1.0,
+&"folded_space": 1.0,
+&"glass_orchard": 1.0,
+&"grave_bell": 1.0,
+&"heart_of_the_long_march": 1.0,
+&"hearth_token": 1.0,
+&"hedgehog_penny": 1.0,
+&"herbalist_knot": 1.0,
+&"horizon_engine": 1.0,
+&"lantern_moth": 1.0,
+&"last_seat": 1.0,
+&"last_thread": 1.0,
+&"mana_furnace": 1.0,
+&"mercy_guillotine": 1.0,
+&"mourning_volcano": 1.0,
+&"pilgrim_sock": 1.0,
+&"plague_seal": 1.0,
+&"pocket_hearth": 1.0,
+&"prism_leviathan": 1.0,
+&"quiet_inkwell": 1.0,
+&"rain_button": 1.0,
+&"ram_flywheel": 1.0,
+&"returning_guard": 1.0,
+&"revolution_spindle": 1.0,
+&"rust_psalm": 1.0,
+&"salt_bride": 1.0,
+&"scar_cartographer": 1.0,
+&"second_breakfast": 1.0,
+&"siege_heart": 1.0,
+&"starwell_crown": 1.0,
+&"storm_census": 1.0,
+&"tailor_moon": 1.0,
+&"thirteenth_tooth": 1.0,
+&"thousand_arrow_funeral": 1.0,
+&"tin_cricket": 1.0,
+&"trail_medallion": 1.0,
+&"twin_sun_contract": 1.0,
+&"unspent_thunder": 1.0,
+&"unwritten_saint": 1.0,
+&"venom_thesis": 1.0,
+&"walking_bastion": 1.0,
+&"winter_mortgage": 1.0,
+&"world_beetle": 1.0
+})
+candidate_order = Array[StringName]([&"diagonal_thread", &"returning_guard", &"blood_pact", &"plague_seal", &"echo_clock", &"arcane_barter", &"folded_space", &"mana_furnace", &"last_thread", &"hearth_token", &"herbalist_knot", &"trail_medallion", &"bastion_seal", &"starwell_crown", &"tin_cricket", &"second_breakfast", &"rust_psalm", &"pocket_hearth", &"rain_button", &"hedgehog_penny", &"last_seat", &"pilgrim_sock", &"ram_flywheel", &"arrow_rosary", &"cinder_nursery", &"venom_thesis", &"broken_metronome", &"grave_bell", &"lantern_moth", &"anchor_feather", &"glass_orchard", &"tailor_moon", &"duelist_receipt", &"quiet_inkwell", &"siege_heart", &"fletchers_eclipse", &"storm_census", &"winter_mortgage", &"abyssal_hourhand", &"twin_sun_contract", &"apiary_crown", &"scar_cartographer", &"unspent_thunder", &"amber_tribunal", &"thirteenth_tooth", &"backpack_cathedral", &"empty_scabbard", &"salt_bride", &"world_beetle", &"revolution_spindle", &"horizon_engine", &"prism_leviathan", &"bone_parliament", &"mercy_guillotine", &"walking_bastion", &"mourning_volcano", &"unwritten_saint", &"copper_afterlife", &"false_spring", &"crown_of_the_unmade", &"atlas_of_missing_roads", &"thousand_arrow_funeral", &"heart_of_the_long_march", &"choir_beyond_the_door"])
+offer_count = 3

@@ -6,7 +6,7 @@ The user explicitly accepted **warrior v2** on 2026-10-15. Use its
 [native preview](../../../../workspace/docs/art/concepts/characters/warrior-v2/full-body@4x.png)
 as the primary shared rendering reference. Its
 [source and acceptance record](../../../../workspace/docs/art/concepts/characters/warrior-v2/README.md)
-are preserved, and it is installed at `assets/characters/warrior/art/full-body.svg`.
+are preserved, and it is installed at `assets/characters/warrior/art/full_body.png`.
 New classes should share its material volume, controlled clusters and coherent anatomy
 while retaining distinct head treatments, silhouettes and equipment. The human
 face examples below remain relevant to characters with exposed faces.
@@ -14,7 +14,7 @@ face examples below remain relevant to characters with exposed faces.
 **Ranger v2** was also accepted on 2026-10-15. Its
 [native preview](../../../../workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png)
 provides an accepted cloth/leather and exposed-face reference.
-It is installed at `assets/characters/ranger/art/full-body.svg`; preserve its original identity
+It is installed at `assets/characters/ranger/art/full_body.png`; preserve its original identity
 while creating other classes. Compare new work with both accepted characters.
 
 Warrior v3 is now installed at 256 px body height, with a 64 × 64 portrait,

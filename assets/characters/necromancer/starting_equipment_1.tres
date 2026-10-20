@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StartingEquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/characters/starting_equipment_definition.gd" id="1_t3op7"]
+
+[resource]
+resource_name = "Starting Equipment 1"
+script = ExtResource("1_t3op7")
+item_id = &"ember_tome"
+position = Vector2i(1, 0)

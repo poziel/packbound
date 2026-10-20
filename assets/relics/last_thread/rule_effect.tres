@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_k68ok"]
+
+[resource]
+resource_name = "Last Thread Rule Effect"
+script = ExtResource("1_k68ok")
+rule_id = &"last_thread_rules"
+parameters = {
+"icon": "last_thread",
+"keyword_stats": [{
+"key": "healing",
+"qualifier": "once, on lethal damage",
+"value": 8
+}]
+}

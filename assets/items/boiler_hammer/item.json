@@ -136,14 +136,11 @@
       "A soot black hammer head with a small copper vent."
     ],
     "assets": {
-      "icon": "assets/items/boiler_hammer/icons/art/icon.png",
-      "svg": "assets/items/boiler_hammer/icons/art/icon.svg",
-      "source": "assets/items/boiler_hammer/icons/art/icon.sprite.json",
-      "footprint": "assets/items/boiler_hammer/icons/art/footprint.json",
-      "provenance": "assets/items/boiler_hammer/icons/art/provenance.json",
-      "manifest": "assets/items/boiler_hammer/icons/art/art-manifest.json",
+      "icon": "assets/items/boiler_hammer/art/item.png",
+      "source": "assets/items/boiler_hammer/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/boiler_hammer/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

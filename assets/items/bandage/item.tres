@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://btflrxgfyl3xm"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_6dxc1"]
+[ext_resource type="Resource" path="res://assets/items/bandage/rule_ability.tres" id="2_e52gr"]
+[ext_resource type="Texture2D" uid="uid://dydx2vjp8fov4" path="res://assets/items/bandage/art/item.png" id="3_sfuyy"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_sb51f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go4pq"]
+atlas = ExtResource("3_sfuyy")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Grave Bandage"
+script = ExtResource("4_sb51f")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"bandage"
+display_name = "Grave Bandage"
+description = "Regenerates 2 HP each turn."
+category_ids = Array[StringName]([&"healing_supplies"])
+icon = SubResource("AtlasTexture_go4pq")
+base_stats = Dictionary[int, int]({
+2: 2
+})
+abilities = Array[ExtResource("1_6dxc1")]([ExtResource("2_e52gr")])

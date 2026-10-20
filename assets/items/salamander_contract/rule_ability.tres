@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_onxun"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_cg5pm"]
+[ext_resource type="Resource" path="res://assets/items/salamander_contract/rule_effect.tres" id="3_he2y5"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_b0bqo"]
+
+[resource]
+resource_name = "Salamander Contract rules"
+script = ExtResource("4_b0bqo")
+id = &"salamander_contract_rules"
+display_name = "Salamander Contract rules"
+description = "Costs 3 mana per activation. Deals 10 magical damage per affordable activation. Applies 3 burn through the existing combat keyword rules per affordable activation."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_cg5pm")]([ExtResource("3_he2y5")])

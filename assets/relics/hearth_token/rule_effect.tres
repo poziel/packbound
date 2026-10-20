@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_jves2"]
+
+[resource]
+resource_name = "Hearth Token Rule Effect"
+script = ExtResource("1_jves2")
+rule_id = &"hearth_token_rules"
+parameters = {
+"icon": "hearth_token",
+"keyword_stats": [{
+"key": "ward",
+"qualifier": "",
+"value": 1
+}]
+}

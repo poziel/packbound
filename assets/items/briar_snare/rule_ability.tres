@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_lexhy"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_kv5xv"]
+[ext_resource type="Resource" path="res://assets/items/briar_snare/rule_effect.tres" id="3_kfa61"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_aci1l"]
+
+[resource]
+resource_name = "Briar Snare rules"
+script = ExtResource("4_aci1l")
+id = &"briar_snare_rules"
+display_name = "Briar Snare rules"
+description = "Costs 1 stamina per activation. Applies 2 poison through the existing combat keyword rules per affordable activation. Reduces each enemy strike this round by 1."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_kv5xv")]([ExtResource("3_kfa61")])

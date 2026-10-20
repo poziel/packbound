@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_xxurj"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_4qsc1"]
+[ext_resource type="Resource" path="res://assets/items/icicle_rosary/rule_effect.tres" id="3_sso4w"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_w21yk"]
+
+[resource]
+resource_name = "Icicle Rosary rules"
+script = ExtResource("4_w21yk")
+id = &"icicle_rosary_rules"
+display_name = "Icicle Rosary rules"
+description = "Costs 2 mana per activation. Deals 6 magical damage per affordable activation. Reduces each enemy strike this round by 2."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_4qsc1")]([ExtResource("3_sso4w")])

@@ -138,14 +138,11 @@
       "A broad soot stained leather apron with a bronze waist plate."
     ],
     "assets": {
-      "icon": "assets/items/blacksmith_s_apron/icons/art/icon.png",
-      "svg": "assets/items/blacksmith_s_apron/icons/art/icon.svg",
-      "source": "assets/items/blacksmith_s_apron/icons/art/icon.sprite.json",
-      "footprint": "assets/items/blacksmith_s_apron/icons/art/footprint.json",
-      "provenance": "assets/items/blacksmith_s_apron/icons/art/provenance.json",
-      "manifest": "assets/items/blacksmith_s_apron/icons/art/art-manifest.json",
+      "icon": "assets/items/blacksmith_s_apron/art/item.png",
+      "source": "assets/items/blacksmith_s_apron/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/blacksmith_s_apron/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

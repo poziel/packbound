@@ -86,14 +86,13 @@
       "A black volcano with a red tear shaped lava seam"
     ],
     "assets": {
-      "icon": "assets/relics/mourning_volcano/icons/art/icon.png",
-      "svg": "assets/relics/mourning_volcano/icons/art/icon.svg",
-      "source": "assets/relics/mourning_volcano/icons/art/icon.sprite.json",
+      "icon": "assets/relics/mourning_volcano/art/icon.png",
+      "source": "assets/relics/mourning_volcano/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/mourning_volcano/icons/art/provenance.json",
-      "manifest": "assets/relics/mourning_volcano/icons/art/art-manifest.json",
+      "provenance": "assets/relics/mourning_volcano/art/provenance.json",
+      "manifest": "assets/relics/mourning_volcano/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/mourning_volcano/icons/art/icon.pixloom"
+      "native": "assets/relics/mourning_volcano/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

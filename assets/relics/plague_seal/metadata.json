@@ -1,0 +1,22 @@
+{
+  "key": "plague_seal",
+  "name": "Plague Seal",
+  "kind": "run_relic",
+  "occupies_backpack_cells": false,
+  "footprint": null,
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
+  "exports": [
+    "art/revisions/catalog_v2/plague_seal_32px.png",
+    "art/revisions/catalog_v2/plague_seal_32px.png"
+  ],
+  "editableSources": [
+    "art/revisions/catalog_v2/plague_seal_32px.pxo",
+    "art/revisions/catalog_v2/plague_seal_32px.png"
+  ],
+  "runtime": {
+    "texture": "res://assets/relics/plague_seal/art/revisions/catalog_v2/plague_seal_32px.png",
+    "viewPolicy": "Reuse the accepted native 32px sprite with nearest filtering at all display sizes."
+  },
+  "activeRevision": "catalog-v2",
+  "revisionProvenance": "res://docs/art/concepts/plague-seal-relic-v2/provenance.json"
+}

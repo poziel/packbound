@@ -153,14 +153,11 @@
       "A long gray sharpening stone wrapped with a green bramble."
     ],
     "assets": {
-      "icon": "assets/items/thorn_whetstone/icons/art/icon.png",
-      "svg": "assets/items/thorn_whetstone/icons/art/icon.svg",
-      "source": "assets/items/thorn_whetstone/icons/art/icon.sprite.json",
-      "footprint": "assets/items/thorn_whetstone/icons/art/footprint.json",
-      "provenance": "assets/items/thorn_whetstone/icons/art/provenance.json",
-      "manifest": "assets/items/thorn_whetstone/icons/art/art-manifest.json",
+      "icon": "assets/items/thorn_whetstone/art/item.png",
+      "source": "assets/items/thorn_whetstone/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/thorn_whetstone/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

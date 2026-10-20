@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://b13vaudvsh0e6"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_af0v0"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_0aw0j"]
+
+[sub_resource type="Resource" id="Resource_w5fl6"]
+script = ExtResource("1_af0v0")
+accepted_item_ids = Array[StringName]([&"field_blade"])
+
+[sub_resource type="Resource" id="Resource_05mt3"]
+script = ExtResource("1_af0v0")
+accepted_item_ids = Array[StringName]([&"field_blade"])
+
+[resource]
+resource_name = "Forge Tempered Blade"
+script = ExtResource("2_0aw0j")
+id = &"forge_tempered_blade"
+ingredients = Array[ExtResource("1_af0v0")]([SubResource("Resource_w5fl6"), SubResource("Resource_05mt3")])
+result_item_id = &"tempered_blade"

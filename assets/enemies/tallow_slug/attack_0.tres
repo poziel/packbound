@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_ir4vv"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_2i2v6"]
+[ext_resource type="Resource" path="res://assets/enemies/tallow_slug/attack_0_effect.tres" id="3_7f1w6"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_mvkxq"]
+
+[resource]
+resource_name = "Sustain"
+script = ExtResource("4_mvkxq")
+id = &"tallow_slug_attack_0"
+display_name = "Sustain"
+description = "Restores up to 2 health after its response if still alive, capped at maximum health."
+target_id = &"opponent"
+effects = Array[ExtResource("2_2i2v6")]([ExtResource("3_7f1w6")])

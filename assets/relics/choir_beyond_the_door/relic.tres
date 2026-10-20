@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RelicDefinition" format=3 uid="uid://buspvjsi27a3k"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_1mn1a"]
+[ext_resource type="Resource" path="res://assets/relics/choir_beyond_the_door/rule_ability.tres" id="2_3210g"]
+[ext_resource type="Texture2D" uid="uid://b5o1qoujr5hmx" path="res://assets/relics/choir_beyond_the_door/art/icon.png" id="3_qiqqt"]
+[ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_864ll"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a3ok"]
+atlas = ExtResource("3_qiqqt")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Choir Beyond The Door"
+script = ExtResource("4_864ll")
+id = &"choir_beyond_the_door"
+display_name = "Choir Beyond The Door"
+description = "With at least one companion (bone thralls and packed companion items count): gain +6 magical damage per companion count (up to 4 counted)."
+lore = "The singers asked that their door remain closed after the chapel fell. Someone inside is still holding the final note."
+rarity = 4
+tags = Array[StringName]([&"relic", &"companions"])
+category_ids = Array[StringName]([&"relics"])
+preferred_class_ids = null
+preferred_character_ids = null
+icon = SubResource("AtlasTexture_7a3ok")
+base_stats = null
+abilities = Array[ExtResource("1_1mn1a")]([ExtResource("2_3210g")])

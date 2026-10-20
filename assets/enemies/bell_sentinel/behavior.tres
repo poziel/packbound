@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MonsterBehaviorDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="1_w24d7"]
+[ext_resource type="Resource" path="res://assets/enemies/bell_sentinel/attack_0.tres" id="2_pv2xm"]
+[ext_resource type="Resource" path="res://assets/enemies/bell_sentinel/attack_1.tres" id="3_ldcsa"]
+[ext_resource type="Script" path="res://systems/enemies/monster_behavior_definition.gd" id="4_uhg8k"]
+
+[resource]
+resource_name = "Bell Sentinel Behavior"
+script = ExtResource("4_uhg8k")
+actions = Array[ExtResource("1_w24d7")]([ExtResource("2_pv2xm"), ExtResource("3_ldcsa")])

@@ -140,14 +140,11 @@
       "A spear carrying a narrow torn ivory pennant."
     ],
     "assets": {
-      "icon": "assets/items/standard_spike/icons/art/icon.png",
-      "svg": "assets/items/standard_spike/icons/art/icon.svg",
-      "source": "assets/items/standard_spike/icons/art/icon.sprite.json",
-      "footprint": "assets/items/standard_spike/icons/art/footprint.json",
-      "provenance": "assets/items/standard_spike/icons/art/provenance.json",
-      "manifest": "assets/items/standard_spike/icons/art/art-manifest.json",
+      "icon": "assets/items/standard_spike/art/item.png",
+      "source": "assets/items/standard_spike/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/standard_spike/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

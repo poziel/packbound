@@ -108,14 +108,11 @@
       "A squat carved wood hedgehog on a flax cord."
     ],
     "assets": {
-      "icon": "assets/items/hedgehog_charm/icons/art/icon.png",
-      "svg": "assets/items/hedgehog_charm/icons/art/icon.svg",
-      "source": "assets/items/hedgehog_charm/icons/art/icon.sprite.json",
-      "footprint": "assets/items/hedgehog_charm/icons/art/footprint.json",
-      "provenance": "assets/items/hedgehog_charm/icons/art/provenance.json",
-      "manifest": "assets/items/hedgehog_charm/icons/art/art-manifest.json",
+      "icon": "assets/items/hedgehog_charm/art/item.png",
+      "source": "assets/items/hedgehog_charm/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/hedgehog_charm/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

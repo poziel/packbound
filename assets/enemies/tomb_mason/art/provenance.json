@@ -8,7 +8,7 @@
   ],
   "references": [
     ".agents/skills/delver-art-creator/references/visual-direction.md",
-    "assets/enemies/mire_viper.png",
+    "assets/enemies/mire_viper/art/mire_viper.png",
     "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png"
   ],
   "canvas": [
@@ -48,11 +48,11 @@
     "tomb_mason.pixloom.json": "4087e8c9271816b3c44bc216bd6bc589c0fda292198bfab9df6a3384f25d6131",
     "tomb_mason.pixloom": "f2baea9b6e6d8c6ef972766eb68d0dba488c3382bdd95d2d7a650b8fc3209a71",
     "tomb_mason.png": "a4efd2379ab42939c4d483bf385372f8a54bbc8f1abd7a6ea49f59d5f990dc36",
-    "tomb_mason.svg": "82029a2ac8b88396554da8d69d1c42dc2ade67d73d2702639d0a54b00dc65b6d"
+    "tomb_mason.png": "82029a2ac8b88396554da8d69d1c42dc2ade67d73d2702639d0a54b00dc65b6d"
   },
   "reference_sha256": {
     ".agents/skills/delver-art-creator/references/visual-direction.md": "5cadc4ef72c5db7bbec05c9504920e5abfd9ca4b33add8d2af9f98c610ada0df",
-    "assets/enemies/mire_viper.png": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7",
+    "assets/enemies/mire_viper/art/mire_viper.png": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7",
     "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png": "3bcd9705f35494a28a94b3d1ecce67f657308bc4e952afe2ad7339864e140edf"
   }
 }

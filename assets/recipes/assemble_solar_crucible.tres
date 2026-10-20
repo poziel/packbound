@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://kpfj1bccul4d"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_guy65"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_pvi5t"]
+
+[sub_resource type="Resource" id="Resource_tokdm"]
+script = ExtResource("1_guy65")
+accepted_item_ids = Array[StringName]([&"kiln_prayer"])
+
+[sub_resource type="Resource" id="Resource_bngqn"]
+script = ExtResource("1_guy65")
+accepted_item_ids = Array[StringName]([&"moonwell_pebble"])
+
+[sub_resource type="Resource" id="Resource_iptc3"]
+script = ExtResource("1_guy65")
+accepted_item_ids = Array[StringName]([&"salamander_contract"])
+
+[resource]
+resource_name = "Assemble Solar Crucible"
+script = ExtResource("2_pvi5t")
+id = &"assemble_solar_crucible"
+ingredients = Array[ExtResource("1_guy65")]([SubResource("Resource_tokdm"), SubResource("Resource_bngqn"), SubResource("Resource_iptc3")])
+result_item_id = &"solar_crucible"

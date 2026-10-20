@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_nv7eu"]
+
+[resource]
+resource_name = "Tin Arrow Cup Rule Effect"
+script = ExtResource("1_nv7eu")
+rule_id = &"tin_arrow_cup_rules"
+parameters = {
+"block_per_round": 0,
+"mana_per_round": 0,
+"priority": 0,
+"quiver_bonus": {
+"arrows": 1
+},
+"stamina_per_round": 0,
+"tooltip_detail": "While orthogonally touching the permanent Bowmaster quiver, adds 1 arrows to Volley; this equipment remains in the backpack and is not consumed.. Only ranger can equip this item."
+}

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MonsterBehaviorDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="1_62grt"]
+[ext_resource type="Resource" path="res://assets/enemies/coffin_mimic/attack_0.tres" id="2_ota6h"]
+[ext_resource type="Script" path="res://systems/enemies/monster_behavior_definition.gd" id="3_t55ru"]
+
+[resource]
+resource_name = "Coffin Mimic Behavior"
+script = ExtResource("3_t55ru")
+actions = Array[ExtResource("1_62grt")]([ExtResource("2_ota6h")])

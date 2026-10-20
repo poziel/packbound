@@ -138,14 +138,11 @@
       "Dark boots with a broad pale stone heel plate."
     ],
     "assets": {
-      "icon": "assets/items/gravetread_boots/icons/art/icon.png",
-      "svg": "assets/items/gravetread_boots/icons/art/icon.svg",
-      "source": "assets/items/gravetread_boots/icons/art/icon.sprite.json",
-      "footprint": "assets/items/gravetread_boots/icons/art/footprint.json",
-      "provenance": "assets/items/gravetread_boots/icons/art/provenance.json",
-      "manifest": "assets/items/gravetread_boots/icons/art/art-manifest.json",
+      "icon": "assets/items/gravetread_boots/art/item.png",
+      "source": "assets/items/gravetread_boots/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/gravetread_boots/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

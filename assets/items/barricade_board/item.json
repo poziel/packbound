@@ -97,14 +97,11 @@
       "A broken oak barricade with an iron cross strap."
     ],
     "assets": {
-      "icon": "assets/items/barricade_board/icons/art/icon.png",
-      "svg": "assets/items/barricade_board/icons/art/icon.svg",
-      "source": "assets/items/barricade_board/icons/art/icon.sprite.json",
-      "footprint": "assets/items/barricade_board/icons/art/footprint.json",
-      "provenance": "assets/items/barricade_board/icons/art/provenance.json",
-      "manifest": "assets/items/barricade_board/icons/art/art-manifest.json",
+      "icon": "assets/items/barricade_board/art/item.png",
+      "source": "assets/items/barricade_board/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/barricade_board/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

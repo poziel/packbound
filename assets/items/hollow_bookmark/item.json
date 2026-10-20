@@ -141,14 +141,11 @@
       "A black ribbon ending in an open rectangular silver frame."
     ],
     "assets": {
-      "icon": "assets/items/hollow_bookmark/icons/art/icon.png",
-      "svg": "assets/items/hollow_bookmark/icons/art/icon.svg",
-      "source": "assets/items/hollow_bookmark/icons/art/icon.sprite.json",
-      "footprint": "assets/items/hollow_bookmark/icons/art/footprint.json",
-      "provenance": "assets/items/hollow_bookmark/icons/art/provenance.json",
-      "manifest": "assets/items/hollow_bookmark/icons/art/art-manifest.json",
+      "icon": "assets/items/hollow_bookmark/art/item.png",
+      "source": "assets/items/hollow_bookmark/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/hollow_bookmark/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

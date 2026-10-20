@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_68q0w"]
+
+[resource]
+resource_name = "Cursed Idol Rule Effect"
+script = ExtResource("1_68q0w")
+rule_id = &"cursed_idol_rules"
+parameters = {
+"block_per_round": 0,
+"mana_per_round": 0,
+"priority": 0,
+"stamina_per_round": 0,
+"tooltip_detail": "Touching attacks gain +3 damage; shields gain +3 block. Costs 1 HP each turn; ward absorbs this cost."
+}

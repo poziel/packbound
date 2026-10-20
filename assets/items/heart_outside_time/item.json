@@ -86,14 +86,11 @@
       "A dark red heart in an open square gold clock frame."
     ],
     "assets": {
-      "icon": "assets/items/heart_outside_time/icons/art/icon.png",
-      "svg": "assets/items/heart_outside_time/icons/art/icon.svg",
-      "source": "assets/items/heart_outside_time/icons/art/icon.sprite.json",
-      "footprint": "assets/items/heart_outside_time/icons/art/footprint.json",
-      "provenance": "assets/items/heart_outside_time/icons/art/provenance.json",
-      "manifest": "assets/items/heart_outside_time/icons/art/art-manifest.json",
+      "icon": "assets/items/heart_outside_time/art/item.png",
+      "source": "assets/items/heart_outside_time/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/heart_outside_time/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

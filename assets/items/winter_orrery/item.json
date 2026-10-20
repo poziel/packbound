@@ -147,14 +147,11 @@
       "A silver ringed device surrounding a square blue ice moon."
     ],
     "assets": {
-      "icon": "assets/items/winter_orrery/icons/art/icon.png",
-      "svg": "assets/items/winter_orrery/icons/art/icon.svg",
-      "source": "assets/items/winter_orrery/icons/art/icon.sprite.json",
-      "footprint": "assets/items/winter_orrery/icons/art/footprint.json",
-      "provenance": "assets/items/winter_orrery/icons/art/provenance.json",
-      "manifest": "assets/items/winter_orrery/icons/art/art-manifest.json",
+      "icon": "assets/items/winter_orrery/art/item.png",
+      "source": "assets/items/winter_orrery/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/winter_orrery/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

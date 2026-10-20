@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_ns35p"]
+
+[resource]
+resource_name = "Tailor Moon Rule Effect"
+script = ExtResource("1_ns35p")
+rule_id = &"tailor_moon_rules"
+parameters = {
+"icon": "tailor_moon",
+"rule": {
+"amount": 3,
+"cap": 1,
+"condition": "many_items",
+"metric": "one",
+"stat": "ward"
+},
+"stats": {}
+}

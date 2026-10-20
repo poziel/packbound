@@ -85,14 +85,13 @@
       "Three amber judges faces joined in a triangular seal"
     ],
     "assets": {
-      "icon": "assets/relics/amber_tribunal/icons/art/icon.png",
-      "svg": "assets/relics/amber_tribunal/icons/art/icon.svg",
-      "source": "assets/relics/amber_tribunal/icons/art/icon.sprite.json",
+      "icon": "assets/relics/amber_tribunal/art/icon.png",
+      "source": "assets/relics/amber_tribunal/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/amber_tribunal/icons/art/provenance.json",
-      "manifest": "assets/relics/amber_tribunal/icons/art/art-manifest.json",
+      "provenance": "assets/relics/amber_tribunal/art/provenance.json",
+      "manifest": "assets/relics/amber_tribunal/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/amber_tribunal/icons/art/icon.pixloom"
+      "native": "assets/relics/amber_tribunal/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

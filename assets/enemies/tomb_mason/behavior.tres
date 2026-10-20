@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MonsterBehaviorDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="1_h8e15"]
+[ext_resource type="Resource" path="res://assets/enemies/tomb_mason/attack_0.tres" id="2_vy8n1"]
+[ext_resource type="Script" path="res://systems/enemies/monster_behavior_definition.gd" id="3_vanah"]
+
+[resource]
+resource_name = "Tomb Mason Behavior"
+script = ExtResource("3_vanah")
+actions = Array[ExtResource("1_h8e15")]([ExtResource("2_vy8n1")])

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://yf3a3ns4jfhh"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_aflcp"]
+[ext_resource type="Resource" path="res://assets/items/winterflight_rack/rule_ability.tres" id="2_jjlxs"]
+[ext_resource type="Texture2D" uid="uid://cvrpmebk2o6dq" path="res://assets/items/winterflight_rack/art/item.png" id="3_fo055"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_g1sml"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x18t2"]
+atlas = ExtResource("3_fo055")
+region = Rect2(0, 0, 64, 32)
+
+[resource]
+resource_name = "Winterflight Rack"
+script = ExtResource("4_g1sml")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+id = &"winterflight_rack"
+display_name = "Winterflight Rack"
+description = "While orthogonally touching the permanent Bowmaster quiver, adds 2 slow to Volley; this equipment remains in the backpack and is not consumed."
+lore = "Migrating birds avoid the valley where these feathers fell."
+rarity = 2
+tags = Array[StringName]([&"booster", &"ranger"])
+category_ids = Array[StringName]([&"boosters"])
+allowed_class_ids = Array[StringName]([&"ranger"])
+icon = SubResource("AtlasTexture_x18t2")
+abilities = Array[ExtResource("1_aflcp")]([ExtResource("2_jjlxs")])

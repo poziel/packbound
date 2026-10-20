@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CollectibleCategoryDefinition" format=3 uid="uid://cts8k31yofbeg"]
+
+[ext_resource type="Script" uid="uid://ccft8lyr7x3v3" path="res://systems/content/collectible_category_definition.gd" id="1"]
+
+[resource]
+resource_name = "Traps"
+script = ExtResource("1")
+id = &"traps"
+display_name = "Traps"
+parent_category_id = &"ranged_weapons"

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://da6ma6xwl8jgh"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_d76nd"]
+[ext_resource type="Resource" path="res://assets/enemies/shroud_abjurer/innate_ability.tres" id="2_gqmm8"]
+[ext_resource type="Resource" path="res://assets/enemies/shroud_abjurer/behavior.tres" id="3_3605w"]
+[ext_resource type="Texture2D" uid="uid://ksqd6eqfi3t0" path="res://assets/enemies/shroud_abjurer/art/shroud_abjurer.png" id="4_nsyn4"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_8ijb8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dwt4"]
+atlas = ExtResource("4_nsyn4")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Shroud Abjurer"
+script = ExtResource("5_8ijb8")
+species_id = &"humanoid"
+role_id = &"purifier"
+behavior = ExtResource("3_3605w")
+id = &"shroud_abjurer"
+display_name = "Shroud Abjurer"
+log_name = "Shroud Abjurer"
+description = "An exiled ward keeper who treats every delver as a contaminant. Her stitched veil hides her face while a forked staff grounds old curses."
+icon = SubResource("AtlasTexture_5dwt4")
+base_stats = Dictionary[int, int]({
+12: 3,
+18: 15
+})
+resource_capacities = Dictionary[int, int]({
+2: 97
+})
+abilities = Array[ExtResource("1_d76nd")]([ExtResource("2_gqmm8")])
+metadata/encounter_floor = 16

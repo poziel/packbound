@@ -1,0 +1,24 @@
+{
+  "key": "hourglass",
+  "name": "Battle Hourglass",
+  "category": "utility",
+  "gameplayRole": "utility",
+  "inventoryMask": [
+    ".##",
+    "##."
+  ],
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
+  "exports": [
+    "art/item.png",
+    "art/item.png"
+  ],
+  "editableSources": [
+    "art/item.png"
+  ],
+  "runtime": {
+    "texture": "res://assets/items/hourglass/art/item.png",
+    "viewPolicy": "Reuse approved footprint-derived native sprite across display sizes with nearest filtering."
+  },
+  "activeRevision": "catalog-v1",
+  "revisionProvenance": "res://docs/art/concepts/hourglass-catalog-v1/provenance.json"
+}

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://co5548p3ylb7n"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_q8ewh"]
+[ext_resource type="Resource" path="res://assets/enemies/blood_collector/innate_ability.tres" id="2_kgx0b"]
+[ext_resource type="Resource" path="res://assets/enemies/blood_collector/behavior.tres" id="3_jp2yr"]
+[ext_resource type="Texture2D" uid="uid://bh5dy5uvyi34j" path="res://assets/enemies/blood_collector/art/blood_collector.png" id="4_s7vqn"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_4gw3r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m7ty"]
+atlas = ExtResource("4_s7vqn")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Blood Collector"
+script = ExtResource("5_4gw3r")
+behavior = ExtResource("3_jp2yr")
+id = &"blood_collector"
+display_name = "Blood Collector"
+log_name = "Blood Collector"
+description = "Heals 6 HP on a damaging hit. Attack rises each turn."
+icon = SubResource("AtlasTexture_4m7ty")
+resource_capacities = Dictionary[int, int]({
+2: 118
+})
+abilities = Array[ExtResource("1_q8ewh")]([ExtResource("2_kgx0b")])
+
+metadata/progression_index = 17

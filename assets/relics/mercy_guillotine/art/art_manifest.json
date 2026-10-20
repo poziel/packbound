@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "mercy_guillotine",
+  "approval": "unreviewed",
+  "base": {
+    "source": "assets/relics/mercy_guillotine/art/icon.sprite.json",
+    "png": "assets/relics/mercy_guillotine/art/icon.png",
+    "footprint": null
+  },
+  "variants": [],
+  "provenance": "assets/relics/mercy_guillotine/art/provenance.json",
+  "reused": [],
+  "checks": [
+    {
+      "name": "numeric source validation",
+      "result": "passed",
+      "evidence": "pixloom-cli validate"
+    },
+    {
+      "name": "export and dimensions",
+      "result": "passed",
+      "evidence": "CLI png/svg, 32x32"
+    },
+    {
+      "name": "UI visual review",
+      "result": "passed",
+      "evidence": "Native and enlarged contact-sheet group review: workspace/tasks/content-expansion/art-native-06-labeled.png and art-sheet-06-labeled.png. Technical artist review only; simple candidate icons, user acceptance remains unreviewed."
+    },
+    {
+      "name": "footprint occupancy and distinct export",
+      "result": "passed",
+      "evidence": "workspace/tasks/content-expansion/art-verification.json: no empty-cell pixels, every occupied cell has at least16 painted pixels, all146 PNG hashes distinct."
+    }
+  ]
+}

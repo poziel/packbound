@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dr70515bxtaic"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_6btwt"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_jg048"]
+
+[sub_resource type="Resource" id="Resource_ykfd8"]
+script = ExtResource("1_6btwt")
+accepted_item_ids = Array[StringName]([&"bandage"])
+
+[sub_resource type="Resource" id="Resource_64w4v"]
+script = ExtResource("1_6btwt")
+accepted_item_ids = Array[StringName]([&"feather_keeper"])
+
+[resource]
+resource_name = "Assemble Waxed Fletching"
+script = ExtResource("2_jg048")
+id = &"assemble_waxed_fletching"
+ingredients = Array[ExtResource("1_6btwt")]([SubResource("Resource_ykfd8"), SubResource("Resource_64w4v")])
+result_item_id = &"waxed_fletching"

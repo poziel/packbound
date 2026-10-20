@@ -1,0 +1,23 @@
+{
+  "key": "buckler",
+  "name": "Buckler",
+  "category": "armor",
+  "gameplayRole": "shield",
+  "inventoryMask": [
+    "#"
+  ],
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
+  "exports": [
+    "art/item.png",
+    "art/item.png"
+  ],
+  "editableSources": [
+    "art/item.png"
+  ],
+  "runtime": {
+    "texture": "res://assets/items/buckler/art/item.png",
+    "viewPolicy": "Reuse approved footprint-derived native sprite across display sizes with nearest filtering."
+  },
+  "activeRevision": "catalog-v1",
+  "revisionProvenance": "res://docs/art/concepts/buckler-catalog-v1/provenance.json"
+}

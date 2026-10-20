@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dts2uody8wqrc"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_5wwvb"]
+[ext_resource type="Resource" path="res://assets/items/riveted_guard/rule_ability.tres" id="2_fq3od"]
+[ext_resource type="Texture2D" uid="uid://jnlrtbxukgty" path="res://assets/items/riveted_guard/art/item.png" id="3_tetsu"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_nj8lg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbh0s"]
+atlas = ExtResource("3_tetsu")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Riveted Guard"
+script = ExtResource("4_nj8lg")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"riveted_guard"
+display_name = "Riveted Guard"
+description = "Starts each fight with 4 block."
+lore = "Timber and iron still stand between a traveler and the dark."
+tags = Array[StringName]([&"shield", &"common"])
+category_ids = Array[StringName]([&"shields"])
+icon = SubResource("AtlasTexture_rbh0s")
+base_stats = Dictionary[int, int]({
+1: 4
+})
+abilities = Array[ExtResource("1_5wwvb")]([ExtResource("2_fq3od")])

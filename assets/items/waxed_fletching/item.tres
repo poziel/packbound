@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://db4molnvhlm2e"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_gt7ve"]
+[ext_resource type="Resource" path="res://assets/items/waxed_fletching/rule_ability.tres" id="2_2vytv"]
+[ext_resource type="Texture2D" uid="uid://cg7lpgwy5q1dn" path="res://assets/items/waxed_fletching/art/item.png" id="3_8y7ch"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_wwocb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh2bh"]
+atlas = ExtResource("3_8y7ch")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Waxed Fletching"
+script = ExtResource("4_wwocb")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"waxed_fletching"
+display_name = "Waxed Fletching"
+description = "While orthogonally touching the permanent Bowmaster quiver, adds 2 damage to Volley; this equipment remains in the backpack and is not consumed."
+lore = "Rain stopped spoiling the hunt after this small invention."
+rarity = 1
+tags = Array[StringName]([&"booster", &"ranger"])
+category_ids = Array[StringName]([&"boosters"])
+allowed_class_ids = Array[StringName]([&"ranger"])
+icon = SubResource("AtlasTexture_eh2bh")
+abilities = Array[ExtResource("1_gt7ve")]([ExtResource("2_2vytv")])

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_v4gly"]
+
+[resource]
+resource_name = "Bastion Seal Rule Effect"
+script = ExtResource("1_v4gly")
+rule_id = &"bastion_seal_rules"
+parameters = {
+"icon": "bastion_seal",
+"keyword_stats": [{
+"key": "plating",
+"qualifier": "",
+"value": 1
+}, {
+"key": "ward",
+"qualifier": "",
+"value": 2
+}]
+}

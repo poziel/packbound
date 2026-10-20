@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://doxa5hny57fg8"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_0oiq4"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_6as1u"]
+
+[sub_resource type="Resource" id="Resource_ch6wj"]
+script = ExtResource("1_0oiq4")
+accepted_item_ids = Array[StringName]([&"bandage"])
+
+[sub_resource type="Resource" id="Resource_0v5ga"]
+script = ExtResource("1_0oiq4")
+accepted_item_ids = Array[StringName]([&"traveler_s_kettle"])
+
+[resource]
+resource_name = "Assemble Raincatch Bowl"
+script = ExtResource("2_6as1u")
+id = &"assemble_raincatch_bowl"
+ingredients = Array[ExtResource("1_0oiq4")]([SubResource("Resource_ch6wj"), SubResource("Resource_0v5ga")])
+result_item_id = &"raincatch_bowl"

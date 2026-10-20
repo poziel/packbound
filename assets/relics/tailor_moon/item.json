@@ -86,14 +86,13 @@
       "A crescent pincushion with two threaded needles"
     ],
     "assets": {
-      "icon": "assets/relics/tailor_moon/icons/art/icon.png",
-      "svg": "assets/relics/tailor_moon/icons/art/icon.svg",
-      "source": "assets/relics/tailor_moon/icons/art/icon.sprite.json",
+      "icon": "assets/relics/tailor_moon/art/icon.png",
+      "source": "assets/relics/tailor_moon/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/tailor_moon/icons/art/provenance.json",
-      "manifest": "assets/relics/tailor_moon/icons/art/art-manifest.json",
+      "provenance": "assets/relics/tailor_moon/art/provenance.json",
+      "manifest": "assets/relics/tailor_moon/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/tailor_moon/icons/art/icon.pixloom"
+      "native": "assets/relics/tailor_moon/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

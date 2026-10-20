@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://fqeaf1ehpa2n"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_hhbgl"]
+[ext_resource type="Resource" path="res://assets/items/shortbow/rule_ability.tres" id="2_h4uf2"]
+[ext_resource type="Texture2D" uid="uid://c5r5tl8yp3pdq" path="res://assets/items/shortbow/art/item.png" id="3_1rqc3"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_w8mii"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi5po"]
+atlas = ExtResource("3_1rqc3")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+resource_name = "Ashwood Bow"
+script = ExtResource("4_w8mii")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 1)])
+activation_costs = Dictionary[int, int]({
+1: 2
+})
+id = &"shortbow"
+display_name = "Ashwood Bow"
+description = "Deals 5 ranged damage."
+category_ids = Array[StringName]([&"bows"])
+icon = SubResource("AtlasTexture_wi5po")
+base_stats = Dictionary[int, int]({
+0: 5
+})
+abilities = Array[ExtResource("1_hhbgl")]([ExtResource("2_h4uf2")])

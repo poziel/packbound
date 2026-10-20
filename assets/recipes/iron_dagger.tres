@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://bek4wcckt0i1g"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_fruic"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_vkwby"]
+
+[sub_resource type="Resource" id="Resource_ln2ob"]
+script = ExtResource("1_fruic")
+accepted_item_ids = Array[StringName]([&"rusty_knife"])
+
+[sub_resource type="Resource" id="Resource_wobfa"]
+script = ExtResource("1_fruic")
+accepted_item_ids = Array[StringName]([&"rusty_knife"])
+
+[resource]
+resource_name = "Iron Dagger"
+script = ExtResource("2_vkwby")
+id = &"iron_dagger"
+ingredients = Array[ExtResource("1_fruic")]([SubResource("Resource_ln2ob"), SubResource("Resource_wobfa")])
+result_item_id = &"longsword"

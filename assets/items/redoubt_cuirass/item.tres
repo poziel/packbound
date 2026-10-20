@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cg4flyq1q55da"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_fdial"]
+[ext_resource type="Resource" path="res://assets/items/redoubt_cuirass/rule_ability.tres" id="2_ukyxg"]
+[ext_resource type="Texture2D" uid="uid://srjxgmyptfu1" path="res://assets/items/redoubt_cuirass/art/item.png" id="3_fc0wu"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_tbp1n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7scy"]
+atlas = ExtResource("3_fc0wu")
+region = Rect2(0, 0, 96, 64)
+
+[resource]
+resource_name = "Redoubt Cuirass"
+script = ExtResource("4_tbp1n")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(1, 1)])
+id = &"redoubt_cuirass"
+display_name = "Redoubt Cuirass"
+description = "Reduces each enemy strike by 2 before block. Starts combat with 5 block; spent block does not refill."
+lore = "Each repaired seam marks a siege survived."
+rarity = 2
+tags = Array[StringName]([&"armor", &"warrior"])
+category_ids = Array[StringName]([&"body_armor"])
+allowed_class_ids = Array[StringName]([&"warrior"])
+icon = SubResource("AtlasTexture_l7scy")
+base_stats = Dictionary[int, int]({
+1: 5,
+4: 2
+})
+abilities = Array[ExtResource("1_fdial")]([ExtResource("2_ukyxg")])

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_hf8d8"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_xblvh"]
+[ext_resource type="Resource" path="res://assets/enemies/iron_mite/attack_0_effect.tres" id="3_k2lpf"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_j42m1"]
+
+[resource]
+resource_name = "Shell bash"
+script = ExtResource("4_j42m1")
+id = &"iron_mite_attack_0"
+display_name = "Shell bash"
+description = "Starts with 3 block. Absorbed damage depletes it."
+target_id = &"opponent"
+effects = Array[ExtResource("2_xblvh")]([ExtResource("3_k2lpf")])

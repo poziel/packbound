@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bt70mlljfgjrr"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_dblw6"]
+[ext_resource type="Resource" path="res://assets/items/thorn_whetstone/rule_ability.tres" id="2_q2hdr"]
+[ext_resource type="Texture2D" uid="uid://c8rvp41trjphg" path="res://assets/items/thorn_whetstone/art/item.png" id="3_vwtov"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_34vv1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shrfd"]
+atlas = ExtResource("3_vwtov")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Thorn Whetstone"
+script = ExtResource("4_34vv1")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+id = &"thorn_whetstone"
+display_name = "Thorn Whetstone"
+description = "Retaliates for 1 piercing damage per enemy strike. Each orthogonally touching weapon gains +2 damage. Each source applies once per target, regardless of shared edges; distinct sources stack."
+lore = "The edge it sharpens is never quite the one expected."
+rarity = 1
+tags = Array[StringName]([&"booster"])
+category_ids = Array[StringName]([&"boosters"])
+icon = SubResource("AtlasTexture_shrfd")
+base_stats = Dictionary[int, int]({
+11: 1
+})
+abilities = Array[ExtResource("1_dblw6")]([ExtResource("2_q2hdr")])

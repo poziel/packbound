@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MonsterBehaviorDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="1_tu1at"]
+[ext_resource type="Resource" path="res://assets/enemies/bone_thief/attack_0.tres" id="2_h6dvu"]
+[ext_resource type="Script" path="res://systems/enemies/monster_behavior_definition.gd" id="3_kkr84"]
+
+[resource]
+resource_name = "Bone Thief Behavior"
+script = ExtResource("3_kkr84")
+actions = Array[ExtResource("1_tu1at")]([ExtResource("2_h6dvu")])

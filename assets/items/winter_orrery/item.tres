@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://b018h13n7btxi"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_lldi7"]
+[ext_resource type="Resource" path="res://assets/items/winter_orrery/rule_ability.tres" id="2_gtcqt"]
+[ext_resource type="Texture2D" uid="uid://psawotpv8gv" path="res://assets/items/winter_orrery/art/item.png" id="3_ci21v"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_k4bb1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfkco"]
+atlas = ExtResource("3_ci21v")
+region = Rect2(0, 0, 96, 64)
+
+[resource]
+resource_name = "Winter Orrery"
+script = ExtResource("4_k4bb1")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(1, 1)])
+activation_costs = Dictionary[int, int]({
+0: 4
+})
+damage_type = 1
+element = 2
+id = &"winter_orrery"
+display_name = "Winter Orrery"
+description = "Costs 4 mana per activation. Deals 13 magical damage per affordable activation. Reduces each enemy strike this round by 5."
+lore = "Its moons return to the same night every solstice."
+rarity = 3
+tags = Array[StringName]([&"spell", &"mage", &"frost"])
+category_ids = Array[StringName]([&"magic_artifacts"])
+allowed_class_ids = Array[StringName]([&"mage"])
+icon = SubResource("AtlasTexture_mfkco")
+base_stats = Dictionary[int, int]({
+0: 13,
+13: 5
+})
+abilities = Array[ExtResource("1_lldi7")]([ExtResource("2_gtcqt")])

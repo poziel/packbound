@@ -5,7 +5,7 @@ signal click_played
 
 const BUS_NAMES: Dictionary = {"volume": "Master", "music": "Music", "fx": "FX", "ambience": "Ambience"}
 const CROSSFADE_SECONDS: float = 1.0
-const GAMEPLAY_DIRECTORY: String = "res://assets/musics/gameplay/"
+const GAMEPLAY_DIRECTORY: String = "res://assets/audio/music/gameplay/"
 @onready var music: AudioStreamPlayer = $MenuMusic
 @onready var gameplay_music: AudioStreamPlayer = $GameplayMusic
 @onready var next_track_timer: Timer = $NextTrackTimer
@@ -114,7 +114,7 @@ func play_click() -> void:
 	click_played.emit()
 
 func play_item_hover() -> void:
-	item_hover_fx.play()
+	preload("res://systems/audio/sound_playback.gd").play_random_pitch(item_hover_fx)
 
 func _connect_existing_buttons(node: Node) -> void:
 	_connect_button(node)

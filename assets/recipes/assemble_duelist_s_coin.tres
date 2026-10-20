@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://cd3ncqj177uty"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_t6ahi"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_taqud"]
+
+[sub_resource type="Resource" id="Resource_gsw7k"]
+script = ExtResource("1_t6ahi")
+accepted_item_ids = Array[StringName]([&"hedgehog_charm"])
+
+[sub_resource type="Resource" id="Resource_bw3b7"]
+script = ExtResource("1_t6ahi")
+accepted_item_ids = Array[StringName]([&"rivet_knuckle"])
+
+[resource]
+resource_name = "Assemble Duelist S Coin"
+script = ExtResource("2_taqud")
+id = &"assemble_duelist_s_coin"
+ingredients = Array[ExtResource("1_t6ahi")]([SubResource("Resource_gsw7k"), SubResource("Resource_bw3b7")])
+result_item_id = &"duelist_s_coin"

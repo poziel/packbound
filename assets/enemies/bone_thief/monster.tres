@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://dcaxa5fj18q3r"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_sl7s2"]
+[ext_resource type="Resource" path="res://assets/enemies/bone_thief/innate_ability.tres" id="2_danaj"]
+[ext_resource type="Resource" path="res://assets/enemies/bone_thief/behavior.tres" id="3_4q5nf"]
+[ext_resource type="Texture2D" uid="uid://bhhp1meewjw6t" path="res://assets/enemies/bone_thief/art/bone_thief.png" id="4_383ap"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_xbqcp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogy2x"]
+atlas = ExtResource("4_383ap")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Bone Thief"
+script = ExtResource("5_xbqcp")
+behavior = ExtResource("3_4q5nf")
+id = &"bone_thief"
+display_name = "Bone Thief"
+log_name = "Bone Thief"
+description = "Strikes twice. Block is shared between both hits."
+icon = SubResource("AtlasTexture_ogy2x")
+resource_capacities = Dictionary[int, int]({
+2: 28
+})
+abilities = Array[ExtResource("1_sl7s2")]([ExtResource("2_danaj")])
+
+metadata/progression_index = 1

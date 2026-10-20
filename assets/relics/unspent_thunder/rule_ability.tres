@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_fwq7c"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_v8xtw"]
+[ext_resource type="Resource" path="res://assets/relics/unspent_thunder/rule_effect.tres" id="3_bm1de"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_30dxr"]
+
+[resource]
+resource_name = "Unspent Thunder rules"
+script = ExtResource("4_30dxr")
+id = &"unspent_thunder_rules"
+display_name = "Unspent Thunder rules"
+description = "When stamina remains after activations: gain +2 block per unused stamina (up to 4 counted). Block is added each round."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_v8xtw")]([ExtResource("3_bm1de")])

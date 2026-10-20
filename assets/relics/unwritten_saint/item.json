@@ -85,14 +85,13 @@
       "A blank ivory saint tablet beneath a plain gold halo"
     ],
     "assets": {
-      "icon": "assets/relics/unwritten_saint/icons/art/icon.png",
-      "svg": "assets/relics/unwritten_saint/icons/art/icon.svg",
-      "source": "assets/relics/unwritten_saint/icons/art/icon.sprite.json",
+      "icon": "assets/relics/unwritten_saint/art/icon.png",
+      "source": "assets/relics/unwritten_saint/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/unwritten_saint/icons/art/provenance.json",
-      "manifest": "assets/relics/unwritten_saint/icons/art/art-manifest.json",
+      "provenance": "assets/relics/unwritten_saint/art/provenance.json",
+      "manifest": "assets/relics/unwritten_saint/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/unwritten_saint/icons/art/icon.pixloom"
+      "native": "assets/relics/unwritten_saint/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

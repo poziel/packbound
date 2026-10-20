@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://0icsrs215nlc"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_x3wus"]
+[ext_resource type="Resource" path="res://assets/items/captain_s_baton/rule_ability.tres" id="2_j0vdt"]
+[ext_resource type="Texture2D" uid="uid://duf6nlmw8xj0s" path="res://assets/items/captain_s_baton/art/item.png" id="3_phgso"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_rf7uv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldi2m"]
+atlas = ExtResource("3_phgso")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Captain's Baton"
+script = ExtResource("4_rf7uv")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+id = &"captain_s_baton"
+display_name = "Captain's Baton"
+description = "Adds 1 maximum stamina, refreshed each round. Each orthogonally touching weapon gains +2 damage. Each source applies once per target, regardless of shared edges; distinct sources stack."
+lore = "Its last order was to bring everyone home."
+rarity = 2
+tags = Array[StringName]([&"booster", &"warrior"])
+category_ids = Array[StringName]([&"boosters"])
+allowed_class_ids = Array[StringName]([&"warrior"])
+icon = SubResource("AtlasTexture_ldi2m")
+base_stats = Dictionary[int, int]({
+9: 1
+})
+abilities = Array[ExtResource("1_x3wus")]([ExtResource("2_j0vdt")])

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_uqfcq"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_vacsn"]
+[ext_resource type="Resource" path="res://assets/enemies/shroud_abjurer/attack_0_effect.tres" id="3_gx8je"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_35aad"]
+
+[resource]
+resource_name = "Purifier"
+script = ExtResource("4_35aad")
+id = &"shroud_abjurer_attack_0"
+display_name = "Purifier"
+description = "Clears existing conditions and elemental traces at the start of every 3th round, before fresh applications. Reduces incoming magical damage by 15 percent using the shared resistance rules."
+target_id = &"opponent"
+effects = Array[ExtResource("2_vacsn")]([ExtResource("3_gx8je")])

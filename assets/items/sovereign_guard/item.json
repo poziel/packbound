@@ -117,12 +117,9 @@
       "A heavy layered lower rim makes its thickness clear."
     ],
     "assets": {
-      "icon": "assets/items/sovereign_guard/icons/art/icon.png",
-      "svg": "assets/items/sovereign_guard/icons/art/icon.svg",
-      "source": "assets/items/sovereign_guard/icons/art/icon.sprite.json",
-      "footprint": "assets/items/sovereign_guard/icons/art/footprint.json",
-      "provenance": "assets/items/sovereign_guard/icons/art/provenance.json",
-      "manifest": "assets/items/sovereign_guard/icons/art/art-manifest.json",
+      "icon": "assets/items/sovereign_guard/art/item.png",
+      "source": "assets/items/sovereign_guard/art/item.pixloom.json",
+      "footprint": null,
       "variants": []
     },
     "approval": "unreviewed"

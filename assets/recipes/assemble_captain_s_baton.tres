@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://cx0vakch8bdf6"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_ym254"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_kkhnv"]
+
+[sub_resource type="Resource" id="Resource_4dm3j"]
+script = ExtResource("1_ym254")
+accepted_item_ids = Array[StringName]([&"duelist_s_coin"])
+
+[sub_resource type="Resource" id="Resource_o8dhj"]
+script = ExtResource("1_ym254")
+accepted_item_ids = Array[StringName]([&"standard_spike"])
+
+[resource]
+resource_name = "Assemble Captain S Baton"
+script = ExtResource("2_kkhnv")
+id = &"assemble_captain_s_baton"
+ingredients = Array[ExtResource("1_ym254")]([SubResource("Resource_4dm3j"), SubResource("Resource_o8dhj")])
+result_item_id = &"captain_s_baton"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_ldw7d"]
+
+[resource]
+resource_name = "Mana Furnace Rule Effect"
+script = ExtResource("1_ldw7d")
+rule_id = &"mana_furnace_rules"
+parameters = {
+"icon": "mana_furnace",
+"keyword_stats": [{
+"key": "block",
+"qualifier": "per remaining mana, after spells",
+"value": 2
+}]
+}

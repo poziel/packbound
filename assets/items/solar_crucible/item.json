@@ -147,14 +147,11 @@
       "A broad gold crucible holding a restrained orange flame."
     ],
     "assets": {
-      "icon": "assets/items/solar_crucible/icons/art/icon.png",
-      "svg": "assets/items/solar_crucible/icons/art/icon.svg",
-      "source": "assets/items/solar_crucible/icons/art/icon.sprite.json",
-      "footprint": "assets/items/solar_crucible/icons/art/footprint.json",
-      "provenance": "assets/items/solar_crucible/icons/art/provenance.json",
-      "manifest": "assets/items/solar_crucible/icons/art/art-manifest.json",
+      "icon": "assets/items/solar_crucible/art/item.png",
+      "source": "assets/items/solar_crucible/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/solar_crucible/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

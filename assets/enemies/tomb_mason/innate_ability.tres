@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_knmkx"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_fey6w"]
+[ext_resource type="Resource" path="res://assets/enemies/tomb_mason/innate_effect.tres" id="3_0etuw"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_phsfd"]
+
+[resource]
+resource_name = "Tomb Mason rules"
+script = ExtResource("4_phsfd")
+id = &"tomb_mason_innate_rules"
+display_name = "Tomb Mason rules"
+description = "Starts combat with 3 block. Absorbed damage spends it permanently for this fight. Destroys up to 2 player block before striking."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_fey6w")]([ExtResource("3_0etuw")])

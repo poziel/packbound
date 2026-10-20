@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://472v0y385pxj"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_gpmg5"]
+[ext_resource type="Resource" path="res://assets/items/feather_keeper/rule_ability.tres" id="2_oa5qr"]
+[ext_resource type="Texture2D" uid="uid://bio6ik7y0j1ke" path="res://assets/items/feather_keeper/art/item.png" id="3_2gi8g"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_kj33s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kx35m"]
+atlas = ExtResource("3_2gi8g")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Feather Keeper"
+script = ExtResource("4_kj33s")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"feather_keeper"
+display_name = "Feather Keeper"
+description = "While orthogonally touching the permanent Bowmaster quiver, adds 1 damage to Volley; this equipment remains in the backpack and is not consumed."
+lore = "A fletcher saves the strongest feathers for the longest road."
+tags = Array[StringName]([&"booster", &"ranger"])
+category_ids = Array[StringName]([&"boosters"])
+allowed_class_ids = Array[StringName]([&"ranger"])
+icon = SubResource("AtlasTexture_kx35m")
+abilities = Array[ExtResource("1_gpmg5")]([ExtResource("2_oa5qr")])

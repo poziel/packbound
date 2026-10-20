@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="LootPoolDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/loot/loot_pool_definition.gd" id="1_cmk1t"]
+
+[resource]
+resource_name = "Utility"
+script = ExtResource("1_cmk1t")
+id = &"utility"
+display_name = "Utility"
+description = "Existing utility reward candidates. Apply canonical collectible restrictions and owned/upgrade availability filters before selection."
+collectible_weights = Dictionary[StringName, float]({
+&"acorn_pendant": 1.0,
+&"adder_sheath": 1.0,
+&"amber_heart_pendant": 1.0,
+&"antidote": 1.0,
+&"barbed_tip_roll": 1.0,
+&"blood_gem": 1.0,
+&"bottle_of_yesterday": 1.0,
+&"captain_s_baton": 1.0,
+&"captive_aurora": 1.0,
+&"cinder_nock_rack": 1.0,
+&"cursed_idol": 1.0,
+&"duelist_s_coin": 1.0,
+&"endless_flight_spool": 1.0,
+&"feather_keeper": 1.0,
+&"gilded_scarab": 1.0,
+&"heart_outside_time": 1.0,
+&"hedgehog_charm": 1.0,
+&"hourglass": 1.0,
+&"hunter_s_compass": 1.0,
+&"iron_charm": 1.0,
+&"mirror_shard": 1.0,
+&"moonwell_pebble": 1.0,
+&"pearl_of_brine": 1.0,
+&"porcelain_lung": 1.0,
+&"quiver": 1.0,
+&"raincatch_bowl": 1.0,
+&"roseglass_brooch": 1.0,
+&"salt_lantern": 1.0,
+&"scorpion_magazine": 1.0,
+&"seamfinder_lens": 1.0,
+&"spark_ring": 1.0,
+&"thorn_whetstone": 1.0,
+&"tin_arrow_cup": 1.0,
+&"traveler_s_kettle": 1.0,
+&"war_council_seal": 1.0,
+&"wax_ear_trumpet": 1.0,
+&"waxed_fletching": 1.0,
+&"winterflight_rack": 1.0
+})
+minimum_floors = Dictionary[StringName, int]({
+&"adder_sheath": 5,
+&"amber_heart_pendant": 9,
+&"barbed_tip_roll": 5,
+&"bottle_of_yesterday": 9,
+&"captain_s_baton": 9,
+&"captive_aurora": 13,
+&"cinder_nock_rack": 9,
+&"duelist_s_coin": 5,
+&"endless_flight_spool": 17,
+&"gilded_scarab": 9,
+&"heart_outside_time": 17,
+&"hunter_s_compass": 9,
+&"moonwell_pebble": 9,
+&"pearl_of_brine": 5,
+&"porcelain_lung": 13,
+&"raincatch_bowl": 5,
+&"roseglass_brooch": 5,
+&"scorpion_magazine": 13,
+&"seamfinder_lens": 13,
+&"thorn_whetstone": 5,
+&"war_council_seal": 13,
+&"wax_ear_trumpet": 5,
+&"waxed_fletching": 5,
+&"winterflight_rack": 9
+})
+candidate_order = Array[StringName]([&"blood_gem", &"iron_charm", &"quiver", &"spark_ring", &"hourglass", &"mirror_shard", &"antidote", &"cursed_idol", &"duelist_s_coin", &"captain_s_baton", &"war_council_seal", &"feather_keeper", &"tin_arrow_cup", &"barbed_tip_roll", &"waxed_fletching", &"adder_sheath", &"cinder_nock_rack", &"winterflight_rack", &"hunter_s_compass", &"scorpion_magazine", &"seamfinder_lens", &"endless_flight_spool", &"acorn_pendant", &"salt_lantern", &"traveler_s_kettle", &"hedgehog_charm", &"pearl_of_brine", &"raincatch_bowl", &"roseglass_brooch", &"thorn_whetstone", &"wax_ear_trumpet", &"amber_heart_pendant", &"bottle_of_yesterday", &"moonwell_pebble", &"gilded_scarab", &"captive_aurora", &"porcelain_lung", &"heart_outside_time"])

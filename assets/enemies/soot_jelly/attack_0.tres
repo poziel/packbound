@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_8diss"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_45qa8"]
+[ext_resource type="Resource" path="res://assets/enemies/soot_jelly/attack_0_effect.tres" id="3_fbrm6"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_tplxo"]
+
+[resource]
+resource_name = "Reflector"
+script = ExtResource("4_tplxo")
+id = &"soot_jelly_attack_0"
+display_name = "Reflector"
+description = "Reflects 2 magical damage once when the combined direct attack damages it. Ward can absorb this."
+target_id = &"opponent"
+effects = Array[ExtResource("2_45qa8")]([ExtResource("3_fbrm6")])

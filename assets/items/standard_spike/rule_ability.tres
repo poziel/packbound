@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_uuium"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_l4rkw"]
+[ext_resource type="Resource" path="res://assets/items/standard_spike/rule_effect.tres" id="3_1xoxs"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_0b0yn"]
+
+[resource]
+resource_name = "Standard Spike rules"
+script = ExtResource("4_0b0yn")
+id = &"standard_spike_rules"
+display_name = "Standard Spike rules"
+description = "Costs 2 stamina per activation. Deals 6 physical damage per affordable activation. Warrior only: gains 2 Momentum after an affordable activation."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_l4rkw")]([ExtResource("3_1xoxs")])

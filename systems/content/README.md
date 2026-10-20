@@ -1,5 +1,14 @@
 # Content system
 
+The complete authored Resource graph is now available at
+`res://assets/game_content.tres`. See [the Resource guide](../../assets/CONTENT_RESOURCES.md)
+for ownership, migration boundaries and verification. `GameContentDefinition`
+validates cross-domain class, restriction, starter-item and recipe references.
+Runtime classification discovers canonical item.tres and relic.tres files directly;
+collectibles.tres is a generated Inspector/export snapshot. Its Refresh button
+rebuilds the list without manual entries. Runtime values are adapted from these Resources into independent dictionaries
+for existing combat, UI and save consumers. See the Resource guide for export packaging and naming.
+
 ## Collectible definitions
 
 Collectible is the shared term for backpack items and relics. The abstract
@@ -12,7 +21,7 @@ cooldowns belong in future runtime instances.
 | Resource | Responsibility |
 | --- | --- |
 | `CollectibleDefinition` | Abstract shared authored contract; cannot be created directly. |
-| `ItemDefinition` | Backpack item with role, footprint, rotation permission, activation costs and damage/element enums. |
+| `ItemDefinition` | Backpack item with category IDs, footprint, rotation permission, activation costs and damage/element enums. |
 | `RelicDefinition` | Relic identity, restrictions, categories, stats and abilities without backpack requirements. |
 | `CollectibleCategoryDefinition` | Category ID/name/description and optional parent category ID. |
 | `CollectibleCatalogDefinition` | Typed authored arrays of collectibles and categories; validates the complete category graph. |
@@ -20,9 +29,9 @@ cooldowns belong in future runtime instances.
 Categories apply equally to items and relics. Each category has at most one parent;
 collectibles may list multiple category IDs. Empty parent ID means root. Prefer
 listing specific child categories; explicit ancestor membership is redundant but
-valid. The future category matcher should include ancestors and count each
+valid. The category matcher includes ancestors and counts each
 collectible once. Tags remain independent flat traits. Categories do not grant
-abilities automatically, and no category-matching runtime is introduced here.
+abilities automatically, and the runtime category matcher resolves ancestors.
 
 The category Resource validates required fields and direct self-parenting. The
 catalog aggregates indexed child errors and checks nulls, duplicate collectible
@@ -95,8 +104,9 @@ new enum definitions without explicit conversion.
 
 ## Eligibility
 
-Item and relic definitions may declare `classes` and `characters` arrays.
-Use stable roster IDs from `PackCatalog.classes()` and `assets/characters/<id>/character.json`:
+Item and relic Resources declare `allowed_class_ids` and `allowed_character_ids`.
+Their runtime adapters expose `classes` and `characters` arrays.
+Use stable roster IDs from `PackCatalog.classes()` and `assets/characters/<id>/character.tres`:
 
 ```gdscript
 "classes": ["warrior"] # Only Warrior
@@ -115,3 +125,65 @@ other characters.
 Inspection shows each restriction beneath the cost with a linked class or
 character name. Character labels and biographies come from their character
 record. Keep restrictions in these fields rather than description sentences.
+
+## Runtime definition loading
+
+runtime_content.gd loads and validates game_content.tres, discovers canonical
+content files and preserves the authored recipe order. PackCatalog is a compatibility
+facade: its dictionaries now come from Resources, not numerical code tables or JSON.
+Each returned record owns its mutable arrays and dictionaries. Existing saves keep
+recorded instance values and receive missing defaults through the existing save path.
+
+Character health, mana/stamina capacities, identity, biography and starting equipment
+come from character.tres. Class presentation comes from character_class.tres. Original
+selection order is retained with selection_order metadata. Base encounter order uses
+progression_index metadata; expansion placement retains encounter_floor metadata.
+PackArt reads the definition icons. Recipes use ingredient alternatives, quantities
+and result quantities while retaining adjacency, locks and the combat-start commit.
+
+Special rules still execute through their existing coded handlers using the
+CatalogRuleEffectDefinition parameters. No generic condition/action interpreter has
+been introduced. Coded loot pool membership and progression remain for the next
+loot-definition migration; adding a definition alone does not put it in a reward pool.
+The current board remains fixed at 8 by 7. Existing combat resource spending supports
+mana, stamina and the established Momentum rules; arbitrary new action costs and
+behavior conditions await concrete effect/action execution.
+
+## Status and loot definitions
+
+These Resources are registered in GameContentDefinition and discovered with its
+Refresh button. Combat/reward execution still uses the existing handlers; the
+records capture current tuning without activating a new selection algorithm.
+
+| Definition | Owner | Authored data |
+| --- | --- | --- |
+| StatusEffectDefinition | systems/combat/status_effect_definition.gd | Identity/icon, additive/replacement/highest-stack policy, stack cap, duration refresh, decay, cleansing and triggered tick effects. |
+| LootPoolDefinition | systems/loot/loot_pool_definition.gd | Relative collectible-ID weights, offer count and duplicate policy; supports both items and relics. |
+| LootProgressionDefinition | systems/loot/loot_progression_definition.gd | Referenced pool IDs, rarity-weight checkpoints by one-based floor and a preference multiplier. |
+| CatalogRuleEffectDefinition | systems/abilities/catalog_rule_effect_definition.gd | Existing compatibility binding: rule ID and handler-owned parameters. |
+
+Status stack caps and durations use zero for uncapped stacks and no timed expiry.
+Stack policy applies to an incoming application; the cap applies afterward. Duration
+refresh is independent of the stack policy. Tick effects require a trigger ID. Actual
+stack counts, remaining lifetime, tick ordering and source tracking belong to the
+future runtime status executor, not this shared Resource.
+
+Loot weights are relative, finite and nonnegative. Zero disables a candidate. Each
+rarity checkpoint is a complete distribution: omitted enum rarities have zero weight.
+The future resolver uses the latest checkpoint at or below the current floor, without
+interpolation. Floor 1 is required. Preference matching boosts weight once when either
+class or character affinity matches; the neutral default is 1.0. It never grants
+eligibility. Offer counts are targets; filtering may leave fewer eligible candidates.
+
+Intrinsic validation rejects invalid values without mutation. The future content
+registry must validate known collectible/pool/status/trigger/rule IDs. Catalog-rule
+parameter names must be nonblank strings; the rule handler validates its own schema.
+Concrete effect subclasses should gradually replace compatibility bindings, rather
+than expanding the wrapper into an arbitrary behavior interpreter.
+
+The existing statuses and loot tuning are now authored as .tres files, with typed
+catalog collections and cross-reference validation. Next implement status
+lifetime/tick and loot-selection resolvers. Route existing combat and reward authorities through those
+resolvers while preserving deterministic RNG and save compatibility.
+
+Verification: tests/run_tests.ps1 -Suite systems -Test reward_status_definitions.

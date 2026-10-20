@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_q2dup"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_7m4ii"]
+[ext_resource type="Resource" path="res://assets/enemies/copper_scarab/attack_0_effect.tres" id="3_c4x3o"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_dcf8p"]
+
+[resource]
+resource_name = "Guard"
+script = ExtResource("4_dcf8p")
+id = &"copper_scarab_attack_0"
+display_name = "Guard"
+description = "Starts combat with 5 block. Absorbed damage spends it permanently for this fight."
+target_id = &"opponent"
+effects = Array[ExtResource("2_7m4ii")]([ExtResource("3_c4x3o")])

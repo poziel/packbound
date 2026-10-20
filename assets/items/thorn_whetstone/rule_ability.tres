@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_b6ebo"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_e3u7n"]
+[ext_resource type="Resource" path="res://assets/items/thorn_whetstone/rule_effect.tres" id="3_fgmhu"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_laiyl"]
+
+[resource]
+resource_name = "Thorn Whetstone rules"
+script = ExtResource("4_laiyl")
+id = &"thorn_whetstone_rules"
+display_name = "Thorn Whetstone rules"
+description = "Retaliates for 1 piercing damage per enemy strike. Each orthogonally touching weapon gains +2 damage. Each source applies once per target, regardless of shared edges; distinct sources stack."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_e3u7n")]([ExtResource("3_fgmhu")])

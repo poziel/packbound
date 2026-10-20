@@ -132,14 +132,11 @@
       "A green glass prism holding a broad folded violet ribbon."
     ],
     "assets": {
-      "icon": "assets/items/captive_aurora/icons/art/icon.png",
-      "svg": "assets/items/captive_aurora/icons/art/icon.svg",
-      "source": "assets/items/captive_aurora/icons/art/icon.sprite.json",
-      "footprint": "assets/items/captive_aurora/icons/art/footprint.json",
-      "provenance": "assets/items/captive_aurora/icons/art/provenance.json",
-      "manifest": "assets/items/captive_aurora/icons/art/art-manifest.json",
+      "icon": "assets/items/captive_aurora/art/item.png",
+      "source": "assets/items/captive_aurora/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/captive_aurora/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

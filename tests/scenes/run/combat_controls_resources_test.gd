@@ -32,7 +32,7 @@ func _run() -> void:
 	check(game.mana_bar.get_value_text() == "2 / 6", "Mana spending keeps original capacity")
 	game.action.pressed.emit()
 	check(game.playback.paused and game.action.accessibility_name == "Resume combat" and not game.action.disabled, "Bottom Pause becomes enabled Resume while busy")
-	check(game.action.icon.resource_path == "res://assets/ui/icons/combat-v1/resume.svg", "Paused control uses new resume glyph")
+	check(game.action.icon.resource_path == "res://assets/icons/controls/combat/resume.svg", "Paused control uses new resume glyph")
 	var before: Array = game.run.items.duplicate(true)
 	game.board.begin_drag(spell, Vector2.ZERO)
 	check(game.board.dragging.is_empty() and game.run.items == before, "Bottom pause keeps inventory locked")

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://ycu4euetkva6"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_qe4ei"]
+[ext_resource type="Resource" path="res://assets/enemies/needle_spider/innate_ability.tres" id="2_3h7kj"]
+[ext_resource type="Resource" path="res://assets/enemies/needle_spider/behavior.tres" id="3_dlq30"]
+[ext_resource type="Texture2D" uid="uid://csl5axkyavfsy" path="res://assets/enemies/needle_spider/art/needle_spider.png" id="4_qpffp"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_hlchl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esofe"]
+atlas = ExtResource("4_qpffp")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Needle Spider"
+script = ExtResource("5_hlchl")
+species_id = &"spider"
+role_id = &"multi-strike"
+behavior = ExtResource("3_dlq30")
+id = &"needle_spider"
+display_name = "Needle Spider"
+log_name = "Needle Spider"
+description = "Its front legs have evolved into stitching needles. It tests a traveler with two precise taps before returning to its web."
+icon = SubResource("AtlasTexture_esofe")
+base_stats = Dictionary[int, int]({
+14: 1
+})
+resource_capacities = Dictionary[int, int]({
+2: 43
+})
+abilities = Array[ExtResource("1_qe4ei")]([ExtResource("2_3h7kj")])
+metadata/encounter_floor = 6

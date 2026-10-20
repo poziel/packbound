@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://jfbp3vt0r8c0"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_3a067"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_1rpu8"]
+
+[sub_resource type="Resource" id="Resource_vgnkp"]
+script = ExtResource("1_3a067")
+accepted_item_ids = Array[StringName]([&"cracked_shield"])
+
+[sub_resource type="Resource" id="Resource_gh172"]
+script = ExtResource("1_3a067")
+accepted_item_ids = Array[StringName]([&"cracked_shield"])
+
+[resource]
+resource_name = "Shield Relic"
+script = ExtResource("2_1rpu8")
+id = &"shield_relic"
+ingredients = Array[ExtResource("1_3a067")]([SubResource("Resource_vgnkp"), SubResource("Resource_gh172")])
+result_item_id = &"tower_shield"

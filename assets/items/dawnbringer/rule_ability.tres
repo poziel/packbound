@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_ii4c4"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_mgghu"]
+[ext_resource type="Resource" path="res://assets/items/dawnbringer/rule_effect.tres" id="3_t246w"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_q6eqf"]
+
+[resource]
+resource_name = "Dawnbringer rules"
+script = ExtResource("4_q6eqf")
+id = &"dawnbringer_rules"
+display_name = "Dawnbringer rules"
+description = "Costs 3 stamina: 20 physical damage. Bypasses 5 block."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_mgghu")]([ExtResource("3_t246w")])

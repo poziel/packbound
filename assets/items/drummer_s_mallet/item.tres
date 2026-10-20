@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dx1jajhddvmly"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_bw7ek"]
+[ext_resource type="Resource" path="res://assets/items/drummer_s_mallet/rule_ability.tres" id="2_5mv4m"]
+[ext_resource type="Texture2D" uid="uid://c1t4vf5q5bpsq" path="res://assets/items/drummer_s_mallet/art/item.png" id="3_2d7np"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_jdfva"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wh05"]
+atlas = ExtResource("3_2d7np")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Drummer's Mallet"
+script = ExtResource("4_jdfva")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+activation_costs = Dictionary[int, int]({
+1: 1
+})
+id = &"drummer_s_mallet"
+display_name = "Drummer's Mallet"
+description = "Costs 1 stamina per activation. Deals 5 physical damage per affordable activation. Warrior only: gains 1 Momentum after an affordable activation."
+lore = "Its rhythm once kept a starving company walking."
+tags = Array[StringName]([&"weapon", &"warrior"])
+category_ids = Array[StringName]([&"hammers"])
+allowed_class_ids = Array[StringName]([&"warrior"])
+icon = SubResource("AtlasTexture_4wh05")
+base_stats = Dictionary[int, int]({
+0: 5
+})
+abilities = Array[ExtResource("1_bw7ek")]([ExtResource("2_5mv4m")])

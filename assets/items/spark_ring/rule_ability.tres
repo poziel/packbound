@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_4qmk3"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_jofnk"]
+[ext_resource type="Resource" path="res://assets/items/spark_ring/rule_effect.tres" id="3_ixjb4"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_s58k8"]
+
+[resource]
+resource_name = "Spark Ring rules"
+script = ExtResource("4_s58k8")
+id = &"spark_ring_rules"
+display_name = "Spark Ring rules"
+description = "+2 maximum mana. Mana refills each round."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_jofnk")]([ExtResource("3_ixjb4")])

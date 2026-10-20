@@ -80,7 +80,7 @@ func _run() -> void:
 	game.run.enemy.max_hp = 1000
 	game._act()
 	game.playback.set_process(false)
-	var attack_texture: Texture2D = load("res://assets/ui/icons/attack/attack.png")
+	var attack_texture: Texture2D = load("res://assets/icons/actions/attack/attack.png")
 	check(game.playback.active and game.action.disabled and game.action.icon == attack_texture, "Current round shows disabled Attack, never Pause")
 	game._act()
 	check(not game.playback.paused and game.run.total_turns == 1, "Primary action cannot pause or restart a running turn-based round")

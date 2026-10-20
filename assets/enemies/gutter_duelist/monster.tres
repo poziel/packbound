@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://cvnvre0s8rwbb"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_qd3pp"]
+[ext_resource type="Resource" path="res://assets/enemies/gutter_duelist/innate_ability.tres" id="2_ajyd6"]
+[ext_resource type="Resource" path="res://assets/enemies/gutter_duelist/behavior.tres" id="3_0txv7"]
+[ext_resource type="Texture2D" uid="uid://b24n3on3x2wb2" path="res://assets/enemies/gutter_duelist/art/gutter_duelist.png" id="4_4djxx"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_mvws0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhhm7"]
+atlas = ExtResource("4_4djxx")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Gutter Duelist"
+script = ExtResource("5_mvws0")
+species_id = &"humanoid"
+role_id = &"parry"
+behavior = ExtResource("3_0txv7")
+id = &"gutter_duelist"
+display_name = "Gutter Duelist"
+log_name = "Gutter Duelist"
+description = "A former fencing tutor who sells passage through the drains. He hides a precise blade beneath a ragged red coat and never wastes a flourish."
+icon = SubResource("AtlasTexture_nhhm7")
+resource_capacities = Dictionary[int, int]({
+2: 57
+})
+abilities = Array[ExtResource("1_qd3pp")]([ExtResource("2_ajyd6")])
+metadata/encounter_floor = 9

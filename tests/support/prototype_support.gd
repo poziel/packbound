@@ -49,7 +49,7 @@ func _catalog_checks() -> void:
 		if key in ["battle_axe", "plate_mail", "hunting_trap", "hourglass"]: native_size = Vector2(96, 64)
 		check(art.get_size() == native_size, key + " has art at its source resolution")
 	var axe_art: Texture2D = PackArt.item("battle_axe").atlas
-	check(axe_art.resource_path == "res://assets/items/weapons/battle-axe/revisions/catalog-v4/executioners-axe-96x64.svg", "Executioner's Axe uses approved catalog redraw")
+	check(axe_art.resource_path == "res://assets/items/battle_axe/art/item.png", "Executioner's Axe uses approved catalog redraw")
 	for view_edge in [64, 128, 256]:
 		check(PackArt.item("battle_axe", view_edge).atlas == axe_art, "Executioner's Axe keeps approved artwork across display sizes")
 	var axe_image: Image = axe_art.get_image()
@@ -59,39 +59,39 @@ func _catalog_checks() -> void:
 			if (x < 32 or x >= 64) and axe_image.get_pixel(x, y).a > 0: axe_forbidden += 1
 	check(axe_forbidden == 0, "Executioner's Axe keeps both bottom corners transparent")
 	var dagger_art: Texture2D = PackArt.item("longsword").atlas
-	check(dagger_art.resource_path == "res://assets/items/weapons/iron-dagger/revisions/catalog-v1/iron-dagger-32px.svg", "Iron Dagger uses approved catalog redraw")
+	check(dagger_art.resource_path == "res://assets/items/iron_dagger/art/item.png", "Iron Dagger uses approved catalog redraw")
 	for view_edge in [64, 128, 256]:
 		check(PackArt.item("longsword", view_edge).atlas == dagger_art, "Iron Dagger keeps approved artwork across display sizes")
 	var knife_art: Texture2D = PackArt.item("rusty_knife").atlas
-	check(knife_art.resource_path == "res://assets/items/weapons/rusty-knife/revisions/catalog-v1/rusty-knife-32px.svg", "Rusty Knife uses approved catalog redraw")
+	check(knife_art.resource_path == "res://assets/items/rusty_knife/art/item.png", "Rusty Knife uses approved catalog redraw")
 	for view_edge in [64, 128, 256]:
 		check(PackArt.item("rusty_knife", view_edge).atlas == knife_art, "Rusty Knife keeps approved artwork across display sizes")
 	var charm_art: Texture2D = PackArt.item("iron_charm").atlas
-	check(charm_art.resource_path == "res://assets/items/charms/iron-charm/revisions/catalog-v2/iron-charm-32px.svg", "Iron Charm uses approved catalog redraw")
+	check(charm_art.resource_path == "res://assets/items/iron_charm/art/item.png", "Iron Charm uses approved catalog redraw")
 	for view_edge in [64, 128, 256]:
 		check(PackArt.item("iron_charm", view_edge).atlas == charm_art, "Iron Charm keeps approved artwork across display sizes")
 	var approved_items: Dictionary = {
-		"tower_shield": "relics/shield-relic/revisions/catalog-v1/shield-relic-32px.svg",
-		"antidote": "healing/antidote/revisions/catalog-v1/antidote-32px.svg",
-		"mirror_shard": "utility/mirror-shard/revisions/catalog-v2/mirror-shard-64px.svg",
-		"hourglass": "utility/hourglass/revisions/catalog-v1/hourglass-96x64.svg",
-		"healing_herbs": "healing/healing-herbs/revisions/catalog-v2/healing-herbs-64px.svg",
-		"hunting_trap": "traps/hunting-trap/revisions/catalog-v1/hunting-trap-96x64.svg",
-		"warding_sigil": "charms/warding-sigil/revisions/catalog-v1/warding-sigil-96px.svg",
-		"thorn_mail": "armor/thorn-mail/revisions/catalog-v2/thorn-mail-64px.svg",
-		"shortbow": "weapons/shortbow/revisions/catalog-v1/shortbow-64px.svg",
-		"quiver": "ammunition/quiver/revisions/catalog-v1/quiver-32x64.svg",
-		"buckler": "armor/buckler/revisions/catalog-v1/buckler-32px.svg",
-		"ember_tome": "spells/ember-tome/revisions/catalog-v1/ember-tome-64px.svg",
-		"frost_wand": "spells/frost-wand/revisions/catalog-v2/frost-wand-32x96.svg",
-		"spark_ring": "charms/spark-ring/revisions/catalog-v1/spark-ring-32px.svg",
-		"venom_dagger": "weapons/venom-dagger/revisions/catalog-v1/venom-dagger-64px.svg",
-		"vampire_fang": "weapons/vampire-fang/revisions/catalog-v1/vampire-fang-32x64.svg",
-		"plate_mail": "armor/plate-mail/revisions/catalog-v2/plate-mail-96x64.svg",
-		"cracked_shield": "armor/cracked-shield/revisions/catalog-v2/cracked-shield-32px.svg",
-		"blood_gem": "charms/blood-gem/revisions/catalog-v2/blood-gem-32px.svg",
-		"bandage": "healing/bandage/revisions/catalog-v1/grave-bandage-32px.svg",
-		"cursed_idol": "relics/cursed-idol/revisions/catalog-v3/cursed-idol-32px.svg",
+		"tower_shield": "shield_relic/art/item.png",
+		"antidote": "antidote/art/item.png",
+		"mirror_shard": "mirror_shard/art/item.png",
+		"hourglass": "hourglass/art/item.png",
+		"healing_herbs": "healing_herbs/art/item.png",
+		"hunting_trap": "hunting_trap/art/item.png",
+		"warding_sigil": "warding_sigil/art/item.png",
+		"thorn_mail": "thorn_mail/art/item.png",
+		"shortbow": "shortbow/art/item.png",
+		"quiver": "quiver/art/item.png",
+		"buckler": "buckler/art/item.png",
+		"ember_tome": "ember_tome/art/item.png",
+		"frost_wand": "frost_wand/art/item.png",
+		"spark_ring": "spark_ring/art/item.png",
+		"venom_dagger": "venom_dagger/art/item.png",
+		"vampire_fang": "vampire_fang/art/item.png",
+		"plate_mail": "plate_mail/art/item.png",
+		"cracked_shield": "cracked_shield/art/item.png",
+		"blood_gem": "blood_gem/art/item.png",
+		"bandage": "bandage/art/item.png",
+		"cursed_idol": "cursed_idol/art/item.png",
 	}
 	for key in approved_items:
 		var approved_art: Texture2D = PackArt.item(key).atlas

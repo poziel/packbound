@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_y8uxr"]
+
+[resource]
+resource_name = "Hunter's Compass Rule Effect"
+script = ExtResource("1_y8uxr")
+rule_id = &"hunter_s_compass_rules"
+parameters = {
+"adjacency_bonus": {
+"stats": {
+"pierce": 2
+},
+"target_category_ids": ["ranged_weapons"]
+},
+"block_per_round": 0,
+"mana_per_round": 0,
+"priority": 0,
+"stamina_per_round": 0,
+"tooltip_detail": "Each orthogonally touching ranged gains +2 pierce. Each source applies once per target, regardless of shared edges; distinct sources stack.. Only ranger can equip this item."
+}

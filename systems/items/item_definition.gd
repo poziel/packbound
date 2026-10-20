@@ -5,7 +5,6 @@ extends CollectibleDefinition
 ## Placement, chosen priority and other live state belong to an item instance.
 
 @export_group("Equipment")
-@export var role: StringName = &""
 ## Occupied cells in the unrotated footprint, relative to its top-left origin.
 @export var footprint: Array[Vector2i] = []
 @export var rotatable: bool = true
@@ -28,8 +27,6 @@ func _validate_property(property: Dictionary) -> void:
 ## Returns all errors without changing this definition or accessing game state.
 func validation_errors() -> PackedStringArray:
 	var errors: PackedStringArray = super.validation_errors()
-	if str(role).strip_edges().is_empty():
-		errors.append("role must not be blank.")
 	if footprint.is_empty():
 		errors.append("footprint must contain at least one occupied cell.")
 	var occupied: Dictionary[Vector2i, bool] = {}

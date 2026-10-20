@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="StatusEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="1_8wpie"]
+[ext_resource type="Resource" path="res://assets/status_effects/doom/rule_effect.tres" id="2_y4rwh"]
+[ext_resource type="Texture2D" path="res://assets/icons/keywords/doom/doom-16-mask.png" id="3_uqcuo"]
+[ext_resource type="Script" path="res://systems/combat/status_effect_definition.gd" id="4_o8gbr"]
+
+[resource]
+resource_name = "Doom"
+script = ExtResource("4_o8gbr")
+id = &"doom"
+display_name = "Doom"
+description = "Void applies Doom. Stacks detonate for 2 magical damage each on the third round, ignoring block. New stacks increase the burst without resetting its countdown. Cleansing removes Doom."
+icon = ExtResource("3_uqcuo")
+duration_rounds = 3
+refresh_duration_on_application = false
+tick_trigger_id = &"after_spark_tick"
+effects = Array[ExtResource("1_8wpie")]([ExtResource("2_y4rwh")])

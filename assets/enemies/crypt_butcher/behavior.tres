@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MonsterBehaviorDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="1_k3eai"]
+[ext_resource type="Resource" path="res://assets/enemies/crypt_butcher/attack_0.tres" id="2_vhdeq"]
+[ext_resource type="Script" path="res://systems/enemies/monster_behavior_definition.gd" id="3_1bo86"]
+
+[resource]
+resource_name = "Crypt Butcher Behavior"
+script = ExtResource("3_1bo86")
+actions = Array[ExtResource("1_k3eai")]([ExtResource("2_vhdeq")])

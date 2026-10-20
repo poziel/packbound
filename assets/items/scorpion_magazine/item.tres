@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dai2rfgiepcgg"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_g4rdy"]
+[ext_resource type="Resource" path="res://assets/items/scorpion_magazine/rule_ability.tres" id="2_7fevf"]
+[ext_resource type="Texture2D" uid="uid://28yn545aocur" path="res://assets/items/scorpion_magazine/art/item.png" id="3_yqtpp"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_8d35l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbjs2"]
+atlas = ExtResource("3_yqtpp")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+resource_name = "Scorpion Magazine"
+script = ExtResource("4_8d35l")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1)])
+id = &"scorpion_magazine"
+display_name = "Scorpion Magazine"
+description = "While orthogonally touching the permanent Bowmaster quiver, adds 1 arrows, 2 poison to Volley; this equipment remains in the backpack and is not consumed."
+lore = "A patient engineer watched a desert scorpion for seven years."
+rarity = 3
+tags = Array[StringName]([&"booster", &"ranger"])
+category_ids = Array[StringName]([&"boosters"])
+allowed_class_ids = Array[StringName]([&"ranger"])
+icon = SubResource("AtlasTexture_vbjs2")
+abilities = Array[ExtResource("1_g4rdy")]([ExtResource("2_7fevf")])

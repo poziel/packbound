@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://c2l7wa80emu0s"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_1xsca"]
+[ext_resource type="Resource" path="res://assets/enemies/marrow_heron/innate_ability.tres" id="2_xyd46"]
+[ext_resource type="Resource" path="res://assets/enemies/marrow_heron/behavior.tres" id="3_nqbsu"]
+[ext_resource type="Texture2D" uid="uid://b86cnpp55ht8p" path="res://assets/enemies/marrow_heron/art/marrow_heron.png" id="4_wq54v"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_in526"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgbtj"]
+atlas = ExtResource("4_wq54v")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Marrow Heron"
+script = ExtResource("5_in526")
+species_id = &"heron"
+role_id = &"piercer"
+behavior = ExtResource("3_nqbsu")
+id = &"marrow_heron"
+display_name = "Marrow Heron"
+log_name = "Marrow Heron"
+description = "A skeletal marsh bird that nests in the flooded ossuary. Its long bill finds gaps between shields as neatly as it once speared fish."
+icon = SubResource("AtlasTexture_wgbtj")
+base_stats = Dictionary[int, int]({
+14: 3
+})
+resource_capacities = Dictionary[int, int]({
+2: 65
+})
+abilities = Array[ExtResource("1_1xsca")]([ExtResource("2_xyd46")])
+metadata/encounter_floor = 10

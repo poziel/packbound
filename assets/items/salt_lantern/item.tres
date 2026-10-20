@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dpom2410bhnvt"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_0heao"]
+[ext_resource type="Resource" path="res://assets/items/salt_lantern/rule_ability.tres" id="2_xs6iy"]
+[ext_resource type="Texture2D" uid="uid://ggyv0yq3w4tl" path="res://assets/items/salt_lantern/art/item.png" id="3_85r43"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_665dv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0iac"]
+atlas = ExtResource("3_85r43")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Salt Lantern"
+script = ExtResource("4_665dv")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+id = &"salt_lantern"
+display_name = "Salt Lantern"
+description = "Supplies 2 ward each round against poison, curse and reflected damage."
+lore = "Its light is too faint to see, but nightmares avoid it."
+tags = Array[StringName]([&"focus"])
+category_ids = Array[StringName]([&"focuses"])
+icon = SubResource("AtlasTexture_v0iac")
+base_stats = Dictionary[int, int]({
+5: 2
+})
+abilities = Array[ExtResource("1_0heao")]([ExtResource("2_xs6iy")])

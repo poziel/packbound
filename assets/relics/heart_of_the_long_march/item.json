@@ -85,14 +85,13 @@
       "A red stone heart inside an iron walking wheel"
     ],
     "assets": {
-      "icon": "assets/relics/heart_of_the_long_march/icons/art/icon.png",
-      "svg": "assets/relics/heart_of_the_long_march/icons/art/icon.svg",
-      "source": "assets/relics/heart_of_the_long_march/icons/art/icon.sprite.json",
+      "icon": "assets/relics/heart_of_the_long_march/art/icon.png",
+      "source": "assets/relics/heart_of_the_long_march/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/heart_of_the_long_march/icons/art/provenance.json",
-      "manifest": "assets/relics/heart_of_the_long_march/icons/art/art-manifest.json",
+      "provenance": "assets/relics/heart_of_the_long_march/art/provenance.json",
+      "manifest": "assets/relics/heart_of_the_long_march/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/heart_of_the_long_march/icons/art/icon.pixloom"
+      "native": "assets/relics/heart_of_the_long_march/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://brvl8xcvqssyh"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_7lwqt"]
+[ext_resource type="Resource" path="res://assets/enemies/ash_rat/innate_ability.tres" id="2_sgs33"]
+[ext_resource type="Resource" path="res://assets/enemies/ash_rat/behavior.tres" id="3_f8on2"]
+[ext_resource type="Texture2D" uid="uid://xqwsdndxj4cl" path="res://assets/enemies/ash_rat/art/ash_rat.png" id="4_3bpqh"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_6tpt2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co2t7"]
+atlas = ExtResource("4_3bpqh")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Ash Rat"
+script = ExtResource("5_6tpt2")
+behavior = ExtResource("3_f8on2")
+id = &"ash_rat"
+display_name = "Ash Rat"
+log_name = "Ash Rat"
+description = "A steady single strike."
+icon = SubResource("AtlasTexture_co2t7")
+resource_capacities = Dictionary[int, int]({
+2: 20
+})
+abilities = Array[ExtResource("1_7lwqt")]([ExtResource("2_sgs33")])
+
+metadata/progression_index = 0

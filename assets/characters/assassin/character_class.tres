@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CharacterClassDefinition" format=3 uid="uid://ddb4s3ubvlx5c"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_kehka"]
+[ext_resource type="Resource" path="res://assets/characters/assassin/class_ability.tres" id="2_bg2qd"]
+[ext_resource type="Texture2D" uid="uid://o2u1p4bxc551" path="res://assets/items/venom_dagger/art/item.png" id="3_bbr8c"]
+[ext_resource type="Script" uid="uid://bdw4mhhh1jy2c" path="res://systems/characters/character_class_definition.gd" id="4_i164l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sbuj"]
+atlas = ExtResource("3_bbr8c")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+resource_name = "Assassin"
+script = ExtResource("4_i164l")
+id = &"assassin"
+display_name = "Assassin"
+description = "Invisible on turns 1, 4, 7... Monsters cannot target you: skip all strikes and on-hit effects. Existing poison, reflection and item costs still apply."
+icon = SubResource("AtlasTexture_4sbuj")
+abilities = Array[ExtResource("1_kehka")]([ExtResource("2_bg2qd")])
+
+metadata/icon_item_id = "venom_dagger"

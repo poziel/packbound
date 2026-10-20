@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dn135ovrnqyf0"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_ouhfi"]
+[ext_resource type="Resource" path="res://assets/items/cathedral_carapace/rule_ability.tres" id="2_bl62u"]
+[ext_resource type="Texture2D" uid="uid://btnrt7eg4c1fn" path="res://assets/items/cathedral_carapace/art/item.png" id="3_ecopk"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_dc6ch"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cx6g"]
+atlas = ExtResource("3_ecopk")
+region = Rect2(0, 0, 96, 64)
+
+[resource]
+resource_name = "Cathedral Carapace"
+script = ExtResource("4_dc6ch")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1)])
+id = &"cathedral_carapace"
+display_name = "Cathedral Carapace"
+description = "Reduces each enemy strike by 3 before block. Supplies 3 ward each round against poison, curse and reflected damage."
+lore = "Built for the guardian of a sanctuary no army could enter."
+rarity = 3
+tags = Array[StringName]([&"armor"])
+category_ids = Array[StringName]([&"body_armor"])
+icon = SubResource("AtlasTexture_7cx6g")
+base_stats = Dictionary[int, int]({
+4: 3,
+5: 3
+})
+abilities = Array[ExtResource("1_ouhfi")]([ExtResource("2_bl62u")])

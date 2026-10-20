@@ -2,6 +2,83 @@
   "version": 1,
   "tests": [
 	{
+	  "id": "status_loot_records",
+	  "path": "tests/systems/content/status_loot_records_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 60
+	},
+	{
+	  "id": "adjacency_work",
+	  "path": "tests/systems/inventory/adjacency_work_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "reward_status_definitions",
+	  "path": "tests/systems/content/reward_status_definitions_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "application_preferences",
+	  "path": "tests/integration/application/application_preferences_test.gd",
+	  "suites": ["integration"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "random_pitch",
+	  "path": "tests/systems/application/random_pitch_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "runtime_definitions",
+	  "path": "tests/systems/content/runtime_definitions_test.gd",
+	  "suites": ["systems", "smoke"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "item_art_layout",
+	  "path": "tests/systems/items/item_art_layout_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "game_content_refresh",
+	  "path": "tests/systems/content/game_content_refresh_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "collectible_discovery",
+	  "path": "tests/systems/content/collectible_discovery_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "collectible_categories",
+	  "path": "tests/systems/content/collectible_categories_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "content_resources",
+	  "path": "tests/systems/content/content_resources_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 60
+	},
+	{
 	  "id": "combatant_definitions",
 	  "path": "tests/systems/combat/combatant_definitions_test.gd",
 	  "suites": ["systems"],

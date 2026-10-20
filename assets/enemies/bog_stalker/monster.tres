@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://dvmg4kuxygm4p"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_pg7p7"]
+[ext_resource type="Resource" path="res://assets/enemies/bog_stalker/innate_ability.tres" id="2_oy457"]
+[ext_resource type="Resource" path="res://assets/enemies/bog_stalker/behavior.tres" id="3_pbuid"]
+[ext_resource type="Texture2D" uid="uid://bfp47ricyif7r" path="res://assets/enemies/bog_stalker/art/bog_stalker.png" id="4_jphh3"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_ycmr7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rkmp"]
+atlas = ExtResource("4_jphh3")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Bog Stalker"
+script = ExtResource("5_ycmr7")
+species_id = &"lizard"
+role_id = &"venom"
+behavior = ExtResource("3_pbuid")
+id = &"bog_stalker"
+display_name = "Bog Stalker"
+log_name = "Bog Stalker"
+description = "A long-bodied ambush reptile that uses drowned roots as cover. It raises its throat crest only after a victim steps into reach."
+icon = SubResource("AtlasTexture_7rkmp")
+base_stats = Dictionary[int, int]({
+6: 2
+})
+resource_capacities = Dictionary[int, int]({
+2: 51
+})
+abilities = Array[ExtResource("1_pg7p7")]([ExtResource("2_oy457")])
+metadata/encounter_floor = 8

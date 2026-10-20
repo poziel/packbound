@@ -98,14 +98,11 @@
       "A brown acorn in a broad hammered copper cup."
     ],
     "assets": {
-      "icon": "assets/items/acorn_pendant/icons/art/icon.png",
-      "svg": "assets/items/acorn_pendant/icons/art/icon.svg",
-      "source": "assets/items/acorn_pendant/icons/art/icon.sprite.json",
-      "footprint": "assets/items/acorn_pendant/icons/art/footprint.json",
-      "provenance": "assets/items/acorn_pendant/icons/art/provenance.json",
-      "manifest": "assets/items/acorn_pendant/icons/art/art-manifest.json",
+      "icon": "assets/items/acorn_pendant/art/item.png",
+      "source": "assets/items/acorn_pendant/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/acorn_pendant/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

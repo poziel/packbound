@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://c5tdkr31rweb8"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_jw051"]
+[ext_resource type="Resource" path="res://assets/items/ember_tome/rule_ability.tres" id="2_u1jb0"]
+[ext_resource type="Texture2D" uid="uid://dbcw8q651xijb" path="res://assets/items/ember_tome/art/item.png" id="3_fcm3l"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_l0b6o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk6a6"]
+atlas = ExtResource("3_fcm3l")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+resource_name = "Ember Grimoire"
+script = ExtResource("4_l0b6o")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1)])
+activation_costs = Dictionary[int, int]({
+0: 3
+})
+damage_type = 1
+element = 1
+id = &"ember_tome"
+display_name = "Ember Grimoire"
+description = "Costs 3 mana: 10 damage and 2 burn. Burn ticks each turn and decays by 1."
+rarity = 2
+category_ids = Array[StringName]([&"magic_books"])
+icon = SubResource("AtlasTexture_dk6a6")
+base_stats = Dictionary[int, int]({
+0: 10,
+7: 2
+})
+abilities = Array[ExtResource("1_jw051")]([ExtResource("2_u1jb0")])

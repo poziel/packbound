@@ -85,14 +85,13 @@
       "A sealed brown jar containing a jagged yellow stone"
     ],
     "assets": {
-      "icon": "assets/relics/unspent_thunder/icons/art/icon.png",
-      "svg": "assets/relics/unspent_thunder/icons/art/icon.svg",
-      "source": "assets/relics/unspent_thunder/icons/art/icon.sprite.json",
+      "icon": "assets/relics/unspent_thunder/art/icon.png",
+      "source": "assets/relics/unspent_thunder/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/unspent_thunder/icons/art/provenance.json",
-      "manifest": "assets/relics/unspent_thunder/icons/art/art-manifest.json",
+      "provenance": "assets/relics/unspent_thunder/art/provenance.json",
+      "manifest": "assets/relics/unspent_thunder/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/unspent_thunder/icons/art/icon.pixloom"
+      "native": "assets/relics/unspent_thunder/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

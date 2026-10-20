@@ -137,14 +137,11 @@
       "A curled ivory ear horn with a broad wax rim."
     ],
     "assets": {
-      "icon": "assets/items/wax_ear_trumpet/icons/art/icon.png",
-      "svg": "assets/items/wax_ear_trumpet/icons/art/icon.svg",
-      "source": "assets/items/wax_ear_trumpet/icons/art/icon.sprite.json",
-      "footprint": "assets/items/wax_ear_trumpet/icons/art/footprint.json",
-      "provenance": "assets/items/wax_ear_trumpet/icons/art/provenance.json",
-      "manifest": "assets/items/wax_ear_trumpet/icons/art/art-manifest.json",
+      "icon": "assets/items/wax_ear_trumpet/art/item.png",
+      "source": "assets/items/wax_ear_trumpet/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/wax_ear_trumpet/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

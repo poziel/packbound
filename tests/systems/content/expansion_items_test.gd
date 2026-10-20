@@ -39,7 +39,7 @@ func _initialize() -> void:
 	run = fixture()
 	blade = run.add_item("rusty_knife", Vector2i.ZERO)
 	var charm: Dictionary = run.add_item("spark_ring", Vector2i.RIGHT)
-	charm["adjacency_bonus"] = {"target_roles": ["weapon"], "stats": {"damage": 2, "pierce": 1}}
+	charm["adjacency_bonus"] = {"target_category_ids": ["melee_weapons"], "stats": {"damage": 2, "pierce": 1}}
 	preview = run.effects()
 	check(preview["damage"] == 6 and preview["pierce"] == 1, "Connected equipment supplies typed adjacency stats")
 	charm["cell"] = null
@@ -56,7 +56,7 @@ func _initialize() -> void:
 	check(run.effects()["volley_damage"] == 8, "Distant fitting cannot affect Volley")
 	run = fixture()
 	blade = run.add_item("rusty_knife", Vector2i.ZERO)
-	blade["role"] = "companion"
+	blade["category_ids"] = ["companions"]
 	charm = run.add_item("blood_gem", Vector2i.RIGHT)
 	check(run.effects()["damage"] == 6, "Companion is a physical attacker and accepts attack boosters")
 	report("EXPANSION ITEMS")

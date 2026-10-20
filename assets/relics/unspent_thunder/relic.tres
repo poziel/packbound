@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RelicDefinition" format=3 uid="uid://bn53g3xn5tbep"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_smksi"]
+[ext_resource type="Resource" path="res://assets/relics/unspent_thunder/rule_ability.tres" id="2_52gg5"]
+[ext_resource type="Texture2D" uid="uid://bbheqive1mbul" path="res://assets/relics/unspent_thunder/art/icon.png" id="3_kaeyt"]
+[ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_p2o30"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbw6k"]
+atlas = ExtResource("3_kaeyt")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Unspent Thunder"
+script = ExtResource("4_p2o30")
+id = &"unspent_thunder"
+display_name = "Unspent Thunder"
+description = "When stamina remains after activations: gain +2 block per unused stamina (up to 4 counted). Block is added each round."
+lore = "The storm merchant charged extra for silence. Break the seal only when you are certain you have finished speaking."
+rarity = 2
+tags = Array[StringName]([&"relic", &"unused_stamina"])
+category_ids = Array[StringName]([&"relics"])
+preferred_class_ids = null
+preferred_character_ids = null
+icon = SubResource("AtlasTexture_mbw6k")
+base_stats = null
+abilities = Array[ExtResource("1_smksi")]([ExtResource("2_52gg5")])

@@ -75,12 +75,11 @@
       "Its center carries one pale hearth-shaped rune; red clay is shaded with broad earthy planes."
     ],
     "assets": {
-      "icon": "assets/relics/hearth_token/icons/art/icon.png",
-      "svg": "assets/relics/hearth_token/icons/art/icon.svg",
-      "source": "assets/relics/hearth_token/icons/art/icon.sprite.json",
+      "icon": "assets/relics/hearth_token/art/icon.png",
+      "source": "assets/relics/hearth_token/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/hearth_token/icons/art/provenance.json",
-      "manifest": "assets/relics/hearth_token/icons/art/art-manifest.json",
+      "provenance": "assets/relics/hearth_token/art/provenance.json",
+      "manifest": "assets/relics/hearth_token/art/art_manifest.json",
       "variants": []
     },
     "approval": "unreviewed"

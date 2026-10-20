@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dg7nh44vtcqni"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_1ouas"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_7xn6h"]
+
+[sub_resource type="Resource" id="Resource_0vy3v"]
+script = ExtResource("1_1ouas")
+accepted_item_ids = Array[StringName]([&"hedgehog_charm"])
+
+[sub_resource type="Resource" id="Resource_ae6rx"]
+script = ExtResource("1_1ouas")
+accepted_item_ids = Array[StringName]([&"ironroot_boots"])
+
+[sub_resource type="Resource" id="Resource_akcl0"]
+script = ExtResource("1_1ouas")
+accepted_item_ids = Array[StringName]([&"salt_lantern"])
+
+[resource]
+resource_name = "Assemble Gravetread Boots"
+script = ExtResource("2_7xn6h")
+id = &"assemble_gravetread_boots"
+ingredients = Array[ExtResource("1_1ouas")]([SubResource("Resource_0vy3v"), SubResource("Resource_ae6rx"), SubResource("Resource_akcl0")])
+result_item_id = &"gravetread_boots"

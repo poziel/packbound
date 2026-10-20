@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://jvvpo3m0sw58"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_lajwb"]
+[ext_resource type="Resource" path="res://assets/enemies/chalk_toad/innate_ability.tres" id="2_0tybo"]
+[ext_resource type="Resource" path="res://assets/enemies/chalk_toad/behavior.tres" id="3_c213i"]
+[ext_resource type="Texture2D" uid="uid://da3timno5i8lc" path="res://assets/enemies/chalk_toad/art/chalk_toad.png" id="4_10tm7"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_ntkc7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eq0t1"]
+atlas = ExtResource("4_10tm7")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Chalk Toad"
+script = ExtResource("5_ntkc7")
+species_id = &"toad"
+role_id = &"sustain"
+behavior = ExtResource("3_c213i")
+id = &"chalk_toad"
+display_name = "Chalk Toad"
+log_name = "Chalk Toad"
+description = "Water dripping through old limestone has turned this toad almost white. It squats beside mineral pools and swallows loose torch embers."
+icon = SubResource("AtlasTexture_eq0t1")
+resource_capacities = Dictionary[int, int]({
+2: 46
+})
+abilities = Array[ExtResource("1_lajwb")]([ExtResource("2_0tybo")])
+metadata/encounter_floor = 6

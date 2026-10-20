@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "delverId": "assassin",
+  "outputs": {
+	"spriteSource": "assets/characters/assassin/art/full_body.sprite.json",
+	"spritePng": "assets/characters/assassin/art/full_body.png",
+	"spriteSvg": "assets/characters/assassin/art/full_body.png",
+	"portraitSource": "assets/characters/assassin/art/portrait.sprite.json",
+	"portraitPng": "assets/characters/assassin/art/portrait.png",
+	"portraitSvg": "assets/characters/assassin/art/portrait.png",
+	"provenance": "assets/characters/assassin/art/provenance.json"
+  },
+  "checks": {
+	"sourceValidation": true,
+	"dimensions": true,
+	"transparency": true,
+	"registration": false,
+	"exportAgreement": true,
+	"visualReview": false
+  },
+  "reusedOutputs": [
+	"full_body.sprite.json",
+	"full_body.png",
+	"full_body.png",
+	"portrait.sprite.json",
+	"portrait.png",
+    "portrait.png"
+  ],
+  "approvalStatus": "accepted",
+  "notes": [
+	"Path-only migration; artwork and native sources verified against prior-file SHA256. Prior approval retained; technical checks will be updated after verification.",
+    "Both native documents validated with spritex 0.2.0; re-rendered PNG pixels match preserved exports; Godot migrated asset-path check passed. No new visual approval claimed."
+  ]
+}

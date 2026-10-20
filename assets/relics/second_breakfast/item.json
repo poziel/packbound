@@ -86,14 +86,13 @@
       "Two stacked seed cakes tied in a linen scrap"
     ],
     "assets": {
-      "icon": "assets/relics/second_breakfast/icons/art/icon.png",
-      "svg": "assets/relics/second_breakfast/icons/art/icon.svg",
-      "source": "assets/relics/second_breakfast/icons/art/icon.sprite.json",
+      "icon": "assets/relics/second_breakfast/art/icon.png",
+      "source": "assets/relics/second_breakfast/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/second_breakfast/icons/art/provenance.json",
-      "manifest": "assets/relics/second_breakfast/icons/art/art-manifest.json",
+      "provenance": "assets/relics/second_breakfast/art/provenance.json",
+      "manifest": "assets/relics/second_breakfast/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/second_breakfast/icons/art/icon.pixloom"
+      "native": "assets/relics/second_breakfast/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

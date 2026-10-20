@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_h6xk0"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_max2p"]
+[ext_resource type="Resource" path="res://assets/enemies/cinder_oracle/attack_0_effect.tres" id="3_m7k66"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_ctlp3"]
+
+[resource]
+resource_name = "Cinder lance"
+script = ExtResource("4_ctlp3")
+id = &"cinder_oracle_attack_0"
+display_name = "Cinder lance"
+description = "4 damage from each strike bypasses block."
+target_id = &"opponent"
+effects = Array[ExtResource("2_max2p")]([ExtResource("3_m7k66")])

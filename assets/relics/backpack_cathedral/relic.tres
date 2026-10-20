@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RelicDefinition" format=3 uid="uid://dy0mtcc0htugp"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_5st6y"]
+[ext_resource type="Resource" path="res://assets/relics/backpack_cathedral/rule_ability.tres" id="2_mrs7j"]
+[ext_resource type="Texture2D" uid="uid://bji3q04e45suo" path="res://assets/relics/backpack_cathedral/art/icon.png" id="3_bpq6k"]
+[ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_mm8p8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xc0w"]
+atlas = ExtResource("3_bpq6k")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Backpack Cathedral"
+script = ExtResource("4_mm8p8")
+id = &"backpack_cathedral"
+display_name = "Backpack Cathedral"
+description = "With at least eight packed items: gain +12 magical resistance."
+lore = "When the congregation fled, the mason carried the church rather than abandon its last prayer. The straps have never frayed."
+rarity = 2
+tags = Array[StringName]([&"relic", &"many_items"])
+category_ids = Array[StringName]([&"relics"])
+preferred_class_ids = null
+preferred_character_ids = null
+icon = SubResource("AtlasTexture_7xc0w")
+base_stats = null
+abilities = Array[ExtResource("1_5st6y")]([ExtResource("2_mrs7j")])

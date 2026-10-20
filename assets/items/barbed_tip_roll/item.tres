@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://c6emq6fgg0xmt"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_ni38m"]
+[ext_resource type="Resource" path="res://assets/items/barbed_tip_roll/rule_ability.tres" id="2_q78u6"]
+[ext_resource type="Texture2D" uid="uid://dyu5r0jnby161" path="res://assets/items/barbed_tip_roll/art/item.png" id="3_7j0qx"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_kchuj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxqd8"]
+atlas = ExtResource("3_7j0qx")
+region = Rect2(0, 0, 64, 32)
+
+[resource]
+resource_name = "Barbed Tip Roll"
+script = ExtResource("4_kchuj")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+id = &"barbed_tip_roll"
+display_name = "Barbed Tip Roll"
+description = "While orthogonally touching the permanent Bowmaster quiver, adds 2 pierce to Volley; this equipment remains in the backpack and is not consumed."
+lore = "The quartermaster wrapped each edge before touching the next."
+rarity = 1
+tags = Array[StringName]([&"booster", &"ranger"])
+category_ids = Array[StringName]([&"boosters"])
+allowed_class_ids = Array[StringName]([&"ranger"])
+icon = SubResource("AtlasTexture_wxqd8")
+abilities = Array[ExtResource("1_ni38m")]([ExtResource("2_q78u6")])

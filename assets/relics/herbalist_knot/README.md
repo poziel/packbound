@@ -24,4 +24,4 @@ Two broad green leaves tied around a folded brown linen pouch with an ivory cord
 
 A 32 × 32 px relic illustration for the actual relic/reward slot, without a backpack mask. Use deliberate stepped silhouettes and broad material planes. No scattered glitter, colored reflection accents or glow. Semantic layers separate structure, material planes and fittings.
 
-Art: [PNG](icons/art/icon.png), [SVG](icons/art/icon.svg), [numeric layered source](icons/art/icon.sprite.json), [Pixloom project](icons/art/icon.pixloom). Artwork is an integrated review candidate; individual visual acceptance is not claimed.
+Art: [PNG](art/icon.png), [SVG](art/icon.png), [numeric layered source](art/icon.sprite.json), [Pixloom project](art/icon.pixloom). Artwork is an integrated review candidate; individual visual acceptance is not claimed.

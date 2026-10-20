@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://6niwjisk2vtx"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_ibiqb"]
+[ext_resource type="Resource" path="res://assets/items/gilded_scarab/rule_ability.tres" id="2_8cncq"]
+[ext_resource type="Texture2D" uid="uid://8oreipjki3bk" path="res://assets/items/gilded_scarab/art/item.png" id="3_mmqyo"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_y1j6o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5mjc"]
+atlas = ExtResource("3_mmqyo")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Gilded Scarab"
+script = ExtResource("4_y1j6o")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"gilded_scarab"
+display_name = "Gilded Scarab"
+description = "Supplies 2 ward each round against poison, curse and reflected damage. Each orthogonally touching spell gains +2 damage. Each source applies once per target, regardless of shared edges; distinct sources stack."
+lore = "The tomb builders hid the real treasury in its shadow."
+rarity = 2
+tags = Array[StringName]([&"booster"])
+category_ids = Array[StringName]([&"boosters"])
+icon = SubResource("AtlasTexture_k5mjc")
+base_stats = Dictionary[int, int]({
+5: 2
+})
+abilities = Array[ExtResource("1_ibiqb")]([ExtResource("2_8cncq")])

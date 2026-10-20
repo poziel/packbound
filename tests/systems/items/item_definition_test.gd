@@ -33,13 +33,12 @@ func valid_item() -> Resource:
 	var item: Resource = model.new()
 	item.id = &"test_charm"
 	item.display_name = "Test Charm"
-	item.role = &"booster"
 	item.footprint.assign([Vector2i.ZERO])
 	return item
 
 func check_defaults() -> void:
 	var item: Resource = model.new()
-	for field: String in ["id", "display_name", "description", "lore", "role"]:
+	for field: String in ["id", "display_name", "description", "lore"]:
 		check(str(item.get(field)).is_empty(), "New definition starts with empty " + field)
 	check_equal(item.rarity, TYPES.Rarity.COMMON, "Default rarity is common")
 	check_equal(item.damage_type, TYPES.DamageType.PHYSICAL, "Default damage identity is physical")
@@ -52,7 +51,7 @@ func check_defaults() -> void:
 func check_property_contract(item: Resource) -> void:
 	var expected := {
 		"id": TYPE_STRING_NAME, "display_name": TYPE_STRING, "description": TYPE_STRING,
-		"lore": TYPE_STRING, "role": TYPE_STRING_NAME, "rarity": TYPE_INT,
+		"lore": TYPE_STRING, "rarity": TYPE_INT,
 		"tags": TYPE_ARRAY, "allowed_class_ids": TYPE_ARRAY, "allowed_character_ids": TYPE_ARRAY,
 		"footprint": TYPE_ARRAY, "rotatable": TYPE_BOOL, "icon": TYPE_OBJECT,
 		"base_stats": TYPE_DICTIONARY, "activation_costs": TYPE_DICTIONARY,
@@ -89,7 +88,7 @@ func check_property_contract(item: Resource) -> void:
 		check(not properties.has(field), "Definition excludes runtime or deferred field " + field)
 
 func check_validation() -> void:
-	for field: String in ["id", "display_name", "role"]:
+	for field: String in ["id", "display_name"]:
 		for blank: String in ["", " \t\n"]:
 			var item: Resource = valid_item()
 			item.set(field, blank if field == "display_name" else StringName(blank))
@@ -174,7 +173,7 @@ func check_serialization() -> void:
 		return
 	check(restored != item, "Serialization test reloads a distinct object")
 	check_equal(restored.get_script(), model, "Reload retains the ItemDefinition class")
-	for field: String in ["id", "display_name", "description", "lore", "role", "rarity", "tags", "allowed_class_ids", "allowed_character_ids", "footprint", "rotatable", "base_stats", "activation_costs", "damage_type", "element"]:
+	for field: String in ["id", "display_name", "description", "lore", "rarity", "tags", "allowed_class_ids", "allowed_character_ids", "footprint", "rotatable", "base_stats", "activation_costs", "damage_type", "element"]:
 		check_equal(restored.get(field), item.get(field), "Serialization retains " + field)
 	check(restored.icon is GradientTexture2D, "Serialization retains nested Texture2D Resource")
 	check_equal(restored.validation_errors(), PackedStringArray(), "Reloaded definition remains valid")

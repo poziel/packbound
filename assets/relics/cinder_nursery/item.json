@@ -85,14 +85,13 @@
       "A cradle carrying a single sleeping ember"
     ],
     "assets": {
-      "icon": "assets/relics/cinder_nursery/icons/art/icon.png",
-      "svg": "assets/relics/cinder_nursery/icons/art/icon.svg",
-      "source": "assets/relics/cinder_nursery/icons/art/icon.sprite.json",
+      "icon": "assets/relics/cinder_nursery/art/icon.png",
+      "source": "assets/relics/cinder_nursery/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/cinder_nursery/icons/art/provenance.json",
-      "manifest": "assets/relics/cinder_nursery/icons/art/art-manifest.json",
+      "provenance": "assets/relics/cinder_nursery/art/provenance.json",
+      "manifest": "assets/relics/cinder_nursery/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/cinder_nursery/icons/art/icon.pixloom"
+      "native": "assets/relics/cinder_nursery/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

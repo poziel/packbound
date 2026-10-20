@@ -85,14 +85,13 @@
       "A little folded tin cricket with articulated hind legs"
     ],
     "assets": {
-      "icon": "assets/relics/tin_cricket/icons/art/icon.png",
-      "svg": "assets/relics/tin_cricket/icons/art/icon.svg",
-      "source": "assets/relics/tin_cricket/icons/art/icon.sprite.json",
+      "icon": "assets/relics/tin_cricket/art/icon.png",
+      "source": "assets/relics/tin_cricket/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/tin_cricket/icons/art/provenance.json",
-      "manifest": "assets/relics/tin_cricket/icons/art/art-manifest.json",
+      "provenance": "assets/relics/tin_cricket/art/provenance.json",
+      "manifest": "assets/relics/tin_cricket/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/tin_cricket/icons/art/icon.pixloom"
+      "native": "assets/relics/tin_cricket/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

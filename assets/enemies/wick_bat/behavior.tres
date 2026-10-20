@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MonsterBehaviorDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="1_6jd17"]
+[ext_resource type="Resource" path="res://assets/enemies/wick_bat/attack_0.tres" id="2_aalbs"]
+[ext_resource type="Script" path="res://systems/enemies/monster_behavior_definition.gd" id="3_ev5y0"]
+
+[resource]
+resource_name = "Wick Bat Behavior"
+script = ExtResource("3_ev5y0")
+actions = Array[ExtResource("1_6jd17")]([ExtResource("2_aalbs")])

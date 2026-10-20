@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_b60ia"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_5cea8"]
+[ext_resource type="Resource" path="res://assets/items/cobbler_s_boots/rule_effect.tres" id="3_sbb42"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_fcc4e"]
+
+[resource]
+resource_name = "Cobbler's Boots rules"
+script = ExtResource("4_fcc4e")
+id = &"cobbler_s_boots_rules"
+display_name = "Cobbler's Boots rules"
+description = "Adds 1 maximum stamina, refreshed each round."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_5cea8")]([ExtResource("3_sbb42")])

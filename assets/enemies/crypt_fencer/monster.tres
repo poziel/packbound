@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://bfwnxjx4ontje"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_3c3fp"]
+[ext_resource type="Resource" path="res://assets/enemies/crypt_fencer/innate_ability.tres" id="2_nehsg"]
+[ext_resource type="Resource" path="res://assets/enemies/crypt_fencer/behavior.tres" id="3_lqn11"]
+[ext_resource type="Texture2D" uid="uid://cp62lb6lxekph" path="res://assets/enemies/crypt_fencer/art/crypt_fencer.png" id="4_7yjvw"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_3t7y2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1315"]
+atlas = ExtResource("4_7yjvw")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Crypt Fencer"
+script = ExtResource("5_3t7y2")
+species_id = &"humanoid"
+role_id = &"parry"
+behavior = ExtResource("3_lqn11")
+id = &"crypt_fencer"
+display_name = "Crypt Fencer"
+log_name = "Crypt Fencer"
+description = "A ceremonial guard who remembers only the final lesson of her fencing school. She answers every third exchange with a practiced guard."
+icon = SubResource("AtlasTexture_r1315")
+base_stats = Dictionary[int, int]({
+14: 1
+})
+resource_capacities = Dictionary[int, int]({
+2: 83
+})
+abilities = Array[ExtResource("1_3c3fp")]([ExtResource("2_nehsg")])
+metadata/encounter_floor = 13

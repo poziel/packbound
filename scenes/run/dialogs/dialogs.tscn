@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://scenes/run/reward_panel/reward_panel.tscn" id="rewards"]
 [ext_resource type="PackedScene" path="res://components/ui/buttons/icon_button/icon_button.tscn" id="icon_button"]
-[ext_resource type="Texture2D" path="res://assets/ui/icons/minimal-controls/close.png" id="close_icon"]
+[ext_resource type="Texture2D" path="res://assets/icons/controls/common/close.png" id="close_icon"]
 
 [ext_resource type="Theme" path="res://themes/gameplay/theme.tres" id="gameplay_theme"]
 

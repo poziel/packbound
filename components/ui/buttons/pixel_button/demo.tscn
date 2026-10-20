@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://iyhkxheqo6em" path="res://components/ui/buttons/pixel_button/pixel_button.tscn" id="button"]
 [ext_resource type="FontFile" path="res://assets/fonts/ui_pixel.tres" id="font"]
 [ext_resource type="Texture2D" uid="uid://emcl4nmegxfl" path="res://themes/gameplay/controls.svg" id="icons"]
-[ext_resource type="Texture2D" uid="uid://bx3lcku53t3es" path="res://assets/items/relics/shield-relic/shield-relic.png" id="relic"]
+[ext_resource type="Texture2D" uid="uid://bx3lcku53t3es" path="res://assets/items/shield_relic/art/item.png" id="relic"]
 [ext_resource type="Script" uid="uid://xhf4hxjh1tsa" path="res://components/ui/buttons/pixel_button/demo.gd" id="script"]
-[ext_resource type="Texture2D" path="res://assets/items/armor/cracked-shield/cracked-shield-32px.png" id="shield"]
+[ext_resource type="Texture2D" path="res://assets/items/cracked_shield/art/item.png" id="shield"]
 
 [sub_resource type="Theme" id="theme"]
 default_font = ExtResource("font")

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://dtwaswtc3rji1"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_e6lxv"]
+[ext_resource type="Resource" path="res://assets/enemies/bell_sentinel/innate_ability.tres" id="2_0m4ym"]
+[ext_resource type="Resource" path="res://assets/enemies/bell_sentinel/behavior.tres" id="3_fjbaa"]
+[ext_resource type="Texture2D" uid="uid://dkl70ca11ng55" path="res://assets/enemies/bell_sentinel/art/bell_sentinel.png" id="4_4ddfd"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_l6652"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa8lw"]
+atlas = ExtResource("4_4ddfd")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Bell Sentinel"
+script = ExtResource("5_l6652")
+behavior = ExtResource("3_fjbaa")
+id = &"bell_sentinel"
+display_name = "Bell Sentinel"
+log_name = "Bell Sentinel"
+description = "Alternates a harmless charge and a heavy slam."
+icon = SubResource("AtlasTexture_xa8lw")
+resource_capacities = Dictionary[int, int]({
+2: 56
+})
+abilities = Array[ExtResource("1_e6lxv")]([ExtResource("2_0m4ym")])
+
+metadata/progression_index = 6

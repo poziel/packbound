@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CharacterClassDefinition" format=3 uid="uid://dsslqtyval06m"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_d8yo4"]
+[ext_resource type="Resource" path="res://assets/characters/mage/class_ability.tres" id="2_l7na4"]
+[ext_resource type="Texture2D" uid="uid://dbcw8q651xijb" path="res://assets/items/ember_tome/art/item.png" id="3_h40ln"]
+[ext_resource type="Script" uid="uid://bdw4mhhh1jy2c" path="res://systems/characters/character_class_definition.gd" id="4_8e2re"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrm08"]
+atlas = ExtResource("3_h40ln")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+resource_name = "Elementalist"
+script = ExtResource("4_8e2re")
+id = &"mage"
+display_name = "Elementalist"
+description = "Elemental casts leave traces for 2 rounds. Combine traces to trigger Elemental Reactions and chain their effects. No innate stamina."
+icon = SubResource("AtlasTexture_jrm08")
+abilities = Array[ExtResource("1_d8yo4")]([ExtResource("2_l7na4")])
+
+metadata/icon_item_id = "ember_tome"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_38cn4"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_vlgm6"]
+[ext_resource type="Resource" path="res://assets/items/battle_axe/rule_effect.tres" id="3_0orh8"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_rjevu"]
+
+[resource]
+resource_name = "Executioner's Axe rules"
+script = ExtResource("4_rjevu")
+id = &"battle_axe_rules"
+display_name = "Executioner's Axe rules"
+description = "Deals 13 damage. Its open corners can hold other items."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_vlgm6")]([ExtResource("3_0orh8")])

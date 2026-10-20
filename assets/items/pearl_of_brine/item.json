@@ -166,14 +166,11 @@
       "An uneven cream pearl held in an open sea green shell."
     ],
     "assets": {
-      "icon": "assets/items/pearl_of_brine/icons/art/icon.png",
-      "svg": "assets/items/pearl_of_brine/icons/art/icon.svg",
-      "source": "assets/items/pearl_of_brine/icons/art/icon.sprite.json",
-      "footprint": "assets/items/pearl_of_brine/icons/art/footprint.json",
-      "provenance": "assets/items/pearl_of_brine/icons/art/provenance.json",
-      "manifest": "assets/items/pearl_of_brine/icons/art/art-manifest.json",
+      "icon": "assets/items/pearl_of_brine/art/item.png",
+      "source": "assets/items/pearl_of_brine/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/pearl_of_brine/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

@@ -1,0 +1,22 @@
+{
+  "key": "last_thread",
+  "name": "Last Thread",
+  "kind": "run_relic",
+  "occupies_backpack_cells": false,
+  "footprint": null,
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
+  "exports": [
+    "art/revisions/catalog_v1/last_thread_32px.png",
+    "art/revisions/catalog_v1/last_thread_32px.png"
+  ],
+  "editableSources": [
+    "art/revisions/catalog_v1/last_thread_32px.pxo",
+    "art/revisions/catalog_v1/last_thread_32px.png"
+  ],
+  "runtime": {
+    "texture": "res://assets/relics/last_thread/art/revisions/catalog_v1/last_thread_32px.png",
+    "viewPolicy": "Reuse the accepted native 32px sprite with nearest filtering at all display sizes."
+  },
+  "activeRevision": "catalog-v1",
+  "revisionProvenance": "res://docs/art/concepts/last-thread-relic-v1/provenance.json"
+}

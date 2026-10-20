@@ -29,18 +29,18 @@
     }
   },
   "currentAssets": {
-    "full-body.sprite.json": {
-      "path": "assets/characters/mage/art/full-body.sprite.json",
+    "full_body.sprite.json": {
+      "path": "assets/characters/mage/art/full_body.sprite.json",
       "sha256": "5f6f5dba8621e164df98bf99f9364b8bfa27888d02ad97f042800fb1f6788114",
       "originalPath": "assets/characters/mage/art/v3/body.json"
     },
-    "full-body.png": {
-      "path": "assets/characters/mage/art/full-body.png",
+    "full_body.png": {
+      "path": "assets/characters/mage/art/full_body.png",
       "sha256": "8ded79bdf194f8fe5ad277f7895a15f5b8ac14162c60195fe3b20aa5b622b12c",
       "originalPath": "assets/characters/mage.png"
     },
-    "full-body.svg": {
-      "path": "assets/characters/mage/art/full-body.svg",
+    "full_body.png": {
+      "path": "assets/characters/mage/art/full_body.png",
       "sha256": "1e4c110ff780a714ad77b428643760605cfc4c2893ad08b1dcf9c8a39366bdc2",
       "originalPath": "assets/characters/mage.svg"
     },
@@ -54,8 +54,8 @@
       "sha256": "9f9e5474d0be99b9194b1f29926293e8522402102f2fe560ff03d45a8a28af15",
       "originalPath": "assets/characters/portraits/mage.png"
     },
-    "portrait.svg": {
-      "path": "assets/characters/mage/art/portrait.svg",
+    "portrait.png": {
+      "path": "assets/characters/mage/art/portrait.png",
       "sha256": "a92ed0be0aa7f9a8580bc65e5de47fdf91de53bb7c8374bf4fd2e16e913786ed",
       "originalPath": "assets/characters/mage/art/v3/portrait.svg"
     }

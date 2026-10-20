@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://fpw8qrn4c3xi"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_jp0oy"]
+[ext_resource type="Resource" path="res://assets/items/raincatch_bowl/rule_ability.tres" id="2_v7edy"]
+[ext_resource type="Texture2D" uid="uid://r7xywg8i03vo" path="res://assets/items/raincatch_bowl/art/item.png" id="3_gciqn"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_v8wh2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6mkw"]
+atlas = ExtResource("3_gciqn")
+region = Rect2(0, 0, 64, 32)
+
+[resource]
+resource_name = "Raincatch Bowl"
+script = ExtResource("4_v8wh2")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+id = &"raincatch_bowl"
+display_name = "Raincatch Bowl"
+description = "Adds 2 maximum mana, refreshed each round."
+lore = "Even indoors, it gathers a little clear water by dawn."
+rarity = 1
+tags = Array[StringName]([&"focus"])
+category_ids = Array[StringName]([&"focuses"])
+icon = SubResource("AtlasTexture_e6mkw")
+base_stats = Dictionary[int, int]({
+8: 2
+})
+abilities = Array[ExtResource("1_jp0oy")]([ExtResource("2_v7edy")])

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_5p0yq"]
+
+[resource]
+resource_name = "Marrow Heron Attack 0 Effect"
+script = ExtResource("1_5p0yq")
+rule_id = &"enemy_response"
+parameters = {
+"damage": 9,
+"damage_type": "physical",
+"hits": 1
+}

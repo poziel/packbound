@@ -146,14 +146,11 @@
       "A black cratered stone hammer in a steel cage."
     ],
     "assets": {
-      "icon": "assets/items/meteor_maul/icons/art/icon.png",
-      "svg": "assets/items/meteor_maul/icons/art/icon.svg",
-      "source": "assets/items/meteor_maul/icons/art/icon.sprite.json",
-      "footprint": "assets/items/meteor_maul/icons/art/footprint.json",
-      "provenance": "assets/items/meteor_maul/icons/art/provenance.json",
-      "manifest": "assets/items/meteor_maul/icons/art/art-manifest.json",
+      "icon": "assets/items/meteor_maul/art/item.png",
+      "source": "assets/items/meteor_maul/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/meteor_maul/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

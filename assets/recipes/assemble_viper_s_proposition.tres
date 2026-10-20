@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://d4dp8ofnvkls7"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_8tc8b"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_2fuh2"]
+
+[sub_resource type="Resource" id="Resource_263bf"]
+script = ExtResource("1_8tc8b")
+accepted_item_ids = Array[StringName]([&"antidote"])
+
+[sub_resource type="Resource" id="Resource_keik0"]
+script = ExtResource("1_8tc8b")
+accepted_item_ids = Array[StringName]([&"foxglove_formula"])
+
+[sub_resource type="Resource" id="Resource_dt3cy"]
+script = ExtResource("1_8tc8b")
+accepted_item_ids = Array[StringName]([&"thorn_whetstone"])
+
+[resource]
+resource_name = "Assemble Viper S Proposition"
+script = ExtResource("2_2fuh2")
+id = &"assemble_viper_s_proposition"
+ingredients = Array[ExtResource("1_8tc8b")]([SubResource("Resource_263bf"), SubResource("Resource_keik0"), SubResource("Resource_dt3cy")])
+result_item_id = &"viper_s_proposition"

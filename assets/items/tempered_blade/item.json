@@ -119,12 +119,9 @@
       "A fuller separates the broad blade planes."
 	],
 	"assets": {
-	  "icon": "assets/items/tempered_blade/icons/art/icon.png",
-	  "svg": "assets/items/tempered_blade/icons/art/icon.svg",
-	  "source": "assets/items/tempered_blade/icons/art/icon.sprite.json",
-	  "footprint": "assets/items/tempered_blade/icons/art/footprint.json",
-	  "provenance": "assets/items/tempered_blade/icons/art/provenance.json",
-	  "manifest": "assets/items/tempered_blade/icons/art/art-manifest.json",
+	  "icon": "assets/items/tempered_blade/art/item.png",
+	  "source": "assets/items/tempered_blade/art/item.pixloom.json",
+	  "footprint": null,
 	  "variants": []
 	},
 	"approval": "unreviewed"

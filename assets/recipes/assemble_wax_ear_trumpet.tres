@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dqiuscg3cgwl7"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_o8ixg"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_jvmk6"]
+
+[sub_resource type="Resource" id="Resource_8jwv0"]
+script = ExtResource("1_o8ixg")
+accepted_item_ids = Array[StringName]([&"chalk_poultice"])
+
+[sub_resource type="Resource" id="Resource_krbvi"]
+script = ExtResource("1_o8ixg")
+accepted_item_ids = Array[StringName]([&"salt_lantern"])
+
+[resource]
+resource_name = "Assemble Wax Ear Trumpet"
+script = ExtResource("2_jvmk6")
+id = &"assemble_wax_ear_trumpet"
+ingredients = Array[ExtResource("1_o8ixg")]([SubResource("Resource_8jwv0"), SubResource("Resource_krbvi")])
+result_item_id = &"wax_ear_trumpet"

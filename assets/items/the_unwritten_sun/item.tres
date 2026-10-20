@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bi5esurwt8iw2"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_dfkod"]
+[ext_resource type="Resource" path="res://assets/items/the_unwritten_sun/rule_ability.tres" id="2_3t6t0"]
+[ext_resource type="Texture2D" uid="uid://dptpsnrjl3pwe" path="res://assets/items/the_unwritten_sun/art/item.png" id="3_f5o5k"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_8jkre"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ursa"]
+atlas = ExtResource("3_f5o5k")
+region = Rect2(0, 0, 96, 64)
+
+[resource]
+resource_name = "The Unwritten Sun"
+script = ExtResource("4_8jkre")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1)])
+activation_costs = Dictionary[int, int]({
+0: 6
+})
+damage_type = 1
+element = 1
+id = &"the_unwritten_sun"
+display_name = "The Unwritten Sun"
+description = "Costs 6 mana per activation. Deals 25 magical damage per affordable activation. Applies 8 burn through the existing combat keyword rules per affordable activation."
+lore = "Its last page waits for a sunrise the world has not yet seen."
+rarity = 4
+tags = Array[StringName]([&"spell", &"mage", &"fire"])
+category_ids = Array[StringName]([&"magic_artifacts"])
+allowed_class_ids = Array[StringName]([&"mage"])
+icon = SubResource("AtlasTexture_5ursa")
+base_stats = Dictionary[int, int]({
+0: 25,
+7: 8
+})
+abilities = Array[ExtResource("1_dfkod")]([ExtResource("2_3t6t0")])

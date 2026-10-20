@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cor68hqsgfeek"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_mqk8q"]
+[ext_resource type="Resource" path="res://assets/items/dawnbringer/rule_ability.tres" id="2_gdk3g"]
+[ext_resource type="Texture2D" uid="uid://divd83wehul5q" path="res://assets/items/dawnbringer/art/item.png" id="3_h1a48"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_37e7b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrhk7"]
+atlas = ExtResource("3_h1a48")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Dawnbringer"
+script = ExtResource("4_37e7b")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+activation_costs = Dictionary[int, int]({
+1: 3
+})
+id = &"dawnbringer"
+display_name = "Dawnbringer"
+description = "Costs 3 stamina: 20 physical damage. Bypasses 5 block."
+lore = "The old watch carried this blade toward the first light."
+rarity = 4
+tags = Array[StringName]([&"weapon", &"legendary"])
+category_ids = Array[StringName]([&"swords"])
+icon = SubResource("AtlasTexture_xrhk7")
+base_stats = Dictionary[int, int]({
+0: 20,
+14: 5
+})
+abilities = Array[ExtResource("1_mqk8q")]([ExtResource("2_gdk3g")])

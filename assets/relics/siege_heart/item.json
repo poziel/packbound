@@ -85,14 +85,13 @@
       "A stone heart held in a bronze siege frame"
     ],
     "assets": {
-      "icon": "assets/relics/siege_heart/icons/art/icon.png",
-      "svg": "assets/relics/siege_heart/icons/art/icon.svg",
-      "source": "assets/relics/siege_heart/icons/art/icon.sprite.json",
+      "icon": "assets/relics/siege_heart/art/icon.png",
+      "source": "assets/relics/siege_heart/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/siege_heart/icons/art/provenance.json",
-      "manifest": "assets/relics/siege_heart/icons/art/art-manifest.json",
+      "provenance": "assets/relics/siege_heart/art/provenance.json",
+      "manifest": "assets/relics/siege_heart/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/siege_heart/icons/art/icon.pixloom"
+      "native": "assets/relics/siege_heart/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

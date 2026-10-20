@@ -85,14 +85,13 @@
       "A small brass engine with a horizon shaped aperture"
     ],
     "assets": {
-      "icon": "assets/relics/horizon_engine/icons/art/icon.png",
-      "svg": "assets/relics/horizon_engine/icons/art/icon.svg",
-      "source": "assets/relics/horizon_engine/icons/art/icon.sprite.json",
+      "icon": "assets/relics/horizon_engine/art/icon.png",
+      "source": "assets/relics/horizon_engine/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/horizon_engine/icons/art/provenance.json",
-      "manifest": "assets/relics/horizon_engine/icons/art/art-manifest.json",
+      "provenance": "assets/relics/horizon_engine/art/provenance.json",
+      "manifest": "assets/relics/horizon_engine/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/horizon_engine/icons/art/icon.pixloom"
+      "native": "assets/relics/horizon_engine/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

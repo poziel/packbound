@@ -85,14 +85,13 @@
       "A rolled green vellum thesis sealed with a fang"
     ],
     "assets": {
-      "icon": "assets/relics/venom_thesis/icons/art/icon.png",
-      "svg": "assets/relics/venom_thesis/icons/art/icon.svg",
-      "source": "assets/relics/venom_thesis/icons/art/icon.sprite.json",
+      "icon": "assets/relics/venom_thesis/art/icon.png",
+      "source": "assets/relics/venom_thesis/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/venom_thesis/icons/art/provenance.json",
-      "manifest": "assets/relics/venom_thesis/icons/art/art-manifest.json",
+      "provenance": "assets/relics/venom_thesis/art/provenance.json",
+      "manifest": "assets/relics/venom_thesis/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/venom_thesis/icons/art/icon.pixloom"
+      "native": "assets/relics/venom_thesis/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

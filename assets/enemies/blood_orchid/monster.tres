@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://m6xa4jbjwfic"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_nk61o"]
+[ext_resource type="Resource" path="res://assets/enemies/blood_orchid/innate_ability.tres" id="2_pwv8c"]
+[ext_resource type="Resource" path="res://assets/enemies/blood_orchid/behavior.tres" id="3_xxjjf"]
+[ext_resource type="Texture2D" uid="uid://cgxvkq64a6ptv" path="res://assets/enemies/blood_orchid/art/blood_orchid.png" id="4_1pna1"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_tm656"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltt1r"]
+atlas = ExtResource("4_1pna1")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Blood Orchid"
+script = ExtResource("5_tm656")
+species_id = &"plant"
+role_id = &"drainer"
+behavior = ExtResource("3_xxjjf")
+id = &"blood_orchid"
+display_name = "Blood Orchid"
+log_name = "Blood Orchid"
+description = "A carnivorous bloom cultivated in the old infirmary. It turns toward a wounded traveler with the patient attention of a nurse."
+icon = SubResource("AtlasTexture_ltt1r")
+resource_capacities = Dictionary[int, int]({
+2: 116
+})
+abilities = Array[ExtResource("1_nk61o")]([ExtResource("2_pwv8c")])
+metadata/encounter_floor = 18

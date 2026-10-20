@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://cgmgwqrfs5wbo"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_hifbe"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_tv70a"]
+
+[sub_resource type="Resource" id="Resource_yr3py"]
+script = ExtResource("1_hifbe")
+accepted_item_ids = Array[StringName]([&"hornback_bow"])
+
+[sub_resource type="Resource" id="Resource_3s70q"]
+script = ExtResource("1_hifbe")
+accepted_item_ids = Array[StringName]([&"waxed_fletching"])
+
+[resource]
+resource_name = "Assemble Glass Reed Bow"
+script = ExtResource("2_tv70a")
+id = &"assemble_glass_reed_bow"
+ingredients = Array[ExtResource("1_hifbe")]([SubResource("Resource_yr3py"), SubResource("Resource_3s70q")])
+result_item_id = &"glass_reed_bow"

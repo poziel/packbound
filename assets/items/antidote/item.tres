@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://d1lkxfhrwgasp"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_sktrs"]
+[ext_resource type="Resource" path="res://assets/items/antidote/rule_ability.tres" id="2_xk1nd"]
+[ext_resource type="Texture2D" uid="uid://b3pvobfo1dsx7" path="res://assets/items/antidote/art/item.png" id="3_bkif7"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_mo0m0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtyuq"]
+atlas = ExtResource("3_bkif7")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Antidote Flask"
+script = ExtResource("4_mo0m0")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"antidote"
+display_name = "Antidote Flask"
+description = "Removes 3 poison before it ticks and restores 1 HP each turn."
+category_ids = Array[StringName]([&"healing_supplies"])
+icon = SubResource("AtlasTexture_wtyuq")
+base_stats = Dictionary[int, int]({
+2: 1,
+12: 3
+})
+abilities = Array[ExtResource("1_sktrs")]([ExtResource("2_xk1nd")])

@@ -10,7 +10,7 @@
 
 [ext_resource type="PackedScene" path="res://components/ui/buttons/icon_button/icon_button.tscn" id="button"]
 
-[ext_resource type="Texture2D" path="res://assets/ui/icons/stash-reload/stash-reload.png" id="reload_icon"]
+[ext_resource type="Texture2D" path="res://assets/icons/inventory/stash_reload/stash-reload.png" id="reload_icon"]
 
 [ext_resource type="Script" path="res://scenes/run/inventory/storage_inventory/stash_drag_overlay.gd" id="drag_overlay"]
 

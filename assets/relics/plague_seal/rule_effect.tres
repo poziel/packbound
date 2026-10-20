@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_1cdnw"]
+
+[resource]
+resource_name = "Plague Seal Rule Effect"
+script = ExtResource("1_1cdnw")
+rule_id = &"plague_seal_rules"
+parameters = {
+"icon": "plague_seal",
+"keyword_stats": []
+}

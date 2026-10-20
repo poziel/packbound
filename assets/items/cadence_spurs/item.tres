@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://d1ejt6oxva4vn"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_2jl7i"]
+[ext_resource type="Resource" path="res://assets/items/cadence_spurs/rule_ability.tres" id="2_0q03x"]
+[ext_resource type="Texture2D" uid="uid://b5pnwapk3bcjg" path="res://assets/items/cadence_spurs/art/item.png" id="3_y05og"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_p3afo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy7fq"]
+atlas = ExtResource("3_y05og")
+region = Rect2(0, 0, 64, 32)
+
+[resource]
+resource_name = "Cadence Spurs"
+script = ExtResource("4_p3afo")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+id = &"cadence_spurs"
+display_name = "Cadence Spurs"
+description = "Adds 2 maximum stamina, refreshed each round."
+lore = "They ring together even when their wearer stands still."
+rarity = 2
+tags = Array[StringName]([&"boots", &"warrior"])
+category_ids = Array[StringName]([&"boots"])
+allowed_class_ids = Array[StringName]([&"warrior"])
+icon = SubResource("AtlasTexture_yy7fq")
+base_stats = Dictionary[int, int]({
+9: 2
+})
+abilities = Array[ExtResource("1_2jl7i")]([ExtResource("2_0q03x")])

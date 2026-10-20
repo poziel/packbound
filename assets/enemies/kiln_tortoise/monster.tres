@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://cjjtrshjydqfn"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_si5fx"]
+[ext_resource type="Resource" path="res://assets/enemies/kiln_tortoise/innate_ability.tres" id="2_ayjhc"]
+[ext_resource type="Resource" path="res://assets/enemies/kiln_tortoise/behavior.tres" id="3_v2pmg"]
+[ext_resource type="Texture2D" uid="uid://boxgarix5hmds" path="res://assets/enemies/kiln_tortoise/art/kiln_tortoise.png" id="4_wnmg6"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_r8s0h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcux1"]
+atlas = ExtResource("4_wnmg6")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Kiln Tortoise"
+script = ExtResource("5_r8s0h")
+species_id = &"tortoise"
+role_id = &"cycle guard"
+behavior = ExtResource("3_v2pmg")
+id = &"kiln_tortoise"
+display_name = "Kiln Tortoise"
+log_name = "Kiln Tortoise"
+description = "A furnace beast used to carry hot bricks through narrow tunnels. It withdraws under a kiln-tile shell, then surges forward with its beak."
+icon = SubResource("AtlasTexture_tcux1")
+resource_capacities = Dictionary[int, int]({
+2: 109
+})
+abilities = Array[ExtResource("1_si5fx")]([ExtResource("2_ayjhc")])
+metadata/encounter_floor = 17

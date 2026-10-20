@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dsos17167xvl1"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_0drj1"]
+[ext_resource type="Resource" path="res://assets/items/cracked_shield/rule_ability.tres" id="2_6w8tr"]
+[ext_resource type="Texture2D" uid="uid://7v1yc8xki5us" path="res://assets/items/cracked_shield/art/item.png" id="3_txfdx"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_x28de"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_203bt"]
+atlas = ExtResource("3_txfdx")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Cracked Shield"
+script = ExtResource("4_x28de")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"cracked_shield"
+display_name = "Cracked Shield"
+description = "Starts each fight with 5 block. Spent block does not regenerate."
+category_ids = Array[StringName]([&"shields"])
+icon = SubResource("AtlasTexture_203bt")
+base_stats = Dictionary[int, int]({
+1: 5
+})
+abilities = Array[ExtResource("1_0drj1")]([ExtResource("2_6w8tr")])

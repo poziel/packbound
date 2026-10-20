@@ -136,14 +136,11 @@
       "A small ivory bird with a hollow rib cage and black beak."
     ],
     "assets": {
-      "icon": "assets/items/marrow_sparrow/icons/art/icon.png",
-      "svg": "assets/items/marrow_sparrow/icons/art/icon.svg",
-      "source": "assets/items/marrow_sparrow/icons/art/icon.sprite.json",
-      "footprint": "assets/items/marrow_sparrow/icons/art/footprint.json",
-      "provenance": "assets/items/marrow_sparrow/icons/art/provenance.json",
-      "manifest": "assets/items/marrow_sparrow/icons/art/art-manifest.json",
+      "icon": "assets/items/marrow_sparrow/art/item.png",
+      "source": "assets/items/marrow_sparrow/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/marrow_sparrow/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

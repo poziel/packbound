@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bhgvrcgyl8avp"]
 
-[ext_resource type="AudioStream" path="res://assets/audio/transitions/loading_screen_cover.wav" id="appear_audio"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/transitions/loading_screen_cover.wav" id="appear_audio"]
 [ext_resource type="Script" uid="uid://p5pjg3fcpm3q" path="res://scenes/shared/loading_screen/loading_screen.gd" id="controller"]
-[ext_resource type="AudioStream" path="res://assets/audio/transitions/loading_screen_reveal.wav" id="disappear_audio"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/transitions/loading_screen_reveal.wav" id="disappear_audio"]
 [ext_resource type="Shader" uid="uid://gsbxpb4wmbtt" path="res://assets/shaders/loading_screen.gdshader" id="shader"]
 
 [sub_resource type="ShaderMaterial" id="material"]

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://ckwe4uwj5h1ms"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_fl58a"]
+[ext_resource type="Resource" path="res://assets/enemies/ossuary_hound/innate_ability.tres" id="2_5uy7l"]
+[ext_resource type="Resource" path="res://assets/enemies/ossuary_hound/behavior.tres" id="3_cvn3x"]
+[ext_resource type="Texture2D" uid="uid://dm0y4stj6gxyq" path="res://assets/enemies/ossuary_hound/art/ossuary_hound.png" id="4_rt62l"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_uxm32"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqkf5"]
+atlas = ExtResource("4_rt62l")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Ossuary Hound"
+script = ExtResource("5_uxm32")
+species_id = &"hound"
+role_id = &"charger"
+behavior = ExtResource("3_cvn3x")
+id = &"ossuary_hound"
+display_name = "Ossuary Hound"
+log_name = "Ossuary Hound"
+description = "A graveyard watchdog assembled from several loyal animals. It lowers its skull in a silent warning before lunging across the corridor."
+icon = SubResource("AtlasTexture_mqkf5")
+resource_capacities = Dictionary[int, int]({
+2: 54
+})
+abilities = Array[ExtResource("1_fl58a")]([ExtResource("2_5uy7l")])
+metadata/encounter_floor = 7

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://bps1olgx8codp"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_1io4x"]
+[ext_resource type="Resource" path="res://assets/enemies/shroud_moth/innate_ability.tres" id="2_i1qgs"]
+[ext_resource type="Resource" path="res://assets/enemies/shroud_moth/behavior.tres" id="3_pb6lr"]
+[ext_resource type="Texture2D" uid="uid://csfkih3yyenh6" path="res://assets/enemies/shroud_moth/art/shroud_moth.png" id="4_xrlsd"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_eu1rg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djkcu"]
+atlas = ExtResource("4_xrlsd")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Shroud Moth"
+script = ExtResource("5_eu1rg")
+species_id = &"moth"
+role_id = &"reflector"
+behavior = ExtResource("3_pb6lr")
+id = &"shroud_moth"
+display_name = "Shroud Moth"
+log_name = "Shroud Moth"
+description = "A funerary moth that mistakes breathing travelers for warm burial lamps. The markings on its wings return a little of every direct blow."
+icon = SubResource("AtlasTexture_djkcu")
+resource_capacities = Dictionary[int, int]({
+2: 33
+})
+abilities = Array[ExtResource("1_1io4x")]([ExtResource("2_i1qgs")])
+metadata/encounter_floor = 4

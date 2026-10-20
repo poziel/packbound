@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_sy4yh"]
+
+[resource]
+resource_name = "Lantern Moth Rule Effect"
+script = ExtResource("1_sy4yh")
+rule_id = &"lantern_moth_rules"
+parameters = {
+"icon": "lantern_moth",
+"rule": {
+"amount": 2,
+"cap": 1,
+"condition": "has_magic",
+"metric": "one",
+"stat": "cleanse"
+},
+"stats": {}
+}

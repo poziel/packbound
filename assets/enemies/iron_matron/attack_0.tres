@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_fhxyg"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_dwxdi"]
+[ext_resource type="Resource" path="res://assets/enemies/iron_matron/attack_0_effect.tres" id="3_aolco"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_x7cti"]
+
+[resource]
+resource_name = "Twin hammers"
+script = ExtResource("4_x7cti")
+id = &"iron_matron_attack_0"
+display_name = "Twin hammers"
+description = "Starts with 3 block and strikes twice each turn."
+target_id = &"opponent"
+effects = Array[ExtResource("2_dwxdi")]([ExtResource("3_aolco")])

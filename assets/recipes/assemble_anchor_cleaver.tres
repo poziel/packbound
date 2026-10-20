@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://b0echpi554rks"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_jnhm1"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_x5scd"]
+
+[sub_resource type="Resource" id="Resource_a2vs1"]
+script = ExtResource("1_jnhm1")
+accepted_item_ids = Array[StringName]([&"hooked_falchion"])
+
+[sub_resource type="Resource" id="Resource_htqvn"]
+script = ExtResource("1_jnhm1")
+accepted_item_ids = Array[StringName]([&"iron_charm"])
+
+[resource]
+resource_name = "Assemble Anchor Cleaver"
+script = ExtResource("2_x5scd")
+id = &"assemble_anchor_cleaver"
+ingredients = Array[ExtResource("1_jnhm1")]([SubResource("Resource_a2vs1"), SubResource("Resource_htqvn")])
+result_item_id = &"anchor_cleaver"

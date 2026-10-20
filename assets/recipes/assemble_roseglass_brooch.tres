@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://b87kega7g3mg3"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_3fecd"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_vtodj"]
+
+[sub_resource type="Resource" id="Resource_ohofa"]
+script = ExtResource("1_3fecd")
+accepted_item_ids = Array[StringName]([&"acorn_pendant"])
+
+[sub_resource type="Resource" id="Resource_tmtag"]
+script = ExtResource("1_3fecd")
+accepted_item_ids = Array[StringName]([&"bandage"])
+
+[resource]
+resource_name = "Assemble Roseglass Brooch"
+script = ExtResource("2_vtodj")
+id = &"assemble_roseglass_brooch"
+ingredients = Array[ExtResource("1_3fecd")]([SubResource("Resource_ohofa"), SubResource("Resource_tmtag")])
+result_item_id = &"roseglass_brooch"

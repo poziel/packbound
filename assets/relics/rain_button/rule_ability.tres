@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_7h26y"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_8c04v"]
+[ext_resource type="Resource" path="res://assets/relics/rain_button/rule_effect.tres" id="3_nplr1"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_knk6j"]
+
+[resource]
+resource_name = "Rain Button rules"
+script = ExtResource("4_knk6j")
+id = &"rain_button_rules"
+display_name = "Rain Button rules"
+description = "With at least one packed spell: gain +1 ward per spell count (up to 3 counted)."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_8c04v")]([ExtResource("3_nplr1")])

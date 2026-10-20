@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_6dbrt"]
+
+[resource]
+resource_name = "Bowmaster's Quiver Rule Effect"
+script = ExtResource("1_6dbrt")
+rule_id = &"magnificent_quiver_rules"
+parameters = {
+"arrow_type": "",
+"block_per_round": 0,
+"mana_per_round": 0,
+"priority": 0,
+"stamina_per_round": 0,
+"tooltip_detail": "Touching bows gain +2 damage",
+"upgrades": {}
+}

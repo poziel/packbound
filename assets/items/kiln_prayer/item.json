@@ -141,14 +141,11 @@
       "A clay tablet with a red furnace mouth carved into its face."
     ],
     "assets": {
-      "icon": "assets/items/kiln_prayer/icons/art/icon.png",
-      "svg": "assets/items/kiln_prayer/icons/art/icon.svg",
-      "source": "assets/items/kiln_prayer/icons/art/icon.sprite.json",
-      "footprint": "assets/items/kiln_prayer/icons/art/footprint.json",
-      "provenance": "assets/items/kiln_prayer/icons/art/provenance.json",
-      "manifest": "assets/items/kiln_prayer/icons/art/art-manifest.json",
+      "icon": "assets/items/kiln_prayer/art/item.png",
+      "source": "assets/items/kiln_prayer/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/kiln_prayer/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

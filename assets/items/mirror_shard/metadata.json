@@ -1,0 +1,24 @@
+{
+  "key": "mirror_shard",
+  "name": "Mirror Shard",
+  "category": "utility",
+  "gameplayRole": "utility",
+  "inventoryMask": [
+	"##",
+    ".#"
+  ],
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
+  "exports": [
+	"art/item.png",
+    "art/item.png"
+  ],
+  "editableSources": [
+    "art/item.png"
+  ],
+  "runtime": {
+	"texture": "res://assets/items/mirror_shard/art/item.png",
+	"viewPolicy": "Reuse approved footprint-derived native sprite across display sizes with nearest filtering."
+  },
+  "activeRevision": "catalog-v2",
+  "revisionProvenance": "res://docs/art/concepts/mirror-shard-catalog-v2/provenance.json"
+}

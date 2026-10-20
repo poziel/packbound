@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_lykgq"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_viper"]
+[ext_resource type="Resource" path="res://assets/enemies/mire_viper/attack_0_effect.tres" id="3_2qjcc"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_s7ofc"]
+
+[resource]
+resource_name = "Toxic bite"
+script = ExtResource("4_s7ofc")
+id = &"mire_viper_attack_0"
+display_name = "Toxic bite"
+description = "Adds 2 poison when an attack hurts you."
+target_id = &"opponent"
+effects = Array[ExtResource("2_viper")]([ExtResource("3_2qjcc")])

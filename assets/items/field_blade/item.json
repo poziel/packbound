@@ -90,12 +90,9 @@
       "Broad neutral steel planes; no colored reflections."
     ],
     "assets": {
-      "icon": "assets/items/field_blade/icons/art/icon.png",
-      "svg": "assets/items/field_blade/icons/art/icon.svg",
-      "source": "assets/items/field_blade/icons/art/icon.sprite.json",
-      "footprint": "assets/items/field_blade/icons/art/footprint.json",
-      "provenance": "assets/items/field_blade/icons/art/provenance.json",
-      "manifest": "assets/items/field_blade/icons/art/art-manifest.json",
+      "icon": "assets/items/field_blade/art/item.png",
+      "source": "assets/items/field_blade/art/item.pixloom.json",
+      "footprint": null,
       "variants": []
     },
     "approval": "unreviewed"

@@ -114,7 +114,7 @@ func bind_relic(state: PackRun) -> void:
 func value(item: Dictionary, state: PackRun) -> float:
 	var score: float = float(item["damage"]) + float(item["block"]) * 1.2 + float(item["healing"]) * 2.5 + float(item["vampirism"]) * 2.5 + float(item["poison"]) * 3 + float(item["burn"]) * 3 + float(item["plating"]) * 3 + float(item["slow"]) * 3 + float(item["thorns"]) * 2 + float(item["ward"]) + float(item["cleanse"])
 	score += float(item["mana"]) * (3.0 if state.class_key == "mage" or state.relics.has("mana_furnace") else 0.5)
-	if item["role"] == "booster":
+	if preload("res://systems/content/collectible_categories.gd").matches(item, &"boosters"):
 		score += 7
 	return maxf(1.0, score) / float(item["mask"].size())
 

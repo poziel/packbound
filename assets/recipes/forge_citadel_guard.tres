@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://bo80sut4vbife"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_5vi35"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_bslwe"]
+
+[sub_resource type="Resource" id="Resource_vafic"]
+script = ExtResource("1_5vi35")
+accepted_item_ids = Array[StringName]([&"sentinel_guard"])
+
+[sub_resource type="Resource" id="Resource_ujmjb"]
+script = ExtResource("1_5vi35")
+accepted_item_ids = Array[StringName]([&"sentinel_guard"])
+
+[resource]
+resource_name = "Forge Citadel Guard"
+script = ExtResource("2_bslwe")
+id = &"forge_citadel_guard"
+ingredients = Array[ExtResource("1_5vi35")]([SubResource("Resource_vafic"), SubResource("Resource_ujmjb")])
+result_item_id = &"citadel_guard"

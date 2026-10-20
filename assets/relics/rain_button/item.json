@@ -85,14 +85,13 @@
       "A mother of pearl coat button shaped like a rain cloud"
     ],
     "assets": {
-      "icon": "assets/relics/rain_button/icons/art/icon.png",
-      "svg": "assets/relics/rain_button/icons/art/icon.svg",
-      "source": "assets/relics/rain_button/icons/art/icon.sprite.json",
+      "icon": "assets/relics/rain_button/art/icon.png",
+      "source": "assets/relics/rain_button/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/rain_button/icons/art/provenance.json",
-      "manifest": "assets/relics/rain_button/icons/art/art-manifest.json",
+      "provenance": "assets/relics/rain_button/art/provenance.json",
+      "manifest": "assets/relics/rain_button/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/rain_button/icons/art/icon.pixloom"
+      "native": "assets/relics/rain_button/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

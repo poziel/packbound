@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_388e2"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_in7ye"]
+[ext_resource type="Resource" path="res://assets/items/salt_lantern/rule_effect.tres" id="3_rq8ct"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_3n5s1"]
+
+[resource]
+resource_name = "Salt Lantern rules"
+script = ExtResource("4_3n5s1")
+id = &"salt_lantern_rules"
+display_name = "Salt Lantern rules"
+description = "Supplies 2 ward each round against poison, curse and reflected damage."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_in7ye")]([ExtResource("3_rq8ct")])

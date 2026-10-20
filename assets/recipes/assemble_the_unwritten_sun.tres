@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://bf642ui4otqwf"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_1abp5"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_qfs5o"]
+
+[sub_resource type="Resource" id="Resource_iquq4"]
+script = ExtResource("1_1abp5")
+accepted_item_ids = Array[StringName]([&"black_rain_theorem"])
+
+[sub_resource type="Resource" id="Resource_bi0gq"]
+script = ExtResource("1_1abp5")
+accepted_item_ids = Array[StringName]([&"moonwell_pebble"])
+
+[sub_resource type="Resource" id="Resource_ohmaw"]
+script = ExtResource("1_1abp5")
+accepted_item_ids = Array[StringName]([&"orchid_eclipse"])
+
+[sub_resource type="Resource" id="Resource_85tl8"]
+script = ExtResource("1_1abp5")
+accepted_item_ids = Array[StringName]([&"solar_crucible"])
+
+[sub_resource type="Resource" id="Resource_r04n0"]
+script = ExtResource("1_1abp5")
+accepted_item_ids = Array[StringName]([&"winter_orrery"])
+
+[resource]
+resource_name = "Assemble The Unwritten Sun"
+script = ExtResource("2_qfs5o")
+id = &"assemble_the_unwritten_sun"
+ingredients = Array[ExtResource("1_1abp5")]([SubResource("Resource_iquq4"), SubResource("Resource_bi0gq"), SubResource("Resource_ohmaw"), SubResource("Resource_85tl8"), SubResource("Resource_r04n0")])
+result_item_id = &"the_unwritten_sun"

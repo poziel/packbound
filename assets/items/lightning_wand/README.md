@@ -8,7 +8,7 @@ The 1 × 3 footprint rotates during preparation. Damage boosters empower it thro
 
 ## Visual design
 
-A restrained lightning-themed spell focus with one readable elemental motif and broad material shading. Dedicated artwork is deferred. [Existing spell artwork](../../../assets/items/spells/frost-wand/revisions/catalog-v2/frost-wand-32x96.svg) is reused as a temporary placeholder; no new artwork or approval is claimed.
+A restrained lightning-themed spell focus with one readable elemental motif and broad material shading. Dedicated artwork is deferred. [Existing spell artwork](../../../assets/items/frost_wand/art/item.png) is reused as a temporary placeholder; no new artwork or approval is claimed.
 
 ## Lore
 

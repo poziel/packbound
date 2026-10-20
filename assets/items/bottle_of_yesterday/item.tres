@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://df2ir3b2481mp"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_mu6ye"]
+[ext_resource type="Resource" path="res://assets/items/bottle_of_yesterday/rule_ability.tres" id="2_rnvh0"]
+[ext_resource type="Texture2D" uid="uid://dmlpmymnnwd0" path="res://assets/items/bottle_of_yesterday/art/item.png" id="3_7u0k7"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_qwoyk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug0nx"]
+atlas = ExtResource("3_7u0k7")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Bottle of Yesterday"
+script = ExtResource("4_qwoyk")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+id = &"bottle_of_yesterday"
+display_name = "Bottle of Yesterday"
+description = "Adds 2 maximum mana, refreshed each round. Supplies 2 ward each round against poison, curse and reflected damage."
+lore = "It was sealed tomorrow and found yesterday."
+rarity = 2
+tags = Array[StringName]([&"focus"])
+category_ids = Array[StringName]([&"focuses"])
+icon = SubResource("AtlasTexture_ug0nx")
+base_stats = Dictionary[int, int]({
+5: 2,
+8: 2
+})
+abilities = Array[ExtResource("1_mu6ye")]([ExtResource("2_rnvh0")])

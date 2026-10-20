@@ -133,14 +133,11 @@
       "A dark sinuous eel with a broad gold gill collar."
     ],
     "assets": {
-      "icon": "assets/items/choir_eel/icons/art/icon.png",
-      "svg": "assets/items/choir_eel/icons/art/icon.svg",
-      "source": "assets/items/choir_eel/icons/art/icon.sprite.json",
-      "footprint": "assets/items/choir_eel/icons/art/footprint.json",
-      "provenance": "assets/items/choir_eel/icons/art/provenance.json",
-      "manifest": "assets/items/choir_eel/icons/art/art-manifest.json",
+      "icon": "assets/items/choir_eel/art/item.png",
+      "source": "assets/items/choir_eel/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/choir_eel/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

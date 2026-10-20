@@ -86,14 +86,13 @@
       "A dark wooden metronome with a visibly bent pendulum"
     ],
     "assets": {
-      "icon": "assets/relics/broken_metronome/icons/art/icon.png",
-      "svg": "assets/relics/broken_metronome/icons/art/icon.svg",
-      "source": "assets/relics/broken_metronome/icons/art/icon.sprite.json",
+      "icon": "assets/relics/broken_metronome/art/icon.png",
+      "source": "assets/relics/broken_metronome/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/broken_metronome/icons/art/provenance.json",
-      "manifest": "assets/relics/broken_metronome/icons/art/art-manifest.json",
+      "provenance": "assets/relics/broken_metronome/art/provenance.json",
+      "manifest": "assets/relics/broken_metronome/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/broken_metronome/icons/art/icon.pixloom"
+      "native": "assets/relics/broken_metronome/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

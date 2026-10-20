@@ -8,7 +8,7 @@
   ],
   "references": [
     ".agents/skills/delver-art-creator/references/visual-direction.md",
-    "assets/enemies/mire_viper.png",
+    "assets/enemies/mire_viper/art/mire_viper.png",
     "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png"
   ],
   "canvas": [
@@ -44,11 +44,11 @@
     "marrow_heron.pixloom.json": "edcc87511b1b47854eaee10f225f47015bde59699b89f35ec52686ad6ad2160c",
     "marrow_heron.pixloom": "d6f7732c14838775973140c2d16271f984a8a2183887a0c8aa757c85979edc5b",
     "marrow_heron.png": "b63aaf71b077f07ab81aaacadd9c056147d41d8c5ac98e2fa54c73fe7ec8ab4a",
-    "marrow_heron.svg": "bbdcbf0ffc647d8f16c68003d4e1926a9bac0cf9f3b84777319997fe78164712"
+    "marrow_heron.png": "bbdcbf0ffc647d8f16c68003d4e1926a9bac0cf9f3b84777319997fe78164712"
   },
   "reference_sha256": {
     ".agents/skills/delver-art-creator/references/visual-direction.md": "5cadc4ef72c5db7bbec05c9504920e5abfd9ca4b33add8d2af9f98c610ada0df",
-    "assets/enemies/mire_viper.png": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7",
+    "assets/enemies/mire_viper/art/mire_viper.png": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7",
     "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png": "3bcd9705f35494a28a94b3d1ecce67f657308bc4e952afe2ad7339864e140edf"
   }
 }

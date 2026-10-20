@@ -103,14 +103,11 @@
       "A heavy felt drum beater bound in brass rings."
     ],
     "assets": {
-      "icon": "assets/items/drummer_s_mallet/icons/art/icon.png",
-      "svg": "assets/items/drummer_s_mallet/icons/art/icon.svg",
-      "source": "assets/items/drummer_s_mallet/icons/art/icon.sprite.json",
-      "footprint": "assets/items/drummer_s_mallet/icons/art/footprint.json",
-      "provenance": "assets/items/drummer_s_mallet/icons/art/provenance.json",
-      "manifest": "assets/items/drummer_s_mallet/icons/art/art-manifest.json",
+      "icon": "assets/items/drummer_s_mallet/art/item.png",
+      "source": "assets/items/drummer_s_mallet/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/drummer_s_mallet/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

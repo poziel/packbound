@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_268v8"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_2ln7u"]
+[ext_resource type="Resource" path="res://assets/items/endless_flight_spool/rule_effect.tres" id="3_0tw7l"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_a547k"]
+
+[resource]
+resource_name = "Endless Flight Spool rules"
+script = ExtResource("4_a547k")
+id = &"endless_flight_spool_rules"
+display_name = "Endless Flight Spool rules"
+description = "While orthogonally touching the permanent Bowmaster quiver, adds 2 arrows, 4 damage to Volley; this equipment remains in the backpack and is not consumed."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_2ln7u")]([ExtResource("3_0tw7l")])

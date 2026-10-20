@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://cy1vwkrhuek1x"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_e6ic3"]
+[ext_resource type="Resource" path="res://assets/enemies/copper_scarab/innate_ability.tres" id="2_ce1p2"]
+[ext_resource type="Resource" path="res://assets/enemies/copper_scarab/behavior.tres" id="3_jdqap"]
+[ext_resource type="Texture2D" uid="uid://vs86iq3y287r" path="res://assets/enemies/copper_scarab/art/copper_scarab.png" id="4_4rpoc"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_q8d2c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xsic"]
+atlas = ExtResource("4_4rpoc")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Copper Scarab"
+script = ExtResource("5_q8d2c")
+species_id = &"beetle"
+role_id = &"guard"
+behavior = ExtResource("3_jdqap")
+id = &"copper_scarab"
+display_name = "Copper Scarab"
+log_name = "Copper Scarab"
+description = "A tunnel beetle that polishes discarded coins into its shell. Its territorial scraping sounds like a distant purse being emptied."
+icon = SubResource("AtlasTexture_7xsic")
+base_stats = Dictionary[int, int]({
+1: 5
+})
+resource_capacities = Dictionary[int, int]({
+2: 32
+})
+abilities = Array[ExtResource("1_e6ic3")]([ExtResource("2_ce1p2")])
+metadata/encounter_floor = 3

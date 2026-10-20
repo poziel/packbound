@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://drn60ndu6obv3"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_llevb"]
+[ext_resource type="Resource" path="res://assets/enemies/iron_mite/innate_ability.tres" id="2_ttuel"]
+[ext_resource type="Resource" path="res://assets/enemies/iron_mite/behavior.tres" id="3_yalht"]
+[ext_resource type="Texture2D" uid="uid://k2sibav4ur6y" path="res://assets/enemies/iron_mite/art/iron_mite.png" id="4_v2sl3"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_p0ba1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kstpq"]
+atlas = ExtResource("4_v2sl3")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Iron Mite"
+script = ExtResource("5_p0ba1")
+behavior = ExtResource("3_yalht")
+id = &"iron_mite"
+display_name = "Iron Mite"
+log_name = "Iron Mite"
+description = "Starts with 3 block. Absorbed damage depletes it."
+icon = SubResource("AtlasTexture_kstpq")
+base_stats = Dictionary[int, int]({
+1: 3,
+17: 20
+})
+resource_capacities = Dictionary[int, int]({
+2: 40
+})
+abilities = Array[ExtResource("1_llevb")]([ExtResource("2_ttuel")])
+
+metadata/progression_index = 3

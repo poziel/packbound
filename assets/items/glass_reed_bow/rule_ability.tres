@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_bsyjr"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_ywaqi"]
+[ext_resource type="Resource" path="res://assets/items/glass_reed_bow/rule_effect.tres" id="3_0ln3a"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_h4he1"]
+
+[resource]
+resource_name = "Glass Reed Bow rules"
+script = ExtResource("4_h4he1")
+id = &"glass_reed_bow_rules"
+display_name = "Glass Reed Bow rules"
+description = "Costs 2 stamina per activation. Deals 11 physical damage per affordable activation. Bypasses up to 3 enemy block per activation."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_ywaqi")]([ExtResource("3_0ln3a")])

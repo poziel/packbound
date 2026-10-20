@@ -150,14 +150,11 @@
       "An ivory spool wrapped with a feather shaped bronze ribbon."
     ],
     "assets": {
-      "icon": "assets/items/endless_flight_spool/icons/art/icon.png",
-      "svg": "assets/items/endless_flight_spool/icons/art/icon.svg",
-      "source": "assets/items/endless_flight_spool/icons/art/icon.sprite.json",
-      "footprint": "assets/items/endless_flight_spool/icons/art/footprint.json",
-      "provenance": "assets/items/endless_flight_spool/icons/art/provenance.json",
-      "manifest": "assets/items/endless_flight_spool/icons/art/art-manifest.json",
+      "icon": "assets/items/endless_flight_spool/art/item.png",
+      "source": "assets/items/endless_flight_spool/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/endless_flight_spool/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

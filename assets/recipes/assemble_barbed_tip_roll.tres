@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://ovtooccd5b7h"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_nme1e"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_im5rg"]
+
+[sub_resource type="Resource" id="Resource_c24hv"]
+script = ExtResource("1_nme1e")
+accepted_item_ids = Array[StringName]([&"rusty_knife"])
+
+[sub_resource type="Resource" id="Resource_3w7l5"]
+script = ExtResource("1_nme1e")
+accepted_item_ids = Array[StringName]([&"tin_arrow_cup"])
+
+[resource]
+resource_name = "Assemble Barbed Tip Roll"
+script = ExtResource("2_im5rg")
+id = &"assemble_barbed_tip_roll"
+ingredients = Array[ExtResource("1_nme1e")]([SubResource("Resource_c24hv"), SubResource("Resource_3w7l5")])
+result_item_id = &"barbed_tip_roll"

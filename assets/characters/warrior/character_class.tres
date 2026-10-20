@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CharacterClassDefinition" format=3 uid="uid://b6cg7aj0hlrxq"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_hv0xi"]
+[ext_resource type="Resource" path="res://assets/characters/warrior/class_ability.tres" id="2_xb4jk"]
+[ext_resource type="Texture2D" uid="uid://dmvytwkvmb3nl" path="res://assets/items/iron_dagger/art/item.png" id="3_22d4h"]
+[ext_resource type="Script" uid="uid://bdw4mhhh1jy2c" path="res://systems/characters/character_class_definition.gd" id="4_76at1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra0ac"]
+atlas = ExtResource("3_22d4h")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Warmonger"
+script = ExtResource("4_76at1")
+id = &"warrior"
+display_name = "Warmonger"
+description = "Start each fight with 0 Momentum. Gain 1 after each completed exchange with the enemy. Specialized equipment builds Momentum or spends it on powerful strikes. Momentum resets for the next fight."
+icon = SubResource("AtlasTexture_ra0ac")
+abilities = Array[ExtResource("1_hv0xi")]([ExtResource("2_xb4jk")])
+
+metadata/icon_item_id = "longsword"

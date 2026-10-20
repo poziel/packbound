@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cqpnlteqbybno"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_6xec7"]
+[ext_resource type="Resource" path="res://assets/items/mercy_needlecase/rule_ability.tres" id="2_473ve"]
+[ext_resource type="Texture2D" uid="uid://bslfjxei43fvs" path="res://assets/items/mercy_needlecase/art/item.png" id="3_oc6tc"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_si1qq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0p6y"]
+atlas = ExtResource("3_oc6tc")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Mercy Needlecase"
+script = ExtResource("4_si1qq")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+id = &"mercy_needlecase"
+display_name = "Mercy Needlecase"
+description = "Restores up to 3 HP each round. Removes up to 2 poison before its round tick."
+lore = "A battlefield surgeon left it at the first peaceful inn."
+rarity = 2
+tags = Array[StringName]([&"healer"])
+category_ids = Array[StringName]([&"healing_supplies"])
+icon = SubResource("AtlasTexture_x0p6y")
+base_stats = Dictionary[int, int]({
+2: 3,
+12: 2
+})
+abilities = Array[ExtResource("1_6xec7")]([ExtResource("2_473ve")])

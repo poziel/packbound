@@ -8,7 +8,7 @@
   ],
   "references": [
     ".agents/skills/delver-art-creator/references/visual-direction.md",
-    "assets/enemies/mire_viper.png",
+    "assets/enemies/mire_viper/art/mire_viper.png",
     "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png"
   ],
   "canvas": [
@@ -44,11 +44,11 @@
     "shroud_moth.pixloom.json": "890eb326daa3d108c82a114333e7aec749c5f4cc8be1e1511e0ac4513520706e",
     "shroud_moth.pixloom": "bd2ec5efedb5e109bed674a6b4e1f9a39e67daf367cfaf276162c49788a6c97c",
     "shroud_moth.png": "c0e007685079a5aefe31101f940b9ce750b2b109c6dd7ed8f980cc73fd936d14",
-    "shroud_moth.svg": "9797b9b8cd85098b9bfbb9f16bcd860ee9c25c48010928e0d9e16ef9face3505"
+    "shroud_moth.png": "9797b9b8cd85098b9bfbb9f16bcd860ee9c25c48010928e0d9e16ef9face3505"
   },
   "reference_sha256": {
     ".agents/skills/delver-art-creator/references/visual-direction.md": "5cadc4ef72c5db7bbec05c9504920e5abfd9ca4b33add8d2af9f98c610ada0df",
-    "assets/enemies/mire_viper.png": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7",
+    "assets/enemies/mire_viper/art/mire_viper.png": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7",
     "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png": "3bcd9705f35494a28a94b3d1ecce67f657308bc4e952afe2ad7339864e140edf"
   }
 }

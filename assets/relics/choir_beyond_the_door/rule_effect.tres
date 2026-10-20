@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_sreyh"]
+
+[resource]
+resource_name = "Choir Beyond The Door Rule Effect"
+script = ExtResource("1_sreyh")
+rule_id = &"choir_beyond_the_door_rules"
+parameters = {
+"icon": "choir_beyond_the_door",
+"rule": {
+"amount": 6,
+"cap": 4,
+"condition": "companions",
+"metric": "companion_count",
+"stat": "magical_damage"
+},
+"stats": {}
+}

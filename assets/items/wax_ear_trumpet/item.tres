@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://drhs23le3rfrg"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_uapbq"]
+[ext_resource type="Resource" path="res://assets/items/wax_ear_trumpet/rule_ability.tres" id="2_jrpc2"]
+[ext_resource type="Texture2D" uid="uid://biqpnsl2hms6c" path="res://assets/items/wax_ear_trumpet/art/item.png" id="3_jap55"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_le6vo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0wxr"]
+atlas = ExtResource("3_jap55")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Wax Ear Trumpet"
+script = ExtResource("4_le6vo")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+id = &"wax_ear_trumpet"
+display_name = "Wax Ear Trumpet"
+description = "Supplies 2 ward each round against poison, curse and reflected damage. Removes up to 1 poison before its round tick."
+lore = "Its owner used it to listen for silence."
+rarity = 1
+tags = Array[StringName]([&"focus"])
+category_ids = Array[StringName]([&"focuses"])
+icon = SubResource("AtlasTexture_p0wxr")
+base_stats = Dictionary[int, int]({
+5: 2,
+12: 1
+})
+abilities = Array[ExtResource("1_uapbq")]([ExtResource("2_jrpc2")])

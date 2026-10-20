@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="StatusEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="1_oaw82"]
+[ext_resource type="Resource" path="res://assets/status_effects/poison/rule_effect.tres" id="2_do4cm"]
+[ext_resource type="Texture2D" path="res://assets/icons/keywords/poison/poison-16-mask.png" id="3_gsbsm"]
+[ext_resource type="Script" path="res://systems/combat/status_effect_definition.gd" id="4_wr3pw"]
+
+[resource]
+resource_name = "Poison"
+script = ExtResource("4_wr3pw")
+id = &"poison"
+display_name = "Poison"
+description = "Stacks deal damage after direct attacks and normally decay by 1 each turn. Block does not protect enemies from poison. Cleanse removes your poison before it ticks; ward can absorb its damage."
+icon = ExtResource("3_gsbsm")
+decay_per_round = 1
+tick_trigger_id = &"after_direct_attacks"
+effects = Array[ExtResource("1_oaw82")]([ExtResource("2_do4cm")])

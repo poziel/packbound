@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" path="res://components/ui/inputs/pixel_search_field/pixel_search_field.tscn" id="search"]
 [ext_resource type="PackedScene" path="res://components/ui/inputs/pixel_scrollbar/pixel_scroll_container.tscn" id="scroll"]
 [ext_resource type="PackedScene" path="res://scenes/menus/delver_tile/delver_tile.tscn" id="tile"]
-[ext_resource type="Texture2D" path="res://assets/characters/mage/art/full-body.svg" id="portrait"]
+[ext_resource type="Texture2D" path="res://assets/characters/mage/art/full_body.png" id="portrait"]
 
 [sub_resource type="StyleBoxLine" id="thick_line"]
 color = Color(0.498, 0.537, 0.396, 1)

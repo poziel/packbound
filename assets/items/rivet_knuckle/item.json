@@ -96,14 +96,11 @@
       "A squared iron fist brace with three broad rivet heads."
     ],
     "assets": {
-      "icon": "assets/items/rivet_knuckle/icons/art/icon.png",
-      "svg": "assets/items/rivet_knuckle/icons/art/icon.svg",
-      "source": "assets/items/rivet_knuckle/icons/art/icon.sprite.json",
-      "footprint": "assets/items/rivet_knuckle/icons/art/footprint.json",
-      "provenance": "assets/items/rivet_knuckle/icons/art/provenance.json",
-      "manifest": "assets/items/rivet_knuckle/icons/art/art-manifest.json",
+      "icon": "assets/items/rivet_knuckle/art/item.png",
+      "source": "assets/items/rivet_knuckle/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/rivet_knuckle/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

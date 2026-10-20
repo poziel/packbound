@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://37atgwykcq1p"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_ompum"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_h2ein"]
+
+[sub_resource type="Resource" id="Resource_74ttm"]
+script = ExtResource("1_ompum")
+accepted_item_ids = Array[StringName]([&"hedgehog_charm"])
+
+[sub_resource type="Resource" id="Resource_qxuh0"]
+script = ExtResource("1_ompum")
+accepted_item_ids = Array[StringName]([&"rusty_knife"])
+
+[resource]
+resource_name = "Assemble Thorn Whetstone"
+script = ExtResource("2_h2ein")
+id = &"assemble_thorn_whetstone"
+ingredients = Array[ExtResource("1_ompum")]([SubResource("Resource_74ttm"), SubResource("Resource_qxuh0")])
+result_item_id = &"thorn_whetstone"

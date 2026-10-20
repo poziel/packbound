@@ -156,14 +156,11 @@
       "A segmented brass arrow cradle ending in a curved tail."
     ],
     "assets": {
-      "icon": "assets/items/scorpion_magazine/icons/art/icon.png",
-      "svg": "assets/items/scorpion_magazine/icons/art/icon.svg",
-      "source": "assets/items/scorpion_magazine/icons/art/icon.sprite.json",
-      "footprint": "assets/items/scorpion_magazine/icons/art/footprint.json",
-      "provenance": "assets/items/scorpion_magazine/icons/art/provenance.json",
-      "manifest": "assets/items/scorpion_magazine/icons/art/art-manifest.json",
+      "icon": "assets/items/scorpion_magazine/art/item.png",
+      "source": "assets/items/scorpion_magazine/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/scorpion_magazine/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

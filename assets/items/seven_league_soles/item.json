@@ -132,14 +132,11 @@
       "A pair of long dark boots with thick violet folded cuffs."
     ],
     "assets": {
-      "icon": "assets/items/seven_league_soles/icons/art/icon.png",
-      "svg": "assets/items/seven_league_soles/icons/art/icon.svg",
-      "source": "assets/items/seven_league_soles/icons/art/icon.sprite.json",
-      "footprint": "assets/items/seven_league_soles/icons/art/footprint.json",
-      "provenance": "assets/items/seven_league_soles/icons/art/provenance.json",
-      "manifest": "assets/items/seven_league_soles/icons/art/art-manifest.json",
+      "icon": "assets/items/seven_league_soles/art/item.png",
+      "source": "assets/items/seven_league_soles/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/seven_league_soles/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

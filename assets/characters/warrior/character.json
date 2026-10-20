@@ -113,9 +113,9 @@
     ]
   },
   "assetReferences": {
-    "runtime": "assets/characters/warrior/art/full-body.svg",
+    "runtime": "assets/characters/warrior/art/full_body.png",
     "concept": "assets/characters/warrior/art/concept.png",
-    "nativeSource": "assets/characters/warrior/art/full-body.sprite.json",
+    "nativeSource": "assets/characters/warrior/art/full_body.sprite.json",
     "artStatus": "Warrior v3: 256 px body and 64 x 64 portrait; directly installed at user request",
     "appearanceBasis": "Garran Vale identity and accepted warrior v2, redrawn with current art direction.",
     "portrait": "assets/characters/warrior/art/portrait.png",

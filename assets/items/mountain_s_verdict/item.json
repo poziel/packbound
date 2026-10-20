@@ -152,14 +152,11 @@
       "A colossal stepped stone sword with a short iron grip."
     ],
     "assets": {
-      "icon": "assets/items/mountain_s_verdict/icons/art/icon.png",
-      "svg": "assets/items/mountain_s_verdict/icons/art/icon.svg",
-      "source": "assets/items/mountain_s_verdict/icons/art/icon.sprite.json",
-      "footprint": "assets/items/mountain_s_verdict/icons/art/footprint.json",
-      "provenance": "assets/items/mountain_s_verdict/icons/art/provenance.json",
-      "manifest": "assets/items/mountain_s_verdict/icons/art/art-manifest.json",
+      "icon": "assets/items/mountain_s_verdict/art/item.png",
+      "source": "assets/items/mountain_s_verdict/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/mountain_s_verdict/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

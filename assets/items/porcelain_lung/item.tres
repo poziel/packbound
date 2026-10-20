@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dlgd8b2qsgyph"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_krg1h"]
+[ext_resource type="Resource" path="res://assets/items/porcelain_lung/rule_ability.tres" id="2_y3j35"]
+[ext_resource type="Texture2D" uid="uid://d31g1rhcm3bdf" path="res://assets/items/porcelain_lung/art/item.png" id="3_g3kxa"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_q2idw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2ik3"]
+atlas = ExtResource("3_g3kxa")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+resource_name = "Porcelain Lung"
+script = ExtResource("4_q2idw")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1)])
+id = &"porcelain_lung"
+display_name = "Porcelain Lung"
+description = "Adds 2 maximum mana, refreshed each round. Removes up to 3 poison before its round tick. Supplies 2 ward each round against poison, curse and reflected damage."
+lore = "Its maker needed a place to store a last clean breath."
+rarity = 3
+tags = Array[StringName]([&"focus"])
+category_ids = Array[StringName]([&"focuses"])
+icon = SubResource("AtlasTexture_b2ik3")
+base_stats = Dictionary[int, int]({
+5: 2,
+8: 2,
+12: 3
+})
+abilities = Array[ExtResource("1_krg1h")]([ExtResource("2_y3j35")])

@@ -142,14 +142,11 @@
       "A miniature copper cathedral with two jagged gold towers."
     ],
     "assets": {
-      "icon": "assets/items/cathedral_of_sparks/icons/art/icon.png",
-      "svg": "assets/items/cathedral_of_sparks/icons/art/icon.svg",
-      "source": "assets/items/cathedral_of_sparks/icons/art/icon.sprite.json",
-      "footprint": "assets/items/cathedral_of_sparks/icons/art/footprint.json",
-      "provenance": "assets/items/cathedral_of_sparks/icons/art/provenance.json",
-      "manifest": "assets/items/cathedral_of_sparks/icons/art/art-manifest.json",
+      "icon": "assets/items/cathedral_of_sparks/art/item.png",
+      "source": "assets/items/cathedral_of_sparks/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/cathedral_of_sparks/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

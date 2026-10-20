@@ -153,14 +153,11 @@
       "A leather roll exposing three triangular barbed tips."
     ],
     "assets": {
-      "icon": "assets/items/barbed_tip_roll/icons/art/icon.png",
-      "svg": "assets/items/barbed_tip_roll/icons/art/icon.svg",
-      "source": "assets/items/barbed_tip_roll/icons/art/icon.sprite.json",
-      "footprint": "assets/items/barbed_tip_roll/icons/art/footprint.json",
-      "provenance": "assets/items/barbed_tip_roll/icons/art/provenance.json",
-      "manifest": "assets/items/barbed_tip_roll/icons/art/art-manifest.json",
+      "icon": "assets/items/barbed_tip_roll/art/item.png",
+      "source": "assets/items/barbed_tip_roll/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/barbed_tip_roll/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

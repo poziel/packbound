@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_ta23b"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_547ty"]
+[ext_resource type="Resource" path="res://assets/characters/assassin/class_effect.tres" id="3_yvnht"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_5cox8"]
+
+[resource]
+resource_name = "Shadowstep"
+script = ExtResource("4_5cox8")
+id = &"assassin_class_rules"
+display_name = "Shadowstep"
+description = "Invisible on turns 1, 4, 7... Monsters cannot target you: skip all strikes and on-hit effects. Existing poison, reflection and item costs still apply."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_547ty")]([ExtResource("3_yvnht")])

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://ch1bohvoqd54x"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_3uyy6"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_tefd4"]
+
+[sub_resource type="Resource" id="Resource_da7wb"]
+script = ExtResource("1_3uyy6")
+accepted_item_ids = Array[StringName]([&"marching_pike"])
+
+[sub_resource type="Resource" id="Resource_hsvod"]
+script = ExtResource("1_3uyy6")
+accepted_item_ids = Array[StringName]([&"oathbreaker_flail"])
+
+[sub_resource type="Resource" id="Resource_pxo71"]
+script = ExtResource("1_3uyy6")
+accepted_item_ids = Array[StringName]([&"thorn_whetstone"])
+
+[resource]
+resource_name = "Assemble Gallows Halberd"
+script = ExtResource("2_tefd4")
+id = &"assemble_gallows_halberd"
+ingredients = Array[ExtResource("1_3uyy6")]([SubResource("Resource_da7wb"), SubResource("Resource_hsvod"), SubResource("Resource_pxo71")])
+result_item_id = &"gallows_halberd"

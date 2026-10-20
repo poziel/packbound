@@ -145,14 +145,11 @@
       "An anchor shaped chopping blade on a short rope wrapped haft."
     ],
     "assets": {
-      "icon": "assets/items/anchor_cleaver/icons/art/icon.png",
-      "svg": "assets/items/anchor_cleaver/icons/art/icon.svg",
-      "source": "assets/items/anchor_cleaver/icons/art/icon.sprite.json",
-      "footprint": "assets/items/anchor_cleaver/icons/art/footprint.json",
-      "provenance": "assets/items/anchor_cleaver/icons/art/provenance.json",
-      "manifest": "assets/items/anchor_cleaver/icons/art/art-manifest.json",
+      "icon": "assets/items/anchor_cleaver/art/item.png",
+      "source": "assets/items/anchor_cleaver/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/anchor_cleaver/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://ba064dyn7enae"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_tmsq1"]
+[ext_resource type="Resource" path="res://assets/enemies/cinder_oracle/innate_ability.tres" id="2_av7ca"]
+[ext_resource type="Resource" path="res://assets/enemies/cinder_oracle/behavior.tres" id="3_04ulo"]
+[ext_resource type="Texture2D" uid="uid://rc52ecejtl7x" path="res://assets/enemies/cinder_oracle/art/cinder_oracle.png" id="4_om50n"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_14wu2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oexi"]
+atlas = ExtResource("4_om50n")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Cinder Oracle"
+script = ExtResource("5_14wu2")
+behavior = ExtResource("3_04ulo")
+id = &"cinder_oracle"
+display_name = "Cinder Oracle"
+log_name = "Cinder Oracle"
+description = "4 damage from each strike bypasses block."
+icon = SubResource("AtlasTexture_0oexi")
+base_stats = Dictionary[int, int]({
+14: 4,
+18: 25
+})
+resource_capacities = Dictionary[int, int]({
+2: 88
+})
+abilities = Array[ExtResource("1_tmsq1")]([ExtResource("2_av7ca")])
+
+metadata/progression_index = 13

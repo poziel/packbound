@@ -135,14 +135,11 @@
       "A broad winged copper insect folded around a glass abdomen."
     ],
     "assets": {
-      "icon": "assets/items/copper_cicada/icons/art/icon.png",
-      "svg": "assets/items/copper_cicada/icons/art/icon.svg",
-      "source": "assets/items/copper_cicada/icons/art/icon.sprite.json",
-      "footprint": "assets/items/copper_cicada/icons/art/footprint.json",
-      "provenance": "assets/items/copper_cicada/icons/art/provenance.json",
-      "manifest": "assets/items/copper_cicada/icons/art/art-manifest.json",
+      "icon": "assets/items/copper_cicada/art/item.png",
+      "source": "assets/items/copper_cicada/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/copper_cicada/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

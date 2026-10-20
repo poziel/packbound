@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://clemfbw2xpmkm"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_yxd4u"]
+[ext_resource type="Resource" path="res://assets/items/quiver/rule_ability.tres" id="2_7plu5"]
+[ext_resource type="Texture2D" uid="uid://51iaa2f6uo8d" path="res://assets/items/quiver/art/item.png" id="3_fkf7b"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_8yipd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3i210"]
+atlas = ExtResource("3_fkf7b")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Hunting Quiver"
+script = ExtResource("4_8yipd")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+id = &"quiver"
+display_name = "Hunting Quiver"
+description = "Touching ranged weapons gain +2 damage per activation."
+category_ids = Array[StringName]([&"boosters"])
+icon = SubResource("AtlasTexture_3i210")
+abilities = Array[ExtResource("1_yxd4u")]([ExtResource("2_7plu5")])

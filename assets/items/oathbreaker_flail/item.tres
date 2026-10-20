@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://c4lnyy1fw6e62"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_54bf0"]
+[ext_resource type="Resource" path="res://assets/items/oathbreaker_flail/rule_ability.tres" id="2_gky1v"]
+[ext_resource type="Texture2D" uid="uid://dr5ck5dce4wpc" path="res://assets/items/oathbreaker_flail/art/item.png" id="3_t5j0x"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_hsnpa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op31a"]
+atlas = ExtResource("3_t5j0x")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+resource_name = "Oathbreaker Flail"
+script = ExtResource("4_hsnpa")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(1, 1)])
+activation_costs = Dictionary[int, int]({
+1: 2
+})
+id = &"oathbreaker_flail"
+display_name = "Oathbreaker Flail"
+description = "Costs 2 stamina per activation. Deals 10 physical damage per affordable activation. Bypasses up to 4 enemy block per activation."
+lore = "A jailer broke his oath and opened every door."
+rarity = 2
+tags = Array[StringName]([&"weapon", &"warrior"])
+category_ids = Array[StringName]([&"flails"])
+allowed_class_ids = Array[StringName]([&"warrior"])
+icon = SubResource("AtlasTexture_op31a")
+base_stats = Dictionary[int, int]({
+0: 10,
+14: 4
+})
+abilities = Array[ExtResource("1_54bf0")]([ExtResource("2_gky1v")])

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://cjh4bv0i1knmx"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_akyks"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_k1w2g"]
+
+[sub_resource type="Resource" id="Resource_onnr7"]
+script = ExtResource("1_akyks")
+accepted_item_ids = Array[StringName]([&"barricade_board"])
+
+[sub_resource type="Resource" id="Resource_yoiys"]
+script = ExtResource("1_akyks")
+accepted_item_ids = Array[StringName]([&"cobbler_s_boots"])
+
+[resource]
+resource_name = "Assemble Vanguard Sabaton"
+script = ExtResource("2_k1w2g")
+id = &"assemble_vanguard_sabaton"
+ingredients = Array[ExtResource("1_akyks")]([SubResource("Resource_onnr7"), SubResource("Resource_yoiys")])
+result_item_id = &"vanguard_sabaton"

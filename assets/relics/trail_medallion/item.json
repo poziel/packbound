@@ -75,12 +75,11 @@
       "The suspension loop joins visibly to the disc; no sparkle dots."
     ],
     "assets": {
-      "icon": "assets/relics/trail_medallion/icons/art/icon.png",
-      "svg": "assets/relics/trail_medallion/icons/art/icon.svg",
-      "source": "assets/relics/trail_medallion/icons/art/icon.sprite.json",
+      "icon": "assets/relics/trail_medallion/art/icon.png",
+      "source": "assets/relics/trail_medallion/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/trail_medallion/icons/art/provenance.json",
-      "manifest": "assets/relics/trail_medallion/icons/art/art-manifest.json",
+      "provenance": "assets/relics/trail_medallion/art/provenance.json",
+      "manifest": "assets/relics/trail_medallion/art/art_manifest.json",
       "variants": []
     },
     "approval": "unreviewed"

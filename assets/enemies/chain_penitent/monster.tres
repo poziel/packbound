@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://cklcr45idosfe"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_djm8a"]
+[ext_resource type="Resource" path="res://assets/enemies/chain_penitent/innate_ability.tres" id="2_s3rgi"]
+[ext_resource type="Resource" path="res://assets/enemies/chain_penitent/behavior.tres" id="3_mc111"]
+[ext_resource type="Texture2D" uid="uid://ldflffsjrnh6" path="res://assets/enemies/chain_penitent/art/chain_penitent.png" id="4_4prnf"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_e6tiy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pijl"]
+atlas = ExtResource("4_4prnf")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Chain Penitent"
+script = ExtResource("5_e6tiy")
+species_id = &"humanoid"
+role_id = &"enrager"
+behavior = ExtResource("3_mc111")
+id = &"chain_penitent"
+display_name = "Chain Penitent"
+log_name = "Chain Penitent"
+description = "An armored prisoner who counts every blow as another broken vow. Two short chain lashes become harder to withstand the longer the fight lasts."
+icon = SubResource("AtlasTexture_5pijl")
+resource_capacities = Dictionary[int, int]({
+2: 113
+})
+abilities = Array[ExtResource("1_djm8a")]([ExtResource("2_s3rgi")])
+metadata/encounter_floor = 18

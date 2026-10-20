@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "relic_id": "arcane_barter",
+  "footprint": null,
+  "occupies_backpack_cells": false,
+  "canvas": [
+	32,
+	32
+  ],
+  "helper_mask": [
+    "#"
+  ],
+  "helper_mask_role": "Canvas validation only; this permanent run relic occupies no backpack cells.",
+  "checks": {
+	"paletteLimit": 20,
+	"opaqueColors": 16,
+	"binaryAlpha": true,
+	"pixelsOutsideFootprint": 0,
+	"visibleBounds": {
+	  "x": 1,
+	  "y": 3,
+	  "width": 30,
+	  "height": 27
+	},
+	"cellPixelCounts": [
+	  {
+		"x": 0,
+		"y": 0,
+		"pixels": 303
+	  }
+	],
+	"warnings": [],
+	"svgPixelMatch": true
+  },
+  "pixelorama_roundtrip_rgba_match": true
+}

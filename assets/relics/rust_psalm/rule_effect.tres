@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_d0634"]
+
+[resource]
+resource_name = "Rust Psalm Rule Effect"
+script = ExtResource("1_d0634")
+rule_id = &"rust_psalm_rules"
+parameters = {
+"icon": "rust_psalm",
+"rule": {
+"amount": 1,
+"cap": 3,
+"condition": "has_weapon",
+"metric": "weapon_count",
+"stat": "pierce"
+},
+"stats": {}
+}

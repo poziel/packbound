@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_sajjs"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_5ymq7"]
+[ext_resource type="Resource" path="res://assets/items/orchid_eclipse/rule_effect.tres" id="3_h5b3w"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_38ghx"]
+
+[resource]
+resource_name = "Orchid Eclipse rules"
+script = ExtResource("4_38ghx")
+id = &"orchid_eclipse_rules"
+display_name = "Orchid Eclipse rules"
+description = "Costs 4 mana per activation. Deals 10 magical damage per affordable activation. Applies 9 poison through the existing combat keyword rules per affordable activation."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_5ymq7")]([ExtResource("3_h5b3w")])

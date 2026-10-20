@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_myeiq"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_3w83u"]
+[ext_resource type="Resource" path="res://assets/enemies/shroud_moth/attack_0_effect.tres" id="3_wpxl7"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_qi5hp"]
+
+[resource]
+resource_name = "Reflector"
+script = ExtResource("4_qi5hp")
+id = &"shroud_moth_attack_0"
+display_name = "Reflector"
+description = "Reflects 1 magical damage once when the combined direct attack damages it. Ward can absorb this."
+target_id = &"opponent"
+effects = Array[ExtResource("2_3w83u")]([ExtResource("3_wpxl7")])

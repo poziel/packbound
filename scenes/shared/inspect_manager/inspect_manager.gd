@@ -8,6 +8,7 @@ const KEYWORD_GEOMETRY = preload("res://systems/ui/keywords/keyword_hover_effect
 @export var grace_delay: float = 0.7
 @export var closing_delay: float = 0.7
 var enabled: bool = true
+var invert_visibility_shortcut: bool = false
 var pointer := Vector2(-100, -100)
 var sources: Array[Dictionary] = []
 var windows: Array[PackInspectWindow] = []
@@ -152,6 +153,7 @@ func _trim(count: int) -> void:
 		window.queue_free()
 
 func apply_timing(settings: Dictionary) -> void:
+	invert_visibility_shortcut = bool(settings.get("invert_tooltip_shortcut", false))
 	show_delay = float(settings.get("tooltip_opening_delay", 0.15))
 	lock_delay = float(settings.get("tooltip_lock_delay", 1.2))
 	grace_delay = float(settings.get("tooltip_grace_delay", 0.7))
@@ -173,8 +175,12 @@ func _trigger_held(index: int, inside: int) -> bool:
 		return bounds.has_point(pointer)
 	return inside == index - 1 and active_parent == index - 1 and active_keyword_link == windows[index].key and active_trigger_id == windows[index].trigger_id
 
+func visibility_shortcut_allows_tooltips() -> bool:
+	var held: bool = preload("res://systems/application/keybindings.gd").held("tooltip_visibility")
+	return held if invert_visibility_shortcut else not held
+
 func _process(delta: float) -> void:
-	if not enabled:
+	if not enabled or not visibility_shortcut_allows_tooltips():
 		clear()
 		return
 	if _reflowing: return

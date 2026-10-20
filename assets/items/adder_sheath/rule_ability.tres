@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_xl4e8"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_egfum"]
+[ext_resource type="Resource" path="res://assets/items/adder_sheath/rule_effect.tres" id="3_hi4qk"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_nk1cp"]
+
+[resource]
+resource_name = "Adder Sheath rules"
+script = ExtResource("4_nk1cp")
+id = &"adder_sheath_rules"
+display_name = "Adder Sheath rules"
+description = "While orthogonally touching the permanent Bowmaster quiver, adds 1 poison to Volley; this equipment remains in the backpack and is not consumed."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_egfum")]([ExtResource("3_hi4qk")])

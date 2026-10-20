@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_2scp2"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_fdyak"]
+[ext_resource type="Resource" path="res://assets/items/tin_arrow_cup/rule_effect.tres" id="3_yn7dn"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_gpkqj"]
+
+[resource]
+resource_name = "Tin Arrow Cup rules"
+script = ExtResource("4_gpkqj")
+id = &"tin_arrow_cup_rules"
+display_name = "Tin Arrow Cup rules"
+description = "While orthogonally touching the permanent Bowmaster quiver, adds 1 arrows to Volley; this equipment remains in the backpack and is not consumed."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_fdyak")]([ExtResource("3_yn7dn")])

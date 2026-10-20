@@ -135,14 +135,11 @@
       "A dark iron striking weight attached to a broad chain."
     ],
     "assets": {
-      "icon": "assets/items/oathbreaker_flail/icons/art/icon.png",
-      "svg": "assets/items/oathbreaker_flail/icons/art/icon.svg",
-      "source": "assets/items/oathbreaker_flail/icons/art/icon.sprite.json",
-      "footprint": "assets/items/oathbreaker_flail/icons/art/footprint.json",
-      "provenance": "assets/items/oathbreaker_flail/icons/art/provenance.json",
-      "manifest": "assets/items/oathbreaker_flail/icons/art/art-manifest.json",
+      "icon": "assets/items/oathbreaker_flail/art/item.png",
+      "source": "assets/items/oathbreaker_flail/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/oathbreaker_flail/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

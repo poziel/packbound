@@ -97,14 +97,11 @@
       "A bent pale willow bow with a leather pocket at its string."
     ],
     "assets": {
-      "icon": "assets/items/willow_slingbow/icons/art/icon.png",
-      "svg": "assets/items/willow_slingbow/icons/art/icon.svg",
-      "source": "assets/items/willow_slingbow/icons/art/icon.sprite.json",
-      "footprint": "assets/items/willow_slingbow/icons/art/footprint.json",
-      "provenance": "assets/items/willow_slingbow/icons/art/provenance.json",
-      "manifest": "assets/items/willow_slingbow/icons/art/art-manifest.json",
+      "icon": "assets/items/willow_slingbow/art/item.png",
+      "source": "assets/items/willow_slingbow/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/willow_slingbow/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

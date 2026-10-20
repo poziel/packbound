@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="StatusEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="1_w1dch"]
+[ext_resource type="Resource" path="res://assets/status_effects/slow/rule_effect.tres" id="2_d7pbk"]
+[ext_resource type="Texture2D" path="res://assets/icons/keywords/slow/slow-16-mask.png" id="3_37x30"]
+[ext_resource type="Script" path="res://systems/combat/status_effect_definition.gd" id="4_n541q"]
+
+[resource]
+resource_name = "Slow"
+script = ExtResource("4_n541q")
+id = &"slow"
+display_name = "Slow"
+description = "A persistent condition that reduces each enemy strike before plating and block. Stacks lose 1 per round. Cleansing removes Slow."
+icon = ExtResource("3_37x30")
+decay_per_round = 1
+tick_trigger_id = &"before_enemy_strikes"
+effects = Array[ExtResource("1_w1dch")]([ExtResource("2_d7pbk")])

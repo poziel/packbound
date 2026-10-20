@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_n2twc"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_jcl7u"]
+[ext_resource type="Resource" path="res://assets/enemies/needle_spider/attack_0_effect.tres" id="3_j0fti"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_5joys"]
+
+[resource]
+resource_name = "Multi Strike"
+script = ExtResource("4_5joys")
+id = &"needle_spider_attack_0"
+display_name = "Multi Strike"
+description = "Makes 2 strikes per response. Plating and retaliation apply to each strike. Up to 1 damage per strike bypasses block after slow, plating and resistance reduce the strike."
+target_id = &"opponent"
+effects = Array[ExtResource("2_jcl7u")]([ExtResource("3_j0fti")])

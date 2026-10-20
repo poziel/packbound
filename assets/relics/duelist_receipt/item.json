@@ -86,14 +86,13 @@
       "An ivory receipt pierced by a fencing foil seal"
     ],
     "assets": {
-      "icon": "assets/relics/duelist_receipt/icons/art/icon.png",
-      "svg": "assets/relics/duelist_receipt/icons/art/icon.svg",
-      "source": "assets/relics/duelist_receipt/icons/art/icon.sprite.json",
+      "icon": "assets/relics/duelist_receipt/art/icon.png",
+      "source": "assets/relics/duelist_receipt/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/duelist_receipt/icons/art/provenance.json",
-      "manifest": "assets/relics/duelist_receipt/icons/art/art-manifest.json",
+      "provenance": "assets/relics/duelist_receipt/art/provenance.json",
+      "manifest": "assets/relics/duelist_receipt/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/duelist_receipt/icons/art/icon.pixloom"
+      "native": "assets/relics/duelist_receipt/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

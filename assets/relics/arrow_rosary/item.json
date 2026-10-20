@@ -85,14 +85,13 @@
       "Three blunt arrowheads threaded on a knotted cord"
     ],
     "assets": {
-      "icon": "assets/relics/arrow_rosary/icons/art/icon.png",
-      "svg": "assets/relics/arrow_rosary/icons/art/icon.svg",
-      "source": "assets/relics/arrow_rosary/icons/art/icon.sprite.json",
+      "icon": "assets/relics/arrow_rosary/art/icon.png",
+      "source": "assets/relics/arrow_rosary/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/arrow_rosary/icons/art/provenance.json",
-      "manifest": "assets/relics/arrow_rosary/icons/art/art-manifest.json",
+      "provenance": "assets/relics/arrow_rosary/art/provenance.json",
+      "manifest": "assets/relics/arrow_rosary/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/arrow_rosary/icons/art/icon.pixloom"
+      "native": "assets/relics/arrow_rosary/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

@@ -86,14 +86,13 @@
       "A flowering branch emerging from a cracked snow globe"
     ],
     "assets": {
-      "icon": "assets/relics/false_spring/icons/art/icon.png",
-      "svg": "assets/relics/false_spring/icons/art/icon.svg",
-      "source": "assets/relics/false_spring/icons/art/icon.sprite.json",
+      "icon": "assets/relics/false_spring/art/icon.png",
+      "source": "assets/relics/false_spring/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/false_spring/icons/art/provenance.json",
-      "manifest": "assets/relics/false_spring/icons/art/art-manifest.json",
+      "provenance": "assets/relics/false_spring/art/provenance.json",
+      "manifest": "assets/relics/false_spring/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/false_spring/icons/art/icon.pixloom"
+      "native": "assets/relics/false_spring/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

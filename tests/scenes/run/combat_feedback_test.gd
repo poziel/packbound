@@ -14,7 +14,7 @@ func _run() -> void:
 	await process_frame
 	var sound: AudioStreamPlayer = game.combat_audio
 	var sample: AudioStreamWAV = sound.stream
-	check(sample.loop_mode == AudioStreamWAV.LOOP_DISABLED and sample.resource_path == "res://assets/audio/combat/enemy_hit.wav", "Impact uses the new non-looping supplied WAV")
+	check(sample.loop_mode == AudioStreamWAV.LOOP_DISABLED and sample.resource_path == "res://assets/audio/sfx/combat/enemy_hit.wav", "Impact uses the new non-looping supplied WAV")
 	var decoder: AudioStreamPlayback = sample.instantiate_playback()
 	decoder.start()
 	var peak: float = 0.0

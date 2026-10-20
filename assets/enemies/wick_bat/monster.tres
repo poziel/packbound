@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://c1xkg6oygoqs4"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_fpmq4"]
+[ext_resource type="Resource" path="res://assets/enemies/wick_bat/innate_ability.tres" id="2_uhwyo"]
+[ext_resource type="Resource" path="res://assets/enemies/wick_bat/behavior.tres" id="3_30mfe"]
+[ext_resource type="Texture2D" uid="uid://b3outhpmnp04" path="res://assets/enemies/wick_bat/art/wick_bat.png" id="4_fp7ep"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_v4r6t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol6th"]
+atlas = ExtResource("4_fp7ep")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Wick Bat"
+script = ExtResource("5_v4r6t")
+species_id = &"bat"
+role_id = &"skirmisher"
+behavior = ExtResource("3_30mfe")
+id = &"wick_bat"
+display_name = "Wick Bat"
+log_name = "Wick Bat"
+description = "This cave bat collects candle wax on its ears. It hunts by the sound of buckles, swooping twice before retreating to the rafters."
+icon = SubResource("AtlasTexture_ol6th")
+resource_capacities = Dictionary[int, int]({
+2: 24
+})
+abilities = Array[ExtResource("1_fpmq4")]([ExtResource("2_uhwyo")])
+metadata/encounter_floor = 2

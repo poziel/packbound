@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://i1mxmxr07jkk"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_erj00"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_jt50o"]
+
+[sub_resource type="Resource" id="Resource_vtdq4"]
+script = ExtResource("1_erj00")
+accepted_item_ids = Array[StringName]([&"ironroot_boots"])
+
+[sub_resource type="Resource" id="Resource_iykfe"]
+script = ExtResource("1_erj00")
+accepted_item_ids = Array[StringName]([&"pearl_of_brine"])
+
+[sub_resource type="Resource" id="Resource_dw51n"]
+script = ExtResource("1_erj00")
+accepted_item_ids = Array[StringName]([&"tin_beetle"])
+
+[resource]
+resource_name = "Assemble Pilgrim Crab"
+script = ExtResource("2_jt50o")
+id = &"assemble_pilgrim_crab"
+ingredients = Array[ExtResource("1_erj00")]([SubResource("Resource_vtdq4"), SubResource("Resource_iykfe"), SubResource("Resource_dw51n")])
+result_item_id = &"pilgrim_crab"

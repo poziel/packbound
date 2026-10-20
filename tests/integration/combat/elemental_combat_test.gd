@@ -124,9 +124,10 @@ func _ui_checks() -> void:
 	game.run.elemental_traces = {"void": [2], "fire": [1]}
 	game._refresh()
 	var status: RichTextLabel = game.enemy_vitals.get_node("Statuses/Content")
-	check(status.text.contains("doom") and status.text.contains("Spark") and status.text.contains("void"), "Enemy HUD shows new conditions and traces with links")
+	check(status.text.contains("url=doom") and status.text.contains("url=spark"), "Enemy HUD exposes condition links with glyphs")
+	check(game.enemy_trace_indicator.visible and game._enemy_trace_inspection().get("body", "").contains("Void"), "Elementalist trace indicator exposes authored trace details")
 	game.hovered_enemy_status = "doom"
-	check(game._enemy_status_inspection()["title"] == "Doom", "Doom has nested status inspection")
+	check(PackKeywordLinks.entry("doom").get("title", "") == "Doom", "Doom links resolve to the nested status definition")
 	check(PackKeywords.has_icon("doom"), "Existing Doom artwork is reused")
 	check(PackKeywordLinks.rich("Thermal Shock").contains("[url=reaction_thermal_shock]"), "Reaction names open their own definitions")
 	check(not PackKeywordLinks.entry("reaction_prismatic_collapse")["keyword_list"].is_empty(), "Multi-element reaction definitions expose their effects")

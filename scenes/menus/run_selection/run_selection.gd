@@ -116,7 +116,7 @@ func _add_run(entry: Dictionary) -> void:
 	layout.add_child(actions)
 	var delete_button: Button = HOLD_ICON_BUTTON.instantiate()
 	delete_button.name = "Delete"
-	delete_button.icon = load("res://assets/ui/icons/minimal-controls/close.png")
+	delete_button.icon = load("res://assets/icons/controls/common/close.png")
 	delete_button.theme_type_variation = &"DangerSimpleMenuIconButton"
 	delete_button.tooltip_text = "Hold for 1.2 seconds to delete this run"
 	delete_button.accessibility_name = "Delete %s run" % title.text
@@ -125,7 +125,7 @@ func _add_run(entry: Dictionary) -> void:
 	actions.add_child(delete_button)
 	var preview_button: Button = ICON_BUTTON.instantiate()
 	preview_button.name = "Inventory"
-	preview_button.icon = load("res://assets/ui/icons/navigation-v4/backpack.png")
+	preview_button.icon = load("res://assets/icons/navigation/panels/backpack.png")
 	preview_button.tooltip_text = "Preview inventory"
 	preview_button.accessibility_name = "Preview %s inventory, floor %d" % [title.text, state.fight + 1]
 	preview_button.accessibility_description = "Open a read-only preview of this run's inventory."
@@ -133,7 +133,7 @@ func _add_run(entry: Dictionary) -> void:
 	actions.add_child(preview_button)
 	var resume_button: Button = ICON_BUTTON.instantiate()
 	resume_button.name = "Resume"
-	resume_button.icon = load("res://assets/ui/icons/minimal-controls/next.png")
+	resume_button.icon = load("res://assets/icons/controls/common/next.png")
 	resume_button.theme_type_variation = &"SuccessSimpleMenuIconButton"
 	resume_button.tooltip_text = "Resume run"
 	resume_button.accessibility_name = "Resume %s, floor %d" % [title.text, state.fight + 1]

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://bc7ige0xgrmx"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_2mkpr"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_tjd1x"]
+
+[sub_resource type="Resource" id="Resource_g2jye"]
+script = ExtResource("1_2mkpr")
+accepted_item_ids = Array[StringName]([&"glass_reed_bow"])
+
+[sub_resource type="Resource" id="Resource_bc4ms"]
+script = ExtResource("1_2mkpr")
+accepted_item_ids = Array[StringName]([&"hunter_s_compass"])
+
+[sub_resource type="Resource" id="Resource_4jtp3"]
+script = ExtResource("1_2mkpr")
+accepted_item_ids = Array[StringName]([&"pearl_of_brine"])
+
+[resource]
+resource_name = "Assemble Seamfinder Lens"
+script = ExtResource("2_tjd1x")
+id = &"assemble_seamfinder_lens"
+ingredients = Array[ExtResource("1_2mkpr")]([SubResource("Resource_g2jye"), SubResource("Resource_bc4ms"), SubResource("Resource_4jtp3")])
+result_item_id = &"seamfinder_lens"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dcjogjhko41gt"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_mmuep"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_oy4kh"]
+
+[sub_resource type="Resource" id="Resource_bkr3i"]
+script = ExtResource("1_mmuep")
+accepted_item_ids = Array[StringName]([&"antidote"])
+
+[sub_resource type="Resource" id="Resource_3ybh1"]
+script = ExtResource("1_mmuep")
+accepted_item_ids = Array[StringName]([&"spore_testament"])
+
+[resource]
+resource_name = "Assemble Foxglove Formula"
+script = ExtResource("2_oy4kh")
+id = &"assemble_foxglove_formula"
+ingredients = Array[ExtResource("1_mmuep")]([SubResource("Resource_bkr3i"), SubResource("Resource_3ybh1")])
+result_item_id = &"foxglove_formula"

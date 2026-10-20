@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MonsterBehaviorDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="1_y52av"]
+[ext_resource type="Resource" path="res://assets/enemies/bellroot/attack_0.tres" id="2_0tw2v"]
+[ext_resource type="Resource" path="res://assets/enemies/bellroot/attack_1.tres" id="3_dy2an"]
+[ext_resource type="Script" path="res://systems/enemies/monster_behavior_definition.gd" id="4_dgqeh"]
+
+[resource]
+resource_name = "Bellroot Behavior"
+script = ExtResource("4_dgqeh")
+actions = Array[ExtResource("1_y52av")]([ExtResource("2_0tw2v"), ExtResource("3_dy2an")])

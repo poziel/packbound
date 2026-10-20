@@ -3,98 +3,97 @@
   "id": "abyssal_hourhand",
   "kind": "relic",
   "identity": {
-    "name": "Abyssal Hourhand",
-    "category": "relic",
-    "rarity": "rare",
-    "tags": [
-      "relic",
+	"name": "Abyssal Hourhand",
+	"category": "relic",
+	"rarity": "rare",
+	"tags": [
+	  "relic",
       "doomed"
-    ],
-    "summary": "When the enemy already has Doom before activations: gain +3 magical damage per doom (up to 3 counted).",
-    "description": "When the enemy already has Doom before activations: gain +3 magical damage per doom (up to 3 counted).",
-    "lore": "Salvaged from a clock with no face, this hand points toward the hour its owner would rather forget."
+	],
+	"summary": "When the enemy already has Doom before activations: gain +3 magical damage per doom (up to 3 counted).",
+	"description": "When the enemy already has Doom before activations: gain +3 magical damage per doom (up to 3 counted).",
+	"lore": "Salvaged from a clock with no face, this hand points toward the hour its owner would rather forget."
   },
   "status": {
-    "design": "proposed",
-    "runtime": "integrated"
+	"design": "proposed",
+	"runtime": "integrated"
   },
   "placement": {
-    "mode": "relic-slot",
-    "mask": null,
-    "cellPixels": null,
-    "rotatable": false
+	"mode": "relic-slot",
+	"mask": null,
+	"cellPixels": null,
+	"rotatable": false
   },
   "startingStats": {},
   "activation": {
-    "trigger": "after-item-aggregation",
-    "priority": 0,
-    "costs": [],
-    "cooldownRounds": 0,
-    "maxActivationsPerRound": 1,
-    "reset": "round-start"
+	"trigger": "after-item-aggregation",
+	"priority": 0,
+	"costs": [],
+	"cooldownRounds": 0,
+	"maxActivationsPerRound": 1,
+	"reset": "round-start"
   },
   "effects": [
-    {
-      "id": "passive_rule",
-      "description": "When the enemy already has Doom before activations: gain +3 magical damage per doom (up to 3 counted).",
-      "trigger": "after-item-aggregation",
-      "target": "current-enemy",
-      "condition": "When the enemy already has Doom before activations",
-      "parameters": {
-        "amount": 3,
-        "scaleCap": 3,
-        "condition": "doomed",
-        "stat": "magical_damage",
-        "metric": "doom"
-      },
-      "implementation": "supported"
-    }
+	{
+	  "id": "passive_rule",
+	  "description": "When the enemy already has Doom before activations: gain +3 magical damage per doom (up to 3 counted).",
+	  "trigger": "after-item-aggregation",
+	  "target": "current-enemy",
+	  "condition": "When the enemy already has Doom before activations",
+	  "parameters": {
+		"amount": 3,
+		"scaleCap": 3,
+		"condition": "doomed",
+		"stat": "magical_damage",
+		"metric": "doom"
+	  },
+	  "implementation": "supported"
+	}
   ],
   "empowerment": [],
   "synergies": [
-    {
-      "tags": [
+	{
+	  "tags": [
         "doomed"
-      ],
-      "rationale": "Meet the stated passive condition; no separate bonus.",
-      "parameters": {},
-      "implementation": "supported"
-    }
+	  ],
+	  "rationale": "Meet the stated passive condition; no separate bonus.",
+	  "parameters": {},
+	  "implementation": "supported"
+	}
   ],
   "acquisition": {
-    "sources": [
-      "relic-reward-pool",
+	"sources": [
+	  "relic-reward-pool",
       "relic-chamber"
-    ],
-    "prices": [],
-    "dropProbabilities": []
+	],
+	"prices": [],
+	"dropProbabilities": []
   },
   "crafting": {
-    "recipes": [],
-    "merges": [],
-    "mergeTargets": []
+	"recipes": [],
+	"merges": [],
+	"mergeTargets": []
   },
   "visual": {
-    "brief": "A violet clock hand emerging from a black socket",
-    "materials": [
-      "neutral metal",
+	"brief": "A violet clock hand emerging from a black socket",
+	"materials": [
+	  "neutral metal",
       "natural material"
-    ],
-    "paletteIntent": "Restrained material ramps without colored reflection accents.",
-    "definingFeatures": [
+	],
+	"paletteIntent": "Restrained material ramps without colored reflection accents.",
+	"definingFeatures": [
       "A violet clock hand emerging from a black socket"
-    ],
-    "assets": {
-      "icon": "assets/relics/abyssal_hourhand/icons/art/icon.png",
-      "svg": "assets/relics/abyssal_hourhand/icons/art/icon.svg",
-      "source": "assets/relics/abyssal_hourhand/icons/art/icon.sprite.json",
-      "footprint": null,
-      "provenance": "assets/relics/abyssal_hourhand/icons/art/provenance.json",
-      "manifest": "assets/relics/abyssal_hourhand/icons/art/art-manifest.json",
-      "variants": [],
-      "native": "assets/relics/abyssal_hourhand/icons/art/icon.pixloom"
-    },
-    "approval": "unreviewed"
+	],
+	"assets": {
+	  "icon": "assets/relics/abyssal_hourhand/art/icon.png",
+	  "source": "assets/relics/abyssal_hourhand/art/icon.sprite.json",
+	  "footprint": null,
+	  "provenance": "assets/relics/abyssal_hourhand/art/provenance.json",
+	  "manifest": "assets/relics/abyssal_hourhand/art/art_manifest.json",
+	  "variants": [],
+	  "native": "assets/relics/abyssal_hourhand/art/icon.pixloom"
+	},
+	"approval": "unreviewed"
   },
   "unresolved": []
 }

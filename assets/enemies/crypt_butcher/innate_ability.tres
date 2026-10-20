@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_ystqy"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_qjtlb"]
+[ext_resource type="Resource" path="res://assets/enemies/crypt_butcher/innate_effect.tres" id="3_a1ah1"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_pdqr0"]
+
+[resource]
+resource_name = "Crypt Butcher rules"
+script = ExtResource("4_pdqr0")
+id = &"crypt_butcher_innate_rules"
+display_name = "Crypt Butcher rules"
+description = "Gains 1 attack for each elapsed turn."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_qjtlb")]([ExtResource("3_a1ah1")])

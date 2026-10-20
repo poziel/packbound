@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://3loabm02sopr"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_5kkp0"]
+[ext_resource type="Resource" path="res://assets/enemies/zippered_maw/innate_ability.tres" id="2_3v2df"]
+[ext_resource type="Resource" path="res://assets/enemies/zippered_maw/behavior.tres" id="3_gkrob"]
+[ext_resource type="Texture2D" uid="uid://v3gw4r8qb65y" path="res://assets/enemies/zippered_maw/art/zippered_maw.png" id="4_piuef"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_m7fv8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxvxt"]
+atlas = ExtResource("4_piuef")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "The Zippered Maw"
+script = ExtResource("5_m7fv8")
+behavior = ExtResource("3_gkrob")
+id = &"zippered_maw"
+display_name = "The Zippered Maw"
+log_name = "The Zippered Maw"
+description = "Starts with 3 block. Alternates a bite and a devastating rend."
+icon = SubResource("AtlasTexture_lxvxt")
+base_stats = Dictionary[int, int]({
+1: 3,
+17: 15,
+18: 15
+})
+resource_capacities = Dictionary[int, int]({
+2: 170
+})
+abilities = Array[ExtResource("1_5kkp0")]([ExtResource("2_3v2df")])
+
+metadata/progression_index = 19

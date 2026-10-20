@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://b8b6f8m0fdipp"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_36d1y"]
+[ext_resource type="Resource" path="res://assets/items/cathedral_of_sparks/rule_ability.tres" id="2_tmkkw"]
+[ext_resource type="Texture2D" uid="uid://cbejfretsp7mn" path="res://assets/items/cathedral_of_sparks/art/item.png" id="3_oy22j"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_7ii5p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bo44"]
+atlas = ExtResource("3_oy22j")
+region = Rect2(0, 0, 96, 96)
+
+[resource]
+resource_name = "Cathedral of Sparks"
+script = ExtResource("4_7ii5p")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(1, 1), Vector2i(1, 2)])
+activation_costs = Dictionary[int, int]({
+0: 5
+})
+damage_type = 1
+element = 3
+id = &"cathedral_of_sparks"
+display_name = "Cathedral of Sparks"
+description = "Costs 5 mana per activation. Deals 22 magical damage per affordable activation. Applies 5 spark through the existing combat keyword rules per affordable activation."
+lore = "Every bell inside rings once for the same bolt of lightning."
+rarity = 4
+tags = Array[StringName]([&"spell", &"mage", &"lightning"])
+category_ids = Array[StringName]([&"magic_artifacts"])
+allowed_class_ids = Array[StringName]([&"mage"])
+icon = SubResource("AtlasTexture_6bo44")
+base_stats = Dictionary[int, int]({
+0: 22,
+16: 5
+})
+abilities = Array[ExtResource("1_36d1y")]([ExtResource("2_tmkkw")])

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dgsdvwurkfqo2"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_og61f"]
+[ext_resource type="Resource" path="res://assets/items/gravetread_boots/rule_ability.tres" id="2_o5rdf"]
+[ext_resource type="Texture2D" uid="uid://dr51iasp0dtru" path="res://assets/items/gravetread_boots/art/item.png" id="3_m3bq3"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_jitt7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u50sj"]
+atlas = ExtResource("3_m3bq3")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+resource_name = "Gravetread Boots"
+script = ExtResource("4_jitt7")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1)])
+id = &"gravetread_boots"
+display_name = "Gravetread Boots"
+description = "Adds 1 maximum stamina, refreshed each round. Supplies 3 ward each round against poison, curse and reflected damage."
+lore = "They were returned clean from a grave that had never opened."
+rarity = 2
+tags = Array[StringName]([&"boots"])
+category_ids = Array[StringName]([&"boots"])
+icon = SubResource("AtlasTexture_u50sj")
+base_stats = Dictionary[int, int]({
+5: 3,
+9: 1
+})
+abilities = Array[ExtResource("1_og61f")]([ExtResource("2_o5rdf")])

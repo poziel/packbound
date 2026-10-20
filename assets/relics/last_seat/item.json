@@ -86,14 +86,13 @@
       "A tiny empty wooden stool with three splayed legs"
     ],
     "assets": {
-      "icon": "assets/relics/last_seat/icons/art/icon.png",
-      "svg": "assets/relics/last_seat/icons/art/icon.svg",
-      "source": "assets/relics/last_seat/icons/art/icon.sprite.json",
+      "icon": "assets/relics/last_seat/art/icon.png",
+      "source": "assets/relics/last_seat/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/last_seat/icons/art/provenance.json",
-      "manifest": "assets/relics/last_seat/icons/art/art-manifest.json",
+      "provenance": "assets/relics/last_seat/art/provenance.json",
+      "manifest": "assets/relics/last_seat/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/last_seat/icons/art/icon.pixloom"
+      "native": "assets/relics/last_seat/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

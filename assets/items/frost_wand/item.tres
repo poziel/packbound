@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cotjg3qsfiu3w"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_hovmv"]
+[ext_resource type="Resource" path="res://assets/items/frost_wand/rule_ability.tres" id="2_hb10h"]
+[ext_resource type="Texture2D" uid="uid://k1vaqd8503t8" path="res://assets/items/frost_wand/art/item.png" id="3_8jutw"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_tp4jb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3evg3"]
+atlas = ExtResource("3_8jutw")
+region = Rect2(0, 0, 32, 96)
+
+[resource]
+resource_name = "Frost Wand"
+script = ExtResource("4_tp4jb")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2)])
+activation_costs = Dictionary[int, int]({
+0: 2
+})
+damage_type = 1
+element = 2
+id = &"frost_wand"
+display_name = "Frost Wand"
+description = "Costs 2 mana: 8 damage and reduces each enemy strike by 2 this turn."
+rarity = 2
+category_ids = Array[StringName]([&"wands"])
+icon = SubResource("AtlasTexture_3evg3")
+base_stats = Dictionary[int, int]({
+0: 8,
+13: 2
+})
+abilities = Array[ExtResource("1_hovmv")]([ExtResource("2_hb10h")])

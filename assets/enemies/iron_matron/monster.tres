@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://cyjmvlaj4l0ra"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_fom0b"]
+[ext_resource type="Resource" path="res://assets/enemies/iron_matron/innate_ability.tres" id="2_3k2gb"]
+[ext_resource type="Resource" path="res://assets/enemies/iron_matron/behavior.tres" id="3_c02f0"]
+[ext_resource type="Texture2D" uid="uid://bmoxniihrma6c" path="res://assets/enemies/iron_matron/art/iron_matron.png" id="4_0pkdt"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_83qqb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0fg3"]
+atlas = ExtResource("4_0pkdt")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Iron Matron"
+script = ExtResource("5_83qqb")
+behavior = ExtResource("3_c02f0")
+id = &"iron_matron"
+display_name = "Iron Matron"
+log_name = "Iron Matron"
+description = "Starts with 3 block and strikes twice each turn."
+icon = SubResource("AtlasTexture_c0fg3")
+base_stats = Dictionary[int, int]({
+1: 3,
+17: 20
+})
+resource_capacities = Dictionary[int, int]({
+2: 102
+})
+abilities = Array[ExtResource("1_fom0b")]([ExtResource("2_3k2gb")])
+
+metadata/progression_index = 15

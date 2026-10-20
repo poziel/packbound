@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CollectibleCategoryDefinition" format=3 uid="uid://c6p404mororf"]
+
+[ext_resource type="Script" uid="uid://ccft8lyr7x3v3" path="res://systems/content/collectible_category_definition.gd" id="1"]
+
+[resource]
+resource_name = "Quiver Upgrades"
+script = ExtResource("1")
+id = &"quiver_upgrades"
+display_name = "Quiver Upgrades"

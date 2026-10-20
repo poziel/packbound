@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_a1vtf"]
+
+[resource]
+resource_name = "Blood Pact Rule Effect"
+script = ExtResource("1_a1vtf")
+rule_id = &"blood_pact_rules"
+parameters = {
+"icon": "blood_pact",
+"keyword_stats": []
+}

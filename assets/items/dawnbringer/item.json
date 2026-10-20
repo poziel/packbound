@@ -125,12 +125,9 @@
       "Gold is a material, never an edge-light effect."
     ],
     "assets": {
-      "icon": "assets/items/dawnbringer/icons/art/icon.png",
-      "svg": "assets/items/dawnbringer/icons/art/icon.svg",
-      "source": "assets/items/dawnbringer/icons/art/icon.sprite.json",
-      "footprint": "assets/items/dawnbringer/icons/art/footprint.json",
-      "provenance": "assets/items/dawnbringer/icons/art/provenance.json",
-      "manifest": "assets/items/dawnbringer/icons/art/art-manifest.json",
+      "icon": "assets/items/dawnbringer/art/item.png",
+      "source": "assets/items/dawnbringer/art/item.pixloom.json",
+      "footprint": null,
       "variants": []
     },
     "approval": "unreviewed"

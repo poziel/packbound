@@ -138,14 +138,11 @@
       "A squat green lizard with a broad stone colored brow."
     ],
     "assets": {
-      "icon": "assets/items/pocket_basilisk/icons/art/icon.png",
-      "svg": "assets/items/pocket_basilisk/icons/art/icon.svg",
-      "source": "assets/items/pocket_basilisk/icons/art/icon.sprite.json",
-      "footprint": "assets/items/pocket_basilisk/icons/art/footprint.json",
-      "provenance": "assets/items/pocket_basilisk/icons/art/provenance.json",
-      "manifest": "assets/items/pocket_basilisk/icons/art/art-manifest.json",
+      "icon": "assets/items/pocket_basilisk/art/item.png",
+      "source": "assets/items/pocket_basilisk/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/pocket_basilisk/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

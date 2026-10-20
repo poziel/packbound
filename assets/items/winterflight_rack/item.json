@@ -143,14 +143,11 @@
       "A pale blue feather rack with a broad frost crystal clasp."
     ],
     "assets": {
-      "icon": "assets/items/winterflight_rack/icons/art/icon.png",
-      "svg": "assets/items/winterflight_rack/icons/art/icon.svg",
-      "source": "assets/items/winterflight_rack/icons/art/icon.sprite.json",
-      "footprint": "assets/items/winterflight_rack/icons/art/footprint.json",
-      "provenance": "assets/items/winterflight_rack/icons/art/provenance.json",
-      "manifest": "assets/items/winterflight_rack/icons/art/art-manifest.json",
+      "icon": "assets/items/winterflight_rack/art/item.png",
+      "source": "assets/items/winterflight_rack/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/winterflight_rack/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

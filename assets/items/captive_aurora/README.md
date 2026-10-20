@@ -30,6 +30,6 @@ A green glass prism holding a broad folded violet ribbon. Use a clear connected 
 
 Design candidate, not user-accepted art. Registered in the local runtime; design and art remain review candidates.
 
-![Inventory art](icons/art/icon.png)
+![Inventory art](art/item.png)
 
-Editable [numeric layered source](icons/art/icon.sprite.json) and [Pixloom project](icons/art/icon.pixloom); exports remain review candidates pending user art acceptance.
+Editable [numeric layered source](art/item.pixloom.json) and Pixloom project (archived); exports remain review candidates pending user art acceptance.

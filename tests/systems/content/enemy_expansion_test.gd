@@ -30,6 +30,10 @@ func _run() -> void:
 			check(state.enemy.key in EXPANSION.pool(floor_number, all[floor_number - 1]).map(func(e: Dictionary): return e.key), "Selected enemy belongs to the correct floor")
 			selectable[state.enemy.key] = true
 	for enemy: Dictionary in EXPANSION.profiles():
+		var authored: MonsterDefinition = load("res://assets/enemies/%s/monster.tres" % enemy.key)
+		check(enemy.hp == authored.resource_capacities[GameplayTypes.ResourceType.HEALTH], "Runtime health comes from monster Resource: " + enemy.key)
+		check(enemy.encounter_floor == authored.get_meta("encounter_floor"), "Runtime floor comes from monster Resource: " + enemy.key)
+		check(enemy.attacks.size() == authored.behavior.actions.size(), "Runtime retains authored action cycle: " + enemy.key)
 		check(selectable.has(enemy.key), "New enemy reachable through actual route: " + enemy.key)
 		var state: PackRun = fixture()
 		state.prepare_enemy(enemy)

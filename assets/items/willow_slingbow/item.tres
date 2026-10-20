@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://b48bfouhqp15j"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_iuoys"]
+[ext_resource type="Resource" path="res://assets/items/willow_slingbow/rule_ability.tres" id="2_dev8x"]
+[ext_resource type="Texture2D" uid="uid://m2oall5dtsh8" path="res://assets/items/willow_slingbow/art/item.png" id="3_jw7u4"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_02v2w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdsng"]
+atlas = ExtResource("3_jw7u4")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+resource_name = "Willow Slingbow"
+script = ExtResource("4_02v2w")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 1)])
+activation_costs = Dictionary[int, int]({
+1: 1
+})
+id = &"willow_slingbow"
+display_name = "Willow Slingbow"
+description = "Costs 1 stamina per activation. Deals 5 physical damage per affordable activation."
+lore = "Children of the flooded orchards learned its balance early."
+tags = Array[StringName]([&"ranged", &"ranger"])
+category_ids = Array[StringName]([&"bows"])
+allowed_class_ids = Array[StringName]([&"ranger"])
+icon = SubResource("AtlasTexture_xdsng")
+base_stats = Dictionary[int, int]({
+0: 5
+})
+abilities = Array[ExtResource("1_iuoys")]([ExtResource("2_dev8x")])

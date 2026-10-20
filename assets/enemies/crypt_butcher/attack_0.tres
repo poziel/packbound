@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_473jd"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_r8e3y"]
+[ext_resource type="Resource" path="res://assets/enemies/crypt_butcher/attack_0_effect.tres" id="3_wqh6o"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_pue0d"]
+
+[resource]
+resource_name = "Rising fury"
+script = ExtResource("4_pue0d")
+id = &"crypt_butcher_attack_0"
+display_name = "Rising fury"
+description = "Gains 1 attack for each elapsed turn."
+target_id = &"opponent"
+effects = Array[ExtResource("2_r8e3y")]([ExtResource("3_wqh6o")])

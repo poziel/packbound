@@ -1,6 +1,7 @@
 extends RefCounted
 
 const DEFAULTS := {
+	"tooltip_visibility": KEY_CTRL,
 	"dev_menu": KEY_F8, "pause": KEY_ESCAPE, "primary": KEY_SPACE, "rotate_left": KEY_Q, "rotate_right": KEY_E,
 	"craft_lock": {"mouse": MOUSE_BUTTON_RIGHT},
 	"priority_up": {"mouse": MOUSE_BUTTON_LEFT, "ctrl": true},
@@ -10,6 +11,7 @@ const DEFAULTS := {
 	"select_1": KEY_1, "select_2": KEY_2, "select_3": KEY_3, "select_4": KEY_4, "select_5": KEY_5
 }
 const LABELS := {
+	"tooltip_visibility": "Hide / show tooltips (hold)",
 	"dev_menu": "Developer tools", "pause": "Pause / resume", "primary": "Primary room action", "rotate_left": "Rotate item left", "rotate_right": "Rotate item right",
 	"craft_lock": "Lock item crafting", "priority_up": "Increase item priority", "priority_down": "Decrease item priority",
 	"quick_inspect": "Quick inspect (hold)", "stash": "Open stash", "item_reward": "Open item rewards", "relic_reward": "Open relic rewards",

@@ -129,14 +129,11 @@
       "A single broad plated boot with a hooked ankle guard."
     ],
     "assets": {
-      "icon": "assets/items/vanguard_sabaton/icons/art/icon.png",
-      "svg": "assets/items/vanguard_sabaton/icons/art/icon.svg",
-      "source": "assets/items/vanguard_sabaton/icons/art/icon.sprite.json",
-      "footprint": "assets/items/vanguard_sabaton/icons/art/footprint.json",
-      "provenance": "assets/items/vanguard_sabaton/icons/art/provenance.json",
-      "manifest": "assets/items/vanguard_sabaton/icons/art/art-manifest.json",
+      "icon": "assets/items/vanguard_sabaton/art/item.png",
+      "source": "assets/items/vanguard_sabaton/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/vanguard_sabaton/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

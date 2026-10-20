@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_1nd0u"]
+
+[resource]
+resource_name = "Thirteenth Tooth Rule Effect"
+script = ExtResource("1_1nd0u")
+rule_id = &"thirteenth_tooth_rules"
+parameters = {
+"icon": "thirteenth_tooth",
+"rule": {
+"amount": 5,
+"cap": 1,
+"condition": "third",
+"metric": "one",
+"stat": "vampirism"
+},
+"stats": {}
+}

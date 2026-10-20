@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_ykurm"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_56ck6"]
+[ext_resource type="Resource" path="res://assets/enemies/grave_keeper/attack_0_effect.tres" id="3_8mlpb"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_to1lb"]
+
+[resource]
+resource_name = "Sealed gate"
+script = ExtResource("4_to1lb")
+id = &"grave_keeper_attack_0"
+display_name = "Sealed gate"
+description = "Starts with 7 block. Absorbed damage depletes it; any remainder expires after turn two."
+target_id = &"opponent"
+effects = Array[ExtResource("2_56ck6")]([ExtResource("3_8mlpb")])

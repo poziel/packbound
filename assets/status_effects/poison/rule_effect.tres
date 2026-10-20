@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_s0nel"]
+
+[resource]
+resource_name = "Poison Status Rules"
+script = ExtResource("1_s0nel")
+rule_id = &"poison_status_rules"
+parameters = {
+"bypass_block": true,
+"damage_per_stack": 1,
+"damage_type": "magical",
+"player_ward_absorbs": true,
+"prevent_enemy_decay_relic_id": "plague_seal"
+}

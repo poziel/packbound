@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dji83tws60avk"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_7eet6"]
+[ext_resource type="Resource" path="res://assets/items/quiver_loader/rule_ability.tres" id="2_18kak"]
+[ext_resource type="Texture2D" uid="uid://51iaa2f6uo8d" path="res://assets/items/quiver/art/item.png" id="3_co4xa"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_7mqkl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kt86"]
+atlas = ExtResource("3_co4xa")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Quick Loader"
+script = ExtResource("4_7mqkl")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+id = &"quiver_loader"
+display_name = "Quick Loader"
+description = "Quiver upgrade: Volley fires every 2 rounds instead of 3. Once per run."
+rarity = 4
+category_ids = Array[StringName]([&"quiver_upgrades"])
+icon = SubResource("AtlasTexture_2kt86")
+abilities = Array[ExtResource("1_7eet6")]([ExtResource("2_18kak")])

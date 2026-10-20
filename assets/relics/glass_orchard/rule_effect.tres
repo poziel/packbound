@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_svsud"]
+
+[resource]
+resource_name = "Glass Orchard Rule Effect"
+script = ExtResource("1_svsud")
+rule_id = &"glass_orchard_rules"
+parameters = {
+"icon": "glass_orchard",
+"rule": {
+"amount": 1,
+"cap": 3,
+"condition": "reactions",
+"metric": "reaction_count",
+"stat": "healing"
+},
+"stats": {}
+}

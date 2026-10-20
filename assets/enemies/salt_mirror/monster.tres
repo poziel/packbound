@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://bpvuqh2oh4t4r"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_gneop"]
+[ext_resource type="Resource" path="res://assets/enemies/salt_mirror/innate_ability.tres" id="2_ag3wn"]
+[ext_resource type="Resource" path="res://assets/enemies/salt_mirror/behavior.tres" id="3_756pp"]
+[ext_resource type="Texture2D" uid="uid://ifsk1xnrtxav" path="res://assets/enemies/salt_mirror/art/salt_mirror.png" id="4_guv71"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_l8ddq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohfmt"]
+atlas = ExtResource("4_guv71")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Salt Mirror"
+script = ExtResource("5_l8ddq")
+species_id = &"crystal"
+role_id = &"reflector"
+behavior = ExtResource("3_756pp")
+id = &"salt_mirror"
+display_name = "Salt Mirror"
+log_name = "Salt Mirror"
+description = "A mineral growth that learned to imitate the figures reflected in its faces. It hovers on a narrow point above the salt floor."
+icon = SubResource("AtlasTexture_ohfmt")
+base_stats = Dictionary[int, int]({
+18: 15
+})
+resource_capacities = Dictionary[int, int]({
+2: 79
+})
+abilities = Array[ExtResource("1_gneop")]([ExtResource("2_ag3wn")])
+metadata/encounter_floor = 13

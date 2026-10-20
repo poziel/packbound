@@ -84,14 +84,11 @@
       "Wide bark sandals with green root straps and thick ivory soles."
     ],
     "assets": {
-      "icon": "assets/items/worldroot_sandals/icons/art/icon.png",
-      "svg": "assets/items/worldroot_sandals/icons/art/icon.svg",
-      "source": "assets/items/worldroot_sandals/icons/art/icon.sprite.json",
-      "footprint": "assets/items/worldroot_sandals/icons/art/footprint.json",
-      "provenance": "assets/items/worldroot_sandals/icons/art/provenance.json",
-      "manifest": "assets/items/worldroot_sandals/icons/art/art-manifest.json",
+      "icon": "assets/items/worldroot_sandals/art/item.png",
+      "source": "assets/items/worldroot_sandals/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/worldroot_sandals/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

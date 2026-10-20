@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_vfeki"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_s6vbo"]
+[ext_resource type="Resource" path="res://assets/items/moonwell_pebble/rule_effect.tres" id="3_3t6rn"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_mse6b"]
+
+[resource]
+resource_name = "Moonwell Pebble rules"
+script = ExtResource("4_mse6b")
+id = &"moonwell_pebble_rules"
+display_name = "Moonwell Pebble rules"
+description = "Adds 3 maximum mana, refreshed each round."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_s6vbo")]([ExtResource("3_3t6rn")])

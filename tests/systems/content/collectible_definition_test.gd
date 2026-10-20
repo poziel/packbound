@@ -58,7 +58,6 @@ func definition(script: Script) -> Resource:
 	value.id = &"test_collectible"
 	value.display_name = "Test Collectible"
 	if script == item_script:
-		value.role = &"weapon"
 		value.footprint.assign([Vector2i.ZERO])
 	return value
 
@@ -80,7 +79,7 @@ func check_shared_contract() -> void:
 				check(bool(int(properties[field].usage) & PROPERTY_USAGE_STORAGE), "Shared field is serializable: " + field)
 		check(str(properties.base_stats.hint_string).contains("DAMAGE"), "Both concrete types inherit named stat choices")
 		if script == relic_script:
-			for field: String in ["role", "footprint", "rotatable", "activation_costs", "damage_type", "element"]:
+			for field: String in ["footprint", "rotatable", "activation_costs", "damage_type", "element"]:
 				check(not properties.has(field), "Relic has no backpack-specific field: " + field)
 	var item: Resource = definition(item_script)
 	var relic: Resource = definition(relic_script)

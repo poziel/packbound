@@ -8,14 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://7fnmbqaiilvt" path="res://scenes/run/game/game.tscn" id="game"]
 [ext_resource type="PackedScene" path="res://scenes/shared/inspect_manager/inspect_manager.tscn" id="inspector"]
 [ext_resource type="Script" uid="uid://j8oxhaykooi4" path="res://systems/combat/combat_playback.gd" id="playback"]
-[ext_resource type="AudioStream" path="res://assets/audio/combat/enemy_hit.wav" id="enemy_hit"]
-[ext_resource type="AudioStream" path="res://assets/audio/combat/enemy_death.wav" id="enemy_death"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/combat/enemy_hit.wav" id="enemy_hit"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/combat/enemy_death.wav" id="enemy_death"]
 [ext_resource type="PackedScene" path="res://scenes/shared/loading_screen/loading_screen.tscn" id="loading_screen"]
 [ext_resource type="PackedScene" path="res://scenes/run/floor_flow/floor_flow.tscn" id="floor_flow"]
 
-[ext_resource type="AudioStream" path="res://assets/audio/combat/player_damage.wav" id="player_hit"]
-[ext_resource type="AudioStream" path="res://assets/audio/combat/player_shield_hit.wav" id="player_shield_hit"]
-[ext_resource type="AudioStream" path="res://assets/audio/combat/player_shield_break.wav" id="player_shield_break"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/combat/player_damage.wav" id="player_hit"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/combat/player_shield_hit.wav" id="player_shield_hit"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/combat/player_shield_break.wav" id="player_shield_break"]
 
 [ext_resource type="PackedScene" path="res://scenes/shared/dev_menu/dev_menu.tscn" id="dev_menu"]
 

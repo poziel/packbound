@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_3ewmg"]
+
+[resource]
+resource_name = "Bell Sentinel Attack 1 Effect"
+script = ExtResource("1_3ewmg")
+rule_id = &"enemy_response"
+parameters = {
+"damage": 15,
+"damage_type": "physical",
+"hits": 1
+}

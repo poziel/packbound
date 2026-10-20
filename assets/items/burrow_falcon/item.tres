@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://ch7cyuorj1vob"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_dr1vb"]
+[ext_resource type="Resource" path="res://assets/items/burrow_falcon/rule_ability.tres" id="2_ha361"]
+[ext_resource type="Texture2D" uid="uid://vgns5xq6o17i" path="res://assets/items/burrow_falcon/art/item.png" id="3_x7xyp"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_qup1v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e514m"]
+atlas = ExtResource("3_x7xyp")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+resource_name = "Burrow Falcon"
+script = ExtResource("4_qup1v")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1)])
+id = &"burrow_falcon"
+display_name = "Burrow Falcon"
+description = "Deals 4 physical damage per affordable activation. Bypasses up to 2 enemy block per activation."
+lore = "It hunts under roots rather than above the canopy."
+rarity = 2
+tags = Array[StringName]([&"companion", &"ranger"])
+category_ids = Array[StringName]([&"companions"])
+allowed_class_ids = Array[StringName]([&"ranger"])
+icon = SubResource("AtlasTexture_e514m")
+base_stats = Dictionary[int, int]({
+0: 4,
+14: 2
+})
+abilities = Array[ExtResource("1_dr1vb")]([ExtResource("2_ha361")])

@@ -86,14 +86,13 @@
       "A brass compass on a scarred leather map"
     ],
     "assets": {
-      "icon": "assets/relics/scar_cartographer/icons/art/icon.png",
-      "svg": "assets/relics/scar_cartographer/icons/art/icon.svg",
-      "source": "assets/relics/scar_cartographer/icons/art/icon.sprite.json",
+      "icon": "assets/relics/scar_cartographer/art/icon.png",
+      "source": "assets/relics/scar_cartographer/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/scar_cartographer/icons/art/provenance.json",
-      "manifest": "assets/relics/scar_cartographer/icons/art/art-manifest.json",
+      "provenance": "assets/relics/scar_cartographer/art/provenance.json",
+      "manifest": "assets/relics/scar_cartographer/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/scar_cartographer/icons/art/icon.pixloom"
+      "native": "assets/relics/scar_cartographer/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

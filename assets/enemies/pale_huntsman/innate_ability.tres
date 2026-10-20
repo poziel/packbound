@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_1ahpd"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_kiowq"]
+[ext_resource type="Resource" path="res://assets/enemies/pale_huntsman/innate_effect.tres" id="3_jrwol"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_7fij1"]
+
+[resource]
+resource_name = "Pale Huntsman rules"
+script = ExtResource("4_7fij1")
+id = &"pale_huntsman_innate_rules"
+display_name = "Pale Huntsman rules"
+description = "Up to 4 damage per strike bypasses block after slow, plating and resistance reduce the strike. Starts with 4 opening block. Any remainder expires after round two."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_kiowq")]([ExtResource("3_jrwol")])

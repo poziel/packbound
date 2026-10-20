@@ -85,14 +85,13 @@
       "A thick copper penny stamped with a hedgehog"
     ],
     "assets": {
-      "icon": "assets/relics/hedgehog_penny/icons/art/icon.png",
-      "svg": "assets/relics/hedgehog_penny/icons/art/icon.svg",
-      "source": "assets/relics/hedgehog_penny/icons/art/icon.sprite.json",
+      "icon": "assets/relics/hedgehog_penny/art/icon.png",
+      "source": "assets/relics/hedgehog_penny/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/hedgehog_penny/icons/art/provenance.json",
-      "manifest": "assets/relics/hedgehog_penny/icons/art/art-manifest.json",
+      "provenance": "assets/relics/hedgehog_penny/art/provenance.json",
+      "manifest": "assets/relics/hedgehog_penny/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/hedgehog_penny/icons/art/icon.pixloom"
+      "native": "assets/relics/hedgehog_penny/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

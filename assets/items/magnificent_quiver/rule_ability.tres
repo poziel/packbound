@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_pb4ta"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_esy7v"]
+[ext_resource type="Resource" path="res://assets/items/magnificent_quiver/rule_effect.tres" id="3_cxx2y"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_mrf0o"]
+
+[resource]
+resource_name = "Bowmaster's Quiver rules"
+script = ExtResource("4_mrf0o")
+id = &"magnificent_quiver_rules"
+display_name = "Bowmaster's Quiver rules"
+description = "Touching bows gain +2 damage"
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_esy7v")]([ExtResource("3_cxx2y")])

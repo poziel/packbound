@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://oq360xux60fk"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_5138d"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_wjsuw"]
+
+[sub_resource type="Resource" id="Resource_wfrrv"]
+script = ExtResource("1_5138d")
+accepted_item_ids = Array[StringName]([&"captain_s_baton"])
+
+[sub_resource type="Resource" id="Resource_ogawk"]
+script = ExtResource("1_5138d")
+accepted_item_ids = Array[StringName]([&"redoubt_cuirass"])
+
+[sub_resource type="Resource" id="Resource_u6hbu"]
+script = ExtResource("1_5138d")
+accepted_item_ids = Array[StringName]([&"siegebell_plate"])
+
+[sub_resource type="Resource" id="Resource_0j58j"]
+script = ExtResource("1_5138d")
+accepted_item_ids = Array[StringName]([&"warding_sigil"])
+
+[resource]
+resource_name = "Assemble Last Legion Aegis"
+script = ExtResource("2_wjsuw")
+id = &"assemble_last_legion_aegis"
+ingredients = Array[ExtResource("1_5138d")]([SubResource("Resource_wfrrv"), SubResource("Resource_ogawk"), SubResource("Resource_u6hbu"), SubResource("Resource_0j58j")])
+result_item_id = &"last_legion_aegis"

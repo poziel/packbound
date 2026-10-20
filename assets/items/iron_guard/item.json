@@ -110,12 +110,9 @@
       "Steel planes give the plate visible thickness."
     ],
     "assets": {
-      "icon": "assets/items/iron_guard/icons/art/icon.png",
-      "svg": "assets/items/iron_guard/icons/art/icon.svg",
-      "source": "assets/items/iron_guard/icons/art/icon.sprite.json",
-      "footprint": "assets/items/iron_guard/icons/art/footprint.json",
-      "provenance": "assets/items/iron_guard/icons/art/provenance.json",
-      "manifest": "assets/items/iron_guard/icons/art/art-manifest.json",
+      "icon": "assets/items/iron_guard/art/item.png",
+      "source": "assets/items/iron_guard/art/item.pixloom.json",
+      "footprint": null,
       "variants": []
     },
     "approval": "unreviewed"

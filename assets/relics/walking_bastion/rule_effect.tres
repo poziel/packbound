@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_wnt8n"]
+
+[resource]
+resource_name = "Walking Bastion Rule Effect"
+script = ExtResource("1_wnt8n")
+rule_id = &"walking_bastion_rules"
+parameters = {
+"icon": "walking_bastion",
+"rule": {
+"amount": 20,
+"cap": 1,
+"condition": "high_block",
+"metric": "one",
+"stat": "physical_resistance"
+},
+"stats": {}
+}

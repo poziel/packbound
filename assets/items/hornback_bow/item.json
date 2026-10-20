@@ -136,14 +136,11 @@
       "A recurved horn bow with broad ivory limb tips."
     ],
     "assets": {
-      "icon": "assets/items/hornback_bow/icons/art/icon.png",
-      "svg": "assets/items/hornback_bow/icons/art/icon.svg",
-      "source": "assets/items/hornback_bow/icons/art/icon.sprite.json",
-      "footprint": "assets/items/hornback_bow/icons/art/footprint.json",
-      "provenance": "assets/items/hornback_bow/icons/art/provenance.json",
-      "manifest": "assets/items/hornback_bow/icons/art/art-manifest.json",
+      "icon": "assets/items/hornback_bow/art/item.png",
+      "source": "assets/items/hornback_bow/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/hornback_bow/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

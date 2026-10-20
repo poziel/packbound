@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://d2oe3a00b2dgw"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_5h1fo"]
+[ext_resource type="Resource" path="res://assets/items/iron_dagger/rule_ability.tres" id="2_vap0a"]
+[ext_resource type="Texture2D" uid="uid://dmvytwkvmb3nl" path="res://assets/items/iron_dagger/art/item.png" id="3_dc7np"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_4kc4x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejhxk"]
+atlas = ExtResource("3_dc7np")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Iron Dagger"
+script = ExtResource("4_4kc4x")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+activation_costs = Dictionary[int, int]({
+1: 2
+})
+id = &"longsword"
+display_name = "Iron Dagger"
+description = "Deals 8 damage."
+rarity = 1
+category_ids = Array[StringName]([&"daggers"])
+icon = SubResource("AtlasTexture_ejhxk")
+base_stats = Dictionary[int, int]({
+0: 8
+})
+abilities = Array[ExtResource("1_5h1fo")]([ExtResource("2_vap0a")])

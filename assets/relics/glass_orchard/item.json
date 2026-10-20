@@ -85,14 +85,13 @@
       "A glass tree carrying three ruby fruit"
     ],
     "assets": {
-      "icon": "assets/relics/glass_orchard/icons/art/icon.png",
-      "svg": "assets/relics/glass_orchard/icons/art/icon.svg",
-      "source": "assets/relics/glass_orchard/icons/art/icon.sprite.json",
+      "icon": "assets/relics/glass_orchard/art/icon.png",
+      "source": "assets/relics/glass_orchard/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/glass_orchard/icons/art/provenance.json",
-      "manifest": "assets/relics/glass_orchard/icons/art/art-manifest.json",
+      "provenance": "assets/relics/glass_orchard/art/provenance.json",
+      "manifest": "assets/relics/glass_orchard/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/glass_orchard/icons/art/icon.pixloom"
+      "native": "assets/relics/glass_orchard/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

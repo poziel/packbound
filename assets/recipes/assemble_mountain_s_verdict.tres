@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dlcnikd8oi7pb"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_6scbq"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_yf5pk"]
+
+[sub_resource type="Resource" id="Resource_lisya"]
+script = ExtResource("1_6scbq")
+accepted_item_ids = Array[StringName]([&"anchor_cleaver"])
+
+[sub_resource type="Resource" id="Resource_nkg0u"]
+script = ExtResource("1_6scbq")
+accepted_item_ids = Array[StringName]([&"gallows_halberd"])
+
+[sub_resource type="Resource" id="Resource_1kma3"]
+script = ExtResource("1_6scbq")
+accepted_item_ids = Array[StringName]([&"meteor_maul"])
+
+[sub_resource type="Resource" id="Resource_mlpqb"]
+script = ExtResource("1_6scbq")
+accepted_item_ids = Array[StringName]([&"siegebell_plate"])
+
+[sub_resource type="Resource" id="Resource_e1a4l"]
+script = ExtResource("1_6scbq")
+accepted_item_ids = Array[StringName]([&"war_council_seal"])
+
+[resource]
+resource_name = "Assemble Mountain S Verdict"
+script = ExtResource("2_yf5pk")
+id = &"assemble_mountain_s_verdict"
+ingredients = Array[ExtResource("1_6scbq")]([SubResource("Resource_lisya"), SubResource("Resource_nkg0u"), SubResource("Resource_1kma3"), SubResource("Resource_mlpqb"), SubResource("Resource_e1a4l")])
+result_item_id = &"mountain_s_verdict"

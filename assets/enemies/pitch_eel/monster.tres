@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://c13lwdqghwr8b"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_v6jgv"]
+[ext_resource type="Resource" path="res://assets/enemies/pitch_eel/innate_ability.tres" id="2_22vt0"]
+[ext_resource type="Resource" path="res://assets/enemies/pitch_eel/behavior.tres" id="3_dlmqh"]
+[ext_resource type="Texture2D" uid="uid://fvq44io1dga3" path="res://assets/enemies/pitch_eel/art/pitch_eel.png" id="4_c225o"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_ps1j1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owsbl"]
+atlas = ExtResource("4_c225o")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Pitch Eel"
+script = ExtResource("5_ps1j1")
+species_id = &"eel"
+role_id = &"drainer"
+behavior = ExtResource("3_dlmqh")
+id = &"pitch_eel"
+display_name = "Pitch Eel"
+log_name = "Pitch Eel"
+description = "An oil-black eel that travels between pools by dragging its muscular body. It feeds on warmth and closes torn skin after a successful bite."
+icon = SubResource("AtlasTexture_owsbl")
+resource_capacities = Dictionary[int, int]({
+2: 85
+})
+abilities = Array[ExtResource("1_v6jgv")]([ExtResource("2_22vt0")])
+metadata/encounter_floor = 14

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://bxr3cphq0dfem"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_1pojr"]
+[ext_resource type="Resource" path="res://assets/enemies/grave_keeper/innate_ability.tres" id="2_7uy7i"]
+[ext_resource type="Resource" path="res://assets/enemies/grave_keeper/behavior.tres" id="3_3knrl"]
+[ext_resource type="Texture2D" uid="uid://fhr6ecnvd3aq" path="res://assets/enemies/grave_keeper/art/grave_keeper.png" id="4_8c2nd"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_4fwb7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxpmb"]
+atlas = ExtResource("4_8c2nd")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Grave Keeper"
+script = ExtResource("5_4fwb7")
+behavior = ExtResource("3_3knrl")
+id = &"grave_keeper"
+display_name = "Grave Keeper"
+log_name = "Grave Keeper"
+description = "Starts with 7 block. Absorbed damage depletes it; any remainder expires after turn two."
+icon = SubResource("AtlasTexture_oxpmb")
+resource_capacities = Dictionary[int, int]({
+2: 98
+})
+abilities = Array[ExtResource("1_1pojr")]([ExtResource("2_7uy7i")])
+
+metadata/progression_index = 14

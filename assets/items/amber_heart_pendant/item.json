@@ -152,14 +152,11 @@
       "A warm amber heart enclosing a single dark fern."
     ],
     "assets": {
-      "icon": "assets/items/amber_heart_pendant/icons/art/icon.png",
-      "svg": "assets/items/amber_heart_pendant/icons/art/icon.svg",
-      "source": "assets/items/amber_heart_pendant/icons/art/icon.sprite.json",
-      "footprint": "assets/items/amber_heart_pendant/icons/art/footprint.json",
-      "provenance": "assets/items/amber_heart_pendant/icons/art/provenance.json",
-      "manifest": "assets/items/amber_heart_pendant/icons/art/art-manifest.json",
+      "icon": "assets/items/amber_heart_pendant/art/item.png",
+      "source": "assets/items/amber_heart_pendant/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/amber_heart_pendant/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

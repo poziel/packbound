@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CollectibleCategoryDefinition" format=3 uid="uid://r2xffmiv67vx"]
+
+[ext_resource type="Script" uid="uid://ccft8lyr7x3v3" path="res://systems/content/collectible_category_definition.gd" id="1"]
+
+[resource]
+resource_name = "Magic Weapons"
+script = ExtResource("1")
+id = &"magic_weapons"
+display_name = "Magic Weapons"
+parent_category_id = &"weapons"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_vqwxm"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_s88fp"]
+[ext_resource type="Resource" path="res://assets/items/hunter_s_compass/rule_effect.tres" id="3_fv5e1"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_wv5ww"]
+
+[resource]
+resource_name = "Hunter's Compass rules"
+script = ExtResource("4_wv5ww")
+id = &"hunter_s_compass_rules"
+display_name = "Hunter's Compass rules"
+description = "Adds 1 maximum stamina, refreshed each round. Each orthogonally touching ranged gains +2 pierce. Each source applies once per target, regardless of shared edges; distinct sources stack."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_s88fp")]([ExtResource("3_fv5e1")])

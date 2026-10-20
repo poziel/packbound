@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_aq0ys"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_3xd55"]
+[ext_resource type="Resource" path="res://assets/items/gallows_halberd/rule_effect.tres" id="3_1y157"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_s6gb0"]
+
+[resource]
+resource_name = "Gallows Halberd rules"
+script = ExtResource("4_s6gb0")
+id = &"gallows_halberd_rules"
+display_name = "Gallows Halberd rules"
+description = "Costs 3 stamina per activation. Deals 15 physical damage per affordable activation. Bypasses up to 5 enemy block per activation. Warrior only: gains 1 Momentum after an affordable activation."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_3xd55")]([ExtResource("3_1y157")])

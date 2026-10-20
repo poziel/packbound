@@ -141,14 +141,11 @@
       "A bell bronze breastplate with a broad cracked lip."
     ],
     "assets": {
-      "icon": "assets/items/siegebell_plate/icons/art/icon.png",
-      "svg": "assets/items/siegebell_plate/icons/art/icon.svg",
-      "source": "assets/items/siegebell_plate/icons/art/icon.sprite.json",
-      "footprint": "assets/items/siegebell_plate/icons/art/footprint.json",
-      "provenance": "assets/items/siegebell_plate/icons/art/provenance.json",
-      "manifest": "assets/items/siegebell_plate/icons/art/art-manifest.json",
+      "icon": "assets/items/siegebell_plate/art/item.png",
+      "source": "assets/items/siegebell_plate/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/siegebell_plate/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

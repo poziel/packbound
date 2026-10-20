@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://bi20btq13ja3r"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_blraq"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_k7uu4"]
+
+[sub_resource type="Resource" id="Resource_nabbe"]
+script = ExtResource("1_blraq")
+accepted_item_ids = Array[StringName]([&"burrow_falcon"])
+
+[sub_resource type="Resource" id="Resource_jp1w1"]
+script = ExtResource("1_blraq")
+accepted_item_ids = Array[StringName]([&"gravetread_boots"])
+
+[sub_resource type="Resource" id="Resource_k0g2t"]
+script = ExtResource("1_blraq")
+accepted_item_ids = Array[StringName]([&"pocket_basilisk"])
+
+[resource]
+resource_name = "Assemble Gloam Lynx"
+script = ExtResource("2_k7uu4")
+id = &"assemble_gloam_lynx"
+ingredients = Array[ExtResource("1_blraq")]([SubResource("Resource_nabbe"), SubResource("Resource_jp1w1"), SubResource("Resource_k0g2t")])
+result_item_id = &"gloam_lynx"

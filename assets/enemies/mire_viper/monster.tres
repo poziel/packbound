@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://chcvmo84j0edx"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_pxxyw"]
+[ext_resource type="Resource" path="res://assets/enemies/mire_viper/innate_ability.tres" id="2_t6yc2"]
+[ext_resource type="Resource" path="res://assets/enemies/mire_viper/behavior.tres" id="3_k3ubm"]
+[ext_resource type="Texture2D" uid="uid://ctyph4qbw6swk" path="res://assets/enemies/mire_viper/art/mire_viper.png" id="4_2wagr"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_r2p2e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ns1tc"]
+atlas = ExtResource("4_2wagr")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Mire Viper"
+script = ExtResource("5_r2p2e")
+behavior = ExtResource("3_k3ubm")
+id = &"mire_viper"
+display_name = "Mire Viper"
+log_name = "Mire Viper"
+description = "Adds 2 poison when an attack hurts you."
+icon = SubResource("AtlasTexture_ns1tc")
+base_stats = Dictionary[int, int]({
+6: 2
+})
+resource_capacities = Dictionary[int, int]({
+2: 48
+})
+abilities = Array[ExtResource("1_pxxyw")]([ExtResource("2_t6yc2")])
+
+metadata/progression_index = 5

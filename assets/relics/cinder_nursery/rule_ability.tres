@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_t7oc4"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_025t1"]
+[ext_resource type="Resource" path="res://assets/relics/cinder_nursery/rule_effect.tres" id="3_gqaw7"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_6bud7"]
+
+[resource]
+resource_name = "Cinder Nursery rules"
+script = ExtResource("4_6bud7")
+id = &"cinder_nursery_rules"
+display_name = "Cinder Nursery rules"
+description = "When the enemy already has Burn before activations: gain +2 healing."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_025t1")]([ExtResource("3_gqaw7")])

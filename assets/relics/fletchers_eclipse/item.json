@@ -85,14 +85,13 @@
       "A black sun disk crossed by a white feather"
     ],
     "assets": {
-      "icon": "assets/relics/fletchers_eclipse/icons/art/icon.png",
-      "svg": "assets/relics/fletchers_eclipse/icons/art/icon.svg",
-      "source": "assets/relics/fletchers_eclipse/icons/art/icon.sprite.json",
+      "icon": "assets/relics/fletchers_eclipse/art/icon.png",
+      "source": "assets/relics/fletchers_eclipse/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/fletchers_eclipse/icons/art/provenance.json",
-      "manifest": "assets/relics/fletchers_eclipse/icons/art/art-manifest.json",
+      "provenance": "assets/relics/fletchers_eclipse/art/provenance.json",
+      "manifest": "assets/relics/fletchers_eclipse/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/fletchers_eclipse/icons/art/icon.pixloom"
+      "native": "assets/relics/fletchers_eclipse/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

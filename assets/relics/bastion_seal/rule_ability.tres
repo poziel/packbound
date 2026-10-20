@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_8bm5g"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_iuk6x"]
+[ext_resource type="Resource" path="res://assets/relics/bastion_seal/rule_effect.tres" id="3_rb6dg"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_isp2b"]
+
+[resource]
+resource_name = "Bastion Seal rules"
+script = ExtResource("4_isp2b")
+id = &"bastion_seal_rules"
+display_name = "Bastion Seal rules"
+description = "While owned: +1 plating, +2 ward."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_iuk6x")]([ExtResource("3_rb6dg")])

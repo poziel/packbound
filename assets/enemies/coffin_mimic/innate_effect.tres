@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_wv70c"]
+
+[resource]
+resource_name = "Coffin Mimic Innate Effect"
+script = ExtResource("1_wv70c")
+rule_id = &"coffin_mimic_innate_rules"
+parameters = {
+"cycle_armor": 0,
+"drain": 2,
+"enrage": 0,
+"intent": "Multi Strike",
+"opening_armor": 0,
+"parry": 0,
+"reflect": 0,
+"regen": 0,
+"sunder": 0
+}

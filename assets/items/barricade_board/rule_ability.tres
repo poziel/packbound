@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_7ueon"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_ho5qs"]
+[ext_resource type="Resource" path="res://assets/items/barricade_board/rule_effect.tres" id="3_s6i2t"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_n21xg"]
+
+[resource]
+resource_name = "Barricade Board rules"
+script = ExtResource("4_n21xg")
+id = &"barricade_board_rules"
+display_name = "Barricade Board rules"
+description = "Starts combat with 6 block; spent block does not refill."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_ho5qs")]([ExtResource("3_s6i2t")])

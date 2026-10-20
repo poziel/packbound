@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_metg5"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_mrncw"]
+[ext_resource type="Resource" path="res://assets/items/burrow_falcon/rule_effect.tres" id="3_n8unu"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_gvdnw"]
+
+[resource]
+resource_name = "Burrow Falcon rules"
+script = ExtResource("4_gvdnw")
+id = &"burrow_falcon_rules"
+display_name = "Burrow Falcon rules"
+description = "Deals 4 physical damage per affordable activation. Bypasses up to 2 enemy block per activation."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_mrncw")]([ExtResource("3_n8unu")])

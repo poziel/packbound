@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RelicDefinition" format=3 uid="uid://r614lh8ebc75"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_06vs0"]
+[ext_resource type="Resource" path="res://assets/relics/rust_psalm/rule_ability.tres" id="2_vq8d4"]
+[ext_resource type="Texture2D" uid="uid://imilfctqcjse" path="res://assets/relics/rust_psalm/art/icon.png" id="3_7n0t1"]
+[ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_u8h7f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjowj"]
+atlas = ExtResource("3_7n0t1")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Rust Psalm"
+script = ExtResource("4_u8h7f")
+id = &"rust_psalm"
+display_name = "Rust Psalm"
+description = "With at least one packed melee weapon: gain +1 pierce per weapon count (up to 3 counted)."
+lore = "A siege chaplain struck this fork against every sword before battle. The note has outlasted the blades."
+tags = Array[StringName]([&"relic", &"has_weapon"])
+category_ids = Array[StringName]([&"relics"])
+preferred_class_ids = null
+preferred_character_ids = null
+icon = SubResource("AtlasTexture_pjowj")
+base_stats = null
+abilities = Array[ExtResource("1_06vs0")]([ExtResource("2_vq8d4")])

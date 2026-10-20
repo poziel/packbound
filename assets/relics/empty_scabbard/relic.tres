@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RelicDefinition" format=3 uid="uid://bhfw2nfmb8vhf"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_0be04"]
+[ext_resource type="Resource" path="res://assets/relics/empty_scabbard/rule_ability.tres" id="2_f1sgl"]
+[ext_resource type="Texture2D" uid="uid://d1adeonu20l2l" path="res://assets/relics/empty_scabbard/art/icon.png" id="3_prcqa"]
+[ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_o1003"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmsoc"]
+atlas = ExtResource("3_prcqa")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Empty Scabbard"
+script = ExtResource("4_o1003")
+id = &"empty_scabbard"
+display_name = "Empty Scabbard"
+description = "With no packed melee weapons: gain +5 magical damage."
+lore = "The wizard bought a fine sheath to discourage duels. After a year, the empty space inside began answering her spells."
+rarity = 2
+tags = Array[StringName]([&"relic", &"no_weapon"])
+category_ids = Array[StringName]([&"relics"])
+preferred_class_ids = null
+preferred_character_ids = null
+icon = SubResource("AtlasTexture_kmsoc")
+base_stats = null
+abilities = Array[ExtResource("1_0be04")]([ExtResource("2_f1sgl")])

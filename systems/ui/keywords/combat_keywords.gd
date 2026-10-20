@@ -2,6 +2,8 @@
 @static_unload
 class_name PackKeywords
 extends RefCounted
+
+const CATEGORIES = preload("res://systems/content/collectible_categories.gd")
 ## Shared selected registry for combat keyword identities, aliases, colors and white masks.
 
 static var _registry: Dictionary = {}
@@ -14,7 +16,7 @@ const ELEMENT_TERMS: Dictionary = {
 
 static func registry() -> Dictionary:
 	if _registry.is_empty():
-		var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://assets/ui/keyword-icons/registry.json"))
+		var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://assets/icons/keywords/registry.json"))
 		if parsed is Dictionary:
 			_registry = parsed
 			for key: String in ELEMENT_TERMS:
@@ -112,7 +114,7 @@ static func item_footer_markup(costs: Array, priority_label: String = "", links:
 
 ## Activation costs have their own colored footer, separate from keyword lists/stats.
 static func item_resource_costs(item: Dictionary) -> Array[Dictionary]:
-	if not item.get("role", "") in ["weapon", "ranged", "spell"] and int(item.get("damage", 0)) <= 0 and int(item.get("cost", 0)) <= 0 and int(item.get("stamina_cost", 0)) <= 0:
+	if not CATEGORIES.matches_any(item, ["melee_weapons", "ranged_weapons", "magic_weapons"]) and int(item.get("damage", 0)) <= 0 and int(item.get("cost", 0)) <= 0 and int(item.get("stamina_cost", 0)) <= 0:
 		return []
 	# Show both pools, including zero, so free activations are explicit.
 	return [{"key": "stamina", "value": maxi(0, int(item.get("stamina_cost", 0)))}, {"key": "mana", "value": maxi(0, int(item.get("cost", 0)))}]

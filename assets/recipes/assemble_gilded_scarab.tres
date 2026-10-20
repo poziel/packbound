@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://h2pqujgirple"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_1itke"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_qsa6q"]
+
+[sub_resource type="Resource" id="Resource_wd1xn"]
+script = ExtResource("1_1itke")
+accepted_item_ids = Array[StringName]([&"hedgehog_charm"])
+
+[sub_resource type="Resource" id="Resource_2gqia"]
+script = ExtResource("1_1itke")
+accepted_item_ids = Array[StringName]([&"tin_beetle"])
+
+[sub_resource type="Resource" id="Resource_6iql3"]
+script = ExtResource("1_1itke")
+accepted_item_ids = Array[StringName]([&"wax_ear_trumpet"])
+
+[resource]
+resource_name = "Assemble Gilded Scarab"
+script = ExtResource("2_qsa6q")
+id = &"assemble_gilded_scarab"
+ingredients = Array[ExtResource("1_1itke")]([SubResource("Resource_wd1xn"), SubResource("Resource_2gqia"), SubResource("Resource_6iql3")])
+result_item_id = &"gilded_scarab"

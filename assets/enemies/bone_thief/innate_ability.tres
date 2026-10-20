@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_j3pwg"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_gmh1t"]
+[ext_resource type="Resource" path="res://assets/enemies/bone_thief/innate_effect.tres" id="3_mokn5"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_8wgai"]
+
+[resource]
+resource_name = "Bone Thief rules"
+script = ExtResource("4_8wgai")
+id = &"bone_thief_innate_rules"
+display_name = "Bone Thief rules"
+description = "Strikes twice. Block is shared between both hits."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_gmh1t")]([ExtResource("3_mokn5")])

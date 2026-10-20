@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://erl21w2hpdyg"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_tvmdp"]
+[ext_resource type="Resource" path="res://assets/enemies/carrion_swarm/innate_ability.tres" id="2_v0jtp"]
+[ext_resource type="Resource" path="res://assets/enemies/carrion_swarm/behavior.tres" id="3_kfsh7"]
+[ext_resource type="Texture2D" uid="uid://664nsqq3ey8p" path="res://assets/enemies/carrion_swarm/art/carrion_swarm.png" id="4_k6v62"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_r1t3v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73rso"]
+atlas = ExtResource("4_k6v62")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Carrion Swarm"
+script = ExtResource("5_r1t3v")
+behavior = ExtResource("3_kfsh7")
+id = &"carrion_swarm"
+display_name = "Carrion Swarm"
+log_name = "Carrion Swarm"
+description = "Strikes three times. Plating reduces each strike."
+icon = SubResource("AtlasTexture_73rso")
+resource_capacities = Dictionary[int, int]({
+2: 72
+})
+abilities = Array[ExtResource("1_tvmdp")]([ExtResource("2_v0jtp")])
+
+metadata/progression_index = 11

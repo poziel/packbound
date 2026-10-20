@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CharacterClassDefinition" format=3 uid="uid://cxegrwpk14gak"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_r8m6r"]
+[ext_resource type="Resource" path="res://assets/characters/necromancer/class_ability.tres" id="2_hh53u"]
+[ext_resource type="Texture2D" uid="uid://c0knf7vro7g5e" path="res://assets/items/vampire_fang/art/item.png" id="3_mj3v2"]
+[ext_resource type="Script" uid="uid://bdw4mhhh1jy2c" path="res://systems/characters/character_class_definition.gd" id="4_yrkvv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7rmm"]
+atlas = ExtResource("3_mj3v2")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Necromancer"
+script = ExtResource("4_yrkvv")
+id = &"necromancer"
+display_name = "Necromancer"
+description = "Start with one bone thrall. Defeated monsters raise another, up to 3. Each adds 2 direct damage per turn before block absorption. Thralls persist between floors."
+icon = SubResource("AtlasTexture_f7rmm")
+abilities = Array[ExtResource("1_r8m6r")]([ExtResource("2_hh53u")])
+
+metadata/icon_item_id = "vampire_fang"

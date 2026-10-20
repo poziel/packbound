@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RelicDefinition" format=3 uid="uid://dgdben0vtoa6j"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_je8yx"]
+[ext_resource type="Resource" path="res://assets/relics/lantern_moth/rule_ability.tres" id="2_yeu7v"]
+[ext_resource type="Texture2D" uid="uid://cunvifmr75s21" path="res://assets/relics/lantern_moth/art/icon.png" id="3_hwajr"]
+[ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_hjsu1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q30s2"]
+atlas = ExtResource("3_hwajr")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Lantern Moth"
+script = ExtResource("4_hjsu1")
+id = &"lantern_moth"
+display_name = "Lantern Moth"
+description = "When activations produced magical damage: gain +2 cleanse."
+lore = "It ate the smoke from a plague lantern and laid its eggs in clean glass. None of its children ever found a brighter flame."
+rarity = 1
+tags = Array[StringName]([&"relic", &"has_magic"])
+category_ids = Array[StringName]([&"relics"])
+preferred_class_ids = null
+preferred_character_ids = null
+icon = SubResource("AtlasTexture_q30s2")
+base_stats = null
+abilities = Array[ExtResource("1_je8yx")]([ExtResource("2_yeu7v")])

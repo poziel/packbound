@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+[ext_resource type="Script" path="res://systems/items/item_definition.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = &"test_sword"
+display_name = "Test Sword"
+category_ids = Array[StringName]([&"test_category"])
+footprint = Array[Vector2i]([Vector2i(0, 0)])

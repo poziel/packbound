@@ -1,0 +1,11 @@
+{
+  "key": "echo_clock",
+  "name": "Echo Clock",
+  "category": "relics",
+  "kind": "run-relic",
+  "detail": "Every third turn, repeat the first active attack item in backpack reading order, without an extra mana cost.",
+  "iconItemKey": "hourglass",
+  "iconMetadata": "res://assets/items/hourglass/metadata.json",
+  "gameplaySource": "res://systems/content/pack_catalog.gd",
+  "note": "Reuses an inventory item icon; no separate artwork exists."
+}

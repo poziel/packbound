@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dqva7okojsnvf"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_2j5ry"]
+[ext_resource type="Resource" path="res://assets/items/citadel_guard/rule_ability.tres" id="2_osq1q"]
+[ext_resource type="Texture2D" uid="uid://cl8g5hqvqexsv" path="res://assets/items/citadel_guard/art/item.png" id="3_0p4rf"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_atgxa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkl6e"]
+atlas = ExtResource("3_0p4rf")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Citadel Guard"
+script = ExtResource("4_atgxa")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"citadel_guard"
+display_name = "Citadel Guard"
+description = "Starts each fight with 16 block. Retaliates for 2 damage per enemy strike."
+lore = "The lost fortress survives in the shields of its scattered guard."
+rarity = 3
+tags = Array[StringName]([&"shield", &"epic"])
+category_ids = Array[StringName]([&"shields"])
+icon = SubResource("AtlasTexture_nkl6e")
+base_stats = Dictionary[int, int]({
+1: 16,
+11: 2
+})
+abilities = Array[ExtResource("1_2j5ry")]([ExtResource("2_osq1q")])

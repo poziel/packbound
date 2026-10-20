@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://df5m0nk8xq31i"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_0g4ap"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_innpe"]
+
+[sub_resource type="Resource" id="Resource_o1uft"]
+script = ExtResource("1_0g4ap")
+accepted_item_ids = Array[StringName]([&"absent_atlas"])
+
+[sub_resource type="Resource" id="Resource_3ptby"]
+script = ExtResource("1_0g4ap")
+accepted_item_ids = Array[StringName]([&"amber_heart_pendant"])
+
+[sub_resource type="Resource" id="Resource_fh84d"]
+script = ExtResource("1_0g4ap")
+accepted_item_ids = Array[StringName]([&"hollow_bookmark"])
+
+[resource]
+resource_name = "Assemble Black Rain Theorem"
+script = ExtResource("2_innpe")
+id = &"assemble_black_rain_theorem"
+ingredients = Array[ExtResource("1_0g4ap")]([SubResource("Resource_o1uft"), SubResource("Resource_3ptby"), SubResource("Resource_fh84d")])
+result_item_id = &"black_rain_theorem"

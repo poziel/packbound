@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmeni5acmgrln"]
 
-[ext_resource type="Texture2D" path="res://assets/enemies/ash_rat.png" id="enemies"]
+[ext_resource type="Texture2D" path="res://assets/enemies/ash_rat/art/ash_rat.png" id="enemies"]
 
 [ext_resource type="PackedScene" uid="uid://b8pk2ue168bup" path="res://components/ui/indicators/pixel_stat_bar/pixel_stat_bar.tscn" id="stat_bar"]
 

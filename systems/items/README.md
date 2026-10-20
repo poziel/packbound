@@ -16,7 +16,7 @@ Creating a record does not accept artwork or make the item playable.
 var definition := ItemDefinition.new()
 definition.id = &"example_charm"
 definition.display_name = "Example Charm"
-definition.role = &"booster"
+definition.category_ids.assign([&"boosters"])
 definition.footprint.assign([Vector2i.ZERO])
 definition.base_stats[GameplayTypes.Stat.WARD] = 1
 definition.activation_costs[GameplayTypes.ResourceType.MANA] = 0
@@ -31,7 +31,7 @@ var errors: PackedStringArray = definition.validation_errors()
 | Classification | Shared enum rarity, tags and category IDs; IDs are separate from display text. |
 | Eligibility | Allowed class and character IDs. Empty lists mean unrestricted. Entries in one list are alternatives; both lists must match when populated. |
 | Presentation | Optional shared icon texture. |
-| Equipment | Item role, unique occupied `Vector2i` cells in the unrotated footprint and rotation permission. Cells use nonnegative coordinates. |
+| Equipment | Category IDs, unique occupied `Vector2i` cells in the unrotated footprint and rotation permission. Cells use nonnegative coordinates. |
 | Base Values | Shared enum-keyed `GameplayTypes.Stat` map with integer amounts. Signed values and empty maps are valid. |
 | Activation Costs | Item-specific `GameplayTypes.ResourceType` map with nonnegative integer amounts. Zero costs and empty maps are valid. |
 | Damage Identity | `GameplayTypes.DamageType` and `GameplayTypes.Element`, with `NONE` meaning no element. |
@@ -39,7 +39,7 @@ var errors: PackedStringArray = definition.validation_errors()
 
 `validation_errors()` checks intrinsic structure without changing the resource.
 It reports blank required fields, invalid footprint cells, unknown enum values
-or map keys, blank/duplicate category IDs and negative costs. The future loader/catalog must validate role,
+or map keys, blank/duplicate category IDs and negative costs. The future loader/catalog must validate category references,
 class, character and ability references; validation here does not certify
 that referenced content exists or a mechanic is implemented.
 

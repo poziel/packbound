@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_4boo4"]
+
+[resource]
+resource_name = "Trail Medallion Rule Effect"
+script = ExtResource("1_4boo4")
+rule_id = &"trail_medallion_rules"
+parameters = {
+"icon": "trail_medallion",
+"keyword_stats": [{
+"key": "stamina",
+"qualifier": "maximum",
+"value": 1
+}]
+}

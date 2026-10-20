@@ -143,14 +143,11 @@
       "A dark yew longbow with a forked gold branch grip."
     ],
     "assets": {
-      "icon": "assets/items/thunder_yew/icons/art/icon.png",
-      "svg": "assets/items/thunder_yew/icons/art/icon.svg",
-      "source": "assets/items/thunder_yew/icons/art/icon.sprite.json",
-      "footprint": "assets/items/thunder_yew/icons/art/footprint.json",
-      "provenance": "assets/items/thunder_yew/icons/art/provenance.json",
-      "manifest": "assets/items/thunder_yew/icons/art/art-manifest.json",
+      "icon": "assets/items/thunder_yew/art/item.png",
+      "source": "assets/items/thunder_yew/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/thunder_yew/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

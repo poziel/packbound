@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_3y7hx"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_iveiq"]
+[ext_resource type="Resource" path="res://assets/items/choir_eel/rule_effect.tres" id="3_i6kkd"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_lv1kq"]
+
+[resource]
+resource_name = "Choir Eel rules"
+script = ExtResource("4_lv1kq")
+id = &"choir_eel_rules"
+display_name = "Choir Eel rules"
+description = "Deals 7 physical damage per affordable activation. Applies 3 spark through the existing combat keyword rules per affordable activation."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_iveiq")]([ExtResource("3_i6kkd")])

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://csnulkiwtojbb"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_tg17d"]
+[ext_resource type="Resource" path="res://assets/enemies/mirror_wisp/innate_ability.tres" id="2_voxdi"]
+[ext_resource type="Resource" path="res://assets/enemies/mirror_wisp/behavior.tres" id="3_dc3t3"]
+[ext_resource type="Texture2D" uid="uid://bjwhxap5eoskc" path="res://assets/enemies/mirror_wisp/art/mirror_wisp.png" id="4_18vvb"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_3fgtm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b3uc"]
+atlas = ExtResource("4_18vvb")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Mirror Wisp"
+script = ExtResource("5_3fgtm")
+behavior = ExtResource("3_dc3t3")
+id = &"mirror_wisp"
+display_name = "Mirror Wisp"
+log_name = "Mirror Wisp"
+description = "Reflects 2 damage when hit directly. Ward absorbs reflection."
+icon = SubResource("AtlasTexture_5b3uc")
+base_stats = Dictionary[int, int]({
+18: 35
+})
+resource_capacities = Dictionary[int, int]({
+2: 50
+})
+abilities = Array[ExtResource("1_tg17d")]([ExtResource("2_voxdi")])
+
+metadata/progression_index = 7

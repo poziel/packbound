@@ -8,6 +8,8 @@
 [ext_resource type="Theme" path="res://themes/menu/theme.tres" id="theme"]
 [ext_resource type="PackedScene" path="res://scenes/menus/menu_audio/menu_audio.tscn" id="audio"]
 
+[ext_resource type="PackedScene" path="res://scenes/shared/application_preferences/application_preferences.tscn" id="preferences"]
+
 [node name="MenuFlow" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -28,6 +30,8 @@ visible = false
 visible = false
 
 [node name="Audio" parent="." instance=ExtResource("audio")]
+
+[node name="ApplicationPreferences" parent="." instance=ExtResource("preferences")]
 
 [node name="RunSelection" parent="." instance=ExtResource("runs")]
 visible = false

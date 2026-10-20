@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MonsterBehaviorDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="1_wxdui"]
+[ext_resource type="Resource" path="res://assets/enemies/grave_keeper/attack_0.tres" id="2_j2rdj"]
+[ext_resource type="Script" path="res://systems/enemies/monster_behavior_definition.gd" id="3_j0xxa"]
+
+[resource]
+resource_name = "Grave Keeper Behavior"
+script = ExtResource("3_j0xxa")
+actions = Array[ExtResource("1_wxdui")]([ExtResource("2_j2rdj")])

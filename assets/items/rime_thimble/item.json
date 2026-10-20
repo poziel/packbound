@@ -99,14 +99,11 @@
       "A pale steel thimble crowned with a small ice ridge."
     ],
     "assets": {
-      "icon": "assets/items/rime_thimble/icons/art/icon.png",
-      "svg": "assets/items/rime_thimble/icons/art/icon.svg",
-      "source": "assets/items/rime_thimble/icons/art/icon.sprite.json",
-      "footprint": "assets/items/rime_thimble/icons/art/footprint.json",
-      "provenance": "assets/items/rime_thimble/icons/art/provenance.json",
-      "manifest": "assets/items/rime_thimble/icons/art/art-manifest.json",
+      "icon": "assets/items/rime_thimble/art/item.png",
+      "source": "assets/items/rime_thimble/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/rime_thimble/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

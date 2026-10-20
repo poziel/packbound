@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://crans54s7o44"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_jcua1"]
+[ext_resource type="Resource" path="res://assets/items/heart_outside_time/rule_ability.tres" id="2_h7o7c"]
+[ext_resource type="Texture2D" uid="uid://dugduulb2fd1x" path="res://assets/items/heart_outside_time/art/item.png" id="3_8v3eh"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_6275a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru7w0"]
+atlas = ExtResource("3_8v3eh")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Heart Outside Time"
+script = ExtResource("4_6275a")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+id = &"heart_outside_time"
+display_name = "Heart Outside Time"
+description = "Adds 3 maximum mana, refreshed each round. Adds 2 maximum stamina, refreshed each round. Supplies 4 ward each round against poison, curse and reflected damage."
+lore = "It beats between the moments measured by every other clock."
+rarity = 4
+tags = Array[StringName]([&"pendant"])
+category_ids = Array[StringName]([&"pendants"])
+icon = SubResource("AtlasTexture_ru7w0")
+base_stats = Dictionary[int, int]({
+5: 4,
+8: 3,
+9: 2
+})
+abilities = Array[ExtResource("1_jcua1")]([ExtResource("2_h7o7c")])

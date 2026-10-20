@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_uuc5u"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_p7l1a"]
+[ext_resource type="Resource" path="res://assets/enemies/coffin_mimic/innate_effect.tres" id="3_f20c5"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_65j20"]
+
+[resource]
+resource_name = "Coffin Mimic rules"
+script = ExtResource("4_65j20")
+id = &"coffin_mimic_innate_rules"
+display_name = "Coffin Mimic rules"
+description = "Makes 2 strikes per response. Plating and retaliation apply to each strike. Restores up to 2 health once after a response that damages player health, if still alive."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_p7l1a")]([ExtResource("3_f20c5")])

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_3kjel"]
+
+[resource]
+resource_name = "Duelist Receipt Rule Effect"
+script = ExtResource("1_3kjel")
+rule_id = &"duelist_receipt_rules"
+parameters = {
+"icon": "duelist_receipt",
+"rule": {
+"amount": 4,
+"cap": 3,
+"condition": "crafted_opening",
+"metric": "crafted_count",
+"stat": "physical_damage"
+},
+"stats": {}
+}

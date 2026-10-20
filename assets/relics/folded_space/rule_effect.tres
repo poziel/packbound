@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_4yu4n"]
+
+[resource]
+resource_name = "Folded Space Rule Effect"
+script = ExtResource("1_4yu4n")
+rule_id = &"folded_space_rules"
+parameters = {
+"icon": "folded_space",
+"keyword_stats": []
+}

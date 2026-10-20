@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RelicDefinition" format=3 uid="uid://8ci1nyd0hshm"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_w1upx"]
+[ext_resource type="Resource" path="res://assets/relics/mourning_volcano/rule_ability.tres" id="2_jjx75"]
+[ext_resource type="Texture2D" uid="uid://b48s7jwbj2qbk" path="res://assets/relics/mourning_volcano/art/icon.png" id="3_d4wui"]
+[ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_82r42"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxxq7"]
+atlas = ExtResource("3_d4wui")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Mourning Volcano"
+script = ExtResource("4_82r42")
+id = &"mourning_volcano"
+display_name = "Mourning Volcano"
+description = "When current HP is at most half maximum HP before activations: gain +6 burn."
+lore = "The mountain did not erupt when its village burned. It swallowed the smoke and began to weep."
+rarity = 3
+tags = Array[StringName]([&"relic", &"low_hp"])
+category_ids = Array[StringName]([&"relics"])
+preferred_class_ids = null
+preferred_character_ids = null
+icon = SubResource("AtlasTexture_qxxq7")
+base_stats = null
+abilities = Array[ExtResource("1_w1upx")]([ExtResource("2_jjx75")])

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActionDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_tkeh1"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_n7cyt"]
+[ext_resource type="Resource" path="res://assets/enemies/pack_leech/attack_0_effect.tres" id="3_2sgmr"]
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="4_murfk"]
+
+[resource]
+resource_name = "Drain"
+script = ExtResource("4_murfk")
+id = &"pack_leech_attack_0"
+display_name = "Drain"
+description = "Heals 3 HP if its attacks hurt you."
+target_id = &"opponent"
+effects = Array[ExtResource("2_n7cyt")]([ExtResource("3_2sgmr")])

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_j81yj"]
+
+[resource]
+resource_name = "Heart Outside Time Rule Effect"
+script = ExtResource("1_j81yj")
+rule_id = &"heart_outside_time_rules"
+parameters = {
+"block_per_round": 0,
+"mana_per_round": 0,
+"priority": 0,
+"stamina_per_round": 0,
+"tooltip_detail": ""
+}

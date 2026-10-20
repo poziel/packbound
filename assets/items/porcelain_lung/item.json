@@ -134,14 +134,11 @@
       "A cream ceramic lung with thick blue branching channels."
     ],
     "assets": {
-      "icon": "assets/items/porcelain_lung/icons/art/icon.png",
-      "svg": "assets/items/porcelain_lung/icons/art/icon.svg",
-      "source": "assets/items/porcelain_lung/icons/art/icon.sprite.json",
-      "footprint": "assets/items/porcelain_lung/icons/art/footprint.json",
-      "provenance": "assets/items/porcelain_lung/icons/art/provenance.json",
-      "manifest": "assets/items/porcelain_lung/icons/art/art-manifest.json",
+      "icon": "assets/items/porcelain_lung/art/item.png",
+      "source": "assets/items/porcelain_lung/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/porcelain_lung/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

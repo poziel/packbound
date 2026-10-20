@@ -8,7 +8,7 @@
   ],
   "references": [
     ".agents/skills/delver-art-creator/references/visual-direction.md",
-    "assets/enemies/mire_viper.png",
+    "assets/enemies/mire_viper/art/mire_viper.png",
     "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png"
   ],
   "canvas": [
@@ -48,11 +48,11 @@
     "crypt_fencer.pixloom.json": "df99362c557a61caa7a70cf1a79180087b8a4b997784a68d1ca0a22211f12b53",
     "crypt_fencer.pixloom": "dab1f45188b65f855c3bc5dec2cc0c443bca1187b2e0b854b1fc70e340595eac",
     "crypt_fencer.png": "f6e4a799e1ead0dad30a18d6d1e0563f374895cf108ac6d0c2c1ff5f554dbf56",
-    "crypt_fencer.svg": "ae577fb9c06258fd9c92b602863e816813fd1fa7e999debccb29f4cd9cedab59"
+    "crypt_fencer.png": "ae577fb9c06258fd9c92b602863e816813fd1fa7e999debccb29f4cd9cedab59"
   },
   "reference_sha256": {
     ".agents/skills/delver-art-creator/references/visual-direction.md": "5cadc4ef72c5db7bbec05c9504920e5abfd9ca4b33add8d2af9f98c610ada0df",
-    "assets/enemies/mire_viper.png": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7",
+    "assets/enemies/mire_viper/art/mire_viper.png": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7",
     "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png": "3bcd9705f35494a28a94b3d1ecce67f657308bc4e952afe2ad7339864e140edf"
   }
 }

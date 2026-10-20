@@ -108,14 +108,11 @@
       "A rounded tin beetle with six thick dark legs."
     ],
     "assets": {
-      "icon": "assets/items/tin_beetle/icons/art/icon.png",
-      "svg": "assets/items/tin_beetle/icons/art/icon.svg",
-      "source": "assets/items/tin_beetle/icons/art/icon.sprite.json",
-      "footprint": "assets/items/tin_beetle/icons/art/footprint.json",
-      "provenance": "assets/items/tin_beetle/icons/art/provenance.json",
-      "manifest": "assets/items/tin_beetle/icons/art/art-manifest.json",
+      "icon": "assets/items/tin_beetle/art/item.png",
+      "source": "assets/items/tin_beetle/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/tin_beetle/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

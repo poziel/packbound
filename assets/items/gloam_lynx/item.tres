@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://eto1mrdeki3i"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_mny5n"]
+[ext_resource type="Resource" path="res://assets/items/gloam_lynx/rule_ability.tres" id="2_u7dli"]
+[ext_resource type="Texture2D" uid="uid://cw7tbaqafwtp7" path="res://assets/items/gloam_lynx/art/item.png" id="3_4qhjt"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_ccwo4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv8hs"]
+atlas = ExtResource("3_4qhjt")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+resource_name = "Gloam Lynx"
+script = ExtResource("4_ccwo4")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1)])
+id = &"gloam_lynx"
+display_name = "Gloam Lynx"
+description = "Deals 7 physical damage per affordable activation. Reduces each enemy strike this round by 2."
+lore = "It arrived at camp with no footprints behind it."
+rarity = 3
+tags = Array[StringName]([&"companion", &"ranger"])
+category_ids = Array[StringName]([&"companions"])
+allowed_class_ids = Array[StringName]([&"ranger"])
+icon = SubResource("AtlasTexture_gv8hs")
+base_stats = Dictionary[int, int]({
+0: 7,
+13: 2
+})
+abilities = Array[ExtResource("1_mny5n")]([ExtResource("2_u7dli")])

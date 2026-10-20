@@ -821,13 +821,13 @@ func _update_action_control() -> void:
 	action.text = ""
 	action.accessibility_name = label
 	action.tooltip_text = "Enter dungeon" if in_basement else ""
-	action.icon = load("res://assets/ui/icons/combat-v1/resume.svg") if playback.active and playback.paused else (load("res://assets/ui/icons/navigation-v3/pause.png") if playback.active else load("res://assets/ui/icons/attack/attack.png"))
+	action.icon = load("res://assets/icons/controls/combat/resume.png") if playback.active and playback.paused else (load("res://assets/icons/navigation/actions/pause.png") if playback.active else load("res://assets/icons/actions/attack/attack.png"))
 	if turn_based_round or (playback.waiting_for_round and not playback.paused):
-		action.icon = load("res://assets/ui/icons/attack/attack.png")
+		action.icon = load("res://assets/icons/actions/attack/attack.png")
 	if in_basement:
-		action.icon = load("res://assets/ui/icons/enter-dungeon/enter-dungeon.svg")
+		action.icon = load("res://assets/icons/actions/enter_dungeon/enter-dungeon.svg")
 	if activity:
-		action.icon = load("res://assets/ui/icons/enter-dungeon/enter-dungeon.svg")
+		action.icon = load("res://assets/icons/actions/enter_dungeon/enter-dungeon.svg")
 		action.tooltip_text = label
 	action.expand_icon = true
 	action.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER

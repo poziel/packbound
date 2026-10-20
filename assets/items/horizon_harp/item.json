@@ -148,14 +148,11 @@
       "A golden asymmetrical bow with three parallel support strings."
     ],
     "assets": {
-      "icon": "assets/items/horizon_harp/icons/art/icon.png",
-      "svg": "assets/items/horizon_harp/icons/art/icon.svg",
-      "source": "assets/items/horizon_harp/icons/art/icon.sprite.json",
-      "footprint": "assets/items/horizon_harp/icons/art/footprint.json",
-      "provenance": "assets/items/horizon_harp/icons/art/provenance.json",
-      "manifest": "assets/items/horizon_harp/icons/art/art-manifest.json",
+      "icon": "assets/items/horizon_harp/art/item.png",
+      "source": "assets/items/horizon_harp/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/horizon_harp/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

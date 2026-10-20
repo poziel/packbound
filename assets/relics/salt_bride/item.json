@@ -85,14 +85,13 @@
       "A salt white bridal veil folded around a black pearl"
     ],
     "assets": {
-      "icon": "assets/relics/salt_bride/icons/art/icon.png",
-      "svg": "assets/relics/salt_bride/icons/art/icon.svg",
-      "source": "assets/relics/salt_bride/icons/art/icon.sprite.json",
+      "icon": "assets/relics/salt_bride/art/icon.png",
+      "source": "assets/relics/salt_bride/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/salt_bride/icons/art/provenance.json",
-      "manifest": "assets/relics/salt_bride/icons/art/art-manifest.json",
+      "provenance": "assets/relics/salt_bride/art/provenance.json",
+      "manifest": "assets/relics/salt_bride/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/salt_bride/icons/art/icon.pixloom"
+      "native": "assets/relics/salt_bride/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

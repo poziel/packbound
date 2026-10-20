@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://m2iil4q70kfr"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_4pfy1"]
+[ext_resource type="Resource" path="res://assets/items/mountain_s_verdict/rule_ability.tres" id="2_drd5m"]
+[ext_resource type="Texture2D" uid="uid://bekkjgp32d22t" path="res://assets/items/mountain_s_verdict/art/item.png" id="3_3esrk"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_fhhnp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adxlf"]
+atlas = ExtResource("3_3esrk")
+region = Rect2(0, 0, 64, 128)
+
+[resource]
+resource_name = "Mountain's Verdict"
+script = ExtResource("4_fhhnp")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(1, 2), Vector2i(1, 3)])
+activation_costs = Dictionary[int, int]({
+1: 3
+})
+id = &"mountain_s_verdict"
+display_name = "Mountain's Verdict"
+description = "Costs 3 stamina per activation. Deals 22 physical damage per affordable activation. Warrior only: requires and spends 4 Momentum; adds 5 damage for each Momentum spent. No cost is spent if activation is unaffordable."
+lore = "A king asked the mountain to judge him and received this answer."
+rarity = 4
+tags = Array[StringName]([&"weapon", &"warrior"])
+category_ids = Array[StringName]([&"hammers"])
+allowed_class_ids = Array[StringName]([&"warrior"])
+icon = SubResource("AtlasTexture_adxlf")
+base_stats = Dictionary[int, int]({
+0: 22
+})
+abilities = Array[ExtResource("1_4pfy1")]([ExtResource("2_drd5m")])

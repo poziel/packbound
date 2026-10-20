@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://c77wx8efixyad"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_4cno1"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_hcw6j"]
+
+[sub_resource type="Resource" id="Resource_ailop"]
+script = ExtResource("1_4cno1")
+accepted_item_ids = Array[StringName]([&"antidote"])
+
+[sub_resource type="Resource" id="Resource_qqube"]
+script = ExtResource("1_4cno1")
+accepted_item_ids = Array[StringName]([&"briar_snare"])
+
+[resource]
+resource_name = "Assemble Adder Sheath"
+script = ExtResource("2_hcw6j")
+id = &"assemble_adder_sheath"
+ingredients = Array[ExtResource("1_4cno1")]([SubResource("Resource_ailop"), SubResource("Resource_qqube")])
+result_item_id = &"adder_sheath"

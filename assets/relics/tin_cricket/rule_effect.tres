@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_810sh"]
+
+[resource]
+resource_name = "Tin Cricket Rule Effect"
+script = ExtResource("1_810sh")
+rule_id = &"tin_cricket_rules"
+parameters = {
+"icon": "tin_cricket",
+"rule": {
+"amount": 1,
+"cap": 1,
+"condition": "always",
+"metric": "one",
+"stat": "ward"
+},
+"stats": {}
+}

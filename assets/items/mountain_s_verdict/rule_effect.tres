@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_tvd52"]
+
+[resource]
+resource_name = "Mountain's Verdict Rule Effect"
+script = ExtResource("1_tvd52")
+rule_id = &"mountain_s_verdict_rules"
+parameters = {
+"block_per_round": 0,
+"mana_per_round": 0,
+"momentum_cost": 4,
+"momentum_damage": 5,
+"priority": 0,
+"stamina_per_round": 0,
+"tooltip_detail": "Warrior only: requires and spends 4 Momentum; adds 5 damage for each Momentum spent. Only warrior can equip this item."
+}

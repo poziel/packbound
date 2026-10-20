@@ -24,4 +24,4 @@ A rounded small plank shield with a thick iron rim, quiet brown boards and a pla
 
 Footprint is one 32 × 32 px cell; art and mask rotate together. Use deliberate stepped silhouettes and broad material planes. No scattered glitter, colored reflection accents or glow. Semantic layers separate structure, material planes and fittings.
 
-Art: [PNG](icons/art/icon.png), [SVG](icons/art/icon.svg), [numeric layered source](icons/art/icon.sprite.json), [Pixloom project](icons/art/icon.pixloom). Artwork is an integrated review candidate; individual visual acceptance is not claimed.
+Art: [PNG](art/item.png), [SVG](art/item.png), [numeric layered source](art/item.pixloom.json), Pixloom project (archived). Artwork is an integrated review candidate; individual visual acceptance is not claimed.

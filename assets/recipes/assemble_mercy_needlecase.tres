@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dwtxsfajp811o"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_ay0xu"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_nol13"]
+
+[sub_resource type="Resource" id="Resource_ufn8d"]
+script = ExtResource("1_ay0xu")
+accepted_item_ids = Array[StringName]([&"antidote"])
+
+[sub_resource type="Resource" id="Resource_675x7"]
+script = ExtResource("1_ay0xu")
+accepted_item_ids = Array[StringName]([&"chalk_poultice"])
+
+[sub_resource type="Resource" id="Resource_qhbhn"]
+script = ExtResource("1_ay0xu")
+accepted_item_ids = Array[StringName]([&"roseglass_brooch"])
+
+[resource]
+resource_name = "Assemble Mercy Needlecase"
+script = ExtResource("2_nol13")
+id = &"assemble_mercy_needlecase"
+ingredients = Array[ExtResource("1_ay0xu")]([SubResource("Resource_ufn8d"), SubResource("Resource_675x7"), SubResource("Resource_qhbhn")])
+result_item_id = &"mercy_needlecase"

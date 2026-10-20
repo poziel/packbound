@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://cfcvs7on1ax81"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_ysmum"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_ivydv"]
+
+[sub_resource type="Resource" id="Resource_honbf"]
+script = ExtResource("1_ysmum")
+accepted_item_ids = Array[StringName]([&"rusty_knife"])
+
+[sub_resource type="Resource" id="Resource_tvkdt"]
+script = ExtResource("1_ysmum")
+accepted_item_ids = Array[StringName]([&"willow_slingbow"])
+
+[resource]
+resource_name = "Assemble Hornback Bow"
+script = ExtResource("2_ivydv")
+id = &"assemble_hornback_bow"
+ingredients = Array[ExtResource("1_ysmum")]([SubResource("Resource_honbf"), SubResource("Resource_tvkdt")])
+result_item_id = &"hornback_bow"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_ym2cm"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_883ie"]
+[ext_resource type="Resource" path="res://assets/items/coal_letter/rule_effect.tres" id="3_vwwfm"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_b0kcs"]
+
+[resource]
+resource_name = "Coal Letter rules"
+script = ExtResource("4_b0kcs")
+id = &"coal_letter_rules"
+display_name = "Coal Letter rules"
+description = "Costs 1 mana per activation. Deals 4 magical damage per affordable activation. Applies 1 burn through the existing combat keyword rules per affordable activation."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_883ie")]([ExtResource("3_vwwfm")])

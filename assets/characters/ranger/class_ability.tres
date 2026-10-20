@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_ayhxg"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_mp8qq"]
+[ext_resource type="Resource" path="res://assets/characters/ranger/class_effect.tres" id="3_mkija"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_kdtk6"]
+
+[resource]
+resource_name = "Volley"
+script = ExtResource("4_kdtk6")
+id = &"ranger_class_rules"
+display_name = "Volley"
+description = "Volley fires arrows from the Bowmaster's Quiver every 3 rounds. Choose starting arrows, then upgrade arrow capacity, tips and mechanisms through rewards. Bows attack normally; Volley costs no mana or stamina."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_mp8qq")]([ExtResource("3_mkija")])

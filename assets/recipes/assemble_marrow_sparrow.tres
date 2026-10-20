@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://cqay4kmwu3813"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_rv4y7"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_uqsyn"]
+
+[sub_resource type="Resource" id="Resource_w3rle"]
+script = ExtResource("1_rv4y7")
+accepted_item_ids = Array[StringName]([&"rusty_knife"])
+
+[sub_resource type="Resource" id="Resource_7ta50"]
+script = ExtResource("1_rv4y7")
+accepted_item_ids = Array[StringName]([&"tin_beetle"])
+
+[resource]
+resource_name = "Assemble Marrow Sparrow"
+script = ExtResource("2_uqsyn")
+id = &"assemble_marrow_sparrow"
+ingredients = Array[ExtResource("1_rv4y7")]([SubResource("Resource_w3rle"), SubResource("Resource_7ta50")])
+result_item_id = &"marrow_sparrow"

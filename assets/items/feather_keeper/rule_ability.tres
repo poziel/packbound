@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_clq51"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_lni4p"]
+[ext_resource type="Resource" path="res://assets/items/feather_keeper/rule_effect.tres" id="3_skrwa"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_yymkn"]
+
+[resource]
+resource_name = "Feather Keeper rules"
+script = ExtResource("4_yymkn")
+id = &"feather_keeper_rules"
+display_name = "Feather Keeper rules"
+description = "While orthogonally touching the permanent Bowmaster quiver, adds 1 damage to Volley; this equipment remains in the backpack and is not consumed."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_lni4p")]([ExtResource("3_skrwa")])

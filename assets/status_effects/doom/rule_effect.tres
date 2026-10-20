@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_ghnux"]
+
+[resource]
+resource_name = "Doom Status Rules"
+script = ExtResource("1_ghnux")
+rule_id = &"doom_status_rules"
+parameters = {
+"bypass_block": true,
+"consume_all_on_detonation": true,
+"damage_per_stack": 2,
+"damage_type": "magical",
+"detonate_at_expiration": true
+}

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://4vp66x3px7y8"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_15d25"]
+[ext_resource type="Resource" path="res://assets/enemies/cinder_boar/innate_ability.tres" id="2_fslrs"]
+[ext_resource type="Resource" path="res://assets/enemies/cinder_boar/behavior.tres" id="3_w567u"]
+[ext_resource type="Texture2D" uid="uid://bbhghjpmiewnb" path="res://assets/enemies/cinder_boar/art/cinder_boar.png" id="4_ntfce"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_oiq02"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdln0"]
+atlas = ExtResource("4_ntfce")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Cinder Boar"
+script = ExtResource("5_oiq02")
+species_id = &"boar"
+role_id = &"enrager"
+behavior = ExtResource("3_w567u")
+id = &"cinder_boar"
+display_name = "Cinder Boar"
+log_name = "Cinder Boar"
+description = "A furnace-yard boar whose bristles have fused into charcoal ridges. Every exchange makes its stubborn forward charge more dangerous."
+icon = SubResource("AtlasTexture_bdln0")
+resource_capacities = Dictionary[int, int]({
+2: 69
+})
+abilities = Array[ExtResource("1_15d25")]([ExtResource("2_fslrs")])
+metadata/encounter_floor = 10

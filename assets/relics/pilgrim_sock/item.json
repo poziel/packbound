@@ -86,14 +86,13 @@
       "A darned wool sock folded around a walking pebble"
     ],
     "assets": {
-      "icon": "assets/relics/pilgrim_sock/icons/art/icon.png",
-      "svg": "assets/relics/pilgrim_sock/icons/art/icon.svg",
-      "source": "assets/relics/pilgrim_sock/icons/art/icon.sprite.json",
+      "icon": "assets/relics/pilgrim_sock/art/icon.png",
+      "source": "assets/relics/pilgrim_sock/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/pilgrim_sock/icons/art/provenance.json",
-      "manifest": "assets/relics/pilgrim_sock/icons/art/art-manifest.json",
+      "provenance": "assets/relics/pilgrim_sock/art/provenance.json",
+      "manifest": "assets/relics/pilgrim_sock/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/pilgrim_sock/icons/art/icon.pixloom"
+      "native": "assets/relics/pilgrim_sock/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

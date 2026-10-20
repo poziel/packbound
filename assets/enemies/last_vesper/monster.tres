@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://mwcffesxk4yv"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_glbgk"]
+[ext_resource type="Resource" path="res://assets/enemies/last_vesper/innate_ability.tres" id="2_ptyo6"]
+[ext_resource type="Resource" path="res://assets/enemies/last_vesper/behavior.tres" id="3_8owtp"]
+[ext_resource type="Texture2D" uid="uid://bx0jicnjsmyes" path="res://assets/enemies/last_vesper/art/last_vesper.png" id="4_yywrq"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_bi34e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3d85t"]
+atlas = ExtResource("4_yywrq")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Last Vesper"
+script = ExtResource("5_bi34e")
+species_id = &"wraith"
+role_id = &"purifier"
+behavior = ExtResource("3_8owtp")
+id = &"last_vesper"
+display_name = "Last Vesper"
+log_name = "Last Vesper"
+description = "The final note of a funeral hymn given a body. It drifts through the last antechamber, unraveling curses that interrupt its endless song."
+icon = SubResource("AtlasTexture_3d85t")
+base_stats = Dictionary[int, int]({
+12: 3
+})
+resource_capacities = Dictionary[int, int]({
+2: 121
+})
+abilities = Array[ExtResource("1_glbgk")]([ExtResource("2_ptyo6")])
+metadata/encounter_floor = 19

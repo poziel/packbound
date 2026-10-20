@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_m10fk"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_siwqg"]
+[ext_resource type="Resource" path="res://assets/enemies/cinder_boar/innate_effect.tres" id="3_asfvf"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_nw0ce"]
+
+[resource]
+resource_name = "Cinder Boar rules"
+script = ExtResource("4_nw0ce")
+id = &"cinder_boar_innate_rules"
+display_name = "Cinder Boar rules"
+description = "Gains 1 attack damage for each elapsed round; resets next combat."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_siwqg")]([ExtResource("3_asfvf")])

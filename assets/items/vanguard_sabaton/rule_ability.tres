@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_aqwnc"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_q5h5d"]
+[ext_resource type="Resource" path="res://assets/items/vanguard_sabaton/rule_effect.tres" id="3_7l1e8"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_ri7v1"]
+
+[resource]
+resource_name = "Vanguard Sabaton rules"
+script = ExtResource("4_ri7v1")
+id = &"vanguard_sabaton_rules"
+display_name = "Vanguard Sabaton rules"
+description = "Adds 1 maximum stamina, refreshed each round. Starts combat with 2 block; spent block does not refill."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_q5h5d")]([ExtResource("3_7l1e8")])

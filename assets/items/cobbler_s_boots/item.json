@@ -103,14 +103,11 @@
       "Two stout leather boots with thick cream soles."
     ],
     "assets": {
-      "icon": "assets/items/cobbler_s_boots/icons/art/icon.png",
-      "svg": "assets/items/cobbler_s_boots/icons/art/icon.svg",
-      "source": "assets/items/cobbler_s_boots/icons/art/icon.sprite.json",
-      "footprint": "assets/items/cobbler_s_boots/icons/art/footprint.json",
-      "provenance": "assets/items/cobbler_s_boots/icons/art/provenance.json",
-      "manifest": "assets/items/cobbler_s_boots/icons/art/art-manifest.json",
+      "icon": "assets/items/cobbler_s_boots/art/item.png",
+      "source": "assets/items/cobbler_s_boots/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/cobbler_s_boots/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

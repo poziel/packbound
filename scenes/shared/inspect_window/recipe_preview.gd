@@ -5,7 +5,7 @@ signal item_exited
 signal item_pressed(key: String, recipes: bool)
 const ITEM = preload("res://scenes/shared/inspect_window/recipe_item.gd")
 const ART = preload("res://systems/items/item_art_renderer.gd")
-const CARET = preload("res://assets/ui/icons/adjacency-carets-v3/edge-inward.png")
+const CARET = preload("res://assets/icons/inventory/adjacency/edge-inward.png")
 var items: Array[Control] = []
 
 func setup(recipes: Array) -> void:

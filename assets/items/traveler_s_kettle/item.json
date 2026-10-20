@@ -93,14 +93,11 @@
       "A black round kettle with a broad copper handle."
     ],
     "assets": {
-      "icon": "assets/items/traveler_s_kettle/icons/art/icon.png",
-      "svg": "assets/items/traveler_s_kettle/icons/art/icon.svg",
-      "source": "assets/items/traveler_s_kettle/icons/art/icon.sprite.json",
-      "footprint": "assets/items/traveler_s_kettle/icons/art/footprint.json",
-      "provenance": "assets/items/traveler_s_kettle/icons/art/provenance.json",
-      "manifest": "assets/items/traveler_s_kettle/icons/art/art-manifest.json",
+      "icon": "assets/items/traveler_s_kettle/art/item.png",
+      "source": "assets/items/traveler_s_kettle/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/traveler_s_kettle/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

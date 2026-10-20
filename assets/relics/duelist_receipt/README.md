@@ -24,6 +24,6 @@ The quartermaster signs each assembly receipt in red. The duelists insist the si
 
 An ivory receipt pierced by a fencing foil seal. The receipt represents the signed assembly record carried into a duel. A centered, readable 32 pixel relic icon uses broad material shading and connected clusters; no colored edge lighting. Art remains unreviewed until explicit visual acceptance.
 
-![Inventory art](icons/art/icon.png)
+![Inventory art](art/icon.png)
 
-Editable [numeric layered source](icons/art/icon.sprite.json) and [Pixloom project](icons/art/icon.pixloom); exports remain review candidates pending user art acceptance.
+Editable [numeric layered source](art/icon.sprite.json) and [Pixloom project](art/icon.pixloom); exports remain review candidates pending user art acceptance.

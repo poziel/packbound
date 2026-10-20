@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MonsterBehaviorDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/combat/action_definition.gd" id="1_rubys"]
+[ext_resource type="Resource" path="res://assets/enemies/ossuary_hound/attack_0.tres" id="2_d5cba"]
+[ext_resource type="Resource" path="res://assets/enemies/ossuary_hound/attack_1.tres" id="3_b1x14"]
+[ext_resource type="Script" path="res://systems/enemies/monster_behavior_definition.gd" id="4_6jbr2"]
+
+[resource]
+resource_name = "Ossuary Hound Behavior"
+script = ExtResource("4_6jbr2")
+actions = Array[ExtResource("1_rubys")]([ExtResource("2_d5cba"), ExtResource("3_b1x14")])

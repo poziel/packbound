@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_r4ujd"]
+
+[resource]
+resource_name = "Pocket Hearth Rule Effect"
+script = ExtResource("1_r4ujd")
+rule_id = &"pocket_hearth_rules"
+parameters = {
+"icon": "pocket_hearth",
+"rule": {
+"amount": 1,
+"cap": 1,
+"condition": "low_hp",
+"metric": "one",
+"stat": "healing"
+},
+"stats": {}
+}

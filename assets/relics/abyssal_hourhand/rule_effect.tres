@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_cpd32"]
+
+[resource]
+resource_name = "Abyssal Hourhand Rule Effect"
+script = ExtResource("1_cpd32")
+rule_id = &"abyssal_hourhand_rules"
+parameters = {
+"icon": "abyssal_hourhand",
+"rule": {
+"amount": 3,
+"cap": 3,
+"condition": "doomed",
+"metric": "doom",
+"stat": "magical_damage"
+},
+"stats": {}
+}

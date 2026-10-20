@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://cwk3gi4l5q3sn"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_epejm"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_cnuln"]
+
+[sub_resource type="Resource" id="Resource_61w6k"]
+script = ExtResource("1_epejm")
+accepted_item_ids = Array[StringName]([&"barbed_tip_roll"])
+
+[sub_resource type="Resource" id="Resource_el503"]
+script = ExtResource("1_epejm")
+accepted_item_ids = Array[StringName]([&"lantern_moth_familiar"])
+
+[resource]
+resource_name = "Assemble Cinder Nock Rack"
+script = ExtResource("2_cnuln")
+id = &"assemble_cinder_nock_rack"
+ingredients = Array[ExtResource("1_epejm")]([SubResource("Resource_61w6k"), SubResource("Resource_el503")])
+result_item_id = &"cinder_nock_rack"

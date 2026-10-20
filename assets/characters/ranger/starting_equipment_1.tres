@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StartingEquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/characters/starting_equipment_definition.gd" id="1_2h58a"]
+
+[resource]
+resource_name = "Starting Equipment 1"
+script = ExtResource("1_2h58a")
+item_id = &"magnificent_quiver"
+position = Vector2i(2, 0)

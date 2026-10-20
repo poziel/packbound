@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://by7lps40jjwos"]
+
+[ext_resource type="Script" uid="uid://ciw64dpbi2k3y" path="res://systems/crafting/recipe_ingredient_definition.gd" id="1_7mnm2"]
+[ext_resource type="Script" uid="uid://bavvkv80lg124" path="res://systems/crafting/recipe_definition.gd" id="2_adlg0"]
+
+[sub_resource type="Resource" id="Resource_2mcn0"]
+script = ExtResource("1_7mnm2")
+accepted_item_ids = Array[StringName]([&"salt_lantern"])
+
+[sub_resource type="Resource" id="Resource_jffbu"]
+script = ExtResource("1_7mnm2")
+accepted_item_ids = Array[StringName]([&"traveler_s_kettle"])
+
+[resource]
+resource_name = "Assemble Hollow Bookmark"
+script = ExtResource("2_adlg0")
+id = &"assemble_hollow_bookmark"
+ingredients = Array[ExtResource("1_7mnm2")]([SubResource("Resource_2mcn0"), SubResource("Resource_jffbu")])
+result_item_id = &"hollow_bookmark"

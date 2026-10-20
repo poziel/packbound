@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://by6ht8grgr64k"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_gpb13"]
+[ext_resource type="Resource" path="res://assets/items/marrow_sparrow/rule_ability.tres" id="2_8yw0w"]
+[ext_resource type="Texture2D" uid="uid://cbrwpap2lscxt" path="res://assets/items/marrow_sparrow/art/item.png" id="3_5e3fo"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_vuir0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83kxk"]
+atlas = ExtResource("3_5e3fo")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Marrow Sparrow"
+script = ExtResource("4_vuir0")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"marrow_sparrow"
+display_name = "Marrow Sparrow"
+description = "Deals 3 physical damage per affordable activation. Bypasses up to 1 enemy block per activation."
+lore = "Its bones remember a song its living body never learned."
+rarity = 1
+tags = Array[StringName]([&"companion"])
+category_ids = Array[StringName]([&"companions"])
+icon = SubResource("AtlasTexture_83kxk")
+base_stats = Dictionary[int, int]({
+0: 3,
+14: 1
+})
+abilities = Array[ExtResource("1_gpb13")]([ExtResource("2_8yw0w")])

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://x0ti6e1dvmvf"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_tow6t"]
+[ext_resource type="Resource" path="res://assets/items/hunter_s_compass/rule_ability.tres" id="2_pc4dl"]
+[ext_resource type="Texture2D" uid="uid://bori1gt5du4y7" path="res://assets/items/hunter_s_compass/art/item.png" id="3_3eeq2"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_q50sw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2rmd"]
+atlas = ExtResource("3_3eeq2")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+resource_name = "Hunter's Compass"
+script = ExtResource("4_q50sw")
+footprint = Array[Vector2i]([Vector2i(0, 0)])
+id = &"hunter_s_compass"
+display_name = "Hunter's Compass"
+description = "Adds 1 maximum stamina, refreshed each round. Each orthogonally touching ranged gains +2 pierce. Each source applies once per target, regardless of shared edges; distinct sources stack."
+lore = "The needle points toward the next living threat."
+rarity = 2
+tags = Array[StringName]([&"booster", &"ranger"])
+category_ids = Array[StringName]([&"boosters"])
+allowed_class_ids = Array[StringName]([&"ranger"])
+icon = SubResource("AtlasTexture_u2rmd")
+base_stats = Dictionary[int, int]({
+9: 1
+})
+abilities = Array[ExtResource("1_tow6t")]([ExtResource("2_pc4dl")])

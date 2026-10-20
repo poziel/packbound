@@ -110,14 +110,11 @@
       "A leaf spearhead above a long ash shaft and red grip."
     ],
     "assets": {
-      "icon": "assets/items/marching_pike/icons/art/icon.png",
-      "svg": "assets/items/marching_pike/icons/art/icon.svg",
-      "source": "assets/items/marching_pike/icons/art/icon.sprite.json",
-      "footprint": "assets/items/marching_pike/icons/art/footprint.json",
-      "provenance": "assets/items/marching_pike/icons/art/provenance.json",
-      "manifest": "assets/items/marching_pike/icons/art/art-manifest.json",
+      "icon": "assets/items/marching_pike/art/item.png",
+      "source": "assets/items/marching_pike/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/marching_pike/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

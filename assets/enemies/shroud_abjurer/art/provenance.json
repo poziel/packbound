@@ -8,7 +8,7 @@
   ],
   "references": [
     ".agents/skills/delver-art-creator/references/visual-direction.md",
-    "assets/enemies/mire_viper.png",
+    "assets/enemies/mire_viper/art/mire_viper.png",
     "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png"
   ],
   "canvas": [
@@ -48,11 +48,11 @@
     "shroud_abjurer.pixloom.json": "76c11f7a09b45357d095be1c9161091c23f758e6448d00cfdacb1089874742fd",
     "shroud_abjurer.pixloom": "f24777a6a75b1a5c767f600f16e9f229c2af6cde2af0585cb34b2aae482eb017",
     "shroud_abjurer.png": "ecaff1a2eb6d45d5688ac2b62efa5327e8ddcf9bacf0cf3d3a00becf76a0d128",
-    "shroud_abjurer.svg": "e1066a7e896efd12cdadaeadae7f19afb2ea7176f4b1eb080f2c40cec9b1c248"
+    "shroud_abjurer.png": "e1066a7e896efd12cdadaeadae7f19afb2ea7176f4b1eb080f2c40cec9b1c248"
   },
   "reference_sha256": {
     ".agents/skills/delver-art-creator/references/visual-direction.md": "5cadc4ef72c5db7bbec05c9504920e5abfd9ca4b33add8d2af9f98c610ada0df",
-    "assets/enemies/mire_viper.png": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7",
+    "assets/enemies/mire_viper/art/mire_viper.png": "9656f43c04055e16cb67f7da0a07844e724faa7e04c8b20bb3be7de1e5c2fab7",
     "workspace/docs/art/concepts/characters/ranger-v2/full-body@4x.png": "3bcd9705f35494a28a94b3d1ecce67f657308bc4e952afe2ad7339864e140edf"
   }
 }

@@ -3,7 +3,7 @@
 [ext_resource type="Theme" path="res://themes/gameplay/theme.tres" id="theme"]
 [ext_resource type="Script" path="res://scenes/shared/inspect_window/tooltip_timer.gd" id="timer"]
 [ext_resource type="Script" path="res://components/ui/indicators/bound_equipment_indicator/bound_equipment_indicator.gd" id="bound"]
-[ext_resource type="Texture2D" path="res://assets/ui/icons/navigation-v4/logs.png" id="recipe_icon"]
+[ext_resource type="Texture2D" path="res://assets/icons/navigation/panels/logs.png" id="recipe_icon"]
 [sub_resource type="StyleBoxFlat" id="frame"]
 bg_color = Color(0.075, 0.06, 0.07, 0.94)
 border_width_left = 2

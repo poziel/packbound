@@ -8,7 +8,7 @@ The 2 × 2 footprint rotates during preparation. Damage boosters empower it thro
 
 ## Visual design
 
-A restrained void-themed spell focus with one readable elemental motif and broad material shading. Dedicated artwork is deferred. [Existing spell artwork](../../../assets/items/spells/ember-tome/revisions/catalog-v1/ember-tome-64px.svg) is reused as a temporary placeholder; no new artwork or approval is claimed.
+A restrained void-themed spell focus with one readable elemental motif and broad material shading. Dedicated artwork is deferred. [Existing spell artwork](../../../assets/items/ember_tome/art/item.png) is reused as a temporary placeholder; no new artwork or approval is claimed.
 
 ## Lore
 

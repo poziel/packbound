@@ -136,14 +136,11 @@
       "A low violet gray cat with long ear tufts and broad paws."
     ],
     "assets": {
-      "icon": "assets/items/gloam_lynx/icons/art/icon.png",
-      "svg": "assets/items/gloam_lynx/icons/art/icon.svg",
-      "source": "assets/items/gloam_lynx/icons/art/icon.sprite.json",
-      "footprint": "assets/items/gloam_lynx/icons/art/footprint.json",
-      "provenance": "assets/items/gloam_lynx/icons/art/provenance.json",
-      "manifest": "assets/items/gloam_lynx/icons/art/art-manifest.json",
+      "icon": "assets/items/gloam_lynx/art/item.png",
+      "source": "assets/items/gloam_lynx/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/gloam_lynx/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

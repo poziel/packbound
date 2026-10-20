@@ -34,8 +34,8 @@ func _run() -> void:
 		report("loading_screen")
 		quit(1)
 		return
-	check(appear.stream.resource_path == "res://assets/audio/transitions/loading_screen_cover.wav", "Cover uses playback copy of supplied appear clip")
-	check(disappear.stream.resource_path == "res://assets/audio/transitions/loading_screen_reveal.wav", "Reveal uses playback copy of supplied disappear clip")
+	check(appear.stream.resource_path == "res://assets/audio/sfx/transitions/loading_screen_cover.wav", "Cover uses playback copy of supplied appear clip")
+	check(disappear.stream.resource_path == "res://assets/audio/sfx/transitions/loading_screen_reveal.wav", "Reveal uses playback copy of supplied disappear clip")
 	check(appear.bus == &"FX" and disappear.bus == &"FX", "Loading audio respects FX and Master settings")
 	check(not appear.autoplay and not disappear.autoplay, "Loading audio stays silent on startup")
 	var disappear_count: Array[int] = [0]

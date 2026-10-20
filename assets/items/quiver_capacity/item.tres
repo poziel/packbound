@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://tdigywayperw"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_16a45"]
+[ext_resource type="Resource" path="res://assets/items/quiver_capacity/rule_ability.tres" id="2_88wo2"]
+[ext_resource type="Texture2D" uid="uid://51iaa2f6uo8d" path="res://assets/items/quiver/art/item.png" id="3_nrxpv"]
+[ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_1eopw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys62q"]
+atlas = ExtResource("3_nrxpv")
+region = Rect2(0, 0, 32, 64)
+
+[resource]
+resource_name = "Expanded Quiver"
+script = ExtResource("4_1eopw")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+id = &"quiver_capacity"
+display_name = "Expanded Quiver"
+description = "Quiver upgrade: +1 arrow per Volley. Up to 3 upgrades."
+rarity = 1
+category_ids = Array[StringName]([&"quiver_upgrades"])
+icon = SubResource("AtlasTexture_ys62q")
+abilities = Array[ExtResource("1_16a45")]([ExtResource("2_88wo2")])

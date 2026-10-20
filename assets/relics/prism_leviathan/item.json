@@ -85,14 +85,13 @@
       "A curled translucent serpent with distinct colored facets"
     ],
     "assets": {
-      "icon": "assets/relics/prism_leviathan/icons/art/icon.png",
-      "svg": "assets/relics/prism_leviathan/icons/art/icon.svg",
-      "source": "assets/relics/prism_leviathan/icons/art/icon.sprite.json",
+      "icon": "assets/relics/prism_leviathan/art/icon.png",
+      "source": "assets/relics/prism_leviathan/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/prism_leviathan/icons/art/provenance.json",
-      "manifest": "assets/relics/prism_leviathan/icons/art/art-manifest.json",
+      "provenance": "assets/relics/prism_leviathan/art/provenance.json",
+      "manifest": "assets/relics/prism_leviathan/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/prism_leviathan/icons/art/icon.pixloom"
+      "native": "assets/relics/prism_leviathan/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

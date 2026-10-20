@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_08cxq"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_61lli"]
+[ext_resource type="Resource" path="res://assets/relics/twin_sun_contract/rule_effect.tres" id="3_akxqn"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_jsdlt"]
+
+[resource]
+resource_name = "Twin Sun Contract rules"
+script = ExtResource("4_jsdlt")
+id = &"twin_sun_contract_rules"
+display_name = "Twin Sun Contract rules"
+description = "When activations produced both physical and magical damage: gain +3 healing."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_61lli")]([ExtResource("3_akxqn")])

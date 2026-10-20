@@ -144,14 +144,11 @@
       "A narrow green leather sleeve embossed with a snake."
     ],
     "assets": {
-      "icon": "assets/items/adder_sheath/icons/art/icon.png",
-      "svg": "assets/items/adder_sheath/icons/art/icon.svg",
-      "source": "assets/items/adder_sheath/icons/art/icon.sprite.json",
-      "footprint": "assets/items/adder_sheath/icons/art/footprint.json",
-      "provenance": "assets/items/adder_sheath/icons/art/provenance.json",
-      "manifest": "assets/items/adder_sheath/icons/art/art-manifest.json",
+      "icon": "assets/items/adder_sheath/art/item.png",
+      "source": "assets/items/adder_sheath/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/adder_sheath/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

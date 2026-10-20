@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3 uid="uid://b7fx5eorcmttv"]
+
+[ext_resource type="Script" uid="uid://d4ce007wgdjnq" path="res://systems/abilities/ability_definition.gd" id="1_1y2an"]
+[ext_resource type="Resource" path="res://assets/enemies/velvet_widow/innate_ability.tres" id="2_jk68h"]
+[ext_resource type="Resource" path="res://assets/enemies/velvet_widow/behavior.tres" id="3_tdonb"]
+[ext_resource type="Texture2D" uid="uid://dy5nebfq7tn32" path="res://assets/enemies/velvet_widow/art/velvet_widow.png" id="4_tri6v"]
+[ext_resource type="Script" uid="uid://dehkclosu8boe" path="res://systems/enemies/monster_definition.gd" id="5_5vi8a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f75u"]
+atlas = ExtResource("4_tri6v")
+region = Rect2(0, 0, 288, 320)
+filter_clip = true
+
+[resource]
+resource_name = "Velvet Widow"
+script = ExtResource("5_5vi8a")
+species_id = &"spider"
+role_id = &"venom"
+behavior = ExtResource("3_tdonb")
+id = &"velvet_widow"
+display_name = "Velvet Widow"
+log_name = "Velvet Widow"
+description = "A patient broodmother with red velvet joints. It uses two short bites to hold prey while its young drag the web closed."
+icon = SubResource("AtlasTexture_6f75u")
+base_stats = Dictionary[int, int]({
+6: 2
+})
+resource_capacities = Dictionary[int, int]({
+2: 70
+})
+abilities = Array[ExtResource("1_1y2an")]([ExtResource("2_jk68h")])
+metadata/encounter_floor = 11

@@ -103,14 +103,11 @@
       "A loop of thorny vine around a wide wooden trigger."
     ],
     "assets": {
-      "icon": "assets/items/briar_snare/icons/art/icon.png",
-      "svg": "assets/items/briar_snare/icons/art/icon.svg",
-      "source": "assets/items/briar_snare/icons/art/icon.sprite.json",
-      "footprint": "assets/items/briar_snare/icons/art/footprint.json",
-      "provenance": "assets/items/briar_snare/icons/art/provenance.json",
-      "manifest": "assets/items/briar_snare/icons/art/art-manifest.json",
+      "icon": "assets/items/briar_snare/art/item.png",
+      "source": "assets/items/briar_snare/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/briar_snare/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

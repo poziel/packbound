@@ -151,14 +151,11 @@
       "An ivory tipped command baton with three brass bands."
     ],
     "assets": {
-      "icon": "assets/items/captain_s_baton/icons/art/icon.png",
-      "svg": "assets/items/captain_s_baton/icons/art/icon.svg",
-      "source": "assets/items/captain_s_baton/icons/art/icon.sprite.json",
-      "footprint": "assets/items/captain_s_baton/icons/art/footprint.json",
-      "provenance": "assets/items/captain_s_baton/icons/art/provenance.json",
-      "manifest": "assets/items/captain_s_baton/icons/art/art-manifest.json",
+      "icon": "assets/items/captain_s_baton/art/item.png",
+      "source": "assets/items/captain_s_baton/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/captain_s_baton/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

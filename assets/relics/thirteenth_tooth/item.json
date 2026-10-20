@@ -86,14 +86,13 @@
       "A large ivory tooth with thirteen deliberate root notches"
     ],
     "assets": {
-      "icon": "assets/relics/thirteenth_tooth/icons/art/icon.png",
-      "svg": "assets/relics/thirteenth_tooth/icons/art/icon.svg",
-      "source": "assets/relics/thirteenth_tooth/icons/art/icon.sprite.json",
+      "icon": "assets/relics/thirteenth_tooth/art/icon.png",
+      "source": "assets/relics/thirteenth_tooth/art/icon.sprite.json",
       "footprint": null,
-      "provenance": "assets/relics/thirteenth_tooth/icons/art/provenance.json",
-      "manifest": "assets/relics/thirteenth_tooth/icons/art/art-manifest.json",
+      "provenance": "assets/relics/thirteenth_tooth/art/provenance.json",
+      "manifest": "assets/relics/thirteenth_tooth/art/art_manifest.json",
       "variants": [],
-      "native": "assets/relics/thirteenth_tooth/icons/art/icon.pixloom"
+      "native": "assets/relics/thirteenth_tooth/art/icon.pixloom"
     },
     "approval": "unreviewed"
   },

@@ -142,14 +142,11 @@
       "An open black atlas surrounding a pale square hole."
 	],
 	"assets": {
-	  "icon": "assets/items/absent_atlas/icons/art/icon.png",
-	  "svg": "assets/items/absent_atlas/icons/art/icon.svg",
-	  "source": "assets/items/absent_atlas/icons/art/icon.sprite.json",
-	  "footprint": "assets/items/absent_atlas/icons/art/footprint.json",
-	  "provenance": "assets/items/absent_atlas/icons/art/provenance.json",
-	  "manifest": "assets/items/absent_atlas/icons/art/art-manifest.json",
+	  "icon": "assets/items/absent_atlas/art/item.png",
+	  "source": "assets/items/absent_atlas/art/item.pixloom.json",
+	  "footprint": null,
 	  "variants": [],
-	  "native": "assets/items/absent_atlas/icons/art/icon.pixloom"
+	  "native": null
 	},
 	"approval": "unreviewed"
   },

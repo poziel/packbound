@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_om6tx"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_letyc"]
+[ext_resource type="Resource" path="res://assets/items/gravetread_boots/rule_effect.tres" id="3_frfw4"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_ultwi"]
+
+[resource]
+resource_name = "Gravetread Boots rules"
+script = ExtResource("4_ultwi")
+id = &"gravetread_boots_rules"
+display_name = "Gravetread Boots rules"
+description = "Adds 1 maximum stamina, refreshed each round. Supplies 3 ward each round against poison, curse and reflected damage."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_letyc")]([ExtResource("3_frfw4")])

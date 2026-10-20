@@ -122,14 +122,11 @@
       "A pair of moss brown wrapped boots with high shin ties."
     ],
     "assets": {
-      "icon": "assets/items/pathfinder_gaiters/icons/art/icon.png",
-      "svg": "assets/items/pathfinder_gaiters/icons/art/icon.svg",
-      "source": "assets/items/pathfinder_gaiters/icons/art/icon.sprite.json",
-      "footprint": "assets/items/pathfinder_gaiters/icons/art/footprint.json",
-      "provenance": "assets/items/pathfinder_gaiters/icons/art/provenance.json",
-      "manifest": "assets/items/pathfinder_gaiters/icons/art/art-manifest.json",
+      "icon": "assets/items/pathfinder_gaiters/art/item.png",
+      "source": "assets/items/pathfinder_gaiters/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/pathfinder_gaiters/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

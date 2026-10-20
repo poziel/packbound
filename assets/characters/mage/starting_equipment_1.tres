@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StartingEquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/characters/starting_equipment_definition.gd" id="1_fpepj"]
+
+[resource]
+resource_name = "Starting Equipment 1"
+script = ExtResource("1_fpepj")
+item_id = &"frost_wand"
+position = Vector2i(2, 0)

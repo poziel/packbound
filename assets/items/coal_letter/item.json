@@ -99,14 +99,11 @@
       "A folded charcoal paper letter with a red wax flame seal."
     ],
     "assets": {
-      "icon": "assets/items/coal_letter/icons/art/icon.png",
-      "svg": "assets/items/coal_letter/icons/art/icon.svg",
-      "source": "assets/items/coal_letter/icons/art/icon.sprite.json",
-      "footprint": "assets/items/coal_letter/icons/art/footprint.json",
-      "provenance": "assets/items/coal_letter/icons/art/provenance.json",
-      "manifest": "assets/items/coal_letter/icons/art/art-manifest.json",
+      "icon": "assets/items/coal_letter/art/item.png",
+      "source": "assets/items/coal_letter/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/coal_letter/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

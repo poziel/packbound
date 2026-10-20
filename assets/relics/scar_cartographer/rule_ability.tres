@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="1_rt7br"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="2_sogey"]
+[ext_resource type="Resource" path="res://assets/relics/scar_cartographer/rule_effect.tres" id="3_f4htu"]
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="4_ui3uw"]
+
+[resource]
+resource_name = "Scar Cartographer rules"
+script = ExtResource("4_ui3uw")
+id = &"scar_cartographer_rules"
+display_name = "Scar Cartographer rules"
+description = "When current HP is at most half maximum HP before activations: gain +6 physical damage."
+trigger_id = &"coded_catalog_rule"
+effects = Array[ExtResource("2_sogey")]([ExtResource("3_f4htu")])

@@ -146,14 +146,11 @@
       "A translucent jade bow reinforced by dark bamboo joints."
     ],
     "assets": {
-      "icon": "assets/items/glass_reed_bow/icons/art/icon.png",
-      "svg": "assets/items/glass_reed_bow/icons/art/icon.svg",
-      "source": "assets/items/glass_reed_bow/icons/art/icon.sprite.json",
-      "footprint": "assets/items/glass_reed_bow/icons/art/footprint.json",
-      "provenance": "assets/items/glass_reed_bow/icons/art/provenance.json",
-      "manifest": "assets/items/glass_reed_bow/icons/art/art-manifest.json",
+      "icon": "assets/items/glass_reed_bow/art/item.png",
+      "source": "assets/items/glass_reed_bow/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/glass_reed_bow/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

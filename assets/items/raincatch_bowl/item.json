@@ -144,14 +144,11 @@
       "A shallow blue ceramic bowl beneath a curved wire handle."
     ],
     "assets": {
-      "icon": "assets/items/raincatch_bowl/icons/art/icon.png",
-      "svg": "assets/items/raincatch_bowl/icons/art/icon.svg",
-      "source": "assets/items/raincatch_bowl/icons/art/icon.sprite.json",
-      "footprint": "assets/items/raincatch_bowl/icons/art/footprint.json",
-      "provenance": "assets/items/raincatch_bowl/icons/art/provenance.json",
-      "manifest": "assets/items/raincatch_bowl/icons/art/art-manifest.json",
+      "icon": "assets/items/raincatch_bowl/art/item.png",
+      "source": "assets/items/raincatch_bowl/art/item.pixloom.json",
+      "footprint": null,
       "variants": [],
-      "native": "assets/items/raincatch_bowl/icons/art/icon.pixloom"
+      "native": null
     },
     "approval": "unreviewed"
   },

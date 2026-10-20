@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CollectibleCategoryDefinition" format=3 uid="uid://c70s3x3g771es"]
+
+[ext_resource type="Script" uid="uid://ccft8lyr7x3v3" path="res://systems/content/collectible_category_definition.gd" id="1"]
+
+[resource]
+resource_name = "Swords"
+script = ExtResource("1")
+id = &"swords"
+display_name = "Swords"
+parent_category_id = &"melee_weapons"
