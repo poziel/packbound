@@ -18,11 +18,7 @@ const OPTIONS: Dictionary = {
 }
 
 static func available(item: Dictionary) -> Array[String]:
-	var result: Array[String] = []
-	for key: String in OPTIONS:
-		if OPTIONS[key].has("cap") and int(item.get("upgrades", {}).get(key, 0)) < int(OPTIONS[key]["cap"]):
-			result.append(key)
-	return result
+	return preload("res://systems/loot/loot_selection.gd").available_upgrades(item)
 
 static func stats(item: Dictionary, adjacency: int = 0) -> Dictionary:
 	var upgrades: Dictionary = item.get("upgrades", {})

@@ -55,6 +55,22 @@ func _run() -> void:
 	await process_frame
 	check(game.board.get_node("Cell1_1").get_script() == game.relic_slots[0].get_script(), "Backpack sockets share the relic frame")
 	await _snapshot("item-grid-backpack")
+	game.run.items.clear()
+	var source: Dictionary = game.run.add_item("blood_gem", Vector2i(3, 2))
+	game.run.add_item("rusty_knife", Vector2i(4, 2))
+	game._refresh()
+	await process_frame
+	_motion(game.board.global_position + game.board.item_rect(source).get_center())
+	await process_frame
+	check(game.board.hovered_id == int(source.id), "Pointer selects the synergy source")
+	check(game.board.synergy_cells().any(func(star: Dictionary) -> bool: return star.fulfilled), "Hover displays a fulfilled synergy cell")
+	await _snapshot("item-grid-synergy-hover")
+	game.board.begin_drag(source, game.board.item_rect(source).get_center())
+	game.board.pointer = game.board.ORIGIN + Vector2(5, 4) * game.board.STEP + game.board.grab
+	game.board.queue_redraw()
+	await _snapshot("item-grid-synergy-drag")
+	game.board.cancel_drag()
+	_motion(Vector2(640, 90))
 	game._toggle_storage()
 	await process_frame
 	await process_frame

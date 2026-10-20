@@ -95,6 +95,15 @@ override; the tile fill and artwork keep their original colors. Backpack
 synergy hover uses the shared frame renderer's `SYNERGY_COLOR` (the yellow-beige
 caret color), then restores the rarity rim when the related trigger is left.
 
+Occupied item and relic hover brightens the rarity accent by 18% through the
+shared renderer, including numbered corners and gravity-stash footprints.
+The backpack also draws board-space stars around a hovered bonus supplier:
+muted gray outlines at 45% opacity for potential contacts, solid yellow when the
+occupant receives its bonus.
+Stars follow snapped placement and rotation, honor adjacency relics, and disappear
+outside valid board previews. `backpack/synergy_preview.gd` reads copied placement
+records and the run's adjacency/bonus rules without committing moves.
+
 Run `components/inventory/item_slot/segmented_frame_demo.tscn` (F6) for 32 px irregular
 masks, a hollow mask, a bottom caret and a custom side marker at 64 px.
 The larger donut shows carets on both outer sides and the bottom edge of its

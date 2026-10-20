@@ -7,6 +7,7 @@ var points: Array[Vector2i]
 var origin: Vector2
 var container_size := Vector2.ZERO
 var held: bool = false
+var hovered: bool = false
 var held_transform := Transform2D.IDENTITY
 var held_velocity := Vector2.ZERO
 var _pending_transform := Transform2D.IDENTITY
@@ -212,7 +213,7 @@ func draw_art(canvas: CanvasItem, base: Transform2D = Transform2D.IDENTITY) -> v
 	if _art_rotation != int(item["rotation"]) or _art_key != item["key"]:
 		_prepare_art()
 	canvas.draw_set_transform_matrix(base * Transform2D(0.0, origin))
-	FRAME.draw_frame(canvas, points, Vector2.ONE * tile, 4.0, PackCatalog.RARITY.color(item), true, false)
+	FRAME.draw_frame(canvas, points, Vector2.ONE * tile, 4.0, PackCatalog.RARITY.color(item), true, hovered and not held)
 	for index in range(_art_polygons.size()):
 		canvas.draw_polygon(_art_polygons[index], PackedColorArray([Color.WHITE]), _art_uvs[index], _art_texture)
 	if item.has("craft_lock"):

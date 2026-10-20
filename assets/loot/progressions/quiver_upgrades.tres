@@ -20,3 +20,5 @@ metadata/balance_policy = "Uniform eligible candidates; newer equipment uses poo
 metadata/every_floors = 3
 metadata/replace_offer_index = 2
 metadata/requires_item_id = "magnificent_quiver"
+
+metadata/required_class_id = &"ranger"

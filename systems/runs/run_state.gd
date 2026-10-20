@@ -3,8 +3,10 @@ extends RefCounted
 
 const CATEGORIES = preload("res://systems/content/collectible_categories.gd")
 
+const LOOT = preload("res://systems/loot/loot_selection.gd")
 const CRAFTING = preload("res://systems/crafting/pack_crafting.gd")
 const QUIVER = preload("res://systems/characters/archer_quiver.gd")
+const STATUSES = preload("res://systems/combat/status_resolver.gd")
 const ELEMENTS = preload("res://systems/combat/elemental_combat.gd")
 const GRID: Vector2i = Vector2i(8, 7)
 const FLOORS: int = 20
@@ -36,8 +38,14 @@ var resource_overrides: Dictionary = {} # Explicit developer-authored round budg
 var mana_capacity: int = 0
 var stamina_capacity: int = 0
 var block_capacity: int = 0
-var player_poison: int = 0
-var enemy_poison: int = 0
+# Live Poison has one authority; integer properties preserve existing UI/dev APIs.
+var _poison_statuses: Dictionary = {}
+var player_poison: int:
+	get: return poison_status("player").stacks
+	set(value): poison_status("player").stacks = value
+var enemy_poison: int:
+	get: return poison_status("enemy").stacks
+	set(value): poison_status("enemy").stacks = value
 var enemy_burn: int = 0
 var enemy_slow: int = 0
 var enemy_spark: int = 0
@@ -73,6 +81,23 @@ var room_event: String = ""
 var room_relic_offers: Array[String] = []
 var room_reward_pending: bool = false
 var room_flow_version: int = 1
+
+func poison_status(owner: String) -> StatusEffectInstance:
+	if not _poison_statuses.has(owner):
+		_poison_statuses[owner] = STATUSES.create(&"poison")
+	return _poison_statuses[owner]
+
+func poison_state() -> Dictionary:
+	return {"player": STATUSES.snapshot(poison_status("player")), "enemy": STATUSES.snapshot(poison_status("enemy"))}
+
+func restore_poison_state(data: Dictionary = {}) -> void:
+	var legacy: Dictionary = {"player": player_poison, "enemy": enemy_poison}
+	_poison_statuses.clear()
+	for owner: String in ["player", "enemy"]:
+		if STATUSES.is_snapshot_valid(data.get(owner), &"poison"):
+			_poison_statuses[owner] = STATUSES.restore(data[owner])
+		else:
+			_poison_statuses[owner] = StatusEffectInstance.new(STATUSES.definition(&"poison"), int(legacy[owner]))
 
 static func definition(key: String) -> Dictionary:
 	return PackCatalog.item(key)
@@ -125,8 +150,9 @@ func reset(seed_value: int = -1, chosen_class: String = "warrior") -> void:
 		starter["shape"] = dimensions(starter, starter["rotation"])
 	prepare_enemy()
 	if class_key == "ranger":
-		item_rewards.push_front({"floor": 0, "offers": QUIVER.INITIAL.duplicate()})
-		offers.assign(QUIVER.INITIAL)
+		var arrows: Array[String] = LOOT.initial_options(class_key)
+		item_rewards.push_front({"floor": 0, "offers": arrows.duplicate()})
+		offers.assign(arrows)
 	log_line("%s enters the cursed descent." % character["name"])
 
 func quiver() -> Dictionary:
@@ -194,6 +220,7 @@ func prepare_enemy(selected: Dictionary = {}) -> void:
 	stamina = 0
 	stamina_capacity = 0
 	block_capacity = 0
+	_poison_statuses.clear()
 	player_poison = 0
 	enemy_poison = 0
 	enemy_burn = 0
@@ -226,12 +253,7 @@ func spend_momentum(amount: int) -> bool:
 func roll_relics() -> void:
 	if relic_rewards.is_empty() or not relic_offers.is_empty():
 		return
-	var available: Array[String] = []
-	for key in PackCatalog.RELICS:
-		if item_enabled(PackCatalog.relic(key)) and not relics.has(key) and not room_relic_offers.has(key):
-			available.append(key)
-	for index in range(mini(3, available.size())):
-		relic_offers.append(available.pop_at(rng.randi_range(0, available.size() - 1)))
+	relic_offers.assign(LOOT.roll("relics", class_key, display_floor(), rng, relics + room_relic_offers))
 
 func choose_relic(key: String) -> void:
 	if not can_claim_rewards() or not pending_turn.is_empty() or relic_rewards.is_empty() or not relic_offers.has(key) or relics.has(key) or not item_enabled(PackCatalog.relic(key)):
@@ -447,39 +469,17 @@ func item_enabled(item: Dictionary) -> bool:
 
 func normalize_reward_restrictions() -> void:
 	for reward: Dictionary in item_rewards:
-		_replace_restricted_offers(reward["offers"], PackCatalog.ROSTER, false)
+		var at: int = int(reward.get("floor", display_floor()))
+		var context: String = "quiver_initial" if at == 0 and class_key == "ranger" else LOOT.item_progression(class_key)
+		reward["offers"].assign(LOOT.repair(reward["offers"], context, class_key, maxi(1, at)))
 	if not item_rewards.is_empty():
 		offers.assign(item_rewards[0]["offers"])
 	else:
-		_replace_restricted_offers(offers, PackCatalog.ROSTER, false)
-	var deferred_pool: Array = PackCatalog.RELICS.filter(func(key: String) -> bool: return not relics.has(key) and not room_relic_offers.has(key))
-	_replace_restricted_offers(relic_offers, deferred_pool, true)
-	_replace_restricted_offers(room_relic_offers, available_room_relics(), true)
+		offers.assign(LOOT.repair(offers, LOOT.item_progression(class_key), class_key, display_floor()))
+	relic_offers.assign(LOOT.repair(relic_offers, "relics", class_key, display_floor(), relics + room_relic_offers))
+	room_relic_offers.assign(LOOT.repair(room_relic_offers, "relics", class_key, display_floor(), relics + relic_offers))
 	if room_reward_pending and room_relic_offers.is_empty():
 		room_reward_pending = false
-
-func _replace_restricted_offers(choices: Array, pool: Array, is_relic: bool) -> void:
-	# Keep valid saved rolls and RNG state. Prefer a replacement of the same rarity.
-	for index: int in range(choices.size() - 1, -1, -1):
-		var content: Dictionary = PackCatalog.relic(choices[index]) if is_relic else PackCatalog.item(choices[index])
-		if item_enabled(content):
-			continue
-		var replacement: String = ""
-		for key: String in pool:
-			if key in choices:
-				continue
-			var candidate: Dictionary = PackCatalog.relic(key) if is_relic else PackCatalog.item(key)
-			if not item_enabled(candidate):
-				continue
-			if replacement.is_empty():
-				replacement = key
-			if candidate.get("rarity") == content.get("rarity"):
-				replacement = key
-				break
-		if replacement.is_empty():
-			choices.remove_at(index)
-		else:
-			choices[index] = replacement
 
 func volley_stats() -> Dictionary:
 	var special: Dictionary = quiver()
@@ -944,20 +944,20 @@ func outcome(stats: Dictionary) -> Dictionary:
 	var leech_heal: int = mini(max_hp - health, leech)
 	health += leech_heal
 	_record_amount(my_events, "Vampirism restored %d HP to me.", leech_heal)
-	var poison: int = enemy_poison
+	var poisoned: StatusEffectInstance = STATUSES.copy(poison_status("enemy"))
 	var burn: int = enemy_burn
 	var doom: int = enemy_doom
 	var doom_turns: int = enemy_doom_turns
 	var spark: int = enemy_spark
 	var slow: int = enemy_slow
 	if int(enemy["cleanse"]) > 0 and turn % int(enemy["cleanse"]) == 0:
+		var poison_cleansed: int = STATUSES.cleanse(poisoned)
 		if foe_hp > 0:
-			_record_amount(my_events, foe + " cleansed %d poison.", poison)
+			_record_amount(my_events, foe + " cleansed %d poison.", poison_cleansed)
 			_record_amount(my_events, foe + " cleansed %d burn.", burn)
 			_record_amount(my_events, foe + " cleansed %d Doom.", doom)
 			_record_amount(my_events, foe + " cleansed %d Spark.", spark)
 			_record_amount(my_events, foe + " cleansed %d Slow.", slow)
-		poison = 0
 		burn = 0
 		doom = 0
 		doom_turns = 0
@@ -968,9 +968,12 @@ func outcome(stats: Dictionary) -> Dictionary:
 		_record_amount(my_events, "I applied %d burn to " + foe + ".", int(stats["burn"]))
 		for key: String in ["doom", "spark", "slow"]:
 			_record_amount(my_events, "I applied %d " + key.capitalize() + " to " + foe + ".", int(stats.get(key, 0)))
-	poison += int(stats["poison"])
+	STATUSES.apply(poisoned, int(stats["poison"]))
 	burn += int(stats["burn"])
-	var poison_damage: int = ELEMENTS.resist(poison, int(enemy.get("magical_resistance", 0)))
+	var poison_tick_stacks: int = poisoned.stacks
+	var poison_tick: Dictionary = STATUSES.tick(poisoned, &"after_direct_attacks", {"owner": "enemy", "resistances": {"magical": int(enemy.get("magical_resistance", 0)), "physical": int(enemy.get("physical_resistance", 0))}})
+	var poison_damage: int = int(poison_tick.damage)
+	STATUSES.advance_round(poisoned, {"owner": "enemy", "relics": relics})
 	_record_amount(my_events, "Poison dealt %d damage to " + foe + ".", mini(poison_damage, foe_hp))
 	result["poison_damage_actual"] = mini(poison_damage, foe_hp)
 	foe_hp = maxi(0, foe_hp - poison_damage)
@@ -1001,18 +1004,20 @@ func outcome(stats: Dictionary) -> Dictionary:
 	result["enemy_spark_after"] = spark
 	result["enemy_doom_after"] = doom
 	result["enemy_doom_turns_after"] = doom_turns
-	var cleansed: int = mini(player_poison, int(stats["cleanse"]))
+	var toxin: StatusEffectInstance = STATUSES.copy(poison_status("player"))
+	var cleansed: int = STATUSES.cleanse(toxin, int(stats["cleanse"]))
 	_record_amount(my_events, "I cleansed %d poison.", cleansed)
-	var toxin: int = player_poison - cleansed
 	var reflection: int = int(enemy["reflect"]) if dealt > 0 else 0
-	var toxin_damage: int = ELEMENTS.resist(toxin, int(stats.get("magical_resistance", 0)))
+	var toxin_tick: Dictionary = STATUSES.tick(toxin, &"after_direct_attacks", {"owner": "player", "resistances": {"magical": int(stats.get("magical_resistance", 0)), "physical": int(stats.get("physical_resistance", 0))}})
+	var toxin_damage: int = int(toxin_tick.damage)
 	reflection = ELEMENTS.resist(reflection, int(stats.get("magical_resistance", 0)))
 	var special: int = toxin_damage + int(stats["curse"]) + reflection
-	var ward_absorbed: int = mini(int(stats["ward"]), special)
+	var ward_absorbed: int = 0
 	var ward_left: int = int(stats["ward"])
 	# Attribute the shared ward pool to each source without changing its total.
-	for source: Dictionary in [{"amount": toxin_damage, "name": "Poison"}, {"amount": int(stats["curse"]), "name": "Curse"}, {"amount": reflection, "name": foe + "'s reflection"}]:
-		var absorbed: int = mini(ward_left, int(source["amount"]))
+	for source: Dictionary in [{"amount": toxin_damage, "wardable_amount": int(toxin_tick.wardable_damage), "name": "Poison"}, {"amount": int(stats["curse"]), "name": "Curse"}, {"amount": reflection, "name": foe + "'s reflection"}]:
+		var absorbed: int = mini(ward_left, int(source.get("wardable_amount", source["amount"])))
+		ward_absorbed += absorbed
 		ward_left -= absorbed
 		_record_amount(my_events, "My ward blocked %d damage from " + str(source["name"]).to_lower() + ".", absorbed)
 		var damage: int = 0 if _dev_flag("invulnerable") else int(source["amount"]) - absorbed
@@ -1022,9 +1027,10 @@ func outcome(stats: Dictionary) -> Dictionary:
 	_record_amount(my_events, "Arcane Barter cost me %d HP.", mini(blood_damage, maxi(0, health)))
 	health -= blood_damage
 	# Incoming poison is applied after this tick and retains all new stacks.
-	toxin = maxi(0, toxin - 1)
+	STATUSES.advance_round(toxin, {"owner": "player"})
 	# The UI commits this checkpoint first, then the response after its delay.
-	result["player_state"] = {"hp": maxi(0, health), "enemy_hp": foe_hp, "mana": stats["mana_after"], "stamina": stats.get("stamina_after", 0), "block": stats["block"], "player_poison": toxin, "enemy_poison": poison if relics.has("plague_seal") else maxi(0, poison - 1), "enemy_burn": maxi(0, burn - 1), "enemy_shield_spent": shield_spent}
+	result["player_state"] = {"hp": maxi(0, health), "enemy_hp": foe_hp, "mana": stats["mana_after"], "stamina": stats.get("stamina_after", 0), "block": stats["block"], "player_poison": toxin.stacks, "enemy_poison": poisoned.stacks, "enemy_burn": maxi(0, burn - 1), "enemy_shield_spent": shield_spent}
+	result["player_state"]["poison_statuses"] = {"player": STATUSES.snapshot(toxin), "enemy": STATUSES.snapshot(poisoned)}
 	result["has_response"] = health > 0 and foe_hp > 0
 	var guard: int = int(stats["block"])
 	var taken: int = 0
@@ -1085,7 +1091,7 @@ func outcome(stats: Dictionary) -> Dictionary:
 				_record_amount(monster_events, "My thorns dealt %d damage to " + foe + ".", mini(thorns, foe_hp))
 				foe_hp = maxi(0, foe_hp - thorns)
 		if contact_damage > 0:
-			toxin += int(enemy["poison"])
+			STATUSES.apply(toxin, int(enemy["poison"]))
 		if foe_hp > 0:
 			var regeneration: int = mini(int(enemy["regen"]), int(enemy["max_hp"]) - foe_hp)
 			foe_hp += regeneration
@@ -1093,7 +1099,8 @@ func outcome(stats: Dictionary) -> Dictionary:
 			var drain: int = mini(int(enemy["drain"]), int(enemy["max_hp"]) - foe_hp) if contact_damage > 0 else 0
 			foe_hp += drain
 			_record_amount(monster_events, foe + " drained %d HP to heal itself.", drain)
-	result.merge({"hp_after": maxi(0, health), "enemy_hp_after": foe_hp, "dealt": dealt, "taken": taken, "blocked": blocked, "retaliation": retaliation, "healed": healed + leech_heal, "ward_absorbed": ward_absorbed, "special_taken": 0 if _dev_flag("invulnerable") else special - ward_absorbed + int(stats["blood_cost"]), "poison_after": toxin, "poison_tick": poison, "burn_tick": burn, "enemy_poison_after": poison if relics.has("plague_seal") else maxi(0, poison - 1), "enemy_burn_after": maxi(0, burn - 1), "block_after": guard, "carry_after": guard, "revived": false, "shield_absorbed": shield_absorbed}, true)
+	result.merge({"hp_after": maxi(0, health), "enemy_hp_after": foe_hp, "dealt": dealt, "taken": taken, "blocked": blocked, "retaliation": retaliation, "healed": healed + leech_heal, "ward_absorbed": ward_absorbed, "special_taken": 0 if _dev_flag("invulnerable") else special - ward_absorbed + int(stats["blood_cost"]), "poison_after": toxin.stacks, "poison_tick": poison_tick_stacks, "burn_tick": burn, "enemy_poison_after": poisoned.stacks, "enemy_burn_after": maxi(0, burn - 1), "block_after": guard, "carry_after": guard, "revived": false, "shield_absorbed": shield_absorbed}, true)
+	result["poison_statuses_after"] = {"player": STATUSES.snapshot(toxin), "enemy": STATUSES.snapshot(poisoned)}
 	if health <= 0 and relics.has("last_thread") and not last_thread_used:
 		result["hp_after"] = mini(8, max_hp)
 		result["revived"] = true
@@ -1169,6 +1176,7 @@ func begin_turn() -> Dictionary:
 	enemy["hp"] = checkpoint["enemy_hp"]
 	for property: String in ["mana", "stamina", "block", "player_poison", "enemy_poison", "enemy_burn", "enemy_shield_spent"]:
 		set(property, int(checkpoint[property]))
+	restore_poison_state(checkpoint.get("poison_statuses", {}))
 	total_turns += 1
 	log_action(pending_turn["player_events"])
 	return pending_turn
@@ -1187,6 +1195,7 @@ func complete_turn() -> Dictionary:
 	carry_block = 0 # Legacy field; full retention now lives in block.
 	player_poison = int(result["poison_after"])
 	enemy_poison = int(result["enemy_poison_after"])
+	restore_poison_state(result.get("poison_statuses_after", {}))
 	enemy_burn = int(result["enemy_burn_after"])
 	enemy_shield_spent = int(result["enemy_shield_spent_after"])
 	log_action(result["monster_events"])
@@ -1226,36 +1235,7 @@ func finish_defeated_enemy(raise_companion: bool = true) -> bool:
 	return true
 
 func roll_loot() -> void:
-	var offense: Dictionary = {"warrior": ["longsword", "battle_axe", "venom_dagger", "vampire_fang", "rusty_knife"], "ranger": ["shortbow", "hunting_trap", "venom_dagger", "vampire_fang"], "mage": ["ember_tome", "frost_wand", "venom_dagger", "vampire_fang"], "assassin": ["venom_dagger", "vampire_fang", "rusty_knife", "hunting_trap"], "necromancer": ["ember_tome", "frost_wand", "vampire_fang", "venom_dagger"]}
-	offense["mage"] = ["ember_tome", "frost_wand", "lightning_wand", "void_tome", "venom_orb"]
-	offense["necromancer"].append_array(["lightning_wand", "void_tome", "venom_orb"])
-	var groups: Array = [offense[class_key], ["cracked_shield", "tower_shield", "buckler", "plate_mail", "thorn_mail", "healing_herbs", "bandage", "warding_sigil"], ["blood_gem", "iron_charm", "quiver", "spark_ring", "hourglass", "mirror_shard", "antidote", "cursed_idol"]]
-	# New progression equipment joins normal rewards as deeper tiers open.
-	# Preserve class-specific legacy pools and the quiver-upgrade choice.
-	var tier_limit: int = mini(4, floori(float(fight) / 4.0))
-	for key: String in PackCatalog.CONTENT.ITEM_KEYS:
-		var definition: Dictionary = PackCatalog.item(key)
-		if PackCatalog.RARITY.TIERS.find(definition["rarity"]) <= tier_limit:
-			groups[0 if CATEGORIES.matches(definition, &"melee_weapons") else 1].append(key)
-	for key: String in PackCatalog.EXPANSION_ITEMS.ITEM_KEYS:
-		var definition: Dictionary = PackCatalog.item(key)
-		if not item_enabled(definition) or PackCatalog.RARITY.TIERS.find(definition["rarity"]) > tier_limit:
-			continue
-		var group_index: int = 2
-		if CATEGORIES.matches_any(definition, ["melee_weapons", "ranged_weapons", "magic_weapons", "companions"]):
-			group_index = 0
-		elif CATEGORIES.matches_any(definition, ["shields", "body_armor", "boots", "healing_supplies"]):
-			group_index = 1
-		groups[group_index].append(key)
-	var rolled: Array[String] = []
-	for group in groups:
-		var eligible: Array = group.filter(func(key: String) -> bool: return item_enabled(PackCatalog.item(key)))
-		if not eligible.is_empty():
-			rolled.append(eligible[rng.randi_range(0, eligible.size() - 1)])
-	if class_key == "ranger" and (fight + 1) % 3 == 0 and not quiver().is_empty():
-		var upgrades: Array[String] = QUIVER.available(quiver())
-		if not upgrades.is_empty():
-			rolled[2] = upgrades[rng.randi_range(0, upgrades.size() - 1)]
+	var rolled: Array[String] = LOOT.item_offers(class_key, fight + 1, rng, quiver())
 	item_rewards.append({"floor": fight + 1, "offers": rolled})
 	if offers.is_empty():
 		offers.assign(rolled)
@@ -1297,10 +1277,12 @@ func apply_quiver_option(key: String) -> bool:
 func _normalize_quiver_rewards() -> void:
 	# Deferred choices must not retain an upgrade that is now capped.
 	for reward: Dictionary in item_rewards:
-		for index in range(reward["offers"].size()):
+		for index in range(reward["offers"].size() - 1, -1, -1):
 			var offered: String = reward["offers"][index]
 			if QUIVER.OPTIONS.has(offered) and not offered in QUIVER.INITIAL and not QUIVER.available(quiver()).has(offered):
-				reward["offers"][index] = "blood_gem"
+				var replacement: String = LOOT.fallback_item(class_key, maxi(1, int(reward.get("floor", display_floor()))))
+				if replacement.is_empty(): reward["offers"].remove_at(index)
+				else: reward["offers"][index] = replacement
 	if not item_rewards.is_empty():
 		offers.assign(item_rewards[0]["offers"])
 
@@ -1314,11 +1296,7 @@ func has_combat_room() -> bool:
 	return phase in [Phase.FIGHT, Phase.LOOT, Phase.DEFEAT, Phase.VICTORY]
 
 func available_room_relics() -> Array[String]:
-	var available: Array[String] = []
-	for key: String in PackCatalog.RELICS:
-		if item_enabled(PackCatalog.relic(key)) and not relics.has(key) and not relic_offers.has(key):
-			available.append(key)
-	return available
+	return LOOT.available("relics", class_key, display_floor(), relics + relic_offers)
 
 func enter_selector() -> bool:
 	if phase not in [Phase.LOOT, Phase.ROOM_COMPLETE] or not pending_turn.is_empty():
@@ -1369,9 +1347,7 @@ func enter_room(index: int, kind: String) -> bool:
 	return true
 
 func _roll_room_relics() -> void:
-	var available: Array[String] = available_room_relics()
-	for index in range(mini(3, available.size())):
-		room_relic_offers.append(available.pop_at(rng.randi_range(0, available.size() - 1)))
+	room_relic_offers.append_array(LOOT.roll("relics", class_key, display_floor(), rng, relics + relic_offers))
 	room_reward_pending = not room_relic_offers.is_empty()
 
 func offering_cost() -> int:

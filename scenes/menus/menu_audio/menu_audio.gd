@@ -11,6 +11,9 @@ const GAMEPLAY_DIRECTORY: String = "res://assets/audio/music/gameplay/"
 @onready var next_track_timer: Timer = $NextTrackTimer
 @onready var fx: AudioStreamPlayer = $MenuFX
 @onready var item_hover_fx: AudioStreamPlayer = $ItemHoverFX
+@onready var ui_hover_fx: AudioStreamPlayer = $UIHoverFX
+@onready var item_pickup_fx: AudioStreamPlayer = $ItemPickupFX
+@onready var item_drop_fx: AudioStreamPlayer = $ItemDropFX
 @onready var ambience_layers: Array[AudioStreamPlayer] = [$AmbienceOne, $AmbienceTwo]
 var music_started: bool = false
 var gameplay_started: bool = false
@@ -116,12 +119,26 @@ func play_click() -> void:
 func play_item_hover() -> void:
 	preload("res://systems/audio/sound_playback.gd").play_random_pitch(item_hover_fx)
 
+func play_ui_hover(button: Control) -> void:
+	if button.is_visible_in_tree() and not button.get_meta("item_hover_audio", false) and not (button is BaseButton and button.disabled):
+		preload("res://systems/audio/sound_playback.gd").play_random_pitch(ui_hover_fx)
+
+func play_item_pickup() -> void:
+	preload("res://systems/audio/sound_playback.gd").play_random_pitch(item_pickup_fx)
+
+func play_item_drop() -> void:
+	preload("res://systems/audio/sound_playback.gd").play_random_pitch(item_drop_fx)
+
 func _connect_existing_buttons(node: Node) -> void:
 	_connect_button(node)
 	for child in node.get_children():
 		_connect_existing_buttons(child)
 
 func _connect_button(node: Node) -> void:
+	if node is BaseButton:
+		var hover: Callable = play_ui_hover.bind(node)
+		if not node.mouse_entered.is_connected(hover):
+			node.mouse_entered.connect(hover)
 	if node is BaseButton and not node.pressed.is_connected(play_click):
 		node.pressed.connect(play_click)
 	if node is OptionButton and not node.item_selected.is_connected(_on_item_selected):

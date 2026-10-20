@@ -11,9 +11,11 @@ Doom detonates for two magical damage per stack after a three-round countdown;
 new applications do not reset that countdown. Damage bypasses block and respects
 the existing resistance/ward rules in the coded handlers.
 
-These shared records contain authored policy only. Current combat still owns
-its status counters and executes the existing code. New trigger/rule IDs name
-compatibility bindings for the next resolver migration; registering them does
+These shared records contain authored policy only. Poison uses StatusResolver
+and separate runtime instances for player and enemy; its record supplies stacking,
+decay, cleansing and tick parameters. Combat owns phase timing and damage commits.
+Burn, Slow, Spark and Doom retain their existing counters and handlers. Their
+trigger/rule IDs name compatibility bindings for future migrations; registering them does
 not make a generic effect interpreter available. Elemental traces, block,
 Momentum and innate invisibility are separate mechanics rather than extra
 instances of these five persistent conditions.

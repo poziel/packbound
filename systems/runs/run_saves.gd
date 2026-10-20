@@ -11,8 +11,9 @@ func new_id() -> String:
 func capture(run: PackRun, elapsed: float, playback: PackCombatPlayback = null) -> Dictionary:
 	var state: Dictionary = {}
 	for property: Dictionary in run.get_property_list():
-		if int(property.usage) & PROPERTY_USAGE_SCRIPT_VARIABLE and property.name != "rng":
+		if int(property.usage) & PROPERTY_USAGE_SCRIPT_VARIABLE and property.name not in ["rng", "_poison_statuses"]:
 			state[property.name] = run.get(property.name)
+	state["poison_statuses"] = run.poison_state()
 	state["rng_seed"] = run.rng.seed
 	state["rng_state"] = run.rng.state
 	return {"version": VERSION, "elapsed": elapsed, "state": state.duplicate(true), "playback": playback.snapshot() if playback != null else {}}
@@ -20,8 +21,9 @@ func capture(run: PackRun, elapsed: float, playback: PackCombatPlayback = null) 
 func restore(run: PackRun, data: Dictionary) -> void:
 	var state: Dictionary = data["state"].duplicate(true)
 	for property: Dictionary in run.get_property_list():
-		if int(property.usage) & PROPERTY_USAGE_SCRIPT_VARIABLE and state.has(property.name) and property.name != "rng":
+		if int(property.usage) & PROPERTY_USAGE_SCRIPT_VARIABLE and state.has(property.name) and property.name not in ["rng", "_poison_statuses"]:
 			run.set(property.name, state[property.name])
+	run.restore_poison_state(state.get("poison_statuses", {}))
 	run.rng.seed = state["rng_seed"]
 	run.rng.state = state["rng_state"]
 	run.normalize_room_state(state)
@@ -110,6 +112,10 @@ func read(id: String) -> Dictionary:
 			return {}
 	if not PackCatalog.classes().has(state.get("class_key", "")) or not state.get("items") is Array or not state.get("enemy") is Dictionary or not state.has("rng_state"):
 		return {}
+	if state.has("poison_statuses"):
+		if not state.poison_statuses is Dictionary: return {}
+		for owner: String in ["player", "enemy"]:
+			if not StatusResolver.is_snapshot_valid(state.poison_statuses.get(owner), &"poison"): return {}
 	for item: Variant in state.items:
 		if not item is Dictionary or (not PackCatalog.ROSTER.has(item.get("key", "")) and item.get("key", "") != PackCatalog.QUIVER.KEY):
 			return {}

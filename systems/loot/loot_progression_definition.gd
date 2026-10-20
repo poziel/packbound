@@ -5,7 +5,7 @@ extends Resource
 @export var id: StringName = &""
 @export var pool_ids: Array[StringName] = []
 ## One-based floor checkpoints; each dictionary maps GameplayTypes.Rarity to weight.
-## Each checkpoint is complete (omitted rarities have zero weight). The future
+## Each checkpoint is complete (omitted rarities have zero weight). The
 ## resolver uses the latest checkpoint at or below the current floor, without interpolation.
 @export var rarity_weights_by_floor: Dictionary[int, Dictionary] = {}
 ## Applied once if either preference list matches; restrictions are checked first.

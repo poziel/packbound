@@ -63,6 +63,9 @@ func _process(delta: float) -> void:
 	var item: Dictionary = hovered_item()
 	var id: int = int(item.get("id", -1))
 	if id != hovered_id:
+		for body: RigidBody2D in bodies.values():
+			body.hovered = int(body.item.id) == id
+			body.queue_redraw()
 		hovered_id = id
 		if id >= 0:
 			item_hovered.emit()
@@ -305,6 +308,8 @@ func _sync_backpack_preview() -> void:
 func _release_grab(throw_item: bool = true) -> void:
 	if grabbed == null:
 		return
+	if throw_item:
+		board.item_dropped.emit()
 	var at: Vector2 = target - grab_local.rotated(held_angle)
 	var velocity := Vector2.ZERO
 	if throw_item:
@@ -479,6 +484,7 @@ func _panel_input(event: InputEvent) -> void:
 			grab_local = grabbed.origin + board._nearest_grab_center(grabbed.item, grabbed.to_local(at) - grabbed.origin)
 			target = at
 			_begin_hold()
+			board.item_picked_up.emit()
 			_follow_pointer()
 			board.selected.emit(grabbed.item)
 			manipulation_started.emit()
@@ -504,6 +510,7 @@ func _input(event: InputEvent) -> void:
 						grab_local = flight.origin + board._nearest_grab_center(flight.item, local - flight.origin)
 						target = at
 						_begin_hold()
+						board.item_picked_up.emit()
 						_follow_pointer()
 						board.selected.emit(flight.item)
 						manipulation_started.emit()

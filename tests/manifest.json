@@ -2,6 +2,34 @@
   "version": 1,
   "tests": [
 	{
+	  "id": "poison_runtime",
+	  "path": "tests/systems/combat/poison_runtime_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "status_resolver",
+	  "path": "tests/systems/combat/status_resolver_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "status_effect_instance",
+	  "path": "tests/systems/combat/status_effect_instance_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "loot_selection",
+	  "path": "tests/systems/content/loot_selection_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 60
+	},
+	{
 	  "id": "status_loot_records",
 	  "path": "tests/systems/content/status_loot_records_test.gd",
 	  "suites": ["systems"],

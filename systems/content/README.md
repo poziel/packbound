@@ -1,7 +1,7 @@
 # Content system
 
 The complete authored Resource graph is now available at
-`res://assets/game_content.tres`. See [the Resource guide](../../assets/CONTENT_RESOURCES.md)
+`res://assets/game_content.tres`. See [the Resource guide](../../assets/README.md#authored-content-resources)
 for ownership, migration boundaries and verification. `GameContentDefinition`
 validates cross-domain class, restriction, starter-item and recipe references.
 Runtime classification discovers canonical item.tres and relic.tres files directly;
@@ -143,8 +143,8 @@ and result quantities while retaining adjacency, locks and the combat-start comm
 
 Special rules still execute through their existing coded handlers using the
 CatalogRuleEffectDefinition parameters. No generic condition/action interpreter has
-been introduced. Coded loot pool membership and progression remain for the next
-loot-definition migration; adding a definition alone does not put it in a reward pool.
+been introduced. Loot membership, unlock floors, rarity weights and preferences now come from
+registered loot definitions; add a collectible to a pool to offer it as loot.
 The current board remains fixed at 8 by 7. Existing combat resource spending supports
 mana, stamina and the established Momentum rules; arbitrary new action costs and
 behavior conditions await concrete effect/action execution.
@@ -152,8 +152,8 @@ behavior conditions await concrete effect/action execution.
 ## Status and loot definitions
 
 These Resources are registered in GameContentDefinition and discovered with its
-Refresh button. Combat/reward execution still uses the existing handlers; the
-records capture current tuning without activating a new selection algorithm.
+Refresh button. Combat status execution still uses its existing handlers. Reward selection now
+reads the registered records through systems/loot/loot_selection.gd.
 
 | Definition | Owner | Authored data |
 | --- | --- | --- |
@@ -182,8 +182,30 @@ Concrete effect subclasses should gradually replace compatibility bindings, rath
 than expanding the wrapper into an arbitrary behavior interpreter.
 
 The existing statuses and loot tuning are now authored as .tres files, with typed
-catalog collections and cross-reference validation. Next implement status
-lifetime/tick and loot-selection resolvers. Route existing combat and reward authorities through those
+catalog collections and cross-reference validation. Loot selection now uses its registered resources. Next implement the status
+lifetime/tick resolver. Route existing combat and reward authorities through those
 resolvers while preserving deterministic RNG and save compatibility.
 
 Verification: tests/run_tests.ps1 -Suite systems -Test reward_status_definitions.
+
+## Runtime status instances
+
+StatusEffectInstance (systems/combat/status_effect_instance.gd) is RefCounted
+runtime state containing a shared StatusEffectDefinition reference, stacks and
+remaining_rounds. Create one instance per status owner. Treat definitions as read-only;
+mutating one instance's counters does not affect another instance or its definition.
+
+Construction uses the definition duration unless an explicit remaining duration is
+provided. Explicit zero is preserved: it represents no timed expiration for an untimed
+definition, or an expired countdown for a timed one. Zero stacks are also valid to
+hold. Validation reports missing/invalid definitions and negative counters without
+modifying them. The constructor uses -1 only as its omitted-duration sentinel.
+
+The instance does not apply stack policy/caps, tick, decay, expire itself, consume RNG,
+or write saves. StatusResolver owns application, stacking, cleansing, ticking and
+round advancement. Poison now uses this resolver for both combatants. PackRun owns
+damage, Ward and phase commits, and resolves previews on copied instances. Its
+numeric Poison properties remain compatibility accessors into those instances.
+Saves store definition IDs, stacks and remaining rounds, including pending-turn
+checkpoints; older numeric-only saves remain supported. Other statuses still use
+their existing counters and handlers until migrated individually.

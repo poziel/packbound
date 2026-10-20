@@ -19,7 +19,7 @@ sidecar preserves import settings and resource identity.
 `PackArt.item()` loads PNGs with the existing footprint dimensions and view-size
 selection. No sprites were resized or redrawn. Native sources remain editable.
 `manifest.json` indexes metadata; collectible discovery recursively loads
-`item.tres`. See [content resources](../CONTENT_RESOURCES.md) for the content graph.
+`item.tres`. See [content resources](../README.md#authored-content-resources) for the content graph.
 
 File moves and artwork hashes from the prior cleanup are recorded in
 `workspace/tasks/asset_cleanup/migration.json` at the project root.

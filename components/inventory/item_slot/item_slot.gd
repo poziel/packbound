@@ -60,7 +60,7 @@ func _ready() -> void:
 	resized.connect(queue_redraw)
 
 func _draw() -> void:
-	FRAME.draw_frame(self, [Vector2i.ZERO], size, 0, accent, occupied, false, border_segments, border_color)
+	FRAME.draw_frame(self, [Vector2i.ZERO], size, 0, accent, occupied, occupied and hovered, border_segments, border_color)
 	_refresh_corner()
 
 func _refresh_corner() -> void:

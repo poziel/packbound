@@ -6,6 +6,8 @@ const CATEGORIES = preload("res://systems/content/collectible_categories.gd")
 signal changed
 signal selected(item: Dictionary)
 signal item_hovered
+signal item_picked_up
+signal item_dropped
 signal priority_edit_started
 const KEYBINDS = preload("res://systems/application/keybindings.gd")
 signal feedback(message: String, valid: bool)
@@ -314,6 +316,11 @@ func bonus_related_ids() -> Array[int]:
 				result.append(related_id)
 	return result
 
+func synergy_cells() -> Array[Dictionary]:
+	if run == null:
+		return []
+	return preload("res://scenes/run/inventory/backpack/synergy_preview.gd").cells(self)
+
 func _draw_bonus_markers(item: Dictionary, at: Vector2, color: Color, opacity: float) -> void:
 	var drawn: Dictionary = {}
 	for marker in bonus_markers(item):
@@ -491,6 +498,7 @@ func _draw() -> void:
 			_drawing_held = false
 	_sync_empty_cells()
 	_draw_crafting()
+	preload("res://scenes/run/inventory/backpack/synergy_preview.gd").draw(self)
 	_draw_effect_popups()
 
 func _item_transform(at: Vector2) -> void:
@@ -531,7 +539,8 @@ func _draw_item(item: Dictionary, rect: Rect2, ghost: bool = false, opacity: flo
 	var related: bool = not ghost and _bonus_related.has(int(item["id"]))
 	var rotation: int = drag_rotation if ghost else int(item["rotation"])
 	var points: Array[Vector2i] = PackRun.offsets(item, rotation)
-	_draw_footprint(rect.position, points, tint, false, item_border_segments.get(int(item["id"]), [] as Array[Dictionary]), ITEM_FRAME.SYNERGY_COLOR if related else Color.TRANSPARENT)
+	var highlighted: bool = not ghost and dragging.is_empty() and int(item.id) == hovered_id
+	_draw_footprint(rect.position, points, tint, highlighted, item_border_segments.get(int(item["id"]), [] as Array[Dictionary]), ITEM_FRAME.SYNERGY_COLOR if related else Color.TRANSPARENT)
 	var alpha: Color = Color(1, 1, 1, 0.35) if draw_effects.get("dormant_ids", []).has(item["id"]) else Color.WHITE
 	alpha.a *= opacity
 	_draw_item_art(item, rect, points, rotation, alpha)
@@ -543,7 +552,7 @@ func _draw_item(item: Dictionary, rect: Rect2, ghost: bool = false, opacity: flo
 	if has_activation_priority(item):
 		_item_transform(rect.position)
 		var priority_at: Vector2 = Vector2(priority_corner(points)) * STEP
-		ITEM_FRAME.draw_priority_corner(self, priority_at, get_theme_default_font(), int(item.get("priority", 0)), tint, false, opacity, ITEM_FRAME.SYNERGY_COLOR if related else Color.TRANSPARENT)
+		ITEM_FRAME.draw_priority_corner(self, priority_at, get_theme_default_font(), int(item.get("priority", 0)), tint, highlighted, opacity, ITEM_FRAME.SYNERGY_COLOR if related else Color.TRANSPARENT)
 		draw_set_transform(Vector2.ZERO)
 	if not ghost:
 		var marker_color: Color = ITEM_FRAME.SYNERGY_COLOR if related else ITEM_FRAME.rim_color(tint, false)
@@ -686,6 +695,7 @@ func begin_drag(item: Dictionary, at: Vector2) -> void:
 	_hover_pointer_valid = true
 	dragging = item
 	cursor_held = false
+	item_picked_up.emit()
 	z_index = 50
 	drag_shape = item["shape"]
 	drag_rotation = int(item["rotation"])
@@ -838,6 +848,7 @@ func drop_at(at: Vector2) -> void:
 		return
 	pointer = at
 	var moves: Array[Dictionary] = candidate_plan()
+	item_dropped.emit()
 	if over_storage(pointer) or (storage != null and not GRID_RECT.grow(12).has_point(pointer)):
 		stash_held()
 		return

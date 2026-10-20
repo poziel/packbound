@@ -25,7 +25,23 @@ Pool membership never grants eligibility. Apply canonical class/character
 restrictions and contextual availability before drawing. The permanent Bowmaster's
 Quiver remains starter equipment and is deliberately absent from loot pools.
 
-Current runtime selection has not been rewired. The registration test compares
-these records against current seeded rewards for every class on floors 1 through
-20, including quiver substitution, and verifies equal RNG consumption. Next replace
-the coded selection logic with a resolver using these registered records.
+Runtime selection now uses systems/loot/loot_selection.gd. PackRun delegates item,
+relic, room-relic and initial-arrow offers to this selector. The registration test
+compares current seeded rewards for every class on floors 1 through 20, including
+quiver substitution, and verifies equal RNG consumption. Upgrade availability
+reads the item rule-effect caps. The quiver progression metadata specifies the
+required class, interval, replacement slot and required item.
+
+Candidate weight is pool weight times rarity checkpoint weight times one matching
+preference multiplier. Both class and character preferences matching do not stack.
+Restrictions, unlock floors, explicit exclusions and upgrade caps filter before
+sampling. Duplicate policy applies within each pool. Sampling stops when a distinct
+pool is exhausted. Uniform pools retain the old integer RNG draw; unequal weights
+use normalized weighted sampling without overflowing finite authored factors.
+
+Save restore preserves existing legal offers and consumes no RNG. If an old offer
+violates current restrictions, deterministic repair now chooses from the current
+floor's eligible progression candidates, preferring the same rarity. This replaces
+the former full-catalog fallback, which could grant locked equipment. Capped deferred
+quiver upgrades use the first eligible candidate from the final normal item pool;
+the current authored order retains the previous Blood Gem fallback.

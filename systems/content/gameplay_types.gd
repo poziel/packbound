@@ -5,16 +5,55 @@ extends RefCounted
 ## Enum numbers are serialized by .tres: never reorder or reuse assigned values.
 
 enum Stat {
-	DAMAGE = 0, BLOCK = 1, HEALING = 2, VAMPIRISM = 3, PLATING = 4,
-	WARD = 5, POISON = 6, BURN = 7, MANA = 8, STAMINA = 9, CURSE = 10,
-	THORNS = 11, CLEANSE = 12, SLOW = 13, PIERCE = 14, DOOM = 15,
-	SPARK = 16, PHYSICAL_RESISTANCE = 17, MAGICAL_RESISTANCE = 18,
+	DAMAGE = 0,
+	BLOCK = 1,
+	HEALING = 2,
+	VAMPIRISM = 3,
+	PLATING = 4,
+	WARD = 5,
+	POISON = 6,
+	BURN = 7,
+	MANA = 8,
+	STAMINA = 9,
+	CURSE = 10,
+	THORNS = 11,
+	CLEANSE = 12,
+	SLOW = 13,
+	PIERCE = 14,
+	DOOM = 15,
+	SPARK = 16,
+	PHYSICAL_RESISTANCE = 17,
+	MAGICAL_RESISTANCE = 18,
 }
 
-enum ResourceType { MANA = 0, STAMINA = 1, HEALTH = 2, MOMENTUM = 3 }
-enum DamageType { PHYSICAL = 0, MAGICAL = 1 }
-enum Element { NONE = 0, FIRE = 1, FROST = 2, LIGHTNING = 3, VOID = 4, VENOM = 5 }
-enum Rarity { COMMON = 0, UNCOMMON = 1, RARE = 2, EPIC = 3, LEGENDARY = 4 }
+enum ResourceType {
+	MANA = 0,
+	STAMINA = 1,
+	HEALTH = 2,
+	MOMENTUM = 3
+}
+
+enum DamageType {
+	PHYSICAL = 0,
+	MAGICAL = 1
+}
+
+enum Element {
+	NONE = 0,
+	FIRE = 1,
+	FROST = 2,
+	LIGHTNING = 3,
+	VOID = 4,
+	VENOM = 5
+}
+
+enum Rarity {
+	COMMON = 0,
+	UNCOMMON = 1,
+	RARE = 2,
+	EPIC = 3,
+	LEGENDARY = 4
+}
 
 const INVALID_VALUE: int = -1
 const INVALID_ID: StringName = &"<invalid>"

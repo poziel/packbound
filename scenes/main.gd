@@ -204,6 +204,8 @@ func _settings_pressed() -> void:
 func _bind_gameplay() -> void:
 	board.priority_edit_started.connect(inspector.clear)
 	board.item_hovered.connect(_play_inventory_hover)
+	board.item_picked_up.connect(front.audio.play_item_pickup)
+	board.item_dropped.connect(front.audio.play_item_drop)
 	playback.player_resolved.connect(_player_resolved)
 	playback.monster_resolved.connect(_monster_resolved)
 	playback.fight_finished.connect(_fight_finished)
@@ -271,6 +273,7 @@ func _bind_gameplay() -> void:
 func _bind_dialogs() -> void:
 	for index in range(3):
 		var button: Button = reward_panel.get_node("Choices/ChoiceButton%d" % (index + 1))
+		button.set_meta("item_hover_audio", true)
 		button.pressed.connect(_choose.bind(index))
 		button.mouse_entered.connect(_play_item_hover.bind(index, true))
 		button.mouse_entered.connect(func() -> void:
@@ -1114,6 +1117,9 @@ func _bind_inspection() -> void:
 	for stat: String in values:
 		var control: Control = values[stat]
 		inspector.register(control, _stat_inspection.bind(stat))
+		control.mouse_entered.connect(front.audio.play_ui_hover.bind(control))
+		var label: Control = control.get_parent().get_node(stat.to_pascal_case() + "Label")
+		label.mouse_entered.connect(front.audio.play_ui_hover.bind(label))
 		inspector.register(control.get_parent().get_node(stat.to_pascal_case() + "Label"), _stat_inspection.bind(stat))
 	inspector.register(hp_bar, func() -> Dictionary: return _explanation("health", "%d / %d HP\n%d block: absorbs incoming strikes." % [run.hp, run.max_hp, roundi(hp_bar.protection_amount)]))
 	inspector.register(mana_bar, func() -> Dictionary: return PackKeywordLinks.entry("mana"))
@@ -1125,6 +1131,8 @@ func _bind_inspection() -> void:
 		if not data.is_empty(): data["moving_trigger"] = true
 		return data)
 	inspector.register(enemy_trace_indicator, _enemy_trace_inspection)
+	for icon: Control in [hp_bar, mana_bar, momentum_bar, stamina_bar, enemy_trace_indicator, enemy_bar, enemy_shield_bar]:
+		icon.mouse_entered.connect(front.audio.play_ui_hover.bind(icon))
 	inspector.register(enemy_bar, _enemy_inspection)
 	inspector.register(enemy_shield_bar, _enemy_inspection)
 	var enemy_status: RichTextLabel = enemy_vitals.get_node("Statuses/Content")

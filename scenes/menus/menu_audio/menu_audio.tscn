@@ -4,6 +4,9 @@
 [ext_resource type="AudioStream" path="res://assets/audio/music/menu/shadows_in_the_backpack.mp3" id="song"]
 [ext_resource type="AudioStream" path="res://assets/audio/sfx/ui/button_activate.wav" id="click"]
 [ext_resource type="AudioStream" path="res://assets/audio/sfx/ui/item_hover.wav" id="item_hover"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/ui/ui_hover.wav" id="ui_hover"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/ui/item_pickup.wav" id="item_pickup"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/ui/item_drop.wav" id="item_drop"]
 [ext_resource type="AudioStream" path="res://assets/audio/ambience/Dungeon_Ambience_1.ogg" id="ambience_one"]
 [ext_resource type="AudioStream" path="res://assets/audio/ambience/Dungeon_Ambience_2.ogg" id="ambience_two"]
 
@@ -36,4 +39,19 @@ bus = &"FX"
 
 [node name="ItemHoverFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("item_hover")
+bus = &"FX"
+
+[node name="UIHoverFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("ui_hover")
+volume_db = -8.0
+bus = &"FX"
+
+[node name="ItemPickupFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("item_pickup")
+volume_db = -6.0
+bus = &"FX"
+
+[node name="ItemDropFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("item_drop")
+volume_db = -6.0
 bus = &"FX"

@@ -5,6 +5,31 @@ func _run() -> void:
 	root.add_child(game)
 	await process_frame
 	await process_frame
+	var audio = game.front.audio
+	for player: AudioStreamPlayer in [audio.ui_hover_fx, audio.item_pickup_fx, audio.item_drop_fx]:
+		check(player.bus == &"FX" and player.stream.get_length() > 0.02, "New placeholder has audible duration and shares FX bus")
+	var hover_button := Button.new()
+	root.add_child(hover_button)
+	hover_button.mouse_entered.emit()
+	check(audio.ui_hover_fx.playing, "Dynamically added UI button plays hover feedback")
+	audio.ui_hover_fx.stop()
+	hover_button.disabled = true
+	hover_button.mouse_entered.emit()
+	check(not audio.ui_hover_fx.playing, "Disabled button hover is silent")
+	var pitches: Dictionary = {}
+	for index in range(16):
+		audio.play_item_hover()
+		pitches[audio.item_hover_fx.pitch_scale] = true
+	check(pitches.size() > 1, "Item hover pitch varies between entries")
+	hover_button.disabled = false
+	pitches.clear()
+	for index in range(16):
+		hover_button.mouse_entered.emit()
+		pitches[audio.ui_hover_fx.pitch_scale] = true
+	check(pitches.size() > 1, "UI hover pitch varies between entries")
+	hover_button.queue_free()
+	audio.item_hover_fx.stop()
+	audio.ui_hover_fx.stop()
 	check(game.combat_audio.stream.resource_path == "res://assets/audio/sfx/combat/enemy_hit.wav", "Enemy impact uses the new descriptive asset")
 	check(game.front.audio.fx.stream.resource_path == "res://assets/audio/sfx/ui/button_activate.wav", "UI uses the replacement click")
 	check(game.has_node("EnemyDeathAudio"), "Death has an independent player")
@@ -38,6 +63,9 @@ func _run() -> void:
 	check(not death.playing, "Death audio waits for disintegration")
 	await create_timer(0.34).timeout
 	check(game.enemy_card.defeated and death.playing, "Death audio starts with the pixel burst")
+	# Exercise pause with live streams, independent of the short hit clip's tail.
+	game.combat_audio.play()
+	death.play()
 	game._combat_pause_changed(true)
 	check(death.stream_paused and game.combat_audio.stream_paused, "Combat pause pauses both effect tails")
 	game._combat_pause_changed(false)
@@ -84,6 +112,12 @@ func _run() -> void:
 	await process_frame
 	var item: Dictionary = game.run.items[0]
 	var at: Vector2 = game.board.item_rect(item).get_center()
+	game.board.begin_drag(item, at)
+	check(audio.item_pickup_fx.playing, "Picking up a board item plays pickup feedback")
+	game.board.drop_at(at)
+	check(audio.item_drop_fx.playing, "Dropping a board item plays drop feedback")
+	game.board.item_motions.clear()
+	game.board.hovered_id = -1
 	var movement := InputEventMouseMotion.new()
 	movement.position = at
 	game.board._gui_input(movement)
@@ -112,11 +146,34 @@ func _run() -> void:
 	check(hover.playing, "Storage item hover uses the shared sound")
 	if DisplayServer.get_name() != "headless":
 		hover.stop()
+		var entries := {"count": 0}
+		var record_entry: Callable = func() -> void: entries.count += 1
+		game.storage.item_hovered.connect(record_entry)
+		var settled: RigidBody2D = game.storage.bodies[item.id]
+		settled.freeze = true
 		motion(Vector2(5, 5))
 		await process_frame
-		motion(game.storage.pile.get_global_transform_with_canvas() * game.storage.bodies[item["id"]].position)
 		await process_frame
-		check(hover.playing, "Real pointer entry into storage plays the same sound")
+		var target: Vector2 = game.storage.pile.get_global_transform_with_canvas() * settled.visual_transform().origin
+		# The physics stash polls the viewport pointer rather than GUI entry signals.
+		root.warp_mouse(target)
+		motion(target)
+		await process_frame
+		await process_frame
+		check(entries.count > 0, "Real pointer entry into storage triggers item-hover audio (pointer=%s body=%s visible=%s hovered=%s dragging=%s)" % [game.storage.pile.get_local_mouse_position(), settled.visual_transform().origin, settled.visible, game.storage.hovered_id, game.board.dragging.get("id", -1)])
+		game.storage.item_hovered.disconnect(record_entry)
+		settled.freeze = false
+	audio.item_pickup_fx.stop()
+	var body: RigidBody2D = game.storage.bodies[item.id]
+	var pickup := InputEventMouseButton.new()
+	pickup.button_index = MOUSE_BUTTON_LEFT
+	pickup.pressed = true
+	pickup.position = game.storage.pile.position + body.position
+	game.storage._panel_input(pickup)
+	check(game.storage.grabbed == body and audio.item_pickup_fx.playing, "Picking up a gravity-stash item plays pickup feedback")
+	audio.item_drop_fx.stop()
+	game.storage._release_grab()
+	check(audio.item_drop_fx.playing, "Releasing a gravity-stash item plays drop feedback")
 	for player: AudioStreamPlayer in [death, hover, game.combat_audio, game.front.audio.fx]:
 		check(player.bus == &"FX", "All sound effects share the FX setting")
 	game.front.settings["fx"] = 0
