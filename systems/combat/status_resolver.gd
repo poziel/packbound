@@ -103,16 +103,11 @@ static func resolve_tick(value: StatusEffectInstance, trigger: StringName, conte
 		if value.stacks == 0: value.remaining_rounds = 0
 	return result
 
-## Spark normally resolves old stacks before applying this action's fresh stacks.
-static func resolve_application(value: StatusEffectInstance, amount: int, trigger: StringName, context: Dictionary = {}) -> Dictionary:
-	var wait_for_later: bool = false
+## Authored ordering policy; combat decides where the application/tick occurs.
+static func fresh_stacks_wait(value: StatusEffectInstance) -> bool:
 	for effect: EffectDefinition in value.definition.effects:
-		if effect is CatalogRuleEffectDefinition:
-			wait_for_later = wait_for_later or bool(effect.parameters.get("fresh_stacks_wait", false))
-	if not wait_for_later: apply(value, amount)
-	var result: Dictionary = resolve_tick(value, trigger, context)
-	if wait_for_later: apply(value, amount)
-	return result
+		if effect is CatalogRuleEffectDefinition and bool(effect.parameters.get("fresh_stacks_wait", false)): return true
+	return false
 
 static func snapshot(value: StatusEffectInstance) -> Dictionary:
 	return {"definition_id": str(value.definition.id), "stacks": value.stacks, "remaining_rounds": value.remaining_rounds}

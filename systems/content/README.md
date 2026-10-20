@@ -232,3 +232,15 @@ Poison maps remain supported. Restoration preserves recorded stacks without appl
 current caps. Spark consumption precedes fresh stacks, Slow reduces each strike but
 decays once, and Doom retains its nonrefreshing fuse. Resolver creation starts empty
 states with no timer; explicitly restored empty countdowns remain valid and elapse.
+
+## Concrete status applications
+
+`GameContentDefinition.status_applications` registers typed
+`ApplyStatusEffectDefinition` records discovered from
+`assets/status_effects/**/apply_effect.tres`. Refresh includes them in the export
+snapshot. Validation requires exactly one application per registered status and
+an exact reference to that registered status definition.
+
+Combat now executes these records through `EffectResolver`, which delegates to
+`StatusResolver`. This is the first concrete effect execution path; it does not
+provide a generic ability trigger or condition interpreter.

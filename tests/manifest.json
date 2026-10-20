@@ -2,6 +2,13 @@
   "version": 1,
   "tests": [
 	{
+	  "id": "apply_status_effect",
+	  "path": "tests/systems/combat/apply_status_effect_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
+	},
+	{
 	  "id": "status_runtime",
 	  "path": "tests/systems/combat/status_runtime_test.gd",
 	  "suites": ["systems"],

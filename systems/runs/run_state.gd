@@ -7,6 +7,7 @@ const LOOT = preload("res://systems/loot/loot_selection.gd")
 const CRAFTING = preload("res://systems/crafting/pack_crafting.gd")
 const QUIVER = preload("res://systems/characters/archer_quiver.gd")
 const STATUSES = preload("res://systems/combat/status_resolver.gd")
+const EFFECTS = preload("res://systems/abilities/effect_resolver.gd")
 const ELEMENTS = preload("res://systems/combat/elemental_combat.gd")
 const GRID: Vector2i = Vector2i(8, 7)
 const FLOORS: int = 20
@@ -106,6 +107,12 @@ func _set_status_stacks(owner: String, id: StringName, amount: int) -> void:
 	value.stacks = amount
 	if amount == 0: value.remaining_rounds = 0
 	elif value.remaining_rounds == 0: value.remaining_rounds = value.definition.duration_rounds
+
+## Aggregate bonuses/repeats remain combat data; one-stack templates execute them.
+static func _apply_status_effect(id: StringName, count: int, source: Dictionary, opponent: Dictionary) -> void:
+	if count <= 0: return
+	var result: Dictionary = EFFECTS.resolve(EFFECTS.application(id), source, opponent, count)
+	for error: String in result.errors: push_error(error)
 
 func poison_status(owner: String) -> StatusEffectInstance:
 	return status(owner, &"poison")
@@ -1015,8 +1022,8 @@ func outcome(stats: Dictionary) -> Dictionary:
 		_record_amount(my_events, "I applied %d burn to " + foe + ".", int(stats[GameplayTypes.Stat.BURN]))
 		for key: String in ["doom", "spark", "slow"]:
 			_record_amount(my_events, "I applied %d " + key.capitalize() + " to " + foe + ".", int(stats.get(GameplayTypes.stat_from_id(key), 0)))
-	STATUSES.apply(poisoned, int(stats[GameplayTypes.Stat.POISON]))
-	STATUSES.apply(burning, int(stats[GameplayTypes.Stat.BURN]))
+	_apply_status_effect(&"poison", int(stats[GameplayTypes.Stat.POISON]), resolving_statuses.player, resolving_statuses.enemy)
+	_apply_status_effect(&"burn", int(stats[GameplayTypes.Stat.BURN]), resolving_statuses.player, resolving_statuses.enemy)
 	var burn_tick_stacks: int = burning.stacks
 	var poison_tick_stacks: int = poisoned.stacks
 	var poison_tick: Dictionary = STATUSES.tick(poisoned, &"after_direct_attacks", {"owner": "enemy", "resistances": {GameplayTypes.DamageType.MAGICAL: int(enemy.get(GameplayTypes.Stat.MAGICAL_RESISTANCE, 0)), GameplayTypes.DamageType.PHYSICAL: int(enemy.get(GameplayTypes.Stat.PHYSICAL_RESISTANCE, 0))}})
@@ -1030,18 +1037,21 @@ func outcome(stats: Dictionary) -> Dictionary:
 	_record_amount(my_events, "Burn dealt %d damage to " + foe + ".", mini(burn_damage, foe_hp))
 	result["burn_damage_actual"] = mini(burn_damage, foe_hp)
 	foe_hp = maxi(0, foe_hp - burn_damage)
-	var spark_damage: int = int(STATUSES.resolve_application(sparked, int(stats.get(GameplayTypes.Stat.SPARK, 0)), &"after_magical_direct_damage", enemy_status_context).damage)
+	var fresh_spark_waits: bool = STATUSES.fresh_stacks_wait(sparked)
+	if not fresh_spark_waits: _apply_status_effect(&"spark", int(stats.get(GameplayTypes.Stat.SPARK, 0)), resolving_statuses.player, resolving_statuses.enemy)
+	var spark_damage: int = int(STATUSES.resolve_tick(sparked, &"after_magical_direct_damage", enemy_status_context).damage)
+	if fresh_spark_waits: _apply_status_effect(&"spark", int(stats.get(GameplayTypes.Stat.SPARK, 0)), resolving_statuses.player, resolving_statuses.enemy)
 	STATUSES.advance_round(sparked, enemy_status_context)
 	result["spark_damage_actual"] = mini(spark_damage, foe_hp)
 	_record_amount(my_events, "Spark dealt %d damage to " + foe + ".", int(result["spark_damage_actual"]))
 	foe_hp = maxi(0, foe_hp - spark_damage)
-	STATUSES.apply(doomed, int(stats.get(GameplayTypes.Stat.DOOM, 0)))
+	_apply_status_effect(&"doom", int(stats.get(GameplayTypes.Stat.DOOM, 0)), resolving_statuses.player, resolving_statuses.enemy)
 	var doom_damage: int = int(STATUSES.resolve_tick(doomed, &"after_spark_tick", enemy_status_context).damage)
 	STATUSES.advance_round(doomed, enemy_status_context)
 	result["doom_damage_actual"] = mini(doom_damage, foe_hp)
 	_record_amount(my_events, "Doom dealt %d damage to " + foe + ".", int(result["doom_damage_actual"]))
 	foe_hp = maxi(0, foe_hp - doom_damage)
-	STATUSES.apply(slowed_status, int(stats[GameplayTypes.Stat.SLOW]))
+	_apply_status_effect(&"slow", int(stats[GameplayTypes.Stat.SLOW]), resolving_statuses.player, resolving_statuses.enemy)
 	result[GameplayTypes.Stat.SLOW] = slowed_status.stacks
 	# Keep the undecayed instance for strike calculations; commit its advanced copy.
 	var slow_after: StatusEffectInstance = STATUSES.copy(slowed_status)
@@ -1138,7 +1148,7 @@ func outcome(stats: Dictionary) -> Dictionary:
 				_record_amount(monster_events, "My thorns dealt %d damage to " + foe + ".", mini(thorns, foe_hp))
 				foe_hp = maxi(0, foe_hp - thorns)
 		if contact_damage > 0:
-			STATUSES.apply(toxin, int(enemy[GameplayTypes.Stat.POISON]))
+			_apply_status_effect(&"poison", int(enemy[GameplayTypes.Stat.POISON]), resolving_statuses.enemy, resolving_statuses.player)
 		if foe_hp > 0:
 			var regeneration: int = mini(int(enemy["regen"]), int(enemy["max_hp"]) - foe_hp)
 			foe_hp += regeneration

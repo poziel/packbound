@@ -1,6 +1,6 @@
 # Existing status records
 
-Each condition owns status_effect.tres and rule_effect.tres. The five records are
+Each condition owns status_effect.tres, rule_effect.tres and apply_effect.tres. The five records are
 Poison, Burn, Slow, Spark and Doom. They reuse the accepted keyword glyphs and
 copy descriptions from the existing keyword definitions.
 
@@ -31,3 +31,8 @@ supported; loading restores recorded values without applying new stack caps.
 
 The handlers are explicit coded bindings, not a generic effect interpreter.
 Elemental traces, block, Momentum and innate invisibility remain separate mechanics.
+
+`apply_effect.tres` references the status definition, applies one stack and targets
+the opponent by default. `EffectResolver` applies authored effects to the selected
+combatant; `StatusResolver` remains responsible for stacking and lifecycle policy.
+Combat supplies the current aggregate application count and chooses the phase.

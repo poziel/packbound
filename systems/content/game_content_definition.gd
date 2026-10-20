@@ -10,6 +10,7 @@ extends Resource
 @export var monsters: Array[MonsterDefinition] = []
 @export var recipes: Array[RecipeDefinition] = []
 @export var status_effects: Array[StatusEffectDefinition] = []
+@export var status_applications: Array[ApplyStatusEffectDefinition] = []
 @export var loot_pools: Array[LootPoolDefinition] = []
 @export var loot_progressions: Array[LootProgressionDefinition] = []
 
@@ -29,6 +30,7 @@ func refresh_from_folders(assets_root: String = "res://assets") -> PackedStringA
 		["monsters", "enemies", "monster.tres", preload("res://systems/enemies/monster_definition.gd")],
 		["recipes", "recipes", "*.tres", preload("res://systems/crafting/recipe_definition.gd")],
 		["status_effects", "status_effects", "status_effect.tres", preload("res://systems/combat/status_effect_definition.gd")],
+		["status_applications", "status_effects", "apply_effect.tres", preload("res://systems/abilities/apply_status_effect_definition.gd")],
 		["loot_pools", "loot/pools", "*.tres", preload("res://systems/loot/loot_pool_definition.gd")],
 		["loot_progressions", "loot/progressions", "*.tres", preload("res://systems/loot/loot_progression_definition.gd")],
 	]:
@@ -72,6 +74,7 @@ func refresh_from_folders(assets_root: String = "res://assets") -> PackedStringA
 	monsters.assign(candidate.monsters)
 	recipes.assign(ordered)
 	status_effects.assign(candidate.status_effects)
+	status_applications.assign(candidate.status_applications)
 	loot_pools.assign(candidate.loot_pools)
 	loot_progressions.assign(candidate.loot_progressions)
 	resource_name = "Game Content"
@@ -104,6 +107,23 @@ func validation_errors() -> PackedStringArray:
 				errors.append("%s[%d] duplicates ID %s." % [field, index, entry.id])
 			ids[entry.id] = entry
 		by_domain[field] = ids
+	var application_ids: Dictionary = {}
+	for index: int in status_applications.size():
+		var effect: ApplyStatusEffectDefinition = status_applications[index]
+		if effect == null:
+			errors.append("status_applications[%d] must not be null." % index)
+			continue
+		for error: String in effect.validation_errors():
+			errors.append("status_applications[%d]: %s" % [index, error])
+		if effect.status == null: continue
+		if by_domain.status_effects.get(effect.status.id) != effect.status:
+			errors.append("status_applications[%d] must reference a registered status definition." % index)
+		if application_ids.has(effect.status.id):
+			errors.append("status_applications[%d] duplicates status %s." % [index, effect.status.id])
+		application_ids[effect.status.id] = true
+	for id: StringName in by_domain.status_effects:
+		if not application_ids.has(id):
+			errors.append("status %s requires a registered application effect." % id)
 	for character: CharacterDefinition in characters:
 		if character == null:
 			continue

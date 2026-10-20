@@ -2,13 +2,15 @@
 
 These Resource classes describe shared authored abilities. They support native
 `.tres` authoring in Godot; a future JSON converter can construct the same objects.
-They do not execute abilities or migrate the current combat/catalog dictionaries.
+Definitions describe authored data. `EffectResolver` executes supported concrete
+effects; it does not yet execute complete abilities, triggers or conditions.
 
 | Class | Contract |
 | --- | --- |
 | `AbilityDefinition` | Stable ID, name, description, trigger ID, typed conditions and ordered effects. |
 | `ConditionDefinition` | Abstract Resource with `validation_errors() -> PackedStringArray`; concrete subclasses declare typed condition parameters. |
 | `EffectDefinition` | Abstract Resource with the same validation contract; concrete subclasses declare typed effect parameters. |
+| `ApplyStatusEffectDefinition` | Status definition reference, positive stack count and SELF/OPPONENT target. |
 
 Create `AbilityDefinition` in Godot's New Resource dialog. Abstract conditions and
 effects require concrete subclasses before they can be assigned or created.
@@ -35,3 +37,18 @@ fixtures, not registered production mechanics.
 ```powershell
 ./tests/run_tests.ps1 -Suite systems -Test ability_definition
 ```
+
+## Status application runtime
+
+`EffectResolver.resolve(effect, source, opponent, applications)` selects the acting
+combatant or its opponent, validates the application, and delegates stacking and
+duration policy to `StatusResolver`. Each combatant map contains its supported
+`StatusEffectInstance` objects keyed by status ID. Missing or mismatched instances
+and unsupported effect types return errors before mutation. Preview callers pass
+copied instances; combat retains responsibility for timing and saving.
+
+The content catalog registers one `apply_effect.tres` per status. Current combat
+uses these one-stack records with its existing aggregate application counts.
+Player/enemy Poison and enemy Burn, Slow, Spark and Doom use this path. Individual
+item/relic abilities still need migration from compatibility rules to concrete
+effects; this bridge does not evaluate their triggers or conditions.
