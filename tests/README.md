@@ -36,3 +36,15 @@ Test app data, saves, settings, home, cache and temporary directories are isolat
 Artifacts include per-phase stdout, stderr and absolute Godot logs, per-test `report.json`, and aggregate `report.json` plus `report.md`. The Markdown report lists check/failure counts, the first diagnostic and relative artifact links; console failures show a concise diagnostic. Statuses are `passed`, `failed`, `skipped`, `timed_out`. Failure or timeout exits 1; runner/manifest errors exit 2. Script/assertion errors fail even when Godot exits zero. Fatal error output stops the owned process tree promptly, with both output streams drained concurrently. Explicit test exit 2 with a timed-out diagnostic is reported as `timed_out`. Shared support emits `PACKBOUND_TEST_RESULT ` followed by JSON check/failure counts, preserved as report evidence. Legacy fallback requires explicit positive check counts and zero failures and is marked `legacy_result`; zero exit without evidence fails.
 
 After moving scripts, run one serial Godot headless editor import before tests, using an absolute `--log-file` under task workspace logs. The runner deliberately does not launch imports or concurrent editor processes. Rendering tests require a working display; headless results do not validate appearance. Temporary diagnostic material stays in `workspace/`; maintained tests, support, manifest and runner belong in `tests/` or the owning component.
+
+## Local packaged-content verification
+
+After a serial editor import, build a PCK and check discovery inside the actual package:
+
+```powershell
+python -B tests/runner/verify_package.py --godot 'D:/path/godot_console.exe'
+```
+
+The Windows Desktop preset includes all production Resources so dynamically discovered content is packaged. It excludes workspace, tests, docs, editor addons and authoring tools. The enabled Godot AI export plugin strips its helper autoload before export; the package probe verifies that stripping and development-folder exclusion. Keep the plugin enabled while exporting this preset.
+
+The helper runs the exported PCK from its artifact directory, validates every authored content collection and starts the main scene for 120 headless frames, then invokes its production graceful quit path. All writable app-data paths are redirected into its sandbox. `workspace/tasks/local-export/report.json` records process timing, content counts and package size; logs retain engine diagnostics. Use `--output workspace/tasks/<task-name>/export` for task-specific evidence. A PCK smoke requires the engine but no export templates; producing a standalone Windows executable additionally requires matching Godot export templates. Headless startup does not establish visual acceptance or a full run-through.
