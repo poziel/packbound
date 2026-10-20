@@ -14,17 +14,15 @@ func _run() -> void:
 		quit(1)
 		return
 	var families: Array = [
-		["stat", types.Stat, types.STAT_IDS],
-		["resource", types.ResourceType, types.RESOURCE_IDS],
-		["damage_type", types.DamageType, types.DAMAGE_TYPE_IDS],
-		["element", types.Element, types.ELEMENT_IDS],
-		["rarity", types.Rarity, types.RARITY_IDS]
+		["stat", types.Stat],
+		["resource", types.ResourceType],
+		["damage_type", types.DamageType],
+		["element", types.Element],
+		["rarity", types.Rarity]
 	]
 	for family: Array in families:
 		var name: String = family[0]
 		var values: Dictionary = family[1]
-		var ids: Array = family[2]
-		check_equal(values.size(), ids.size(), name + " has exactly one stable ID per enum value")
 		var unique: Dictionary = {}
 		for member: String in values:
 			var value: int = values[member]
@@ -33,23 +31,25 @@ func _run() -> void:
 			check(not unique.has(id), name + " IDs are unique: " + str(id))
 			unique[id] = true
 			check_equal(types.call(name + "_from_id", id), value, name + " round trip: " + member)
+			check_equal(str(id), "" if name == "element" and member == "NONE" else member.to_lower(), name + " text boundary derives from enum names")
 		check_equal(types.call(name + "_from_id", &"unknown_value"), types.INVALID_VALUE, name + " rejects unknown IDs")
 		check_equal(types.call(name + "_id", -1), types.INVALID_ID, name + " rejects negative values")
 		check_equal(types.call(name + "_id", 999), types.INVALID_ID, name + " rejects out-of-range values")
-		check_equal(types.call(name + "_from_id", StringName(str(ids.back()).to_upper())), types.INVALID_VALUE, name + " IDs are case sensitive")
+		check_equal(types.call(name + "_from_id", StringName(str(values.keys().back()))), types.INVALID_VALUE, name + " IDs are case sensitive")
 	check_equal(types.element_id(types.Element.NONE), &"", "No element preserves the existing empty ID")
-	check_equal(types.ELEMENT_IDS_WITHOUT_NONE, ["fire", "frost", "lightning", "void", "venom"], "Reaction elements exclude NONE")
-	check_equal(types.RESOURCE_IDS, ["mana", "stamina", "health", "momentum"], "Activation resources match existing committed costs")
+	check_equal(types.stat_from_id(&"DAMAGE"), types.INVALID_VALUE, "Text boundary remains case sensitive")
+	check_equal(types.stat_from_id(&" damage"), types.INVALID_VALUE, "Text boundary rejects padded IDs")
+	check_equal(types.resource_from_id(&"\u017ftamina"), types.INVALID_VALUE, "Text boundary rejects noncanonical Unicode spellings")
+	check_equal(types.element_from_id(&"none"), types.INVALID_VALUE, "NONE retains only its existing empty text representation")
+	for retired: String in ["STAT_IDS", "RESOURCE_IDS", "DAMAGE_TYPE_IDS", "ELEMENT_IDS", "ELEMENT_IDS_WITHOUT_NONE", "RARITY_IDS"]:
+		check(not types.get_script_constant_map().has(retired), "Retired duplicate vocabulary: " + retired)
 	check_equal(types.stat_id(0), &"damage", "Serialized stat zero remains damage")
 	check_equal(types.stat_id(18), &"magical_resistance", "Serialized stat eighteen remains magical resistance")
 	check_equal(types.rarity_id(4), &"legendary", "Serialized rarity four remains legendary")
 	check_equal(types.element_id(5), &"venom", "Serialized element five remains venom")
-	check_equal(PackCatalog.STATS, types.STAT_IDS, "Catalog uses the enum-owned stat IDs")
-	check_equal(PackCatalog.EXPANSION_ITEMS.STAT_KEYS, types.STAT_IDS, "Expansion items use the enum-owned stat IDs")
-	check_equal(PackCatalog.CONTENT.STAT_KEYS, types.STAT_IDS, "Progression items use the enum-owned stat IDs")
-	check_equal(PackCatalog.RARITY.TIERS, types.RARITY_IDS, "Rarity tiers use the enum authority")
-	check_equal(preload("res://systems/combat/elemental_combat.gd").ELEMENTS, types.ELEMENT_IDS_WITHOUT_NONE, "Combat uses the enum-owned element IDs")
-	check_equal(PackCatalog.RARITY.tier({"rarity": types.Rarity.RARE}), "rare", "Legacy rarity presentation accepts enum values")
+	check_equal(PackCatalog.RARITY.tier({"rarity": types.Rarity.RARE}), types.Rarity.RARE, "Rarity stays an enum in runtime presentation data")
+	check_equal(PackCatalog.item("rusty_knife").rarity, types.Rarity.COMMON, "Catalog retains enum rarity")
+	check_equal(PackCatalog.RARITY.tier({"rarity": "rare"}), types.Rarity.COMMON, "Runtime does not reinterpret legacy strings")
 	check_equal(preload("res://systems/combat/elemental_combat.gd").damage_type({"element": types.Element.FIRE, "damage_type": types.DamageType.PHYSICAL}), "magical", "Elemental damage accepts enum values")
 	var elements = preload("res://systems/combat/elemental_combat.gd")
 	for key: String in PackCatalog.ROSTER:

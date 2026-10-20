@@ -640,7 +640,8 @@ func effects() -> Dictionary:
 	var activation_events: Array[String] = []
 	result["activation_events"] = activation_events
 	result.merge({"physical_damage": 0, "magical_damage": 0, "elemental_inputs": [], "reactions": [], "traces_after": elemental_traces.duplicate(true)})
-	for stat in PackCatalog.STATS:
+	for stat_type: int in GameplayTypes.Stat.values():
+		var stat: String = str(GameplayTypes.stat_id(stat_type))
 		result[stat] = 0
 	var passives: Dictionary = relic_passives()
 	for stat: String in ["healing", "ward", "plating"]:
@@ -772,8 +773,9 @@ func effects() -> Dictionary:
 			activation_events.append("%s skips activation: insufficient mana, stamina or Momentum; no costs are spent." % _log_item(item))
 			continue
 		var activates: bool = CATEGORIES.matches_any(item, ["melee_weapons", "ranged_weapons", "magic_weapons", "companions"]) or item["key"] == "mirror_shard"
-		for stat: String in PackCatalog.STATS:
-			activates = activates or (stat not in ["mana", "stamina", "block"] and int(item[stat]) != 0)
+		for stat_type: int in GameplayTypes.Stat.values():
+			var stat: String = str(GameplayTypes.stat_id(stat_type))
+			activates = activates or (stat_type not in [GameplayTypes.Stat.MANA, GameplayTypes.Stat.STAMINA, GameplayTypes.Stat.BLOCK] and int(item[stat]) != 0)
 		if not activates:
 			continue
 		var before: Dictionary = result.duplicate()
@@ -796,9 +798,10 @@ func effects() -> Dictionary:
 		if copies > 1:
 			activation_events.append(_log_effect("Repeated %d extra time(s)%s%s." % [copies - 1, " from Hourglass" if has_hourglass and CATEGORIES.matches(item, &"melee_weapons") and turn % 4 == 0 else "", " from Echo Clock" if item["id"] == result["echo_item_id"] else ""]))
 		var supplied: Dictionary = adjacency_stats(item)
-		for stat in PackCatalog.STATS:
-			if stat not in ["mana", "stamina", "block"]:
-				result[stat] += (int(item[stat]) + (int(supplied.get(stat, 0)) if stat != "damage" else 0)) * copies
+		for stat_type: int in GameplayTypes.Stat.values():
+			var stat: String = str(GameplayTypes.stat_id(stat_type))
+			if stat_type not in [GameplayTypes.Stat.MANA, GameplayTypes.Stat.STAMINA, GameplayTypes.Stat.BLOCK]:
+				result[stat] += (int(item[stat]) + (int(supplied.get(stat, 0)) if stat_type != GameplayTypes.Stat.DAMAGE else 0)) * copies
 		if is_attack:
 			result["damage"] += item_bonus(item) * copies
 			result["damage"] += int(activation_costs[item["id"]]["momentum"]) * int(item.get("momentum_damage", 0)) * copies
@@ -813,16 +816,17 @@ func effects() -> Dictionary:
 				typed_damage = ELEMENTS.damage_type(reflected) + "_damage"
 		result[typed_damage] += int(result["damage"]) - int(before["damage"])
 		var element: String = str(item.get("element", ""))
-		if ELEMENTS.ELEMENTS.has(element):
+		if ELEMENTS.has_element(element):
 			for copy in range(copies):
 				result["elemental_inputs"].append(element)
-		for stat: String in PackCatalog.STATS:
+		for stat_type: int in GameplayTypes.Stat.values():
+			var stat: String = str(GameplayTypes.stat_id(stat_type))
 			var contribution: int = int(result[stat]) - int(before[stat])
 			if contribution > 0:
 				var icon_key: String = ("magical_attack" if CATEGORIES.matches(item, &"magic_weapons") else "physical_attack") if stat == "damage" else ("piercing" if stat == "pierce" else stat)
 				result["item_effects"].append({"id": item["id"], "key": icon_key, "amount": contribution})
 				activation_events.append(_log_effect("Contributes %d %s%s." % [contribution, typed_damage.replace("_", " ") if stat == "damage" else stat.replace("_", " "), " to the combined attack" if stat == "damage" else ""]))
-		if class_key == "mage" and ELEMENTS.ELEMENTS.has(element):
+		if class_key == "mage" and ELEMENTS.has_element(element):
 			activation_events.append(_log_effect("Places %d %s trace%s on %s." % [copies, element.capitalize(), "s" if copies != 1 else "", enemy["name"]]))
 		for resource: String in ["mana", "stamina"]:
 			var spent: int = int(activation_costs[item["id"]][resource])

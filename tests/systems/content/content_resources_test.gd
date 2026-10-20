@@ -17,7 +17,7 @@ func _run() -> void:
 		target[str(value.id)] = value
 		var source: Dictionary = PackCatalog.item(str(value.id)) if value is ItemDefinition else PackCatalog.relic(str(value.id))
 		check_equal(value.display_name, source.name, "Catalog display name: " + str(value.id))
-		check_equal(value.rarity, GameplayTypes.rarity_from_id(StringName(source.rarity)), "Catalog rarity")
+		check_equal(value.rarity, source.rarity, "Catalog rarity")
 		check_equal(PackedStringArray(value.allowed_class_ids), PackedStringArray(source.get("classes", [])), "Class restrictions retained")
 		check_equal(PackedStringArray(value.allowed_character_ids), PackedStringArray(source.get("characters", [])), "Character restrictions retained")
 		check(value.icon != null, "Existing icon retained")
@@ -30,8 +30,9 @@ func _run() -> void:
 		check(not value.resource_path.is_empty() and value.resource_path.ends_with(".tres"), "Collectible is an external resource")
 		check(not value.abilities[0].resource_path.is_empty(), "Ability has one external authority")
 		check(not value.abilities[0].effects[0].resource_path.is_empty(), "Effect has one external authority")
-		for stat: String in GameplayTypes.STAT_IDS:
-			check_equal(value.base_stats.get(GameplayTypes.stat_from_id(StringName(stat)), 0), int(source.get(stat, 0)), "Catalog stat retained: " + stat)
+		for stat_type: int in GameplayTypes.Stat.values():
+			var stat: String = str(GameplayTypes.stat_id(stat_type))
+			check_equal(value.base_stats.get(stat_type, 0), int(source.get(stat, 0)), "Catalog stat retained: " + stat)
 		if value is ItemDefinition:
 			check_equal(value.footprint, source.mask, "Item footprint retained")
 			check_equal(value.activation_costs.get(GameplayTypes.ResourceType.MANA, 0), int(source.get("cost", 0)), "Mana cost retained")

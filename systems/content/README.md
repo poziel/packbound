@@ -78,8 +78,12 @@ Momentum; listing a resource does not add a new payment mechanic. Adding enum
 members does not by itself implement their behavior.
 
 All enum values have explicit integer assignments, which are serialized in native
-Resource files. Never renumber/reuse values or reorder their corresponding ID
-tables; append new values deliberately. `Element.NONE` maps to the existing empty
+Resource files. Never renumber/reuse values; append new values deliberately.
+The enums are the sole vocabulary: duplicate ID tables and catalog aliases have
+been removed. Consumers enumerate enum values directly. Text conversion at existing
+dictionary, save and presentation boundaries derives lowercase enum names rather
+than consulting a second list. Keep enum names stable while those persisted text
+interfaces remain supported. `Element.NONE` maps to the existing empty
 element string. Reaction-element lists exclude NONE.
 
 `stat_id`/`stat_from_id`, `resource_id`/`resource_from_id`,
@@ -90,8 +94,10 @@ distinct from the valid empty no-element ID. IDs are strict and case sensitive.
 Validate conversions instead of silently treating unknown values as a real enum.
 
 Existing dictionary catalogs, combat records and saves retain their text keys.
-Their stat/rarity/element lists reference this authority. Rarity presentation and
-damage-type resolution accept either legacy text or enum input. Typed
+Stat iteration uses this authority. Rarity remains an enum throughout catalog,
+runtime records and inspection payloads; its text conversion is presentation-only.
+Save restoration normalizes legacy item rarity from the current authored definition.
+Damage-type resolution still accepts legacy text or enum input. Typed
 ItemDefinition fields use enum-backed scalar properties and enum-keyed maps;
 validation rejects unknown integer values even when assigned outside the editor.
 JSON conversion remains a separate future loader; JSON should retain readable

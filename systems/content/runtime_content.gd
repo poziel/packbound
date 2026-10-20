@@ -35,14 +35,15 @@ static func rules(abilities: Array[AbilityDefinition]) -> Dictionary:
 static func collectible(value: CollectibleDefinition) -> Dictionary:
 	var result: Dictionary = rules(value.abilities)
 	result.merge({"key": str(value.id), "name": value.display_name,
-		"detail": value.description, "rarity": str(GameplayTypes.rarity_id(value.rarity)),
+		"detail": value.description, "rarity": value.rarity,
 		"lore": value.lore, "tags": value.tags.duplicate(),
 		"category_ids": value.category_ids.duplicate(), "classes": value.allowed_class_ids.duplicate(),
 		"characters": value.allowed_character_ids.duplicate(),
 		"preferred_class_ids": value.preferred_class_ids.duplicate(),
 		"preferred_character_ids": value.preferred_character_ids.duplicate()}, true)
-	for stat: String in GameplayTypes.STAT_IDS:
-		result[stat] = int(value.base_stats.get(GameplayTypes.stat_from_id(stat), 0))
+	for stat_type: int in GameplayTypes.Stat.values():
+		var stat: String = str(GameplayTypes.stat_id(stat_type))
+		result[stat] = int(value.base_stats.get(stat_type, 0))
 	if value is RelicDefinition:
 		var stats: Dictionary = {}
 		for stat: int in value.base_stats:

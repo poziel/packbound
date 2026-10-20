@@ -3,7 +3,6 @@ extends RefCounted
 const CATEGORIES = preload("res://systems/content/collectible_categories.gd")
 ## Pure combat rules. Every reaction consumes more traces than it creates.
 const TYPES = preload("res://systems/content/gameplay_types.gd")
-const ELEMENTS: Array[String] = TYPES.ELEMENT_IDS_WITHOUT_NONE
 const CONDITIONS: Dictionary = {"fire": "burn", "frost": "slow", "lightning": "spark", "void": "doom", "venom": "poison"}
 const TRACE_ROUNDS: int = 2
 const DOOM_ROUNDS: int = 3
@@ -28,7 +27,7 @@ const REACTIONS: Array[Dictionary] = [
 static func damage_type(item: Dictionary) -> String:
 	var raw_element: Variant = item.get("element", "")
 	var element_id: String = str(TYPES.element_id(raw_element)) if raw_element is int else str(raw_element)
-	if ELEMENTS.has(element_id):
+	if has_element(element_id):
 		return "magical"
 	var fallback: String = "magical" if CATEGORIES.matches(item, &"magic_weapons") else "physical"
 	var raw_type: Variant = item.get("damage_type", fallback)
@@ -37,13 +36,19 @@ static func damage_type(item: Dictionary) -> String:
 		return fallback if type_id == TYPES.INVALID_ID else str(type_id)
 	return str(raw_type)
 
+static func has_element(raw: Variant) -> bool:
+	var value: int = int(raw) if raw is int else TYPES.element_from_id(StringName(str(raw)))
+	return value != TYPES.Element.NONE and TYPES.Element.values().has(value)
+
 static func resist(amount: int, percent: int) -> int:
 	return maxi(0, amount) * (100 - clampi(percent, 0, 100)) / 100
 
 static func react(previous: Dictionary, inputs: Array) -> Dictionary:
 	var traces: Dictionary = {}
 	var fuel: int = 0
-	for element: String in ELEMENTS:
+	for element_type: int in TYPES.Element.values():
+		if element_type == TYPES.Element.NONE: continue
+		var element: String = str(TYPES.element_id(element_type))
 		traces[element] = []
 		for life: int in previous.get(element, []):
 			if life > 1:

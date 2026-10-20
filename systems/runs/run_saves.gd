@@ -44,11 +44,13 @@ func restore(run: PackRun, data: Dictionary) -> void:
 	# Fill only newly introduced fields; preserve saved rolls and existing art/layout.
 	for item: Dictionary in run.items:
 		var defaults: Dictionary = PackCatalog.item(item["key"])
+		# Normalize legacy text rarity here; runtime consumers accept enums only.
 		item["rarity"] = defaults["rarity"]
 		if item["key"] == PackCatalog.QUIVER.KEY:
 			item["name"] = defaults["name"]
 		var migration_keys: Array[String] = ["priority", "stamina_cost", "stamina", "stamina_per_round", "element", "damage_type"]
-		migration_keys.append_array(PackCatalog.STATS)
+		for stat_type: int in GameplayTypes.Stat.values():
+			migration_keys.append(str(GameplayTypes.stat_id(stat_type)))
 		for key: String in migration_keys:
 			if not item.has(key):
 				item[key] = defaults.get(key, "" if key in ["element", "damage_type"] else 0)

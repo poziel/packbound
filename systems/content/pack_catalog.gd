@@ -10,7 +10,6 @@ const CONTENT = preload("res://systems/content/rarity_content.gd")
 const EXPANSION_ITEMS = preload("res://systems/items/expansion_items.gd")
 const EXPANSION_RELICS = preload("res://systems/relics/expansion_relics.gd")
 
-const STATS: Array[String] = preload("res://systems/content/gameplay_types.gd").STAT_IDS
 const ROSTER: Array[String] = ["rusty_knife", "cracked_shield", "blood_gem", "bandage", "longsword", "tower_shield", "cursed_idol", "iron_charm", "shortbow", "quiver", "buckler", "ember_tome", "frost_wand", "spark_ring", "venom_dagger", "vampire_fang", "plate_mail", "thorn_mail", "warding_sigil", "hunting_trap", "battle_axe", "healing_herbs", "hourglass", "mirror_shard", "antidote", "lightning_wand", "void_tome", "venom_orb", "field_blade", "riveted_guard", "tempered_blade", "iron_guard", "oathsteel_blade", "sentinel_guard", "dusksteel_blade", "citadel_guard", "dawnbringer", "sovereign_guard"] + EXPANSION_ITEMS.ITEM_KEYS
 const RELICS: Array[String] = ["diagonal_thread", "returning_guard", "blood_pact", "plague_seal", "echo_clock", "arcane_barter", "folded_space", "mana_furnace", "last_thread", "hearth_token", "herbalist_knot", "trail_medallion", "bastion_seal", "starwell_crown"] + EXPANSION_RELICS.RELIC_KEYS
 
@@ -67,14 +66,14 @@ static func relic(key: String) -> Dictionary:
 		return {}
 	return DATA.collectible(value)
 
-static func items_of_rarity(tier: String) -> Array[String]:
+static func items_of_rarity(tier: GameplayTypes.Rarity) -> Array[String]:
 	var result: Array[String] = []
 	for key: String in ROSTER:
 		if item(key)["rarity"] == tier:
 			result.append(key)
 	return result
 
-static func relics_of_rarity(tier: String) -> Array[String]:
+static func relics_of_rarity(tier: GameplayTypes.Rarity) -> Array[String]:
 	var result: Array[String] = []
 	for key: String in RELICS:
 		if relic(key)["rarity"] == tier:

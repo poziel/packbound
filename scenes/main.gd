@@ -1211,7 +1211,9 @@ func _enemy_trace_inspection() -> Dictionary:
 	if run.class_key != "mage" or run.enemy.is_empty() or not run.has_combat_room():
 		return {}
 	var rows: PackedStringArray = []
-	for element: String in preload("res://systems/combat/elemental_combat.gd").ELEMENTS:
+	for element_type: int in GameplayTypes.Element.values():
+		if element_type == GameplayTypes.Element.NONE: continue
+		var element: String = str(GameplayTypes.element_id(element_type))
 		var durations: Array = run.elemental_traces.get(element, [])
 		if durations.is_empty():
 			continue

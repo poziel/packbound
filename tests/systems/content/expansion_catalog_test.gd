@@ -21,9 +21,10 @@ func _initialize() -> void:
 		check(parsed is Dictionary and parsed["id"] == key, "Author record loads: " + key)
 		var texture: Texture2D = EXPANSION_ART.ITEM_TEXTURES.get(key)
 		check(texture != null and texture.get_size() == Vector2(item["shape"]) * 32.0, "Runtime art matches footprint: " + key)
-		for stat: String in PackCatalog.STATS:
+		for stat_type: int in GameplayTypes.Stat.values():
+			var stat: String = str(GameplayTypes.stat_id(stat_type))
 			check(item.has(stat), "Complete stat contract: " + key + "/" + stat)
-	check(distribution == {"common":20,"uncommon":24,"rare":24,"epic":18,"legendary":10}, "Item rarity distribution")
+	check(distribution == {GameplayTypes.Rarity.COMMON:20,GameplayTypes.Rarity.UNCOMMON:24,GameplayTypes.Rarity.RARE:24,GameplayTypes.Rarity.EPIC:18,GameplayTypes.Rarity.LEGENDARY:10}, "Item rarity distribution")
 	for key: String in PackCatalog.EXPANSION_RELICS.RELIC_KEYS:
 		var texture: Texture2D = EXPANSION_ART.RELIC_TEXTURES.get(key)
 		check(texture != null and texture.get_size() == Vector2(32, 32), "Runtime relic texture loads at 32px: " + key)
@@ -53,7 +54,7 @@ func _initialize() -> void:
 			var item: Dictionary = run.add_item(key)
 			ingredients.append(item)
 			check(run.item_enabled(item), "Ingredients obtainable by result class: " + recipe["id"] + "/" + key)
-			check(PackCatalog.RARITY.TIERS.find(item["rarity"]) < PackCatalog.RARITY.TIERS.find(output["rarity"]), "Recipe raises rarity: " + recipe["id"])
+			check(item["rarity"] < output["rarity"], "Recipe raises rarity: " + recipe["id"])
 		var placed: bool = _place_group(run, ingredients, 0)
 		check(placed, "Connected layout fits: " + recipe["id"])
 		if not placed:

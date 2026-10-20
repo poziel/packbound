@@ -44,7 +44,8 @@ func _run() -> void:
 	stash.body = preload("res://scenes/run/inventory/storage_inventory/stash_body.gd").new()
 	stash.body.setup(item, BackpackBoard.CELL)
 	views[1].add_child(stash)
-	for rarity: String in ["common", "rare", "legendary"]:
+	for rarity: int in [GameplayTypes.Rarity.COMMON, GameplayTypes.Rarity.RARE, GameplayTypes.Rarity.LEGENDARY]:
+		var rarity_label: String = str(GameplayTypes.rarity_id(rarity))
 		item.rarity = rarity
 		var settled: Array[Image] = []
 		for held: bool in [false, true]:
@@ -56,30 +57,30 @@ func _run() -> void:
 			await RenderingServer.frame_post_draw
 			var a: Image = views[0].get_texture().get_image()
 			var b: Image = views[1].get_texture().get_image()
-			check(a.get_data() == b.get_data(), "Backpack and stash render the same rarity frame: " + rarity)
+			check(a.get_data() == b.get_data(), "Backpack and stash render the same rarity frame: " + rarity_label)
 			if not held: settled.assign([a, b])
 			else:
-				check(a.get_data() == settled[0].get_data(), "Backpack hover/drag keeps its rarity border: " + rarity)
-				check(b.get_data() == settled[1].get_data(), "Stash grab/release keeps its rarity border: " + rarity)
+				check(a.get_data() == settled[0].get_data(), "Backpack hover/drag keeps its rarity border: " + rarity_label)
+				check(b.get_data() == settled[1].get_data(), "Stash grab/release keeps its rarity border: " + rarity_label)
 		board.held = false
 		board.synergy = true
 		board.queue_redraw()
 		await process_frame
 		await RenderingServer.frame_post_draw
 		var lit: Image = views[0].get_texture().get_image()
-		check(lit.get_data() != settled[0].get_data(), "Synergy restores a visible border highlight: " + rarity)
+		check(lit.get_data() != settled[0].get_data(), "Synergy restores a visible border highlight: " + rarity_label)
 		var glow_pixels: int = 0
 		var glow_color: Color = preload("res://components/inventory/item_slot/item_frame.gd").SYNERGY_COLOR
 		for y in lit.get_height():
 			for x in lit.get_width():
 				if lit.get_pixel(x, y).is_equal_approx(Color(glow_color.to_html())):
 					glow_pixels += 1
-		check(glow_pixels > 0, "Synergy border uses the shared yellow-beige caret color: " + rarity)
+		check(glow_pixels > 0, "Synergy border uses the shared yellow-beige caret color: " + rarity_label)
 		board.synergy = false
 		board.queue_redraw()
 		await process_frame
 		await RenderingServer.frame_post_draw
-		check(views[0].get_texture().get_image().get_data() == settled[0].get_data(), "Leaving synergy restores the exact rarity frame: " + rarity)
+		check(views[0].get_texture().get_image().get_data() == settled[0].get_data(), "Leaving synergy restores the exact rarity frame: " + rarity_label)
 	board.hide()
 	var slot: PackItemSlot = load("res://components/inventory/item_slot/item_slot.tscn").instantiate()
 	slot.position = Vector2(32, 32)

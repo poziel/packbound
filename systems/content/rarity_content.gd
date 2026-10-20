@@ -3,7 +3,6 @@ extends RefCounted
 
 const ITEM_KEYS: Array[String] = ["field_blade", "riveted_guard", "tempered_blade", "iron_guard", "oathsteel_blade", "sentinel_guard", "dusksteel_blade", "citadel_guard", "dawnbringer", "sovereign_guard"]
 const RELIC_KEYS: Array[String] = ["hearth_token", "herbalist_knot", "trail_medallion", "bastion_seal", "starwell_crown"]
-const STAT_KEYS: Array[String] = preload("res://systems/content/gameplay_types.gd").STAT_IDS
 
 static func items() -> Dictionary:
 	var result: Dictionary = {}

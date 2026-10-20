@@ -93,9 +93,10 @@ func setup(data: Dictionary) -> void:
 	$Content/Header/Icon.visible = data.has("icon") and not is_keyword_definition
 	bound_status.visible = bool(data.get("bound", false))
 	_rich_text = PackKeywordLinks.rich(data.get("body", ""), key)
-	var rarity: String = str(data.get("rarity", ""))
-	if rarity in PackCatalog.RARITY.TIERS:
-		$Content/Header/Title.add_theme_color_override("default_color", PackCatalog.RARITY.COLORS[rarity])
+	var rarity: Variant = data.get("rarity")
+	var has_rarity: bool = rarity is int and GameplayTypes.Rarity.values().has(rarity)
+	if has_rarity:
+		$Content/Header/Title.add_theme_color_override("default_color", PackCatalog.RARITY.color({"rarity": rarity}))
 	else:
 		$Content/Header/Title.remove_theme_color_override("default_color")
 	var keyword_stats: String = PackKeywords.stats_markup(data.get("keyword_stats", []), true, body.get_theme_color("default_color"))
@@ -156,7 +157,7 @@ func setup(data: Dictionary) -> void:
 		footer += ("\n" if not footer.is_empty() else "") + restriction
 	if not footer.is_empty():
 		_rich_text += ("\n\n" if not _rich_text.is_empty() else "") + footer
-	if rarity in PackCatalog.RARITY.TIERS:
+	if has_rarity:
 		_rich_text = PackCatalog.RARITY.markup({"rarity": rarity}) + ("\n\n" + _rich_text if not _rich_text.is_empty() else "")
 	_link_keys.clear()
 	_link_images.clear()

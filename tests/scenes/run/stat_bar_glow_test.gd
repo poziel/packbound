@@ -189,7 +189,8 @@ func _encounter() -> Dictionary:
 		game.run.enemy[stat] = 0
 	var item: Dictionary = game.run.add_item("rusty_knife")
 	game.run.auto_place(item)
-	for stat: String in PackCatalog.STATS:
+	for stat_type: int in GameplayTypes.Stat.values():
+		var stat: String = str(GameplayTypes.stat_id(stat_type))
 		item[stat] = 0
 	item["damage"] = 8
 	game._refresh()

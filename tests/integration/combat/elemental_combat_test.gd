@@ -68,7 +68,9 @@ func _resistance_checks() -> void:
 	check(ELEMENTS.react(traces, ["frost"])["reactions"].is_empty(), "Old traces expire after their lifetime")
 	var inputs: Array[String] = []
 	for count in range(50):
-		inputs.append_array(ELEMENTS.ELEMENTS)
+		for element: int in GameplayTypes.Element.values():
+			if element != GameplayTypes.Element.NONE:
+				inputs.append(str(GameplayTypes.element_id(element)))
 	var chain: Dictionary = ELEMENTS.react({}, inputs)
 	check(chain["reactions"].size() <= inputs.size() and chain["reactions"].size() > 50, "Large chains terminate by consuming fuel")
 

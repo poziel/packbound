@@ -22,7 +22,7 @@ func _run() -> void:
 		var relic: Dictionary = EXPANSION.relics()[key]
 		tiers[relic["rarity"]] = int(tiers.get(relic["rarity"], 0)) + 1
 		check(PackCatalog.relic(key)["name"] == relic["name"], "Catalog loads " + key)
-	check(tiers == {"common": 8, "uncommon": 12, "rare": 14, "epic": 10, "legendary": 6}, "Relic rarity distribution")
+	check(tiers == {GameplayTypes.Rarity.COMMON: 8, GameplayTypes.Rarity.UNCOMMON: 12, GameplayTypes.Rarity.RARE: 14, GameplayTypes.Rarity.EPIC: 10, GameplayTypes.Rarity.LEGENDARY: 6}, "Relic rarity distribution")
 	var state: PackRun = fixture()
 	state.relics.assign(["tin_cricket"])
 	var before: Dictionary = state.effects()

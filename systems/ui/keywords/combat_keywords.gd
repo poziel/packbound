@@ -86,7 +86,8 @@ static func image_markup(key: String, context: String = "") -> String:
 ## Keyword stats are structured icon/value pairs, separate from keyword links in prose.
 static func item_stats(item: Dictionary, adjacency_bonus: int = 0) -> Array[Dictionary]:
 	var result: Array[Dictionary] = []
-	for stat: String in PackCatalog.STATS:
+	for stat_type: int in GameplayTypes.Stat.values():
+		var stat: String = str(GameplayTypes.stat_id(stat_type))
 		var amount: int = int(item.get(stat, 0))
 		if stat == "damage" or stat == "block":
 			if amount > 0:
