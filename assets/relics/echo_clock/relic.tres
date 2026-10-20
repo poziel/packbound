@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://s3jx4v5df3s7" path="res://assets/relics/echo_clock/art/revisions/catalog_v2/echo_clock_32px.png" id="3_evamn"]
 [ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_sn15i"]
 
+[ext_resource type="Resource" path="res://assets/relics/echo_clock/mechanic_ability.tres" id="mechanic_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ov0kc"]
 atlas = ExtResource("3_evamn")
 region = Rect2(0, 0, 32, 32)
@@ -21,4 +23,4 @@ preferred_class_ids = null
 preferred_character_ids = null
 icon = SubResource("AtlasTexture_ov0kc")
 base_stats = null
-abilities = Array[ExtResource("1_o3fvy")]([ExtResource("2_d7b4d")])
+abilities = Array[ExtResource("1_o3fvy")]([ExtResource("2_d7b4d"), ExtResource("mechanic_ability")])

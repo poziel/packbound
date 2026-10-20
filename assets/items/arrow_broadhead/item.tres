@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://51iaa2f6uo8d" path="res://assets/items/quiver/art/item.png" id="3_k1840"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_i8c3b"]
 
+[ext_resource type="Resource" path="res://assets/items/arrow_broadhead/volley_ability.tres" id="volley_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_gv1sx"]
 atlas = ExtResource("3_k1840")
 region = Rect2(0, 0, 32, 64)
@@ -18,4 +20,4 @@ display_name = "Broadhead Arrows"
 description = "Choose your starting arrows: +1 damage per Volley arrow."
 category_ids = Array[StringName]([&"quiver_upgrades"])
 icon = SubResource("AtlasTexture_gv1sx")
-abilities = Array[ExtResource("1_eda5r")]([ExtResource("2_g8gwx")])
+abilities = Array[ExtResource("1_eda5r")]([ExtResource("2_g8gwx"), ExtResource("volley_ability")])

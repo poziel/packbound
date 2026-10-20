@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://htvo5n83gcrs" path="res://assets/items/hourglass/art/item.png" id="3_0grj5"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_eoheo"]
 
+[ext_resource type="Resource" path="res://assets/items/hourglass/mechanic_ability.tres" id="mechanic_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_et5kw"]
 atlas = ExtResource("3_0grj5")
 region = Rect2(0, 0, 96, 64)
@@ -19,4 +21,4 @@ description = "Every fourth turn, ordinary melee weapons activate twice. Stacks 
 rarity = 4
 category_ids = Array[StringName]([&"utilities"])
 icon = SubResource("AtlasTexture_et5kw")
-abilities = Array[ExtResource("1_mereu")]([ExtResource("2_6nehi")])
+abilities = Array[ExtResource("1_mereu")]([ExtResource("2_6nehi"), ExtResource("mechanic_ability")])

@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://51iaa2f6uo8d" path="res://assets/items/quiver/art/item.png" id="3_qgyj3"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_unl1n"]
 
+[ext_resource type="Resource" path="res://assets/items/quiver_fire/volley_ability.tres" id="volley_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_d6gq3"]
 atlas = ExtResource("3_qgyj3")
 region = Rect2(0, 0, 32, 64)
@@ -19,4 +21,4 @@ description = "Quiver upgrade: each Volley arrow applies +1 burn. Up to 2 upgrad
 rarity = 2
 category_ids = Array[StringName]([&"quiver_upgrades"])
 icon = SubResource("AtlasTexture_d6gq3")
-abilities = Array[ExtResource("1_733hh")]([ExtResource("2_41nmm")])
+abilities = Array[ExtResource("1_733hh")]([ExtResource("2_41nmm"), ExtResource("volley_ability")])

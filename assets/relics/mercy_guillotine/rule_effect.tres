@@ -8,12 +8,5 @@ script = ExtResource("1_4lx8q")
 rule_id = &"mercy_guillotine_rules"
 parameters = {
 "icon": "mercy_guillotine",
-"rule": {
-"amount": 12,
-"cap": 1,
-"condition": "enemy_low_hp",
-"metric": "one",
-"stat": "physical_damage"
-},
 "stats": {}
 }

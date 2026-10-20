@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://b6kmacta84t58" path="res://assets/relics/cinder_nursery/art/icon.png" id="3_rgngi"]
 [ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_lmsji"]
 
+[ext_resource type="Resource" path="res://assets/relics/cinder_nursery/bonus_ability.tres" id="bonus_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ub5y"]
 atlas = ExtResource("3_rgngi")
 region = Rect2(0, 0, 32, 32)
@@ -23,4 +25,4 @@ preferred_class_ids = null
 preferred_character_ids = null
 icon = SubResource("AtlasTexture_8ub5y")
 base_stats = null
-abilities = Array[ExtResource("1_xakdj")]([ExtResource("2_6sw8x")])
+abilities = Array[ExtResource("1_xakdj")]([ExtResource("2_6sw8x"), ExtResource("bonus_ability")])

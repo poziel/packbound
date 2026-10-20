@@ -8,12 +8,5 @@ script = ExtResource("1_r2pi8")
 rule_id = &"atlas_of_missing_roads_rules"
 parameters = {
 "icon": "atlas_of_missing_roads",
-"rule": {
-"amount": 14,
-"cap": 1,
-"condition": "sparse",
-"metric": "one",
-"stat": "physical_damage"
-},
 "stats": {}
 }

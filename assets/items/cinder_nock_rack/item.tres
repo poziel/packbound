@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://chr4q4bwa8pxw" path="res://assets/items/cinder_nock_rack/art/item.png" id="3_lsl61"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_o01tf"]
 
+[ext_resource type="Resource" path="res://assets/items/cinder_nock_rack/quiver_ability.tres" id="bonus_quiver"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_lmu3u"]
 atlas = ExtResource("3_lsl61")
 region = Rect2(0, 0, 64, 32)
@@ -22,4 +24,4 @@ tags = Array[StringName]([&"booster", &"ranger"])
 category_ids = Array[StringName]([&"boosters"])
 allowed_class_ids = Array[StringName]([&"ranger"])
 icon = SubResource("AtlasTexture_lmu3u")
-abilities = Array[ExtResource("1_xrmaq")]([ExtResource("2_exmgh")])
+abilities = Array[ExtResource("1_xrmaq")]([ExtResource("2_exmgh"), ExtResource("bonus_quiver")])

@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bio6ik7y0j1ke" path="res://assets/items/feather_keeper/art/item.png" id="3_2gi8g"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_kj33s"]
 
+[ext_resource type="Resource" path="res://assets/items/feather_keeper/quiver_ability.tres" id="bonus_quiver"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_kx35m"]
 atlas = ExtResource("3_2gi8g")
 region = Rect2(0, 0, 32, 32)
@@ -21,4 +23,4 @@ tags = Array[StringName]([&"booster", &"ranger"])
 category_ids = Array[StringName]([&"boosters"])
 allowed_class_ids = Array[StringName]([&"ranger"])
 icon = SubResource("AtlasTexture_kx35m")
-abilities = Array[ExtResource("1_gpmg5")]([ExtResource("2_oa5qr")])
+abilities = Array[ExtResource("1_gpmg5")]([ExtResource("2_oa5qr"), ExtResource("bonus_quiver")])

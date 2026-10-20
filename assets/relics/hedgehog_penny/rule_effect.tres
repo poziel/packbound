@@ -8,12 +8,5 @@ script = ExtResource("1_8q76h")
 rule_id = &"hedgehog_penny_rules"
 parameters = {
 "icon": "hedgehog_penny",
-"rule": {
-"amount": 1,
-"cap": 1,
-"condition": "has_shield",
-"metric": "one",
-"stat": 11
-},
 "stats": {}
 }

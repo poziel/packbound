@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="ability"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="effect"]
+[ext_resource type="Resource" path="res://assets/items/quiver/primary_effect.tres" id="bonus"]
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="condition"]
+[ext_resource type="Script" path="res://systems/abilities/collectible_target_condition_definition.gd" id="target"]
+
+[sub_resource type="Resource" id="recipient"]
+script = ExtResource("target")
+category_ids = Array[StringName]([&"ranged_weapons"])
+item_ids = Array[StringName]([])
+
+[resource]
+resource_name = "Hunting Quiver: Primary bonus"
+script = ExtResource("ability")
+id = &"quiver_primary_bonus"
+display_name = "Hunting Quiver: Primary bonus"
+trigger_id = &"item_adjacency"
+conditions = Array[ExtResource("condition")]([SubResource("recipient")])
+effects = Array[ExtResource("effect")]([ExtResource("bonus")])

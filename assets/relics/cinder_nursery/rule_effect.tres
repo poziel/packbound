@@ -8,12 +8,5 @@ script = ExtResource("1_bd2tv")
 rule_id = &"cinder_nursery_rules"
 parameters = {
 "icon": "cinder_nursery",
-"rule": {
-"amount": 2,
-"cap": 1,
-"condition": "burning",
-"metric": "one",
-"stat": 2
-},
 "stats": {}
 }

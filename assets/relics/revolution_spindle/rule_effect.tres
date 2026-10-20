@@ -8,12 +8,5 @@ script = ExtResource("1_8qux4")
 rule_id = &"revolution_spindle_rules"
 parameters = {
 "icon": "revolution_spindle",
-"rule": {
-"amount": 2,
-"cap": 10,
-"condition": "warrior",
-"metric": "momentum",
-"stat": "physical_damage"
-},
 "stats": {}
 }

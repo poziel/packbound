@@ -8,12 +8,5 @@ script = ExtResource("1_sy4yh")
 rule_id = &"lantern_moth_rules"
 parameters = {
 "icon": "lantern_moth",
-"rule": {
-"amount": 2,
-"cap": 1,
-"condition": "has_magic",
-"metric": "one",
-"stat": 12
-},
 "stats": {}
 }

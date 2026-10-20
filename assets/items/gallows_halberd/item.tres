@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dk5o4b5oyv82l" path="res://assets/items/gallows_halberd/art/item.png" id="3_b1qq4"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_udrnc"]
 
+[ext_resource type="Resource" path="res://assets/items/gallows_halberd/momentum_ability.tres" id="bonus_momentum"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_12i0f"]
 atlas = ExtResource("3_b1qq4")
 region = Rect2(0, 0, 64, 128)
@@ -29,4 +31,4 @@ base_stats = Dictionary[int, int]({
 0: 15,
 14: 5
 })
-abilities = Array[ExtResource("1_b31tj")]([ExtResource("2_o1x7e")])
+abilities = Array[ExtResource("1_b31tj")]([ExtResource("2_o1x7e"), ExtResource("bonus_momentum")])

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="ability"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="effect"]
+[ext_resource type="Resource" path="res://assets/items/hourglass/mechanic_effect.tres" id="mechanic"]
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="condition"]
+[ext_resource type="Script" path="res://systems/abilities/combat_metric_condition_definition.gd" id="metric"]
+
+[sub_resource type="Resource" id="period"]
+script = ExtResource("metric")
+metric = 3
+comparison = 2
+threshold = 0
+modulo = 4
+
+[resource]
+resource_name = "Battle Hourglass: Mechanic"
+script = ExtResource("ability")
+id = &"hourglass_mechanic"
+display_name = "Battle Hourglass: Mechanic"
+trigger_id = &"item_mechanic"
+conditions = Array[ExtResource("condition")]([SubResource("period")])
+effects = Array[ExtResource("effect")]([ExtResource("mechanic")])

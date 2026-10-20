@@ -1801,6 +1801,13 @@
 	  "suites": ["systems"],
 	  "requires_rendering": false,
 	  "timeout_sec": 30
+	},
+	{
+	  "id": "collectible_bonuses",
+	  "path": "tests/systems/combat/collectible_bonuses_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
 	}
   ]
 }

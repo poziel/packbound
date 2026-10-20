@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://db0yvqtubo8ho" path="res://assets/items/seamfinder_lens/art/item.png" id="3_k5vm8"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_cnafb"]
 
+[ext_resource type="Resource" path="res://assets/items/seamfinder_lens/quiver_ability.tres" id="bonus_quiver"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_v5mnl"]
 atlas = ExtResource("3_k5vm8")
 region = Rect2(0, 0, 32, 32)
@@ -22,4 +24,4 @@ tags = Array[StringName]([&"booster", &"ranger"])
 category_ids = Array[StringName]([&"boosters"])
 allowed_class_ids = Array[StringName]([&"ranger"])
 icon = SubResource("AtlasTexture_v5mnl")
-abilities = Array[ExtResource("1_qvhac")]([ExtResource("2_kpa87")])
+abilities = Array[ExtResource("1_qvhac")]([ExtResource("2_kpa87"), ExtResource("bonus_quiver")])

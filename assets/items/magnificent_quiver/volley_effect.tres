@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="QuiverVolleyEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/quiver_volley_effect_definition.gd" id="effect"]
+
+[resource]
+resource_name = "Bowmaster's Quiver: Volley"
+script = ExtResource("effect")
+kind = 0
+arrows = 2
+interval = 3
+per_arrow_stats = Dictionary[int, int]({
+0: 3
+})

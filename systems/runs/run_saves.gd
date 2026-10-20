@@ -84,6 +84,10 @@ func restore(run: PackRun, data: Dictionary) -> void:
 		var defaults: Dictionary = PackCatalog.item(item["key"])
 		# Normalize legacy text rarity here; runtime consumers accept enums only.
 		item["rarity"] = defaults["rarity"]
+		# Bonus views derive from current effects, never saved tuning.
+		for bonus_key: String in ["primary_bonuses", "adjacency_bonus", "quiver_bonus", "momentum_gain", "momentum_damage"]:
+			if defaults.has(bonus_key): item[bonus_key] = defaults[bonus_key].duplicate(true) if defaults[bonus_key] is Dictionary or defaults[bonus_key] is Array else defaults[bonus_key]
+			else: item.erase(bonus_key)
 		if item["key"] == PackCatalog.QUIVER.KEY:
 			item["name"] = defaults["name"]
 		var migration_keys: Array = ["priority", GameplayTypes.Stat.STAMINA, "stamina_per_round", "element", "damage_type"]

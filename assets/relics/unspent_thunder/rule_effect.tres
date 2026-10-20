@@ -8,12 +8,5 @@ script = ExtResource("1_ipbuy")
 rule_id = &"unspent_thunder_rules"
 parameters = {
 "icon": "unspent_thunder",
-"rule": {
-"amount": 2,
-"cap": 4,
-"condition": "unused_stamina",
-"metric": "unused_stamina",
-"stat": 1
-},
 "stats": {}
 }

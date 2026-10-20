@@ -67,8 +67,8 @@ Volley damage or reaction count; reaction scaling preserves its authored cap.
 mutating resources, statuses or RNG. Supported collectible status effects target
 the opponent; unsupported targets/triggers fail content validation.
 
-Other item/relic special mechanics still use their existing compatibility
-bindings. This is a status-ability executor, not a universal ability interpreter.
+Existing collectible bonuses now use the concrete paths below. These are explicit
+coded execution contracts, not a universal ability interpreter.
 
 ## Combat stat grants
 
@@ -82,5 +82,50 @@ absorption and round state through its existing commit path.
 
 Damage, mana/stamina budgets and status stacks are deliberately outside this
 stat-grant effect's supported stats. They require their corresponding mechanics.
-Other conditional/scaled relic bonuses and special item mechanics still need
-concrete effect migrations.
+Conditional and scaled bonuses now use the shared scaling and condition contracts
+described below.
+
+## Remaining collectible bonus migration
+
+All 50 expansion relic bonuses now execute concrete effects. The final 44 rules
+use `bonus_ability.tres` and `bonus_effect.tres`; `CombatScalingDefinition` owns the
+metric and cap. `GrantDamageEffectDefinition` keeps physical/magical damage explicit,
+and `GrantResourceEffectDefinition` supplies pre-activation mana/stamina budgets.
+`CombatMetricConditionDefinition` and `ClassConditionDefinition` replace the former
+condition-name switch. Conditions inspect a single pre-relic snapshot; one bonus
+cannot enable another in the same pass. Health fractions use integer cross-products.
+
+Item adjacency, extra arrows and Momentum bonuses have owned abilities/effects too.
+`CollectibleTargetConditionDefinition` selects categories or the permanent quiver;
+the packing system enforces contact and eligibility. `GrantItemBonusEffectDefinition`
+distinguishes primary damage/block grants from grants to all activation stats, so
+existing bonuses are not counted twice. `ItemMomentumEffectDefinition` owns gain and
+damage per Momentum spent. Runtime dictionaries are derived views for current UI,
+combat and saves; they are not a second authored source. Resume rebuilds these views
+without re-executing an already committed action.
+
+`CollectibleMechanicEffectDefinition` supplies typed parameters for diagonal/wrapped
+links, mirrors, repeats, conversions, revival and status-decay prevention. Periodic
+abilities use authored turn conditions. `CollectibleMechanics` only looks up active
+records; existing combat phases still execute each distinct mechanic. Plague Seal
+references the affected status directly instead of being named by Poison's rule.
+
+`QuiverVolleyEffectDefinition` owns base arrows/interval, selected-arrow stats,
+upgrade stats, explosion bonuses and upgrade caps. The quiver runtime reads those
+records and computes per-arrow/flat contributions; loot reads the same caps.
+Metadata for the options also comes from their definitions.
+
+| Trigger | Execution contract |
+| --- | --- |
+| `item_activation` | Opponent status contributions after successful activation payment. |
+| `item_adjacency` / `item_quiver` | Target-filtered packing or Volley bonus views. |
+| `item_momentum` | Affordable activation gain and damage scaling. |
+| `relic_stats` | Conditional/scaled combat contributions on the pre-relic snapshot. |
+| `relic_resources` | Round resource budget before payments. |
+| `item_mechanic` / `relic_mechanic` | Existing phase-specific mechanic with optional turn condition. |
+| `quiver_loadout` | Base Volley, selected arrows or purchased upgrades. |
+
+Remaining `CatalogRuleEffectDefinition` records contain compatibility/presentation
+metadata and initialization fields. They no longer author these collectible bonuses.
+Characters, monster behavior and status tick handlers retain their own migration
+boundaries. Adding an unknown effect or trigger still requires coded support.

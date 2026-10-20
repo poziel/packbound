@@ -81,7 +81,7 @@ Items, relics and combatants can reference ability Resources instead of each inv
 
 **Why:** this gives us typed boundaries for reusable mechanics and future concrete effect classes.
 
-**Current boundary:** we have not built a universal ability/condition/effect interpreter. Existing special mechanics still run through coded handlers. `runtime_content.gd` adapts catalog-rule parameters for those consumers, and the Poison resolver explicitly handles its supported rule. Merely creating a Resource with a new rule ID does not implement a mechanic.
+**Current boundary:** we have not built a universal ability/condition/effect interpreter. Collectible bonus values now come from concrete effects and conditions; coded phase handlers execute the special mechanics. `runtime_content.gd` derives compatibility views for their consumers. Status ticks, character mechanics and monster behavior retain their explicit coded handlers. See [the ability runtime guide](../abilities/README.md) for the current trigger contracts. Merely creating a Resource with a new rule ID does not implement a mechanic.
 
 ## 6. Crafting recipes became authored records
 

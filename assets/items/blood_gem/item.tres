@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://coth2wrfqll7c" path="res://assets/items/blood_gem/art/item.png" id="3_brcfd"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_w7fx2"]
 
+[ext_resource type="Resource" path="res://assets/items/blood_gem/primary_ability.tres" id="bonus_primary"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_s2pe3"]
 atlas = ExtResource("3_brcfd")
 region = Rect2(0, 0, 32, 32)
@@ -19,4 +21,4 @@ description = "Touching weapons, bows and spells gain +2 damage."
 rarity = 1
 category_ids = Array[StringName]([&"boosters"])
 icon = SubResource("AtlasTexture_s2pe3")
-abilities = Array[ExtResource("1_pybxx")]([ExtResource("2_f2i33")])
+abilities = Array[ExtResource("1_pybxx")]([ExtResource("2_f2i33"), ExtResource("bonus_primary")])

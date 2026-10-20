@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="ability"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="effect"]
+[ext_resource type="Resource" path="res://assets/items/quiver_fire/volley_effect.tres" id="volley"]
+
+[resource]
+resource_name = "Ember Tips: Volley"
+script = ExtResource("ability")
+id = &"quiver_fire_volley"
+display_name = "Ember Tips: Volley"
+trigger_id = &"quiver_loadout"
+effects = Array[ExtResource("effect")]([ExtResource("volley")])

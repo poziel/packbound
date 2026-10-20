@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="QuiverVolleyEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/quiver_volley_effect_definition.gd" id="effect"]
+
+[resource]
+resource_name = "Ember Tips: Volley"
+script = ExtResource("effect")
+kind = 2
+per_arrow_stats = Dictionary[int, int]({
+7: 1
+})
+cap = 2

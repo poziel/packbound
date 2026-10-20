@@ -23,13 +23,17 @@ func _run() -> void:
 		check(value.icon != null, "Existing icon retained")
 		check(not value.abilities.is_empty(), "Authored abilities exist")
 		var preserved: Dictionary = value.abilities[0].effects[0].parameters
-		for field: String in ["adjacency_bonus", "quiver_bonus", "momentum", "keyword_stats", "tooltip_detail", "mana_per_round", "stamina_per_round", "block_per_round"]:
+		for field: String in ["momentum", "keyword_stats", "tooltip_detail", "mana_per_round", "stamina_per_round", "block_per_round"]:
 			if source.has(field):
 				check_equal(preserved.get(field), source[field], "Special rule parameter retained: " + field)
 		check(not preserved.has(GameplayTypes.Stat.DAMAGE), "Typed damage has one authority")
 		check(not value.resource_path.is_empty() and value.resource_path.ends_with(".tres"), "Collectible is an external resource")
 		check(not value.abilities[0].resource_path.is_empty(), "Ability has one external authority")
 		check(not value.abilities[0].effects[0].resource_path.is_empty(), "Effect has one external authority")
+		if value is ItemDefinition:
+			var views: Dictionary = CollectibleAbilityResolver.item_views(value.abilities)
+			for bonus_key: String in ["adjacency_bonus", "quiver_bonus", "momentum_gain", "momentum_damage", "primary_bonuses"]:
+				if views.has(bonus_key): check_equal(source.get(bonus_key), views[bonus_key], "Typed item bonus reaches runtime: " + str(value.id))
 		for stat_type: int in GameplayTypes.Stat.values():
 			var stat: String = str(GameplayTypes.stat_id(stat_type))
 			var grants: Dictionary = CollectibleAbilityResolver.contributions(value.abilities, CollectibleAbilityResolver.ITEM_TRIGGER) if value is ItemDefinition else {}

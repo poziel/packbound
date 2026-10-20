@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cvpcp3586v5xi" path="res://assets/relics/last_thread/art/revisions/catalog_v1/last_thread_32px.png" id="3_vn4wg"]
 [ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_ssgne"]
 
+[ext_resource type="Resource" path="res://assets/relics/last_thread/mechanic_ability.tres" id="mechanic_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_j2iec"]
 atlas = ExtResource("3_vn4wg")
 region = Rect2(0, 0, 32, 32)
@@ -21,4 +23,4 @@ preferred_class_ids = null
 preferred_character_ids = null
 icon = SubResource("AtlasTexture_j2iec")
 base_stats = null
-abilities = Array[ExtResource("1_xgdln")]([ExtResource("2_d1ke2")])
+abilities = Array[ExtResource("1_xgdln")]([ExtResource("2_d1ke2"), ExtResource("mechanic_ability")])

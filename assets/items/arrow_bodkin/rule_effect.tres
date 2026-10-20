@@ -12,5 +12,4 @@ parameters = {
 "priority": 0,
 "stamina_per_round": 0,
 "tooltip_detail": "Choose your starting arrows: each Volley arrow pierces 2 block.",
-"type": "bodkin"
 }

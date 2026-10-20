@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://51iaa2f6uo8d" path="res://assets/items/quiver/art/item.png" id="3_nrxpv"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_1eopw"]
 
+[ext_resource type="Resource" path="res://assets/items/quiver_capacity/volley_ability.tres" id="volley_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ys62q"]
 atlas = ExtResource("3_nrxpv")
 region = Rect2(0, 0, 32, 64)
@@ -19,4 +21,4 @@ description = "Quiver upgrade: +1 arrow per Volley. Up to 3 upgrades."
 rarity = 1
 category_ids = Array[StringName]([&"quiver_upgrades"])
 icon = SubResource("AtlasTexture_ys62q")
-abilities = Array[ExtResource("1_16a45")]([ExtResource("2_88wo2")])
+abilities = Array[ExtResource("1_16a45")]([ExtResource("2_88wo2"), ExtResource("volley_ability")])

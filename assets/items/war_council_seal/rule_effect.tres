@@ -7,12 +7,6 @@ resource_name = "War Council Seal Rule Effect"
 script = ExtResource("1_7rtdn")
 rule_id = &"war_council_seal_rules"
 parameters = {
-"adjacency_bonus": {
-"stats": {
-0: 3
-},
-"target_category_ids": ["melee_weapons"]
-},
 "block_per_round": 0,
 "mana_per_round": 0,
 "priority": 0,

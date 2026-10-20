@@ -7,12 +7,6 @@ resource_name = "Hunter's Compass Rule Effect"
 script = ExtResource("1_y8uxr")
 rule_id = &"hunter_s_compass_rules"
 parameters = {
-"adjacency_bonus": {
-"stats": {
-14: 2
-},
-"target_category_ids": ["ranged_weapons"]
-},
 "block_per_round": 0,
 "mana_per_round": 0,
 "priority": 0,

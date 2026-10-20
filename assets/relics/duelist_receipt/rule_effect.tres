@@ -8,12 +8,5 @@ script = ExtResource("1_3kjel")
 rule_id = &"duelist_receipt_rules"
 parameters = {
 "icon": "duelist_receipt",
-"rule": {
-"amount": 4,
-"cap": 3,
-"condition": "crafted_opening",
-"metric": "crafted_count",
-"stat": "physical_damage"
-},
 "stats": {}
 }

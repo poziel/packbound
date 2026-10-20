@@ -8,13 +8,5 @@ script = ExtResource("1_2rp4q")
 rule_id = &"pilgrim_sock_rules"
 parameters = {
 "icon": "pilgrim_sock",
-"rule": {
-"amount": 1,
-"cap": 1,
-"condition": "late",
-"metric": "one",
-"stat": 9,
-"resource_bonus": true
-},
 "stats": {}
 }

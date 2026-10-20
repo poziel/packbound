@@ -8,12 +8,5 @@ script = ExtResource("1_n8lej")
 rule_id = &"siege_heart_rules"
 parameters = {
 "icon": "siege_heart",
-"rule": {
-"amount": 2,
-"cap": 8,
-"condition": "warrior",
-"metric": "momentum",
-"stat": 1
-},
 "stats": {}
 }

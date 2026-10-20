@@ -8,12 +8,5 @@ script = ExtResource("1_syim7")
 rule_id = &"ram_flywheel_rules"
 parameters = {
 "icon": "ram_flywheel",
-"rule": {
-"amount": 1,
-"cap": 6,
-"condition": "warrior",
-"metric": "momentum",
-"stat": "physical_damage"
-},
 "stats": {}
 }

@@ -8,12 +8,5 @@ script = ExtResource("1_ycn2m")
 rule_id = &"winter_mortgage_rules"
 parameters = {
 "icon": "winter_mortgage",
-"rule": {
-"amount": 2,
-"cap": 4,
-"condition": "slowed",
-"metric": "slow",
-"stat": 5
-},
 "stats": {}
 }

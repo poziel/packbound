@@ -5,7 +5,7 @@ Poison, Burn, Slow, Spark and Doom. They reuse the accepted keyword glyphs and
 copy descriptions from the existing keyword definitions.
 
 Poison, Burn and Slow lose one stack per round. Plague Seal suppresses enemy
-Poison decay through its explicit rule binding. Spark deals two magical damage
+Poison decay through its own concrete mechanic effect referencing the Poison definition. Spark deals two magical damage
 per existing stack on a later damaging magical hit, then consumes one stack.
 Doom detonates for two magical damage per stack after a three-round countdown;
 new applications do not reset that countdown. Damage bypasses block and respects

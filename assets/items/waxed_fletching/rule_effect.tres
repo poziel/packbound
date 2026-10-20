@@ -10,9 +10,6 @@ parameters = {
 "block_per_round": 0,
 "mana_per_round": 0,
 "priority": 0,
-"quiver_bonus": {
-0: 2
-},
 "stamina_per_round": 0,
 "tooltip_detail": "While orthogonally touching the permanent Bowmaster quiver, adds 2 damage to Volley; this equipment remains in the backpack and is not consumed.. Only ranger can equip this item."
 }

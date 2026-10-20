@@ -8,7 +8,6 @@ script = ExtResource("1_0guav")
 rule_id = &"quiver_poison_rules"
 parameters = {
 "block_per_round": 0,
-"cap": 2,
 "mana_per_round": 0,
 "priority": 0,
 "stamina_per_round": 0,

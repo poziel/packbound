@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://d20pq2s3mjwxd" path="res://assets/relics/broken_metronome/art/icon.png" id="3_lyxke"]
 [ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_mwiap"]
 
+[ext_resource type="Resource" path="res://assets/relics/broken_metronome/bonus_ability.tres" id="bonus_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xsby6"]
 atlas = ExtResource("3_lyxke")
 region = Rect2(0, 0, 32, 32)
@@ -23,4 +25,4 @@ preferred_class_ids = null
 preferred_character_ids = null
 icon = SubResource("AtlasTexture_xsby6")
 base_stats = null
-abilities = Array[ExtResource("1_sywq6")]([ExtResource("2_p1cb3")])
+abilities = Array[ExtResource("1_sywq6")]([ExtResource("2_p1cb3"), ExtResource("bonus_ability")])

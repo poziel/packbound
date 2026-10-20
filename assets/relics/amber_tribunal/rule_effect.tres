@@ -8,12 +8,5 @@ script = ExtResource("1_1ablf")
 rule_id = &"amber_tribunal_rules"
 parameters = {
 "icon": "amber_tribunal",
-"rule": {
-"amount": 5,
-"cap": 1,
-"condition": "poison_and_burn",
-"metric": "one",
-"stat": 14
-},
 "stats": {}
 }

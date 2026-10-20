@@ -15,7 +15,7 @@ static func cells(board) -> Array[Dictionary]:
 		if moves.is_empty():
 			return result
 		source = board.dragging
-	if source.is_empty() or (source.get("adjacency_bonus", {}).is_empty() and source.get("quiver_bonus", {}).is_empty() and source.get("key", "") not in ["blood_gem", "iron_charm", "quiver", "magnificent_quiver", "cursed_idol"]):
+	if source.is_empty() or (source.get("adjacency_bonus", {}).is_empty() and source.get("quiver_bonus", {}).is_empty() and source.get("primary_bonuses", []).is_empty()):
 		return result
 	var preview: Array[Dictionary] = []
 	for item: Dictionary in board.run.items:

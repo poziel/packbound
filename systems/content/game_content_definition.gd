@@ -129,8 +129,18 @@ func validation_errors() -> PackedStringArray:
 			if owner == null: continue
 			for ability: AbilityDefinition in owner.abilities:
 				if ability == null: continue
+				for condition: ConditionDefinition in ability.conditions:
+					if condition is ClassConditionDefinition and not by_domain.character_classes.has(condition.class_id): errors.append("Unknown condition class: " + str(condition.class_id))
+					if condition is CollectibleTargetConditionDefinition:
+						for id: StringName in condition.item_ids:
+							if not by_domain.collectibles.get(id) is ItemDefinition: errors.append("Unknown bonus target item: " + str(id))
+						for id: StringName in condition.category_ids:
+							var found: bool = false
+							for category: CollectibleCategoryDefinition in collectibles.categories:
+								if category.id == id: found = true
+							if not found: errors.append("Unknown bonus target category: " + str(id))
 				for effect: EffectDefinition in ability.effects:
-					if effect is ApplyStatusEffectDefinition and effect.status != null and by_domain.status_effects.get(effect.status.id) != effect.status:
+					if (effect is ApplyStatusEffectDefinition or effect is CollectibleMechanicEffectDefinition) and effect.status != null and by_domain.status_effects.get(effect.status.id) != effect.status:
 						errors.append("collectible %s must reference a registered status definition." % owner.id)
 	for character: CharacterDefinition in characters:
 		if character == null:

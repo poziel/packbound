@@ -45,10 +45,9 @@ static func cleanse(value: StatusEffectInstance, amount: int = -1) -> int:
 
 static func _prevents_decay(value: StatusEffectInstance, context: Dictionary) -> bool:
 	if context.get("owner", "") != "enemy": return false
-	for effect: EffectDefinition in value.definition.effects:
-		if effect is CatalogRuleEffectDefinition and effect.rule_id == &"poison_status_rules":
-			var id: String = str(effect.parameters.get("prevent_enemy_decay_relic_id", ""))
-			if not id.is_empty() and context.get("relics", []).has(id): return true
+	for id: String in context.get("relics", []):
+		var effect: CollectibleMechanicEffectDefinition = preload("res://systems/abilities/collectible_mechanics.gd").effect(id, CollectibleMechanicEffectDefinition.Mechanic.PREVENT_STATUS_DECAY, context)
+		if effect != null and effect.status == value.definition: return true
 	return false
 
 static func decay(value: StatusEffectInstance, context: Dictionary = {}) -> void:

@@ -8,12 +8,5 @@ script = ExtResource("1_mgkwb")
 rule_id = &"false_spring_rules"
 parameters = {
 "icon": "false_spring",
-"rule": {
-"amount": 5,
-"cap": 1,
-"condition": "odd",
-"metric": "one",
-"stat": 2
-},
 "stats": {}
 }

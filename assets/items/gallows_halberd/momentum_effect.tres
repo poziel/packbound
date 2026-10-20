@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemMomentumEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/item_momentum_effect_definition.gd" id="effect"]
+
+[resource]
+resource_name = "Gallows Halberd: Momentum bonus"
+script = ExtResource("effect")
+gain = 1
+damage_per_spent = 0

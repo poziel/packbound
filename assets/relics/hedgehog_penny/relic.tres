@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://ikbsqj8yegrr" path="res://assets/relics/hedgehog_penny/art/icon.png" id="3_kyx2d"]
 [ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_usroc"]
 
+[ext_resource type="Resource" path="res://assets/relics/hedgehog_penny/bonus_ability.tres" id="bonus_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rbka0"]
 atlas = ExtResource("3_kyx2d")
 region = Rect2(0, 0, 32, 32)
@@ -22,4 +24,4 @@ preferred_class_ids = null
 preferred_character_ids = null
 icon = SubResource("AtlasTexture_rbka0")
 base_stats = null
-abilities = Array[ExtResource("1_5kynd")]([ExtResource("2_c4ek6")])
+abilities = Array[ExtResource("1_5kynd")]([ExtResource("2_c4ek6"), ExtResource("bonus_ability")])

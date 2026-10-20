@@ -8,12 +8,5 @@ script = ExtResource("1_wl3te")
 rule_id = &"scar_cartographer_rules"
 parameters = {
 "icon": "scar_cartographer",
-"rule": {
-"amount": 6,
-"cap": 1,
-"condition": "low_hp",
-"metric": "one",
-"stat": "physical_damage"
-},
 "stats": {}
 }

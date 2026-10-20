@@ -45,17 +45,20 @@ static func collectible(value: CollectibleDefinition) -> Dictionary:
 		var stat: int = stat_type
 		result[stat] = int(value.base_stats.get(stat_type, 0))
 	if value is ItemDefinition:
+		result.merge(CollectibleAbilityResolver.item_views(value.abilities), true)
+		for ability: AbilityDefinition in value.abilities:
+			for effect: EffectDefinition in ability.effects:
+				if effect is QuiverVolleyEffectDefinition:
+					if effect.kind == QuiverVolleyEffectDefinition.Kind.UPGRADE: result["cap"] = effect.cap
+					elif effect.kind == QuiverVolleyEffectDefinition.Kind.ARROW: result["type"] = str(effect.arrow_type)
 		var grants: Dictionary = CollectibleAbilityResolver.contributions(value.abilities, CollectibleAbilityResolver.ITEM_TRIGGER)
 		for stat: int in grants: result[stat] += int(grants[stat])
 	if value is RelicDefinition:
 		for ability: AbilityDefinition in value.abilities:
 			for predicate: ConditionDefinition in ability.conditions:
-				if not predicate is CombatMetricConditionDefinition: continue
-				if predicate.metric == CombatMetricConditionDefinition.Metric.HEALTH_PERCENT and predicate.comparison == CombatMetricConditionDefinition.Comparison.AT_MOST and predicate.threshold == 50:
-					result["status_condition_id"] = "low_hp"
-				elif predicate.comparison == CombatMetricConditionDefinition.Comparison.AT_LEAST and predicate.threshold == 1:
-					if predicate.metric == CombatMetricConditionDefinition.Metric.VOLLEY_DAMAGE: result["status_condition_id"] = "volley"
-					elif predicate.metric == CombatMetricConditionDefinition.Metric.REACTION_COUNT: result["status_condition_id"] = "reactions"
+				if predicate.has_method("tooltip_keyword_id"):
+					var keyword: String = predicate.tooltip_keyword_id()
+					if not keyword.is_empty(): result["status_condition_id"] = keyword
 		var stats: Dictionary = {}
 		for stat: int in value.base_stats:
 			stats[stat] = value.base_stats[stat]

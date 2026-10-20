@@ -8,12 +8,5 @@ script = ExtResource("1_xsy18")
 rule_id = &"venom_thesis_rules"
 parameters = {
 "icon": "venom_thesis",
-"rule": {
-"amount": 2,
-"cap": 1,
-"condition": "poisoned",
-"metric": "one",
-"stat": "magical_damage"
-},
 "stats": {}
 }

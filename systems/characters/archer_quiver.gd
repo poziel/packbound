@@ -1,35 +1,68 @@
 extends RefCounted
-## Quiver configuration and tuning. No scene or artwork ownership.
+## Authored Volley tuning; selected arrows/upgrades remain per-run state.
+const CATEGORIES = preload("res://systems/content/collectible_categories.gd")
 const KEY: String = "magnificent_quiver"
-const INTERVAL: int = 3
-const ARROWS: int = 2
-const DAMAGE: int = 3
 const INITIAL: Array[String] = ["arrow_broadhead", "arrow_bodkin", "arrow_venom"]
-const OPTIONS: Dictionary = {
-	"arrow_broadhead": {"name": "Broadhead Arrows", "detail": "Choose your starting arrows: +1 damage per Volley arrow.", "type": "broadhead"},
-	"arrow_bodkin": {"name": "Bodkin Arrows", "detail": "Choose your starting arrows: each Volley arrow pierces 2 block.", "type": "bodkin"},
-	"arrow_venom": {"name": "Venom Arrows", "detail": "Choose your starting arrows: each Volley arrow applies 1 poison.", "type": "venom"},
-	"quiver_capacity": {"name": "Expanded Quiver", "detail": "Quiver upgrade: +1 arrow per Volley. Up to 3 upgrades.", "cap": 3},
-	"quiver_mechanism": {"name": "Tension Mechanism", "detail": "Quiver upgrade: +1 damage per Volley arrow. Up to 3 upgrades.", "cap": 3},
-	"quiver_fire": {"name": "Ember Tips", "detail": "Quiver upgrade: each Volley arrow applies +1 burn. Up to 2 upgrades.", "cap": 2},
-	"quiver_poison": {"name": "Venom Reservoir", "detail": "Quiver upgrade: each Volley arrow applies +1 poison. Up to 2 upgrades.", "cap": 2},
-	"quiver_explosive": {"name": "Explosive Mechanism", "detail": "Quiver upgrade: each Volley deals +3 damage and applies +1 burn. Up to 2 upgrades.", "cap": 2},
-	"quiver_loader": {"name": "Quick Loader", "detail": "Quiver upgrade: Volley fires every 2 rounds instead of 3. Once per run.", "cap": 1}
-}
+const OPTION_IDS: Array[String] = ["arrow_broadhead", "arrow_bodkin", "arrow_venom", "quiver_capacity", "quiver_mechanism", "quiver_fire", "quiver_poison", "quiver_explosive", "quiver_loader"]
+static var INTERVAL: int:
+	get: return effect(KEY).interval
+static var ARROWS: int:
+	get: return effect(KEY).arrows
+static var DAMAGE: int:
+	get: return int(effect(KEY).per_arrow_stats.get(GameplayTypes.Stat.DAMAGE, 0))
+static var OPTIONS: Dictionary:
+	get:
+		var result: Dictionary = {}
+		for id: String in OPTION_IDS:
+			var definition: CollectibleDefinition = CATEGORIES.definition_for_key(id)
+			var tuning: QuiverVolleyEffectDefinition = effect(id)
+			var option: Dictionary = {"name": definition.display_name, "detail": definition.description}
+			if tuning.kind == QuiverVolleyEffectDefinition.Kind.ARROW: option["type"] = str(tuning.arrow_type)
+			else: option["cap"] = tuning.cap
+			result[id] = option
+		return result
+
+static func effect(id: String) -> QuiverVolleyEffectDefinition:
+	var definition: CollectibleDefinition = CATEGORIES.definition_for_key(id)
+	if definition == null: return null
+	for ability: AbilityDefinition in definition.abilities:
+		if ability.trigger_id != &"quiver_loadout": continue
+		for value: EffectDefinition in ability.effects:
+			if value is QuiverVolleyEffectDefinition: return value
+	return null
 
 static func available(item: Dictionary) -> Array[String]:
 	return preload("res://systems/loot/loot_selection.gd").available_upgrades(item)
 
+static func _loadout(item: Dictionary) -> Dictionary:
+	var base: QuiverVolleyEffectDefinition = effect(KEY)
+	var result: Dictionary = {"arrows": base.arrows, "interval": base.interval, "per_arrow": base.per_arrow_stats.duplicate(), "flat": base.volley_stats.duplicate()}
+	var selected: Array = []
+	for id: String in INITIAL:
+		var arrow: QuiverVolleyEffectDefinition = effect(id)
+		if str(arrow.arrow_type) == item.get("arrow_type", ""): selected.append([arrow, 1])
+	for id: String in item.get("upgrades", {}):
+		var upgrade: QuiverVolleyEffectDefinition = effect(id)
+		if upgrade != null and upgrade.kind == QuiverVolleyEffectDefinition.Kind.UPGRADE: selected.append([upgrade, int(item.upgrades[id])])
+	for pair: Array in selected:
+		var tuning: QuiverVolleyEffectDefinition = pair[0]
+		var count: int = pair[1]
+		result.arrows += tuning.arrows * count
+		result.interval -= tuning.interval_reduction * count
+		for stat: int in tuning.per_arrow_stats: result.per_arrow[stat] = int(result.per_arrow.get(stat, 0)) + tuning.per_arrow_stats[stat] * count
+		for stat: int in tuning.volley_stats: result.flat[stat] = int(result.flat.get(stat, 0)) + tuning.volley_stats[stat] * count
+	return result
+
+static func per_arrow_stats(item: Dictionary) -> Dictionary:
+	return _loadout(item).per_arrow
+
 static func stats(item: Dictionary, adjacency: int = 0) -> Dictionary:
-	var upgrades: Dictionary = item.get("upgrades", {})
-	var arrows: int = ARROWS + int(upgrades.get("quiver_capacity", 0))
-	var type: String = item.get("arrow_type", "")
-	var explosive: int = int(upgrades.get("quiver_explosive", 0))
-	return {"arrows": arrows, "interval": INTERVAL - int(upgrades.get("quiver_loader", 0)),
-		GameplayTypes.Stat.DAMAGE: arrows * (DAMAGE + int(upgrades.get("quiver_mechanism", 0)) + (1 if type == "broadhead" else 0)) + adjacency + explosive * 3,
-		GameplayTypes.Stat.PIERCE: arrows * 2 if type == "bodkin" else 0,
-		GameplayTypes.Stat.POISON: arrows * (int(upgrades.get("quiver_poison", 0)) + (1 if type == "venom" else 0)),
-		GameplayTypes.Stat.BURN: arrows * int(upgrades.get("quiver_fire", 0)) + explosive}
+	var tuning: Dictionary = _loadout(item)
+	var result: Dictionary = {"arrows": tuning.arrows, "interval": tuning.interval}
+	for stat: int in [GameplayTypes.Stat.DAMAGE, GameplayTypes.Stat.PIERCE, GameplayTypes.Stat.POISON, GameplayTypes.Stat.BURN, GameplayTypes.Stat.SLOW]:
+		result[stat] = tuning.arrows * int(tuning.per_arrow.get(stat, 0)) + int(tuning.flat.get(stat, 0))
+	result[GameplayTypes.Stat.DAMAGE] += adjacency
+	return result
 
 static func describe(_item: Dictionary, _remaining: int, _adjacency: int = 0) -> String:
-	return "Touching bows gain +2 damage"
+	return CATEGORIES.definition_for_key(KEY).description

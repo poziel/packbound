@@ -82,16 +82,22 @@ func validation_errors() -> PackedStringArray:
 		else:
 			for error: String in abilities[index].validation_errors():
 				errors.append("abilities[%d]: %s" % [index, error])
+	var activation_bonus_count: int = 0
+	var volley_effect_count: int = 0
 	for ability: AbilityDefinition in abilities:
 		if ability == null: continue
 		var has_concrete_effect: bool = false
 		for effect: EffectDefinition in ability.effects:
-			has_concrete_effect = has_concrete_effect or effect is ApplyStatusEffectDefinition or effect is GrantCombatStatEffectDefinition
+			if effect is GrantItemBonusEffectDefinition and ability.trigger_id == &"item_adjacency" and effect.scope == GrantItemBonusEffectDefinition.Scope.ACTIVATION_STATS: activation_bonus_count += 1
+			if effect is QuiverVolleyEffectDefinition: volley_effect_count += 1
+			has_concrete_effect = has_concrete_effect or effect is ApplyStatusEffectDefinition or effect is GrantCombatStatEffectDefinition or effect is GrantDamageEffectDefinition or effect is GrantResourceEffectDefinition or effect is GrantItemBonusEffectDefinition or effect is ItemMomentumEffectDefinition or effect is CollectibleMechanicEffectDefinition or effect is QuiverVolleyEffectDefinition
 			if effect is ApplyStatusEffectDefinition and effect.status != null:
 				var status_stat: int = GameplayTypes.stat_from_id(effect.status.id)
 				if base_stats.has(status_stat): errors.append("Status grants must not be duplicated in base_stats.")
 		if not has_concrete_effect: continue
 		errors.append_array(CollectibleAbilityResolver.validation_errors(ability, _combat_ability_trigger()))
+	if activation_bonus_count > 1: errors.append("Only one activation adjacency grant is supported per item.")
+	if volley_effect_count > 1: errors.append("Only one Volley effect is supported per item.")
 	return errors
 
 func _combat_ability_trigger() -> StringName:

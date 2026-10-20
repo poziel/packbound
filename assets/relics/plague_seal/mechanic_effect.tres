@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CollectibleMechanicEffectDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/collectible_mechanic_effect_definition.gd" id="effect"]
+[ext_resource type="Resource" path="res://assets/status_effects/poison/status_effect.tres" id="status"]
+
+[resource]
+resource_name = "Plague Seal: Mechanic"
+script = ExtResource("effect")
+mechanic = 9
+amount = 1
+divisor = 1
+status = ExtResource("status")

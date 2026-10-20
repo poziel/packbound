@@ -8,12 +8,5 @@ script = ExtResource("1_il7tp")
 rule_id = &"backpack_cathedral_rules"
 parameters = {
 "icon": "backpack_cathedral",
-"rule": {
-"amount": 12,
-"cap": 1,
-"condition": "many_items",
-"metric": "one",
-"stat": 18
-},
 "stats": {}
 }

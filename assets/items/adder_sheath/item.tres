@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://nurd2kiqs5sj" path="res://assets/items/adder_sheath/art/item.png" id="3_cv7d7"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_s0vxj"]
 
+[ext_resource type="Resource" path="res://assets/items/adder_sheath/quiver_ability.tres" id="bonus_quiver"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_x3ga7"]
 atlas = ExtResource("3_cv7d7")
 region = Rect2(0, 0, 32, 64)
@@ -22,4 +24,4 @@ tags = Array[StringName]([&"booster", &"ranger"])
 category_ids = Array[StringName]([&"boosters"])
 allowed_class_ids = Array[StringName]([&"ranger"])
 icon = SubResource("AtlasTexture_x3ga7")
-abilities = Array[ExtResource("1_p3t0c")]([ExtResource("2_soduv")])
+abilities = Array[ExtResource("1_p3t0c")]([ExtResource("2_soduv"), ExtResource("bonus_quiver")])

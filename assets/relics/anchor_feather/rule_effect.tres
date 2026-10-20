@@ -8,12 +8,5 @@ script = ExtResource("1_yfj4a")
 rule_id = &"anchor_feather_rules"
 parameters = {
 "icon": "anchor_feather",
-"rule": {
-"amount": 1,
-"cap": 1,
-"condition": "no_stamina_spent",
-"metric": "one",
-"stat": 4
-},
 "stats": {}
 }

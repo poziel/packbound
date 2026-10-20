@@ -8,12 +8,5 @@ script = ExtResource("1_qsvkx")
 rule_id = &"apiary_crown_rules"
 parameters = {
 "icon": "apiary_crown",
-"rule": {
-"amount": 2,
-"cap": 4,
-"condition": "companions",
-"metric": "companion_count",
-"stat": 11
-},
 "stats": {}
 }

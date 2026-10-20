@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://51iaa2f6uo8d" path="res://assets/items/quiver/art/item.png" id="3_k50a7"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_xhc21"]
 
+[ext_resource type="Resource" path="res://assets/items/arrow_venom/volley_ability.tres" id="volley_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vr50p"]
 atlas = ExtResource("3_k50a7")
 region = Rect2(0, 0, 32, 64)
@@ -18,4 +20,4 @@ display_name = "Venom Arrows"
 description = "Choose your starting arrows: each Volley arrow applies 1 poison."
 category_ids = Array[StringName]([&"quiver_upgrades"])
 icon = SubResource("AtlasTexture_vr50p")
-abilities = Array[ExtResource("1_m6n02")]([ExtResource("2_wckh2")])
+abilities = Array[ExtResource("1_m6n02")]([ExtResource("2_wckh2"), ExtResource("volley_ability")])

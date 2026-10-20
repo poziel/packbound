@@ -8,12 +8,5 @@ script = ExtResource("1_313p2")
 rule_id = &"grave_bell_rules"
 parameters = {
 "icon": "grave_bell",
-"rule": {
-"amount": 1,
-"cap": 4,
-"condition": "companions",
-"metric": "companion_count",
-"stat": 5
-},
 "stats": {}
 }

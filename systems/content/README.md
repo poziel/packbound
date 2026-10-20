@@ -70,7 +70,7 @@ typed definitions and the existing catalog vocabularies:
 | `ResourceType` | MANA, STAMINA, HEALTH, MOMENTUM |
 | `DamageType` | PHYSICAL, MAGICAL |
 | `Element` | NONE, FIRE, FROST, LIGHTNING, VOID, VENOM |
-| `Rarity` | COMMON, UNCOMMON, RARE, EPIC, LEGENDARY |
+| `Rarity` | COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, SIGNATURE |
 
 The stat set follows the existing collectible combat stats. Resources follow
 the committed activation-cost records, including health substitution and
@@ -250,8 +250,19 @@ conditional relics reference owned status abilities/effects. The item adapter
 derives status contribution views from these Resources; relic evaluation uses a
 pre-relic snapshot for typed health/Volley/reaction conditions and bounded scaling.
 The complete content graph verifies that these effects reference registered status
-definitions. Other special collectible rules remain compatibility bindings.
+definitions. Additional concrete collectible paths are described below.
 
 Tin Cricket and Pocket Hearth additionally execute typed combat stat grants for
 Ward and conditional Healing. Their `stat_ability.tres` records reference
 `GrantCombatStatEffectDefinition`; their former `rule` dictionaries are removed.
+
+## Complete collectible bonus execution
+
+Remaining relic scaling, conditions, typed damage and round resource grants now
+execute authored effect records. Item adjacency, quiver, Momentum and special
+mechanic records also feed the runtime. Quiver base/upgrade tuning and caps are
+owned by `QuiverVolleyEffectDefinition` resources. See the
+[ability runtime guide](../abilities/README.md#remaining-collectible-bonus-migration)
+for supported triggers and ownership. The former relic condition-name interpreter
+and primary adjacency item-ID switch have been removed. Other domains may still
+use compatibility effects; presentation/initialization metadata is still adapted.

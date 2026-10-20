@@ -8,13 +8,5 @@ script = ExtResource("1_qtnvg")
 rule_id = &"copper_afterlife_rules"
 parameters = {
 "icon": "copper_afterlife",
-"rule": {
-"amount": 2,
-"cap": 1,
-"condition": "third",
-"metric": "one",
-"stat": 9,
-"resource_bonus": true
-},
 "stats": {}
 }

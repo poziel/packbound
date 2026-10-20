@@ -8,6 +8,8 @@ const CRAFTING = preload("res://systems/crafting/pack_crafting.gd")
 const QUIVER = preload("res://systems/characters/archer_quiver.gd")
 const STATUSES = preload("res://systems/combat/status_resolver.gd")
 const EFFECTS = preload("res://systems/abilities/effect_resolver.gd")
+const MECHANICS = preload("res://systems/abilities/collectible_mechanics.gd")
+const MECHANIC = preload("res://systems/abilities/collectible_mechanic_effect_definition.gd")
 const ELEMENTS = preload("res://systems/combat/elemental_combat.gd")
 const GRID: Vector2i = Vector2i(8, 7)
 const FLOORS: int = 20
@@ -446,14 +448,29 @@ func _cells_fit(proposed: Array[Vector2i], occupied: Dictionary) -> bool:
 			return false
 	return true
 
+func _relic_mechanic(kind: CollectibleMechanicEffectDefinition.Mechanic) -> CollectibleMechanicEffectDefinition:
+	for key: String in relics:
+		var effect: CollectibleMechanicEffectDefinition = MECHANICS.effect(key, kind, {"turn": turn})
+		if effect != null: return effect
+	return null
+
+func _item_mechanic(item: Dictionary, kind: CollectibleMechanicEffectDefinition.Mechanic) -> CollectibleMechanicEffectDefinition:
+	return MECHANICS.effect(str(item.key), kind, {"turn": turn})
+
+func _mirror_amount(item: Dictionary, amount: int) -> int:
+	var effect: CollectibleMechanicEffectDefinition = _item_mechanic(item, MECHANIC.Mechanic.MIRROR)
+	return floori(float(amount) * effect.amount / effect.divisor) if effect != null else 0
+
 func touches(a: Dictionary, b: Dictionary) -> bool:
+	var wraps: bool = _relic_mechanic(MECHANIC.Mechanic.WRAP_LINKS) != null
+	var diagonals: bool = _relic_mechanic(MECHANIC.Mechanic.DIAGONAL_LINKS) != null
 	for first in cells(a):
 		for second in cells(b):
 			var dx: int = absi(first.x - second.x)
 			var dy: int = absi(first.y - second.y)
-			if relics.has("folded_space"):
+			if wraps:
 				dx = mini(dx, GRID.x - dx)
-			if dx + dy == 1 or (relics.has("diagonal_thread") and maxi(dx, dy) == 1):
+			if dx + dy == 1 or (diagonals and maxi(dx, dy) == 1):
 				return true
 	return false
 
@@ -463,14 +480,9 @@ func bonus(source: Dictionary, target: Dictionary) -> int:
 	var supplied: Dictionary = source.get("adjacency_bonus", {})
 	if CATEGORIES.matches_any(target, CATEGORIES.target_ids(supplied)):
 		return int(supplied.get("stats", {}).get(GameplayTypes.Stat.BLOCK if CATEGORIES.matches(target, &"shields") else GameplayTypes.Stat.DAMAGE, 0))
-	if source["key"] == "blood_gem" and CATEGORIES.matches_any(target, ["melee_weapons", "ranged_weapons", "magic_weapons", "quivers", "companions"]):
-		return 2
-	if source["key"] == "iron_charm" and CATEGORIES.matches(target, &"shields"):
-		return 3
-	if source["key"] in ["quiver", QUIVER.KEY] and CATEGORIES.matches(target, &"ranged_weapons"):
-		return 2
-	if source["key"] == "cursed_idol" and CATEGORIES.matches_any(target, ["melee_weapons", "ranged_weapons", "magic_weapons", "shields", "quivers"]):
-		return 3
+	for grant: Dictionary in source.get("primary_bonuses", []):
+		if CATEGORIES.matches_any(target, grant.target_category_ids):
+			return int(grant.stats.get(GameplayTypes.Stat.BLOCK if CATEGORIES.matches(target, &"shields") else GameplayTypes.Stat.DAMAGE, 0))
 	return 0
 
 func item_bonus(target: Dictionary) -> int:
@@ -487,7 +499,8 @@ func supplied_bonus(source: Dictionary, target: Dictionary) -> Dictionary:
 	if CATEGORIES.matches_any(target, CATEGORIES.target_ids(supplied)):
 		result = supplied.get("stats", {}).duplicate()
 	if target["key"] == QUIVER.KEY:
-		for stat: int in source.get("quiver_bonus", {}):
+		for stat: Variant in source.get("quiver_bonus", {}):
+			if not stat is int: continue
 			result[stat] = int(result.get(stat, 0)) + int(source["quiver_bonus"][stat])
 	if supplied.is_empty():
 		var legacy: int = bonus(source, target)
@@ -546,12 +559,10 @@ func volley_stats() -> Dictionary:
 			continue
 		var supplied: Dictionary = source.get("quiver_bonus", {})
 		var arrows: int = int(supplied.get("arrows", 0))
-		var upgrades: Dictionary = special.get("upgrades", {})
+		var per_arrow: Dictionary = QUIVER.per_arrow_stats(special)
 		result["arrows"] += arrows
-		result[GameplayTypes.Stat.DAMAGE] += arrows * (QUIVER.DAMAGE + int(upgrades.get("quiver_mechanism", 0)) + (1 if special.get("arrow_type") == "broadhead" else 0))
-		result[GameplayTypes.Stat.PIERCE] += arrows * (2 if special.get("arrow_type") == "bodkin" else 0)
-		result[GameplayTypes.Stat.POISON] += arrows * (int(upgrades.get("quiver_poison", 0)) + (1 if special.get("arrow_type") == "venom" else 0))
-		result[GameplayTypes.Stat.BURN] += arrows * int(upgrades.get("quiver_fire", 0))
+		for arrow_stat: int in [GameplayTypes.Stat.DAMAGE, GameplayTypes.Stat.PIERCE, GameplayTypes.Stat.POISON, GameplayTypes.Stat.BURN, GameplayTypes.Stat.SLOW]:
+			result[arrow_stat] += arrows * int(per_arrow.get(arrow_stat, 0))
 		for stat: int in [GameplayTypes.Stat.DAMAGE, GameplayTypes.Stat.PIERCE, GameplayTypes.Stat.POISON, GameplayTypes.Stat.BURN, GameplayTypes.Stat.SLOW]:
 			result[stat] += int(supplied.get(stat, 0))
 	return result
@@ -625,10 +636,10 @@ func starting_resources() -> Dictionary:
 				resources[resource] += int(supplied.get(resource, 0))
 		if CATEGORIES.matches(item, &"shields"):
 			resources[GameplayTypes.Stat.BLOCK] += item_bonus(item)
-		if item["key"] == "mirror_shard":
+		if _item_mechanic(item, MECHANIC.Mechanic.MIRROR) != null:
 			var best: Dictionary = _mirror_target(item, equipped)
 			if not best.is_empty():
-				resources[GameplayTypes.Stat.BLOCK] += floori(float(best[GameplayTypes.Stat.BLOCK]) / 2.0)
+				resources[GameplayTypes.Stat.BLOCK] += _mirror_amount(item, int(best[GameplayTypes.Stat.BLOCK]))
 	for resource: int in resource_overrides:
 		resources[resource] = int(resource_overrides[resource])
 	resources[GameplayTypes.Stat.MANA] = maxi(0, int(resources[GameplayTypes.Stat.MANA]))
@@ -660,7 +671,7 @@ func _mirror_target(item: Dictionary, equipped: Array[Dictionary]) -> Dictionary
 	var score: int = 0
 	for other in equipped:
 		var strength: int = int(other[GameplayTypes.Stat.DAMAGE]) + int(other[GameplayTypes.Stat.BLOCK])
-		if item_enabled(other) and other["key"] != "mirror_shard" and touches(item, other) and strength > score:
+		if item_enabled(other) and _item_mechanic(other, MECHANIC.Mechanic.MIRROR) == null and touches(item, other) and strength > score:
 			best = other
 			score = strength
 	return best
@@ -706,7 +717,7 @@ func effects() -> Dictionary:
 		for stat: int in stats:
 			activation_events.append("%s grants +%d %s." % [relic["name"], stats[stat], GameplayTypes.stat_id(stat)])
 	var equipped: Array[Dictionary] = packed()
-	var has_hourglass: bool = false
+	var hourglass_repeats: int = 0
 	var resources: Dictionary = round_resources()
 	if not can_edit_inventory():
 		resources[GameplayTypes.Stat.BLOCK] = block
@@ -742,12 +753,12 @@ func effects() -> Dictionary:
 			var gain: int = int(item.get(str(GameplayTypes.stat_id(resource)) + "_per_round", 0)) + (int(item.get(resource, 0)) if resource != GameplayTypes.Stat.BLOCK or turn == 1 else 0)
 			if resource == GameplayTypes.Stat.BLOCK and turn == 1 and CATEGORIES.matches(item, &"shields"):
 				gain += item_bonus(item)
-			if resource == GameplayTypes.Stat.BLOCK and turn == 1 and item["key"] == "mirror_shard":
+			if resource == GameplayTypes.Stat.BLOCK and turn == 1 and _item_mechanic(item, MECHANIC.Mechanic.MIRROR) != null:
 				var target: Dictionary = _mirror_target(item, equipped)
 				if not target.is_empty():
-					gain += int(target[GameplayTypes.Stat.BLOCK]) / 2
-					if int(target[GameplayTypes.Stat.BLOCK]) / 2 > 0:
-						grants.append("Copies %d block from %s." % [int(target[GameplayTypes.Stat.BLOCK]) / 2, _log_item(target)])
+					gain += _mirror_amount(item, int(target[GameplayTypes.Stat.BLOCK]))
+					if _mirror_amount(item, int(target[GameplayTypes.Stat.BLOCK])) > 0:
+						grants.append("Copies %d block from %s." % [_mirror_amount(item, int(target[GameplayTypes.Stat.BLOCK])), _log_item(target)])
 			if gain > 0:
 				result["item_effects"].append({"id": item["id"], "key": str(GameplayTypes.stat_id(resource)), "amount": gain})
 				if resource == GameplayTypes.Stat.BLOCK and turn == 1 and CATEGORIES.matches(item, &"shields"):
@@ -760,7 +771,8 @@ func effects() -> Dictionary:
 		regenerated_mana += int(item.get("mana_per_round", 0))
 		regenerated_stamina += int(item.get("stamina_per_round", 0))
 		regenerated_block += int(item.get("block_per_round", 0))
-		has_hourglass = has_hourglass or item["key"] == "hourglass"
+		var repeat_effect: CollectibleMechanicEffectDefinition = _item_mechanic(item, MECHANIC.Mechanic.REPEAT_MELEE)
+		if repeat_effect != null: hourglass_repeats = maxi(hourglass_repeats, repeat_effect.amount)
 	var available_mana: int = int(resources[GameplayTypes.Stat.MANA])
 	var available_stamina: int = int(resources[GameplayTypes.Stat.STAMINA])
 	var available_momentum: int = momentum
@@ -783,6 +795,7 @@ func effects() -> Dictionary:
 		var cost: int = 0 if _dev_flag("infinite_mana") else maxi(0, int(item["activation_costs"][GameplayTypes.ResourceType.MANA]))
 		var stamina_cost: int = 0 if _dev_flag("infinite_stamina") else maxi(0, int(item["activation_costs"].get(GameplayTypes.ResourceType.STAMINA, 0)))
 		var paid_mana: int = mini(cost, available_mana)
+		var blood_payment: int = 0
 		var required_momentum: int = momentum_cost(int(item["activation_costs"].get(GameplayTypes.ResourceType.MOMENTUM, 0))) if int(item["activation_costs"].get(GameplayTypes.ResourceType.MOMENTUM, 0)) > 0 else 0
 		var requires_warrior: bool = int(item["activation_costs"].get(GameplayTypes.ResourceType.MOMENTUM, 0)) > 0 or int(item.get("momentum_gain", 0)) > 0
 		if (requires_warrior and class_key != "warrior") or required_momentum > available_momentum:
@@ -792,8 +805,10 @@ func effects() -> Dictionary:
 			result["dormant_ids"].append(item["id"])
 			continue
 		if cost > available_mana:
-			if relics.has("arcane_barter"):
-				result["blood_cost"] += cost - available_mana
+			var barter: CollectibleMechanicEffectDefinition = _relic_mechanic(MECHANIC.Mechanic.BLOOD_MANA)
+			if barter != null:
+				blood_payment = (cost - available_mana) * barter.amount
+				result["blood_cost"] += blood_payment
 				result["mana_spent"] += available_mana
 				available_mana = 0
 			else:
@@ -810,11 +825,12 @@ func effects() -> Dictionary:
 		available_momentum += gained_momentum
 		result["momentum_spent"] += required_momentum
 		result["item_momentum_gained"] += gained_momentum
-		activation_costs[item["id"]] = {GameplayTypes.ResourceType.MANA: paid_mana, GameplayTypes.ResourceType.STAMINA: stamina_cost, GameplayTypes.ResourceType.HEALTH: cost - paid_mana, GameplayTypes.ResourceType.MOMENTUM: required_momentum}
+		activation_costs[item["id"]] = {GameplayTypes.ResourceType.MANA: paid_mana, GameplayTypes.ResourceType.STAMINA: stamina_cost, GameplayTypes.ResourceType.HEALTH: blood_payment, GameplayTypes.ResourceType.MOMENTUM: required_momentum}
 		eligible.append(item)
 	# Select from one normal activation before Hourglass, Volley or Echo copies.
 	var strongest_damage: int = -1
-	if relics.has("echo_clock") and turn % 3 == 0:
+	var echo_effect: CollectibleMechanicEffectDefinition = _relic_mechanic(MECHANIC.Mechanic.REPEAT_STRONGEST)
+	if echo_effect != null:
 		for item in eligible:
 			if CATEGORIES.matches_any(item, ["melee_weapons", "ranged_weapons", "magic_weapons", "companions"]):
 				var strength: int = int(item[GameplayTypes.Stat.DAMAGE]) + item_bonus(item)
@@ -826,7 +842,7 @@ func effects() -> Dictionary:
 		if not activation_costs.has(item["id"]):
 			activation_events.append("%s skips activation: insufficient mana, stamina or Momentum; no costs are spent." % _log_item(item))
 			continue
-		var activates: bool = CATEGORIES.matches_any(item, ["melee_weapons", "ranged_weapons", "magic_weapons", "companions"]) or item["key"] == "mirror_shard"
+		var activates: bool = CATEGORIES.matches_any(item, ["melee_weapons", "ranged_weapons", "magic_weapons", "companions"]) or _item_mechanic(item, MECHANIC.Mechanic.MIRROR) != null
 		for stat_type: int in GameplayTypes.Stat.values():
 			var stat: int = stat_type
 			activates = activates or (stat_type not in [GameplayTypes.Stat.MANA, GameplayTypes.Stat.STAMINA, GameplayTypes.Stat.BLOCK] and int(item[stat]) != 0)
@@ -844,13 +860,13 @@ func effects() -> Dictionary:
 			activation_events.append(_log_effect(received))
 		var is_attack: bool = CATEGORIES.matches_any(item, ["melee_weapons", "ranged_weapons", "magic_weapons", "companions"])
 		var copies: int = 1
-		if has_hourglass and CATEGORIES.matches(item, &"melee_weapons") and turn % 4 == 0:
-			copies += 1
+		if hourglass_repeats > 0 and CATEGORIES.matches(item, &"melee_weapons"):
+			copies += hourglass_repeats
 		if item["id"] == result["echo_item_id"]:
-			copies += 1
+			copies += echo_effect.amount
 		result["repeats"] += copies - 1
 		if copies > 1:
-			activation_events.append(_log_effect("Repeated %d extra time(s)%s%s." % [copies - 1, " from Hourglass" if has_hourglass and CATEGORIES.matches(item, &"melee_weapons") and turn % 4 == 0 else "", " from Echo Clock" if item["id"] == result["echo_item_id"] else ""]))
+			activation_events.append(_log_effect("Repeated %d extra time(s)%s%s." % [copies - 1, " from Hourglass" if hourglass_repeats > 0 and CATEGORIES.matches(item, &"melee_weapons") else "", " from Echo Clock" if item["id"] == result["echo_item_id"] else ""]))
 		var supplied: Dictionary = adjacency_stats(item)
 		for stat_type: int in GameplayTypes.Stat.values():
 			var stat: int = stat_type
@@ -859,12 +875,12 @@ func effects() -> Dictionary:
 		if is_attack:
 			result[GameplayTypes.Stat.DAMAGE] += item_bonus(item) * copies
 			result[GameplayTypes.Stat.DAMAGE] += int(activation_costs[item["id"]][GameplayTypes.ResourceType.MOMENTUM]) * int(item.get("momentum_damage", 0)) * copies
-		if item["key"] == "mirror_shard":
+		if _item_mechanic(item, MECHANIC.Mechanic.MIRROR) != null:
 			var best: Dictionary = _mirror_target(item, equipped)
 			if not best.is_empty():
-				result[GameplayTypes.Stat.DAMAGE] += floori(float(best[GameplayTypes.Stat.DAMAGE]) / 2.0)
+				result[GameplayTypes.Stat.DAMAGE] += _mirror_amount(item, int(best[GameplayTypes.Stat.DAMAGE]))
 		var typed_damage: String = str(GameplayTypes.damage_type_id(ELEMENTS.damage_type(item))) + "_damage"
-		if item["key"] == "mirror_shard":
+		if _item_mechanic(item, MECHANIC.Mechanic.MIRROR) != null:
 			var reflected: Dictionary = _mirror_target(item, equipped)
 			if not reflected.is_empty():
 				typed_damage = str(GameplayTypes.damage_type_id(ELEMENTS.damage_type(reflected))) + "_damage"
@@ -889,12 +905,13 @@ func effects() -> Dictionary:
 	result["mana_after"] = available_mana
 	result["stamina_after"] = available_stamina
 	result["momentum_after_items"] = available_momentum
-	if relics.has("mana_furnace"):
+	var furnace: CollectibleMechanicEffectDefinition = _relic_mechanic(MECHANIC.Mechanic.MANA_TO_BLOCK)
+	if furnace != null:
 		result["mana_converted"] = available_mana
-		result[GameplayTypes.Stat.BLOCK] += available_mana * 2
-		result["block_gained"] += available_mana * 2
+		result[GameplayTypes.Stat.BLOCK] += available_mana * furnace.amount
+		result["block_gained"] += available_mana * furnace.amount
 		result["mana_after"] = 0
-		activation_events.append("Mana Furnace converts %d unused mana into %d block." % [available_mana, available_mana * 2])
+		activation_events.append("Mana Furnace converts %d unused mana into %d block." % [available_mana, available_mana * furnace.amount])
 	# Thralls join the direct attack, sharing its shield absorption and overflow.
 	result["companion_damage"] = undead_companions * NECROMANCER_COMPANION_DAMAGE if class_key == "necromancer" else 0
 	result[GameplayTypes.Stat.DAMAGE] += int(result["companion_damage"])
@@ -979,8 +996,9 @@ func outcome(stats: Dictionary) -> Dictionary:
 	_record_amount(my_events, "I healed %d HP.", healed)
 	var physical: int = int(stats.get("physical_damage", stats[GameplayTypes.Stat.DAMAGE]))
 	var magical: int = int(stats.get("magical_damage", 0))
-	if relics.has("blood_pact"):
-		physical += maxi(0, int(stats[GameplayTypes.Stat.HEALING]) - healed)
+	var pact: CollectibleMechanicEffectDefinition = _relic_mechanic(MECHANIC.Mechanic.OVERHEAL_DAMAGE)
+	if pact != null:
+		physical += maxi(0, int(stats[GameplayTypes.Stat.HEALING]) - healed) * pact.amount
 	var physical_after: int = ELEMENTS.resist(physical, int(enemy.get(GameplayTypes.Stat.PHYSICAL_RESISTANCE, 0)))
 	var magical_after: int = ELEMENTS.resist(magical, int(enemy.get(GameplayTypes.Stat.MAGICAL_RESISTANCE, 0)))
 	_record_amount(my_events, foe + " resisted %d physical damage.", physical - physical_after)
@@ -1158,8 +1176,9 @@ func outcome(stats: Dictionary) -> Dictionary:
 			_record_amount(monster_events, foe + " drained %d HP to heal itself.", drain)
 	result.merge({"hp_after": maxi(0, health), "enemy_hp_after": foe_hp, "dealt": dealt, "taken": taken, "blocked": blocked, "retaliation": retaliation, "healed": healed + leech_heal, "ward_absorbed": ward_absorbed, "special_taken": 0 if _dev_flag("invulnerable") else special - ward_absorbed + int(stats["blood_cost"]), "poison_after": toxin.stacks, "poison_tick": poison_tick_stacks, "burn_tick": burn_tick_stacks, "enemy_poison_after": poisoned.stacks, "enemy_burn_after": burning.stacks, "block_after": guard, "carry_after": guard, "revived": false, "shield_absorbed": shield_absorbed}, true)
 	result["statuses_after"] = _snapshot_statuses(resolving_statuses)
-	if health <= 0 and relics.has("last_thread") and not last_thread_used:
-		result["hp_after"] = mini(8, max_hp)
+	var revival: CollectibleMechanicEffectDefinition = _relic_mechanic(MECHANIC.Mechanic.REVIVE)
+	if health <= 0 and revival != null and not last_thread_used:
+		result["hp_after"] = mini(revival.amount, max_hp)
 		result["revived"] = true
 	# Timed guard abilities explicitly replenish or expire; ordinary shields stay spent.
 	if foe_hp > 0 and int(result["hp_after"]) > 0:
@@ -1327,7 +1346,7 @@ func apply_quiver_option(key: String) -> bool:
 		if not QUIVER.available(special).has(key):
 			return false
 		special["upgrades"][key] = int(special["upgrades"].get(key, 0)) + 1
-		if key == "quiver_loader":
+		if QUIVER.effect(key).interval_reduction > 0:
 			volley_remaining = mini(volley_remaining, int(QUIVER.stats(special)["interval"]))
 	_normalize_quiver_rewards()
 	return true

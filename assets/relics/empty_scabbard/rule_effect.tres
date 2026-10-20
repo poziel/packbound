@@ -8,12 +8,5 @@ script = ExtResource("1_6n5tk")
 rule_id = &"empty_scabbard_rules"
 parameters = {
 "icon": "empty_scabbard",
-"rule": {
-"amount": 5,
-"cap": 1,
-"condition": "no_weapon",
-"metric": "one",
-"stat": "magical_damage"
-},
 "stats": {}
 }

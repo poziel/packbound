@@ -118,7 +118,7 @@ static func available_upgrades(quiver: Dictionary) -> Array[String]:
 	for pool_id: StringName in tuning.pool_ids:
 		for id: StringName in _order(pool(str(pool_id))):
 			var value: CollectibleDefinition = COLLECTIBLES.definition_for_key(str(id))
-			var rules: Dictionary = DATA.rules(value.abilities)
+			var rules: Dictionary = DATA.collectible(value)
 			if rules.has("cap") and int(quiver.get("upgrades", {}).get(str(id), 0)) < int(rules.cap):
 				result.append(str(id))
 	return result

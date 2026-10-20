@@ -8,12 +8,5 @@ script = ExtResource("1_jramd")
 rule_id = &"twin_sun_contract_rules"
 parameters = {
 "icon": "twin_sun_contract",
-"rule": {
-"amount": 3,
-"cap": 1,
-"condition": "both_damage",
-"metric": "one",
-"stat": 2
-},
 "stats": {}
 }

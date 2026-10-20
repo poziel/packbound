@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bekkjgp32d22t" path="res://assets/items/mountain_s_verdict/art/item.png" id="3_3esrk"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_fhhnp"]
 
+[ext_resource type="Resource" path="res://assets/items/mountain_s_verdict/momentum_ability.tres" id="bonus_momentum"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_adxlf"]
 atlas = ExtResource("3_3esrk")
 region = Rect2(0, 0, 64, 128)
@@ -29,4 +31,4 @@ icon = SubResource("AtlasTexture_adxlf")
 base_stats = Dictionary[int, int]({
 0: 22
 })
-abilities = Array[ExtResource("1_4pfy1")]([ExtResource("2_drd5m")])
+abilities = Array[ExtResource("1_4pfy1")]([ExtResource("2_drd5m"), ExtResource("bonus_momentum")])

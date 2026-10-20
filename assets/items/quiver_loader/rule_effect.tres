@@ -8,7 +8,6 @@ script = ExtResource("1_njakg")
 rule_id = &"quiver_loader_rules"
 parameters = {
 "block_per_round": 0,
-"cap": 1,
 "mana_per_round": 0,
 "priority": 0,
 "stamina_per_round": 0,

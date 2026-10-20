@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://8oreipjki3bk" path="res://assets/items/gilded_scarab/art/item.png" id="3_mmqyo"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_y1j6o"]
 
+[ext_resource type="Resource" path="res://assets/items/gilded_scarab/adjacency_ability.tres" id="bonus_adjacency"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5mjc"]
 atlas = ExtResource("3_mmqyo")
 region = Rect2(0, 0, 32, 32)
@@ -24,4 +26,4 @@ icon = SubResource("AtlasTexture_k5mjc")
 base_stats = Dictionary[int, int]({
 5: 2
 })
-abilities = Array[ExtResource("1_ibiqb")]([ExtResource("2_8cncq")])
+abilities = Array[ExtResource("1_ibiqb")]([ExtResource("2_8cncq"), ExtResource("bonus_adjacency")])

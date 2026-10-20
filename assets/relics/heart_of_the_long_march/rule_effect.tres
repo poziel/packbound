@@ -8,12 +8,5 @@ script = ExtResource("1_vny0v")
 rule_id = &"heart_of_the_long_march_rules"
 parameters = {
 "icon": "heart_of_the_long_march",
-"rule": {
-"amount": 1,
-"cap": 8,
-"condition": "warrior",
-"metric": "momentum",
-"stat": 2
-},
 "stats": {}
 }

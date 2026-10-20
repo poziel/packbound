@@ -8,12 +8,5 @@ script = ExtResource("1_0onus")
 rule_id = &"world_beetle_rules"
 parameters = {
 "icon": "world_beetle",
-"rule": {
-"amount": 2,
-"cap": 1,
-"condition": "dense",
-"metric": "one",
-"stat": 4
-},
 "stats": {}
 }

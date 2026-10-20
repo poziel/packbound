@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cxsa7o2oxkvkn" path="res://assets/relics/false_spring/art/icon.png" id="3_qc4a6"]
 [ext_resource type="Script" uid="uid://ds3k81t4o8h3j" path="res://systems/relics/relic_definition.gd" id="4_5q425"]
 
+[ext_resource type="Resource" path="res://assets/relics/false_spring/bonus_ability.tres" id="bonus_ability"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ckj3"]
 atlas = ExtResource("3_qc4a6")
 region = Rect2(0, 0, 32, 32)
@@ -23,4 +25,4 @@ preferred_class_ids = null
 preferred_character_ids = null
 icon = SubResource("AtlasTexture_6ckj3")
 base_stats = null
-abilities = Array[ExtResource("1_tywnj")]([ExtResource("2_7if2k")])
+abilities = Array[ExtResource("1_tywnj")]([ExtResource("2_7if2k"), ExtResource("bonus_ability")])

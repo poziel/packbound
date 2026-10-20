@@ -8,12 +8,5 @@ script = ExtResource("1_71d3k")
 rule_id = &"bone_parliament_rules"
 parameters = {
 "icon": "bone_parliament",
-"rule": {
-"amount": 3,
-"cap": 4,
-"condition": "companions",
-"metric": "companion_count",
-"stat": "physical_damage"
-},
 "stats": {}
 }

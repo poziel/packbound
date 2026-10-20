@@ -8,12 +8,5 @@ script = ExtResource("1_5xxvu")
 rule_id = &"second_breakfast_rules"
 parameters = {
 "icon": "second_breakfast",
-"rule": {
-"amount": 3,
-"cap": 1,
-"condition": "opening",
-"metric": "one",
-"stat": 2
-},
 "stats": {}
 }

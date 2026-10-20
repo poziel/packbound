@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cwvuasxwsn70c" path="res://assets/items/standard_spike/art/item.png" id="3_a6mqf"]
 [ext_resource type="Script" uid="uid://dra610hnevxqa" path="res://systems/items/item_definition.gd" id="4_7y6le"]
 
+[ext_resource type="Resource" path="res://assets/items/standard_spike/momentum_ability.tres" id="bonus_momentum"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_lveoa"]
 atlas = ExtResource("3_a6mqf")
 region = Rect2(0, 0, 32, 96)
@@ -28,4 +30,4 @@ icon = SubResource("AtlasTexture_lveoa")
 base_stats = Dictionary[int, int]({
 0: 6
 })
-abilities = Array[ExtResource("1_ybmam")]([ExtResource("2_gpayy")])
+abilities = Array[ExtResource("1_ybmam")]([ExtResource("2_gpayy"), ExtResource("bonus_momentum")])

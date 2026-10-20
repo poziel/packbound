@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="ability"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="effect"]
+[ext_resource type="Resource" path="res://assets/items/mirror_shard/mechanic_effect.tres" id="mechanic"]
+
+[resource]
+resource_name = "Mirror Shard: Mechanic"
+script = ExtResource("ability")
+id = &"mirror_shard_mechanic"
+display_name = "Mirror Shard: Mechanic"
+trigger_id = &"item_mechanic"
+effects = Array[ExtResource("effect")]([ExtResource("mechanic")])

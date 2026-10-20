@@ -8,12 +8,5 @@ script = ExtResource("1_gj48o")
 rule_id = &"broken_metronome_rules"
 parameters = {
 "icon": "broken_metronome",
-"rule": {
-"amount": 3,
-"cap": 1,
-"condition": "even",
-"metric": "one",
-"stat": 1
-},
 "stats": {}
 }

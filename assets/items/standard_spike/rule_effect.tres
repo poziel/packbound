@@ -9,7 +9,6 @@ rule_id = &"standard_spike_rules"
 parameters = {
 "block_per_round": 0,
 "mana_per_round": 0,
-"momentum_gain": 2,
 "priority": 0,
 "stamina_per_round": 0,
 "tooltip_detail": "Warrior only: gains 2 Momentum after an affordable activation.. Only warrior can equip this item."

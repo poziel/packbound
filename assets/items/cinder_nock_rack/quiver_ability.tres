@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="ability"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="effect"]
+[ext_resource type="Resource" path="res://assets/items/cinder_nock_rack/quiver_effect.tres" id="bonus"]
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="condition"]
+[ext_resource type="Script" path="res://systems/abilities/collectible_target_condition_definition.gd" id="target"]
+
+[sub_resource type="Resource" id="recipient"]
+script = ExtResource("target")
+category_ids = Array[StringName]([])
+item_ids = Array[StringName]([&"magnificent_quiver"])
+
+[resource]
+resource_name = "Cinder Nock Rack: Quiver bonus"
+script = ExtResource("ability")
+id = &"cinder_nock_rack_quiver_bonus"
+display_name = "Cinder Nock Rack: Quiver bonus"
+trigger_id = &"item_quiver"
+conditions = Array[ExtResource("condition")]([SubResource("recipient")])
+effects = Array[ExtResource("effect")]([ExtResource("bonus")])

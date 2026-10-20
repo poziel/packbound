@@ -26,3 +26,9 @@ selection. No sprites were resized or redrawn. Native sources remain editable.
 
 File moves and artwork hashes from the prior cleanup are recorded in
 `workspace/tasks/asset_cleanup/migration.json` at the project root.
+
+Bonus abilities and effects now live beside each item: `adjacency_*`, `primary_*`,
+`quiver_*`, `momentum_*`, `mechanic_*` and `volley_*` records where applicable.
+Edit target conditions, enum-keyed stats and amounts there; compatibility dictionaries
+no longer own these bonus values. Volley arrow choices and upgrades also use their
+own concrete records. Runtime views are rebuilt from the definitions on save resume.

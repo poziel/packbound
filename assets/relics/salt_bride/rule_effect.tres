@@ -8,12 +8,5 @@ script = ExtResource("1_4ay4e")
 rule_id = &"salt_bride_rules"
 parameters = {
 "icon": "salt_bride",
-"rule": {
-"amount": 4,
-"cap": 1,
-"condition": "cursed",
-"metric": "one",
-"stat": 12
-},
 "stats": {}
 }

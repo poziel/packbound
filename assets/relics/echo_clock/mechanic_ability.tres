@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="ability"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="effect"]
+[ext_resource type="Resource" path="res://assets/relics/echo_clock/mechanic_effect.tres" id="mechanic"]
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="condition"]
+[ext_resource type="Script" path="res://systems/abilities/combat_metric_condition_definition.gd" id="metric"]
+
+[sub_resource type="Resource" id="period"]
+script = ExtResource("metric")
+metric = 3
+comparison = 2
+threshold = 0
+modulo = 3
+
+[resource]
+resource_name = "Echo Clock: Mechanic"
+script = ExtResource("ability")
+id = &"echo_clock_mechanic"
+display_name = "Echo Clock: Mechanic"
+trigger_id = &"relic_mechanic"
+conditions = Array[ExtResource("condition")]([SubResource("period")])
+effects = Array[ExtResource("effect")]([ExtResource("mechanic")])

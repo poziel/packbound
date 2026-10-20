@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="AbilityDefinition" format=3]
+
+[ext_resource type="Script" path="res://systems/abilities/ability_definition.gd" id="ability"]
+[ext_resource type="Script" path="res://systems/abilities/effect_definition.gd" id="effect"]
+[ext_resource type="Script" path="res://systems/abilities/condition_definition.gd" id="condition"]
+[ext_resource type="Resource" path="res://assets/relics/twin_sun_contract/bonus_effect.tres" id="grant"]
+[ext_resource type="Script" path="res://systems/abilities/combat_metric_condition_definition.gd" id="cs0"]
+[ext_resource type="Script" path="res://systems/abilities/combat_metric_condition_definition.gd" id="cs1"]
+
+[sub_resource type="Resource" id="c0"]
+script = ExtResource("cs0")
+metric = 10
+comparison = 0
+threshold = 1
+modulo = 0
+denominator = 1
+
+[sub_resource type="Resource" id="c1"]
+script = ExtResource("cs1")
+metric = 11
+comparison = 0
+threshold = 1
+modulo = 0
+denominator = 1
+
+[resource]
+resource_name = "Twin Sun Contract: Bonus"
+script = ExtResource("ability")
+id = &"twin_sun_contract_bonus"
+display_name = "Twin Sun Contract: Bonus"
+trigger_id = &"relic_stats"
+conditions = Array[ExtResource("condition")]([SubResource("c0"), SubResource("c1")])
+effects = Array[ExtResource("effect")]([ExtResource("grant")])
