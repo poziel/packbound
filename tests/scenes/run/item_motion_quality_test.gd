@@ -1,7 +1,7 @@
 extends "res://tests/support/storage_ui_support.gd"
 
 var preview_updates: int = 0
-var report: Dictionary = {}
+var measurements: Dictionary = {}
 var review_dir := "res://workspace/reviews/item-motion"
 
 class MeasuredRun extends PackRun:
@@ -48,18 +48,18 @@ func _run() -> void:
 	var started := Time.get_ticks_usec()
 	for tick in 120:
 		_motion(at + Vector2(tick % 12, 0))
-	report.backpack_input_ms = float(Time.get_ticks_usec() - started) / 1000.0
-	report.backpack_preview_updates = preview_updates
+	measurements.backpack_input_ms = float(Time.get_ticks_usec() - started) / 1000.0
+	measurements.backpack_preview_updates = preview_updates
 	check(preview_updates <= 2, "Moving within one placement does not recalculate combat preview for every pointer event")
 	started = Time.get_ticks_usec()
 	for tick in 5: game.board.preview_effects()
-	report.effect_preview_ms = float(Time.get_ticks_usec() - started) / 5000.0
+	measurements.effect_preview_ms = float(Time.get_ticks_usec() - started) / 5000.0
 	started = Time.get_ticks_usec()
 	for tick in 5: game.board.candidate_plan()
-	report.placement_preview_ms = float(Time.get_ticks_usec() - started) / 5000.0
+	measurements.placement_preview_ms = float(Time.get_ticks_usec() - started) / 5000.0
 	started = Time.get_ticks_usec()
 	for target: Dictionary in game.run.items: game.board.bonus_markers(target)
-	report.adjacency_markers_ms = float(Time.get_ticks_usec() - started) / 1000.0
+	measurements.adjacency_markers_ms = float(Time.get_ticks_usec() - started) / 1000.0
 	var frame_costs: Array[float] = []
 	var reads_before: int = measured.effect_reads
 	preview_updates = 0
@@ -68,14 +68,14 @@ func _run() -> void:
 		await process_frame
 		frame_costs.append(float(Time.get_ticks_usec() - started) / 1000.0)
 	frame_costs.sort()
-	report.loaded_frame_median_ms = frame_costs[10]
-	check(report.loaded_frame_median_ms < 35.0, "Dense inventory with 50 craft connections avoids the reproduced 70 ms frames")
-	report.loaded_frame_effect_reads = measured.effect_reads - reads_before
-	report.loaded_frame_preview_updates = preview_updates
+	measurements.loaded_frame_median_ms = frame_costs[10]
+	check(measurements.loaded_frame_median_ms < 35.0, "Dense inventory with 50 craft connections avoids the reproduced 70 ms frames")
+	measurements.loaded_frame_effect_reads = measured.effect_reads - reads_before
+	measurements.loaded_frame_preview_updates = preview_updates
 	started = Time.get_ticks_usec()
 	game.board._process(0.001)
-	report.board_process_ms = float(Time.get_ticks_usec() - started) / 1000.0
-	report.craft_trails = game.board._crafting_hover.size()
+	measurements.board_process_ms = float(Time.get_ticks_usec() - started) / 1000.0
+	measurements.craft_trails = game.board._crafting_hover.size()
 	game.board.cancel_drag()
 	game.run.items.clear()
 	item = game.run.add_item("bandage")
@@ -100,8 +100,8 @@ func _run() -> void:
 	started = Time.get_ticks_usec()
 	for tick in 120:
 		_motion(at + Vector2(tick % 12, 0))
-	report.stash_input_ms = float(Time.get_ticks_usec() - started) / 1000.0
-	report.stash_preview_updates = preview_updates
+	measurements.stash_input_ms = float(Time.get_ticks_usec() - started) / 1000.0
+	measurements.stash_preview_updates = preview_updates
 	check(preview_updates <= 2, "Stash-only movement does not recalculate unchanged backpack effects")
 	check(storage.drag_overlay.texture_filter == CanvasItem.TEXTURE_FILTER_NEAREST, "Detached drag visual uses nearest filtering")
 	check(storage.pile_visuals.get_viewport() == test_viewport and storage.pile_visuals.clip_contents, "Stash art renders at UI resolution with its original clipping")
@@ -119,16 +119,16 @@ func _run() -> void:
 		var pose: Transform2D = body.visual_transform() if body.has_method("visual_transform") else body.transform
 		if not pose.is_equal_approx(last): changed_frames += 1
 		last = pose
-	report.visual_changes = changed_frames
-	report.physics_ticks = Engine.get_physics_frames() - physics_ticks
-	check(changed_frames > report.physics_ticks + 5, "Falling item presentation advances between physics ticks")
+	measurements.visual_changes = changed_frames
+	measurements.physics_ticks = Engine.get_physics_frames() - physics_ticks
+	check(changed_frames > measurements.physics_ticks + 5, "Falling item presentation advances between physics ticks")
 	Engine.physics_ticks_per_second = 60
 	body.teleport(Vector2(300, 180))
 	body._visual_previous = Transform2D(0.0, Vector2(100, 180))
 	body._visual_current = body._visual_previous
 	check(storage.hit_body(Vector2(100, 180)) == body, "Moving-item picking follows its displayed pose rather than a later physics pose")
 	await capture_motion("falling")
-	print("ITEM MOTION MEASUREMENTS: " + JSON.stringify(report))
+	print("ITEM MOTION MEASUREMENTS: " + JSON.stringify(measurements))
 	report("ITEM MOTION RESULT")
 	await preload("res://tests/support/automatic_combat_cleanup.gd").release(self, game, test_viewport)
 	quit(1 if failures else 0)

@@ -21,6 +21,15 @@ func _run() -> void:
 	check(game.gameplay_background.world.active_room.has_method("configure"), "Selector corridor actually mounted")
 	check(not game.enemy_card.visible and game.action.disabled, "Selector hides combat controls")
 	check(game.floor_flow.door_buttons.size() == game.run.door_choices.size(), "UI targets correspond to physical doors")
+	var original_kind: String = game.run.door_choices[0].kind
+	game.run.door_choices[0].kind = "rest"
+	game.floor_flow.refresh(game.run, game.gameplay_background, false)
+	check(game.floor_flow.door_buttons[0].accessibility_name == "Enter Rest floor", "In-place door edits invalidate floor presentation")
+	game.run.door_choices[0].kind = original_kind
+	game.floor_flow.refresh(game.run, game.gameplay_background, true)
+	check(game.floor_flow.door_buttons[0].disabled, "Input lock updates independently of floor content changes")
+	game.floor_flow.refresh(game.run, game.gameplay_background, false)
+	check(not game.floor_flow.door_buttons[0].disabled, "Unchanged floor content unlocks without rebuilding its state")
 	var door_index: int = game.floor_flow.door_ids.find("combat")
 	var key := InputEventKey.new()
 	key.keycode = KEY_1 + door_index

@@ -829,9 +829,9 @@ func _update_action_control() -> void:
 	if turn_based_round or (playback.waiting_for_round and not playback.paused):
 		action.icon = load("res://assets/icons/actions/attack/attack.png")
 	if in_basement:
-		action.icon = load("res://assets/icons/actions/enter_dungeon/enter-dungeon.svg")
+		action.icon = load("res://assets/icons/actions/enter_dungeon/enter-dungeon.png")
 	if activity:
-		action.icon = load("res://assets/icons/actions/enter_dungeon/enter-dungeon.svg")
+		action.icon = load("res://assets/icons/actions/enter_dungeon/enter-dungeon.png")
 		action.tooltip_text = label
 	action.expand_icon = true
 	action.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER

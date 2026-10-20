@@ -1815,6 +1815,13 @@
 	  "suites": ["systems"],
 	  "requires_rendering": false,
 	  "timeout_sec": 30
+	},
+	{
+	  "id": "inventory_redraw",
+	  "path": "tests/scenes/run/inventory_redraw_test.gd",
+	  "suites": ["scenes", "render"],
+	  "requires_rendering": true,
+	  "timeout_sec": 30
 	}
   ]
 }

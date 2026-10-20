@@ -9,7 +9,7 @@ var door_buttons: Array[Button] = []
 var door_ids: Array[String] = []
 var background: Control
 var locked: bool = false
-var signature: String = ""
+var signature: Array = []
 var encounter_open: bool = false
 var activity_room: Node3D
 @onready var heading: Label = $Heading
@@ -23,14 +23,16 @@ func refresh(run: PackRun, scene_background: Control, input_locked: bool) -> voi
 	locked = input_locked
 	visible = run.phase in [PackRun.Phase.SELECTOR, PackRun.Phase.ROOM, PackRun.Phase.ROOM_COMPLETE] and not background.transitioning
 	if not visible:
-		signature = ""
+		signature = []
 		_clear_doors()
 		return
-	var next_signature: String = str([run.phase, run.door_choices, run.room_kind, run.room_event, run.room_relic_offers, run.hp, run.relics])
+	var next_signature: Array = [run.phase, run.door_choices, run.room_kind, run.room_event, run.room_relic_offers, run.hp, run.relics]
 	if signature == next_signature:
 		_set_locked()
 		return
-	signature = next_signature
+	# Detach mutable containers so in-place route/relic edits still invalidate.
+	# Compare values directly instead of serializing the same state every frame.
+	signature = next_signature.duplicate(true)
 	var current_room: Node3D = background.world.active_room
 	if activity_room != current_room:
 		activity_room = current_room
@@ -106,7 +108,7 @@ func _add_activity(id: String, label: String, unavailable: bool, data: Dictionar
 	button.pressed.connect(func() -> void:
 		if id == "encounter":
 			encounter_open = true
-			signature = ""
+			signature = []
 		else:
 			activity_chosen.emit(id))
 	button.mouse_entered.connect(_highlight_activity.bind(id))

@@ -201,6 +201,9 @@ func _process(delta: float) -> void:
 	_refresh_hover_at_pointer()
 	if activation_feedback_paused:
 		return
+	# Retain a final draw when an animation expires during this tick. Idle
+	# inventory uses input/refresh invalidation rather than rebuilding its art.
+	var animated: bool = _has_animated_feedback()
 	_crafting_clock += delta
 	CRAFTING_PRESENTATION.advance(self, delta)
 	for burst in _crafting_bursts:
@@ -219,7 +222,16 @@ func _process(delta: float) -> void:
 		failed_activations[id] = maxf(0.0, float(failed_activations[id]) - delta)
 		if is_zero_approx(failed_activations[id]):
 			failed_activations.erase(id)
-	queue_redraw()
+	if animated or _has_animated_feedback():
+		queue_redraw()
+
+func _has_animated_feedback() -> bool:
+	if not _crafting_hover.is_empty() or not _crafting_bursts.is_empty() or not effect_popups.is_empty() or not failed_activations.is_empty():
+		return true
+	for age: float in _crafting_label_times.values():
+		if age < 5.0:
+			return true
+	return false
 
 func _ready() -> void:
 	changed.connect(func() -> void: draw_effects.clear())
