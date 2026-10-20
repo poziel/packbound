@@ -145,8 +145,7 @@ func _ui_checks() -> void:
 	await _review("quiver-upgrade")
 	game.modal.hide()
 	await _review("backpack")
-	game.queue_free()
-	await process_frame
+	await preload("res://tests/support/automatic_combat_cleanup.gd").release(self, game)
 
 func _review(label: String) -> void:
 	if DisplayServer.get_name() == "headless":

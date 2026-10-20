@@ -23,6 +23,19 @@ var last_track: String = ""
 var transition: Tween
 var random: RandomNumberGenerator = RandomNumberGenerator.new()
 
+func _exit_tree() -> void:
+	stop_all()
+
+func stop_all() -> void:
+	# Release playback while the owner is still alive, including paused streams.
+	# Otherwise the mixer can retain active decoding handles until its next mix.
+	if transition and transition.is_valid():
+		transition.kill()
+	next_track_timer.stop()
+	for player: AudioStreamPlayer in [music, gameplay_music, fx, item_hover_fx, ui_hover_fx, item_pickup_fx, item_drop_fx] + ambience_layers:
+		player.stop()
+		player.stream = null
+
 func _ready() -> void:
 	for bus_name: String in ["Music", "FX", "Ambience"]:
 		if AudioServer.get_bus_index(bus_name) < 0:

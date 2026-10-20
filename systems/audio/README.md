@@ -18,3 +18,9 @@ UI hover, inventory pickup and inventory drop use the same helper through
 automatically, including dynamically added icon buttons; disabled buttons stay
 silent. Item reward buttons retain only their item-hover sound. Inventory
 handoffs between board and gravity stash do not repeat pickup feedback.
+
+Application exit goes through `scenes/main.gd`'s `request_quit()`, including the
+menu Quit button and window close request. After the save guard succeeds,
+`shutdown_audio()` cancels scheduling and detaches scene playback, then uses
+`audio_shutdown.gd` to observe mixer handle release within a bounded deadline.
+Stopping a player alone does not synchronize the audio mixer before process exit.

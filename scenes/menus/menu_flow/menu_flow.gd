@@ -5,6 +5,7 @@ signal class_chosen(key: String)
 signal saved_run_chosen(id: String)
 signal resume_requested
 signal settings_changed
+signal quit_requested
 
 @onready var home: Control = $MainMenu
 @onready var selection: Control = $ClassSelection
@@ -79,7 +80,7 @@ func _ready() -> void:
 	$ApplicationPreferences.apply_settings(settings)
 	visibility_changed.connect(_sync_music)
 	play_button.pressed.connect(_transition_to_classes)
-	quit_button.pressed.connect(func() -> void: get_tree().quit())
+	quit_button.pressed.connect(func() -> void: quit_requested.emit())
 	selection.back_requested.connect(func() -> void: _navigate(show_runs))
 	runs.back_requested.connect(_transition_to_home)
 	runs.new_run_requested.connect(func() -> void: _navigate(show_classes))

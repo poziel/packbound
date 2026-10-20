@@ -1810,9 +1810,9 @@
 	  "timeout_sec": 30
 	},
 	{
-	  "id": "combatant_resource_runtime",
-	  "path": "tests/systems/combat/combatant_resource_runtime_test.gd",
-	  "suites": ["systems"],
+	  "id": "menu_audio_lifetime",
+	  "path": "tests/scenes/menus/menu_audio_lifetime_test.gd",
+	  "suites": ["scenes"],
 	  "requires_rendering": false,
 	  "timeout_sec": 30
 	},
@@ -1821,6 +1821,13 @@
 	  "path": "tests/scenes/run/inventory_redraw_test.gd",
 	  "suites": ["scenes", "render"],
 	  "requires_rendering": true,
+	  "timeout_sec": 30
+	},
+	{
+	  "id": "combatant_resource_runtime",
+	  "path": "tests/systems/combat/combatant_resource_runtime_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
 	  "timeout_sec": 30
 	}
   ]

@@ -92,19 +92,16 @@ func _run() -> void:
 	game.start_run("warrior", 44)
 	await create_timer(0.5).timeout
 	check(not player.playing, "Returning during the gap does not start a track early")
-	await create_timer(audio.next_track_timer.time_left + 0.2).timeout
+	# The real 10–30 second gap is asserted above. Exercise its timeout without
+	# allowing a valid random gap plus the other transitions to exceed test budget.
+	audio.next_track_timer.start(0.05)
+	await audio.next_track_timer.timeout
 	check(player.playing and player.stream != song, "Timer starts another random track without immediate repeat")
 	game.show_menu()
 	game.start_run("warrior", 45)
 	game.show_menu()
 	await create_timer(1.2).timeout
 	check(not audio.music.stream_paused and player.stream_paused, "Rapid transitions settle on the latest destination")
-	audio.music.stop()
-	player.stop()
-	for layer in layers:
-		layer.stop()
-	await create_timer(0.1).timeout
-	game.queue_free()
-	await process_frame
+	await preload("res://tests/support/automatic_combat_cleanup.gd").release(self, game)
 	report("GAMEPLAY MUSIC RESULT")
 	quit(1 if failures else 0)

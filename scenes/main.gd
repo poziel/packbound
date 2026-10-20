@@ -84,6 +84,7 @@ var busy: bool = false
 var playback_speed: float = 1.0
 const RESPONSE_DELAY: float = 1.5
 var combat_sequence: int = 0
+var _quitting: bool = false
 
 func _ready() -> void:
 	transition_popups = Control.new()
@@ -141,6 +142,7 @@ func _ready() -> void:
 	front.saved_run_chosen.connect(_transition_resume_run)
 	get_tree().auto_accept_quit = false
 	front.resume_requested.connect(_resume_options)
+	front.quit_requested.connect(request_quit)
 	front.settings_changed.connect(_settings_changed)
 	combat.hide()
 	modal.hide()
@@ -154,6 +156,8 @@ func _ready() -> void:
 	dev_menu.bind(self)
 
 func _process(delta: float) -> void:
+	if _quitting:
+		return
 	if combat.visible:
 		floor_flow.refresh(run, gameplay_background, busy or modal.visible or front.visible or dev_menu.host.is_open or not board.dragging.is_empty() or storage.visible)
 	else:
@@ -420,8 +424,25 @@ func _transition_resume_run(id: String) -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		if _save_run():
-			get_tree().quit()
+		request_quit()
+
+func request_quit() -> void:
+	if _quitting or not _save_run():
+		return
+	await shutdown_audio()
+	get_tree().quit()
+
+## Shutdown-only entry point also lets lifecycle tests observe mixer completion.
+func shutdown_audio() -> bool:
+	_quitting = true
+	_cancel_combat()
+	process_mode = Node.PROCESS_MODE_DISABLED
+	var audio_shutdown = preload("res://systems/audio/audio_shutdown.gd")
+	var handles: Array[WeakRef] = audio_shutdown.stop_players(self)
+	front.audio.stop_all()
+	for timer: Node in find_children("*", "Timer", true, false):
+		timer.stop()
+	return await audio_shutdown.wait_for_release(get_tree(), handles)
 
 func show_menu() -> void:
 	if not _save_run():
