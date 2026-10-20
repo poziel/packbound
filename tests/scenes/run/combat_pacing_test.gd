@@ -127,7 +127,7 @@ func _fixture(speed: float) -> void:
 	game.run.enemy["hp"] = 100
 	game.run.enemy["max_hp"] = 100
 	game.run.enemy["attacks"] = [3]
-	game.run.add_item("rusty_knife", Vector2i.ZERO)["damage"] = 8
+	game.run.add_item("rusty_knife", Vector2i.ZERO)[GameplayTypes.Stat.DAMAGE] = 8
 	game.character_tabs.current_tab = _tab_index("Logs")
 	game._refresh()
 

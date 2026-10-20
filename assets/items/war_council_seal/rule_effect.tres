@@ -9,7 +9,7 @@ rule_id = &"war_council_seal_rules"
 parameters = {
 "adjacency_bonus": {
 "stats": {
-"damage": 3
+0: 3
 },
 "target_category_ids": ["melee_weapons"]
 },

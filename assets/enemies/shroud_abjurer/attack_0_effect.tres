@@ -7,7 +7,7 @@ resource_name = "Shroud Abjurer Attack 0 Effect"
 script = ExtResource("1_mjo8g")
 rule_id = &"enemy_response"
 parameters = {
-"damage": 11,
-"damage_type": "physical",
+0: 11,
+"damage_type": 0,
 "hits": 1
 }

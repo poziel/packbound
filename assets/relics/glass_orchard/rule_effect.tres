@@ -13,7 +13,7 @@ parameters = {
 "cap": 3,
 "condition": "reactions",
 "metric": "reaction_count",
-"stat": "healing"
+"stat": 2
 },
 "stats": {}
 }

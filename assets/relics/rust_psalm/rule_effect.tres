@@ -13,7 +13,7 @@ parameters = {
 "cap": 3,
 "condition": "has_weapon",
 "metric": "weapon_count",
-"stat": "pierce"
+"stat": 14
 },
 "stats": {}
 }

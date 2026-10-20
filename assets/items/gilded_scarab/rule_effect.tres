@@ -9,7 +9,7 @@ rule_id = &"gilded_scarab_rules"
 parameters = {
 "adjacency_bonus": {
 "stats": {
-"damage": 2
+0: 2
 },
 "target_category_ids": ["magic_weapons"]
 },

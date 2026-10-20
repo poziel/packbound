@@ -47,7 +47,7 @@ func _run() -> void:
 	await process_frame
 	check(game.values["damage"].is_visible_in_tree() and not game.board.is_visible_in_tree(), "Statistics replaces backpack")
 	for stat in game.values:
-		check(game.values[stat].text == str(game.run.effects()[stat]), "Live stat: " + stat)
+		check(game.values[stat].text == str(game.run.effects()[GameplayTypes.stat_from_id(StringName(stat)) if GameplayTypes.stat_from_id(StringName(stat)) != GameplayTypes.INVALID_VALUE else stat]), "Live stat: " + stat)
 	check(not game.relic_slots[0].is_visible_in_tree(), "Relics are hidden on Statistics")
 	_check_character_header(false)
 	var stats_search: Control = game.combat.get_node("CharacterPanel/Tabs/Statistics/Search")

@@ -10,8 +10,8 @@ func _run() -> void:
 	item.base_stats[GameplayTypes.Stat.DAMAGE] = 17
 	item.activation_costs[GameplayTypes.ResourceType.STAMINA] = 1
 	var record: Dictionary = PackCatalog.item("longsword")
-	check_equal(record.damage, 17, "Runtime item damage reads its typed definition")
-	check_equal(record.stamina_cost, 1, "Runtime activation cost reads its definition")
+	check_equal(record[GameplayTypes.Stat.DAMAGE], 17, "Runtime item damage reads its typed definition")
+	check_equal(record["activation_costs"][GameplayTypes.ResourceType.STAMINA], 1, "Runtime activation cost reads its definition")
 	record.mask.clear()
 	record.category_ids.clear()
 	check(not item.footprint.is_empty(), "Run footprint mutations cannot change the shared definition")
@@ -34,7 +34,7 @@ func _run() -> void:
 	character.starting_equipment.append(equipment)
 	run.reset(42)
 	check_equal(run.max_hp, 57, "Fresh run health comes from CharacterDefinition")
-	check_equal(PackCatalog.base_resources("warrior").stamina, 8, "Round resource baseline comes from CharacterDefinition")
+	check_equal(PackCatalog.base_resources("warrior")[GameplayTypes.Stat.STAMINA], 8, "Round resource baseline comes from CharacterDefinition")
 	check_equal(run.items.size(), 4, "Starting equipment uses its authored count")
 	check_equal(run.items.back().cell, equipment.position, "Starting equipment uses its authored position")
 	character.starting_equipment.pop_back()
@@ -45,7 +45,7 @@ func _run() -> void:
 	relic.base_stats[GameplayTypes.Stat.WARD] = 9
 	run.reset(42)
 	run.relics.assign(["hearth_token"])
-	check_equal(run.effects().ward, 9, "Relic passive stats use the typed definition")
+	check_equal(run.effects()[GameplayTypes.Stat.WARD], 9, "Relic passive stats use the typed definition")
 	relic.base_stats[GameplayTypes.Stat.WARD] = ward
 	var monster: MonsterDefinition = DATA.monster_definition("ash_rat")
 	var hp: int = monster.resource_capacities[GameplayTypes.ResourceType.HEALTH]

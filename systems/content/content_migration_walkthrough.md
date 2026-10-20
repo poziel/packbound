@@ -28,7 +28,7 @@ We added [GameplayTypes](gameplay_types.gd) as the common vocabulary for:
 - Elements: none, fire, frost, lightning, void and venom.
 - Rarity: common through legendary.
 
-Definitions use enum-backed fields and typed dictionaries for stats and costs. Existing dictionary consumers still use readable string IDs; conversion helpers connect the two representations.
+Definitions and runtime stat dictionaries now use enum keys, and runtime rarity, damage-type and element values remain enums. Items use one enum-keyed activation-cost map. Conversion helpers provide readable IDs for presentation and older-save loading.
 
 **Why:** authors and scripts should agree on valid values instead of independently spelling strings. Explicit enum numbers also provide stable serialized values. Adding an enum member does not implement its gameplay behavior.
 

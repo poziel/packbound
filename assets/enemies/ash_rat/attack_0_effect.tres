@@ -7,7 +7,7 @@ resource_name = "Ash Rat Attack 0 Effect"
 script = ExtResource("1_ioa7w")
 rule_id = &"enemy_response"
 parameters = {
-"damage": 5,
-"damage_type": "physical",
+0: 5,
+"damage_type": 0,
 "hits": 1
 }

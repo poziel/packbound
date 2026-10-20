@@ -11,11 +11,11 @@ func _run() -> void:
 	game.start_run("mage", 42)
 	game.run.relics.clear()
 	game.run.items.clear()
-	game.run.add_item("spark_ring", Vector2i.ZERO)["mana"] = 3
+	game.run.add_item("spark_ring", Vector2i.ZERO)[GameplayTypes.Stat.MANA] = 3
 	var spell: Dictionary = game.run.add_item("ember_tome", Vector2i(1, 0))
-	spell["cost"] = 4
+	spell["activation_costs"][GameplayTypes.ResourceType.MANA] = 4
 	var shield: Dictionary = game.run.add_item("buckler", Vector2i(4, 0))
-	shield["block"] = 8
+	shield[GameplayTypes.Stat.BLOCK] = 8
 	game.run.enemy["hp"] = 1000
 	game.run.enemy["max_hp"] = 1000
 	game.run.enemy["attacks"] = [4]
@@ -85,12 +85,12 @@ func _capacity_checks() -> void:
 	var state: PackRun = fixture("warrior")
 	state.items.clear()
 	var focus: Dictionary = state.add_item("spark_ring", Vector2i.ZERO)
-	focus["mana"] = 6
+	focus[GameplayTypes.Stat.MANA] = 6
 	focus["mana_per_round"] = 5
 	var spell: Dictionary = state.add_item("ember_tome", Vector2i(1, 0))
-	spell["cost"] = 4
+	spell["activation_costs"][GameplayTypes.ResourceType.MANA] = 4
 	var shield: Dictionary = state.add_item("buckler", Vector2i(4, 0))
-	shield["block"] = 8
+	shield[GameplayTypes.Stat.BLOCK] = 8
 	shield["block_per_round"] = 2
 	state.enemy["hp"] = 1000
 	state.enemy["max_hp"] = 1000
@@ -114,7 +114,7 @@ func _capacity_checks() -> void:
 	var furnace: PackRun = fixture("warrior")
 	furnace.items.clear()
 	furnace.relics.append("mana_furnace")
-	furnace.add_item("spark_ring", Vector2i.ZERO)["mana"] = 6
+	furnace.add_item("spark_ring", Vector2i.ZERO)[GameplayTypes.Stat.MANA] = 6
 	furnace.start_combat()
 	furnace.begin_turn()
 	check(furnace.mana == 0 and furnace.mana_capacity == 6, "Mana conversion preserves the initial mana denominator")

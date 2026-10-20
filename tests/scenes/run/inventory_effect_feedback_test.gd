@@ -24,7 +24,7 @@ func _run() -> void:
 	check(not resolved["response_item_effects"].is_empty(), "Monster response retains defensive item sources")
 	state.items.clear()
 	var spell: Dictionary = state.add_item("ember_tome", Vector2i.ZERO)
-	spell["cost"] = 999
+	spell["activation_costs"][GameplayTypes.ResourceType.MANA] = 999
 	resolved = state.outcome(state.effects())
 	check(resolved["item_effects"].filter(func(e: Dictionary) -> bool: return e["id"] == spell["id"]).is_empty(), "Dormant items produce no activation popup")
 	state.items.clear()
@@ -71,8 +71,8 @@ func _run() -> void:
 		game.start_run("warrior", 42)
 		game.run.items.clear()
 		var weapon: Dictionary = game.run.add_item("rusty_knife", Vector2i(0, 1))
-		weapon["poison"] = 3
-		weapon["burn"] = 2
+		weapon[GameplayTypes.Stat.POISON] = 3
+		weapon[GameplayTypes.Stat.BURN] = 2
 		game.run.add_item("healing_herbs", Vector2i(2, 1))
 		game.run.add_item("cracked_shield", Vector2i(4, 1))
 		game._refresh()

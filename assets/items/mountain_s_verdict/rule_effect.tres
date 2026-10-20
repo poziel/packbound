@@ -9,7 +9,6 @@ rule_id = &"mountain_s_verdict_rules"
 parameters = {
 "block_per_round": 0,
 "mana_per_round": 0,
-"momentum_cost": 4,
 "momentum_damage": 5,
 "priority": 0,
 "stamina_per_round": 0,

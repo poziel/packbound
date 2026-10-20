@@ -10,7 +10,7 @@ parameters = {
 "bypass_block": true,
 "consumed_stacks": 1,
 "damage_per_stack": 2,
-"damage_type": "magical",
+"damage_type": 1,
 "fresh_stacks_wait": true,
 "requires_positive_damage": true
 }

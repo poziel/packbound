@@ -76,12 +76,12 @@ func _run() -> void:
 		game.front.settings["sound"] = false
 		game.run.relics.clear()
 		game.run.items.clear()
-		game.run.add_item("spark_ring", Vector2i(0, 0))["mana"] = 3
+		game.run.add_item("spark_ring", Vector2i(0, 0))[GameplayTypes.Stat.MANA] = 3
 		var spell: Dictionary = game.run.add_item("ember_tome", Vector2i(1, 0))
-		spell["cost"] = 4
-		game.run.add_item("buckler", Vector2i(4, 0))["block"] = 8
+		spell["activation_costs"][GameplayTypes.ResourceType.MANA] = 4
+		game.run.add_item("buckler", Vector2i(4, 0))[GameplayTypes.Stat.BLOCK] = 8
 		var finisher: Dictionary = game.run.add_item("rusty_knife", Vector2i(0, 3))
-		finisher["damage"] = 0
+		finisher[GameplayTypes.Stat.DAMAGE] = 0
 		game.run.enemy["hp"] = 1000
 		game.run.enemy["max_hp"] = 1000
 		game.run.enemy["attacks"] = [4]
@@ -133,7 +133,7 @@ func _run() -> void:
 		await create_timer(0.2).timeout
 		check(is_equal_approx(game.board.failed_activations.get(spell["id"], 0.0), pulse_remaining), "Pause freezes failed-item feedback for inspection")
 		# Arrange a deterministic terminal hit through the test fixture only.
-		finisher["damage"] = 10000
+		finisher[GameplayTypes.Stat.DAMAGE] = 10000
 		game.run.enemy["hp"] = 1
 		press_bottom()
 		while game.playback.active or game.busy or game.gameplay_background.transitioning:

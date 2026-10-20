@@ -13,6 +13,10 @@ func validation_errors() -> PackedStringArray:
 	# Rule handlers own parameter schemas. Keep existing bindings compatible while
 	# rejecting unusable field names; known rule IDs are a future resolver concern.
 	for key: Variant in parameters:
+		if key is int and GameplayTypes.Stat.values().has(key):
+			if not parameters[key] is int:
+				errors.append("Enum stat parameters must contain integer values.")
+			continue
 		if not (key is String or key is StringName) or str(key).strip_edges().is_empty():
 			errors.append("parameters keys must be nonblank strings or StringNames.")
 	return errors

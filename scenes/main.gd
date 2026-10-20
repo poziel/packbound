@@ -613,7 +613,7 @@ func _player_resolved(result: Dictionary) -> void:
 
 func _monster_resolved(result: Dictionary) -> void:
 	var speed: float = playback_speed
-	transition_popups.show_player_hit(result, str(run.enemy.get("damage_type", "physical")), speed)
+	transition_popups.show_player_hit(result, run.enemy.get("damage_type", GameplayTypes.DamageType.PHYSICAL), speed)
 	if result.get("player_hit_shielded", false):
 		player_shield_hit_audio.play()
 	if result.get("player_hit_unshielded", false):
@@ -769,7 +769,8 @@ func _update_preview() -> void:
 		return
 	var stats: Dictionary = run.pending_turn if not run.pending_turn.is_empty() else board.preview_effects()
 	for stat in values:
-		values[stat].text = str(stats.get(stat, 0)) + ("%" if stat.ends_with("_resistance") else "")
+		var stat_type: int = GameplayTypes.stat_from_id(stat)
+		values[stat].text = str(stats.get(stat_type if stat_type != GameplayTypes.INVALID_VALUE else stat, 0)) + ("%" if stat.ends_with("_resistance") else "")
 	var class_summary: String = "%d item(s) waiting for resources" % stats["dormant_ids"].size()
 	match run.class_key:
 		"warrior": class_summary = "Momentum %d / +%d per round" % [run.momentum, run.momentum_gain()]
@@ -780,9 +781,9 @@ func _update_preview() -> void:
 	var unused_count: int = board.unpacked().size()
 	storage_button.accessibility_name = "Stash (%d)" % unused_count
 	var preparing: bool = run.can_edit_inventory()
-	var resources: Dictionary = board.preview_starting_resources() if preparing else {"mana": run.mana, "stamina": run.stamina, "block": run.block}
+	var resources: Dictionary = board.preview_starting_resources() if preparing else {GameplayTypes.Stat.MANA: run.mana, GameplayTypes.Stat.STAMINA: run.stamina, GameplayTypes.Stat.BLOCK: run.block}
 	for resource: String in ["mana", "stamina", "block"]:
-		values[resource].text = str(resources[resource])
+		values[resource].text = str(resources[GameplayTypes.stat_from_id(resource)])
 	class_status = class_summary
 	var volley_badge: Label = character_portrait.get_node("VolleyCountdown")
 	volley_badge.visible = run.class_key == "ranger" and not run.needs_arrows()
@@ -794,9 +795,9 @@ func _update_preview() -> void:
 	momentum_bar.set_amount(run.momentum, maxi(5, ceili((run.momentum + 1) / 5.0) * 5))
 	mana_bar.number_mode = PixelStatBar.NumberMode.HIDDEN
 	stamina_bar.number_mode = PixelStatBar.NumberMode.HIDDEN
-	mana_bar.set_amount(resources["mana"], resources["mana"] if preparing else run.mana_capacity)
-	stamina_bar.set_amount(resources["stamina"], resources["stamina"] if preparing else run.stamina_capacity)
-	_set_health_block(hp_bar, run.hp, run.max_hp, resources["block"])
+	mana_bar.set_amount(resources[GameplayTypes.Stat.MANA], resources[GameplayTypes.Stat.MANA] if preparing else run.mana_capacity)
+	stamina_bar.set_amount(resources[GameplayTypes.Stat.STAMINA], resources[GameplayTypes.Stat.STAMINA] if preparing else run.stamina_capacity)
+	_set_health_block(hp_bar, run.hp, run.max_hp, resources[GameplayTypes.Stat.BLOCK])
 	_update_action_control()
 	_sync_settings_dock()
 	storage_button.disabled = busy
@@ -1176,8 +1177,9 @@ func _actual_enemy_damage(result: Dictionary) -> int:
 func _update_status_rows() -> void:
 	var enemy_status: RichTextLabel = enemy_vitals.get_node("Statuses/Content")
 	var parts: PackedStringArray = []
-	for key: String in run.enemy_conditions():
-		var amount: int = int(run.enemy_conditions()[key])
+	for stat: int in run.enemy_conditions():
+		var key: String = str(GameplayTypes.stat_id(stat))
+		var amount: int = int(run.enemy_conditions()[stat])
 		if amount <= 0:
 			continue
 		var glyph: String = PackKeywords.image_markup(key)
@@ -1214,7 +1216,7 @@ func _enemy_trace_inspection() -> Dictionary:
 	for element_type: int in GameplayTypes.Element.values():
 		if element_type == GameplayTypes.Element.NONE: continue
 		var element: String = str(GameplayTypes.element_id(element_type))
-		var durations: Array = run.elemental_traces.get(element, [])
+		var durations: Array = run.elemental_traces.get(element_type, [])
 		if durations.is_empty():
 			continue
 		var lifetimes: PackedStringArray = []
@@ -1226,7 +1228,7 @@ func _enemy_trace_inspection() -> Dictionary:
 	return {"key": "enemy_elemental_traces", "title": "Elemental traces", "body": "\n".join(rows)}
 
 func _enemy_status_inspection() -> Dictionary:
-	if int(run.enemy_conditions().get(hovered_enemy_status, 0)) <= 0 and run.elemental_traces.get(hovered_enemy_status, []).is_empty():
+	if int(run.enemy_conditions().get(GameplayTypes.stat_from_id(hovered_enemy_status), 0)) <= 0 and run.elemental_traces.get(GameplayTypes.element_from_id(hovered_enemy_status), []).is_empty():
 		return {}
 	var data: Dictionary = PackKeywordLinks.entry(hovered_enemy_status)
 	# Anchor to the hovered pair, not the wide centered text control.
@@ -1281,9 +1283,9 @@ func _enemy_inspection() -> Dictionary:
 func _enemy_rules() -> String:
 	# Old saves may contain the previous terminology in their copied enemy brief.
 	var rules: String = str(run.enemy["detail"]).replace("shields", "block").replace("shield", "block").replace("Shield", "Block")
-	for key: String in ["physical_resistance", "magical_resistance"]:
+	for key: int in [GameplayTypes.Stat.PHYSICAL_RESISTANCE, GameplayTypes.Stat.MAGICAL_RESISTANCE]:
 		if int(run.enemy.get(key, 0)) > 0:
-			rules += "\n%s %d%%" % [key.replace("_", " ").capitalize(), run.enemy[key]]
+			rules += "\n%s %d%%" % [str(GameplayTypes.stat_id(key)).replace("_", " ").capitalize(), run.enemy[key]]
 	return rules
 
 func _relic_inspection(index: int) -> Dictionary:

@@ -61,7 +61,7 @@ func _run() -> void:
 	run.enemy.hp = 10
 	run.enemy.max_hp = 20
 	run.enemy.attacks = [5]
-	run.enemy.poison = 3
+	run.enemy[GameplayTypes.Stat.POISON] = 3
 	run.enemy.drain = 4
 	var contact_normal: Dictionary = run.outcome(run.effects())
 	session.set_cheat("invulnerable", true)

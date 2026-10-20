@@ -26,7 +26,7 @@ func _shield_checks() -> void:
 	var state: PackRun = encounter()
 	state.enemy["armor"] = 8
 	var blade: Dictionary = state.add_item("rusty_knife", Vector2i.ZERO)
-	blade["damage"] = 3
+	blade[GameplayTypes.Stat.DAMAGE] = 3
 	var history_before: Array = state.history.duplicate()
 	var preview: Dictionary = state.outcome(state.effects())
 	check(preview == state.outcome(state.effects()) and state.shield() == 8 and state.history == history_before, "Previews leave shield and logs unchanged")
@@ -35,7 +35,7 @@ func _shield_checks() -> void:
 	check(state.shield() == 5 and state.enemy["hp"] == 100, "Partial hit depletes shield without damaging health")
 	check(result["player_events"] == ["Test foe's shield blocked 3 damage."], "Fully absorbed damage has no zero-health damage event")
 	check(result["monster_events"].is_empty(), "A harmless response produces no empty monster turn")
-	blade["damage"] = 7
+	blade[GameplayTypes.Stat.DAMAGE] = 7
 	result = state.end_turn()
 	check(state.shield() == 0 and state.enemy["hp"] == 98, "Second hit breaks the remaining shield and overflows to health")
 	check(result["player_events"] == ["Test foe's shield blocked 5 damage.", "I broke Test foe's shield.", "I dealt 2 damage to Test foe."], "Shield absorption, break and overflow are separate ordered events")
@@ -46,20 +46,20 @@ func _shield_checks() -> void:
 	state = encounter()
 	state.enemy["armor"] = 8
 	var stats: Dictionary = state.effects()
-	stats.merge({"damage": 5, "pierce": 2, "poison": 3, "burn": 2}, true)
+	stats.merge({GameplayTypes.Stat.DAMAGE: 5, GameplayTypes.Stat.PIERCE: 2, GameplayTypes.Stat.POISON: 3, GameplayTypes.Stat.BURN: 2}, true)
 	result = state.outcome(stats)
 	check(result["shield_absorbed"] == 3 and result["enemy_shield_after"] == 5 and result["enemy_hp_after"] == 93, "Piercing and elemental damage bypass shield without consuming it")
 	check(result["player_events"].has("I applied 3 poison to Test foe.") and result["player_events"].has("I applied 2 burn to Test foe."), "Both elemental applications are reported")
 	state = encounter()
 	state.enemy["cycle_armor"] = 8
-	state.add_item("rusty_knife", Vector2i.ZERO)["damage"] = 3
+	state.add_item("rusty_knife", Vector2i.ZERO)[GameplayTypes.Stat.DAMAGE] = 3
 	result = state.end_turn()
 	check(state.shield() == 0 and result["monster_events"].has("Test foe lost 5 temporary shield."), "Timed guard expires without a false break event")
 	result = state.end_turn()
 	check(state.shield() == 8 and result["monster_events"].has("Test foe restored 8 shield."), "Timed guard restores its shield for the next guarded turn")
 	state = encounter()
 	state.enemy["opening_armor"] = 7
-	state.add_item("rusty_knife", Vector2i.ZERO)["damage"] = 2
+	state.add_item("rusty_knife", Vector2i.ZERO)[GameplayTypes.Stat.DAMAGE] = 2
 	state.end_turn()
 	check(state.shield() == 5, "Opening shield persists partially depleted into turn two")
 	result = state.end_turn()
@@ -73,13 +73,13 @@ func _shield_checks() -> void:
 func _event_checks() -> void:
 	var state: PackRun = encounter()
 	state.enemy["attacks"] = [5]
-	state.add_item("rusty_knife", Vector2i.ZERO)["damage"] = 7
+	state.add_item("rusty_knife", Vector2i.ZERO)[GameplayTypes.Stat.DAMAGE] = 7
 	state.end_turn()
 	var lines: Array = state.history
 	check(lines.find("I dealt 7 damage to Test foe.") < lines.find("Test foe dealt 5 damage to me.") and not "\n".join(lines).contains("Turn 1"), "Player and monster events stay in order without turn headings")
 	check(state.stage_history[0]["lines"] == lines, "Individual events remain in the correct stage history")
 	var stats: Dictionary = state.effects()
-	stats["block"] = 5
+	stats[GameplayTypes.Stat.BLOCK] = 5
 	var result: Dictionary = state.outcome(stats)
 	check(result["monster_events"] == ["My shield blocked 5 damage.", "Test foe broke my shield."], "Fully blocked hit logs a real shield break and no zero damage")
 	state.enemy["hits"] = 3
@@ -92,16 +92,16 @@ func _event_checks() -> void:
 	state.enemy["attacks"] = [10]
 	state.enemy["hp"] = 3
 	stats = state.effects()
-	stats["damage"] = 20
+	stats[GameplayTypes.Stat.DAMAGE] = 20
 	result = state.outcome(stats)
 	check(result["player_events"] == ["I dealt 3 damage to Test foe."] and result["monster_events"].is_empty(), "Lethal hit reports actual HP lost and prevents a monster action")
-	stats["damage"] = 0
-	stats["poison"] = 5
-	stats["burn"] = 2
+	stats[GameplayTypes.Stat.DAMAGE] = 0
+	stats[GameplayTypes.Stat.POISON] = 5
+	stats[GameplayTypes.Stat.BURN] = 2
 	result = state.outcome(stats)
 	check(result["player_events"].has("Poison dealt 3 damage to Test foe.") and not "\n".join(result["player_events"]).contains("Burn dealt") and result["monster_events"].is_empty(), "Lethal poison prevents later damage and the monster response")
 	stats = state.effects()
-	stats["thorns"] = 10
+	stats[GameplayTypes.Stat.THORNS] = 10
 	state.enemy["hits"] = 3
 	result = state.outcome(stats)
 	check(result["monster_events"] == ["Test foe dealt 10 damage to me.", "My thorns dealt 3 damage to Test foe."], "Lethal retaliation stops the remaining strikes")
@@ -114,7 +114,7 @@ func _event_checks() -> void:
 func _status_checks() -> void:
 	var state: PackRun = encounter()
 	state.enemy["attacks"] = [4]
-	state.enemy["poison"] = 2
+	state.enemy[GameplayTypes.Stat.POISON] = 2
 	var result: Dictionary = state.end_turn()
 	check(result["monster_events"] == ["Test foe dealt 4 damage to me.", "Test foe applied 2 poison to me."], "Monster poison is logged when applied")
 	check(state.player_poison == 2 and result["player_events"].is_empty(), "New poison does not tick before it is applied")
@@ -122,19 +122,19 @@ func _status_checks() -> void:
 	check(result["player_events"] == ["Poison dealt 2 damage to me."] and state.player_poison == 3, "Existing poison ticks before the next response and decays")
 	state = encounter()
 	state.enemy["attacks"] = [5]
-	state.enemy["poison"] = 2
+	state.enemy[GameplayTypes.Stat.POISON] = 2
 	var stats: Dictionary = state.effects()
-	stats["block"] = 8
+	stats[GameplayTypes.Stat.BLOCK] = 8
 	result = state.outcome(stats)
 	check(result["poison_after"] == 0 and not "\n".join(result["monster_events"]).contains("poison"), "Fully blocked attacks do not invent elemental applications")
 	state.player_poison = 5
-	stats.merge({"cleanse": 2, "ward": 2}, true)
+	stats.merge({GameplayTypes.Stat.CLEANSE: 2, GameplayTypes.Stat.WARD: 2}, true)
 	result = state.outcome(stats)
 	check(result["player_events"].has("I cleansed 2 poison.") and result["player_events"].has("My ward blocked 2 damage from poison.") and result["player_events"].has("Poison dealt 1 damage to me."), "Cleanse and ward report only their actual effects")
 	state = encounter()
 	state.hp = 99
 	stats = state.effects()
-	stats["healing"] = 10
+	stats[GameplayTypes.Stat.HEALING] = 10
 	result = state.outcome(stats)
 	check(result["player_events"] == ["I healed 1 HP."], "Healing reports only HP actually restored")
 	state.hp = 100
@@ -150,7 +150,7 @@ func _status_checks() -> void:
 	state = encounter()
 	state.enemy["reflect"] = 2
 	stats = state.effects()
-	stats.merge({"damage": 4, "curse": 3, "blood_cost": 1}, true)
+	stats.merge({GameplayTypes.Stat.DAMAGE: 4, GameplayTypes.Stat.CURSE: 3, "blood_cost": 1}, true)
 	result = state.outcome(stats)
 	check(result["player_events"].has("Curse dealt 3 damage to me.") and result["player_events"].has("Test foe's reflection dealt 2 damage to me.") and result["player_events"].has("Arcane Barter cost me 1 HP."), "Special damage identifies each source instead of a combined HP cost")
 	state = encounter()
@@ -192,8 +192,8 @@ func _ui_checks() -> void:
 	game.run.fight = 5
 	game.run.prepare_enemy()
 	game.run.enemy["armor"] = 8
-	game.run.add_item("rusty_knife", Vector2i.ZERO)["damage"] = 3
-	game.run.add_item("cracked_shield", Vector2i(2, 0))["block"] = 2
+	game.run.add_item("rusty_knife", Vector2i.ZERO)[GameplayTypes.Stat.DAMAGE] = 3
+	game.run.add_item("cracked_shield", Vector2i(2, 0))[GameplayTypes.Stat.BLOCK] = 2
 	game.modal.hide()
 	game.run.end_turn()
 	game._refresh()
@@ -210,7 +210,7 @@ func _ui_checks() -> void:
 	if render:
 		await RenderingServer.frame_post_draw
 		viewport.get_texture().get_image().save_png(preload("res://tests/support/artifact_paths.gd").path("combat-events-log.png"))
-	game.run.items[0]["damage"] = 7
+	game.run.items[0][GameplayTypes.Stat.DAMAGE] = 7
 	game.run.end_turn()
 	game._refresh()
 	await process_frame
@@ -228,7 +228,7 @@ func _echo_aggregate_checks() -> void:
 	state.enemy["armor"] = 15
 	state.enemy["hp"] = 3
 	var blade: Dictionary = state.add_item("rusty_knife", Vector2i.ZERO)
-	blade.merge({"damage": 10, "vampirism": 9}, true)
+	blade.merge({GameplayTypes.Stat.DAMAGE: 10, GameplayTypes.Stat.VAMPIRISM: 9}, true)
 	var result: Dictionary = state.outcome(state.effects())
 	check(result["shield_absorbed"] == 15 and result["enemy_hp_after"] == 0, "Echo aggregates damage before shield absorption")
 	check(result["healed"] == 3 and result["player_state"]["hp"] == 53, "Echo vampirism caps at actual health damage including overkill")

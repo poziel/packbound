@@ -7,7 +7,7 @@ resource_name = "Tomb Mason Attack 0 Effect"
 script = ExtResource("1_kyd16")
 rule_id = &"enemy_response"
 parameters = {
-"damage": 8,
-"damage_type": "physical",
+0: 8,
+"damage_type": 0,
 "hits": 1
 }

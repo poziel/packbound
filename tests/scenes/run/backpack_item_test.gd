@@ -187,10 +187,10 @@ func _render_checks() -> void:
 		for y in [63, 64, 65, 66, 67, 68]:
 			check(_color_at(rendered, Vector2(x, y)) in [Color.RED, Color.BLUE], "Sprite stays continuous through the entire vertical join")
 	var before: PackedByteArray = rendered.get_data()
-	bow["damage"] = 987
-	bow["block"] = 654
-	bow["healing"] = 321
-	bow["cost"] = 2
+	bow[GameplayTypes.Stat.DAMAGE] = 987
+	bow[GameplayTypes.Stat.BLOCK] = 654
+	bow[GameplayTypes.Stat.HEALING] = 321
+	bow["activation_costs"][GameplayTypes.ResourceType.MANA] = 2
 	board.run.mana = 12
 	rendered = await _capture()
 	check(before == rendered.get_data(), "Damage, block, healing and mana values never draw over the sprite")

@@ -22,10 +22,10 @@ static func bonuses(run, item: Dictionary) -> Array[Dictionary]:
 	for source: Dictionary in sources:
 		var supplied: Dictionary = run.supplied_bonus(source, item)
 		var parts: PackedStringArray = []
-		for stat: String in supplied:
+		for stat: int in supplied:
 			var amount: int = int(supplied[stat])
 			if amount > 0:
-				parts.append("+%d %s" % [amount, stat.replace("_", " ")])
+				parts.append("+%d %s" % [amount, str(GameplayTypes.stat_id(stat)).replace("_", " ")])
 		if parts.is_empty():
 			continue
 		var effect: String = ", ".join(parts)
@@ -48,18 +48,19 @@ static func volley_stats(run, item: Dictionary) -> Array[Dictionary]:
 	if item.get("key") != QUIVER.KEY:
 		return result
 	var values: Dictionary = run.volley_stats() if run != null and item == run.quiver() else QUIVER.stats(item)
-	for key: String in ["damage", "pierce", "poison", "burn", "slow"]:
-		if int(values.get(key, 0)) > 0:
-			result.append({"key": "piercing" if key == "pierce" else key, "icon": "physical_attack" if key == "damage" else ("piercing" if key == "pierce" else key), "value": int(values[key])})
+	for stat: int in [GameplayTypes.Stat.DAMAGE, GameplayTypes.Stat.PIERCE, GameplayTypes.Stat.POISON, GameplayTypes.Stat.BURN, GameplayTypes.Stat.SLOW]:
+		var key: String = str(GameplayTypes.stat_id(stat))
+		if int(values.get(stat, 0)) > 0:
+			result.append({"key": "piercing" if key == "pierce" else key, "icon": "physical_attack" if key == "damage" else ("piercing" if key == "pierce" else key), "value": int(values[stat])})
 	return result
 
 static func item_stats(run, item: Dictionary) -> Array[Dictionary]:
 	var displayed: Dictionary = item.duplicate(true)
 	if run != null and run.item_enabled(item):
 		var supplied: Dictionary = run.adjacency_stats(item)
-		for stat: String in supplied:
+		for stat: int in supplied:
 			displayed[stat] = int(displayed.get(stat, 0)) + int(supplied[stat])
 		# Legacy sources are included in item_bonus alongside authored damage/block.
-		var primary: String = "block" if CATEGORIES.matches(item, &"shields") else "damage"
+		var primary: int = GameplayTypes.Stat.BLOCK if CATEGORIES.matches(item, &"shields") else GameplayTypes.Stat.DAMAGE
 		displayed[primary] = int(item.get(primary, 0)) + run.item_bonus(item)
 	return PackKeywords.item_stats(displayed)

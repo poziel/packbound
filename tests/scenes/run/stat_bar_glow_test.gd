@@ -83,7 +83,7 @@ func _run() -> void:
 	await _snapshot("stat-bars-combat-resting")
 
 	item = _encounter()
-	item["block"] = 20
+	item[GameplayTypes.Stat.BLOCK] = 20
 	game._act()
 	check(game.run.hp == 20 and not game.hp_bar.is_glowing(), "Fully blocked incoming attacks do not signal lost health")
 	check(game.enemy_bar.is_glowing(), "A protected player still highlights damage dealt to the enemy")
@@ -97,7 +97,7 @@ func _run() -> void:
 	await _wait_for_action()
 
 	item = _encounter()
-	item["healing"] = 10
+	item[GameplayTypes.Stat.HEALING] = 10
 	game.run.enemy["regen"] = 20
 	game._act()
 	await _wait_for_response()
@@ -117,7 +117,7 @@ func _run() -> void:
 	await _wait_for_action()
 
 	item = _encounter()
-	item["damage"] = 0
+	item[GameplayTypes.Stat.DAMAGE] = 0
 	game.run.enemy["attacks"] = [0]
 	game.run.enemy_poison = 4
 	game.run.player_poison = 2
@@ -186,13 +186,12 @@ func _encounter() -> Dictionary:
 	game.run.enemy["attacks"] = [3]
 	game.run.enemy["hits"] = 1
 	for stat: String in ["armor", "opening_armor", "cycle_armor", "parry", "regen", "drain", "pierce", "reflect", "poison", "sunder"]:
-		game.run.enemy[stat] = 0
+		game.run.enemy[GameplayTypes.stat_from_id(StringName(stat)) if GameplayTypes.stat_from_id(StringName(stat)) != GameplayTypes.INVALID_VALUE else stat] = 0
 	var item: Dictionary = game.run.add_item("rusty_knife")
 	game.run.auto_place(item)
 	for stat_type: int in GameplayTypes.Stat.values():
-		var stat: String = str(GameplayTypes.stat_id(stat_type))
-		item[stat] = 0
-	item["damage"] = 8
+		item[stat_type] = 0
+	item[GameplayTypes.Stat.DAMAGE] = 8
 	game._refresh()
 	return item
 

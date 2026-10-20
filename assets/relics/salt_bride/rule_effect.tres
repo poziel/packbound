@@ -13,7 +13,7 @@ parameters = {
 "cap": 1,
 "condition": "cursed",
 "metric": "one",
-"stat": "cleanse"
+"stat": 12
 },
 "stats": {}
 }

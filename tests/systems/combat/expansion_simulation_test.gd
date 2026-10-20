@@ -24,7 +24,7 @@ func verify_preview(run: PackRun, label: String) -> void:
 	var outcome: Dictionary = run.outcome(stats)
 	check(outcome == run.outcome(stats), label + " deterministic repeated outcomes")
 	check(before == saves.capture(run, 0.0), label + " previews preserve all captured state and RNG")
-	check(int(stats["damage"]) == int(stats["physical_damage"]) + int(stats["magical_damage"]), label + " typed damage total")
+	check(int(stats[GameplayTypes.Stat.DAMAGE]) == int(stats["physical_damage"]) + int(stats["magical_damage"]), label + " typed damage total")
 	for key: String in ["mana_after", "stamina_after"]:
 		check(int(stats.get(key, 0)) >= 0, label + " nonnegative " + key)
 	var restored := PackRun.new()

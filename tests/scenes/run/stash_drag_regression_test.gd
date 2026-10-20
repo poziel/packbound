@@ -64,7 +64,7 @@ func _run() -> void:
 	capture("hover-shield")
 	board.drop_at(board.pointer)
 	check(shield["cell"] == null and board.dragging == shield, "Actual drop still hands shield to cursor")
-	check(board.preview_starting_resources()["block"] == 0, "Dropped swap updates resources after shield leaves backpack")
+	check(board.preview_starting_resources()[GameplayTypes.Stat.BLOCK] == 0, "Dropped swap updates resources after shield leaves backpack")
 	board.cancel_drag()
 	await settle()
 	check(board.get_node("Cell2_1").visible, "Grid cell returns after drag ends")

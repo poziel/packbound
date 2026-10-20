@@ -13,7 +13,7 @@ parameters = {
 "cap": 3,
 "condition": "has_spell",
 "metric": "spell_count",
-"stat": "ward"
+"stat": 5
 },
 "stats": {}
 }

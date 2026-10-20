@@ -9,7 +9,7 @@ rule_id = &"captain_s_baton_rules"
 parameters = {
 "adjacency_bonus": {
 "stats": {
-"damage": 2
+0: 2
 },
 "target_category_ids": ["melee_weapons"]
 },

@@ -70,10 +70,11 @@ static func entry(key: String) -> Dictionary:
 		var recipe: Dictionary = elements.reaction(key.trim_prefix("reaction_"))
 		if not recipe.is_empty():
 			var effects: Array[Dictionary] = []
-			for stat: String in ["damage", "burn", "slow", "spark", "doom", "poison", "pierce"]:
-				if int(recipe.get(stat, 0)) > 0:
-					effects.append({"key": "magical_attack" if stat == "damage" else ("piercing" if stat == "pierce" else stat), "value": int(recipe[stat])})
-			return {"key": key, "title": recipe["name"], "keyword_list": effects, "body": "Consumes " + " + ".join(recipe["needs"]) + " traces\nProduces " + " + ".join(recipe["produces"]) + " trace"}
+			for stat_type: int in [GameplayTypes.Stat.DAMAGE, GameplayTypes.Stat.BURN, GameplayTypes.Stat.SLOW, GameplayTypes.Stat.SPARK, GameplayTypes.Stat.DOOM, GameplayTypes.Stat.POISON, GameplayTypes.Stat.PIERCE]:
+				var stat: String = str(GameplayTypes.stat_id(stat_type))
+				if int(recipe.get(stat_type, 0)) > 0:
+					effects.append({"key": "magical_attack" if stat == "damage" else ("piercing" if stat == "pierce" else stat), "value": int(recipe[stat_type])})
+			return {"key": key, "title": recipe["name"], "keyword_list": effects, "body": "Consumes " + " + ".join(recipe["needs"].map(func(value): return str(GameplayTypes.element_id(value)))) + " traces\nProduces " + " + ".join(recipe["produces"].map(func(value): return str(GameplayTypes.element_id(value)))) + " trace"}
 	if key == "elemental_reactions":
 		var names := PackedStringArray()
 		for recipe: Dictionary in elements.REACTIONS:

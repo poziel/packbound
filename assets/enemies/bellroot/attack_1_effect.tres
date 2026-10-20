@@ -7,7 +7,7 @@ resource_name = "Bellroot Attack 1 Effect"
 script = ExtResource("1_1lop4")
 rule_id = &"enemy_response"
 parameters = {
-"damage": 15,
-"damage_type": "physical",
+0: 15,
+"damage_type": 0,
 "hits": 1
 }

@@ -16,12 +16,14 @@ func _initialize() -> void:
 		return
 	var run := fixture()
 	var blade: Dictionary = run.add_item("rusty_knife", Vector2i.ZERO)
-	blade.merge({"damage": 4, "momentum_cost": 2, "momentum_damage": 3, "stamina_cost": 1}, true)
+	blade.merge({GameplayTypes.Stat.DAMAGE: 4, "momentum_damage": 3}, true)
+	blade.activation_costs[GameplayTypes.ResourceType.MOMENTUM] = 2
+	blade.activation_costs[GameplayTypes.ResourceType.STAMINA] = 1
 	var preview: Dictionary = run.effects()
-	check(preview["damage"] == 0 and preview["stamina_spent"] == 0, "Missing Momentum skips attack without spending stamina")
+	check(preview[GameplayTypes.Stat.DAMAGE] == 0 and preview["stamina_spent"] == 0, "Missing Momentum skips attack without spending stamina")
 	run.momentum = 2
 	preview = run.effects()
-	check(preview["damage"] == 10 and run.momentum == 2, "Momentum strike damage previews without live spending")
+	check(preview[GameplayTypes.Stat.DAMAGE] == 10 and run.momentum == 2, "Momentum strike damage previews without live spending")
 	run.start_combat()
 	run.begin_turn()
 	check(run.momentum == 0, "Momentum paid at committed player checkpoint")
@@ -34,30 +36,30 @@ func _initialize() -> void:
 	check(run.momentum == 3, "Affordable weapon grants Momentum plus normal exchange gain")
 	run = fixture("mage")
 	blade = run.add_item("rusty_knife", Vector2i.ZERO)
-	blade["momentum_cost"] = 1
-	check(run.effects()["damage"] == 0, "Nonwarrior cannot pay Momentum costs")
+	blade["activation_costs"][GameplayTypes.ResourceType.MOMENTUM] = 1
+	check(run.effects()[GameplayTypes.Stat.DAMAGE] == 0, "Nonwarrior cannot pay Momentum costs")
 	run = fixture()
 	blade = run.add_item("rusty_knife", Vector2i.ZERO)
 	var charm: Dictionary = run.add_item("spark_ring", Vector2i.RIGHT)
-	charm["adjacency_bonus"] = {"target_category_ids": ["melee_weapons"], "stats": {"damage": 2, "pierce": 1}}
+	charm["adjacency_bonus"] = {"target_category_ids": ["melee_weapons"], "stats": {GameplayTypes.Stat.DAMAGE: 2, GameplayTypes.Stat.PIERCE: 1}}
 	preview = run.effects()
-	check(preview["damage"] == 6 and preview["pierce"] == 1, "Connected equipment supplies typed adjacency stats")
+	check(preview[GameplayTypes.Stat.DAMAGE] == 6 and preview[GameplayTypes.Stat.PIERCE] == 1, "Connected equipment supplies typed adjacency stats")
 	charm["cell"] = null
-	check(run.effects()["damage"] == 4, "Stashed booster grants no stats")
+	check(run.effects()[GameplayTypes.Stat.DAMAGE] == 4, "Stashed booster grants no stats")
 	run = fixture("ranger")
 	var quiver: Dictionary = run.add_item("magnificent_quiver", Vector2i.ZERO)
 	quiver["arrow_type"] = "broadhead"
 	charm = run.add_item("spark_ring", Vector2i(1, 0))
-	charm["quiver_bonus"] = {"arrows": 1, "damage": 2, "pierce": 1, "slow": 1}
+	charm["quiver_bonus"] = {"arrows": 1, GameplayTypes.Stat.DAMAGE: 2, GameplayTypes.Stat.PIERCE: 1, GameplayTypes.Stat.SLOW: 1}
 	run.volley_remaining = 1
 	preview = run.effects()
-	check(preview["volley_damage"] == 14 and preview["pierce"] == 1 and preview["slow"] == 1, "Touching fitting adds arrows and flat Volley stats")
+	check(preview["volley_damage"] == 14 and preview[GameplayTypes.Stat.PIERCE] == 1 and preview[GameplayTypes.Stat.SLOW] == 1, "Touching fitting adds arrows and flat Volley stats")
 	charm["cell"] = Vector2i(5, 5)
 	check(run.effects()["volley_damage"] == 8, "Distant fitting cannot affect Volley")
 	run = fixture()
 	blade = run.add_item("rusty_knife", Vector2i.ZERO)
 	blade["category_ids"] = ["companions"]
 	charm = run.add_item("blood_gem", Vector2i.RIGHT)
-	check(run.effects()["damage"] == 6, "Companion is a physical attacker and accepts attack boosters")
+	check(run.effects()[GameplayTypes.Stat.DAMAGE] == 6, "Companion is a physical attacker and accepts attack boosters")
 	report("EXPANSION ITEMS")
 	quit(1 if failures else 0)

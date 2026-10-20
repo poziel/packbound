@@ -20,7 +20,7 @@ func _run() -> void:
 	window.free()
 	var game = load("res://scenes/main.gd").new()
 	game.run.reset(123, "mage")
-	game.run.elemental_traces = {"fire": [2, 1], "frost": [1]}
+	game.run.elemental_traces = {GameplayTypes.Element.FIRE: [2, 1], GameplayTypes.Element.FROST: [1]}
 	var traces: Dictionary = game._enemy_trace_inspection()
 	check(not traces.is_empty(), "Contract: not traces.is_empty()")
 	check(traces.body.contains("Fire ×2") and traces.body.contains("Frost ×1"), "Contract: traces.body.contains(\"Fire \u00d72\") and traces.body.contains(\"Frost \u00d71\")")
@@ -35,7 +35,7 @@ func _run() -> void:
 	root.add_child(live)
 	await process_frame
 	live.run.reset(123, "mage")
-	live.run.elemental_traces = {"fire": [2]}
+	live.run.elemental_traces = {GameplayTypes.Element.FIRE: [2]}
 	live._update_status_rows()
 	await process_frame
 	check(live.enemy_trace_indicator.visible, "Contract: live.enemy_trace_indicator.visible")

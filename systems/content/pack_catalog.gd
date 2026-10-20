@@ -39,17 +39,17 @@ static func classes() -> Dictionary:
 
 static func base_resources(key: String) -> Dictionary:
 	var value: CharacterDefinition = DATA.character(key)
-	return {"mana": int(value.resource_capacities.get(GameplayTypes.ResourceType.MANA, 0)),
-		"stamina": int(value.resource_capacities.get(GameplayTypes.ResourceType.STAMINA, 0)),
-		"block": int(value.base_stats.get(GameplayTypes.Stat.BLOCK, 0))}
+	return {GameplayTypes.Stat.MANA: int(value.resource_capacities.get(GameplayTypes.ResourceType.MANA, 0)),
+		GameplayTypes.Stat.STAMINA: int(value.resource_capacities.get(GameplayTypes.ResourceType.STAMINA, 0)),
+		GameplayTypes.Stat.BLOCK: int(value.base_stats.get(GameplayTypes.Stat.BLOCK, 0))}
 
 static func innate_stats(key: String) -> Array[Dictionary]:
 	var character: Dictionary = classes()[key]
 	var resources: Dictionary = base_resources(key)
 	var result: Array[Dictionary] = [{"key": "health", "value": int(character["hp"])}]
-	for stat: String in ["mana", "stamina", "block"]:
+	for stat: int in [GameplayTypes.Stat.MANA, GameplayTypes.Stat.STAMINA, GameplayTypes.Stat.BLOCK]:
 		if int(resources[stat]) > 0:
-			result.append({"key": stat, "value": int(resources[stat])})
+			result.append({"key": str(GameplayTypes.stat_id(stat)), "value": int(resources[stat])})
 	return result
 
 static func item(key: String) -> Dictionary:

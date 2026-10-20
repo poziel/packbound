@@ -66,7 +66,7 @@ func _run() -> void:
 	check(run.items[-1].cell == null, "Failed auto-place retains item in stash")
 	run.reset(1729)
 	service.apply(run, "set_player", {"stat": "block", "value": 25})
-	check_equal(run.starting_resources().block, 25, "Block edit defines the next fight starting budget")
+	check_equal(run.starting_resources()[GameplayTypes.Stat.BLOCK], 25, "Block edit defines the next fight starting budget")
 	run.start_combat()
 	check_equal(run.block, 25, "Starting combat preserves the explicitly edited Block budget")
 	run.reset(1729, "necromancer")

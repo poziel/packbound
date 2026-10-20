@@ -49,13 +49,15 @@ func _run() -> void:
 	check_equal(types.element_id(5), &"venom", "Serialized element five remains venom")
 	check_equal(PackCatalog.RARITY.tier({"rarity": types.Rarity.RARE}), types.Rarity.RARE, "Rarity stays an enum in runtime presentation data")
 	check_equal(PackCatalog.item("rusty_knife").rarity, types.Rarity.COMMON, "Catalog retains enum rarity")
+	for row: Dictionary in PackCatalog.innate_stats("mage"):
+		check(row.key is String and PackKeywords.has_icon(row.key), "Innate stat presentation keeps named icon keys")
 	check_equal(PackCatalog.RARITY.tier({"rarity": "rare"}), types.Rarity.COMMON, "Runtime does not reinterpret legacy strings")
-	check_equal(preload("res://systems/combat/elemental_combat.gd").damage_type({"element": types.Element.FIRE, "damage_type": types.DamageType.PHYSICAL}), "magical", "Elemental damage accepts enum values")
+	check_equal(preload("res://systems/combat/elemental_combat.gd").damage_type({"element": types.Element.FIRE, "damage_type": types.DamageType.PHYSICAL}), types.DamageType.MAGICAL, "Elemental damage accepts enum values")
 	var elements = preload("res://systems/combat/elemental_combat.gd")
 	for key: String in PackCatalog.ROSTER:
 		var definition: Dictionary = PackCatalog.item(key)
-		var legacy_damage: String = "magical" if ["fire", "frost", "lightning", "void", "venom"].has(str(definition.get("element", ""))) else str(definition.get("damage_type", "magical" if definition.get("role") == "spell" else "physical"))
-		check_equal(elements.damage_type(definition), legacy_damage, "Legacy damage classification is preserved: " + key)
+		var expected_damage: int = types.DamageType.MAGICAL if definition.element != types.Element.NONE else definition.damage_type
+		check_equal(elements.damage_type(definition), expected_damage, "Authored damage classification is preserved: " + key)
 	var item: Resource = load("res://systems/items/item_definition.gd").new()
 	item.id = &"test_enum_item"
 	item.display_name = "Enum Item"

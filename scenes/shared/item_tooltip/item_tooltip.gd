@@ -5,7 +5,7 @@ func _ready() -> void:
 	minimum_size_changed.connect(reset_size)
 
 func set_item(item: Dictionary, adjacency_bonus: int = 0, run = null) -> void:
-	var element: String = str(item.get("element", ""))
+	var element: String = str(GameplayTypes.element_id(item.get("element", GameplayTypes.Element.NONE)))
 	$Header/Icon.texture = PackKeywords.icon(element)
 	$Header/Icon.visible = not element.is_empty() and $Header/Icon.texture != null
 	$Header/Icon.custom_minimum_size = Vector2(24, 24)

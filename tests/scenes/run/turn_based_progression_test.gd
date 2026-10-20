@@ -17,7 +17,7 @@ func _run() -> void:
 	game.run.items.clear()
 	game.run.phase = PackRun.Phase.FIGHT
 	var weapon: Dictionary = game.run.add_item("rusty_knife", Vector2i.ZERO)
-	weapon.damage = 10000
+	weapon[GameplayTypes.Stat.DAMAGE] = 10000
 	game.run.enemy.hp = 1
 	game.run.enemy.armor = 0
 	game._refresh()

@@ -7,7 +7,7 @@ resource_name = "Ossuary Hound Attack 1 Effect"
 script = ExtResource("1_uqgxr")
 rule_id = &"enemy_response"
 parameters = {
-"damage": 14,
-"damage_type": "physical",
+0: 14,
+"damage_type": 0,
 "hits": 1
 }

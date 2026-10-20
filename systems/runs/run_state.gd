@@ -285,7 +285,7 @@ func is_invisible() -> bool:
 	return class_key == "assassin" and (turn - 1) % 3 == 0
 
 func enemy_conditions() -> Dictionary:
-	return {"poison": enemy_poison, "burn": enemy_burn, "slow": enemy_slow, "spark": enemy_spark, "doom": enemy_doom}
+	return {GameplayTypes.Stat.POISON: enemy_poison, GameplayTypes.Stat.BURN: enemy_burn, GameplayTypes.Stat.SLOW: enemy_slow, GameplayTypes.Stat.SPARK: enemy_spark, GameplayTypes.Stat.DOOM: enemy_doom}
 
 static func offsets(item: Dictionary, rotation: int = -1) -> Array[Vector2i]:
 	var result: Array[Vector2i] = []
@@ -408,7 +408,7 @@ func bonus(source: Dictionary, target: Dictionary) -> int:
 		return 0
 	var supplied: Dictionary = source.get("adjacency_bonus", {})
 	if CATEGORIES.matches_any(target, CATEGORIES.target_ids(supplied)):
-		return int(supplied.get("stats", {}).get("block" if CATEGORIES.matches(target, &"shields") else "damage", 0))
+		return int(supplied.get("stats", {}).get(GameplayTypes.Stat.BLOCK if CATEGORIES.matches(target, &"shields") else GameplayTypes.Stat.DAMAGE, 0))
 	if source["key"] == "blood_gem" and CATEGORIES.matches_any(target, ["melee_weapons", "ranged_weapons", "magic_weapons", "quivers", "companions"]):
 		return 2
 	if source["key"] == "iron_charm" and CATEGORIES.matches(target, &"shields"):
@@ -433,12 +433,12 @@ func supplied_bonus(source: Dictionary, target: Dictionary) -> Dictionary:
 	if CATEGORIES.matches_any(target, CATEGORIES.target_ids(supplied)):
 		result = supplied.get("stats", {}).duplicate()
 	if target["key"] == QUIVER.KEY:
-		for stat: String in source.get("quiver_bonus", {}):
+		for stat: int in source.get("quiver_bonus", {}):
 			result[stat] = int(result.get(stat, 0)) + int(source["quiver_bonus"][stat])
 	if supplied.is_empty():
 		var legacy: int = bonus(source, target)
 		if legacy > 0:
-			var stat: String = "block" if CATEGORIES.matches(target, &"shields") else "damage"
+			var stat: int = GameplayTypes.Stat.BLOCK if CATEGORIES.matches(target, &"shields") else GameplayTypes.Stat.DAMAGE
 			result[stat] = int(result.get(stat, 0)) + legacy
 	return result
 
@@ -460,7 +460,7 @@ func adjacency_stats(target: Dictionary) -> Dictionary:
 		var supplied: Dictionary = source.get("adjacency_bonus", {})
 		if supplied.is_empty() or not touches(source, target) or not CATEGORIES.matches_any(target, CATEGORIES.target_ids(supplied)) or not item_enabled(source):
 			continue
-		for stat: String in supplied.get("stats", {}):
+		for stat: int in supplied.get("stats", {}):
 			result[stat] = int(result.get(stat, 0)) + int(supplied["stats"][stat])
 	return result
 
@@ -484,7 +484,7 @@ func normalize_reward_restrictions() -> void:
 func volley_stats() -> Dictionary:
 	var special: Dictionary = quiver()
 	var result: Dictionary = QUIVER.stats(special, item_bonus(special))
-	result["slow"] = 0
+	result[GameplayTypes.Stat.SLOW] = 0
 	if special.is_empty() or special.get("cell") == null:
 		return result
 	for source: Dictionary in packed():
@@ -494,11 +494,11 @@ func volley_stats() -> Dictionary:
 		var arrows: int = int(supplied.get("arrows", 0))
 		var upgrades: Dictionary = special.get("upgrades", {})
 		result["arrows"] += arrows
-		result["damage"] += arrows * (QUIVER.DAMAGE + int(upgrades.get("quiver_mechanism", 0)) + (1 if special.get("arrow_type") == "broadhead" else 0))
-		result["pierce"] += arrows * (2 if special.get("arrow_type") == "bodkin" else 0)
-		result["poison"] += arrows * (int(upgrades.get("quiver_poison", 0)) + (1 if special.get("arrow_type") == "venom" else 0))
-		result["burn"] += arrows * int(upgrades.get("quiver_fire", 0))
-		for stat: String in ["damage", "pierce", "poison", "burn", "slow"]:
+		result[GameplayTypes.Stat.DAMAGE] += arrows * (QUIVER.DAMAGE + int(upgrades.get("quiver_mechanism", 0)) + (1 if special.get("arrow_type") == "broadhead" else 0))
+		result[GameplayTypes.Stat.PIERCE] += arrows * (2 if special.get("arrow_type") == "bodkin" else 0)
+		result[GameplayTypes.Stat.POISON] += arrows * (int(upgrades.get("quiver_poison", 0)) + (1 if special.get("arrow_type") == "venom" else 0))
+		result[GameplayTypes.Stat.BURN] += arrows * int(upgrades.get("quiver_fire", 0))
+		for stat: int in [GameplayTypes.Stat.DAMAGE, GameplayTypes.Stat.PIERCE, GameplayTypes.Stat.POISON, GameplayTypes.Stat.BURN, GameplayTypes.Stat.SLOW]:
 			result[stat] += int(supplied.get(stat, 0))
 	return result
 
@@ -555,7 +555,7 @@ func set_combat_paused(value: bool) -> void:
 func starting_resources() -> Dictionary:
 	var resources: Dictionary = PackCatalog.base_resources(class_key)
 	var passives: Dictionary = relic_passives()
-	for resource: String in ["mana", "stamina", "block"]:
+	for resource: int in [GameplayTypes.Stat.MANA, GameplayTypes.Stat.STAMINA, GameplayTypes.Stat.BLOCK]:
 		resources[resource] += int(passives.get(resource, 0))
 		resources[resource] += preload("res://systems/relics/expansion_relics.gd").resource_bonus(self, resource)
 	var equipped: Array[Dictionary] = packed()
@@ -563,22 +563,22 @@ func starting_resources() -> Dictionary:
 		if not item_enabled(item):
 			continue
 		var supplied: Dictionary = adjacency_stats(item)
-		resources["mana"] += int(item["mana"])
-		resources["stamina"] += int(item.get("stamina", 0))
-		resources["block"] += int(item["block"])
-		for resource: String in ["mana", "stamina", "block"]:
-			if resource != "block" or not CATEGORIES.matches(item, &"shields"):
+		resources[GameplayTypes.Stat.MANA] += int(item[GameplayTypes.Stat.MANA])
+		resources[GameplayTypes.Stat.STAMINA] += int(item.get(GameplayTypes.Stat.STAMINA, 0))
+		resources[GameplayTypes.Stat.BLOCK] += int(item[GameplayTypes.Stat.BLOCK])
+		for resource: int in [GameplayTypes.Stat.MANA, GameplayTypes.Stat.STAMINA, GameplayTypes.Stat.BLOCK]:
+			if resource != GameplayTypes.Stat.BLOCK or not CATEGORIES.matches(item, &"shields"):
 				resources[resource] += int(supplied.get(resource, 0))
 		if CATEGORIES.matches(item, &"shields"):
-			resources["block"] += item_bonus(item)
+			resources[GameplayTypes.Stat.BLOCK] += item_bonus(item)
 		if item["key"] == "mirror_shard":
 			var best: Dictionary = _mirror_target(item, equipped)
 			if not best.is_empty():
-				resources["block"] += floori(float(best["block"]) / 2.0)
-	for resource: String in resource_overrides:
+				resources[GameplayTypes.Stat.BLOCK] += floori(float(best[GameplayTypes.Stat.BLOCK]) / 2.0)
+	for resource: int in resource_overrides:
 		resources[resource] = int(resource_overrides[resource])
-	resources["mana"] = maxi(0, int(resources["mana"]))
-	resources["stamina"] = maxi(0, int(resources["stamina"]))
+	resources[GameplayTypes.Stat.MANA] = maxi(0, int(resources[GameplayTypes.Stat.MANA]))
+	resources[GameplayTypes.Stat.STAMINA] = maxi(0, int(resources[GameplayTypes.Stat.STAMINA]))
 	return resources
 
 func round_resources() -> Dictionary:
@@ -586,18 +586,18 @@ func round_resources() -> Dictionary:
 	for item in packed():
 		if not item_enabled(item):
 			continue
-		resources["mana"] += int(item.get("mana_per_round", 0))
-		resources["stamina"] += int(item.get("stamina_per_round", 0))
-	for resource: String in resource_overrides:
+		resources[GameplayTypes.Stat.MANA] += int(item.get("mana_per_round", 0))
+		resources[GameplayTypes.Stat.STAMINA] += int(item.get("stamina_per_round", 0))
+	for resource: int in resource_overrides:
 		resources[resource] = int(resource_overrides[resource])
-	resources["mana"] = maxi(0, int(resources["mana"]))
-	resources["stamina"] = maxi(0, int(resources["stamina"]))
+	resources[GameplayTypes.Stat.MANA] = maxi(0, int(resources[GameplayTypes.Stat.MANA]))
+	resources[GameplayTypes.Stat.STAMINA] = maxi(0, int(resources[GameplayTypes.Stat.STAMINA]))
 	return resources
 
 func _refill_round_resources() -> void:
 	var resources: Dictionary = round_resources()
-	mana = int(resources["mana"])
-	stamina = int(resources["stamina"])
+	mana = int(resources[GameplayTypes.Stat.MANA])
+	stamina = int(resources[GameplayTypes.Stat.STAMINA])
 	mana_capacity = mana
 	stamina_capacity = stamina
 
@@ -605,7 +605,7 @@ func _mirror_target(item: Dictionary, equipped: Array[Dictionary]) -> Dictionary
 	var best: Dictionary = {}
 	var score: int = 0
 	for other in equipped:
-		var strength: int = int(other["damage"]) + int(other["block"])
+		var strength: int = int(other[GameplayTypes.Stat.DAMAGE]) + int(other[GameplayTypes.Stat.BLOCK])
 		if item_enabled(other) and other["key"] != "mirror_shard" and touches(item, other) and strength > score:
 			best = other
 			score = strength
@@ -619,7 +619,7 @@ func start_combat() -> bool:
 	crafting_events = CRAFTING.resolve(self)
 	var resources: Dictionary = starting_resources()
 	_refill_round_resources()
-	block = int(resources["block"])
+	block = int(resources[GameplayTypes.Stat.BLOCK])
 	block_capacity = block
 	combat_state = CombatState.RUNNING
 	return true
@@ -628,7 +628,7 @@ func relic_passives() -> Dictionary:
 	var result: Dictionary = {}
 	for key: String in relics:
 		var stats: Dictionary = PackCatalog.relic(key).get("stats", {})
-		for stat: String in stats:
+		for stat: int in stats:
 			result[stat] = int(result.get(stat, 0)) + int(stats[stat])
 	return result
 
@@ -641,64 +641,64 @@ func effects() -> Dictionary:
 	result["activation_events"] = activation_events
 	result.merge({"physical_damage": 0, "magical_damage": 0, "elemental_inputs": [], "reactions": [], "traces_after": elemental_traces.duplicate(true)})
 	for stat_type: int in GameplayTypes.Stat.values():
-		var stat: String = str(GameplayTypes.stat_id(stat_type))
+		var stat: int = stat_type
 		result[stat] = 0
 	var passives: Dictionary = relic_passives()
-	for stat: String in ["healing", "ward", "plating"]:
+	for stat: int in [GameplayTypes.Stat.HEALING, GameplayTypes.Stat.WARD, GameplayTypes.Stat.PLATING]:
 		result[stat] = int(passives.get(stat, 0))
 	for key: String in relics:
 		var relic: Dictionary = PackCatalog.relic(key)
 		var stats: Dictionary = relic.get("stats", {})
-		for stat: String in stats:
-			activation_events.append("%s grants +%d %s." % [relic["name"], stats[stat], stat])
+		for stat: int in stats:
+			activation_events.append("%s grants +%d %s." % [relic["name"], stats[stat], GameplayTypes.stat_id(stat)])
 	var equipped: Array[Dictionary] = packed()
 	var has_hourglass: bool = false
 	var resources: Dictionary = round_resources()
 	if not can_edit_inventory():
-		resources["block"] = block
-	result["mana"] = int(resources["mana"])
-	result["stamina"] = int(resources["stamina"])
-	result["block"] = int(resources["block"])
+		resources[GameplayTypes.Stat.BLOCK] = block
+	result[GameplayTypes.Stat.MANA] = int(resources[GameplayTypes.Stat.MANA])
+	result[GameplayTypes.Stat.STAMINA] = int(resources[GameplayTypes.Stat.STAMINA])
+	result[GameplayTypes.Stat.BLOCK] = int(resources[GameplayTypes.Stat.BLOCK])
 	var regenerated_mana: int = 0
 	var regenerated_stamina: int = 0
 	var regenerated_block: int = 0
 	var innate: Dictionary = PackCatalog.base_resources(class_key)
-	for resource: String in ["mana", "stamina"]:
+	for resource: int in [GameplayTypes.Stat.MANA, GameplayTypes.Stat.STAMINA]:
 		if int(innate[resource]) > 0:
-			activation_events.append("Refilled %d %s." % [innate[resource], resource])
+			activation_events.append("Refilled %d %s." % [innate[resource], GameplayTypes.stat_id(resource)])
 	if class_key == "mage":
-		var cleanses_traces: bool = int(enemy["cleanse"]) > 0 and turn % int(enemy["cleanse"]) == 0
-		for trace: String in elemental_traces:
+		var cleanses_traces: bool = int(enemy[GameplayTypes.Stat.CLEANSE]) > 0 and turn % int(enemy[GameplayTypes.Stat.CLEANSE]) == 0
+		for trace: int in elemental_traces:
 			var remaining: int = 0
 			for life: int in elemental_traces[trace]:
 				if life > 1:
 					remaining += 1
 			if cleanses_traces and not elemental_traces[trace].is_empty():
-				activation_events.append("%s cleanses %d %s traces before casts." % [enemy["name"], elemental_traces[trace].size(), trace])
+				activation_events.append("%s cleanses %d %s traces before casts." % [enemy["name"], elemental_traces[trace].size(), GameplayTypes.element_id(trace)])
 			elif remaining > 0:
-				activation_events.append("%s already carries %d %s trace(s)." % [enemy["name"], remaining, trace])
+				activation_events.append("%s already carries %d %s trace(s)." % [enemy["name"], remaining, GameplayTypes.element_id(trace)])
 			var expired: int = elemental_traces[trace].size() - remaining
 			if not cleanses_traces and expired > 0:
-				activation_events.append("%d %s trace(s) expire on %s." % [expired, trace, enemy["name"]])
+				activation_events.append("%d %s trace(s) expire on %s." % [expired, GameplayTypes.element_id(trace), enemy["name"]])
 	for item in equipped:
 		if not item_enabled(item):
 			continue
 		var grants: Array[String] = []
-		for resource: String in ["mana", "stamina", "block"]:
-			var gain: int = int(item.get(resource + "_per_round", 0)) + (int(item.get(resource, 0)) if resource != "block" or turn == 1 else 0)
-			if resource == "block" and turn == 1 and CATEGORIES.matches(item, &"shields"):
+		for resource: int in [GameplayTypes.Stat.MANA, GameplayTypes.Stat.STAMINA, GameplayTypes.Stat.BLOCK]:
+			var gain: int = int(item.get(str(GameplayTypes.stat_id(resource)) + "_per_round", 0)) + (int(item.get(resource, 0)) if resource != GameplayTypes.Stat.BLOCK or turn == 1 else 0)
+			if resource == GameplayTypes.Stat.BLOCK and turn == 1 and CATEGORIES.matches(item, &"shields"):
 				gain += item_bonus(item)
-			if resource == "block" and turn == 1 and item["key"] == "mirror_shard":
+			if resource == GameplayTypes.Stat.BLOCK and turn == 1 and item["key"] == "mirror_shard":
 				var target: Dictionary = _mirror_target(item, equipped)
 				if not target.is_empty():
-					gain += int(target["block"]) / 2
-					if int(target["block"]) / 2 > 0:
-						grants.append("Copies %d block from %s." % [int(target["block"]) / 2, _log_item(target)])
+					gain += int(target[GameplayTypes.Stat.BLOCK]) / 2
+					if int(target[GameplayTypes.Stat.BLOCK]) / 2 > 0:
+						grants.append("Copies %d block from %s." % [int(target[GameplayTypes.Stat.BLOCK]) / 2, _log_item(target)])
 			if gain > 0:
-				result["item_effects"].append({"id": item["id"], "key": resource, "amount": gain})
-				if resource == "block" and turn == 1 and CATEGORIES.matches(item, &"shields"):
+				result["item_effects"].append({"id": item["id"], "key": str(GameplayTypes.stat_id(resource)), "amount": gain})
+				if resource == GameplayTypes.Stat.BLOCK and turn == 1 and CATEGORIES.matches(item, &"shields"):
 					grants.append_array(_log_bonus_sources(item, equipped))
-				grants.append("Granted %d %s%s." % [gain, resource, " at combat start" if turn == 1 else " before activations"])
+				grants.append("Granted %d %s%s." % [gain, GameplayTypes.stat_id(resource), " at combat start" if turn == 1 else " before activations"])
 		if not grants.is_empty():
 			activation_events.append(_log_item(item) + " activation")
 			for grant: String in grants:
@@ -707,12 +707,12 @@ func effects() -> Dictionary:
 		regenerated_stamina += int(item.get("stamina_per_round", 0))
 		regenerated_block += int(item.get("block_per_round", 0))
 		has_hourglass = has_hourglass or item["key"] == "hourglass"
-	var available_mana: int = int(resources["mana"])
-	var available_stamina: int = int(resources["stamina"])
+	var available_mana: int = int(resources[GameplayTypes.Stat.MANA])
+	var available_stamina: int = int(resources[GameplayTypes.Stat.STAMINA])
 	var available_momentum: int = momentum
 	result["momentum_spent"] = 0
 	result["item_momentum_gained"] = 0
-	result["block"] += regenerated_block
+	result[GameplayTypes.Stat.BLOCK] += regenerated_block
 	result["mana_gained"] = regenerated_mana
 	result["stamina_gained"] = regenerated_stamina
 	result["block_gained"] = regenerated_block
@@ -726,11 +726,11 @@ func effects() -> Dictionary:
 		if not item_enabled(item):
 			result["dormant_ids"].append(item["id"])
 			continue
-		var cost: int = 0 if _dev_flag("infinite_mana") else maxi(0, int(item["cost"]))
-		var stamina_cost: int = 0 if _dev_flag("infinite_stamina") else maxi(0, int(item.get("stamina_cost", 0)))
+		var cost: int = 0 if _dev_flag("infinite_mana") else maxi(0, int(item["activation_costs"][GameplayTypes.ResourceType.MANA]))
+		var stamina_cost: int = 0 if _dev_flag("infinite_stamina") else maxi(0, int(item["activation_costs"].get(GameplayTypes.ResourceType.STAMINA, 0)))
 		var paid_mana: int = mini(cost, available_mana)
-		var required_momentum: int = momentum_cost(int(item.get("momentum_cost", 0))) if int(item.get("momentum_cost", 0)) > 0 else 0
-		var requires_warrior: bool = int(item.get("momentum_cost", 0)) > 0 or int(item.get("momentum_gain", 0)) > 0
+		var required_momentum: int = momentum_cost(int(item["activation_costs"].get(GameplayTypes.ResourceType.MOMENTUM, 0))) if int(item["activation_costs"].get(GameplayTypes.ResourceType.MOMENTUM, 0)) > 0 else 0
+		var requires_warrior: bool = int(item["activation_costs"].get(GameplayTypes.ResourceType.MOMENTUM, 0)) > 0 or int(item.get("momentum_gain", 0)) > 0
 		if (requires_warrior and class_key != "warrior") or required_momentum > available_momentum:
 			result["dormant_ids"].append(item["id"])
 			continue
@@ -756,14 +756,14 @@ func effects() -> Dictionary:
 		available_momentum += gained_momentum
 		result["momentum_spent"] += required_momentum
 		result["item_momentum_gained"] += gained_momentum
-		activation_costs[item["id"]] = {"mana": paid_mana, "stamina": stamina_cost, "health": cost - paid_mana, "momentum": required_momentum}
+		activation_costs[item["id"]] = {GameplayTypes.ResourceType.MANA: paid_mana, GameplayTypes.ResourceType.STAMINA: stamina_cost, GameplayTypes.ResourceType.HEALTH: cost - paid_mana, GameplayTypes.ResourceType.MOMENTUM: required_momentum}
 		eligible.append(item)
 	# Select from one normal activation before Hourglass, Volley or Echo copies.
 	var strongest_damage: int = -1
 	if relics.has("echo_clock") and turn % 3 == 0:
 		for item in eligible:
 			if CATEGORIES.matches_any(item, ["melee_weapons", "ranged_weapons", "magic_weapons", "companions"]):
-				var strength: int = int(item["damage"]) + item_bonus(item)
+				var strength: int = int(item[GameplayTypes.Stat.DAMAGE]) + item_bonus(item)
 				if strength > strongest_damage or (strength == strongest_damage and reading_rank(item) < reading_rank(_item_by_id(int(result["echo_item_id"])))):
 					strongest_damage = strength
 					result["echo_item_id"] = item["id"]
@@ -774,17 +774,17 @@ func effects() -> Dictionary:
 			continue
 		var activates: bool = CATEGORIES.matches_any(item, ["melee_weapons", "ranged_weapons", "magic_weapons", "companions"]) or item["key"] == "mirror_shard"
 		for stat_type: int in GameplayTypes.Stat.values():
-			var stat: String = str(GameplayTypes.stat_id(stat_type))
+			var stat: int = stat_type
 			activates = activates or (stat_type not in [GameplayTypes.Stat.MANA, GameplayTypes.Stat.STAMINA, GameplayTypes.Stat.BLOCK] and int(item[stat]) != 0)
 		if not activates:
 			continue
 		var before: Dictionary = result.duplicate()
 		var source: String = _log_item(item)
 		var payments: PackedStringArray = []
-		for resource: String in ["mana", "stamina", "health", "momentum"]:
+		for resource: int in GameplayTypes.ResourceType.values():
 			var paid: int = int(activation_costs[item["id"]][resource])
 			if paid > 0:
-				payments.append("%d %s" % [paid, resource])
+				payments.append("%d %s" % [paid, GameplayTypes.resource_id(resource)])
 		activation_events.append(source + " activation" + (" (cost: %s)" % " and ".join(payments) if not payments.is_empty() else ""))
 		for received: String in _log_bonus_sources(item, equipped):
 			activation_events.append(_log_effect(received))
@@ -799,51 +799,51 @@ func effects() -> Dictionary:
 			activation_events.append(_log_effect("Repeated %d extra time(s)%s%s." % [copies - 1, " from Hourglass" if has_hourglass and CATEGORIES.matches(item, &"melee_weapons") and turn % 4 == 0 else "", " from Echo Clock" if item["id"] == result["echo_item_id"] else ""]))
 		var supplied: Dictionary = adjacency_stats(item)
 		for stat_type: int in GameplayTypes.Stat.values():
-			var stat: String = str(GameplayTypes.stat_id(stat_type))
+			var stat: int = stat_type
 			if stat_type not in [GameplayTypes.Stat.MANA, GameplayTypes.Stat.STAMINA, GameplayTypes.Stat.BLOCK]:
 				result[stat] += (int(item[stat]) + (int(supplied.get(stat, 0)) if stat_type != GameplayTypes.Stat.DAMAGE else 0)) * copies
 		if is_attack:
-			result["damage"] += item_bonus(item) * copies
-			result["damage"] += int(activation_costs[item["id"]]["momentum"]) * int(item.get("momentum_damage", 0)) * copies
+			result[GameplayTypes.Stat.DAMAGE] += item_bonus(item) * copies
+			result[GameplayTypes.Stat.DAMAGE] += int(activation_costs[item["id"]][GameplayTypes.ResourceType.MOMENTUM]) * int(item.get("momentum_damage", 0)) * copies
 		if item["key"] == "mirror_shard":
 			var best: Dictionary = _mirror_target(item, equipped)
 			if not best.is_empty():
-				result["damage"] += floori(float(best["damage"]) / 2.0)
-		var typed_damage: String = ELEMENTS.damage_type(item) + "_damage"
+				result[GameplayTypes.Stat.DAMAGE] += floori(float(best[GameplayTypes.Stat.DAMAGE]) / 2.0)
+		var typed_damage: String = str(GameplayTypes.damage_type_id(ELEMENTS.damage_type(item))) + "_damage"
 		if item["key"] == "mirror_shard":
 			var reflected: Dictionary = _mirror_target(item, equipped)
 			if not reflected.is_empty():
-				typed_damage = ELEMENTS.damage_type(reflected) + "_damage"
-		result[typed_damage] += int(result["damage"]) - int(before["damage"])
-		var element: String = str(item.get("element", ""))
+				typed_damage = str(GameplayTypes.damage_type_id(ELEMENTS.damage_type(reflected))) + "_damage"
+		result[typed_damage] += int(result[GameplayTypes.Stat.DAMAGE]) - int(before[GameplayTypes.Stat.DAMAGE])
+		var element: int = item.get("element", GameplayTypes.Element.NONE)
 		if ELEMENTS.has_element(element):
 			for copy in range(copies):
 				result["elemental_inputs"].append(element)
 		for stat_type: int in GameplayTypes.Stat.values():
-			var stat: String = str(GameplayTypes.stat_id(stat_type))
+			var stat: int = stat_type
 			var contribution: int = int(result[stat]) - int(before[stat])
 			if contribution > 0:
-				var icon_key: String = ("magical_attack" if CATEGORIES.matches(item, &"magic_weapons") else "physical_attack") if stat == "damage" else ("piercing" if stat == "pierce" else stat)
+				var icon_key: String = ("magical_attack" if CATEGORIES.matches(item, &"magic_weapons") else "physical_attack") if stat == GameplayTypes.Stat.DAMAGE else ("piercing" if stat == GameplayTypes.Stat.PIERCE else str(GameplayTypes.stat_id(stat)))
 				result["item_effects"].append({"id": item["id"], "key": icon_key, "amount": contribution})
-				activation_events.append(_log_effect("Contributes %d %s%s." % [contribution, typed_damage.replace("_", " ") if stat == "damage" else stat.replace("_", " "), " to the combined attack" if stat == "damage" else ""]))
+				activation_events.append(_log_effect("Contributes %d %s%s." % [contribution, typed_damage.replace("_", " ") if stat == GameplayTypes.Stat.DAMAGE else str(GameplayTypes.stat_id(stat)).replace("_", " "), " to the combined attack" if stat == GameplayTypes.Stat.DAMAGE else ""]))
 		if class_key == "mage" and ELEMENTS.has_element(element):
-			activation_events.append(_log_effect("Places %d %s trace%s on %s." % [copies, element.capitalize(), "s" if copies != 1 else "", enemy["name"]]))
-		for resource: String in ["mana", "stamina"]:
+			activation_events.append(_log_effect("Places %d %s trace%s on %s." % [copies, str(GameplayTypes.element_id(element)).capitalize(), "s" if copies != 1 else "", enemy["name"]]))
+		for resource: int in [GameplayTypes.ResourceType.MANA, GameplayTypes.ResourceType.STAMINA]:
 			var spent: int = int(activation_costs[item["id"]][resource])
 			if spent > 0:
-				result["item_effects"].append({"id": item["id"], "key": resource, "amount": -spent})
+				result["item_effects"].append({"id": item["id"], "key": str(GameplayTypes.resource_id(resource)), "amount": -spent})
 	result["mana_after"] = available_mana
 	result["stamina_after"] = available_stamina
 	result["momentum_after_items"] = available_momentum
 	if relics.has("mana_furnace"):
 		result["mana_converted"] = available_mana
-		result["block"] += available_mana * 2
+		result[GameplayTypes.Stat.BLOCK] += available_mana * 2
 		result["block_gained"] += available_mana * 2
 		result["mana_after"] = 0
 		activation_events.append("Mana Furnace converts %d unused mana into %d block." % [available_mana, available_mana * 2])
 	# Thralls join the direct attack, sharing its shield absorption and overflow.
 	result["companion_damage"] = undead_companions * NECROMANCER_COMPANION_DAMAGE if class_key == "necromancer" else 0
-	result["damage"] += int(result["companion_damage"])
+	result[GameplayTypes.Stat.DAMAGE] += int(result["companion_damage"])
 	result["physical_damage"] += int(result["companion_damage"])
 	if int(result["companion_damage"]) > 0:
 		activation_events.append("Bone thralls contribute %d physical damage to the combined attack." % result["companion_damage"])
@@ -851,36 +851,36 @@ func effects() -> Dictionary:
 	var special: Dictionary = quiver()
 	if class_key == "ranger" and not special.is_empty() and special.get("cell") != null and not needs_arrows() and volley_remaining <= 1:
 		var volley: Dictionary = volley_stats()
-		result["volley_damage"] = volley["damage"]
+		result["volley_damage"] = volley[GameplayTypes.Stat.DAMAGE]
 		activation_events.append(_log_item(special) + " activation")
 		activation_events.append(_log_effect("Unleashes Volley."))
-		for stat: String in ["damage", "pierce", "poison", "burn", "slow"]:
+		for stat: int in [GameplayTypes.Stat.DAMAGE, GameplayTypes.Stat.PIERCE, GameplayTypes.Stat.POISON, GameplayTypes.Stat.BURN, GameplayTypes.Stat.SLOW]:
 			if int(volley[stat]) > 0:
-				activation_events.append(_log_effect("Contributes %d %s." % [volley[stat], "physical damage to the combined attack" if stat == "damage" else ("piercing" if stat == "pierce" else stat)]))
-		result["physical_damage"] += int(volley["damage"])
-		for stat: String in ["damage", "pierce", "poison", "burn", "slow"]:
+				activation_events.append(_log_effect("Contributes %d %s." % [volley[stat], "physical damage to the combined attack" if stat == GameplayTypes.Stat.DAMAGE else ("piercing" if stat == GameplayTypes.Stat.PIERCE else str(GameplayTypes.stat_id(stat)))]))
+		result["physical_damage"] += int(volley[GameplayTypes.Stat.DAMAGE])
+		for stat: int in [GameplayTypes.Stat.DAMAGE, GameplayTypes.Stat.PIERCE, GameplayTypes.Stat.POISON, GameplayTypes.Stat.BURN, GameplayTypes.Stat.SLOW]:
 			result[stat] += int(volley[stat])
 			if int(volley[stat]) > 0:
-				result["item_effects"].append({"id": special["id"], "key": "physical_attack" if stat == "damage" else ("piercing" if stat == "pierce" else stat), "amount": volley[stat]})
+				result["item_effects"].append({"id": special["id"], "key": "physical_attack" if stat == GameplayTypes.Stat.DAMAGE else ("piercing" if stat == GameplayTypes.Stat.PIERCE else str(GameplayTypes.stat_id(stat))), "amount": volley[stat]})
 	if class_key == "mage":
-		var cleanses_now: bool = int(enemy["cleanse"]) > 0 and turn % int(enemy["cleanse"]) == 0
+		var cleanses_now: bool = int(enemy[GameplayTypes.Stat.CLEANSE]) > 0 and turn % int(enemy[GameplayTypes.Stat.CLEANSE]) == 0
 		var reaction: Dictionary = ELEMENTS.react({} if cleanses_now else elemental_traces, result["elemental_inputs"])
 		result["reactions"] = reaction["reactions"]
 		result["traces_after"] = reaction["traces"]
 		for reaction_id: String in reaction["reactions"]:
 			var recipe: Dictionary = ELEMENTS.reaction(reaction_id)
 			var ingredients: PackedStringArray = []
-			for trace: String in recipe["needs"]:
-				ingredients.append("1 " + trace)
+			for trace: int in recipe["needs"]:
+				ingredients.append("1 " + str(GameplayTypes.element_id(trace)))
 			activation_events.append("%s cause %s on %s; consumed these traces." % [" + ".join(ingredients), recipe["name"], enemy["name"]])
-			for stat: String in ["damage", "burn", "slow", "spark", "doom", "poison", "pierce"]:
+			for stat: int in [GameplayTypes.Stat.DAMAGE, GameplayTypes.Stat.BURN, GameplayTypes.Stat.SLOW, GameplayTypes.Stat.SPARK, GameplayTypes.Stat.DOOM, GameplayTypes.Stat.POISON, GameplayTypes.Stat.PIERCE]:
 				if int(recipe.get(stat, 0)) > 0:
-					activation_events.append("%s contributes %d %s." % [recipe["name"], recipe[stat], "magical damage to the combined attack" if stat == "damage" else stat])
-			for trace: String in recipe["produces"]:
-				activation_events.append("%s places 1 %s trace on %s." % [recipe["name"], trace.capitalize(), enemy["name"]])
-		for stat: String in ["damage", "burn", "slow", "spark", "doom", "poison", "pierce"]:
+					activation_events.append("%s contributes %d %s." % [recipe["name"], recipe[stat], "magical damage to the combined attack" if stat == GameplayTypes.Stat.DAMAGE else GameplayTypes.stat_id(stat)])
+			for trace: int in recipe["produces"]:
+				activation_events.append("%s places 1 %s trace on %s." % [recipe["name"], str(GameplayTypes.element_id(trace)).capitalize(), enemy["name"]])
+		for stat: int in [GameplayTypes.Stat.DAMAGE, GameplayTypes.Stat.BURN, GameplayTypes.Stat.SLOW, GameplayTypes.Stat.SPARK, GameplayTypes.Stat.DOOM, GameplayTypes.Stat.POISON, GameplayTypes.Stat.PIERCE]:
 			result[stat] += int(reaction[stat])
-		result["magical_damage"] += int(reaction["damage"])
+		result["magical_damage"] += int(reaction[GameplayTypes.Stat.DAMAGE])
 	preload("res://systems/relics/expansion_relics.gd").apply_stats(self, result)
 	return result
 
@@ -897,10 +897,10 @@ func _log_bonus_sources(item: Dictionary, equipped: Array[Dictionary]) -> Array[
 	var lines: Array[String] = []
 	for booster: Dictionary in equipped:
 		var supplied: Dictionary = supplied_bonus(booster, item)
-		for stat: String in supplied:
+		for stat: int in supplied:
 			var amount: int = int(supplied[stat])
 			if amount > 0:
-				lines.append("Receives +%d %s%s from touching %s." % [amount, stat.replace("_", " "), " per Volley" if item["key"] == QUIVER.KEY else "", _log_item(booster)])
+				lines.append("Receives +%d %s%s from touching %s." % [amount, str(GameplayTypes.stat_id(stat)).replace("_", " "), " per Volley" if item["key"] == QUIVER.KEY else "", _log_item(booster)])
 	return lines
 
 func _log_effect(message: String) -> String:
@@ -920,20 +920,20 @@ func outcome(stats: Dictionary) -> Dictionary:
 	result["volley_after"] = volley_remaining
 	if class_key == "ranger" and not quiver().is_empty() and not needs_arrows():
 		result["volley_after"] = int(QUIVER.stats(quiver())["interval"]) if volley_remaining <= 1 else volley_remaining - 1
-	var health: int = mini(max_hp, hp + int(stats["healing"]))
+	var health: int = mini(max_hp, hp + int(stats[GameplayTypes.Stat.HEALING]))
 	var healed: int = health - hp
 	_record_amount(my_events, "I healed %d HP.", healed)
-	var physical: int = int(stats.get("physical_damage", stats["damage"]))
+	var physical: int = int(stats.get("physical_damage", stats[GameplayTypes.Stat.DAMAGE]))
 	var magical: int = int(stats.get("magical_damage", 0))
 	if relics.has("blood_pact"):
-		physical += maxi(0, int(stats["healing"]) - healed)
-	var physical_after: int = ELEMENTS.resist(physical, int(enemy.get("physical_resistance", 0)))
-	var magical_after: int = ELEMENTS.resist(magical, int(enemy.get("magical_resistance", 0)))
+		physical += maxi(0, int(stats[GameplayTypes.Stat.HEALING]) - healed)
+	var physical_after: int = ELEMENTS.resist(physical, int(enemy.get(GameplayTypes.Stat.PHYSICAL_RESISTANCE, 0)))
+	var magical_after: int = ELEMENTS.resist(magical, int(enemy.get(GameplayTypes.Stat.MAGICAL_RESISTANCE, 0)))
 	_record_amount(my_events, foe + " resisted %d physical damage.", physical - physical_after)
 	_record_amount(my_events, foe + " resisted %d magical damage.", magical - magical_after)
 	var direct: int = physical_after + magical_after
 	var shield_before: int = shield()
-	var shield_absorbed: int = mini(shield_before, maxi(0, direct - int(stats["pierce"])))
+	var shield_absorbed: int = mini(shield_before, maxi(0, direct - int(stats[GameplayTypes.Stat.PIERCE])))
 	var shield_spent: int = enemy_shield_spent + shield_absorbed
 	var dealt: int = direct - shield_absorbed
 	result["direct_damage_actual"] = mini(maxi(0, dealt), int(enemy["hp"]))
@@ -944,7 +944,7 @@ func outcome(stats: Dictionary) -> Dictionary:
 	if shield_before > 0 and shield_absorbed == shield_before:
 		my_events.append("I broke %s's block." % foe)
 	_record_amount(my_events, "I dealt %d damage to " + foe + ".", mini(dealt, int(enemy["hp"])))
-	var leech: int = mini(int(stats["vampirism"]), mini(dealt, int(enemy["hp"])))
+	var leech: int = mini(int(stats[GameplayTypes.Stat.VAMPIRISM]), mini(dealt, int(enemy["hp"])))
 	var leech_heal: int = mini(max_hp - health, leech)
 	health += leech_heal
 	_record_amount(my_events, "Vampirism restored %d HP to me.", leech_heal)
@@ -954,7 +954,7 @@ func outcome(stats: Dictionary) -> Dictionary:
 	var doom_turns: int = enemy_doom_turns
 	var spark: int = enemy_spark
 	var slow: int = enemy_slow
-	if int(enemy["cleanse"]) > 0 and turn % int(enemy["cleanse"]) == 0:
+	if int(enemy[GameplayTypes.Stat.CLEANSE]) > 0 and turn % int(enemy[GameplayTypes.Stat.CLEANSE]) == 0:
 		var poison_cleansed: int = STATUSES.cleanse(poisoned)
 		if foe_hp > 0:
 			_record_amount(my_events, foe + " cleansed %d poison.", poison_cleansed)
@@ -968,58 +968,58 @@ func outcome(stats: Dictionary) -> Dictionary:
 		spark = 0
 		slow = 0
 	if foe_hp > 0:
-		_record_amount(my_events, "I applied %d poison to " + foe + ".", int(stats["poison"]))
-		_record_amount(my_events, "I applied %d burn to " + foe + ".", int(stats["burn"]))
+		_record_amount(my_events, "I applied %d poison to " + foe + ".", int(stats[GameplayTypes.Stat.POISON]))
+		_record_amount(my_events, "I applied %d burn to " + foe + ".", int(stats[GameplayTypes.Stat.BURN]))
 		for key: String in ["doom", "spark", "slow"]:
-			_record_amount(my_events, "I applied %d " + key.capitalize() + " to " + foe + ".", int(stats.get(key, 0)))
-	STATUSES.apply(poisoned, int(stats["poison"]))
-	burn += int(stats["burn"])
+			_record_amount(my_events, "I applied %d " + key.capitalize() + " to " + foe + ".", int(stats.get(GameplayTypes.stat_from_id(key), 0)))
+	STATUSES.apply(poisoned, int(stats[GameplayTypes.Stat.POISON]))
+	burn += int(stats[GameplayTypes.Stat.BURN])
 	var poison_tick_stacks: int = poisoned.stacks
-	var poison_tick: Dictionary = STATUSES.tick(poisoned, &"after_direct_attacks", {"owner": "enemy", "resistances": {"magical": int(enemy.get("magical_resistance", 0)), "physical": int(enemy.get("physical_resistance", 0))}})
+	var poison_tick: Dictionary = STATUSES.tick(poisoned, &"after_direct_attacks", {"owner": "enemy", "resistances": {GameplayTypes.DamageType.MAGICAL: int(enemy.get(GameplayTypes.Stat.MAGICAL_RESISTANCE, 0)), GameplayTypes.DamageType.PHYSICAL: int(enemy.get(GameplayTypes.Stat.PHYSICAL_RESISTANCE, 0))}})
 	var poison_damage: int = int(poison_tick.damage)
 	STATUSES.advance_round(poisoned, {"owner": "enemy", "relics": relics})
 	_record_amount(my_events, "Poison dealt %d damage to " + foe + ".", mini(poison_damage, foe_hp))
 	result["poison_damage_actual"] = mini(poison_damage, foe_hp)
 	foe_hp = maxi(0, foe_hp - poison_damage)
-	var burn_damage: int = ELEMENTS.resist(burn, int(enemy.get("magical_resistance", 0)))
+	var burn_damage: int = ELEMENTS.resist(burn, int(enemy.get(GameplayTypes.Stat.MAGICAL_RESISTANCE, 0)))
 	_record_amount(my_events, "Burn dealt %d damage to " + foe + ".", mini(burn_damage, foe_hp))
 	result["burn_damage_actual"] = mini(burn_damage, foe_hp)
 	foe_hp = maxi(0, foe_hp - burn_damage)
-	var spark_damage: int = ELEMENTS.resist(spark * ELEMENTS.SPARK_DAMAGE, int(enemy.get("magical_resistance", 0))) if magical_after > 0 else 0
+	var spark_damage: int = ELEMENTS.resist(spark * ELEMENTS.SPARK_DAMAGE, int(enemy.get(GameplayTypes.Stat.MAGICAL_RESISTANCE, 0))) if magical_after > 0 else 0
 	result["spark_damage_actual"] = mini(spark_damage, foe_hp)
 	_record_amount(my_events, "Spark dealt %d damage to " + foe + ".", int(result["spark_damage_actual"]))
 	foe_hp = maxi(0, foe_hp - spark_damage)
 	if magical_after > 0:
 		spark = maxi(0, spark - 1)
-	spark += int(stats.get("spark", 0))
-	doom += int(stats.get("doom", 0))
+	spark += int(stats.get(GameplayTypes.Stat.SPARK, 0))
+	doom += int(stats.get(GameplayTypes.Stat.DOOM, 0))
 	if doom > 0 and doom_turns == 0:
 		doom_turns = ELEMENTS.DOOM_ROUNDS
 	doom_turns = maxi(0, doom_turns - 1)
-	var doom_damage: int = ELEMENTS.resist(doom * ELEMENTS.DOOM_DAMAGE, int(enemy.get("magical_resistance", 0))) if doom > 0 and doom_turns == 0 else 0
+	var doom_damage: int = ELEMENTS.resist(doom * ELEMENTS.DOOM_DAMAGE, int(enemy.get(GameplayTypes.Stat.MAGICAL_RESISTANCE, 0))) if doom > 0 and doom_turns == 0 else 0
 	result["doom_damage_actual"] = mini(doom_damage, foe_hp)
 	_record_amount(my_events, "Doom dealt %d damage to " + foe + ".", int(result["doom_damage_actual"]))
 	foe_hp = maxi(0, foe_hp - doom_damage)
 	if doom_turns == 0:
 		doom = 0
-	slow += int(stats["slow"])
-	result["slow"] = slow
+	slow += int(stats[GameplayTypes.Stat.SLOW])
+	result[GameplayTypes.Stat.SLOW] = slow
 	result["enemy_slow_after"] = maxi(0, slow - 1)
 	result["enemy_spark_after"] = spark
 	result["enemy_doom_after"] = doom
 	result["enemy_doom_turns_after"] = doom_turns
 	var toxin: StatusEffectInstance = STATUSES.copy(poison_status("player"))
-	var cleansed: int = STATUSES.cleanse(toxin, int(stats["cleanse"]))
+	var cleansed: int = STATUSES.cleanse(toxin, int(stats[GameplayTypes.Stat.CLEANSE]))
 	_record_amount(my_events, "I cleansed %d poison.", cleansed)
 	var reflection: int = int(enemy["reflect"]) if dealt > 0 else 0
-	var toxin_tick: Dictionary = STATUSES.tick(toxin, &"after_direct_attacks", {"owner": "player", "resistances": {"magical": int(stats.get("magical_resistance", 0)), "physical": int(stats.get("physical_resistance", 0))}})
+	var toxin_tick: Dictionary = STATUSES.tick(toxin, &"after_direct_attacks", {"owner": "player", "resistances": {GameplayTypes.DamageType.MAGICAL: int(stats.get(GameplayTypes.Stat.MAGICAL_RESISTANCE, 0)), GameplayTypes.DamageType.PHYSICAL: int(stats.get(GameplayTypes.Stat.PHYSICAL_RESISTANCE, 0))}})
 	var toxin_damage: int = int(toxin_tick.damage)
-	reflection = ELEMENTS.resist(reflection, int(stats.get("magical_resistance", 0)))
-	var special: int = toxin_damage + int(stats["curse"]) + reflection
+	reflection = ELEMENTS.resist(reflection, int(stats.get(GameplayTypes.Stat.MAGICAL_RESISTANCE, 0)))
+	var special: int = toxin_damage + int(stats[GameplayTypes.Stat.CURSE]) + reflection
 	var ward_absorbed: int = 0
-	var ward_left: int = int(stats["ward"])
+	var ward_left: int = int(stats[GameplayTypes.Stat.WARD])
 	# Attribute the shared ward pool to each source without changing its total.
-	for source: Dictionary in [{"amount": toxin_damage, "wardable_amount": int(toxin_tick.wardable_damage), "name": "Poison"}, {"amount": int(stats["curse"]), "name": "Curse"}, {"amount": reflection, "name": foe + "'s reflection"}]:
+	for source: Dictionary in [{"amount": toxin_damage, "wardable_amount": int(toxin_tick.wardable_damage), "name": "Poison"}, {"amount": int(stats[GameplayTypes.Stat.CURSE]), "name": "Curse"}, {"amount": reflection, "name": foe + "'s reflection"}]:
 		var absorbed: int = mini(ward_left, int(source.get("wardable_amount", source["amount"])))
 		ward_absorbed += absorbed
 		ward_left -= absorbed
@@ -1033,15 +1033,15 @@ func outcome(stats: Dictionary) -> Dictionary:
 	# Incoming poison is applied after this tick and retains all new stacks.
 	STATUSES.advance_round(toxin, {"owner": "player"})
 	# The UI commits this checkpoint first, then the response after its delay.
-	result["player_state"] = {"hp": maxi(0, health), "enemy_hp": foe_hp, "mana": stats["mana_after"], "stamina": stats.get("stamina_after", 0), "block": stats["block"], "player_poison": toxin.stacks, "enemy_poison": poisoned.stacks, "enemy_burn": maxi(0, burn - 1), "enemy_shield_spent": shield_spent}
+	result["player_state"] = {"hp": maxi(0, health), "enemy_hp": foe_hp, "mana": stats["mana_after"], "stamina": stats.get("stamina_after", 0), "block": stats[GameplayTypes.Stat.BLOCK], "player_poison": toxin.stacks, "enemy_poison": poisoned.stacks, "enemy_burn": maxi(0, burn - 1), "enemy_shield_spent": shield_spent}
 	result["player_state"]["poison_statuses"] = {"player": STATUSES.snapshot(toxin), "enemy": STATUSES.snapshot(poisoned)}
 	result["has_response"] = health > 0 and foe_hp > 0
-	var guard: int = int(stats["block"])
+	var guard: int = int(stats[GameplayTypes.Stat.BLOCK])
 	var taken: int = 0
 	var contact_damage: int = 0 # Preserve on-contact effects when developer immunity blocks health loss.
 	var retaliation: int = 0
 	var blocked: int = 0
-	var reactive_amounts: Dictionary = {"slow": 0, "plating": 0, "thorns": 0}
+	var reactive_amounts: Dictionary = {GameplayTypes.Stat.SLOW: 0, GameplayTypes.Stat.PLATING: 0, GameplayTypes.Stat.THORNS: 0}
 	var poison_logged: bool = false
 	result["player_shield_broken"] = false
 	result["player_hit_shielded"] = false
@@ -1059,18 +1059,18 @@ func outcome(stats: Dictionary) -> Dictionary:
 		for hit in range(0 if is_invisible() else int(enemy["hits"])):
 			if health <= 0 or foe_hp <= 0:
 				break
-			var slowed: int = mini(attack(), int(result["slow"]))
-			var plated: int = mini(maxi(0, attack() - slowed), int(stats["plating"]))
-			reactive_amounts["slow"] += slowed
-			reactive_amounts["plating"] += plated
+			var slowed: int = mini(attack(), int(result[GameplayTypes.Stat.SLOW]))
+			var plated: int = mini(maxi(0, attack() - slowed), int(stats[GameplayTypes.Stat.PLATING]))
+			reactive_amounts[GameplayTypes.Stat.SLOW] += slowed
+			reactive_amounts[GameplayTypes.Stat.PLATING] += plated
 			var threat: int = maxi(0, attack() - slowed - plated)
-			var incoming_type: String = str(enemy.get("damage_type", "physical"))
-			var incoming_after: int = ELEMENTS.resist(threat, int(stats.get(incoming_type + "_resistance", 0)))
+			var incoming_type: int = enemy.get("damage_type", GameplayTypes.DamageType.PHYSICAL)
+			var incoming_after: int = ELEMENTS.resist(threat, int(stats.get(GameplayTypes.Stat.MAGICAL_RESISTANCE if incoming_type == GameplayTypes.DamageType.MAGICAL else GameplayTypes.Stat.PHYSICAL_RESISTANCE, 0)))
 			_record_amount(monster_events, "My resistance prevented %d damage.", threat - incoming_after)
 			threat = incoming_after
 			_record_amount(monster_events, "My slow effect prevented %d damage.", slowed)
 			_record_amount(monster_events, "My plating prevented %d damage.", plated)
-			var piercing: int = mini(threat, int(enemy["pierce"]))
+			var piercing: int = mini(threat, int(enemy[GameplayTypes.Stat.PIERCE]))
 			var absorbed: int = mini(guard, threat - piercing)
 			guard -= absorbed
 			blocked += absorbed
@@ -1086,16 +1086,16 @@ func outcome(stats: Dictionary) -> Dictionary:
 			_record_amount(monster_events, foe + " dealt %d damage to me.", mini(health_damage, maxi(0, health)))
 			health -= health_damage
 			if threat > absorbed and not poison_logged:
-				_record_amount(monster_events, foe + " applied %d poison to me.", int(enemy["poison"]))
+				_record_amount(monster_events, foe + " applied %d poison to me.", int(enemy[GameplayTypes.Stat.POISON]))
 				poison_logged = true
 			if attack() > 0:
-				var thorns: int = ELEMENTS.resist(int(stats["thorns"]), int(enemy.get("physical_resistance", 0)))
+				var thorns: int = ELEMENTS.resist(int(stats[GameplayTypes.Stat.THORNS]), int(enemy.get(GameplayTypes.Stat.PHYSICAL_RESISTANCE, 0)))
 				retaliation += thorns
-				reactive_amounts["thorns"] += mini(thorns, foe_hp)
+				reactive_amounts[GameplayTypes.Stat.THORNS] += mini(thorns, foe_hp)
 				_record_amount(monster_events, "My thorns dealt %d damage to " + foe + ".", mini(thorns, foe_hp))
 				foe_hp = maxi(0, foe_hp - thorns)
 		if contact_damage > 0:
-			STATUSES.apply(toxin, int(enemy["poison"]))
+			STATUSES.apply(toxin, int(enemy[GameplayTypes.Stat.POISON]))
 		if foe_hp > 0:
 			var regeneration: int = mini(int(enemy["regen"]), int(enemy["max_hp"]) - foe_hp)
 			foe_hp += regeneration
@@ -1125,23 +1125,24 @@ func outcome(stats: Dictionary) -> Dictionary:
 	result["player_events"] = my_events
 	# Limit conditional feedback to effects that actually resolved. Allocation
 	# follows the same deterministic source order as backpack aggregation.
-	var budgets: Dictionary = {"healing": healed, "vampirism": leech_heal, "ward": ward_absorbed, "cleanse": cleansed}
+	var budgets: Dictionary = {GameplayTypes.Stat.HEALING: healed, GameplayTypes.Stat.VAMPIRISM: leech_heal, GameplayTypes.Stat.WARD: ward_absorbed, GameplayTypes.Stat.CLEANSE: cleansed}
 	result["response_item_effects"] = []
 	var applied_effects: Array[Dictionary] = []
 	for source: Dictionary in stats.get("item_effects", []):
 		var effect: Dictionary = source.duplicate()
 		var key: String = effect["key"]
-		if reactive_amounts.has(key):
-			var total: int = int(stats.get(key, 0))
+		var stat: int = GameplayTypes.stat_from_id(key)
+		if reactive_amounts.has(stat):
+			var total: int = int(stats.get(GameplayTypes.stat_from_id(key), 0))
 			# Persistent defenses can apply on several enemy hits.
-			effect["amount"] = mini(int(reactive_amounts[key]), int(effect["amount"]) * int(enemy["hits"])) if total > 0 else 0
-			reactive_amounts[key] -= int(effect["amount"])
+			effect["amount"] = mini(int(reactive_amounts[stat]), int(effect["amount"]) * int(enemy["hits"])) if total > 0 else 0
+			reactive_amounts[stat] -= int(effect["amount"])
 			if int(effect["amount"]) > 0:
 				result["response_item_effects"].append(effect)
 			continue
-		if budgets.has(key):
-			effect["amount"] = mini(int(effect["amount"]), int(budgets[key]))
-			budgets[key] -= int(effect["amount"])
+		if budgets.has(stat):
+			effect["amount"] = mini(int(effect["amount"]), int(budgets[stat]))
+			budgets[stat] -= int(effect["amount"])
 		if key in ["poison", "burn"] and int(enemy["hp"]) - dealt <= 0:
 			continue
 		if int(effect["amount"]) != 0:
@@ -1167,8 +1168,8 @@ func begin_turn() -> Dictionary:
 	pending_turn = outcome(effects())
 	momentum = int(pending_turn.get("momentum_after_items", momentum))
 	var checkpoint: Dictionary = pending_turn["player_state"]
-	mana_capacity = int(pending_turn["mana"])
-	stamina_capacity = int(pending_turn["stamina"])
+	mana_capacity = int(pending_turn[GameplayTypes.Stat.MANA])
+	stamina_capacity = int(pending_turn[GameplayTypes.Stat.STAMINA])
 	block_capacity = maxi(block_capacity, int(checkpoint["block"]))
 	hp = int(checkpoint["hp"])
 	enemy_slow = int(pending_turn["enemy_slow_after"])

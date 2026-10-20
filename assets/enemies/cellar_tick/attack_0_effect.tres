@@ -7,7 +7,7 @@ resource_name = "Cellar Tick Attack 0 Effect"
 script = ExtResource("1_oafda")
 rule_id = &"enemy_response"
 parameters = {
-"damage": 4,
-"damage_type": "physical",
+0: 4,
+"damage_type": 0,
 "hits": 1
 }

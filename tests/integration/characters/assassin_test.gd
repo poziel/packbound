@@ -11,9 +11,9 @@ func fixture() -> PackRun:
 	state.enemy["max_hp"] = 200
 	state.enemy["attacks"] = [7]
 	state.enemy["hits"] = 3
-	state.enemy["poison"] = 4
+	state.enemy[GameplayTypes.Stat.POISON] = 4
 	state.enemy["drain"] = 6
-	state.enemy["pierce"] = 2
+	state.enemy[GameplayTypes.Stat.PIERCE] = 2
 	return state
 
 func _initialize() -> void:

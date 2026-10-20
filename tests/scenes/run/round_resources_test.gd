@@ -13,24 +13,24 @@ func _run() -> void:
 	check(state.effects()["active_ids"].has(first["id"]), "Unprioritized items use backpack reading order")
 	first["priority"] = 2
 	preferred["priority"] = 1
-	first["stamina_cost"] = 2
-	preferred["stamina_cost"] = 2
+	first["activation_costs"][GameplayTypes.ResourceType.STAMINA] = 2
+	preferred["activation_costs"][GameplayTypes.ResourceType.STAMINA] = 2
 	var free: Dictionary = state.add_item("rusty_knife", Vector2i(3, 0))
 	free["priority"] = 3
-	free["stamina_cost"] = 0
+	free["activation_costs"][GameplayTypes.ResourceType.STAMINA] = 0
 	var stats: Dictionary = state.effects()
-	check(stats.get("stamina", -1) == 3, "Every class has three base stamina")
+	check(stats.get(GameplayTypes.Stat.STAMINA, -1) == 3, "Every class has three base stamina")
 	check(stats["active_ids"].has(preferred["id"]) and not stats["active_ids"].has(first["id"]), "Priority wins over position when only one attack fits")
 	check(stats["active_ids"].has(free["id"]), "Free attacks still activate after unaffordable items")
 	preferred["priority"] = 2
 	stats = state.effects()
 	check(stats["active_ids"].has(first["id"]) and not stats["active_ids"].has(preferred["id"]), "Equal priorities break ties in reading order")
-	first["cost"] = 99
+	first["activation_costs"][GameplayTypes.ResourceType.MANA] = 99
 	stats = state.effects()
 	check(stats["active_ids"].has(preferred["id"]) and stats.get("stamina_after", -1) == 1, "Failed mana payment consumes no stamina")
-	first["cost"] = 0
-	first["stamina_cost"] = 99
-	preferred["cost"] = 1
+	first["activation_costs"][GameplayTypes.ResourceType.MANA] = 0
+	first["activation_costs"][GameplayTypes.ResourceType.STAMINA] = 99
+	preferred["activation_costs"][GameplayTypes.ResourceType.MANA] = 1
 	stats = state.effects()
 	check(stats["active_ids"].has(preferred["id"]) and stats["mana_after"] == 0, "Failed stamina payment consumes no mana")
 	var before: Dictionary = PackRunSaves.new().capture(state, 0)
@@ -54,7 +54,7 @@ func _run() -> void:
 	var old_pending: Dictionary = PackRunSaves.new().capture(state, 0)
 	old_pending.state.erase("stamina")
 	old_pending.state.erase("stamina_capacity")
-	old_pending.state.pending_turn.erase("stamina")
+	old_pending.state.pending_turn.erase(GameplayTypes.Stat.STAMINA)
 	old_pending.state.pending_turn.erase("stamina_after")
 	old_pending.state.pending_turn.player_state.erase("stamina")
 	PackRunSaves.new().restore(restored, old_pending)
@@ -62,17 +62,17 @@ func _run() -> void:
 	var legacy: Dictionary = before.duplicate(true)
 	for item: Dictionary in legacy.state.items:
 		item.erase("priority")
-		item.erase("stamina_cost")
+		item.activation_costs.erase(GameplayTypes.ResourceType.STAMINA)
 	legacy.state.erase("stamina")
 	legacy.state.erase("stamina_capacity")
 	PackRunSaves.new().restore(restored, legacy)
-	check(restored.items[0].get("priority", -1) == 0 and restored.items[0].get("stamina_cost", -1) == 2, "Old saves with no priority field gain the unprioritized default")
+	check(restored.items[0].get("priority", -1) == 0 and restored.items[0].activation_costs.get(GameplayTypes.ResourceType.STAMINA, -1) == 2, "Old saves with no priority field gain the unprioritized default")
 	var boosted: PackRun = fixture()
 	boosted.items.clear()
 	var charm: Dictionary = boosted.add_item("iron_charm", Vector2i.ZERO)
-	charm["stamina"] = 2
-	charm["mana"] = 2
-	check(boosted.starting_resources().get("stamina", -1) == 5 and boosted.starting_resources()["mana"] == 3, "Packed items increase both maximum pools")
+	charm[GameplayTypes.Stat.STAMINA] = 2
+	charm[GameplayTypes.Stat.MANA] = 2
+	check(boosted.starting_resources().get(GameplayTypes.Stat.STAMINA, -1) == 5 and boosted.starting_resources()[GameplayTypes.Stat.MANA] == 3, "Packed items increase both maximum pools")
 	charm["stamina_per_round"] = 1
 	check(boosted.effects().get("stamina_after", -1) == 6, "Explicit per-round stamina gains apply")
 	boosted.stamina = 99

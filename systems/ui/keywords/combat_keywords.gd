@@ -88,7 +88,7 @@ static func item_stats(item: Dictionary, adjacency_bonus: int = 0) -> Array[Dict
 	var result: Array[Dictionary] = []
 	for stat_type: int in GameplayTypes.Stat.values():
 		var stat: String = str(GameplayTypes.stat_id(stat_type))
-		var amount: int = int(item.get(stat, 0))
+		var amount: int = int(item.get(stat_type, 0))
 		if stat == "damage" or stat == "block":
 			if amount > 0:
 				amount += adjacency_bonus
@@ -97,7 +97,7 @@ static func item_stats(item: Dictionary, adjacency_bonus: int = 0) -> Array[Dict
 		var key: String = "piercing" if stat == "pierce" else stat
 		var icon_key: String = key
 		if stat == "damage":
-			icon_key = "magical_attack" if preload("res://systems/combat/elemental_combat.gd").damage_type(item) == "magical" else "physical_attack"
+			icon_key = "magical_attack" if preload("res://systems/combat/elemental_combat.gd").damage_type(item) == GameplayTypes.DamageType.MAGICAL else "physical_attack"
 		result.append({"key": key, "icon": icon_key, "value": amount})
 	return result
 
@@ -115,10 +115,11 @@ static func item_footer_markup(costs: Array, priority_label: String = "", links:
 
 ## Activation costs have their own colored footer, separate from keyword lists/stats.
 static func item_resource_costs(item: Dictionary) -> Array[Dictionary]:
-	if not CATEGORIES.matches_any(item, ["melee_weapons", "ranged_weapons", "magic_weapons"]) and int(item.get("damage", 0)) <= 0 and int(item.get("cost", 0)) <= 0 and int(item.get("stamina_cost", 0)) <= 0:
+	var costs: Dictionary = item.get("activation_costs", {})
+	if not CATEGORIES.matches_any(item, ["melee_weapons", "ranged_weapons", "magic_weapons"]) and int(item.get(GameplayTypes.Stat.DAMAGE, 0)) <= 0 and int(costs.get(GameplayTypes.ResourceType.MANA, 0)) <= 0 and int(costs.get(GameplayTypes.ResourceType.STAMINA, 0)) <= 0:
 		return []
 	# Show both pools, including zero, so free activations are explicit.
-	return [{"key": "stamina", "value": maxi(0, int(item.get("stamina_cost", 0)))}, {"key": "mana", "value": maxi(0, int(item.get("cost", 0)))}]
+	return [{"key": "stamina", "value": maxi(0, int(costs.get(GameplayTypes.ResourceType.STAMINA, 0)))}, {"key": "mana", "value": maxi(0, int(costs.get(GameplayTypes.ResourceType.MANA, 0)))}]
 
 static func resource_costs_markup(costs: Array, links: bool = true) -> String:
 	var pairs: PackedStringArray = []
@@ -148,7 +149,7 @@ static func item_description(item: Dictionary) -> String:
 	if item_key in PackCatalog.ROSTER:
 		var definition: Dictionary = PackCatalog.item(item_key)
 		var detail: String = preload("res://systems/content/content_restrictions.gd").description(str(definition.get("tooltip_detail", item.get("detail", ""))))
-		var element: String = str(item.get("element", definition.get("element", "")))
+		var element: String = str(GameplayTypes.element_id(item.get("element", definition.get("element", GameplayTypes.Element.NONE))))
 		return element.capitalize() + ("\n" + detail if not detail.is_empty() else "") if not element.is_empty() else detail
 	return preload("res://systems/content/content_restrictions.gd").description(str(item.get("tooltip_detail", item.get("detail", ""))))
 

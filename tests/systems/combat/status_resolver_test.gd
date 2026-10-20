@@ -45,7 +45,7 @@ func _run() -> void:
 	resolver.advance_round(state)
 	check_equal(state.stacks, 0, "Timed expiration works without stack decay")
 	var poison = resolver.create(&"poison", 6)
-	var result: Dictionary = resolver.tick(poison, &"after_direct_attacks", {"owner": "player", "resistances": {"magical": 25}})
+	var result: Dictionary = resolver.tick(poison, &"after_direct_attacks", {"owner": "player", "resistances": {GameplayTypes.DamageType.MAGICAL: 25}})
 	check_equal(result.damage, 4, "Poison damage reads its rule and rounds resistance as before")
 	check_equal(result.wardable_damage, 4, "Player Poison participates in the shared Ward budget")
 	check_equal(poison.stacks, 6, "Tick calculation does not mutate its input")

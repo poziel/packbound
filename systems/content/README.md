@@ -93,13 +93,25 @@ IDs return `INVALID_VALUE` (-1); invalid numbers return `INVALID_ID` (`<invalid>
 distinct from the valid empty no-element ID. IDs are strict and case sensitive.
 Validate conversions instead of silently treating unknown values as a real enum.
 
-Existing dictionary catalogs, combat records and saves retain their text keys.
-Stat iteration uses this authority. Rarity remains an enum throughout catalog,
-runtime records and inspection payloads; its text conversion is presentation-only.
-Save restoration normalizes legacy item rarity from the current authored definition.
-Damage-type resolution still accepts legacy text or enum input. Typed
-ItemDefinition fields use enum-backed scalar properties and enum-keyed maps;
-validation rejects unknown integer values even when assigned outside the editor.
+Runtime item/relic/monster and combat stat maps now use `GameplayTypes.Stat` keys.
+Item `activation_costs` is one enum-keyed `ResourceType` map; the old cost,
+stamina_cost, health_cost and momentum_cost item fields are removed. Authored
+Momentum costs live in ItemDefinition, with no compatibility-parameter duplicate.
+Rarity, damage type and element values remain enums; elemental trace maps and
+reaction inputs/outputs use Element keys and values. Keyword IDs, log labels and
+inspection markup translate enums only at presentation boundaries.
+
+Run scalar properties (such as hp/mana/stamina) and player-phase checkpoint field
+names remain named properties, rather than stat dictionaries. Round combat budgets
+use Stat.MANA/STAMINA/BLOCK; activation payment maps use ResourceType. Do not mix
+the two enum domains even where their integer values happen to coincide.
+
+Save version 3 records the enum representation. Versions 1 and 2 remain readable:
+PackRunSaves.migrate_legacy_values converts old stat keys, item costs, damage types,
+elements and traces, preserving saved instance values and authored missing defaults.
+The same conversion normalizes saved combat playback results. Rarity is restored
+from its current definition, as before. Shared Resources remain read-only.
+
 JSON conversion remains a separate future loader; JSON should retain readable
 IDs and explicitly convert them, rather than serialize enum positions as text.
 
@@ -183,7 +195,8 @@ eligibility. Offer counts are targets; filtering may leave fewer eligible candid
 
 Intrinsic validation rejects invalid values without mutation. The future content
 registry must validate known collectible/pool/status/trigger/rule IDs. Catalog-rule
-parameter names must be nonblank strings; the rule handler validates its own schema.
+parameter names must be nonblank strings or valid Stat enums; enum stat values must
+be integers. The rule handler validates its other parameters.
 Concrete effect subclasses should gradually replace compatibility bindings, rather
 than expanding the wrapper into an arbitrary behavior interpreter.
 

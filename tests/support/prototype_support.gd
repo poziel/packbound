@@ -126,15 +126,15 @@ func _mechanics_checks() -> void:
 	var result: Dictionary = state.end_turn()
 	check(result["retaliation"] == 0 and result["taken"] == 0 and state.momentum == 1, "Warrior builds Momentum after a fully blocked exchange without Riposte")
 	state = fixture("ranger")
-	var normal: int = state.effects()["damage"]
+	var normal: int = state.effects()[GameplayTypes.Stat.DAMAGE]
 	state.volley_remaining = 1
-	check(state.effects()["damage"] == normal + 8 and normal > 0, "Archer quiver launches an independent two-arrow Volley")
+	check(state.effects()[GameplayTypes.Stat.DAMAGE] == normal + 8 and normal > 0, "Archer quiver launches an independent two-arrow Volley")
 	state = fixture("mage")
-	check(state.effects()["mana"] == 6 and state.effects()["mana_after"] == 1 and state.effects()["stamina"] == 0, "Elementalist funds both starting spells with innate mana and no stamina")
+	check(state.effects()[GameplayTypes.Stat.MANA] == 6 and state.effects()["mana_after"] == 1 and state.effects()[GameplayTypes.Stat.STAMINA] == 0, "Elementalist funds both starting spells with innate mana and no stamina")
 	state.items.clear()
 	var ember: Dictionary = state.add_item("ember_tome", Vector2i(0, 0))
 	var frost: Dictionary = state.add_item("frost_wand", Vector2i(4, 0))
-	ember["cost"] = 5
+	ember["activation_costs"][GameplayTypes.ResourceType.MANA] = 5
 	check(state.effects()["active_ids"].has(ember["id"]) and state.effects()["dormant_ids"].has(frost["id"]), "Insufficient mana leaves later spell dormant")
 	ember["cell"] = Vector2i(2, 0)
 	frost["cell"] = Vector2i(0, 0)
@@ -144,31 +144,31 @@ func _mechanics_checks() -> void:
 	state.relics = ["mana_furnace"]
 	state.items.clear()
 	state.add_item("spark_ring", Vector2i.ZERO)
-	check(state.effects()["block"] == 16 and state.effects()["mana_after"] == 0, "Mana Furnace converts and consumes mana")
+	check(state.effects()[GameplayTypes.Stat.BLOCK] == 16 and state.effects()["mana_after"] == 0, "Mana Furnace converts and consumes mana")
 	state = fixture()
 	state.items.clear()
 	var gem: Dictionary = state.add_item("blood_gem", Vector2i.ZERO)
 	var knife: Dictionary = state.add_item("rusty_knife", Vector2i(1, 1))
-	check(state.effects()["damage"] == 4, "Diagonal contact inactive by default")
+	check(state.effects()[GameplayTypes.Stat.DAMAGE] == 4, "Diagonal contact inactive by default")
 	state.relics.append("diagonal_thread")
-	check(state.effects()["damage"] == 6, "Diagonal Thread changes adjacency")
+	check(state.effects()[GameplayTypes.Stat.DAMAGE] == 6, "Diagonal Thread changes adjacency")
 	state.relics = ["folded_space"]
 	knife["cell"] = Vector2i(PackRun.GRID.x - 1, 0)
-	check(state.effects()["damage"] == 6, "Folded Space connects opposite horizontal edges")
+	check(state.effects()[GameplayTypes.Stat.DAMAGE] == 6, "Folded Space connects opposite horizontal edges")
 	gem["cell"] = null
 	state.relics = ["echo_clock"]
 	state.turn = 3
-	check(state.effects()["damage"] == 8, "Echo Clock repeats first attack")
+	check(state.effects()[GameplayTypes.Stat.DAMAGE] == 8, "Echo Clock repeats first attack")
 	state.relics.clear()
 	state.add_item("hourglass", Vector2i(1, 1))
 	state.turn = 4
-	check(state.effects()["damage"] == 8, "Hourglass repeats melee every fourth turn")
+	check(state.effects()[GameplayTypes.Stat.DAMAGE] == 8, "Hourglass repeats melee every fourth turn")
 	state = fixture()
 	state.relics = ["returning_guard"]
 	state.enemy["hp"] = 100
 	state.enemy["max_hp"] = 100
 	state.end_turn()
-	check(state.block == 3 and state.effects()["block"] == 3, "Returning Guard preserves full remaining block")
+	check(state.block == 3 and state.effects()[GameplayTypes.Stat.BLOCK] == 3, "Returning Guard preserves full remaining block")
 	state = fixture()
 	state.items.clear()
 	state.add_item("healing_herbs", Vector2i.ZERO)
@@ -216,7 +216,7 @@ func _mechanics_checks() -> void:
 	state.add_item("rusty_knife", Vector2i.ZERO)
 	state.relics = ["echo_clock"]
 	state.turn = 3
-	check(state.effects()["damage"] == 30, "Echo repeats the strongest attack regardless of acquisition or bounding box")
+	check(state.effects()[GameplayTypes.Stat.DAMAGE] == 30, "Echo repeats the strongest attack regardless of acquisition or bounding box")
 	state = fixture()
 	state.items.clear()
 	state.fight = 5

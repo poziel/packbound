@@ -9,5 +9,5 @@ rule_id = &"burn_status_rules"
 parameters = {
 "bypass_block": true,
 "damage_per_stack": 1,
-"damage_type": "magical"
+"damage_type": 1
 }

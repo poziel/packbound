@@ -23,23 +23,49 @@ func _initialize() -> void:
 	run.relics.clear()
 	var base: Dictionary = run.round_resources()
 	run.relics.assign(["hearth_token", "herbalist_knot", "trail_medallion", "bastion_seal", "starwell_crown"])
-	check(run.round_resources()["mana"] == base["mana"] + 2, "Relic mana refills each round")
-	check(run.round_resources()["stamina"] == base["stamina"] + 2, "Relic stamina stacks across different relics")
+	check(run.round_resources()[GameplayTypes.Stat.MANA] == base[GameplayTypes.Stat.MANA] + 2, "Relic mana refills each round")
+	check(run.round_resources()[GameplayTypes.Stat.STAMINA] == base[GameplayTypes.Stat.STAMINA] + 2, "Relic stamina stacks across different relics")
 	var effects: Dictionary = run.effects()
-	check(effects["healing"] == 1 and effects["ward"] == 3 and effects["plating"] == 1, "New relic protection and regeneration are active")
+	check(effects[GameplayTypes.Stat.HEALING] == 1 and effects[GameplayTypes.Stat.WARD] == 3 and effects[GameplayTypes.Stat.PLATING] == 1, "New relic protection and regeneration are active")
 	var item: Dictionary = run.add_item("rusty_knife", Vector2i.ZERO)
 	item.erase("rarity")
-	item["damage"] = 123
+	item[GameplayTypes.Stat.DAMAGE] = 123
 	var saves = preload("res://systems/runs/run_saves.gd").new()
 	var saved: Dictionary = saves.capture(run, 0.0)
 	saves.restore(run, saved)
-	check(run.items[0]["rarity"] == GameplayTypes.Rarity.COMMON and run.items[0]["damage"] == 123, "Legacy save receives rarity without losing rolled stats")
+	check(run.items[0]["rarity"] == GameplayTypes.Rarity.COMMON and run.items[0][GameplayTypes.Stat.DAMAGE] == 123, "Legacy save receives rarity without losing rolled stats")
 	# Old saves recorded text; the loader replaces authored rarity from definitions.
 	saved.state.items[0]["rarity"] = "common"
 	saves.restore(run, saved)
 	check_equal(run.items[0]["rarity"], GameplayTypes.Rarity.COMMON, "Legacy text rarity is normalized at save loading")
-	check_equal(run.items[0]["damage"], 123, "Rarity migration preserves instance combat values")
+	check_equal(run.items[0][GameplayTypes.Stat.DAMAGE], 123, "Rarity migration preserves instance combat values")
 	check(saves.capture(run, 0.0).state.items[0].rarity is int, "New save snapshots contain enum rarity")
+	# Build a genuine pre-enum item, including customized values rather than catalog defaults.
+	var legacy_item: Dictionary = saved.state.items[0]
+	legacy_item.erase(GameplayTypes.Stat.DAMAGE)
+	legacy_item["damage"] = 123
+	legacy_item.erase("activation_costs")
+	legacy_item["cost"] = 4
+	legacy_item["stamina_cost"] = 2
+	legacy_item["health_cost"] = 3
+	legacy_item["momentum_cost"] = 1
+	legacy_item["element"] = "void"
+	legacy_item["damage_type"] = "magical"
+	saves.restore(run, saved)
+	var migrated: Dictionary = run.items[0]
+	check_equal(migrated[GameplayTypes.Stat.DAMAGE], 123, "Legacy string damage keeps its rolled value")
+	check_equal(migrated.activation_costs[GameplayTypes.ResourceType.MANA], 4, "Legacy mana activation cost survives loading")
+	check_equal(migrated.activation_costs[GameplayTypes.ResourceType.STAMINA], 2, "Legacy stamina activation cost survives loading")
+	check_equal(migrated.activation_costs[GameplayTypes.ResourceType.HEALTH], 3, "Legacy health activation cost survives loading")
+	check_equal(migrated.activation_costs[GameplayTypes.ResourceType.MOMENTUM], 1, "Legacy Momentum activation cost survives loading")
+	check_equal(migrated.element, GameplayTypes.Element.VOID, "Legacy element loads as an enum")
+	check_equal(migrated.damage_type, GameplayTypes.DamageType.MAGICAL, "Legacy damage type loads as an enum")
+	for retired: String in ["damage", "cost", "stamina_cost", "health_cost", "momentum_cost"]:
+		check(not migrated.has(retired), "Loading removes retired duplicate item key: " + retired)
+	var migrated_snapshot: Dictionary = saves.capture(run, 0.0)
+	var roundtrip := PackRun.new()
+	saves.restore(roundtrip, migrated_snapshot)
+	check_equal(roundtrip.items[0], migrated, "Enum item snapshots restore without changing custom values")
 	check_equal(PackCatalog.RARITY.label({"rarity": GameplayTypes.Rarity.LEGENDARY}), "Legendary", "Presentation translates enum rarity into its label")
 	check_equal(PackCatalog.RARITY.tier({"rarity": 999}), GameplayTypes.Rarity.COMMON, "Invalid runtime rarity falls back safely")
 	for recipe: Dictionary in PackRun.CRAFTING.RECIPES:

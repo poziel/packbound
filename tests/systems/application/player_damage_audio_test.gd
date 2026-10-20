@@ -8,7 +8,7 @@ func _run() -> void:
 		state.enemy["hits"] = 1
 		state.block = guard
 		var stats: Dictionary = state.effects()
-		stats["block"] = guard
+		stats[GameplayTypes.Stat.BLOCK] = guard
 		var result: Dictionary = state.outcome(stats)
 		check(result["player_shield_broken"] == (guard > 0 and guard <= 5), "Break detected at shield depletion: %d" % guard)
 		check(result["player_hit_unshielded"] == (guard <= 5), "Unshielded sound includes exact break: %d" % guard)

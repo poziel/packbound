@@ -26,7 +26,7 @@ func _run() -> void:
 	state.choose_loot("quiver_capacity")
 	check(state.quiver()["upgrades"].get("quiver_capacity") == 1 and state.items.size() == 3, "Capacity upgrades existing quiver without consuming backpack space")
 	state.volley_remaining = 1
-	check(state.effects()["volley_damage"] == 9 and state.effects()["pierce"] >= 6, "Capacity adds arrows and scales their piercing effect")
+	check(state.effects()["volley_damage"] == 9 and state.effects()[GameplayTypes.Stat.PIERCE] >= 6, "Capacity adds arrows and scales their piercing effect")
 	var before: int = state.volley_remaining
 	for index in range(10):
 		state.outcome(state.effects())
@@ -52,7 +52,7 @@ func _upgrade_checks() -> void:
 		state.choose_loot(key)
 		check(state.quiver()["upgrades"].get(key, 0) == 1, "Upgrade is claimable: " + key)
 	var values: Dictionary = PackCatalog.QUIVER.stats(state.quiver())
-	check(values["arrows"] == 3 and values["damage"] == 18 and values["poison"] == 3 and values["burn"] == 4 and values["interval"] == 2, "All upgrade mechanisms compose")
+	check(values["arrows"] == 3 and values[GameplayTypes.Stat.DAMAGE] == 18 and values[GameplayTypes.Stat.POISON] == 3 and values[GameplayTypes.Stat.BURN] == 4 and values["interval"] == 2, "All upgrade mechanisms compose")
 	state.quiver()["upgrades"]["quiver_capacity"] = 3
 	check(not PackCatalog.QUIVER.available(state.quiver()).has("quiver_capacity"), "Capped upgrades leave offer pool")
 	check(state.add_item("magnificent_quiver").is_empty(), "Permanent quiver cannot be duplicated")

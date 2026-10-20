@@ -130,6 +130,7 @@ func restore(state: PackRun, data: Dictionary) -> void:
 	_crafting_wait = data.get("crafting_wait", false)
 	_response_wait = data.get("response_wait", false)
 	_result = data.get("result", {}).duplicate(true)
+	PackRunSaves.migrate_legacy_values(_result)
 	_speed = data.get("speed", 1.0)
 	_impact = data.get("impact", 0.18)
 	_strike = data.get("strike", 0.18)

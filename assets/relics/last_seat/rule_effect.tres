@@ -13,7 +13,7 @@ parameters = {
 "cap": 1,
 "condition": "sparse",
 "metric": "one",
-"stat": "block"
+"stat": 1
 },
 "stats": {}
 }

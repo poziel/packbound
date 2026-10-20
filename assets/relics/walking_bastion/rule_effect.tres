@@ -13,7 +13,7 @@ parameters = {
 "cap": 1,
 "condition": "high_block",
 "metric": "one",
-"stat": "physical_resistance"
+"stat": 17
 },
 "stats": {}
 }

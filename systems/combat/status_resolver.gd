@@ -72,7 +72,7 @@ static func tick(value: StatusEffectInstance, trigger: StringName, context: Dict
 			push_error("Status tick handler has not been migrated: " + str(value.definition.id))
 			continue
 		var rule: Dictionary = effect.parameters
-		var kind: String = str(rule.get("damage_type", "magical"))
+		var kind: int = rule.get("damage_type", GameplayTypes.DamageType.MAGICAL)
 		var raw: int = value.stacks * int(rule.get("damage_per_stack", 0))
 		var damage: int = DAMAGE.resist(raw, int(context.get("resistances", {}).get(kind, 0)))
 		result.damage += damage

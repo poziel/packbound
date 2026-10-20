@@ -37,7 +37,7 @@ func _run() -> void:
 		check(readable_stats.contains(str(PackCatalog.classes()[key_name]["hp"]) + " HP"), "Tooltip shows actual starting health")
 		var starting: PackRun = PackRun.new()
 		starting.reset(0, key_name)
-		check(readable_stats.contains(str(starting.starting_resources()["mana"]) + " mana"), "Tooltip shows actual prepared starting mana")
+		check(readable_stats.contains(str(starting.starting_resources()[GameplayTypes.Stat.MANA]) + " mana"), "Tooltip shows actual prepared starting mana")
 		check(readable_stats.contains(PackCatalog.classes()[key_name]["detail"]), "Ability copy comes from the catalog")
 		check(window.body.get_visible_line_count() == window.body.get_line_count(), "Entire ability description is visible")
 		for index in range(3):

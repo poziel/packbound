@@ -21,7 +21,7 @@ func _run() -> void:
 	var drawback: String = presenter.call("list_markup", [{"key": "health", "value": -3}])
 	check(drawback.contains("-3") and not drawback.contains("+-3"), "Negative attributes keep one minus sign")
 	var drawback_item: Dictionary = knife.duplicate(true)
-	drawback_item["damage"] = -3
+	drawback_item[GameplayTypes.Stat.DAMAGE] = -3
 	check(PackKeywords.item_stats(drawback_item)[0]["value"] == -3, "Item data preserves negative attributes for list presentation")
 	var cost: String = presenter.call("list_markup", [{"key": "mana", "value": 3, "qualifier": "cost"}])
 	check(cost.contains("-3") and not cost.contains("+3"), "Costs keep their negative sign")

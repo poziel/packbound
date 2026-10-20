@@ -13,7 +13,7 @@ parameters = {
 "cap": 1,
 "condition": "many_items",
 "metric": "one",
-"stat": "magical_resistance"
+"stat": 18
 },
 "stats": {}
 }

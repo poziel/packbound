@@ -45,7 +45,7 @@ func _run() -> void:
 	game.run.reset(42, "mage")
 	game._refresh()
 	check(not badge.visible, "Countdown stays hidden for other Delvers")
-	check(PackCatalog.innate_stats("mage")[1]["value"] == 6 and game.run.starting_resources()["stamina"] == 0, "Elementalist has six innate mana and zero stamina")
+	check(PackCatalog.innate_stats("mage")[1]["value"] == 6 and game.run.starting_resources()[GameplayTypes.Stat.STAMINA] == 0, "Elementalist has six innate mana and zero stamina")
 	if DisplayServer.get_name() != "headless":
 		await _review()
 	game.queue_free()

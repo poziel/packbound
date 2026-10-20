@@ -26,19 +26,19 @@ func _run() -> void:
 		for field: String in ["adjacency_bonus", "quiver_bonus", "momentum", "keyword_stats", "tooltip_detail", "mana_per_round", "stamina_per_round", "block_per_round"]:
 			if source.has(field):
 				check_equal(preserved.get(field), source[field], "Special rule parameter retained: " + field)
-		check(not preserved.has("damage"), "Typed damage has one authority")
+		check(not preserved.has(GameplayTypes.Stat.DAMAGE), "Typed damage has one authority")
 		check(not value.resource_path.is_empty() and value.resource_path.ends_with(".tres"), "Collectible is an external resource")
 		check(not value.abilities[0].resource_path.is_empty(), "Ability has one external authority")
 		check(not value.abilities[0].effects[0].resource_path.is_empty(), "Effect has one external authority")
 		for stat_type: int in GameplayTypes.Stat.values():
 			var stat: String = str(GameplayTypes.stat_id(stat_type))
-			check_equal(value.base_stats.get(stat_type, 0), int(source.get(stat, 0)), "Catalog stat retained: " + stat)
+			check_equal(value.base_stats.get(stat_type, 0), int(source.get(stat_type, 0)), "Catalog stat retained: " + stat)
 		if value is ItemDefinition:
 			check_equal(value.footprint, source.mask, "Item footprint retained")
-			check_equal(value.activation_costs.get(GameplayTypes.ResourceType.MANA, 0), int(source.get("cost", 0)), "Mana cost retained")
-			check_equal(value.activation_costs.get(GameplayTypes.ResourceType.STAMINA, 0), int(source.get("stamina_cost", 0)), "Stamina cost retained")
-			check_equal(value.element, GameplayTypes.element_from_id(StringName(source.get("element", ""))), "Element retained")
-			check_equal(value.damage_type, GameplayTypes.damage_type_from_id(StringName(source.get("damage_type", "physical"))), "Damage type retained")
+			check_equal(value.activation_costs.get(GameplayTypes.ResourceType.MANA, 0), int(source["activation_costs"].get(GameplayTypes.ResourceType.MANA, 0)), "Mana cost retained")
+			check_equal(value.activation_costs.get(GameplayTypes.ResourceType.STAMINA, 0), int(source["activation_costs"].get(GameplayTypes.ResourceType.STAMINA, 0)), "Stamina cost retained")
+			check_equal(value.element, source.element, "Element retained")
+			check_equal(value.damage_type, source.damage_type, "Damage type retained")
 	var expected_items: Array = PackCatalog.ROSTER.duplicate()
 	expected_items.append(PackCatalog.QUIVER.KEY)
 	for key: String in PackCatalog.QUIVER.OPTIONS:
@@ -57,7 +57,7 @@ func _run() -> void:
 		check_equal(character.resource_capacities[GameplayTypes.ResourceType.HEALTH], int(source.hp), "Gameplay HP is authoritative")
 		var resources: Dictionary = PackCatalog.base_resources(str(character.class_id))
 		for resource: String in ["mana", "stamina"]:
-			check_equal(character.resource_capacities[GameplayTypes.resource_from_id(StringName(resource))], resources[resource], "Gameplay resource capacity retained")
+			check_equal(character.resource_capacities[GameplayTypes.resource_from_id(StringName(resource))], resources[GameplayTypes.stat_from_id(StringName(resource))], "Gameplay resource capacity retained")
 		check_equal(character.starting_equipment.size(), source.starters.size(), "Starter count retained")
 		for slot: int in range(source.starters.size()):
 			check_equal(str(character.starting_equipment[slot].item_id), source.starters[slot], "Starter item retained")
@@ -76,11 +76,11 @@ func _run() -> void:
 		check_equal(monster.resource_capacities[GameplayTypes.ResourceType.HEALTH], int(source.hp), "Monster HP retained")
 		for field: String in ["drain", "reflect", "sunder", "enrage", "regen", "parry", "opening_armor", "cycle_armor"]:
 			check_equal(monster.abilities[0].effects[0].parameters.get(field, 0), source.get(field, 0), "Monster special rule retained: " + field)
-		check_equal(monster.base_stats.get(GameplayTypes.Stat.CLEANSE, 0), int(source.get("cleanse", 0)), "Monster cleanse retained in typed stats")
+		check_equal(monster.base_stats.get(GameplayTypes.Stat.CLEANSE, 0), int(source.get(GameplayTypes.Stat.CLEANSE, 0)), "Monster cleanse retained in typed stats")
 		check(not monster.abilities[0].effects[0].parameters.has("attacks"), "Attack cycle has one authority")
 		check_equal(monster.behavior.actions.size(), source.attacks.size(), "Attack cycle length retained")
 		for turn: int in range(source.attacks.size()):
-			check_equal(monster.behavior.actions[turn].effects[0].parameters.damage, int(source.attacks[turn]), "Attack cycle damage retained")
+			check_equal(monster.behavior.actions[turn].effects[0].parameters[GameplayTypes.Stat.DAMAGE], int(source.attacks[turn]), "Attack cycle damage retained")
 			check_equal(monster.behavior.actions[turn].effects[0].parameters.hits, int(source.get("hits", 1)), "Multiple hits retained")
 	check_equal(content.recipes.size(), CRAFTING.RECIPES.size(), "Exact recipe coverage")
 	for position: int in range(CRAFTING.RECIPES.size()):

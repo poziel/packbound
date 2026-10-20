@@ -7,7 +7,7 @@ resource_name = "Blood Collector Attack 0 Effect"
 script = ExtResource("1_y5q86")
 rule_id = &"enemy_response"
 parameters = {
-"damage": 12,
-"damage_type": "physical",
+0: 12,
+"damage_type": 0,
 "hits": 1
 }

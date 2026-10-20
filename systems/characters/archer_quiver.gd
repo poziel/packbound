@@ -26,10 +26,10 @@ static func stats(item: Dictionary, adjacency: int = 0) -> Dictionary:
 	var type: String = item.get("arrow_type", "")
 	var explosive: int = int(upgrades.get("quiver_explosive", 0))
 	return {"arrows": arrows, "interval": INTERVAL - int(upgrades.get("quiver_loader", 0)),
-		"damage": arrows * (DAMAGE + int(upgrades.get("quiver_mechanism", 0)) + (1 if type == "broadhead" else 0)) + adjacency + explosive * 3,
-		"pierce": arrows * 2 if type == "bodkin" else 0,
-		"poison": arrows * (int(upgrades.get("quiver_poison", 0)) + (1 if type == "venom" else 0)),
-		"burn": arrows * int(upgrades.get("quiver_fire", 0)) + explosive}
+		GameplayTypes.Stat.DAMAGE: arrows * (DAMAGE + int(upgrades.get("quiver_mechanism", 0)) + (1 if type == "broadhead" else 0)) + adjacency + explosive * 3,
+		GameplayTypes.Stat.PIERCE: arrows * 2 if type == "bodkin" else 0,
+		GameplayTypes.Stat.POISON: arrows * (int(upgrades.get("quiver_poison", 0)) + (1 if type == "venom" else 0)),
+		GameplayTypes.Stat.BURN: arrows * int(upgrades.get("quiver_fire", 0)) + explosive}
 
 static func describe(_item: Dictionary, _remaining: int, _adjacency: int = 0) -> String:
 	return "Touching bows gain +2 damage"

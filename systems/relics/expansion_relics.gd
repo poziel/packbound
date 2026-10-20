@@ -66,21 +66,21 @@ static func _matches(condition: String, run: Variant, stats: Dictionary, context
 		"poison_and_burn": return run.enemy_poison > 0 and run.enemy_burn > 0
 		"third": return run.turn % 3 == 0
 		"no_weapon": return context["weapon_count"] == 0
-		"cursed": return int(stats.get("curse", 0)) > 0
+		"cursed": return int(stats.get(GameplayTypes.Stat.CURSE, 0)) > 0
 		"dense": return context["cells"] >= 20
 		"enemy_low_hp": return int(run.enemy.get("hp", 0)) * 3 <= int(run.enemy.get("max_hp", 1))
-		"high_block": return int(stats.get("block", 0)) >= 10
-		"no_damage": return int(stats.get("damage", 0)) == 0
+		"high_block": return int(stats.get(GameplayTypes.Stat.BLOCK, 0)) >= 10
+		"no_damage": return int(stats.get(GameplayTypes.Stat.DAMAGE, 0)) == 0
 	return false
 
-static func resource_bonus(run: Variant, resource: String) -> int:
+static func resource_bonus(run: Variant, resource: int) -> int:
 	var context: Dictionary = _context(run, {})
 	var amount: int = 0
 	for key: String in run.relics:
 		if not PackCatalog.relic(key).has("rule"):
 			continue
 		var rule: Dictionary = PackCatalog.relic(key)["rule"]
-		if rule["stat"] == resource + "_resource" and _matches(rule["condition"], run, {}, context):
+		if bool(rule.get("resource_bonus", false)) and rule["stat"] == resource and _matches(rule["condition"], run, {}, context):
 			amount += int(rule["amount"]) * mini(int(rule["cap"]), int(context.get(rule["metric"], 0)))
 	return amount
 
@@ -92,18 +92,18 @@ static func apply_stats(run: Variant, result: Dictionary) -> void:
 			continue
 		var definition: Dictionary = PackCatalog.relic(key)
 		var rule: Dictionary = definition["rule"]
-		var stat: String = rule["stat"]
-		if stat.ends_with("_resource") or not _matches(rule["condition"], run, snapshot, context):
+		var stat: Variant = rule["stat"]
+		if bool(rule.get("resource_bonus", false)) or not _matches(rule["condition"], run, snapshot, context):
 			continue
 		var gain: int = int(rule["amount"]) * mini(int(rule["cap"]), int(context.get(rule["metric"], 0)))
 		if gain <= 0:
 			continue
 		result[stat] = int(result.get(stat, 0)) + gain
 		if stat in ["physical_damage", "magical_damage"]:
-			result["damage"] = int(result.get("damage", 0)) + gain
-		if stat == "block":
+			result[GameplayTypes.Stat.DAMAGE] = int(result.get(GameplayTypes.Stat.DAMAGE, 0)) + gain
+		if stat is int and stat == GameplayTypes.Stat.BLOCK:
 			result["block_gained"] = int(result.get("block_gained", 0)) + gain
-		result["activation_events"].append("%s grants +%d %s." % [definition["name"], gain, stat.replace("_", " ")])
+		result["activation_events"].append("%s grants +%d %s." % [definition["name"], gain, str(GameplayTypes.stat_id(stat)).replace("_", " ") if stat is int else stat.replace("_", " ")])
 
 ## Pure additive rules; all conditions use a pre-relic snapshot.
 static var DEFINITIONS: Dictionary:

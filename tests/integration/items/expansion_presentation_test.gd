@@ -15,8 +15,8 @@ func _run() -> void:
 	quiver["arrow_type"] = "broadhead"
 	var rack: Dictionary = state.add_item("winterflight_rack", Vector2i(1, 0))
 	var shown: Array = PRESENTATION.volley_stats(state, quiver)
-	check(_value(shown, "damage") == int(state.volley_stats()["damage"]), "Quiver inspection shows actual augmented Volley damage")
-	check(_value(shown, "slow") == int(state.volley_stats()["slow"]) and _value(shown, "slow") > 0, "Quiver inspection includes equipment Slow")
+	check(_value(shown, "damage") == int(state.volley_stats()[GameplayTypes.Stat.DAMAGE]), "Quiver inspection shows actual augmented Volley damage")
+	check(_value(shown, "slow") == int(state.volley_stats()[GameplayTypes.Stat.SLOW]) and _value(shown, "slow") > 0, "Quiver inspection includes equipment Slow")
 	check(not PRESENTATION.bonuses(state, quiver).is_empty(), "Quiver equipment has a named source entry")
 	var board = load("res://scenes/run/inventory/backpack/backpack_board.gd").new()
 	board.run = state

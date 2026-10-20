@@ -112,8 +112,8 @@ func bind_relic(state: PackRun) -> void:
 		state.choose_relic(state.relic_offers[0])
 
 func value(item: Dictionary, state: PackRun) -> float:
-	var score: float = float(item["damage"]) + float(item["block"]) * 1.2 + float(item["healing"]) * 2.5 + float(item["vampirism"]) * 2.5 + float(item["poison"]) * 3 + float(item["burn"]) * 3 + float(item["plating"]) * 3 + float(item["slow"]) * 3 + float(item["thorns"]) * 2 + float(item["ward"]) + float(item["cleanse"])
-	score += float(item["mana"]) * (3.0 if state.class_key == "mage" or state.relics.has("mana_furnace") else 0.5)
+	var score: float = float(item[GameplayTypes.Stat.DAMAGE]) + float(item[GameplayTypes.Stat.BLOCK]) * 1.2 + float(item[GameplayTypes.Stat.HEALING]) * 2.5 + float(item[GameplayTypes.Stat.VAMPIRISM]) * 2.5 + float(item[GameplayTypes.Stat.POISON]) * 3 + float(item[GameplayTypes.Stat.BURN]) * 3 + float(item[GameplayTypes.Stat.PLATING]) * 3 + float(item[GameplayTypes.Stat.SLOW]) * 3 + float(item[GameplayTypes.Stat.THORNS]) * 2 + float(item[GameplayTypes.Stat.WARD]) + float(item[GameplayTypes.Stat.CLEANSE])
+	score += float(item[GameplayTypes.Stat.MANA]) * (3.0 if state.class_key == "mage" or state.relics.has("mana_furnace") else 0.5)
 	if preload("res://systems/content/collectible_categories.gd").matches(item, &"boosters"):
 		score += 7
 	return maxf(1.0, score) / float(item["mask"].size())

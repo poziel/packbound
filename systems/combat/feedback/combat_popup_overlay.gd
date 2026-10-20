@@ -6,10 +6,10 @@ var paused: bool = false
 var _incoming_lane: int = 0
 
 ## Player perspective: large numbers in separated lanes on the left.
-func show_player_hit(result: Dictionary, damage_type: String = "physical", speed: float = 1.0) -> void:
+func show_player_hit(result: Dictionary, damage_type: GameplayTypes.DamageType = GameplayTypes.DamageType.PHYSICAL, speed: float = 1.0) -> void:
 	var entries: Array[Dictionary] = []
 	if int(result.get("taken", 0)) > 0:
-		entries.append({"key": "magical_attack" if damage_type == "magical" else "physical_attack", "amount": int(result["taken"])})
+		entries.append({"key": "magical_attack" if damage_type == GameplayTypes.DamageType.MAGICAL else "physical_attack", "amount": int(result["taken"])})
 	if int(result.get("blocked", 0)) > 0:
 		entries.append({"key": "block", "amount": int(result["blocked"])})
 	var view: Vector2 = get_viewport_rect().size

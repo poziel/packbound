@@ -7,7 +7,7 @@ resource_name = "Sewer Asp Attack 0 Effect"
 script = ExtResource("1_fobqa")
 rule_id = &"enemy_response"
 parameters = {
-"damage": 6,
-"damage_type": "physical",
+0: 6,
+"damage_type": 0,
 "hits": 1
 }

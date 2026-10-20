@@ -7,7 +7,7 @@ resource_name = "Gutter Duelist Attack 0 Effect"
 script = ExtResource("1_67u68")
 rule_id = &"enemy_response"
 parameters = {
-"damage": 8,
-"damage_type": "physical",
+0: 8,
+"damage_type": 0,
 "hits": 1
 }

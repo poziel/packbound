@@ -1,9 +1,44 @@
 class_name PackRunSaves
 extends RefCounted
 
-const VERSION: int = 2
+const VERSION: int = 3
 var directory: String = "user://runs"
 var last_error: Error = OK
+
+## Old saves are the only input boundary accepting string gameplay values.
+static func migrate_legacy_values(value: Variant, state_root: bool = false) -> void:
+	if value is Array:
+		for child: Variant in value: migrate_legacy_values(child)
+	elif value is Dictionary:
+		if value.get_typed_key_builtin() == TYPE_INT:
+			for child: Variant in value.values(): migrate_legacy_values(child)
+			return
+		if not state_root:
+			for key: Variant in value.keys():
+				if key is String:
+					var stat: int = GameplayTypes.stat_from_id(key)
+					if stat != GameplayTypes.INVALID_VALUE:
+						value[stat] = value[key]
+						value.erase(key)
+		if value.has("mask") and value.has("key"):
+			var costs: Dictionary = value.get("activation_costs", {}).duplicate()
+			var authored_costs: Dictionary = PackCatalog.item(str(value.key)).get("activation_costs", {})
+			for pair: Array in [["cost", GameplayTypes.ResourceType.MANA], ["stamina_cost", GameplayTypes.ResourceType.STAMINA], ["health_cost", GameplayTypes.ResourceType.HEALTH], ["momentum_cost", GameplayTypes.ResourceType.MOMENTUM]]:
+				costs[pair[1]] = int(value.get(pair[0], costs.get(pair[1], authored_costs.get(pair[1], 0))))
+				value.erase(pair[0])
+			value["activation_costs"] = costs
+		for field: String in ["element", "damage_type"]:
+			if value.get(field) is String or value.get(field) is StringName:
+				value[field] = GameplayTypes.element_from_id(value[field]) if field == "element" else GameplayTypes.damage_type_from_id(value[field])
+		for field: String in ["elemental_traces", "traces_after"]:
+			if value.get(field) is Dictionary:
+				var converted: Dictionary = {}
+				for key: Variant in value[field]:
+					converted[GameplayTypes.element_from_id(key) if key is String else key] = value[field][key]
+				value[field] = converted
+		if value.get("elemental_inputs") is Array:
+			value.elemental_inputs = value.elemental_inputs.map(func(element): return GameplayTypes.element_from_id(element) if element is String else element)
+		for key: Variant in value: migrate_legacy_values(value[key], key is String and key == "player_state")
 
 func new_id() -> String:
 	return "%d-%s" % [Time.get_unix_time_from_system() * 1000, Crypto.new().generate_random_bytes(8).hex_encode()]
@@ -20,6 +55,7 @@ func capture(run: PackRun, elapsed: float, playback: PackCombatPlayback = null) 
 
 func restore(run: PackRun, data: Dictionary) -> void:
 	var state: Dictionary = data["state"].duplicate(true)
+	migrate_legacy_values(state, true)
 	for property: Dictionary in run.get_property_list():
 		if int(property.usage) & PROPERTY_USAGE_SCRIPT_VARIABLE and state.has(property.name) and property.name not in ["rng", "_poison_statuses"]:
 			run.set(property.name, state[property.name])
@@ -38,7 +74,7 @@ func restore(run: PackRun, data: Dictionary) -> void:
 			run.set(key, 0)
 	if not state.has("elemental_traces"):
 		run.elemental_traces = {}
-	for key: String in ["physical_resistance", "magical_resistance"]:
+	for key: int in [GameplayTypes.Stat.PHYSICAL_RESISTANCE, GameplayTypes.Stat.MAGICAL_RESISTANCE]:
 		if not run.enemy.has(key):
 			run.enemy[key] = 0
 	# Fill only newly introduced fields; preserve saved rolls and existing art/layout.
@@ -48,20 +84,20 @@ func restore(run: PackRun, data: Dictionary) -> void:
 		item["rarity"] = defaults["rarity"]
 		if item["key"] == PackCatalog.QUIVER.KEY:
 			item["name"] = defaults["name"]
-		var migration_keys: Array[String] = ["priority", "stamina_cost", "stamina", "stamina_per_round", "element", "damage_type"]
+		var migration_keys: Array = ["priority", GameplayTypes.Stat.STAMINA, "stamina_per_round", "element", "damage_type"]
 		for stat_type: int in GameplayTypes.Stat.values():
-			migration_keys.append(str(GameplayTypes.stat_id(stat_type)))
-		for key: String in migration_keys:
+			migration_keys.append(stat_type)
+		for key: Variant in migration_keys:
 			if not item.has(key):
 				item[key] = defaults.get(key, "" if key in ["element", "damage_type"] else 0)
 	if not state.has("stamina"):
-		run.stamina = 0 if not run.pending_turn.is_empty() else int(run.round_resources()["stamina"])
-		run.stamina_capacity = int(run.round_resources()["stamina"])
+		run.stamina = 0 if not run.pending_turn.is_empty() else int(run.round_resources()[GameplayTypes.Stat.STAMINA])
+		run.stamina_capacity = int(run.round_resources()[GameplayTypes.Stat.STAMINA])
 	run.normalize_reward_restrictions()
 	# An already committed old player action must finish without charging again.
 	if not run.pending_turn.is_empty() and not run.pending_turn.has("stamina_after"):
 		run.pending_turn["stamina_after"] = run.stamina
-		run.pending_turn["stamina"] = run.stamina_capacity
+		run.pending_turn[GameplayTypes.Stat.STAMINA] = run.stamina_capacity
 		run.pending_turn["player_state"]["stamina"] = run.stamina
 
 func write(id: String, data: Dictionary) -> bool:
@@ -92,7 +128,7 @@ func read(id: String) -> Dictionary:
 	if file == null:
 		return {}
 	var data: Variant = file.get_var(false)
-	if not data is Dictionary or data.get("version") not in [1, VERSION] or not data.get("state") is Dictionary:
+	if not data is Dictionary or data.get("version") not in [1, 2, VERSION] or not data.get("state") is Dictionary:
 		return {}
 	var state: Dictionary = data.state
 	for key: String in ["phase", "fight", "hp", "max_hp", "combat_state", "rng_seed", "rng_state", "pending_turn", "items", "enemy"]:

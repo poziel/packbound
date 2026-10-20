@@ -33,9 +33,9 @@ func _run() -> void:
 	check(not PackKeywordLinks.entry("catalog_item_ember_tome").is_empty(), "Log item links have catalog tooltips")
 	check(PackKeywordLinks.rich("Thermal Shock applies burn").contains("url=reaction_thermal_shock"), "Reactions and conditions are hoverable")
 	state.items.assign([frost])
-	state.elemental_traces = {"fire": [2]}
+	state.elemental_traces = {GameplayTypes.Element.FIRE: [2]}
 	check(state.effects()["reactions"] == ["thermal_shock"], "A surviving enemy trace reacts with the next cast")
-	state.elemental_traces = {"fire": [1]}
+	state.elemental_traces = {GameplayTypes.Element.FIRE: [1]}
 	check(state.effects()["reactions"].is_empty(), "Expired traces cannot trigger reactions")
 	_shield_bonus_checks()
 	await _ui_checks(state)
@@ -61,7 +61,7 @@ func _ui_checks(state: PackRun) -> void:
 	game.front.hide()
 	game.combat.show()
 	game.character_tabs.current_tab = game.character_tabs.get_tab_idx_from_control(game.history_view.get_parent())
-	state.elemental_traces = {"fire": [2]}
+	state.elemental_traces = {GameplayTypes.Element.FIRE: [2]}
 	state.log_action(state.outcome(state.effects())["player_events"])
 	game._refresh_history()
 	check(game.history_view.text.contains("url=catalog_item_frost_wand"), "Rendered history keeps item links")

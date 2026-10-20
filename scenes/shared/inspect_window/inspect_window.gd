@@ -78,9 +78,9 @@ func setup(data: Dictionary) -> void:
 	_hovered_keyword = ""
 	_hover_generation += 1
 	key = data.get("key", "")
-	item_element = str(data.get("element", ""))
+	item_element = str(GameplayTypes.element_id(data.get("element", GameplayTypes.Element.NONE)))
 	if item_element.is_empty() and data.has("recipe_item"):
-		item_element = str(PackCatalog.item(data["recipe_item"]).get("element", ""))
+		item_element = str(GameplayTypes.element_id(PackCatalog.item(data["recipe_item"]).get("element", GameplayTypes.Element.NONE)))
 	element_icon.texture = PackKeywords.icon(item_element)
 	element_icon.modulate = PackKeywords.color(item_element)
 	element_icon.visible = not item_element.is_empty() and element_icon.texture != null

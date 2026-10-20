@@ -13,7 +13,7 @@ parameters = {
 "cap": 1,
 "condition": "dense",
 "metric": "one",
-"stat": "plating"
+"stat": 4
 },
 "stats": {}
 }

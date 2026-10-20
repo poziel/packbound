@@ -12,7 +12,7 @@ parameters = {
 "priority": 0,
 "quiver_bonus": {
 "arrows": 1,
-"poison": 2
+6: 2
 },
 "stamina_per_round": 0,
 "tooltip_detail": "While orthogonally touching the permanent Bowmaster quiver, adds 1 arrows, 2 poison to Volley; this equipment remains in the backpack and is not consumed.. Only ranger can equip this item."

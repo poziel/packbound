@@ -230,7 +230,7 @@ func _ready() -> void:
 	tooltip_text = "Item"
 
 static func has_activation_priority(item: Dictionary) -> bool:
-	return CATEGORIES.matches_any(item, ["melee_weapons", "ranged_weapons", "magic_weapons"]) or int(item.get("cost", 0)) > 0 or int(item.get("stamina_cost", 0)) > 0
+	return CATEGORIES.matches_any(item, ["melee_weapons", "ranged_weapons", "magic_weapons"]) or int(item.get("activation_costs", {}).get(GameplayTypes.ResourceType.MANA, 0)) > 0 or int(item.get("activation_costs", {}).get(GameplayTypes.ResourceType.STAMINA, 0)) > 0
 
 static func priority_corner(points: Array[Vector2i]) -> Vector2i:
 	var corner: Vector2i = points[0]

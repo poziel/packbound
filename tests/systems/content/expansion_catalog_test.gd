@@ -23,7 +23,7 @@ func _initialize() -> void:
 		check(texture != null and texture.get_size() == Vector2(item["shape"]) * 32.0, "Runtime art matches footprint: " + key)
 		for stat_type: int in GameplayTypes.Stat.values():
 			var stat: String = str(GameplayTypes.stat_id(stat_type))
-			check(item.has(stat), "Complete stat contract: " + key + "/" + stat)
+			check(item.has(stat_type), "Complete stat contract: " + key + "/" + stat)
 	check(distribution == {GameplayTypes.Rarity.COMMON:20,GameplayTypes.Rarity.UNCOMMON:24,GameplayTypes.Rarity.RARE:24,GameplayTypes.Rarity.EPIC:18,GameplayTypes.Rarity.LEGENDARY:10}, "Item rarity distribution")
 	for key: String in PackCatalog.EXPANSION_RELICS.RELIC_KEYS:
 		var texture: Texture2D = EXPANSION_ART.RELIC_TEXTURES.get(key)

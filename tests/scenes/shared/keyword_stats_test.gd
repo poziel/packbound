@@ -18,7 +18,7 @@ func _run() -> void:
 	check(stats[0]["value"] == 5 and stats[1]["value"] == 2, "Values come from item data")
 	var boosted: Array = presenter.call("item_stats", fang, 3)
 	check(boosted[0]["value"] == 8, "Adjacency changes displayed damage")
-	check(fang["damage"] == 5, "Presentation never mutates base stats")
+	check(fang[GameplayTypes.Stat.DAMAGE] == 5, "Presentation never mutates base stats")
 	var spell: Array = presenter.call("item_stats", PackCatalog.item("ember_tome"), 0)
 	var costs: Array[Dictionary] = PackKeywords.item_resource_costs(PackCatalog.item("ember_tome"))
 	check(costs.back()["key"] == "mana" and costs.back()["value"] == 3 and spell.back()["key"] != "mana", "Mana cost is separate from the keyword list and maximum mana bonuses")

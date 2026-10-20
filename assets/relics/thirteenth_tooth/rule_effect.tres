@@ -13,7 +13,7 @@ parameters = {
 "cap": 1,
 "condition": "third",
 "metric": "one",
-"stat": "vampirism"
+"stat": 3
 },
 "stats": {}
 }

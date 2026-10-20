@@ -4,7 +4,6 @@ const CATEGORIES = preload("res://systems/content/collectible_categories.gd")
 func _run() -> void:
 	var content: Resource = load("res://assets/game_content.tres")
 	check_equal(content.validation_errors(), PackedStringArray(), "Complete category graph and memberships validate")
-	var families: Dictionary = {"weapon": "melee_weapons", "ranged": "ranged_weapons", "spell": "magic_weapons", "shield": "shields", "armor": "body_armor", "boots": "boots", "healer": "healing_supplies", "booster": "boosters", "focus": "focuses", "pendant": "pendants", "quiver": "quivers", "upgrade": "quiver_upgrades", "companion": "companions", "utility": "utilities"}
 	for definition: CollectibleDefinition in content.collectibles.collectibles:
 		check(not definition.category_ids.is_empty(), "Every collectible has a category")
 		for category_id: StringName in definition.category_ids:
@@ -15,9 +14,6 @@ func _run() -> void:
 		var item: Dictionary = PackCatalog.item(str(definition.id))
 		check(not item.has("role"), "Runtime catalog has no role field")
 		check_equal(item.category_ids, definition.category_ids, "Runtime reads authored memberships")
-		var legacy: Dictionary = PackCatalog._legacy_item(str(definition.id))
-		if legacy.has("role"):
-			check(CATEGORIES.matches(item, StringName(families[legacy.role])), "Legacy combat family preserved: " + str(definition.id))
 	check(CATEGORIES.matches(PackCatalog.item("boiler_hammer"), &"hammers"), "Hammer has specific type")
 	check(CATEGORIES.matches(PackCatalog.item("boiler_hammer"), &"melee_weapons"), "Hammer inherits melee family")
 	check(CATEGORIES.matches(PackCatalog.item("boiler_hammer"), &"weapons"), "Hammer inherits weapons")

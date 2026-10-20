@@ -14,7 +14,7 @@ func _fixture(speed: int) -> void:
 	game.run.enemy["hp"] = 1000
 	game.run.enemy["max_hp"] = 1000
 	game.run.enemy["attacks"] = [3]
-	game.run.add_item("rusty_knife", Vector2i.ZERO)["damage"] = 8
+	game.run.add_item("rusty_knife", Vector2i.ZERO)[GameplayTypes.Stat.DAMAGE] = 8
 	game._refresh()
 
 func _freed_scene_checks() -> void:

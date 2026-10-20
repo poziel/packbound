@@ -17,13 +17,13 @@ func _initialize() -> void:
 	for item in state.items:
 		check(state.can_place(item, item["cell"]), "Each starter fits without overlap")
 	var stats: Dictionary = state.effects()
-	check(stats["companion_damage"] == 2 and stats["damage"] == 7, "First turn damage includes fang plus one thrall; unfunded tome sleeps")
+	check(stats["companion_damage"] == 2 and stats[GameplayTypes.Stat.DAMAGE] == 7, "First turn damage includes fang plus one thrall; unfunded tome sleeps")
 	state.items.clear()
 	state.enemy["armor"] = 1
 	var preview: Dictionary = state.outcome(state.effects())
 	check(preview["dealt"] == 1, "Enemy armor applies to thrall damage")
 	state.undead_companions = 3
-	check(state.effects()["damage"] == 6, "Three thralls add six displayed direct damage")
+	check(state.effects()[GameplayTypes.Stat.DAMAGE] == 6, "Three thralls add six displayed direct damage")
 	check(state.outcome(state.effects())["dealt"] == 5, "Combined thrall hit pays armor once")
 	state = fixture()
 	state.items.clear()

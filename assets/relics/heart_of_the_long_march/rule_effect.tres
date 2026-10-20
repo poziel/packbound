@@ -13,7 +13,7 @@ parameters = {
 "cap": 8,
 "condition": "warrior",
 "metric": "momentum",
-"stat": "healing"
+"stat": 2
 },
 "stats": {}
 }

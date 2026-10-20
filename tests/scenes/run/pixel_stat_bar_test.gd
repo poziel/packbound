@@ -100,7 +100,7 @@ func _run() -> void:
 	check(game.hp_label.text == "40 / 40", "Player health initializes from combat state")
 	check(game.enemy_hp.text == "%d / %d" % [game.run.enemy["hp"], game.run.enemy["max_hp"]], "Enemy health initializes from combat state")
 	check(game.mana_bar.value_label.text == "0 / 0", "Mana preparation starts empty without a fake capacity")
-	check(game.block_bar.value == game.board.preview_effects()["block"], "Block shows generated combat block")
+	check(game.block_bar.value == game.board.preview_effects()[GameplayTypes.Stat.BLOCK], "Block shows generated combat block")
 	check(game.block_bar.number_mode == PixelStatBar.NumberMode.FRACTION, "Block displays its finite pool capacity")
 	var registered: int = 0
 	for source: Dictionary in game.inspector.sources:
@@ -139,8 +139,8 @@ func _run() -> void:
 		while game.busy:
 			await process_frame
 		check(game.hp_bar.value == game.run.hp and game.enemy_bar.value == game.run.enemy["hp"], character + ": health bars follow resolved combat")
-		check(game.mana_bar.value == (game.run.starting_resources()["mana"] if game.run.combat_state == PackRun.CombatState.PREPARING else game.run.mana), character + ": mana follows preparation or remaining pool")
-		check(game.block_bar.value == (game.run.starting_resources()["block"] if game.run.combat_state == PackRun.CombatState.PREPARING else game.run.block), character + ": block follows preparation or live pool")
+		check(game.mana_bar.value == (game.run.starting_resources()[GameplayTypes.Stat.MANA] if game.run.combat_state == PackRun.CombatState.PREPARING else game.run.mana), character + ": mana follows preparation or remaining pool")
+		check(game.block_bar.value == (game.run.starting_resources()[GameplayTypes.Stat.BLOCK] if game.run.combat_state == PackRun.CombatState.PREPARING else game.run.block), character + ": block follows preparation or live pool")
 	game.start_run("warrior", 42)
 	game._open_reward(true)
 	game._choose(0)

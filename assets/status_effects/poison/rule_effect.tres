@@ -9,7 +9,7 @@ rule_id = &"poison_status_rules"
 parameters = {
 "bypass_block": true,
 "damage_per_stack": 1,
-"damage_type": "magical",
+"damage_type": 1,
 "player_ward_absorbs": true,
 "prevent_enemy_decay_relic_id": "plague_seal"
 }

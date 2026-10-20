@@ -9,7 +9,7 @@ rule_id = &"hunter_s_compass_rules"
 parameters = {
 "adjacency_bonus": {
 "stats": {
-"pierce": 2
+14: 2
 },
 "target_category_ids": ["ranged_weapons"]
 },

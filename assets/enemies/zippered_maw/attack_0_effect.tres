@@ -7,7 +7,7 @@ resource_name = "The Zippered Maw Attack 0 Effect"
 script = ExtResource("1_dahu2")
 rule_id = &"enemy_response"
 parameters = {
-"damage": 13,
-"damage_type": "physical",
+0: 13,
+"damage_type": 0,
 "hits": 1
 }

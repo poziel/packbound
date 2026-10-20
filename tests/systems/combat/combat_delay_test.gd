@@ -7,7 +7,7 @@ func _run() -> void:
 	state.enemy["hp"] = 1000
 	state.enemy["max_hp"] = 1000
 	state.enemy["attacks"] = [3]
-	state.add_item("rusty_knife", Vector2i.ZERO)["damage"] = 8
+	state.add_item("rusty_knife", Vector2i.ZERO)[GameplayTypes.Stat.DAMAGE] = 8
 	var playback := PackCombatPlayback.new()
 	root.add_child(playback)
 	playback.set_process(false)
@@ -26,7 +26,7 @@ func _run() -> void:
 		state.enemy["hp"] = 1000
 		state.enemy["max_hp"] = 1000
 		state.enemy["attacks"] = [3]
-		state.add_item("rusty_knife", Vector2i.ZERO)["damage"] = 8
+		state.add_item("rusty_knife", Vector2i.ZERO)[GameplayTypes.Stat.DAMAGE] = 8
 		playback.start(state, example[0], 0.3, 0.28, 0.42, example[1], example[2])
 		check(is_equal_approx(playback.remaining_seconds, example[3]), "Enemy wait respects independent delay and fractional speed")
 		playback.set_paused(true)
@@ -49,7 +49,7 @@ func _run() -> void:
 	state = fixture("warrior")
 	state.items.clear()
 	state.enemy["hp"] = 1
-	state.add_item("rusty_knife", Vector2i.ZERO)["damage"] = 8
+	state.add_item("rusty_knife", Vector2i.ZERO)[GameplayTypes.Stat.DAMAGE] = 8
 	playback.start(state, 1.0, 0.3, 0.28, 0.42, 2.5, 2.5)
 	check(is_equal_approx(playback.remaining_seconds, 0.72), "Lethal player hit only waits for impact and death, not response delays")
 	playback._process(0.73)

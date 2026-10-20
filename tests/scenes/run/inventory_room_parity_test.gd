@@ -18,7 +18,7 @@ func _run() -> void:
 	var expected_attempts: Array[Dictionary] = game.board.crafting_attempts().duplicate(true)
 	check(not expected_attempts.is_empty(), "Fixture has a visible crafting opportunity")
 	var expected_resources: Dictionary = game.board.preview_starting_resources()
-	var expected_block: int = game.board.preview_effects().block
+	var expected_block: int = game.board.preview_effects()[GameplayTypes.Stat.BLOCK]
 	for phase: int in [PackRun.Phase.SELECTOR, PackRun.Phase.ROOM, PackRun.Phase.ROOM_COMPLETE, PackRun.Phase.LOOT]:
 		game.run.phase = phase
 		game.run.combat_state = PackRun.CombatState.FINISHED
@@ -34,9 +34,9 @@ func _run() -> void:
 		PRESENTATION.advance(game.board, 0.25)
 		check(not game.board._crafting_hover.is_empty(), "Same crafting trails in editable phase %d" % phase)
 		for resource: String in ["mana", "stamina", "block"]:
-			check(game.values[resource].text == str(expected_resources[resource]), "Same %s preview in phase %d" % [resource, phase])
-		check(game.mana_bar.max_value == expected_resources.mana and game.stamina_bar.max_value == expected_resources.stamina, "Resource bar capacities follow preparation in phase %d" % phase)
-		check(game.board.preview_effects().block == expected_block, "Item-effect preview ignores previous fight's block in phase %d" % phase)
+			check(game.values[resource].text == str(expected_resources[GameplayTypes.stat_from_id(StringName(resource))]), "Same %s preview in phase %d" % [resource, phase])
+		check(game.mana_bar.max_value == expected_resources[GameplayTypes.Stat.MANA] and game.stamina_bar.max_value == expected_resources[GameplayTypes.Stat.STAMINA], "Resource bar capacities follow preparation in phase %d" % phase)
+		check(game.board.preview_effects()[GameplayTypes.Stat.BLOCK] == expected_block, "Item-effect preview ignores previous fight's block in phase %d" % phase)
 		var item: Dictionary = game.run.items[0]
 		game.board._adjust_priority(item, 1)
 		check(item.priority == 1, "Priority editing works in phase %d" % phase)

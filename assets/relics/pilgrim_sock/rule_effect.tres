@@ -13,7 +13,8 @@ parameters = {
 "cap": 1,
 "condition": "late",
 "metric": "one",
-"stat": "stamina_resource"
+"stat": 9,
+"resource_bonus": true
 },
 "stats": {}
 }

@@ -62,7 +62,7 @@ func _run() -> void:
 		var response: Dictionary = state.outcome(state.effects())
 		var incoming: int = int(enemy.attacks[0]) * int(enemy.hits)
 		check(response.taken == incoming, "Authored strike count resolves into health damage: " + enemy.key)
-		check(int(response.poison_after) == (int(enemy.poison) if incoming > 0 else 0), "Poison applies once only after health damage")
+		check(int(response.poison_after) == (int(enemy[GameplayTypes.Stat.POISON]) if incoming > 0 else 0), "Poison applies once only after health damage")
 		var healing: int = int(enemy.regen) + (int(enemy.drain) if incoming > 0 else 0)
 		check(int(response.enemy_hp_after) == mini(int(enemy.hp), int(enemy.hp) - 10 + healing), "Regeneration and life drain use authored values")
 	# Pool calls return independent dictionaries; combat mutation cannot alter authoring.

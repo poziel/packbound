@@ -7,7 +7,7 @@ resource_name = "Hollow Monk Attack 0 Effect"
 script = ExtResource("1_w1d08")
 rule_id = &"enemy_response"
 parameters = {
-"damage": 10,
-"damage_type": "physical",
+0: 10,
+"damage_type": 0,
 "hits": 1
 }

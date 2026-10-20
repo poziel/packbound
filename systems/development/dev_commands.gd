@@ -126,7 +126,7 @@ func apply(run: PackRun, command: String, args: Dictionary = {}) -> Dictionary:
 			run.set(stat, value)
 			if stat == "max_hp": run.hp = mini(run.hp, value)
 			if stat in ["mana", "stamina", "block"]:
-				run.resource_overrides[stat] = value
+				run.resource_overrides[GameplayTypes.stat_from_id(stat)] = value
 				run.set(stat + "_capacity", value)
 			if stat == "block": run.block_capacity = maxi(run.block_capacity, value)
 		"restore_health": run.hp = run.max_hp

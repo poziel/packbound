@@ -16,7 +16,7 @@ func _run() -> void:
 	game.run.items.clear()
 	for x: int in range(4):
 		var item: Dictionary = game.run.add_item("spark_ring", Vector2i(x, 0))
-		item["mana"] = 6
+		item[GameplayTypes.Stat.MANA] = 6
 	game._refresh()
 	check(game.mana_bar.value == 25 and game.mana_bar.value_label.text == "25 / 25", "Preparation shows equipment mana plus the base pool")
 	for state: int in [PackRun.CombatState.RUNNING, PackRun.CombatState.PAUSED]:
@@ -127,10 +127,10 @@ func _resource_row_checks() -> void:
 	game.start_run("warrior", 42)
 	game.run.relics.clear()
 	game.run.items.clear()
-	game.run.add_item("spark_ring", Vector2i.ZERO)["mana"] = 6
+	game.run.add_item("spark_ring", Vector2i.ZERO)[GameplayTypes.Stat.MANA] = 6
 	game.run.add_item("ember_tome", Vector2i(1, 0))
 	var shield: Dictionary = game.run.add_item("buckler", Vector2i(4, 0))
-	shield["block"] = 5
+	shield[GameplayTypes.Stat.BLOCK] = 5
 	shield["block_per_round"] = 4
 	game.run.enemy["hp"] = 1000
 	game.run.enemy["max_hp"] = 1000
@@ -141,14 +141,14 @@ func _resource_row_checks() -> void:
 	game._act()
 	game.playback.set_paused(true)
 	game._update_preview()
-	check(game.run.mana == 3 and game.run.pending_turn["mana"] == 6, "Fixture pauses after mana is spent with original champion stats pending")
+	check(game.run.mana == 3 and game.run.pending_turn[GameplayTypes.Stat.MANA] == 6, "Fixture pauses after mana is spent with original champion stats pending")
 	check(game.values["mana"].text == "3" and game.mana_bar.value == 3, "Paused champion wait shows spent mana consistently in row and bar")
 	check(game._stat_inspection("mana")["body"].begins_with("Mana: 3\n"), "Mana row inspection describes the displayed remaining pool")
-	check(game.values["damage"].text == str(game.run.pending_turn["damage"]), "Resource correction preserves pending damage statistics")
+	check(game.values["damage"].text == str(game.run.pending_turn[GameplayTypes.Stat.DAMAGE]), "Resource correction preserves pending damage statistics")
 	game.playback.set_paused(false)
 	await game.playback.monster_resolved
 	game.playback.set_paused(true)
 	game._update_preview()
-	check(game.run.pending_turn.is_empty() and game.run.block == 3 and game.run.effects()["block"] == 7, "Fixture reaches depleted block before next recurring regeneration")
+	check(game.run.pending_turn.is_empty() and game.run.block == 3 and game.run.effects()[GameplayTypes.Stat.BLOCK] == 7, "Fixture reaches depleted block before next recurring regeneration")
 	check(game.values["block"].text == "3" and game.block_bar.value == 3 and game.block_bar.max_value == 9, "Paused response gap shows depleted block consistently in row and bar")
 	check(game._stat_inspection("block")["body"].begins_with("Block: 3\n"), "Block row inspection describes the displayed depleted pool")

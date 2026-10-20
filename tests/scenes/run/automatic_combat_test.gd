@@ -106,7 +106,7 @@ func _run() -> void:
 		await process_frame
 	check(game.run.total_turns == 1 and game.run.phase == PackRun.Phase.DEFEAT, "Lethal monster response never starts another action")
 	_fixture(4)
-	game.run.items[0]["damage"] = 0
+	game.run.items[0][GameplayTypes.Stat.DAMAGE] = 0
 	game.run.enemy["attacks"] = [0]
 	game._act()
 	await create_timer(0.9).timeout

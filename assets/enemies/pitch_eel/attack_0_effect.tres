@@ -7,7 +7,7 @@ resource_name = "Pitch Eel Attack 0 Effect"
 script = ExtResource("1_ok08y")
 rule_id = &"enemy_response"
 parameters = {
-"damage": 10,
-"damage_type": "physical",
+0: 10,
+"damage_type": 0,
 "hits": 1
 }

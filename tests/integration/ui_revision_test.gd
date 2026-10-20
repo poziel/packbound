@@ -49,7 +49,7 @@ func _run() -> void:
 	check(shield.visible and shield.value == 3, "Armored enemy shows its current shield amount")
 	check(shield.get_global_rect().end.y <= game.enemy_bar.global_position.y, "Enemy shield sits above health")
 	check(game.enemy_bar.global_position.y > health_without_shield, "Health closes the gap when shield is absent")
-	check(game.run.outcome(game.board.preview_effects())["dealt"] == maxi(0, game.board.preview_effects()["damage"] - 3), "Combined outcome accounts for enemy armor")
+	check(game.run.outcome(game.board.preview_effects())["dealt"] == maxi(0, game.board.preview_effects()[GameplayTypes.Stat.DAMAGE] - 3), "Combined outcome accounts for enemy armor")
 	await _snapshot("ui-revision-shield")
 	game.run.enemy["armor"] = 0
 	game._refresh()
@@ -88,7 +88,7 @@ func _run() -> void:
 	await process_frame
 	check(game.values["damage"].is_visible_in_tree(), "Clearing search restores statistics")
 	for stat in game.values:
-		check(game.values[stat].text == str(game.run.effects()[stat]), "Filtered stats retain their current values: " + stat)
+		check(game.values[stat].text == str(game.run.effects()[GameplayTypes.stat_from_id(StringName(stat)) if GameplayTypes.stat_from_id(StringName(stat)) != GameplayTypes.INVALID_VALUE else stat]), "Filtered stats retain their current values: " + stat)
 	await _snapshot("ui-revision-stats")
 	search.set_query("block")
 	await process_frame

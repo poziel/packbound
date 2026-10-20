@@ -18,8 +18,8 @@ func _run() -> void:
 		game.run.relics.clear()
 		game.run.items.clear()
 		for index in range(4):
-			game.run.add_item("spark_ring", Vector2i(index, 0))["mana"] = 6
-		game.run.add_item("rusty_knife", Vector2i(0, 2))["damage"] = 8
+			game.run.add_item("spark_ring", Vector2i(index, 0))[GameplayTypes.Stat.MANA] = 6
+		game.run.add_item("rusty_knife", Vector2i(0, 2))[GameplayTypes.Stat.DAMAGE] = 8
 		game.run.enemy["hp"] = 1000
 		game.run.enemy["max_hp"] = 1000
 		game.run.enemy["attacks"] = [0]
@@ -34,7 +34,7 @@ func _run() -> void:
 		check(game.playback.paused and game.run.combat_state == PackRun.CombatState.PAUSED, "Captured pause retains inspectable combat")
 		game.character_tabs.current_tab = 0
 		game.run.enemy["hp"] = 1
-		game.run.items[-1]["damage"] = 10000
+		game.run.items[-1][GameplayTypes.Stat.DAMAGE] = 10000
 		game.playback.set_paused(false)
 		while game.playback.active or game.busy or game.gameplay_background.transitioning:
 			await process_frame

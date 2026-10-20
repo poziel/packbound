@@ -7,7 +7,7 @@ resource_name = "Kiln Tortoise Attack 1 Effect"
 script = ExtResource("1_gbmir")
 rule_id = &"enemy_response"
 parameters = {
-"damage": 16,
-"damage_type": "physical",
+0: 16,
+"damage_type": 0,
 "hits": 1
 }

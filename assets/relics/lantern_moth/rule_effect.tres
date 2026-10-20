@@ -13,7 +13,7 @@ parameters = {
 "cap": 1,
 "condition": "has_magic",
 "metric": "one",
-"stat": "cleanse"
+"stat": 12
 },
 "stats": {}
 }
