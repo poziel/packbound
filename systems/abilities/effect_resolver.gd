@@ -5,9 +5,7 @@ const CONTENT = preload("res://systems/content/runtime_content.gd")
 const STATUSES = preload("res://systems/combat/status_resolver.gd")
 
 static func application(id: StringName) -> ApplyStatusEffectDefinition:
-	for effect: ApplyStatusEffectDefinition in CONTENT.content().status_applications:
-		if effect.status.id == id: return effect
-	return null
+	return CONTENT.status_application(id)
 
 ## Maps contain the statuses supported by each combatant. Callers supply copies
 ## for previews; this service neither chooses a combat phase nor writes run saves.

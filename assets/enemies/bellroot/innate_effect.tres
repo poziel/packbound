@@ -1,19 +1,16 @@
-[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+[gd_resource type="Resource" script_class="MonsterTraitEffectDefinition" format=3]
 
-[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_biu2i"]
+[ext_resource type="Script" path="res://systems/abilities/monster_trait_effect_definition.gd" id="1_biu2i"]
 
 [resource]
 resource_name = "Bellroot Innate Effect"
 script = ExtResource("1_biu2i")
-rule_id = &"bellroot_innate_rules"
-parameters = {
-"cycle_armor": 6,
-"drain": 0,
-"enrage": 0,
-"intent": "Cycle Guard",
-"opening_armor": 0,
-"parry": 0,
-"reflect": 0,
-"regen": 0,
-"sunder": 0
-}
+cycle_armor = 6
+drain = 0
+enrage = 0
+intent = "Cycle Guard"
+opening_armor = 0
+parry = 0
+reflect = 0
+regen = 0
+sunder = 0

@@ -20,7 +20,13 @@ func _tab_index(tab_name: StringName) -> int:
 	return game.character_tabs.get_tab_idx_from_control(game.character_tabs.get_node(NodePath(tab_name)))
 
 func _catalog_checks() -> void:
-	check(PackCatalog.ROSTER.size() == 28, "Twenty-eight item types including three elemental spells")
+	var item_ids: Dictionary = {}
+	for key: String in PackCatalog.ROSTER:
+		check(not key.is_empty() and not item_ids.has(key), "Catalog item identity is nonempty and unique: " + key)
+		item_ids[key] = true
+	check(PackCatalog.ROSTER.size() >= 28, "Expanded catalog retains at least the original item roster")
+	for key: String in ["ember_tome", "frost_wand", "lightning_wand"]:
+		check(item_ids.has(key), "Catalog retains elemental spell " + key)
 	check(PackCatalog.enemies().size() == 56, "Fifty-six enemies")
 	var names: Dictionary = {}
 	for enemy in PackCatalog.enemies():
@@ -39,7 +45,10 @@ func _catalog_checks() -> void:
 			check(unique.size() == original.size(), key + " rotation preserves cells")
 		check(PackRun.offsets(item, 4) == original, key + " returns after full revolution")
 		var art: AtlasTexture = PackArt.item(key)
-		var native_size: Vector2 = Vector2(32, 32) if key in ["rusty_knife", "cracked_shield", "iron_charm", "longsword", "blood_gem", "bandage", "cursed_idol", "tower_shield"] else Vector2(96, 96)
+		var definition: CollectibleDefinition = PackCatalog.CATEGORIES.definition_for_key(key)
+		var native_size: Vector2 = definition.icon.get_size()
+		# These accepted originals have independent fixed pixel-size contracts.
+		if key in ["rusty_knife", "cracked_shield", "iron_charm", "longsword", "blood_gem", "bandage", "cursed_idol", "tower_shield"]: native_size = Vector2(32, 32)
 		if key in ["buckler", "spark_ring", "antidote"]: native_size = Vector2(32, 32)
 		if key in ["venom_dagger", "shortbow", "ember_tome", "thorn_mail", "healing_herbs", "mirror_shard"]: native_size = Vector2(64, 64)
 		if key in ["quiver", "vampire_fang"]: native_size = Vector2(32, 64)
@@ -48,6 +57,7 @@ func _catalog_checks() -> void:
 		if key in ["void_tome", "venom_orb"]: native_size = Vector2(64, 64)
 		if key in ["battle_axe", "plate_mail", "hunting_trap", "hourglass"]: native_size = Vector2(96, 64)
 		check(art.get_size() == native_size, key + " has art at its source resolution")
+		check(art.region.has_area() and Rect2(Vector2.ZERO, art.atlas.get_size()).encloses(art.region), key + " authored art region stays inside its source texture")
 	var axe_art: Texture2D = PackArt.item("battle_axe").atlas
 	check(axe_art.resource_path == "res://assets/items/battle_axe/art/item.png", "Executioner's Axe uses approved catalog redraw")
 	for view_edge in [64, 128, 256]:

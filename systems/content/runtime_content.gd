@@ -1,6 +1,13 @@
 extends RefCounted
 ## Read-only authored definitions; adapters return independent mutable run records.
 static var _content: GameContentDefinition
+static var _characters: Dictionary = {}
+static var _classes: Dictionary = {}
+static var _monsters: Dictionary = {}
+static var _character_mechanics: Dictionary = {}
+static var _domains: Dictionary = {}
+static var _applications: Dictionary = {}
+static var _index_revision: int = 0
 
 static func content() -> GameContentDefinition:
 	if _content == null:
@@ -10,19 +17,71 @@ static func content() -> GameContentDefinition:
 			push_error("Cannot load game content: " + "; ".join(errors))
 			return null
 		_content = candidate
+		_rebuild_indexes()
 	return _content
 
+## Explicit structural refresh for editor tools/tests; does not rediscover folders.
+## Reject invalid graphs without replacing the published indexes.
+static func rebuild_indexes() -> PackedStringArray:
+	var candidate: GameContentDefinition = content()
+	if candidate == null: return PackedStringArray(["Game content is unavailable."])
+	var errors: PackedStringArray = candidate.validation_errors()
+	if errors.is_empty(): _rebuild_indexes()
+	return errors
+
+static func index_revision() -> int:
+	content()
+	return _index_revision
+
+static func _rebuild_indexes() -> void:
+	_index_revision += 1
+	var candidate: GameContentDefinition = _content
+	_characters.clear()
+	_classes.clear()
+	_monsters.clear()
+	_character_mechanics.clear()
+	_domains.clear()
+	_applications.clear()
+	for value: CharacterDefinition in candidate.characters: _characters[value.id] = value
+	for value: CharacterClassDefinition in candidate.character_classes: _classes[value.id] = value
+	for value: MonsterDefinition in candidate.monsters: _monsters[value.id] = value
+	for domain: StringName in [&"recipes", &"status_effects", &"loot_pools", &"loot_progressions"]:
+		var index: Dictionary = {}
+		for value: Resource in candidate.get(domain): index[value.id] = value
+		_domains[domain] = index
+	for value: ApplyStatusEffectDefinition in candidate.status_applications: _applications[value.status.id] = value
+	for owner: CharacterDefinition in candidate.characters:
+		var mechanics: Dictionary = {}
+		for abilities: Array[AbilityDefinition] in [owner.abilities, character_class(owner.class_id).abilities]:
+			for ability: AbilityDefinition in abilities:
+				for effect: EffectDefinition in ability.effects:
+					if effect is CharacterMechanicEffectDefinition and not mechanics.has(effect.mechanic): mechanics[effect.mechanic] = effect
+		_character_mechanics[owner.id] = mechanics
+
 static func character(id: String) -> CharacterDefinition:
-	for value: CharacterDefinition in content().characters:
-		if value.id == StringName(id):
-			return value
-	return null
+	content()
+	return _characters.get(StringName(id))
+
+static func character_class(id: StringName) -> CharacterClassDefinition:
+	content()
+	return _classes.get(id)
 
 static func monster_definition(id: String) -> MonsterDefinition:
-	for value: MonsterDefinition in content().monsters:
-		if value.id == StringName(id):
-			return value
-	return null
+	content()
+	return _monsters.get(StringName(id))
+
+static func character_mechanic(id: String, kind: CharacterMechanicEffectDefinition.Mechanic) -> CharacterMechanicEffectDefinition:
+	content()
+	return _character_mechanics.get(StringName(id), {}).get(kind)
+
+## IDs and membership are immutable during a game session. Editor refresh is explicit.
+static func definition(domain: StringName, id: StringName) -> Resource:
+	content()
+	return _domains.get(domain, {}).get(id)
+
+static func status_application(id: StringName) -> ApplyStatusEffectDefinition:
+	content()
+	return _applications.get(id)
 
 static func rules(abilities: Array[AbilityDefinition]) -> Dictionary:
 	var result: Dictionary = {}
@@ -86,7 +145,9 @@ static func monster(value: MonsterDefinition) -> Dictionary:
 		GameplayTypes.Stat.POISON: 0, "drain": 0, "reflect": 0, "sunder": 0, "enrage": 0,
 		"regen": 0, "parry": 0, "opening_armor": 0, "cycle_armor": 0,
 		GameplayTypes.Stat.CLEANSE: 0, GameplayTypes.Stat.PHYSICAL_RESISTANCE: 0, GameplayTypes.Stat.MAGICAL_RESISTANCE: 0}
-	result.merge(rules(value.abilities), true)
+	for ability: AbilityDefinition in value.abilities:
+		for effect: EffectDefinition in ability.effects:
+			if effect is MonsterTraitEffectDefinition: result.merge(effect.profile(), true)
 	result.merge({"key": str(value.id), "name": value.display_name,
 		"hp": int(value.resource_capacities.get(GameplayTypes.ResourceType.HEALTH, 0)),
 		"detail": value.description}, true)
@@ -95,9 +156,9 @@ static func monster(value: MonsterDefinition) -> Dictionary:
 	var attacks: Array[int] = []
 	for action: ActionDefinition in value.behavior.actions:
 		for effect: EffectDefinition in action.effects:
-			if effect is CatalogRuleEffectDefinition and effect.rule_id == &"enemy_response":
-				attacks.append(int(effect.parameters.get(GameplayTypes.Stat.DAMAGE, 0)))
-				result.hits = int(effect.parameters.get("hits", 1))
+			if effect is AttackEffectDefinition:
+				attacks.append(effect.damage)
+				result.hits = effect.hits
 	if not value.abilities.is_empty():
 		result.detail = value.abilities[0].description
 	result.attacks = attacks

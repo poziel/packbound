@@ -4,14 +4,14 @@ const DATA = preload("res://systems/content/runtime_content.gd")
 const COLLECTIBLES = preload("res://systems/content/collectible_categories.gd")
 
 static func progression(id: String) -> LootProgressionDefinition:
-	for value: LootProgressionDefinition in DATA.content().loot_progressions:
-		if value.id == StringName(id): return value
+	var value: LootProgressionDefinition = DATA.definition(&"loot_progressions", StringName(id))
+	if value != null: return value
 	push_error("Unknown loot progression: " + id)
 	return null
 
 static func pool(id: String) -> LootPoolDefinition:
-	for value: LootPoolDefinition in DATA.content().loot_pools:
-		if value.id == StringName(id): return value
+	var value: LootPoolDefinition = DATA.definition(&"loot_pools", StringName(id))
+	if value != null: return value
 	push_error("Unknown loot pool: " + id)
 	return null
 

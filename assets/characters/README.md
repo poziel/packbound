@@ -16,6 +16,10 @@ The [acceptance registry](../../workspace/docs/art/characters/accepted.json) pre
 
 [Character archives](../../workspace/archives/characters/) contain retained ZIP snapshots, excluded from Godot import by `workspace/.gdignore`. Superseded versions, draft sources, legacy shared portraits/sources and the prior root layout are preserved there. Historical paths inside original provenance records describe their original location; consult the ZIP for those files.
 
-The game still defines classes in code. Moving assets does not migrate class gameplay to `character.json`.
+Gameplay reads `character.tres`, `character_class.tres` and their shared typed
+ability/effect resources. `CharacterMechanicEffectDefinition` selects Momentum,
+Elemental Reactions, Volley, Raise Dead or Shadowstep and owns their configurable
+starting/period/cap/damage values. Algorithms remain in the combat systems;
+`character.json` is design metadata, not a runtime gameplay source.
 
 Art filenames use underscores (`full_body.png`); SVG exports were removed. Authored `.tres` gameplay resources remain beside each Delver README.

@@ -80,13 +80,13 @@ func _run() -> void:
 		var source: Dictionary = source_monsters[str(monster.id)]
 		check_equal(monster.resource_capacities[GameplayTypes.ResourceType.HEALTH], int(source.hp), "Monster HP retained")
 		for field: String in ["drain", "reflect", "sunder", "enrage", "regen", "parry", "opening_armor", "cycle_armor"]:
-			check_equal(monster.abilities[0].effects[0].parameters.get(field, 0), source.get(field, 0), "Monster special rule retained: " + field)
+			check_equal(monster.abilities[0].effects[0].get(field), source.get(field, 0), "Monster special rule retained: " + field)
 		check_equal(monster.base_stats.get(GameplayTypes.Stat.CLEANSE, 0), int(source.get(GameplayTypes.Stat.CLEANSE, 0)), "Monster cleanse retained in typed stats")
-		check(not monster.abilities[0].effects[0].parameters.has("attacks"), "Attack cycle has one authority")
+		check(monster.abilities[0].effects[0] is MonsterTraitEffectDefinition, "Monster traits are concrete effects")
 		check_equal(monster.behavior.actions.size(), source.attacks.size(), "Attack cycle length retained")
 		for turn: int in range(source.attacks.size()):
-			check_equal(monster.behavior.actions[turn].effects[0].parameters[GameplayTypes.Stat.DAMAGE], int(source.attacks[turn]), "Attack cycle damage retained")
-			check_equal(monster.behavior.actions[turn].effects[0].parameters.hits, int(source.get("hits", 1)), "Multiple hits retained")
+			check_equal(monster.behavior.actions[turn].effects[0].damage, int(source.attacks[turn]), "Attack cycle damage retained")
+			check_equal(monster.behavior.actions[turn].effects[0].hits, int(source.get("hits", 1)), "Multiple hits retained")
 	check_equal(content.recipes.size(), CRAFTING.RECIPES.size(), "Exact recipe coverage")
 	for position: int in range(CRAFTING.RECIPES.size()):
 		var source: Dictionary = CRAFTING.RECIPES[position]

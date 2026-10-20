@@ -776,8 +776,8 @@ func _update_preview() -> void:
 		"warrior": class_summary = "Momentum %d / +%d per round" % [run.momentum, run.momentum_gain()]
 		"ranger": class_summary = "Choose starting arrows" if run.needs_arrows() else "Volley in %d round(s)" % run.volley_remaining
 		"mage": class_summary = "%d reaction(s) ready" % stats.get("reactions", []).size()
-		"assassin": class_summary = "Invisible: cannot be targeted" if run.is_invisible() else "Shadowstep in %d turn(s)" % (3 - (run.turn - 1) % 3)
-		"necromancer": class_summary = "%d/%d bone thralls / +%d damage" % [run.undead_companions, PackRun.NECROMANCER_COMPANION_CAP, stats["companion_damage"]]
+		"assassin": class_summary = "Invisible: cannot be targeted" if run.is_invisible() else "Shadowstep in %d turn(s)" % run.shadowstep_remaining()
+		"necromancer": class_summary = "%d/%d bone thralls / +%d damage" % [run.undead_companions, run.companion_capacity(), stats["companion_damage"]]
 	var unused_count: int = board.unpacked().size()
 	storage_button.accessibility_name = "Stash (%d)" % unused_count
 	var preparing: bool = run.can_edit_inventory()

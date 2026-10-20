@@ -14,3 +14,8 @@ removed. The retained shared legacy sheet is `enemies.png`.
 `encounter_floor` metadata and adapts their stats, innate rules and ordered actions
 to the existing combat profile contract. It does not read a JSON index. See each
 enemy's README for design details. Stable enemy IDs and combat rules are unchanged.
+
+Ordered attacks use `AttackEffectDefinition` (damage, hits, physical damage type).
+Innate responses use `MonsterTraitEffectDefinition` (intent, drain, reflect,
+sunder, enrage, regeneration and shield cadence). Runtime profile dictionaries
+are independent adapters; the `.tres` records own these values.

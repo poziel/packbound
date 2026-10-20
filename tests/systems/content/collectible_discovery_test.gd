@@ -10,16 +10,26 @@ func _run() -> void:
 	var count: int = DISCOVERY.paths("res://assets/items", "item.tres").size() + DISCOVERY.paths("res://assets/relics", "relic.tres").size()
 	check_equal(catalog.collectibles.size(), count, "Every canonical primary resource registered")
 	check_equal(count, 208, "Complete current roster including special quiver entries")
+	var ability_filename := RegEx.new()
+	ability_filename.compile("^[a-z][a-z0-9_]*_ability\\.tres$")
+	var effect_filename := RegEx.new()
+	effect_filename.compile("^[a-z][a-z0-9_]*_effect\\.tres$")
 	var ids: PackedStringArray = []
 	for value: CollectibleDefinition in catalog.collectibles:
 		ids.append(str(value.id))
 		check_equal(value.resource_name, value.display_name, "Inspector label is the actual collectible name")
 		check(value.resource_path.get_file() in ["item.tres", "relic.tres"], "Canonical primary filename")
 		for ability: AbilityDefinition in value.abilities:
-			check_equal(ability.resource_path.get_file(), "rule_ability.tres", "Descriptive ability filename")
+			check(ability_filename.search(ability.resource_path.get_file()) != null, "Descriptive ability filename: " + ability.resource_path)
 			check(not ability.resource_name.is_empty(), "Ability has a readable label")
 			for effect: EffectDefinition in ability.effects:
-				check_equal(effect.resource_path.get_file(), "rule_effect.tres", "Descriptive effect filename")
+				var filename: String = effect.resource_path.get_file()
+				var descriptive: bool = effect_filename.search(filename) != null
+				if effect is ApplyStatusEffectDefinition and effect.status != null:
+					descriptive = descriptive or filename == "apply_%s.tres" % effect.status.id
+				if effect is GrantCombatStatEffectDefinition:
+					descriptive = descriptive or filename == "grant_stat.tres"
+				check(descriptive, "Descriptive effect filename: " + effect.resource_path)
 				check(not effect.resource_name.is_empty(), "Effect has a readable label")
 	check_equal(catalog.refresh_from_folders(), PackedStringArray(), "Refresh is repeatable")
 	var repeated: PackedStringArray = []

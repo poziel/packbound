@@ -19,11 +19,11 @@ static func classes() -> Dictionary:
 	characters.sort_custom(func(a: CharacterDefinition, b: CharacterDefinition) -> bool:
 		return int(a.get_meta("selection_order", 999)) < int(b.get_meta("selection_order", 999)))
 	for character: CharacterDefinition in characters:
-		var kind: CharacterClassDefinition
-		for candidate: CharacterClassDefinition in DATA.content().character_classes:
-			if candidate.id == character.class_id:
-				kind = candidate
-		var entry: Dictionary = DATA.rules(kind.abilities)
+		var kind: CharacterClassDefinition = DATA.character_class(character.class_id)
+		var entry: Dictionary = {}
+		for ability: AbilityDefinition in kind.abilities:
+			for effect: EffectDefinition in ability.effects:
+				if effect is CharacterMechanicEffectDefinition: entry["mechanic"] = effect.display_name
 		var starters: Array[String] = []
 		var positions: Array[Vector2i] = []
 		var rotations: Array[int] = []

@@ -5,8 +5,8 @@ const CONTENT = preload("res://systems/content/runtime_content.gd")
 const DAMAGE = preload("res://systems/combat/elemental_combat.gd")
 
 static func definition(id: StringName) -> StatusEffectDefinition:
-	for value: StatusEffectDefinition in CONTENT.content().status_effects:
-		if value.id == id: return value
+	var value: StatusEffectDefinition = CONTENT.definition(&"status_effects", id)
+	if value != null: return value
 	push_error("Unknown status definition: " + str(id))
 	return null
 

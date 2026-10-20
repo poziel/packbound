@@ -58,8 +58,8 @@ optional arrays of stable IDs shared by items and relics. Empty arrays mean no
 preference. Validation rejects blank and duplicate entries; roster reference
 validation belongs to a future cross-domain catalog. Preferences never bypass
 eligibility. The intended loot policy applies one centrally tuned bonus when
-either list matches, without stacking class and character matches. These fields
-are authored metadata only: current reward selection does not consume them yet.
+either list matches, without stacking class and character matches. `LootSelection` consumes these preferences using the selected progression's
+`preferred_weight_multiplier`, after enforcing both class and character restrictions.
 
 `gameplay_types.gd` defines `GameplayTypes`, the shared enum authority used by
 typed definitions and the existing catalog vocabularies:
@@ -266,3 +266,23 @@ owned by `QuiverVolleyEffectDefinition` resources. See the
 for supported triggers and ownership. The former relic condition-name interpreter
 and primary adjacency item-ID switch have been removed. Other domains may still
 use compatibility effects; presentation/initialization metadata is still adapted.
+
+## Runtime discovery and indexes
+
+`runtime_content.gd` discovers and validates the complete canonical content graph
+once per process. The category matcher shares that graph instead of discovering
+collectibles a second time. Character, class, monster, recipe, status, application,
+loot-pool and loot-progression ID lookups use indexes of the validated Resource
+references. Returned run dictionaries remain independent mutable views.
+
+IDs, collection membership and capability kinds are immutable for a game session;
+scalar tuning stays on the referenced Resource. Inspector Refresh buttons rebuild
+authoring catalogs explicitly. Restart the running game after structural edits; runtime hot reload is not
+supported. Tools that deliberately edit indexed collections can call
+`rebuild_indexes()` to validate and republish lookups without rescanning folders;
+invalid graphs leave the existing lookup tables intact.
+
+`PackRun.effects()` reuses adjacency and relic-mechanic queries only within its
+synchronous evaluation. The memo tables clear before it returns, so direct item
+moves, turn changes, relic edits and later definition tuning are observed by the
+next preview. No persistent preview result or gameplay RNG is cached.

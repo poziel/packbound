@@ -1,11 +1,9 @@
-[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+[gd_resource type="Resource" script_class="CharacterMechanicEffectDefinition" format=3]
 
-[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_c5mm7"]
+[ext_resource type="Script" path="res://systems/abilities/character_mechanic_effect_definition.gd" id="1_c5mm7"]
 
 [resource]
 resource_name = "Bowmaster Class Effect"
 script = ExtResource("1_c5mm7")
-rule_id = &"ranger_class_rules"
-parameters = {
-"mechanic": "Volley"
-}
+mechanic = 2
+display_name = "Volley"

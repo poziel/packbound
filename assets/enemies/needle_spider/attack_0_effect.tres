@@ -1,13 +1,10 @@
-[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+[gd_resource type="Resource" script_class="AttackEffectDefinition" format=3]
 
-[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_kpmk0"]
+[ext_resource type="Script" path="res://systems/abilities/attack_effect_definition.gd" id="1_kpmk0"]
 
 [resource]
 resource_name = "Needle Spider Attack 0 Effect"
 script = ExtResource("1_kpmk0")
-rule_id = &"enemy_response"
-parameters = {
-0: 3,
-"damage_type": 0,
-"hits": 2
-}
+damage = 3
+damage_type = 0
+hits = 2

@@ -22,6 +22,7 @@ func _run() -> void:
 	progression.rarity_weights_by_floor = {1: {GameplayTypes.Rarity.COMMON: 1.0}}
 	content.loot_pools.append(pool)
 	content.loot_progressions.append(progression)
+	check_equal(DATA.rebuild_indexes(), PackedStringArray(), "Test loot membership validates before rebuilding indexes")
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 1729
 	var state: int = rng.state
@@ -77,6 +78,7 @@ func _run() -> void:
 	item.preferred_character_ids.assign(characters)
 	content.loot_pools.pop_back()
 	content.loot_progressions.pop_back()
+	check_equal(DATA.rebuild_indexes(), PackedStringArray(), "Restored loot membership rebuilds valid indexes")
 	# Changing the actual authored pool must affect the normal PackRun entry point.
 	var offense: LootPoolDefinition
 	for candidate: LootPoolDefinition in content.loot_pools:
@@ -145,11 +147,23 @@ func _check_quiver(selector: Script) -> void:
 	check_equal(run.offers.size(), 2, "Starting arrow choices read the Resource offer count")
 	source.offer_count = count
 	var definition: ItemDefinition = CATEGORIES.definition_for_key("quiver_capacity")
-	var effect: CatalogRuleEffectDefinition = definition.abilities[0].effects[0]
-	var cap: int = effect.parameters.cap
-	effect.parameters.cap = 0
+	var upgrades: Array[QuiverVolleyEffectDefinition] = []
+	for ability: AbilityDefinition in definition.abilities:
+		for candidate: EffectDefinition in ability.effects:
+			if candidate is QuiverVolleyEffectDefinition and candidate.kind == QuiverVolleyEffectDefinition.Kind.UPGRADE:
+				upgrades.append(candidate)
+	check_equal(upgrades.size(), 1, "Expanded Quiver owns one concrete Volley upgrade effect")
+	if upgrades.size() != 1:
+		return
+	var effect: QuiverVolleyEffectDefinition = upgrades[0]
+	var cap: int = effect.cap
+	check(PackRun.QUIVER.available(run.quiver()).has("quiver_capacity"), "Expanded Quiver starts below its authored upgrade cap")
+	run.quiver().upgrades["quiver_capacity"] = 1
+	effect.cap = 1
 	check(not PackRun.QUIVER.available(run.quiver()).has("quiver_capacity"), "Upgrade availability reads the authored cap")
-	effect.parameters.cap = cap
+	effect.cap = cap
+	check(PackRun.QUIVER.available(run.quiver()).has("quiver_capacity"), "Restoring authored cap makes the partially upgraded quiver eligible again")
+	run.quiver().upgrades.erase("quiver_capacity")
 	var before: int = run.rng.state
 	var repaired: Array[String] = selector.repair(["boiler_hammer", "bandage"], "items_mage", "mage", 1)
 	check(repaired.has("bandage") and not repaired.has("boiler_hammer"), "Saved-offer repair preserves legal rolls and replaces class-ineligible offers")

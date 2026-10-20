@@ -1808,6 +1808,13 @@
 	  "suites": ["systems"],
 	  "requires_rendering": false,
 	  "timeout_sec": 30
+	},
+	{
+	  "id": "combatant_resource_runtime",
+	  "path": "tests/systems/combat/combatant_resource_runtime_test.gd",
+	  "suites": ["systems"],
+	  "requires_rendering": false,
+	  "timeout_sec": 30
 	}
   ]
 }

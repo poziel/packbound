@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+[gd_resource type="Resource" script_class="CharacterMechanicEffectDefinition" format=3]
 
-[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_ylrix"]
+[ext_resource type="Script" path="res://systems/abilities/character_mechanic_effect_definition.gd" id="1_ylrix"]
 
 [resource]
 resource_name = "Warmonger Class Effect"
 script = ExtResource("1_ylrix")
-rule_id = &"warrior_class_rules"
-parameters = {
-"mechanic": "Momentum"
-}
+mechanic = 0
+display_name = "Momentum"
+momentum_per_response = 1

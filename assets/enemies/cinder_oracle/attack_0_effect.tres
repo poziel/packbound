@@ -1,13 +1,10 @@
-[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+[gd_resource type="Resource" script_class="AttackEffectDefinition" format=3]
 
-[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_qo5a1"]
+[ext_resource type="Script" path="res://systems/abilities/attack_effect_definition.gd" id="1_qo5a1"]
 
 [resource]
 resource_name = "Cinder Oracle Attack 0 Effect"
 script = ExtResource("1_qo5a1")
-rule_id = &"enemy_response"
-parameters = {
-0: 11,
-"damage_type": 0,
-"hits": 1
-}
+damage = 11
+damage_type = 0
+hits = 1

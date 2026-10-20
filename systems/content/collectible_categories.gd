@@ -3,22 +3,24 @@ extends RefCounted
 static var _parents: Dictionary = {}
 static var _memberships: Dictionary = {}
 static var _definitions: Dictionary = {}
-static var _loaded: bool = false
+static var _revision: int = -1
 
 static func _ensure_loaded() -> void:
-	if _loaded:
-		return
-	var catalog: Resource = preload("res://systems/content/collectible_catalog_definition.gd").new()
-	var errors: PackedStringArray = catalog.refresh_from_folders()
-	if not errors.is_empty():
-		push_error("Cannot discover collectibles: " + "; ".join(errors))
-		return
+	var data: Script = preload("res://systems/content/runtime_content.gd")
+	var revision: int = data.index_revision()
+	if _revision == revision: return
+	var content: GameContentDefinition = data.content()
+	if content == null: return
+	var catalog: CollectibleCatalogDefinition = content.collectibles
+	_parents.clear()
+	_memberships.clear()
+	_definitions.clear()
 	for category: CollectibleCategoryDefinition in catalog.categories:
 		_parents[category.id] = category.parent_category_id
 	for item: CollectibleDefinition in catalog.collectibles:
 		_memberships[str(item.id)] = item.category_ids.duplicate()
 		_definitions[str(item.id)] = item
-	_loaded = true
+	_revision = revision
 
 ## Definitions discovered once per process; callers must treat them as read-only.
 static func definition_for_key(key: String) -> CollectibleDefinition:

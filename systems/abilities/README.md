@@ -129,3 +129,17 @@ Remaining `CatalogRuleEffectDefinition` records contain compatibility/presentati
 metadata and initialization fields. They no longer author these collectible bonuses.
 Characters, monster behavior and status tick handlers retain their own migration
 boundaries. Adding an unknown effect or trigger still requires coded support.
+
+## Character and monster capabilities
+
+`CharacterMechanicEffectDefinition` declares the class capability and configurable
+Momentum gain, Shadowstep period and starting/capacity/damage of bone thralls.
+`PackRun` reads those definitions instead of using class-name gates or tuning
+constants. Special-purpose algorithms (reactions, Volley, shield cadence) stay
+in their owning systems.
+
+`AttackEffectDefinition` supplies ordered monster damage and hit counts.
+`MonsterTraitEffectDefinition` supplies intent and response/shield traits.
+Current monster responses support physical damage only; validation rejects other
+damage types rather than silently accepting unsupported authoring. All existing
+class and enemy parameter wrappers have been replaced by these concrete records.

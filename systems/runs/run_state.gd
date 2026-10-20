@@ -15,11 +15,16 @@ const GRID: Vector2i = Vector2i(8, 7)
 const FLOORS: int = 20
 const RELIC_FLOORS: Array[int] = [1, 5, 10, 15]
 const ROSTER: Array[String] = PackCatalog.ROSTER
-const NECROMANCER_COMPANION_CAP: int = 3
-const NECROMANCER_COMPANION_DAMAGE: int = 2
+const CHARACTER_MECHANIC = preload("res://systems/abilities/character_mechanic_effect_definition.gd")
 const MAX_ITEM_PRIORITY: int = 9
 enum Phase { RELIC, FIGHT, LOOT, VICTORY, DEFEAT, SELECTOR, ROOM, ROOM_COMPLETE }
 enum CombatState { PREPARING, RUNNING, PAUSED, FINISHED }
+
+# Memoize only within one synchronous evaluation. Public mutable state and shared
+# authoring resources are read afresh on every call, including drag previews.
+var _evaluating_effects: bool = false
+var _evaluation_mechanics: Dictionary = {}
+var _evaluation_touches: Dictionary = {}
 
 var combat_state: CombatState = CombatState.PREPARING
 
@@ -184,7 +189,7 @@ func reset(seed_value: int = -1, chosen_class: String = "warrior") -> void:
 	class_key = chosen_class
 	momentum_gain_bonus = 0
 	momentum_cost_reduction = 0
-	undead_companions = 1 if class_key == "necromancer" else 0
+	undead_companions = _character_value(CHARACTER_MECHANIC.Mechanic.RAISE_DEAD, "starting_companions")
 	var character: Dictionary = PackCatalog.classes()[class_key]
 	max_hp = int(character["hp"])
 	hp = max_hp
@@ -205,7 +210,7 @@ func reset(seed_value: int = -1, chosen_class: String = "warrior") -> void:
 		starter["rotation"] = character["rotations"][index]
 		starter["shape"] = dimensions(starter, starter["rotation"])
 	prepare_enemy()
-	if class_key == "ranger":
+	if _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.VOLLEY):
 		var arrows: Array[String] = LOOT.initial_options(class_key)
 		item_rewards.push_front({"floor": 0, "offers": arrows.duplicate()})
 		offers.assign(arrows)
@@ -221,7 +226,7 @@ func is_permanent(item: Dictionary) -> bool:
 	return item.get("key", "") == QUIVER.KEY
 
 func needs_arrows() -> bool:
-	return class_key == "ranger" and not quiver().is_empty() and str(quiver().get("arrow_type", "")).is_empty()
+	return _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.VOLLEY) and not quiver().is_empty() and str(quiver().get("arrow_type", "")).is_empty()
 
 func quiver_description() -> String:
 	return QUIVER.describe(quiver(), volley_remaining, item_bonus(quiver())) if not quiver().is_empty() else ""
@@ -229,7 +234,7 @@ func quiver_description() -> String:
 func add_item(key: String, cell: Variant = null) -> Dictionary:
 	if not can_edit_inventory():
 		return {}
-	if key == QUIVER.KEY and (class_key != "ranger" or not quiver().is_empty()):
+	if key == QUIVER.KEY and (not _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.VOLLEY) or not quiver().is_empty()):
 		return {}
 	if QUIVER.OPTIONS.has(key):
 		return {}
@@ -291,14 +296,24 @@ func prepare_enemy(selected: Dictionary = {}) -> void:
 		relic_rewards.append(fight + 1)
 		roll_relics()
 
+func _has_character_mechanic(kind: CharacterMechanicEffectDefinition.Mechanic) -> bool:
+	return PackCatalog.DATA.character_mechanic(class_key, kind) != null
+
+func _character_value(kind: CharacterMechanicEffectDefinition.Mechanic, field: String, fallback: int = 0) -> int:
+	var effect: CharacterMechanicEffectDefinition = PackCatalog.DATA.character_mechanic(class_key, kind)
+	return int(effect.get(field)) if effect != null else fallback
+
+func companion_capacity() -> int:
+	return _character_value(CHARACTER_MECHANIC.Mechanic.RAISE_DEAD, "companion_capacity")
+
 func momentum_gain() -> int:
-	return maxi(0, 1 + momentum_gain_bonus) if class_key == "warrior" else 0
+	return maxi(0, _character_value(CHARACTER_MECHANIC.Mechanic.MOMENTUM, "momentum_per_response") + momentum_gain_bonus) if _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.MOMENTUM) else 0
 
 func momentum_cost(amount: int) -> int:
 	return maxi(0, amount - momentum_cost_reduction)
 
 func spend_momentum(amount: int) -> bool:
-	if class_key != "warrior" or amount < 0 or combat_state != CombatState.RUNNING or not pending_turn.is_empty():
+	if not _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.MOMENTUM) or amount < 0 or combat_state != CombatState.RUNNING or not pending_turn.is_empty():
 		return false
 	var cost: int = momentum_cost(amount)
 	if momentum < cost:
@@ -337,8 +352,11 @@ func enemy_block() -> int:
 func enemy_block_capacity(at_turn: int = -1) -> int:
 	return shield_capacity(at_turn)
 
+func shadowstep_remaining() -> int:
+	return posmod(1 - turn, _character_value(CHARACTER_MECHANIC.Mechanic.SHADOWSTEP, "invisibility_period", 1))
+
 func is_invisible() -> bool:
-	return class_key == "assassin" and (turn - 1) % 3 == 0
+	return _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.SHADOWSTEP) and shadowstep_remaining() == 0
 
 func enemy_conditions() -> Dictionary:
 	return {GameplayTypes.Stat.POISON: enemy_poison, GameplayTypes.Stat.BURN: enemy_burn, GameplayTypes.Stat.SLOW: enemy_slow, GameplayTypes.Stat.SPARK: enemy_spark, GameplayTypes.Stat.DOOM: enemy_doom}
@@ -449,9 +467,13 @@ func _cells_fit(proposed: Array[Vector2i], occupied: Dictionary) -> bool:
 	return true
 
 func _relic_mechanic(kind: CollectibleMechanicEffectDefinition.Mechanic) -> CollectibleMechanicEffectDefinition:
+	if _evaluating_effects and _evaluation_mechanics.has(kind): return _evaluation_mechanics[kind]
 	for key: String in relics:
 		var effect: CollectibleMechanicEffectDefinition = MECHANICS.effect(key, kind, {"turn": turn})
-		if effect != null: return effect
+		if effect != null:
+			if _evaluating_effects: _evaluation_mechanics[kind] = effect
+			return effect
+	if _evaluating_effects: _evaluation_mechanics[kind] = null
 	return null
 
 func _item_mechanic(item: Dictionary, kind: CollectibleMechanicEffectDefinition.Mechanic) -> CollectibleMechanicEffectDefinition:
@@ -462,6 +484,12 @@ func _mirror_amount(item: Dictionary, amount: int) -> int:
 	return floori(float(amount) * effect.amount / effect.divisor) if effect != null else 0
 
 func touches(a: Dictionary, b: Dictionary) -> bool:
+	if not _evaluating_effects: return _touches_uncached(a, b)
+	var pair := Vector2i(mini(a.id, b.id), maxi(a.id, b.id))
+	if not _evaluation_touches.has(pair): _evaluation_touches[pair] = _touches_uncached(a, b)
+	return _evaluation_touches[pair]
+
+func _touches_uncached(a: Dictionary, b: Dictionary) -> bool:
 	var wraps: bool = _relic_mechanic(MECHANIC.Mechanic.WRAP_LINKS) != null
 	var diagonals: bool = _relic_mechanic(MECHANIC.Mechanic.DIAGONAL_LINKS) != null
 	for first in cells(a):
@@ -537,7 +565,7 @@ func item_enabled(item: Dictionary) -> bool:
 func normalize_reward_restrictions() -> void:
 	for reward: Dictionary in item_rewards:
 		var at: int = int(reward.get("floor", display_floor()))
-		var context: String = "quiver_initial" if at == 0 and class_key == "ranger" else LOOT.item_progression(class_key)
+		var context: String = "quiver_initial" if at == 0 and _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.VOLLEY) else LOOT.item_progression(class_key)
 		reward["offers"].assign(LOOT.repair(reward["offers"], context, class_key, maxi(1, at)))
 	if not item_rewards.is_empty():
 		offers.assign(item_rewards[0]["offers"])
@@ -679,7 +707,7 @@ func _mirror_target(item: Dictionary, equipped: Array[Dictionary]) -> Dictionary
 func start_combat() -> bool:
 	if combat_state != CombatState.PREPARING or phase != Phase.FIGHT:
 		return false
-	if needs_arrows() or (class_key == "ranger" and (quiver().is_empty() or quiver().get("cell") == null)):
+	if needs_arrows() or (_has_character_mechanic(CHARACTER_MECHANIC.Mechanic.VOLLEY) and (quiver().is_empty() or quiver().get("cell") == null)):
 		return false
 	crafting_events = CRAFTING.resolve(self)
 	var resources: Dictionary = starting_resources()
@@ -701,6 +729,14 @@ func _dev_flag(key: String) -> bool:
 	return bool(get_meta("pack_dev_policy", {}).get(key, false))
 
 func effects() -> Dictionary:
+	_evaluating_effects = true
+	var result: Dictionary = _evaluate_effects()
+	_evaluating_effects = false
+	_evaluation_mechanics.clear()
+	_evaluation_touches.clear()
+	return result
+
+func _evaluate_effects() -> Dictionary:
 	var result: Dictionary = {"item_effects": [], "active_ids": [], "dormant_ids": [], "mana_after": 0, "blood_cost": 0, "repeats": 0, "echo_item_id": -1}
 	var activation_events: Array[String] = []
 	result["activation_events"] = activation_events
@@ -731,7 +767,7 @@ func effects() -> Dictionary:
 	for resource: int in [GameplayTypes.Stat.MANA, GameplayTypes.Stat.STAMINA]:
 		if int(innate[resource]) > 0:
 			activation_events.append("Refilled %d %s." % [innate[resource], GameplayTypes.stat_id(resource)])
-	if class_key == "mage":
+	if _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.ELEMENTAL_REACTIONS):
 		var cleanses_traces: bool = int(enemy[GameplayTypes.Stat.CLEANSE]) > 0 and turn % int(enemy[GameplayTypes.Stat.CLEANSE]) == 0
 		for trace: int in elemental_traces:
 			var remaining: int = 0
@@ -798,7 +834,7 @@ func effects() -> Dictionary:
 		var blood_payment: int = 0
 		var required_momentum: int = momentum_cost(int(item["activation_costs"].get(GameplayTypes.ResourceType.MOMENTUM, 0))) if int(item["activation_costs"].get(GameplayTypes.ResourceType.MOMENTUM, 0)) > 0 else 0
 		var requires_warrior: bool = int(item["activation_costs"].get(GameplayTypes.ResourceType.MOMENTUM, 0)) > 0 or int(item.get("momentum_gain", 0)) > 0
-		if (requires_warrior and class_key != "warrior") or required_momentum > available_momentum:
+		if (requires_warrior and not _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.MOMENTUM)) or required_momentum > available_momentum:
 			result["dormant_ids"].append(item["id"])
 			continue
 		if stamina_cost > available_stamina:
@@ -821,7 +857,7 @@ func effects() -> Dictionary:
 		result["stamina_spent"] += stamina_cost
 		result["active_ids"].append(item["id"])
 		available_momentum -= required_momentum
-		var gained_momentum: int = int(item.get("momentum_gain", 0)) if class_key == "warrior" else 0
+		var gained_momentum: int = int(item.get("momentum_gain", 0)) if _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.MOMENTUM) else 0
 		available_momentum += gained_momentum
 		result["momentum_spent"] += required_momentum
 		result["item_momentum_gained"] += gained_momentum
@@ -896,7 +932,7 @@ func effects() -> Dictionary:
 				var icon_key: String = ("magical_attack" if CATEGORIES.matches(item, &"magic_weapons") else "physical_attack") if stat == GameplayTypes.Stat.DAMAGE else ("piercing" if stat == GameplayTypes.Stat.PIERCE else str(GameplayTypes.stat_id(stat)))
 				result["item_effects"].append({"id": item["id"], "key": icon_key, "amount": contribution})
 				activation_events.append(_log_effect("Contributes %d %s%s." % [contribution, typed_damage.replace("_", " ") if stat == GameplayTypes.Stat.DAMAGE else str(GameplayTypes.stat_id(stat)).replace("_", " "), " to the combined attack" if stat == GameplayTypes.Stat.DAMAGE else ""]))
-		if class_key == "mage" and ELEMENTS.has_element(element):
+		if _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.ELEMENTAL_REACTIONS) and ELEMENTS.has_element(element):
 			activation_events.append(_log_effect("Places %d %s trace%s on %s." % [copies, str(GameplayTypes.element_id(element)).capitalize(), "s" if copies != 1 else "", enemy["name"]]))
 		for resource: int in [GameplayTypes.ResourceType.MANA, GameplayTypes.ResourceType.STAMINA]:
 			var spent: int = int(activation_costs[item["id"]][resource])
@@ -913,14 +949,14 @@ func effects() -> Dictionary:
 		result["mana_after"] = 0
 		activation_events.append("Mana Furnace converts %d unused mana into %d block." % [available_mana, available_mana * furnace.amount])
 	# Thralls join the direct attack, sharing its shield absorption and overflow.
-	result["companion_damage"] = undead_companions * NECROMANCER_COMPANION_DAMAGE if class_key == "necromancer" else 0
+	result["companion_damage"] = undead_companions * _character_value(CHARACTER_MECHANIC.Mechanic.RAISE_DEAD, "companion_damage") if _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.RAISE_DEAD) else 0
 	result[GameplayTypes.Stat.DAMAGE] += int(result["companion_damage"])
 	result["physical_damage"] += int(result["companion_damage"])
 	if int(result["companion_damage"]) > 0:
 		activation_events.append("Bone thralls contribute %d physical damage to the combined attack." % result["companion_damage"])
 	result["volley_damage"] = 0
 	var special: Dictionary = quiver()
-	if class_key == "ranger" and not special.is_empty() and special.get("cell") != null and not needs_arrows() and volley_remaining <= 1:
+	if _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.VOLLEY) and not special.is_empty() and special.get("cell") != null and not needs_arrows() and volley_remaining <= 1:
 		var volley: Dictionary = volley_stats()
 		result["volley_damage"] = volley[GameplayTypes.Stat.DAMAGE]
 		activation_events.append(_log_item(special) + " activation")
@@ -933,7 +969,7 @@ func effects() -> Dictionary:
 			result[stat] += int(volley[stat])
 			if int(volley[stat]) > 0:
 				result["item_effects"].append({"id": special["id"], "key": "physical_attack" if stat == GameplayTypes.Stat.DAMAGE else ("piercing" if stat == GameplayTypes.Stat.PIERCE else str(GameplayTypes.stat_id(stat))), "amount": volley[stat]})
-	if class_key == "mage":
+	if _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.ELEMENTAL_REACTIONS):
 		var cleanses_now: bool = int(enemy[GameplayTypes.Stat.CLEANSE]) > 0 and turn % int(enemy[GameplayTypes.Stat.CLEANSE]) == 0
 		var reaction: Dictionary = ELEMENTS.react({} if cleanses_now else elemental_traces, result["elemental_inputs"])
 		result["reactions"] = reaction["reactions"]
@@ -989,7 +1025,7 @@ func outcome(stats: Dictionary) -> Dictionary:
 	var foe: String = enemy["name"]
 	my_events.assign(stats.get("activation_events", []))
 	result["volley_after"] = volley_remaining
-	if class_key == "ranger" and not quiver().is_empty() and not needs_arrows():
+	if _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.VOLLEY) and not quiver().is_empty() and not needs_arrows():
 		result["volley_after"] = int(QUIVER.stats(quiver())["interval"]) if volley_remaining <= 1 else volley_remaining - 1
 	var health: int = mini(max_hp, hp + int(stats[GameplayTypes.Stat.HEALING]))
 	var healed: int = health - hp
@@ -1221,7 +1257,7 @@ func outcome(stats: Dictionary) -> Dictionary:
 			applied_effects.append(effect)
 	result["item_effects"] = applied_effects
 	result["monster_events"] = monster_events
-	result["raised_companion"] = class_key == "necromancer" and int(enemy["hp"]) > 0 and foe_hp <= 0 and int(result["hp_after"]) > 0 and undead_companions < NECROMANCER_COMPANION_CAP
+	result["raised_companion"] = _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.RAISE_DEAD) and int(enemy["hp"]) > 0 and foe_hp <= 0 and int(result["hp_after"]) > 0 and undead_companions < _character_value(CHARACTER_MECHANIC.Mechanic.RAISE_DEAD, "companion_capacity")
 	return result
 
 func end_turn() -> Dictionary:
@@ -1302,7 +1338,7 @@ func complete_turn() -> Dictionary:
 func finish_defeated_enemy(raise_companion: bool = true) -> bool:
 	if phase != Phase.FIGHT or hp <= 0 or int(enemy.get("hp", 1)) > 0:
 		return false
-	if raise_companion and class_key == "necromancer" and undead_companions < NECROMANCER_COMPANION_CAP:
+	if raise_companion and _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.RAISE_DEAD) and undead_companions < _character_value(CHARACTER_MECHANIC.Mechanic.RAISE_DEAD, "companion_capacity"):
 		undead_companions += 1
 		log_line("Raise Dead: I raised %s as a bone thrall." % enemy["name"])
 	log_line("%s defeated." % enemy["name"])
@@ -1333,7 +1369,7 @@ func choose_loot(key: String) -> void:
 		offers.assign(item_rewards[0]["offers"])
 
 func apply_quiver_option(key: String) -> bool:
-	if not can_edit_inventory() or not QUIVER.OPTIONS.has(key) or class_key != "ranger":
+	if not can_edit_inventory() or not QUIVER.OPTIONS.has(key) or not _has_character_mechanic(CHARACTER_MECHANIC.Mechanic.VOLLEY):
 		return false
 	var special: Dictionary = quiver()
 	if special.is_empty():

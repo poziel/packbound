@@ -17,7 +17,12 @@ func _initialize() -> void:
 	for item in state.items:
 		check(state.can_place(item, item["cell"]), "Each starter fits without overlap")
 	var stats: Dictionary = state.effects()
-	check(stats["companion_damage"] == 2 and stats[GameplayTypes.Stat.DAMAGE] == 7, "First turn damage includes fang plus one thrall; unfunded tome sleeps")
+	check_equal(stats["companion_damage"], 2, "One starting thrall contributes two direct damage")
+	check_equal(stats[GameplayTypes.Stat.DAMAGE], 17, "Starting ring plus base mana funds tome alongside fang and thrall")
+	state.resource_overrides[GameplayTypes.Stat.MANA] = 0
+	stats = state.effects()
+	check_equal(stats[GameplayTypes.Stat.DAMAGE], 7, "With no mana the unfunded tome sleeps while fang and thrall attack")
+	state.resource_overrides.clear()
 	state.items.clear()
 	state.enemy["armor"] = 1
 	var preview: Dictionary = state.outcome(state.effects())
@@ -39,15 +44,17 @@ func _initialize() -> void:
 	check(state.history.any(func(line: String) -> bool: return line.contains("Raise Dead:")), "Raise is visible in combat history")
 	check(state.end_turn().is_empty() and state.undead_companions == 2, "Repeated end turn cannot raise the same defeated foe")
 	check(state.offers.size() == 3, "Necromancer has valid loot groups")
-	state.advance_encounter()
 	state.choose_loot(state.offers[0])
+	check(state.enter_selector(), "Won fight permits entering the route selector")
+	check(state.choose_destination("combat"), "Offered combat route starts the next floor")
 	check(state.fight == 1 and state.undead_companions == 2, "Army persists on the next floor")
 	check(state.mana == 0 and state.block == 0, "New floor resources wait for the next fight start")
 	state.enemy["hp"] = 1
 	state.end_turn()
 	check(state.undead_companions == 3, "Second kill reaches three companions")
-	state.advance_encounter()
 	state.choose_loot(state.offers[0])
+	check(state.enter_selector(), "Second won fight permits entering the route selector")
+	check(state.choose_destination("combat"), "Next combat route preserves the army")
 	state.enemy["hp"] = 1
 	actual = state.end_turn()
 	check(not actual["raised_companion"] and state.undead_companions == 3, "Further kills obey army cap")

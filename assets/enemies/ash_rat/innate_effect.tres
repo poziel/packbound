@@ -1,19 +1,16 @@
-[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+[gd_resource type="Resource" script_class="MonsterTraitEffectDefinition" format=3]
 
-[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_4wpwq"]
+[ext_resource type="Script" path="res://systems/abilities/monster_trait_effect_definition.gd" id="1_4wpwq"]
 
 [resource]
 resource_name = "Ash Rat Innate Effect"
 script = ExtResource("1_4wpwq")
-rule_id = &"ash_rat_innate_rules"
-parameters = {
-"cycle_armor": 0,
-"drain": 0,
-"enrage": 0,
-"intent": "Gnaw",
-"opening_armor": 0,
-"parry": 0,
-"reflect": 0,
-"regen": 0,
-"sunder": 0
-}
+cycle_armor = 0
+drain = 0
+enrage = 0
+intent = "Gnaw"
+opening_armor = 0
+parry = 0
+reflect = 0
+regen = 0
+sunder = 0

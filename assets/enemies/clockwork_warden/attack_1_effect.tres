@@ -1,13 +1,10 @@
-[gd_resource type="Resource" script_class="CatalogRuleEffectDefinition" format=3]
+[gd_resource type="Resource" script_class="AttackEffectDefinition" format=3]
 
-[ext_resource type="Script" path="res://systems/abilities/catalog_rule_effect_definition.gd" id="1_7pdlj"]
+[ext_resource type="Script" path="res://systems/abilities/attack_effect_definition.gd" id="1_7pdlj"]
 
 [resource]
 resource_name = "Clockwork Warden Attack 1 Effect"
 script = ExtResource("1_7pdlj")
-rule_id = &"enemy_response"
-parameters = {
-0: 17,
-"damage_type": 0,
-"hits": 1
-}
+damage = 17
+damage_type = 0
+hits = 1

@@ -62,7 +62,7 @@ func validate(run: PackRun, command: String, args: Dictionary = {}) -> String:
 			if command == "set_player":
 				if stat == "max_hp" and value < 1: return "Maximum health must be positive."
 				if stat == "hp" and (value < 1 or value > run.max_hp): return "Health must be between 1 and maximum health; use combat to test defeat."
-				if stat == "undead_companions" and (run.class_key != "necromancer" or value > PackRun.NECROMANCER_COMPANION_CAP): return "Necromancer companions must be between 0 and 3."
+				if stat == "undead_companions" and (run.class_key != "necromancer" or value > run.companion_capacity()): return "Necromancer companions must be between 0 and %d." % run.companion_capacity()
 				if stat == "momentum" and run.class_key != "warrior": return "Momentum is a Warmonger resource."
 				if stat == "volley_remaining" and (run.class_key != "ranger" or value < 1 or value > 3): return "Volley countdown must be between 1 and 3 for a Bowmaster."
 			elif run.phase != PackRun.Phase.FIGHT: return "Enemy edits require an active encounter."
